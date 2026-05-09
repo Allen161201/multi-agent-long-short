@@ -1,0 +1,226 @@
+{
+  "trigger_id": "8ca1add28f7e",
+  "ticker": "CCEP",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-03-10T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 52.09,
+  "trigger_cost_usd": 0.064239,
+  "cumulative_cost_usd": 1.002179,
+  "candidate_ranking_inputs": {
+    "ticker": "CCEP",
+    "earliest_event_date": "2025-03-21",
+    "selection_reason": "earnings_window_14d",
+    "close": 80.95,
+    "t1_open": 80.95,
+    "t1_date": "2025-03-11"
+  },
+  "evidence_packet_hash": "sha256:c97d4c6521d3b22c70ab6cb66dc38285dfb8332cc564ce33c0e5a1076a1c0413",
+  "locked_decision_id": "sha256:0e88a51e8d79c317a715b84e3cb4d345fafcf97bf4fdcb5144bdccbeee208576",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation control)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CCEP",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "macro_regime (overheat, moderately restrictive)",
+        "valuation_snapshot (PE 18.42, PB 4.57, EV/EBITDA 13.31)",
+        "fundamental_snapshot (Q2 2024: revenue 9.8B, net margin 8.11%)",
+        "price_snapshot (5d return -4.47%, relative volume 1.80x)",
+        "sentiment_community_ownership_evidence (analyst ratings stable, no ownership data)",
+        "alternative_data_features (Wikipedia pageviews minimal, no tech activity)",
+        "news_event_summary (no news items within cutoff)",
+        "information_integrity_assessment (low-tier sources only, uncorroborated)"
+      ],
+      "evidence_missing": [
+        "catalyst narrative (news_event_summary status=data_unavailable)",
+        "external corroboration (alternative_data_features adapters not connected)",
+        "ownership positioning (sentiment_community_ownership_evidence.ownership_positioning status=not_evaluated)",
+        "filing confirmation (filing_confirmation status=not_evaluated, no 8-K in 90d)",
+        "narrative_price_gap_assessment (status=not_evaluated, agent_LLM_reasoning absent)"
+      ],
+      "reasoning_summary": "CCEP exhibits moderate valuation (PE 18.4, PEG 0.48) and stable fundamentals (Q2 2024 net margin 8.11%), but macro regime is overheat/moderately restrictive (equity_discipline=strict_quality_and_valuation_caution). No catalyst identified: news_event_summary is empty post-cutoff, alternative_data_features are disconnected (no tech/consumer/regulatory signals), and information_integrity_assessment flags low-tier sources only with uncorroborated status. Ownership data absent. Price action shows 5d decline (-4.47%) with elevated relative volume (1.80x), but without corroborating catalyst or external alt-data verification, insufficient evidence to initiate position. Macro regime caps equity allocation at 20%; quality_long sleeve would require stronger catalyst + alt-data support. Surge_short sleeve not met (no negative catalyst, no short-specific veto triggers). Fail-closed to no_trade pending upstream multi-agent decomposition.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "macro_regime overheat discipline requires strict quality + valuation caution",
+        "alternative_data_features block is disconnected (adapters not wired)",
+        "information_integrity_assessment marks sources as low-tier only, uncorroborated",
+        "news_event_summary status=data_unavailable (20 items dropped post-cutoff)",
+        "ownership_positioning status=not_evaluated (13F/Form4/Def14A not delivered)"
+      ],
+      "risk_flags": [
+        "macro_regime_overheat: equity_allocation_cap=20%, strict_quality_and_valuation_caution discipline active",
+        "alt_data_unavailable: alternative_data_features adapters not connected; cannot verify catalyst or external signals",
+        "information_integrity_low: information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented",
+        "catalyst_absent: news_event_summary empty post-cutoff; no narrative driver identified",
+        "ownership_data_missing: sentiment_community_ownership_evidence.ownership_positioning status=not_evaluated",
+        "valuation_moderate: PE 18.42 is reasonable but not compelling in overheat regime; PEG 0.48 suggests growth discount but no growth catalyst visible",
+        "price_action_ambiguous: 5d return -4.47% with elevated volume (1.80x) could signal weakness or rotation, but without catalyst context, interpretation is speculative"
+      ],
+      "suggested_improvements": [
+        "Wire alternative_data_features adapters (consumer_traffic, energy_commodity, or retail_restaurants_consumer) to verify demand/operational signals for CCEP (beverage/consumer staples)",
+        "Implement information_integrity_assessment pollution-defense layer to allow primary-signal use when T1/T2 sources are available",
+        "Fetch ownership_positioning (13F, Form4, Def14A) to assess institutional sponsorship and insider activity",
+        "Obtain news_event_summary items pre-cutoff or expand lookback window to identify any catalyst (earnings, partnership, regulatory)",
+        "Compute narrative_price_gap_assessment via Agent 03 LLM to reconcile price decline with fundamental stability"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; use last_eod_close 82.4 for PIT anchoring"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 items dropped because publishedDate > cutoff; news_event_summary status=data_unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker; no tech activity data available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan; ownership data unavailable"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1"
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning status=not_evaluated; 13F/Form4/Def14A adapters not wired"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Alternative_data_features block is a placeholder in v1; no industry-specific adapters (consumer_traffic, energy_commodity) are wired for CCEP. Information_integrity_assessment pollution-defense layer is unimplemented; fail-closed per schema v1.1 decision #8. Narrative_price_gap_assessment is pending Agent 03 LLM reasoning. These gaps prevent confident catalyst identification and external corroboration, forcing fail-closed decision.",
+      "recommended_followups": [
+        "Escalate to multi-agent pipeline (Agent 02 Narrative, Agent 03 Alt-Data, Agent 04 Fundamentals) for decomposed analysis",
+        "Wire consumer_traffic or retail_restaurants_consumer adapter to assess CCEP demand signals (beverage/consumer staples)",
+        "Implement information_integrity_assessment pollution-defense layer to enable primary-signal use when T1/T2 sources available",
+        "Fetch 13F/Form4/Def14A ownership data to assess institutional positioning and insider activity",
+        "Expand news lookback or monitor for earnings/partnership catalysts in near-term corporate calendar"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence to initiate position. Macro regime (overheat/moderately restrictive) caps equity allocation at 20% and mandates strict quality + valuation caution. CCEP fundamentals are stable (Q2 2024 net margin 8.11%, PE 18.42, PEG 0.48) but no catalyst identified: news_event_summary empty post-cutoff, alternative_data_features disconnected, information_integrity_assessment marks sources as low-tier uncorroborated. Price decline (-4.47% 5d) lacks corroborating narrative. Ownership data absent. Fail-closed pending multi-agent decomposition.",
+      "risk_notes": [
+        "Macro regime overheat discipline active; equity_allocation_cap=20%",
+        "Alternative_data_features adapters not wired; cannot verify external signals",
+        "Information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense unimplemented",
+        "Catalyst absent: news_event_summary status=data_unavailable",
+        "Ownership_positioning status=not_evaluated; no institutional sponsorship data",
+        "Valuation moderate but not compelling without growth catalyst visibility",
+        "Price action ambiguous without narrative context"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "news_event_summary status=data_unavailable; alternative_data_features disconnected; information_integrity_assessment uncorroborated; ownership_positioning not_evaluated; narrative_price_gap_assessment pending LLM"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "macro_regime equity_allocation_cap=20% is a discipline constraint, not a hard breach; CCEP fundamentals pass gate_38 (eps>0, op_margin>0, financial_health=sound)"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "alternative_data_features block is placeholder; information_integrity_assessment pollution-defense unimplemented; ownership_positioning not_evaluated; narrative_price_gap_assessment pending"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false; sources marked low-tier only, uncorroborated; pollution-defense layer unimplemented per schema v1.1 decision #8"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; all evidence anchored to decision_timestamp 2025-03-10T09:30:00-04:00 or earlier"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Envelope check: lookahead_safe=true, data_after_cutoff_used=false \u2192 proceed",
+        "2. Macro regime: overheat/moderately_restrictive, equity_allocation_cap=20%, equity_discipline=strict_quality_and_valuation_caution",
+        "3. Catalyst assessment: news_event_summary status=data_unavailable (20 items post-cutoff); no narrative driver identified",
+        "4. External corroboration: alternative_data_features adapters not wired; information_integrity_assessment uncorroborated (low-tier sources only)",
+        "5. Fundamentals: Q2 2024 net margin 8.11%, PE 18.42, PEG 0.48, gate_38 passes (eps>0, op_margin>0, financial_health=sound)",
+        "6. Valuation: moderate but not compelling without growth catalyst; macro discipline requires strict quality caution",
+        "7. Ownership: sentiment_community_ownership_evidence.ownership_positioning status=not_evaluated; no institutional sponsorship data",
+        "8. Price action: 5d return -4.47%, relative volume 1.80x; ambiguous without catalyst context",
+        "9. Veto evaluation: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true",
+        "10. Decision: veto conditions tripped \u2192 decision=no_trade, position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T+0: Envelope validation \u2192 lookahead_safe=true, data_after_cutoff_used=false, proceed to analysis",
+        "T+1: Macro regime assessment \u2192 overheat/moderately_restrictive, equity_allocation_cap=20%, strict_quality_and_valuation_caution discipline active",
+        "T+2: Catalyst identification \u2192 news_event_summary status=data_unavailable (20 items dropped post-cutoff); no narrative driver found",
+        "T+3: External corroboration check \u2192 alternative_data_features adapters not wired (github_public unmapped, sec_13f unavailable); information_integrity_assessment marks sources as low-tier uncorroborated",
+        "T+4: Fundamental analysis \u2192 Q2 2024 revenue 9.8B, net margin 8.11%, gate_38 passes (eps>0, op_margin>0, financial_health=sound); valuation moderate (PE 18.42, PEG 0.48)",
+        "T+5: Ownership assessment \u2192 sentiment_community_ownership_evidence.ownership_positioning status=not_evaluated; no institutional sponsorship or insider activity data",
+        "T+6: Price action interpretation \u2192 5d return -4.47%, relative volume 1.80x; ambiguous without catalyst context",
+        "T+7: Sleeve eligibility check \u2192 quality_long candidate_type; macro discipline + missing catalyst + uncorroborated alt-data prevent quality_long initiation; surge_short not applicable (no negative catalyst)",
+        "T+8: Veto evaluation \u2192 insufficient_evidence=true (catalyst absent, alt-data disconnected, ownership missing), missing_data_persists_beyond_tolerance=true, information_integrity_veto=true (uncorroborated sources)",
+        "T+9: Final decision \u2192 veto conditions tripped; decision=no_trade, position_size_pct=0.0"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-10T09:45:00-04:00",
+        "ticker": "CCEP",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:51e61f83e7f86c1d0711419c6c3fa5f4d493b2e3d2f73474e01f010736f1fdab"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "dismiss",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "information_integrity_assessment.use_as_primary_signal_allowed=false; sources marked low-tier only, uncorroborated; pollution-defense layer unimplemented per schema v1.1 decision #8",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Essential blocks absent or insufficient: alternative_data_features adapters not wired, information_integrity_assessment uncorroborated (low-tier sources only), ownership_positioning not_evaluated, narrative_price_gap_assessment pending LLM. Fail-closed per null-block-handling clause (\u00a713.6).",
+      "sentiment_risk_adjustment_note": "sentiment_community_ownership_evidence.market_sentiment has analyst ratings (2 SB, 8 B, 3 H, 0 S, 1 SS as of 2025-03-01) but marked descriptor_only; no sentiment score or credibility adjustment available. Insufficient to drive decision.",
+      "ownership_risk_adjustment_note": "sentiment_community_ownership_evidence.ownership_positioning status=not_evaluated; 13F/Form4/Def14A adapters not wired. No institutional sponsorship or insider activity data available.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "ownership_positioning status=not_evaluated; no 13F data available to assess institutional positioning",
+      "smart_money_benchmark_note": "no ownership or insider activity data available; cannot assess smart money positioning",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+      "execution_timestamp": "2025-03-10T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:ff9c1195b79db12973a71f1f94a7a688ac85312d35d4519ac11236e4940c1311",
+      "immutable_decision_flag": true
+    }
+  }
+}

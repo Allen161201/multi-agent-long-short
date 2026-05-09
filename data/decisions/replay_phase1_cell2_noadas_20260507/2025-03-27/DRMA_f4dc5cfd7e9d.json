@@ -1,0 +1,1204 @@
+{
+  "trigger_id": "f4dc5cfd7e9d",
+  "ticker": "DRMA",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-27T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 207.93,
+  "trigger_cost_usd": 0.318874,
+  "cumulative_cost_usd": 9.814886,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "DRMA",
+    "name": "DRMA",
+    "close": 14.2,
+    "prior_close": 13.5,
+    "change": 8.5,
+    "change_pct": 62.96296296296296,
+    "volume": 7633164.9,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-27",
+    "prior_trading_day": "2025-03-26",
+    "available_as_of": "2025-03-27T16:00:00-05:00",
+    "today_open": 22,
+    "today_volume": 7633164.9,
+    "eps_ttm": -153.2,
+    "operating_margin_ttm": null,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2025-03-17 16:15:32",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:595253add0c5d0defa0330330ce20a1e841a68b21face7bc52bfd258280c51df",
+  "locked_decision_id": "sha256:c70ac6fc5982cfe6c4abbc07a6cef1229bfe5430b75e7dfd273225133712fcaa",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "DRMA",
+    "decision_timestamp": "2025-03-27T09:30:00-04:00",
+    "data_available_as_of": "2025-03-27T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short candidate evaluation with hard-veto override",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.trigger_day_open=2.2 vs prior_close=1.35 (63% gap)",
+      "price_snapshot.relative_volume_vs_20d=2.6351",
+      "filing_confirmation.SEC_8K_confirmation=true (2025-03-27)",
+      "filing_confirmation.full_text.sec_8k_fulltext=stub (content unavailable)",
+      "news_event_summary.status=data_unavailable (0 items in 7-day window)",
+      "corporate_calendar.earnings_recent (2025-03-17: EPS -3.15 vs -1.5 est, miss)",
+      "valuation_snapshot.pe_ratio=-0.21 (negative earnings)",
+      "valuation_snapshot.price_to_book=0.2556 (deeply discounted)",
+      "macro_regime=Strengthening/Moderately Restrictive (equity_discipline=strict_quality_and_valuation)",
+      "upstream_agent_outputs.narrative_event.verdict=vague",
+      "upstream_agent_outputs.alt_data_verify.verdict=weakly_contradicted",
+      "upstream_agent_outputs.surge_short.recommended_action=watch",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (condition c TRIPPED)"
+    ],
+    "evidence_missing": [
+      "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text (stub mode, not ground truth)",
+      "news_event_summary.trigger_article (0 items in 7-day window)",
+      "fundamental_snapshot.snapshot_quarter (status=insufficient_evidence, all fields null)",
+      "alternative_data_features.tech_activity.github_public (unmapped_ticker, 0 rows)",
+      "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+      "narrative_price_gap_assessment (not_evaluated, pending Agent 03)"
+    ],
+    "reasoning_summary": "DRMA surged 63% on 2025-03-27 opening (2.2 vs 1.35 prior close) with 2.64x relative volume. An 8-K was filed same day (Items 7.01, 8.01, 9.01), but the full text is stub/unavailable (OpenCLI binary not installed). Risk Agent correctly identified critical-severity data-quality flag (sec_8k_fulltext stub_data) per \u00a75.10, which trips hard-veto condition (c). Per \u00a75.13 hard-veto semantics, this candidate FAILS veto evaluation and must be REJECTED. The upstream narrative_event agent classified the catalyst as 'vague' (verdict=vague, specificity_score=0.15) due to unavailable 8-K content. Alt-data verification returned 'weakly_contradicted' (verdict=weakly_contradicted) with high narrative-price-gap (10.66% return but 0 news items at cutoff). Surge-short sleeve agent recommended 'watch' (recommended_action=watch) pending verification of 8-K content. Valuation metrics show negative PE and deeply discounted PB (0.26), consistent with distressed biotech. Recent earnings miss (2025-03-17: EPS -3.15 vs -1.5 est) is a concrete negative catalyst, but occurred 10 days prior. Macro regime (strict_quality_and_valuation discipline) disfavors low-quality equities. The structural absence of corroborating news, inability to verify the 8-K content, and lack of sector-specific alt-data (clinical trials, FDA filings, patents) suggest the surge is momentum-driven rather than fundamental. However, the hard-veto condition (c) is mechanical and non-negotiable: the candidate cannot proceed without ground-truth verification of the 8-K filing content. DECISION: VETO per \u00a75.13 hard-veto condition (c) critical-severity data-quality flag.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If the sec_8k_fulltext stub data is replaced with ground-truth filing text showing a major positive catalyst (FDA approval, partnership, financing), the hard-veto would be lifted and the candidate could be re-evaluated.",
+      "If the OpenCLI binary is installed and the full 8-K text is retrieved post-decision, the critical-severity flag would be downgraded and the candidate could be re-evaluated in a subsequent decision cycle.",
+      "If the candidate is manually verified via SEC EDGAR and the 8-K content is confirmed to be material and positive, PM could override the veto with explicit documentation."
+    ],
+    "risk_flags": [
+      "HARD-VETO TRIPPED: Critical-severity data-quality flag in sec_8k_fulltext (stub_data, extraction_status='stub'). OpenCLI binary not installed; full 8-K filing text is not ground-truth. This is the primary hard-veto trigger per \u00a75.10.",
+      "Narrative catalyst is vague (verdict=vague, specificity_score=0.15) due to unavailable 8-K content.",
+      "Alt-data verification returned weakly_contradicted (verdict=weakly_contradicted) with high narrative-price-gap (10.66% return but 0 news items at cutoff).",
+      "Surge-short sleeve agent recommended watch (recommended_action=watch) pending verification of 8-K content.",
+      "Negative earnings (PE=-0.21, net_margin=0%): company is unprofitable. Valuation is distressed, not growth-justified.",
+      "No news corroboration: 0 items in 7-day window despite 63% gap. Narrative is opaque.",
+      "Macro headwind: strict_quality_and_valuation regime argues against holding low-quality equities.",
+      "Alt-data silence: no GitHub, no 13F, no community attention. Absence of external validation.",
+      "Analyst sentiment stale: last rating 2025-03-01 (1 Strong Buy). No recent updates post-surge.",
+      "Earnings miss 10 days prior (2025-03-17): -3.15 vs -1.5 est. Surge may be short-squeeze or reversal, not new value."
+    ],
+    "suggested_improvements": [
+      "Install OpenCLI binary or implement SEC EDGAR HTML parser to replace stub_data in sec_8k_fulltext. Ground-truth filing text is essential for verifying the surge catalyst.",
+      "Implement a fallback mechanism in the evidence packet generator: if sec_8k_fulltext returns stub data, emit a critical-severity flag and fail-closed (do not allow candidate to proceed without manual override).",
+      "Wire biotech-specific alt-data adapters: clinical trial registry (ClinicalTrials.gov), FDA filing index (FDA CBER/CDER), patent activity (USPTO/WIPO). For DRMA (Dermata Therapeutics), these would be sector-expected corroboration.",
+      "Enable sec_13f adapter (institutional ownership) to assess smart-money positioning and crowding risk.",
+      "Extend news_event_summary lookback to include items published in the 24 hours post-decision_timestamp (post-cutoff analysis) to identify the actual catalyst that drove the surge.",
+      "Add insider-transaction sentiment analysis: distinguish equity grants (compensation, no signal) from open-market purchases (bullish signal) and sales (bearish signal)."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "stub_data",
+        "severity": "critical",
+        "detail": "sec_8k_fulltext returned mock_fallback stub data (extraction_status='stub'). OpenCLI binary not installed; full 8-K filing text is not ground-truth. This is the primary hard-veto trigger per \u00a75.10."
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "news_event_summary status=data_unavailable; 20 items dropped because publishedDate > cutoff. No news corroboration for surge catalyst at decision time."
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe income/balance/cashflow rows. Valuation metrics are TTM (not PIT-safe) and distressed."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public failed (unmapped_ticker). Not sector-relevant for biotech, but absence of biotech-specific adapters is informative."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f failed (not_available_on_current_plan). Cannot assess institutional ownership or smart-money support."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet schema allows stub_data to be emitted with critical-severity flag, which correctly triggers the hard-veto. However, the upstream generator should prevent stub_data from reaching the PM agent in the first place by failing-closed at the adapter level. The current design defers the veto decision to the risk agent, which is correct, but the PM agent must respect the hard-veto and not override it without explicit manual authorization.",
+    "recommended_followups": [
+      "Manually retrieve the full 8-K filing text from SEC EDGAR (https://www.sec.gov/Archives/edgar/data/1853816/000165495425003372/drma_8k.htm) to verify the actual catalyst and content of Items 7.01, 8.01, 9.01.",
+      "If the 8-K content is verified to be material and positive, re-evaluate the surge_short thesis and consider a quality_long candidate instead.",
+      "If the 8-K content is verified to be routine or negative, the hard-veto stands and the candidate should be rejected.",
+      "Monitor DRMA short interest and borrow availability to assess short-squeeze risk.",
+      "Set alert for next earnings date (likely May 2025) to re-evaluate thesis.",
+      "Track analyst rating changes post-2025-03-27 to see if sentiment has shifted."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "veto",
+    "position_size_pct": 0.0,
+    "reason": "Hard-veto condition (c) tripped: critical-severity data-quality flag in sec_8k_fulltext (stub_data). OpenCLI binary not installed; full 8-K filing text unavailable. Cannot verify surge catalyst. Candidate REJECTED per \u00a75.13 hard-veto semantics. Upstream narrative_event verdict=vague, alt_data_verify verdict=weakly_contradicted, surge_short recommended_action=watch. Risk agent correctly identified veto condition (c) per \u00a75.10. Macro regime (strict_quality_and_valuation) disfavors distressed biotech. Recommend manual verification of 8-K content post-decision before re-evaluation.",
+    "risk_notes": [
+      "Hard-veto condition (c) is tripped due to critical-severity stub_data flag in sec_8k_fulltext.",
+      "The surge_short candidate cannot be evaluated on merits because the primary catalyst (8-K filing) is unverified (stub content).",
+      "Candidate is REJECTED at the PM stage per \u00a75.13 hard-veto semantics.",
+      "If the 8-K full text becomes available post-decision, the candidate may be re-evaluated in a subsequent decision cycle.",
+      "Upstream agents (narrative_event, alt_data_verify, surge_short) all flagged uncertainty and recommended watch/challenge_thesis, consistent with the hard-veto decision."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Candidate is surge_short; NOT APPLICABLE."
+      },
+      {
+        "name": "short_entry_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Proposed surge_short position 0.5% (per upstream_agent_outputs.surge_short.initial_position_pct) is below 5% single-position cap and 10% sleeve cap. NOT TRIPPED."
+      },
+      {
+        "name": "critical_data_quality_flag_5_10",
+        "tripped": true,
+        "note": "data_quality_flags contains 1 critical-severity entry: sec_8k_fulltext stub_data (extraction_status='stub', OpenCLI binary not installed). Per \u00a75.10, critical-severity flag TRIPS condition (c). HARD-VETO TRIPPED."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Condition (d) is INAPPLICABLE to surge_short per \u00a75.17 RELAXATION 2026-05-06. NOT APPLICABLE."
+      },
+      {
+        "name": "lookahead_veto_5_4",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. NOT TRIPPED."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto evaluation initiated",
+      "candidate_type=surge_short detected",
+      "Condition (a) sleeve_cap_breach: NOT APPLICABLE (surge_short exemption)",
+      "Condition (b) short_entry_cap_breach: NOT TRIPPED (0.5% < 5% single, 0.5% < 10% sleeve)",
+      "Condition (c) critical_data_quality_flag: TRIPPED (sec_8k_fulltext stub_data, severity=critical)",
+      "Condition (d) anti_pollution_integrity_veto: NOT APPLICABLE (surge_short exemption per \u00a75.17)",
+      "Condition (e) lookahead_veto: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+      "VETO RESULT: HARD-VETO TRIPPED (condition c). Candidate REJECTED.",
+      "PM aggregation: upstream agents (narrative_event, alt_data_verify, surge_short, risk) all flagged uncertainty and recommended watch/challenge_thesis.",
+      "PM decision: VETO per \u00a75.13 hard-veto condition (c). Position size = 0.0%. Execution plan: none."
+    ],
+    "decision_log": [
+      "2025-03-27T09:30:00-04:00 [ENVELOPE] decision_timestamp=2025-03-27T09:30:00-04:00, allowed_data_cutoff=2025-03-27T09:30:00-04:00, data_after_cutoff_used=false, lookahead_safe=true",
+      "2025-03-27T09:30:00-04:00 [CANDIDATE_TYPE] candidate_type=surge_short, trigger_day_open=2.2 vs prior_close=1.35 (63% gap), relative_volume_vs_20d=2.6351",
+      "2025-03-27T09:30:00-04:00 [UPSTREAM_NARRATIVE] narrative_event.verdict=vague, catalyst_specificity_score=0.15, company_claim='DRMA filed 8-K on 2025-03-27 with items 7.01, 8.01, 9.01; content unverified due to stub mode'",
+      "2025-03-27T09:30:00-04:00 [UPSTREAM_ALT_DATA] alt_data_verify.verdict=weakly_contradicted, narrative_price_gap_assessment=high, recommendation_to_pm=challenge_thesis",
+      "2025-03-27T09:30:00-04:00 [UPSTREAM_SURGE_SHORT] surge_short.recommended_action=watch, short_thesis_status=uncertain, evidence_sufficiency=partial",
+      "2025-03-27T09:30:00-04:00 [UPSTREAM_RISK] risk.veto_conditions_evaluated: condition (c) critical_data_quality_flag TRIPPED (sec_8k_fulltext stub_data, severity=critical)",
+      "2025-03-27T09:30:00-04:00 [HARD_VETO_CHECK] \u00a75.13 hard-veto condition (c) is mechanical and non-negotiable. Critical-severity data-quality flag in sec_8k_fulltext (stub_data, extraction_status='stub', OpenCLI binary not installed) prevents ground-truth verification of the 8-K filing content, which is the primary catalyst claim for the surge_short candidate.",
+      "2025-03-27T09:30:00-04:00 [HARD_VETO_DECISION] Hard-veto condition (c) TRIPPED. Candidate REJECTED per \u00a75.13 hard-veto semantics. Position size = 0.0%. Execution plan: none.",
+      "2025-03-27T09:30:00-04:00 [UPSTREAM_CONSENSUS] All upstream agents flagged uncertainty and recommended watch/challenge_thesis: narrative_event (vague, low confidence), alt_data_verify (weakly_contradicted, challenge_thesis), surge_short (watch, uncertain), risk (hard-veto tripped). PM decision aligns with upstream consensus and hard-veto rule.",
+      "2025-03-27T09:30:00-04:00 [MACRO_CONTEXT] macro_regime=Strengthening/Moderately Restrictive, equity_discipline=strict_quality_and_valuation. DRMA is distressed biotech (PE=-0.21, PB=0.26, net_margin=0%). Macro regime disfavors low-quality equities.",
+      "2025-03-27T09:30:00-04:00 [VALUATION_CONTEXT] valuation_snapshot.pe_ratio=-0.21 (negative earnings), price_to_book=0.2556 (deeply discounted), EV/EBITDA=0.8734. Recent earnings miss (2025-03-17: EPS -3.15 vs -1.5 est). Valuation is distressed, not growth-justified.",
+      "2025-03-27T09:30:00-04:00 [NEWS_CONTEXT] news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20. No news corroboration for surge catalyst at decision time. Narrative is opaque.",
+      "2025-03-27T09:30:00-04:00 [ALT_DATA_CONTEXT] alternative_data_features.attention.wikipedia_pageviews: 30 rows, low baseline 6-25 views/day, no spike pattern. github_public failed (unmapped_ticker). sec_13f unavailable (not_available_on_current_plan). Absence of sector-expected corroboration (clinical trials, FDA filings, patents) is informative bear-thesis evidence.",
+      "2025-03-27T09:30:00-04:00 [FINAL_DECISION] VETO per \u00a75.13 hard-veto condition (c). Position size = 0.0%. Execution plan: none. Candidate REJECTED. Recommend manual verification of 8-K content post-decision before re-evaluation in subsequent decision cycle."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-27T09:45:00-04:00",
+      "ticker": null,
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+      "evidence_packet_hash": "sha256:99e4ae48fabf96836bae1dfbccd0b82556bc03101eb3354fb37cb4e348023c5e"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews for 'Rokeri_s_Moravu' (unrelated article) show low baseline activity (6-25 views/day) with no spike pattern. No retail-attention alt-data wired (Reddit, StockTwits). Community attention is not evaluated.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "8-K filing (2025-03-27, Items 7.01, 8.01, 9.01) is confirmed to exist (SEC_8K_confirmation=true), but the full text is stub/unavailable (OpenCLI binary not installed). The actual content and catalyst are unverified. This is the primary hard-veto trigger.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Hard-veto condition (c) tripped: critical-severity data-quality flag in sec_8k_fulltext (stub_data). Cannot verify surge catalyst without ground-truth 8-K filing text. Candidate REJECTED per \u00a75.13 hard-veto semantics.",
+    "sentiment_risk_adjustment_note": "FMP analyst sentiment shows 1 Strong Buy rating (as of 2025-03-01) and 1 recent Buy grade (Aug 21, 2024, PT $6 vs current $1.35). Sentiment is stale and price target is far above current price. Sentiment is not adjusted due to hard-veto.",
+    "ownership_risk_adjustment_note": "SEC Form 4 shows 4 insider equity grants (Jan 21-23, 2025) totaling ~1.1M shares, indicating insider confidence but no market-timing signal. sec_13f unavailable (not_available_on_current_plan). Ownership positioning is not evaluated due to hard-veto.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": "sec_13f unavailable (not_available_on_current_plan). Cannot assess institutional ownership or smart-money positioning. Institutional sponsorship is not evaluated due to hard-veto.",
+    "smart_money_benchmark_note": "Insider Form 4 shows equity grants (compensation), not market-timing buys. No 13F data available. Smart-money support is not evaluated due to hard-veto.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-27T09:30:00-04:00",
+    "execution_timestamp": "2025-03-27T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:df9990bd864cacf37f2fb11f385a16b752262a5c8aee044cdb9e210dddc963b9",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DRMA",
+      "decision_timestamp": "2025-03-27T09:30:00-04:00",
+      "data_available_as_of": "2025-03-27T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_date",
+        "filing_confirmation.filing_index.sec_edgar",
+        "filing_confirmation.full_text.sec_8k_fulltext",
+        "news_event_summary.status",
+        "news_event_summary.items_count",
+        "news_event_summary.items_dropped_post_cutoff",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "corporate_calendar.events_near_decision",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "sentiment_community_ownership_evidence.sec_form4"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "news_event_summary.catalyst_specificity_score",
+        "news_event_summary.ndi_score",
+        "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text (stub mode)",
+        "press_release_confirmation",
+        "earnings_call_confirmation",
+        "fundamental_snapshot (insufficient_evidence status)",
+        "alternative_data_features.retail_meme_attention",
+        "alternative_data_features.valuation_context",
+        "alternative_data_features.opencli_evidence"
+      ],
+      "reasoning_summary": "DRMA filed an 8-K on 2025-03-27 (decision_timestamp date) with items 7.01 (Regulation FD Disclosure), 8.01 (Other Events), and 9.01 (Financial Statements and Exhibits). The filing_confirmation block confirms SEC_8K_confirmation=true and filing_date=2025-03-27, meeting the PIT cutoff exactly. However, the sec_8k_fulltext adapter returned stub data (OpenCLI binary not installed), so the actual content of the 8-K disclosure is unavailable for analysis. The news_event_summary block shows status=data_unavailable with 0 items in the 7-day window and 20 items dropped post-cutoff, indicating that any news coverage of this 8-K filing occurred after the decision_timestamp cutoff or was not indexed by polygon_news. Wikipedia pageviews for 'Rokeri_s_Moravu' (a non-English article title, likely a Serbian band or entity unrelated to DRMA) show modest baseline activity (6\u201325 views/day over 30 days) with no spike pattern. FMP sentiment shows 1 Strong Buy rating as of 2025-03-01 and a Maxim Group price target of $6 (dated 2024-08-21, well before decision date). SEC Form 4 filings from 2025-01-21 to 2025-01-23 show insider grants (FISHER MARY, Van Hoose Kyri K., PROEHL GERALD T, HALE DAVID F) with no sales, suggesting no insider selling pressure. Price action: 5-day return +10.66%, 20-day return +13.45%, relative volume 2.64x 20-day average, indicating elevated trading activity. Corporate calendar shows earnings on 2025-03-17 (10 days prior) with EPS actual -3.15 vs. estimated -1.5 (miss), which is within the \u00b15 trading day near-event window. SECTOR REASONING: DRMA is Dermata Therapeutics (biotech/pharma). For a biotech company, expected narrative-supporting evidence would include FDA filings (IND/NDA/ANDA), clinical trial registry entries, patent/IP disclosures, R&D expense, and clinical progress announcements. The 8-K filing items (7.01 Reg FD, 8.01 Other Events, 9.01 Exhibits) suggest a material event, but without the full text, the nature of the event cannot be determined. The absence of news coverage (0 items in 7-day window) despite an 8-K filing on the decision date is structurally unusual for a material disclosure. The earnings miss on 2025-03-17 (EPS -3.15 vs -1.5 est) is a concrete negative catalyst, but it occurred 10 days before the decision date and is not the subject of the 8-K. The 8-K itself remains opaque due to stub data. NARRATIVE SPECIFICITY: The company claim cannot be extracted because the 8-K full text is unavailable (stub mode). The filing items (7.01, 8.01, 9.01) are generic regulatory codes that do not convey specificity without content. The absence of corroborating news, press releases, or earnings call confirmation further reduces specificity. The catalyst is therefore VAGUE by default\u2014a filing occurred, but its substance is unknown.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K full text becomes available and reveals a non-material or routine disclosure (e.g., officer appointment, routine exhibit filing), the catalyst specificity would remain low.",
+        "If the price move is driven by the 2025-03-17 earnings miss (EPS -3.15 vs -1.5) rather than the 8-K, the 8-K is a false catalyst attribution.",
+        "If Wikipedia pageviews for 'Rokeri_s_Moravu' are unrelated to DRMA (likely they are), the alt-data signal is noise.",
+        "If insider grants on 2025-01-21 to 2025-01-23 are routine equity compensation (not discretionary buying), they do not support a positive narrative."
+      ],
+      "risk_flags": [
+        "Stub data in sec_8k_fulltext: OpenCLI adapter not installed; full filing text unavailable for content analysis.",
+        "News_event_summary status=data_unavailable: No news items indexed in 7-day window; 20 items dropped post-cutoff suggests news coverage may exist but is post-decision.",
+        "Alternative data mismatch: Wikipedia pageviews for 'Rokeri_s_Moravu' appear unrelated to DRMA (ticker mapping error or data quality issue).",
+        "Earnings miss on 2025-03-17 (10 days prior) may be the true driver of price action, not the 8-K.",
+        "Fundamental snapshot status=insufficient_evidence: No income/balance/cash flow data available for context.",
+        "Valuation snapshot TTM ratios not PIT-safe; DCF display-only.",
+        "Insider transactions are grants (not sales); no insider selling signal.",
+        "Analyst sentiment stale (most recent: 2024-08-21 Maxim Group PT $6; as of 2025-03-01, 1 Strong Buy rating)."
+      ],
+      "suggested_improvements": [
+        "Deploy OpenCLI sec_8k_fulltext adapter or fallback to SEC EDGAR HTML parsing to extract actual 8-K content.",
+        "Expand news_event_summary lookback or use alternative news sources (e.g., Seeking Alpha, Yahoo Finance, company IR) to capture coverage of the 8-K filing.",
+        "Validate Wikipedia pageviews ticker mapping; 'Rokeri_s_Moravu' does not appear to be a DRMA-related article.",
+        "Implement earnings-event detection in news_event_summary to distinguish between earnings-driven moves and other catalysts.",
+        "Retrieve fundamental snapshot (income statement, balance sheet, cash flow) for the most recent quarter to assess financial health and R&D trajectory.",
+        "Obtain full analyst reports (not just ratings) to understand the basis for the Strong Buy rating and any recent downgrades.",
+        "Cross-reference 8-K filing items with SEC EDGAR Item 1.01 (Business Combinations), Item 2.02 (Results of Operations), Item 3.01 (Material Agreements) to infer catalyst type without full text."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "critical",
+          "detail": "sec_8k_fulltext returned stub mode; OpenCLI binary not installed. Full 8-K text unavailable for content analysis."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff (2025-03-27T09:30:00). Actual news coverage of the 8-K may exist post-cutoff."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "polygon_news returned 0 items in [2025-03-20, 2025-03-27] for DRMA. No news indexed in 7-day window."
+        },
+        {
+          "kind": "alt_data_ticker_mismatch",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews article 'Rokeri_s_Moravu' does not appear to be DRMA-related. Likely data quality or mapping error."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no income/balance/cash flow data available."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot uses TTM ratios; not PIT-safe for decision anchoring."
+        },
+        {
+          "kind": "insider_grant_not_sale",
+          "severity": "info",
+          "detail": "sec_form4 shows 4 insider grants (2025-01-21 to 2025-01-23); no insider sales. Grants are typically routine equity compensation."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The narrative_event_agent schema assumes that news_event_summary.trigger_article and filing_confirmation.full_text will be populated with sufficient detail to classify the catalyst. In this case, both are absent or stubbed: news_event_summary has 0 items (data_unavailable), and sec_8k_fulltext is stub mode. The schema does not provide a fallback mechanism for inferring catalyst type from SEC filing item codes alone (7.01, 8.01, 9.01 are generic). A stronger schema would include a 'filing_item_code_to_catalyst_type' lookup or require the agent to emit a 'catalyst_unknown_pending_full_text' verdict. Additionally, the alternative_data_features block's wikipedia_pageviews adapter appears to have a ticker-to-article mapping error, reducing confidence in alt-data signals.",
+      "recommended_followups": [
+        "Retrieve and parse the full 8-K text from SEC EDGAR (https://www.sec.gov/Archives/edgar/data/1853816/000165495425003372/drma_8k.htm) to identify the specific catalyst (e.g., clinical trial update, partnership, financing, regulatory event).",
+        "Search for press releases or investor relations announcements on DRMA's website or newswire services (PR Newswire, Business Wire) dated 2025-03-27 or 2025-03-26.",
+        "Review the 2025-03-17 earnings call transcript (if available) to assess whether management commentary on the earnings miss provides context for the subsequent 8-K filing.",
+        "Validate the Wikipedia pageviews data source and confirm whether 'Rokeri_s_Moravu' is a data quality error or a legitimate DRMA-related article.",
+        "Obtain updated analyst reports and price targets post-2024-08-21 to assess current sentiment.",
+        "Monitor news sources for coverage of the 8-K filing in the 1-2 trading days following 2025-03-27 to capture post-cutoff catalyst confirmation."
+      ],
+      "catalyst_type": "unknown_pending_full_text",
+      "catalyst_specificity_score": 0.15,
+      "vague_narrative_flag": true,
+      "company_claim": "DRMA filed an 8-K on 2025-03-27 with items 7.01 (Regulation FD Disclosure), 8.01 (Other Events), and 9.01 (Financial Statements and Exhibits). The specific nature of the disclosure is unknown due to unavailable full-text content (stub mode). The filing may relate to a material agreement, clinical trial update, partnership, financing, or other corporate event, but cannot be determined from the evidence packet.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "SEC filing event (8-K confirmed)",
+        "Potential material agreement (Item 8.01 Other Events)",
+        "Potential regulatory or clinical event (biotech sector context)",
+        "Earnings miss catalyst (2025-03-17, EPS -3.15 vs -1.5 est, 10 days prior)"
+      ],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "vague"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DRMA",
+      "decision_timestamp": "2025-03-27T09:30:00-04:00",
+      "data_available_as_of": "2025-03-27T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification: DRMA surge candidate",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "filing_confirmation.sec_edgar",
+        "filing_confirmation.sec_8k_fulltext",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "news_event_summary.polygon_news",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.price_to_book",
+        "macro_regime.stress_score",
+        "corporate_calendar.earnings_recent"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence status)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "alternative_data_features.retail_meme_attention (not_connected)",
+        "opencli_evidence (not_connected)",
+        "narrative_price_gap_assessment.agent_LLM_reasoning (not_evaluated)"
+      ],
+      "reasoning_summary": "DRMA exhibits a 10.66% 5-day return with 2.64x relative volume vs 20d average, triggering surge-short candidate classification. Alternative-data verification reveals: (1) Wikipedia pageviews for 'Rokeri_s_Moravu' (unrelated article) show low, flat activity (6\u201325 views/day over 30 days, mean ~14.5) with no spike pattern correlating to the price surge. (2) SEC filings show 5 recent 8-K filings (Jan 21, Jan 23, Mar 17, Mar 25, Mar 27) with material events (Items 1.01 acquisitions, 2.02 material agreements, 3.01/3.02 bylaws/charter amendments), but the sec_8k_fulltext adapter returned stub data (not ground-truth text). (3) FMP sentiment shows 1 analyst Strong Buy rating (as of Mar 1, 2025) and 1 recent grade-news item (Aug 21, 2024: Maxim Group Buy, PT $6 vs current $1.35), indicating analyst support but stale (pre-surge). (4) SEC Form 4 shows 4 insider grant transactions (Jan 21\u201323, 2025) totaling ~1.1M shares granted to executives (PROEHL, FISHER, VAN HOOSE, HALE), all equity compensation grants with no sales, suggesting insider confidence but no market-timing signal. (5) Valuation metrics are distressed: PE=-0.21 (negative earnings), PB=0.26 (deep discount), EV/EBITDA=0.87 (low but unreliable given negative net margin). (6) Recent earnings (Mar 17, 2025) missed badly: EPS actual -3.15 vs est -1.5, indicating deteriorating fundamentals. (7) No news items in Polygon or FMP news feeds <= cutoff; 20 items dropped post-cutoff. (8) Macro regime is 'Strengthening / Moderately Restrictive' with equity_discipline='strict_quality_and_valuation', which disfavors distressed micro-cap biotech. (9) GitHub adapter failed (unmapped_ticker), and sec_13f unavailable, limiting tech/institutional-ownership corroboration. (10) Structural absence: no sector-specific alt-data (biotech clinical trial registry, FDA filing index, patent activity) is wired or returned rows. For a biotech company, absence of clinical/regulatory alt-data is informative\u2014suggests either no active pipeline or no public disclosure footprint.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If sec_8k_fulltext stub data is replaced with ground-truth filing text showing a major positive catalyst (FDA approval, partnership, financing), verdict would shift to weakly_supported or narrative_supported.",
+        "If Wikipedia pageviews spike in the 2\u20133 days post-decision_timestamp (post-cutoff), that would indicate retail attention driving the surge, but is not observable at decision time.",
+        "If insider Form 4 transactions show large sales (not grants) in the days following, that would contradict insider confidence and strengthen bear thesis.",
+        "If macro regime shifts to 'risk-on' or equity_discipline relaxes, valuation discount becomes less punitive."
+      ],
+      "risk_flags": [
+        "data_quality_warning: sec_8k_fulltext returned stub data (mock_fallback), not ground-truth filing text. Cannot verify the actual content of the 8-K items (7.01, 8.01, 9.01).",
+        "data_quality_warning: fundamental_snapshot status=insufficient_evidence; no PIT-safe income/balance/cashflow rows. Valuation metrics are TTM (not PIT-safe) and distressed (negative earnings, negative ROA/ROE).",
+        "data_quality_warning: news_event_summary status=data_unavailable; 20 items dropped post-cutoff. No news corroboration for the surge catalyst at decision time.",
+        "data_quality_warning: alternative_data_features.tech_activity.github_public failed (unmapped_ticker). For a biotech company, GitHub is not sector-relevant, but absence of biotech-specific adapters (clinical trial registry, FDA filing index) is informative absence.",
+        "data_quality_warning: sec_13f unavailable (not_available_on_current_plan). Cannot assess institutional ownership positioning or smart-money support.",
+        "pollution_risk_level: unknown (information_integrity_assessment.pollution_risk_level='unknown'). Fail-closed per schema v1.1 decision #8; use_as_primary_signal_allowed=false.",
+        "coordinated_campaign_warning: false (information_integrity_assessment.coordinated_campaign_risk='unknown'). No evidence of coordinated social campaign, but also no social-media alt-data wired.",
+        "rumor_without_evidence_flag: false. The surge is real (price and volume data), but the catalyst is opaque (news unavailable, 8-K text is stub).",
+        "social_only_warning: false. Wikipedia pageviews are not social media; they are encyclopedia traffic (low signal for equity thesis)."
+      ],
+      "suggested_improvements": [
+        "Wire biotech-specific alt-data adapters: clinical trial registry (ClinicalTrials.gov), FDA filing index (FDA CBER/CDER), patent activity (USPTO/WIPO). For DRMA (Dermata Therapeutics), these would be sector-expected corroboration.",
+        "Implement sec_8k_fulltext ground-truth extraction (OpenCLI binary or SEC EDGAR HTML parser) to replace stub data. The 8-K items (7.01 Other Events, 8.01 Financial Statements, 9.01 Exhibits) are material but unverified.",
+        "Enable sec_13f adapter (institutional ownership) to assess smart-money positioning and crowding risk.",
+        "Extend news_event_summary lookback to include items published in the 24 hours post-decision_timestamp (post-cutoff analysis) to identify the actual catalyst that drove the surge.",
+        "Add insider-transaction sentiment analysis: distinguish equity grants (compensation, no signal) from open-market purchases (bullish signal) and sales (bearish signal). Current Form 4 rows are all grants.",
+        "Implement retail-attention adapters (Reddit, StockTwits, Seeking Alpha) to detect meme-stock or coordinated-campaign risk. Wikipedia pageviews are not retail-attention proxies."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "critical",
+          "detail": "sec_8k_fulltext returned mock_fallback stub data (extraction_status='stub'). Filing text is not ground-truth; cannot verify 8-K items 7.01, 8.01, 9.01."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe income/balance/cashflow rows. Valuation inputs are TTM (not PIT-safe) and distressed."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary status=data_unavailable; 20 items dropped because publishedDate > cutoff. No news corroboration for surge catalyst at decision time."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public failed (unmapped_ticker). Not sector-relevant for biotech, but absence of biotech-specific adapters is informative."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f failed (not_available_on_current_plan). Cannot assess institutional ownership or smart-money support."
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "info",
+          "detail": "alternative_data_features.retail_meme_attention status=not_evaluated (not_connected). No retail-attention alt-data wired."
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "info",
+          "detail": "opencli_evidence status=not_evaluated (not_connected). OpenCLI not invoked in v1 generator."
+        },
+        {
+          "kind": "valuation_ttm_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM (not PIT-safe). PE=-0.21, PB=0.26, EV/EBITDA=0.87 are display-only; cannot anchor to decision_timestamp."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's sec_8k_fulltext adapter is in stub mode, which is a schema-level limitation (OpenCLI binary not installed or STUB_MODE=true). This prevents ground-truth verification of the 8-K filing content, which is the primary hard-to-fake signal for the surge catalyst. The information_integrity_assessment block has use_as_primary_signal_allowed=false (fail-closed per schema v1.1 decision #8), which is conservative but appropriate given the pollution-defense layer is unimplemented. The absence of biotech-specific alt-data adapters (clinical trial registry, FDA filing index) is a schema design gap for this sector.",
+      "recommended_followups": [
+        "Post-decision: retrieve the actual 8-K filing text from SEC EDGAR (https://www.sec.gov/Archives/edgar/data/1853816/000165495425003372/drma_8k.htm) and parse Items 7.01, 8.01, 9.01 to identify the material event(s) that triggered the surge.",
+        "Post-decision: check news sources (Bloomberg, Reuters, StreetInsider, company press release) published on Mar 27, 2025 (post-cutoff) to identify the catalyst.",
+        "Post-decision: monitor insider Form 4 filings in the 5 trading days post-decision to detect any open-market sales (bearish signal) or additional purchases (bullish signal).",
+        "Post-decision: assess whether the Wikipedia pageviews for 'Rokeri_s_Moravu' spike post-decision (would indicate retail attention), or remain flat (would indicate the surge is institutional/algorithmic).",
+        "Pre-next-decision: wire biotech-specific alt-data adapters (ClinicalTrials.gov, FDA CBER/CDER, USPTO) to enable sector-aware corroboration for future DRMA or similar biotech candidates."
+      ],
+      "verdict": "weakly_contradicted",
+      "evidence_score": 0.25,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "DRMA exhibits a 10.66% 5-day return with 2.64x relative volume, but the narrative catalyst is opaque. SEC filings (8-K) are present but text is stub data (unverified). News is absent (0 items <= cutoff). Wikipedia pageviews show no spike (flat 6\u201325 views/day). Analyst sentiment is stale (Aug 2024 grade, Mar 2025 Strong Buy rating). Insider transactions are equity grants (no market-timing signal). Valuation is distressed (negative earnings, deep discount). Macro regime is restrictive (strict_quality_and_valuation discipline). The price-narrative gap is high: the surge is real (price/volume), but the public narrative (news, filings, analyst commentary) does not explain it at decision time. This is consistent with a surge-short bear thesis: the move is driven by technical/algorithmic factors or post-cutoff news, not by verifiable fundamental catalysts.",
+      "industry_template_used": "biotech_pharma",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only alternative-data adapter that returned rows (30 rows, 2025-02-26 to 2025-03-27). Biotech-specific adapters (clinical trial registry, FDA filing index, patent activity) are not wired. GitHub adapter failed (unmapped_ticker, not sector-relevant). Retail-attention adapters (Reddit, StockTwits) are not connected. OpenCLI is not connected. Selected adapter is informative for attention/narrative but not for biotech fundamentals.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "SEC Form 4 insider transactions (4 equity grants, Jan 21\u201323, 2025) show insider confidence but are compensation grants (not market-timing buys). SEC 8-K filings (5 recent, Jan 21\u2013Mar 27) indicate material events but text is stub data (unverified). FMP analyst sentiment (1 Strong Buy, 1 recent Buy grade) is present but stale (pre-surge). Wikipedia pageviews (30 rows, 6\u201325 views/day) show no spike. No news items <= cutoff. No biotech-specific alt-data (clinical trials, FDA filings, patents). Structural absence of sector-expected corroboration is informative: for a biotech company, absence of clinical/regulatory alt-data suggests either no active pipeline or no public disclosure footprint, both bearish signals.",
+      "industry_specific_evidence_used": [
+        "SEC Form 4 insider transactions (equity grants, no sales)",
+        "SEC 8-K filings (5 recent, items 1.01/2.02/3.01/3.02/7.01/8.01/9.01, text unverified)",
+        "FMP analyst sentiment (1 Strong Buy, 1 recent Buy grade, stale)",
+        "Valuation metrics (PE=-0.21, PB=0.26, EV/EBITDA=0.87, distressed)",
+        "Recent earnings (Mar 17, 2025: EPS -3.15 vs est -1.5, miss)"
+      ],
+      "industry_specific_evidence_missing": [
+        "Clinical trial registry data (ClinicalTrials.gov) \u2014 adapter not wired",
+        "FDA filing index (FDA CBER/CDER) \u2014 adapter not wired",
+        "Patent activity (USPTO/WIPO) \u2014 adapter not wired",
+        "Biotech conference presentation footprint \u2014 adapter not wired",
+        "Drug development pipeline disclosure (10-K Item 1) \u2014 fundamental_snapshot insufficient_evidence",
+        "Regulatory approval status (FDA letter, IND/BLA status) \u2014 not in alternative_data_features"
+      ],
+      "data_quality_warning": "critical: sec_8k_fulltext returned stub data (mock_fallback). Cannot verify 8-K filing content. warning: fundamental_snapshot status=insufficient_evidence; no PIT-safe financials. warning: news_event_summary status=data_unavailable; 20 items dropped post-cutoff. warning: sec_13f unavailable (not_available_on_current_plan). warning: biotech-specific alt-data adapters not wired.",
+      "signals": [
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": 10.6557,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 2.6351,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "wikipedia_pageviews_spike",
+          "available": true,
+          "value": 14.5,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "news_items_at_cutoff",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_8k_filing_present",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "sec_8k_fulltext_verified",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "insider_form4_buys",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "insider_form4_grants",
+          "available": true,
+          "value": 4.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_strong_buy_count",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "analyst_sentiment_recency",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "pe_ratio",
+          "available": true,
+          "value": -0.21046271133498098,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_to_book",
+          "available": true,
+          "value": 0.2556158229129508,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "recent_earnings_miss",
+          "available": true,
+          "value": -3.15,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "macro_regime_restrictive",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "biotech_clinical_alt_data",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "biotech_fda_alt_data",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": "OpenCLI not connected (not_evaluated status). sec_8k_fulltext returned stub data (mock_fallback), not ground-truth filing text.",
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "sec_8k_fulltext stub mode: OpenCLI binary not installed or STUB_MODE=true. Cannot extract ground-truth 8-K filing text.",
+      "opencli_pit_safety_warning": "8-K filing_date=2025-03-27 is <= allowed_data_cutoff, so PIT-safety holds for the filing metadata. However, the filing text is stub data (unverified), so PIT-safety of the content is unknown.",
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [
+        {
+          "claim": "DRMA experienced a 10.66% 5-day price surge with 2.64x relative volume, triggering surge-short candidate classification.",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "SEC 8-K filing on Mar 27, 2025 (Items 7.01, 8.01, 9.01) indicates material event(s), but filing text is stub data (unverified).",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "No news items in Polygon or FMP news feeds <= cutoff; 20 items dropped post-cutoff. Surge catalyst is opaque at decision time.",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "Wikipedia pageviews for 'Rokeri_s_Moravu' show flat activity (6\u201325 views/day, mean 14.5) with no spike pattern correlating to price surge.",
+          "claim_type": "other",
+          "source_tier": "T3"
+        },
+        {
+          "claim": "SEC Form 4 shows 4 insider equity grants (Jan 21\u201323, 2025) totaling ~1.1M shares, indicating insider confidence but no market-timing signal.",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "FMP analyst sentiment: 1 Strong Buy rating (Mar 1, 2025), 1 recent Buy grade (Aug 21, 2024, PT $6 vs current $1.35). Sentiment is stale and price target is far above current price.",
+          "claim_type": "other",
+          "source_tier": "T2"
+        },
+        {
+          "claim": "Valuation metrics are distressed: PE=-0.21 (negative earnings), PB=0.26 (deep discount), EV/EBITDA=0.87. Recent earnings (Mar 17, 2025) missed badly: EPS -3.15 vs est -1.5.",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "Macro regime is 'Strengthening / Moderately Restrictive' with equity_discipline='strict_quality_and_valuation', which disfavors distressed micro-cap biotech.",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "Biotech-specific alt-data adapters (clinical trial registry, FDA filing index, patent activity) are not wired. Structural absence of sector-expected corroboration is informative bear-thesis evidence.",
+          "claim_type": "other",
+          "source_tier": "T3"
+        }
+      ],
+      "claim_verification_status": "partially_corroborated",
+      "source_tier_distribution": {
+        "T1": 3,
+        "T2": 0,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "medium",
+      "primary_source_confirmation": true,
+      "reputable_source_confirmation": true,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false (fail-closed per schema v1.1 decision #8; pollution-defense layer unimplemented). Additionally, sec_8k_fulltext returned stub data (mock_fallback), preventing ground-truth verification of the primary filing. News is absent (0 items <= cutoff). Biotech-specific alt-data is not wired.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": "sec_13f unavailable (not_available_on_current_plan). Cannot assess institutional ownership or smart-money positioning. Insider Form 4 shows equity grants (compensation), not market-timing buys.",
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": "sec_13f unavailable. Cannot assess top-holder concentration or ETF/MF exposure.",
+      "sentiment_pollution_warning": "information_integrity_assessment.pollution_risk_level='unknown'. Fail-closed per schema v1.1 decision #8.",
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "corroborating",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-27T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "news_event_summary.items",
+        "fundamental_snapshot.snapshot_quarter",
+        "alternative_data_features.tech_activity.github_public",
+        "sentiment_community_ownership_evidence.sec_13f",
+        "alternative_data_features.retail_meme_attention",
+        "filing_confirmation.sec_8k_fulltext (ground-truth text)"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05_SurgeShort",
+      "agent_role_label": "Surge-Short Evaluator (v0.4 sleeve)",
+      "schema_version": "surge_short_agent_output_v1",
+      "prompt_version": "surge_short_v2_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DRMA",
+      "decision_timestamp": "2025-03-27T09:30:00-04:00",
+      "data_available_as_of": "2025-03-27T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate evaluation: structural absence of corroborating narrative evidence",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open=2.2 vs prior_close=1.35 (63% gap)",
+        "news_event_summary.status=data_unavailable (0 items in 7-day window)",
+        "filing_confirmation.SEC_8K_confirmation=true (2025-03-27 filing exists)",
+        "filing_confirmation.full_text.sec_8k_fulltext=stub (content unavailable)",
+        "corporate_calendar.events_near_decision (earnings 2025-03-17 with EPS miss: -3.15 vs -1.5 est)",
+        "alternative_data_features.attention.wikipedia_pageviews (30 rows, low baseline 6-25 views/day)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (1 Strong Buy rating as of 2025-03-01)",
+        "valuation_snapshot.pe_ratio=-0.21 (negative earnings)",
+        "valuation_snapshot.price_to_book=0.2556 (deeply discounted)",
+        "macro_regime=Strengthening/Moderately Restrictive (equity_discipline=strict_quality_and_valuation)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (no news items <= cutoff)",
+        "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text (stub mode, not ground truth)",
+        "fundamental_snapshot.snapshot_quarter (status=insufficient_evidence, all fields null)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker, 0 rows)",
+        "alternative_data_features.retail_meme_attention (not_evaluated, not_connected)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "narrative_price_gap_assessment (not_evaluated, pending Agent 03)"
+      ],
+      "reasoning_summary": "DRMA surged 63% on 2025-03-27 opening (2.2 vs 1.35 prior close). An 8-K was filed same day (Item 7.01, 8.01, 9.01), but the full text is stub/unavailable. Critically, zero news items appear in the 7-day lookback window despite the surge catalyst claim. Wikipedia pageviews show baseline 6-25 views/day with no spike. The company reported earnings 10 days prior (2025-03-17) with a significant EPS miss (-3.15 vs -1.5 est), which may have triggered the surge as a reversal or short-squeeze rather than new value creation. Valuation metrics show negative PE and deeply discounted PB (0.26), consistent with a distressed biotech. Analyst sentiment is stale (1 Strong Buy from 2025-03-01, no recent updates). The structural absence of corroborating news, the inability to verify the 8-K content, and the lack of alt-data support (no GitHub, no 13F, no community attention) suggest the surge is momentum-driven rather than fundamental. The macro regime (strict_quality_and_valuation discipline) argues against holding low-quality, unprofitable equities. However, the recent earnings miss and potential short-squeeze dynamics create uncertainty about the sustainability of the short thesis.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If the 8-K filing (2025-03-27) contains a material positive catalyst (partnership, FDA approval, financing) that is verifiable and not yet priced in, the short thesis weakens.",
+        "If subsequent earnings or guidance materially improve, the negative valuation may be justified.",
+        "If institutional ownership data (13F) shows significant accumulation by quality funds, momentum may persist.",
+        "If the stock rallies another 100%+ from entry, allow_add triggers and thesis must be re-evaluated."
+      ],
+      "risk_flags": [
+        "Stub 8-K content: filing_confirmation.full_text.sec_8k_fulltext is mock_fallback, not ground truth. The actual catalyst is unverified.",
+        "Earnings miss 10 days prior (2025-03-17): -3.15 vs -1.5 est. Surge may be short-squeeze or reversal, not new value.",
+        "Negative earnings (PE=-0.21, net_margin=0%): company is unprofitable. Valuation is distressed, not growth-justified.",
+        "No news corroboration: 0 items in 7-day window despite 63% gap. Narrative is opaque.",
+        "Macro headwind: strict_quality_and_valuation regime argues against holding low-quality equities.",
+        "Alt-data silence: no GitHub, no 13F, no community attention. Absence of external validation.",
+        "Analyst stale: last rating 2025-03-01 (1 Strong Buy). No recent updates post-surge."
+      ],
+      "suggested_improvements": [
+        "Obtain full text of 2025-03-27 8-K filing (Items 7.01, 8.01, 9.01) to verify the actual catalyst.",
+        "Cross-check with SEC EDGAR press release or investor relations announcement for the same date.",
+        "Retrieve institutional ownership (13F) data post-decision to assess smart-money positioning.",
+        "Monitor next earnings call (likely Q1 2025, ~May 2025) for management commentary on the surge.",
+        "Track short interest and borrow availability to assess short-squeeze risk.",
+        "Verify analyst rating updates post-2025-03-27 to see if sentiment has shifted."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext is mock_fallback (stub mode); parsed_payload.text is placeholder, not ground truth"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; 0 items remain in window"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; all snapshot_quarter fields are null"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker; no developer activity data available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan; institutional ownership data unavailable"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs are TTM, not PIT-safe; used for context only"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The sec_8k_fulltext adapter is in stub mode, which prevents verification of the actual catalyst. The news_event_summary block shows 0 items in the 7-day window, but the 20 items dropped post-cutoff are not visible for inspection. A more granular news-filtering mechanism would help distinguish between 'no news before cutoff' and 'news exists but is post-cutoff.' The fundamental_snapshot is entirely null, limiting the ability to assess whether the surge reflects real operational improvement.",
+      "recommended_followups": [
+        "Manually retrieve and parse the 2025-03-27 8-K filing from SEC EDGAR to verify the catalyst.",
+        "Check investor relations website for press release or announcement on 2025-03-27.",
+        "Monitor DRMA short interest and borrow availability to assess short-squeeze risk.",
+        "Set alert for next earnings date (likely May 2025) to re-evaluate thesis.",
+        "Track analyst rating changes post-2025-03-27 to see if sentiment has shifted.",
+        "Obtain 13F data (post-decision) to assess institutional positioning."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_8k_filing",
+      "company_claim": "Material event disclosed in 8-K filing (2025-03-27, Items 7.01, 8.01, 9.01); content unverified due to stub mode",
+      "industry": "biotech_pharma",
+      "value_creation_assessment": "unclear",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "uncertain",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "watch",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Structural absence of corroborating news and unverified 8-K content create uncertainty. Recent earnings miss (2025-03-17) and negative fundamentals support short thesis, but momentum and potential short-squeeze dynamics warrant monitoring before entry. Recommend obtaining full 8-K text and tracking next earnings before committing to short position.",
+      "missing_data_warnings": [
+        "8-K full text unavailable (stub mode); catalyst unverified",
+        "Fundamental snapshot entirely null; no income/balance/cash-flow data",
+        "No news items in 7-day window; narrative opaque",
+        "No GitHub activity; no developer footprint",
+        "No 13F data; institutional positioning unknown",
+        "Analyst ratings stale (last update 2025-03-01)",
+        "No community/retail attention metrics"
+      ],
+      "audit_rationale": "DRMA surged 63% on 2025-03-27 with an 8-K filing, but the catalyst is unverified (stub content). Zero news items corroborate the surge. Negative earnings, distressed valuation (PE=-0.21, PB=0.26), and recent EPS miss (2025-03-17) support a short thesis, but momentum and short-squeeze risk create uncertainty. Recommend 'watch' status pending verification of 8-K content and next earnings. Initial position 0.5% if thesis is confirmed; no add until +100% surge from entry."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DRMA",
+      "decision_timestamp": "2025-03-27T09:30:00-04:00",
+      "data_available_as_of": "2025-03-27T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation for surge_short candidate DRMA",
+      "confidence": "medium",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "candidate_type",
+        "data_quality_flags[*].severity"
+      ],
+      "evidence_missing": [
+        "current_equity_sleeve_position_pct (not in packet; assumed 0% for opening_window)",
+        "current_short_sleeve_position_pct (not in packet; assumed 0% for opening_window)"
+      ],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)\u2013(e) for surge_short candidate DRMA at decision_timestamp 2025-03-27T09:30:00-04:00. Condition (a) sleeve_cap_breach: not applicable to surge_short per \u00a75.13(a) scope (quality_long only). Condition (b) short_entry_cap_breach: proposed surge_short position size not specified in packet; assuming 0.5% initial per upstream_agent_outputs.surge_short.initial_position_pct; single-position 0.5% < 5% cap, sleeve 0.5% < 10% cap; NOT TRIPPED. Condition (c) critical_data_quality_flag: data_quality_flags array contains 10 entries; severity distribution is {info: 5, warning: 4, critical: 1}. One critical flag present: 'stub_data' in sec_8k_fulltext (extraction_status='stub', OpenCLI binary not installed). Per \u00a75.10, critical-severity flag TRIPS condition (c). Condition (d) anti-pollution_integrity_veto: candidate_type=surge_short; per \u00a75.17 RELAXATION 2026-05-06, \u00a75.13(d) is INAPPLICABLE to surge_short. NOT TRIPPED. Condition (e) lookahead_veto: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]; NOT TRIPPED. Summary: condition (c) TRIPPED due to critical-severity stub_data flag in sec_8k_fulltext block.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If the critical-severity stub_data flag is retroactively downgraded to warning or info (e.g., OpenCLI binary is installed and full text is retrieved), condition (c) would no longer trip.",
+        "If the surge_short initial_position_pct is specified as > 5% single-position or > 10% sleeve, condition (b) would trip.",
+        "If envelope.data_after_cutoff_used is retroactively set to true, condition (e) would trip."
+      ],
+      "risk_flags": [
+        "Critical data quality flag: sec_8k_fulltext returned stub data (mock_fallback, extraction_status='stub'). OpenCLI binary not installed; full 8-K filing text is not ground-truth. This is the primary hard-veto trigger.",
+        "Candidate type is surge_short; anti-pollution veto (\u00a75.13(d)) is relaxed per \u00a75.17 and does NOT apply.",
+        "No current equity sleeve position specified in packet; assuming 0% for opening_window decision mode.",
+        "No current short sleeve position specified in packet; assuming 0% for opening_window decision mode.",
+        "Proposed surge_short position size (0.5% per upstream agent) is within caps (5% single, 10% sleeve), so condition (b) does not trip.",
+        "Lookahead safety is confirmed (data_after_cutoff_used=false, lookahead_safe=true), so condition (e) does not trip."
+      ],
+      "suggested_improvements": [
+        "Install OpenCLI binary or implement SEC EDGAR HTML parser to replace stub_data in sec_8k_fulltext. Ground-truth filing text is essential for verifying the surge catalyst.",
+        "Implement a fallback mechanism in the evidence packet generator: if sec_8k_fulltext returns stub data, emit a critical-severity flag and fail-closed (do not allow candidate to proceed without manual override).",
+        "Add a pre-veto check in the risk agent: if candidate_type=surge_short and critical-severity flags are present, emit a hard-veto recommendation to PM regardless of condition (c) trip status."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "critical",
+          "detail": "sec_8k_fulltext: OpenCLI binary not installed or STUB_MODE=true. Parsed payload is placeholder, not ground-truth filing text. This is the primary hard-veto trigger per \u00a75.10."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 20 items dropped because publishedDate > allowed_data_cutoff. No news items remain in 7-day window."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot: status=insufficient_evidence. All snapshot_quarter fields are null."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker. No developer activity data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan. Institutional ownership data unavailable."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet schema allows stub_data to be emitted with critical-severity flag, which correctly triggers the hard-veto. However, the upstream generator should prevent stub_data from reaching the risk agent in the first place by failing-closed at the adapter level. The current design defers the veto decision to the risk agent, which is correct but places burden on the risk agent to catch data-quality issues that should be caught earlier.",
+      "recommended_followups": [
+        "Manually retrieve the full 8-K filing text from SEC EDGAR (https://www.sec.gov/Archives/edgar/data/1853816/000165495425003372/drma_8k.htm) to verify the actual catalyst and content of Items 7.01, 8.01, 9.01.",
+        "If the 8-K content is verified to be material and positive, re-evaluate the surge_short thesis and consider a quality_long candidate instead.",
+        "If the 8-K content is verified to be routine or negative, the hard-veto stands and the candidate should be rejected."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Candidate is surge_short; NOT APPLICABLE."
+        },
+        {
+          "name": "short_entry_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Proposed surge_short position 0.5% (per upstream_agent_outputs.surge_short.initial_position_pct) is below 5% single-position cap and 10% sleeve cap. NOT TRIPPED."
+        },
+        {
+          "name": "critical_data_quality_flag_5_10",
+          "tripped": false,
+          "note": "data_quality_flags contains 1 critical-severity entry: sec_8k_fulltext stub_data (extraction_status='stub', OpenCLI binary not installed). Per \u00a75.10, critical-severity flag TRIPS condition (c). TRIPPED.",
+          "downgraded_reason": "Universal soft-veto \u00a713.6 + \u00a75.17: advisory only for surge_short"
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) is INAPPLICABLE to surge_short per \u00a75.17 RELAXATION 2026-05-06. NOT APPLICABLE."
+        },
+        {
+          "name": "lookahead_veto_5_4",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. NOT TRIPPED."
+        }
+      ],
+      "advisory_notes": "HARD-VETO TRIPPED: Condition (c) critical_data_quality_flag. The sec_8k_fulltext block returned stub data (mock_fallback, extraction_status='stub') due to OpenCLI binary not being installed. This is a critical-severity flag per \u00a75.10 and prevents ground-truth verification of the 8-K filing content, which is the primary catalyst claim for the surge_short candidate. Per \u00a75.13 hard-veto semantics, this candidate FAILS veto evaluation and should NOT proceed to PM or execution. Risk agent recommends REJECT. [SCRIPT-FILTER \u00a75.17: downgraded 1 veto trips to advisory: critical_data_quality_flag_5_10]",
+      "risk_notes": [
+        "Hard-veto condition (c) is tripped due to critical-severity stub_data flag in sec_8k_fulltext.",
+        "The surge_short candidate cannot be evaluated on merits because the primary catalyst (8-K filing) is unverified (stub content).",
+        "Candidate should be rejected at the risk stage and not passed to PM for sizing or execution.",
+        "If the 8-K full text becomes available post-decision, the candidate may be re-evaluated in a subsequent decision cycle."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation initiated",
+        "candidate_type=surge_short detected",
+        "Condition (a) sleeve_cap_breach: NOT APPLICABLE (surge_short exemption)",
+        "Condition (b) short_entry_cap_breach: NOT TRIPPED (0.5% < 5% single, 0.5% < 10% sleeve)",
+        "Condition (c) critical_data_quality_flag: TRIPPED (sec_8k_fulltext stub_data, severity=critical)",
+        "Condition (d) anti_pollution_integrity_veto: NOT APPLICABLE (surge_short exemption per \u00a75.17)",
+        "Condition (e) lookahead_veto: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+        "VETO RESULT: HARD-VETO TRIPPED (condition c). Candidate REJECTED."
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-27T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DRMA",
+      "decision_timestamp": "2025-03-27T09:30:00-04:00",
+      "data_available_as_of": "2025-03-27T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate evaluation with hard-veto override",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open=2.2 vs prior_close=1.35 (63% gap)",
+        "price_snapshot.relative_volume_vs_20d=2.6351",
+        "filing_confirmation.SEC_8K_confirmation=true (2025-03-27)",
+        "filing_confirmation.full_text.sec_8k_fulltext=stub (content unavailable)",
+        "news_event_summary.status=data_unavailable (0 items in 7-day window)",
+        "corporate_calendar.earnings_recent (2025-03-17: EPS -3.15 vs -1.5 est, miss)",
+        "valuation_snapshot.pe_ratio=-0.21 (negative earnings)",
+        "valuation_snapshot.price_to_book=0.2556 (deeply discounted)",
+        "macro_regime=Strengthening/Moderately Restrictive (equity_discipline=strict_quality_and_valuation)",
+        "upstream_agent_outputs.narrative_event.verdict=vague",
+        "upstream_agent_outputs.alt_data_verify.verdict=weakly_contradicted",
+        "upstream_agent_outputs.surge_short.recommended_action=watch",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (condition c TRIPPED)"
+      ],
+      "evidence_missing": [
+        "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text (stub mode, not ground truth)",
+        "news_event_summary.trigger_article (0 items in 7-day window)",
+        "fundamental_snapshot.snapshot_quarter (status=insufficient_evidence, all fields null)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker, 0 rows)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "narrative_price_gap_assessment (not_evaluated, pending Agent 03)"
+      ],
+      "reasoning_summary": "DRMA surged 63% on 2025-03-27 opening (2.2 vs 1.35 prior close) with 2.64x relative volume. An 8-K was filed same day (Items 7.01, 8.01, 9.01), but the full text is stub/unavailable (OpenCLI binary not installed). Risk Agent correctly identified critical-severity data-quality flag (sec_8k_fulltext stub_data) per \u00a75.10, which trips hard-veto condition (c). Per \u00a75.13 hard-veto semantics, this candidate FAILS veto evaluation and must be REJECTED. The upstream narrative_event agent classified the catalyst as 'vague' (verdict=vague, specificity_score=0.15) due to unavailable 8-K content. Alt-data verification returned 'weakly_contradicted' (verdict=weakly_contradicted) with high narrative-price-gap (10.66% return but 0 news items at cutoff). Surge-short sleeve agent recommended 'watch' (recommended_action=watch) pending verification of 8-K content. Valuation metrics show negative PE and deeply discounted PB (0.26), consistent with distressed biotech. Recent earnings miss (2025-03-17: EPS -3.15 vs -1.5 est) is a concrete negative catalyst, but occurred 10 days prior. Macro regime (strict_quality_and_valuation discipline) disfavors low-quality equities. The structural absence of corroborating news, inability to verify the 8-K content, and lack of sector-specific alt-data (clinical trials, FDA filings, patents) suggest the surge is momentum-driven rather than fundamental. However, the hard-veto condition (c) is mechanical and non-negotiable: the candidate cannot proceed without ground-truth verification of the 8-K filing content. DECISION: VETO per \u00a75.13 hard-veto condition (c) critical-severity data-quality flag.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the sec_8k_fulltext stub data is replaced with ground-truth filing text showing a major positive catalyst (FDA approval, partnership, financing), the hard-veto would be lifted and the candidate could be re-evaluated.",
+        "If the OpenCLI binary is installed and the full 8-K text is retrieved post-decision, the critical-severity flag would be downgraded and the candidate could be re-evaluated in a subsequent decision cycle.",
+        "If the candidate is manually verified via SEC EDGAR and the 8-K content is confirmed to be material and positive, PM could override the veto with explicit documentation."
+      ],
+      "risk_flags": [
+        "HARD-VETO TRIPPED: Critical-severity data-quality flag in sec_8k_fulltext (stub_data, extraction_status='stub'). OpenCLI binary not installed; full 8-K filing text is not ground-truth. This is the primary hard-veto trigger per \u00a75.10.",
+        "Narrative catalyst is vague (verdict=vague, specificity_score=0.15) due to unavailable 8-K content.",
+        "Alt-data verification returned weakly_contradicted (verdict=weakly_contradicted) with high narrative-price-gap (10.66% return but 0 news items at cutoff).",
+        "Surge-short sleeve agent recommended watch (recommended_action=watch) pending verification of 8-K content.",
+        "Negative earnings (PE=-0.21, net_margin=0%): company is unprofitable. Valuation is distressed, not growth-justified.",
+        "No news corroboration: 0 items in 7-day window despite 63% gap. Narrative is opaque.",
+        "Macro headwind: strict_quality_and_valuation regime argues against holding low-quality equities.",
+        "Alt-data silence: no GitHub, no 13F, no community attention. Absence of external validation.",
+        "Analyst sentiment stale: last rating 2025-03-01 (1 Strong Buy). No recent updates post-surge.",
+        "Earnings miss 10 days prior (2025-03-17): -3.15 vs -1.5 est. Surge may be short-squeeze or reversal, not new value."
+      ],
+      "suggested_improvements": [
+        "Install OpenCLI binary or implement SEC EDGAR HTML parser to replace stub_data in sec_8k_fulltext. Ground-truth filing text is essential for verifying the surge catalyst.",
+        "Implement a fallback mechanism in the evidence packet generator: if sec_8k_fulltext returns stub data, emit a critical-severity flag and fail-closed (do not allow candidate to proceed without manual override).",
+        "Wire biotech-specific alt-data adapters: clinical trial registry (ClinicalTrials.gov), FDA filing index (FDA CBER/CDER), patent activity (USPTO/WIPO). For DRMA (Dermata Therapeutics), these would be sector-expected corroboration.",
+        "Enable sec_13f adapter (institutional ownership) to assess smart-money positioning and crowding risk.",
+        "Extend news_event_summary lookback to include items published in the 24 hours post-decision_timestamp (post-cutoff analysis) to identify the actual catalyst that drove the surge.",
+        "Add insider-transaction sentiment analysis: distinguish equity grants (compensation, no signal) from open-market purchases (bullish signal) and sales (bearish signal)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "critical",
+          "detail": "sec_8k_fulltext returned mock_fallback stub data (extraction_status='stub'). OpenCLI binary not installed; full 8-K filing text is not ground-truth. This is the primary hard-veto trigger per \u00a75.10."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary status=data_unavailable; 20 items dropped because publishedDate > cutoff. No news corroboration for surge catalyst at decision time."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe income/balance/cashflow rows. Valuation metrics are TTM (not PIT-safe) and distressed."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public failed (unmapped_ticker). Not sector-relevant for biotech, but absence of biotech-specific adapters is informative."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f failed (not_available_on_current_plan). Cannot assess institutional ownership or smart-money support."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet schema allows stub_data to be emitted with critical-severity flag, which correctly triggers the hard-veto. However, the upstream generator should prevent stub_data from reaching the PM agent in the first place by failing-closed at the adapter level. The current design defers the veto decision to the risk agent, which is correct, but the PM agent must respect the hard-veto and not override it without explicit manual authorization.",
+      "recommended_followups": [
+        "Manually retrieve the full 8-K filing text from SEC EDGAR (https://www.sec.gov/Archives/edgar/data/1853816/000165495425003372/drma_8k.htm) to verify the actual catalyst and content of Items 7.01, 8.01, 9.01.",
+        "If the 8-K content is verified to be material and positive, re-evaluate the surge_short thesis and consider a quality_long candidate instead.",
+        "If the 8-K content is verified to be routine or negative, the hard-veto stands and the candidate should be rejected.",
+        "Monitor DRMA short interest and borrow availability to assess short-squeeze risk.",
+        "Set alert for next earnings date (likely May 2025) to re-evaluate thesis.",
+        "Track analyst rating changes post-2025-03-27 to see if sentiment has shifted."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "veto",
+      "position_size_pct": 0.0,
+      "reason": "Hard-veto condition (c) tripped: critical-severity data-quality flag in sec_8k_fulltext (stub_data). OpenCLI binary not installed; full 8-K filing text unavailable. Cannot verify surge catalyst. Candidate REJECTED per \u00a75.13 hard-veto semantics. Upstream narrative_event verdict=vague, alt_data_verify verdict=weakly_contradicted, surge_short recommended_action=watch. Risk agent correctly identified veto condition (c) per \u00a75.10. Macro regime (strict_quality_and_valuation) disfavors distressed biotech. Recommend manual verification of 8-K content post-decision before re-evaluation.",
+      "risk_notes": [
+        "Hard-veto condition (c) is tripped due to critical-severity stub_data flag in sec_8k_fulltext.",
+        "The surge_short candidate cannot be evaluated on merits because the primary catalyst (8-K filing) is unverified (stub content).",
+        "Candidate is REJECTED at the PM stage per \u00a75.13 hard-veto semantics.",
+        "If the 8-K full text becomes available post-decision, the candidate may be re-evaluated in a subsequent decision cycle.",
+        "Upstream agents (narrative_event, alt_data_verify, surge_short) all flagged uncertainty and recommended watch/challenge_thesis, consistent with the hard-veto decision."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Candidate is surge_short; NOT APPLICABLE."
+        },
+        {
+          "name": "short_entry_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Proposed surge_short position 0.5% (per upstream_agent_outputs.surge_short.initial_position_pct) is below 5% single-position cap and 10% sleeve cap. NOT TRIPPED."
+        },
+        {
+          "name": "critical_data_quality_flag_5_10",
+          "tripped": true,
+          "note": "data_quality_flags contains 1 critical-severity entry: sec_8k_fulltext stub_data (extraction_status='stub', OpenCLI binary not installed). Per \u00a75.10, critical-severity flag TRIPS condition (c). HARD-VETO TRIPPED."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) is INAPPLICABLE to surge_short per \u00a75.17 RELAXATION 2026-05-06. NOT APPLICABLE."
+        },
+        {
+          "name": "lookahead_veto_5_4",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. NOT TRIPPED."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation initiated",
+        "candidate_type=surge_short detected",
+        "Condition (a) sleeve_cap_breach: NOT APPLICABLE (surge_short exemption)",
+        "Condition (b) short_entry_cap_breach: NOT TRIPPED (0.5% < 5% single, 0.5% < 10% sleeve)",
+        "Condition (c) critical_data_quality_flag: TRIPPED (sec_8k_fulltext stub_data, severity=critical)",
+        "Condition (d) anti_pollution_integrity_veto: NOT APPLICABLE (surge_short exemption per \u00a75.17)",
+        "Condition (e) lookahead_veto: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+        "VETO RESULT: HARD-VETO TRIPPED (condition c). Candidate REJECTED.",
+        "PM aggregation: upstream agents (narrative_event, alt_data_verify, surge_short, risk) all flagged uncertainty and recommended watch/challenge_thesis.",
+        "PM decision: VETO per \u00a75.13 hard-veto condition (c). Position size = 0.0%. Execution plan: none."
+      ],
+      "decision_log": [
+        "2025-03-27T09:30:00-04:00 [ENVELOPE] decision_timestamp=2025-03-27T09:30:00-04:00, allowed_data_cutoff=2025-03-27T09:30:00-04:00, data_after_cutoff_used=false, lookahead_safe=true",
+        "2025-03-27T09:30:00-04:00 [CANDIDATE_TYPE] candidate_type=surge_short, trigger_day_open=2.2 vs prior_close=1.35 (63% gap), relative_volume_vs_20d=2.6351",
+        "2025-03-27T09:30:00-04:00 [UPSTREAM_NARRATIVE] narrative_event.verdict=vague, catalyst_specificity_score=0.15, company_claim='DRMA filed 8-K on 2025-03-27 with items 7.01, 8.01, 9.01; content unverified due to stub mode'",
+        "2025-03-27T09:30:00-04:00 [UPSTREAM_ALT_DATA] alt_data_verify.verdict=weakly_contradicted, narrative_price_gap_assessment=high, recommendation_to_pm=challenge_thesis",
+        "2025-03-27T09:30:00-04:00 [UPSTREAM_SURGE_SHORT] surge_short.recommended_action=watch, short_thesis_status=uncertain, evidence_sufficiency=partial",
+        "2025-03-27T09:30:00-04:00 [UPSTREAM_RISK] risk.veto_conditions_evaluated: condition (c) critical_data_quality_flag TRIPPED (sec_8k_fulltext stub_data, severity=critical)",
+        "2025-03-27T09:30:00-04:00 [HARD_VETO_CHECK] \u00a75.13 hard-veto condition (c) is mechanical and non-negotiable. Critical-severity data-quality flag in sec_8k_fulltext (stub_data, extraction_status='stub', OpenCLI binary not installed) prevents ground-truth verification of the 8-K filing content, which is the primary catalyst claim for the surge_short candidate.",
+        "2025-03-27T09:30:00-04:00 [HARD_VETO_DECISION] Hard-veto condition (c) TRIPPED. Candidate REJECTED per \u00a75.13 hard-veto semantics. Position size = 0.0%. Execution plan: none.",
+        "2025-03-27T09:30:00-04:00 [UPSTREAM_CONSENSUS] All upstream agents flagged uncertainty and recommended watch/challenge_thesis: narrative_event (vague, low confidence), alt_data_verify (weakly_contradicted, challenge_thesis), surge_short (watch, uncertain), risk (hard-veto tripped). PM decision aligns with upstream consensus and hard-veto rule.",
+        "2025-03-27T09:30:00-04:00 [MACRO_CONTEXT] macro_regime=Strengthening/Moderately Restrictive, equity_discipline=strict_quality_and_valuation. DRMA is distressed biotech (PE=-0.21, PB=0.26, net_margin=0%). Macro regime disfavors low-quality equities.",
+        "2025-03-27T09:30:00-04:00 [VALUATION_CONTEXT] valuation_snapshot.pe_ratio=-0.21 (negative earnings), price_to_book=0.2556 (deeply discounted), EV/EBITDA=0.8734. Recent earnings miss (2025-03-17: EPS -3.15 vs -1.5 est). Valuation is distressed, not growth-justified.",
+        "2025-03-27T09:30:00-04:00 [NEWS_CONTEXT] news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20. No news corroboration for surge catalyst at decision time. Narrative is opaque.",
+        "2025-03-27T09:30:00-04:00 [ALT_DATA_CONTEXT] alternative_data_features.attention.wikipedia_pageviews: 30 rows, low baseline 6-25 views/day, no spike pattern. github_public failed (unmapped_ticker). sec_13f unavailable (not_available_on_current_plan). Absence of sector-expected corroboration (clinical trials, FDA filings, patents) is informative bear-thesis evidence.",
+        "2025-03-27T09:30:00-04:00 [FINAL_DECISION] VETO per \u00a75.13 hard-veto condition (c). Position size = 0.0%. Execution plan: none. Candidate REJECTED. Recommend manual verification of 8-K content post-decision before re-evaluation in subsequent decision cycle."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-27T09:45:00-04:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+        "evidence_packet_hash": "sha256:99e4ae48fabf96836bae1dfbccd0b82556bc03101eb3354fb37cb4e348023c5e"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews for 'Rokeri_s_Moravu' (unrelated article) show low baseline activity (6-25 views/day) with no spike pattern. No retail-attention alt-data wired (Reddit, StockTwits). Community attention is not evaluated.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "8-K filing (2025-03-27, Items 7.01, 8.01, 9.01) is confirmed to exist (SEC_8K_confirmation=true), but the full text is stub/unavailable (OpenCLI binary not installed). The actual content and catalyst are unverified. This is the primary hard-veto trigger.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Hard-veto condition (c) tripped: critical-severity data-quality flag in sec_8k_fulltext (stub_data). Cannot verify surge catalyst without ground-truth 8-K filing text. Candidate REJECTED per \u00a75.13 hard-veto semantics.",
+      "sentiment_risk_adjustment_note": "FMP analyst sentiment shows 1 Strong Buy rating (as of 2025-03-01) and 1 recent Buy grade (Aug 21, 2024, PT $6 vs current $1.35). Sentiment is stale and price target is far above current price. Sentiment is not adjusted due to hard-veto.",
+      "ownership_risk_adjustment_note": "SEC Form 4 shows 4 insider equity grants (Jan 21-23, 2025) totaling ~1.1M shares, indicating insider confidence but no market-timing signal. sec_13f unavailable (not_available_on_current_plan). Ownership positioning is not evaluated due to hard-veto.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "sec_13f unavailable (not_available_on_current_plan). Cannot assess institutional ownership or smart-money positioning. Institutional sponsorship is not evaluated due to hard-veto.",
+      "smart_money_benchmark_note": "Insider Form 4 shows equity grants (compensation), not market-timing buys. No 13F data available. Smart-money support is not evaluated due to hard-veto.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-27T09:30:00-04:00",
+      "execution_timestamp": "2025-03-27T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:df9990bd864cacf37f2fb11f385a16b752262a5c8aee044cdb9e210dddc963b9",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

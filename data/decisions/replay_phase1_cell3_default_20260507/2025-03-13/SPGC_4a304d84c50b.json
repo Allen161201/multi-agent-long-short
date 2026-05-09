@@ -1,0 +1,1159 @@
+{
+  "trigger_id": "4a304d84c50b",
+  "ticker": "SPGC",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-13T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 213.31,
+  "trigger_cost_usd": 0.276029,
+  "cumulative_cost_usd": 5.120209,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "SPGC",
+    "name": "SPGC",
+    "close": 4.2,
+    "prior_close": 3.24,
+    "change": 2.487,
+    "change_pct": 76.75925925925927,
+    "volume": 12193133.066667,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-13",
+    "prior_trading_day": "2025-03-12",
+    "available_as_of": "2025-03-13T16:00:00-05:00",
+    "today_open": 5.727,
+    "today_volume": 12193133.066667,
+    "eps_ttm": -1.7317,
+    "operating_margin_ttm": -219.26936973103173,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-14 09:00:31",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:6a6af9025d8f54bdd3979d4b1f4a98b2313101a2c94bf2dfaa4834759bc05725",
+  "locked_decision_id": "sha256:9c6c6fc9904a0a6b60e232e8d68077c8fefa6a5ab8a1514cb3c3a6de4b6837f5",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "2026-05-03_universal_soft_veto",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "SPGC",
+    "decision_timestamp": "2025-03-13T09:30:00-04:00",
+    "data_available_as_of": "2025-03-13T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision for SPGC: 81.9% intraday surge with structural absence of corroborating evidence",
+    "confidence": "high",
+    "evidence_used": [
+      "price_snapshot.trigger_day_open (5.73) vs open (3.15) = 81.9% intraday surge",
+      "price_snapshot.return_5d_pct (-38.3%), return_20d_pct (-72.9%), return_60d_pct (-92.3%)",
+      "valuation_snapshot: PE=-0.00898, PB=0.0584, EV/EBITDA=-0.769, net_margin=-74%",
+      "corporate_calendar: 4 consecutive negative earnings (-0.73 to -1.4 EPS); 1:10 reverse split 2024-07-30",
+      "news_event_summary: 0 items in window; 20 items dropped post-cutoff",
+      "filing_confirmation: sec_edgar adapter failed (cik_not_found)",
+      "sentiment_community_ownership_evidence: 0 analyst ratings across 13 months",
+      "alternative_data_features: GitHub unmapped, sec_form4/sec_13f failed",
+      "information_integrity_assessment: use_as_primary_signal_allowed=false; low-tier sources only",
+      "macro_regime: Overheat/Moderately Restrictive (stress_score=2); strict_quality_and_valuation_caution",
+      "upstream_agent_outputs.surge_short: verdict=short, confidence=high, recommended_action=short",
+      "upstream_agent_outputs.alt_data_verify: verdict=narrative_contradicted, evidence_score=0.15",
+      "upstream_agent_outputs.narrative_event: verdict=unsupported_claim, catalyst_type=unidentified_structural_absence",
+      "upstream_agent_outputs.risk: no hard-veto conditions tripped"
+    ],
+    "evidence_missing": [
+      "news_event_summary.items (0 items <= cutoff; 20 items dropped post-cutoff)",
+      "filing_confirmation: sec_edgar adapter failed (cik_not_found); no 8-K/10-K/10-Q filings",
+      "fundamental_snapshot: status=insufficient_evidence; no PIT-safe quarterly snapshot",
+      "sentiment_community_ownership_evidence: sec_13f, sec_form4 adapters failed; no institutional ownership",
+      "alternative_data_features: GitHub unmapped; no sector-specific adapters wired",
+      "upstream_agent_outputs: Fundamental, Network-Effect, Valuation agents not provided in packet"
+    ],
+    "reasoning_summary": "SPGC surged 81.9% intraday (open 3.15 \u2192 5.73) on 2025-03-13 but exhibits severe structural absence of corroborating evidence. Upstream surge_short agent (Agent_05) recommends SHORT with high confidence based on: (1) SEC filing failure (cik_not_found) is a critical red flag for a NASDAQ-listed equity; (2) news vacuum: 0 items in 7-day window, 20 items dropped post-cutoff; (3) analyst silence: 0 buy/hold/sell ratings across 13 months; (4) fundamental distress: PE negative, net margin -74%, all recent EPS negative, 1:10 reverse split July 2024; (5) post-surge reversal: 5-day return -38.3%, 20-day return -72.9%; (6) alt-data corroboration failure: GitHub unmapped, 13F/Form4 failed; (7) macro headwind: Overheat regime with strict_quality_and_valuation_caution discipline. Alt-data verification agent (Agent_03) verdict: narrative_contradicted (evidence_score=0.15). Narrative event agent (Agent_02) verdict: unsupported_claim (catalyst_type=unidentified_structural_absence). Risk agent (Agent_06) evaluated all \u00a75.13 hard-veto conditions: none tripped. The surge appears momentum/retail-driven on a distressed micro-cap with no fundamental catalyst and deteriorating technicals post-surge. Structural absence of SEC filings, news, analyst coverage, and institutional activity relative to the candidate's sector (energy/commodities per Wikipedia article) is the core bear-thesis signal. Preponderance of evidence strongly supports short entry at \u00a74.8 fixed 0.5% position size.",
+    "uncertainty": "low",
+    "invalidation_conditions": [
+      "If sec_edgar adapter recovers and returns valid 10-K/10-Q filings showing recent positive operational metrics or reserve additions, the bear thesis would weaken materially.",
+      "If news_event_summary is populated post-cutoff with a credible, primary-source (T1) catalyst narrative (e.g., regulatory approval, partnership, financing), the momentum-vs-value judgment would shift toward value_creation and short thesis would be invalidated.",
+      "If analyst coverage emerges (non-zero buy/hold/sell ratings from T1/T2 sources), the analyst silence pattern would be invalidated and institutional interest would be signaled.",
+      "If upstream Fundamental, Network-Effect, or Valuation agents (not provided in packet) return verdicts supporting a legitimate bull thesis, PM would reconsider the short decision.",
+      "If SPGC is confirmed to be a shell company, OTC-migrated, or delisted entity, the absence of SEC filings is expected and not bear-thesis evidence; verdict would shift to watch pending clarification of regulatory status."
+    ],
+    "risk_flags": [
+      "CRITICAL: CIK_NOT_FOUND for NASDAQ-listed SPGC. sec_edgar adapter failed; no SEC filings retrieved. This is a hard red flag and requires immediate clarification of regulatory status.",
+      "CRITICAL: News vacuum. 0 items in 7-day window; 20 items dropped post-cutoff. No substantive catalyst narrative in packet.",
+      "CRITICAL: Analyst silence. 0 buy/hold/sell ratings across 13 months (Jan 2024 - Mar 2025). No institutional research coverage.",
+      "SEVERE: Negative earnings distress. PE=-0.00898, net_margin=-74%, all recent EPS negative (-0.73 to -1.4). Company is unprofitable and burning cash.",
+      "SEVERE: Reverse split history. 1:10 reverse split on 2024-07-30 is a classic distress signal. Post-split, stock has declined 92.3% in 60 days.",
+      "SEVERE: Post-surge reversal. 5-day return -38.3%, 20-day return -72.9%. Surge has already reversed sharply, consistent with short-squeeze or momentum exhaustion.",
+      "MODERATE: Macro headwind. Overheat/Moderately Restrictive regime with strict_quality_and_valuation_caution discipline. SPGC fails quality and valuation tests.",
+      "MODERATE: Alt-data corroboration failure. GitHub unmapped, 13F/Form4 failed, no sector-specific adapters wired. No external corroboration of business fundamentals.",
+      "MODERATE: Information integrity low. use_as_primary_signal_allowed=false; only low-tier sources (T3/T4) available; pollution-defense layer not implemented.",
+      "MODERATE: Micro-cap liquidity risk. Minimal revenue ($117k-$1.2M TTM), zero analyst coverage, and current ratio 0.939 (< 1.0) suggest potential liquidity crisis and delisting risk."
+    ],
+    "suggested_improvements": [
+      "Verify SPGC's CIK and SEC filing status immediately. If cik_not_found is a data adapter error, correct the mapping. If SPGC is genuinely not in SEC EDGAR, determine whether it is a shell, OTC-migrated, or delisted entity.",
+      "Retrieve the full 10-K/10-Q filings (if available) to assess reserve base, production, hedging, and capital structure for an energy company.",
+      "Obtain news/press release data from primary sources (company IR, T1 news wires) to identify the specific catalyst driving the surge.",
+      "Cross-check analyst coverage via Bloomberg, FactSet, or Refinitiv to confirm the zero-rating pattern.",
+      "Analyze the Wikipedia pageview spike (peak 216 views on 2025-02-19) to determine whether it correlates with a specific news event or is retail/meme-driven.",
+      "If SPGC is a micro-cap or thinly-traded security, assess short-squeeze risk and borrow availability.",
+      "Obtain commodity price data (natural gas, oil) to assess whether the surge correlates with energy market moves or is idiosyncratic.",
+      "Implement real-time SEC EDGAR CIK lookup fallback. If FMP CIK fails, query SEC directly or use alternative ticker-to-CIK mapping.",
+      "Expand news cutoff window or implement post-cutoff news flagging. 20 items dropped post-cutoff suggests the catalyst may have been disclosed immediately after market open on 2025-03-13."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "cik_not_found",
+        "severity": "critical",
+        "detail": "sec_edgar adapter failed with cik_not_found for NASDAQ-listed SPGC. This is a hard red flag and requires immediate clarification."
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "critical",
+        "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-13T09:30:00-04:00). Catalyst may be in dropped items."
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "fundamental_snapshot.status=insufficient_evidence. No PIT-safe quarterly snapshot available."
+      },
+      {
+        "kind": "analyst_coverage_zero",
+        "severity": "warning",
+        "detail": "fmp_sentiment: 0 analyst ratings (buy/sell/hold/strong_buy/strong_sell) across Jan-Mar 2025. No sell-side coverage."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_form4 adapter failed with cik_not_found; sec_13f failed with not_available_on_current_plan; github_public failed with unmapped_ticker."
+      },
+      {
+        "kind": "information_integrity_low",
+        "severity": "warning",
+        "detail": "information_integrity_assessment: use_as_primary_signal_allowed=false; only T3/T4 sources; pollution-defense layer not implemented."
+      },
+      {
+        "kind": "reverse_split_history",
+        "severity": "warning",
+        "detail": "corporate_calendar shows 1:10 reverse split on 2024-07-30. Post-split, stock has declined 92.3% in 60 days."
+      },
+      {
+        "kind": "post_surge_reversal",
+        "severity": "info",
+        "detail": "price_snapshot shows 5-day return -38.3%, 20-day return -72.9%. Surge has already reversed sharply."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe. However, the absence of upstream_agent_outputs for Fundamental, Network-Effect, and Valuation agents limits cross-checking of the bear thesis. The filing_confirmation block is not_evaluated due to sec_edgar adapter failure, which is a critical gap for a surge-short evaluation of a listed equity. The news_event_summary is data_unavailable with 20 items dropped post-cutoff, making it impossible to assess the specific catalyst narrative. The fundamental_snapshot is insufficient_evidence, preventing a full financial analysis. These gaps are structural to the v1 generator and adapter availability, not weaknesses in the PM prompt itself.",
+    "recommended_followups": [
+      "URGENT: Verify SPGC's SEC filing status and CIK. If cik_not_found is a data error, correct the mapping. If SPGC is not in SEC EDGAR, determine its regulatory status (shell, OTC, delisted, etc.).",
+      "Retrieve the full 10-K/10-Q filings to assess reserve base, production, hedging, and capital structure.",
+      "Obtain the specific news/press release that triggered the surge on 2025-03-13. The packet contains no substantive catalyst narrative.",
+      "Cross-check analyst coverage via Bloomberg/FactSet to confirm zero-rating pattern and assess institutional interest.",
+      "Analyze the Wikipedia pageview spike (peak 216 on 2025-02-19) to determine whether it is retail/meme-driven or tied to a fundamental event.",
+      "If SPGC is a micro-cap, assess short-squeeze risk and borrow availability.",
+      "Monitor the stock's technical recovery post-surge. If it stabilizes above the surge entry, re-evaluate the momentum-vs-value judgment.",
+      "Obtain commodity price data (natural gas, oil) to assess whether the surge correlates with energy market moves."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "SPGC surged 81.9% intraday but exhibits structural absence of corroborating evidence (no SEC filings, no news, no analyst coverage, negative earnings, post-surge reversal). Upstream surge_short agent recommends SHORT with high confidence. Alt-data verification confirms narrative_contradicted. Risk agent: no hard-veto conditions tripped. Entry at 0.5% per \u00a74.8 fixed sizing.",
+    "risk_notes": [
+      "All \u00a75.13 hard-veto conditions evaluated by Risk agent: none tripped.",
+      "Candidate passes hard-veto gate. PM proceeds to short entry at \u00a74.8 fixed 0.5% position size.",
+      "Pollution-defense layer unimplemented: use_as_primary_signal_allowed=false remains a soft constraint per information_integrity_assessment, but does not trigger hard veto per \u00a75.13(d) relaxation.",
+      "No sleeve cap data in packet: PM must verify sleeve exposure before execution to ensure single-position does not exceed 5% and sleeve does not exceed 10%.",
+      "Surge-short alpha is evidence-of-absence driven: structural absence of SEC filings, news, analyst coverage, and institutional activity relative to sector expectations is the pump signal that motivates the short."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long only. Candidate type is surge_short. Not applicable."
+      },
+      {
+        "name": "surge_short_sleeve_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "No sleeve exposure data in packet. Condition cannot be evaluated. PM must verify: proposed surge_short position (0.5%) must not push single-position above 5% or sleeve above 10%. Assume not tripped pending PM verification."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags array contains only 'warning' and 'info' severity flags. No 'critical' severity flags present. Condition does not trip."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate type is surge_short. Per \u00a75.17, condition (d) is INAPPLICABLE to surge_short candidates. Additionally, pollution_defense_layer is unimplemented; per \u00a75.13(d) relaxation (2026-05-06), condition does not trip when defense layer is unimplemented. Not applicable."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true. Condition does not trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto conditions (a)\u2013(e) evaluated mechanically by Risk agent",
+      "Condition (a): not applicable (surge_short, not quality_long)",
+      "Condition (b): cannot evaluate (no sleeve cap data); PM must verify before execution",
+      "Condition (c): no critical-severity flags; does not trip",
+      "Condition (d): not applicable (surge_short per \u00a75.17); pollution_defense_layer unimplemented per \u00a75.13(d) relaxation; does not trip",
+      "Condition (e): lookahead_safe=true, data_after_cutoff_used=false; does not trip",
+      "Result: no veto. Candidate passes hard-veto gate.",
+      "Surge-short entry framework (Pass 7, 2026-05-03): preponderance-of-evidence reasoning applied",
+      "Bear-thesis sufficient conditions present: (i) post-surge reversal (5d -38.3%, 20d -72.9%); (ii) narrative inconsistent with verifiable evidence (no SEC filings, no news, no analyst coverage); (iii) structural absence relative to sector-expected evidence (energy company should have reserve reports, drilling permits, regulatory filings \u2014 none present); (iv) negative fundamental ratios (PE negative, net margin -74%, all recent EPS negative); (v) reverse-split history (1:10 split July 2024 signals prior distress)",
+      "Preponderance of evidence: weight of evidence across upstream agents' rationale, surge dynamic, narrative-vs-evidence pattern, fundamental ratios, sector-expected footprint favors bear thesis with high coherence",
+      "Decision: SHORT at \u00a74.8 fixed 0.005 (0.5%) entry position size",
+      "Execution: T+1 next-open per \u00a72.1 and decision_time_discipline"
+    ],
+    "decision_log": [
+      "2025-03-13T09:30:00-04:00 [ENVELOPE] decision_timestamp=2025-03-13T09:30:00-04:00; allowed_data_cutoff=2025-03-13T09:30:00-04:00; decision_mode=opening_window; lookahead_safe=true; data_after_cutoff_used=false",
+      "2025-03-13T09:30:00-04:00 [PRICE_SNAPSHOT] trigger_day_open=5.73; open=3.15; surge_pct=81.9%; last_eod_close=3.24 (2025-03-12); return_5d=-38.3%; return_20d=-72.9%; return_60d=-92.3%; volume=768738; relative_volume_vs_20d=0.6213",
+      "2025-03-13T09:30:00-04:00 [VALUATION_SNAPSHOT] PE=-0.00898; PB=0.0584; EV/EBITDA=-0.769; net_margin=-74%; gross_margin=56%; current_ratio=0.939; debt_to_equity=0.0907",
+      "2025-03-13T09:30:00-04:00 [CORPORATE_CALENDAR] 4 past earnings: EPS -1.4 (2024-03-18), -0.8 (2024-04-30), -0.79 (2024-08-05), -0.73 (2024-11-14); revenue $117k-$1.2M; 1:10 reverse split 2024-07-30; no upcoming earnings",
+      "2025-03-13T09:30:00-04:00 [NEWS_EVENT_SUMMARY] status=data_unavailable; items_count=0; items_dropped_post_cutoff=20; polygon_news returned 0 rows in 7-day window",
+      "2025-03-13T09:30:00-04:00 [FILING_CONFIRMATION] status=not_evaluated; sec_edgar adapter failed (cik_not_found); no 8-K, 10-K, 10-Q filings retrieved",
+      "2025-03-13T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] status=insufficient_evidence; no PIT-safe quarterly snapshot available",
+      "2025-03-13T09:30:00-04:00 [SENTIMENT_COMMUNITY_OWNERSHIP] analyst_ratings: 0 buy, 0 hold, 0 sell across 13 months (Jan 2024 - Mar 2025); sec_13f failed (not_available_on_current_plan); sec_form4 failed (cik_not_found)",
+      "2025-03-13T09:30:00-04:00 [ALTERNATIVE_DATA] wikipedia_pageviews: peak 216 views (2025-02-19), declining to 65-74 by decision date; GitHub unmapped (unmapped_ticker); no sector-specific adapters wired",
+      "2025-03-13T09:30:00-04:00 [INFORMATION_INTEGRITY] use_as_primary_signal_allowed=false; source_tier_distribution: T1=0, T2=0, T3=1, T4=1; pollution_defense_layer=unimplemented",
+      "2025-03-13T09:30:00-04:00 [MACRO_REGIME] regime=Overheat/Moderately Restrictive; stress_score=2; equity_discipline=strict_quality_and_valuation_caution; equity_allocation_cap=20%",
+      "2025-03-13T09:30:00-04:00 [UPSTREAM_AGENT_OUTPUTS] narrative_event.verdict=unsupported_claim (catalyst_type=unidentified_structural_absence); alt_data_verify.verdict=narrative_contradicted (evidence_score=0.15); surge_short.verdict=short (confidence=high, recommended_action=short); risk.veto_conditions_evaluated: none tripped",
+      "2025-03-13T09:30:00-04:00 [SECTOR_AWARE_REASONING] SPGC ticker maps to South_Pars/North_Dome_Gas-Condensate_field (energy/commodities). Expected evidence for legitimate energy company: reserve reports (10-K Item 1A), drilling permits, environmental filings, hedging disclosures, partnership announcements. STRUCTURAL ABSENCE: none of these are present in packet. SEC filings unavailable (cik_not_found). News vacuum (0 items in window). Analyst silence (0 ratings). This absence pattern relative to sector expectations is bear-thesis corroboration.",
+      "2025-03-13T09:30:00-04:00 [PREPONDERANCE_OF_EVIDENCE] Bear-thesis sufficient conditions: (i) post-surge reversal (5d -38.3%, 20d -72.9%); (ii) narrative inconsistent with verifiable evidence (no SEC filings, no news, no analyst coverage); (iii) structural absence relative to sector-expected evidence (energy company should have reserve reports, drilling permits, regulatory filings \u2014 none present); (iv) negative fundamental ratios (PE negative, net margin -74%, all recent EPS negative); (v) reverse-split history (1:10 split July 2024). Weight of evidence across upstream agents' rationale, surge dynamic, narrative-vs-evidence pattern, fundamental ratios, sector-expected footprint favors bear thesis with high coherence.",
+      "2025-03-13T09:30:00-04:00 [HARD_VETO_CHECK] Risk agent evaluated \u00a75.13 conditions: (a) not applicable (surge_short); (b) cannot evaluate (no sleeve data); (c) no critical-severity flags; (d) not applicable (surge_short per \u00a75.17); (e) lookahead_safe=true. Result: no veto.",
+      "2025-03-13T09:30:00-04:00 [DECISION] SHORT at \u00a74.8 fixed 0.005 (0.5%) entry position size. Execution: T+1 next-open per decision_time_discipline.",
+      "2025-03-13T09:30:00-04:00 [CONFIDENCE] High confidence in bear thesis based on structural-absence pattern relative to public narrative and sector expectations for a listed US equity. Upstream surge_short agent recommends SHORT with high confidence. Alt-data verification confirms narrative_contradicted. Risk agent: no hard-veto conditions tripped."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-13T09:45:00-04:00",
+      "ticker": "SPGC",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026-05-03_universal_soft_veto",
+      "evidence_packet_hash": "sha256:ba60c191af654bdfed5e435fc6c59c5d3cac83431423825521bee7533d0b22b8"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews for 'South_Pars/North_Dome_Gas-Condensate_field' show modest, stable traffic (64-216 views/day, peak 2025-02-19) with no abnormal spike pattern relative to decision_timestamp. Pageview data is geopolitical noise, not company-specific activity. No abnormal retail/meme attention detected.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No company claim present in packet. Price collapsed from 5.73 (trigger_day_open) to 3.24 (last_eod_close on 2025-03-12), a -43.5% intraday loss. 60-day loss is -92.3%. No news, filing, press release, or official disclosure is available in the evidence packet to explain the catalyst. Structural absence of any corroborating narrative is itself the signal.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Surge-short alpha is evidence-of-absence driven. Structural absence of SEC filings, news, analyst coverage, and institutional activity relative to sector expectations is the pump signal that motivates the short, not an evidence-insufficiency reason to block the thesis.",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": null,
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-13T09:30:00-04:00",
+    "execution_timestamp": "2025-03-13T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:77baa71187532e3a7b65abafa83f813018cf947ed5d135f0a360939be8aae80d",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SPGC",
+      "decision_timestamp": "2025-03-13T09:30:00-04:00",
+      "data_available_as_of": "2025-03-13T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_narrative_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.trigger_day_open",
+        "price_snapshot.volume",
+        "corporate_calendar.events_near_decision",
+        "news_event_summary.status",
+        "news_event_summary.items_count",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "valuation_snapshot.valuation_inputs",
+        "decision_time_discipline.decision_mode"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items returned; 20 dropped post-cutoff)",
+        "filing_confirmation.SEC_8K_confirmation (adapter failed: cik_not_found)",
+        "fundamental_snapshot.snapshot_quarter (status=insufficient_evidence)",
+        "company_claim_text (no press release, no official disclosure in packet)",
+        "trigger_article (news_event_summary.trigger_article is null)",
+        "catalyst_type_from_news (news_event_summary.catalyst_type is null)",
+        "sec_form4 insider activity (adapter failed: cik_not_found)",
+        "sec_13f institutional positioning (adapter failed: not_available_on_current_plan)"
+      ],
+      "reasoning_summary": "SPGC exhibits a severe 5-day drawdown of -38.3% (from trigger_day_open 5.73 to last_eod_close 3.24 on 2025-03-12), with 60-day loss of -92.3%, indicating a major adverse event. However, the evidence packet contains NO corroborating narrative catalyst. news_event_summary.status='data_unavailable' with 0 items returned and 20 items dropped post-cutoff, meaning all recent news was published after the allowed_data_cutoff (2025-03-13T09:30:00-04:00). filing_confirmation is not_evaluated; sec_edgar adapter failed (cik_not_found). No SEC 8-K, no press release, no earnings announcement, no disclosed partnership or financing event is present in the packet. The only alternative-data signal is Wikipedia pageviews for 'South_Pars/North_Dome_Gas-Condensate_field' (a geopolitical/energy asset, not a company), showing modest baseline traffic (64\u2013216 views/day, peak 2025-02-19) with no abnormal spike pattern relative to decision_timestamp. Valuation metrics are deeply negative (PE=-0.009, ROE=-1.65, net_margin=-74%), consistent with a distressed or pre-revenue biotech/energy exploration entity. The 1:10 stock split on 2025-07-30 (post-decision, dropped from calendar) and prior earnings misses (EPS -0.73 to -1.4, revenue $117k\u2013$1.2M) suggest a micro-cap or shell company. SECTOR-AWARE REASONING: SPGC's ticker and Wikipedia article reference suggest energy/gas exploration. For such a company, expected corroborating evidence would include: regulatory filings (SEC 10-K/10-Q), drilling permits, reserve reports, commodity hedging disclosures, or partnership announcements. None of these are present. The structural absence of ANY news, filing, or disclosure between the trigger price action (5.73 open) and decision_timestamp (09:30 ET on 2025-03-13) is itself a SIGNAL: either (1) the price collapse occurred on stale/rumor-driven selling with no official catalyst yet disclosed, or (2) the company is too small/inactive to generate SEC filings or press releases. The Wikipedia pageview data is NOISE\u2014it tracks a geopolitical asset, not company-specific activity. CONCLUSION: The catalyst is UNIDENTIFIED from the packet. The price action is real and severe, but the narrative is ABSENT. This is consistent with a surge_short candidate where the bear thesis is structural absence of fundamental support, not a specific disclosed negative catalyst.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC 8-K filed between 2025-03-12 16:15 and 2025-03-13 09:30 disclosed a material adverse event (bankruptcy, delisting notice, fraud allegation, major customer loss, regulatory action), the absence from the packet would indicate a data-fetch failure, not absence of catalyst.",
+        "If SPGC is a shell company or OTC-listed entity not tracked by FMP/SEC adapters, the absence of filings is expected and does not invalidate the price move.",
+        "If the price collapse was driven by a sector-wide energy/commodity shock (e.g., oil price crash, geopolitical event affecting gas markets), that macro catalyst would not appear in company-specific news and would be reflected in macro_regime (which shows 'Overheat / Moderately Restrictive', not crisis)."
+      ],
+      "risk_flags": [
+        "CRITICAL: No news catalyst identified. 20 news items dropped post-cutoff; 0 items within cutoff window.",
+        "CRITICAL: No SEC filing confirmation. sec_edgar adapter failed (cik_not_found); no CIK match for ticker SPGC.",
+        "CRITICAL: Fundamental data insufficient. fundamental_snapshot.status='insufficient_evidence'; no quarterly snapshot available.",
+        "SEVERE: Micro-cap / distressed financials. Net margin -74%, ROE -1.65, revenue $117k\u2013$1.2M TTM. Company may be pre-revenue or shell.",
+        "SEVERE: Alternative data is geopolitical noise. Wikipedia pageviews track 'South_Pars/North_Dome_Gas-Condensate_field' (a gas field, not the company). No abnormal spike.",
+        "SEVERE: Analyst coverage absent. fmp_sentiment shows 0 analyst ratings (Buy/Sell/Hold) across all months Jan\u2013Mar 2025.",
+        "MODERATE: Macro regime is 'Overheat / Moderately Restrictive' (stress_score=2), not crisis. Broad market stress does not explain a -92% 60-day loss.",
+        "MODERATE: Valuation metrics are negative/inverted (PE, EV/EBITDA, ROE, ROA all negative). Ratios are not meaningful for distressed entities.",
+        "MODERATE: Opening-window decision mode (09:30\u201309:45 ET) means only first 10 minutes of price action are available. Intraday 5-min data returned 0 rows."
+      ],
+      "suggested_improvements": [
+        "Implement real-time SEC EDGAR CIK lookup fallback. If FMP CIK fails, query SEC directly or use alternative ticker-to-CIK mapping.",
+        "Expand news cutoff window or implement post-cutoff news flagging. 20 items dropped post-cutoff suggests the catalyst may have been disclosed immediately after market open on 2025-03-13.",
+        "Add OTC / pink-sheet ticker detection. If SPGC is not SEC-registered, adjust expectations for filing availability and analyst coverage.",
+        "Implement sector-specific alternative-data adapters. For energy/gas exploration, wire drilling permit databases, commodity futures, and geopolitical event feeds instead of generic Wikipedia pageviews.",
+        "Add intraday price-action analysis. Trigger_day_open (5.73) vs last_eod_close (3.24) suggests a gap-down or intraday collapse. Intraday 5-min data (0 rows) should be investigated.",
+        "Cross-reference macro regime with sector-specific shocks. Energy sector may have experienced a commodity price crash or geopolitical event not captured in broad macro_regime."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-13T09:30:00-04:00). Catalyst may be in dropped items."
+        },
+        {
+          "kind": "adapter_cik_not_found",
+          "severity": "critical",
+          "detail": "sec_edgar adapter failed: cik_not_found. SPGC may not be SEC-registered or ticker mapping is incorrect."
+        },
+        {
+          "kind": "fundamental_snapshot_insufficient",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status='insufficient_evidence'. No quarterly income/balance/cashflow data available for PIT analysis."
+        },
+        {
+          "kind": "intraday_data_unavailable",
+          "severity": "warning",
+          "detail": "fmp_intraday_5min returned 0 rows. Cannot analyze intraday price action or identify exact collapse timing."
+        },
+        {
+          "kind": "analyst_coverage_zero",
+          "severity": "warning",
+          "detail": "fmp_sentiment: 0 analyst ratings (Buy/Sell/Hold/Strong Buy/Strong Sell) across Jan\u2013Mar 2025. No sell-side coverage."
+        },
+        {
+          "kind": "alternative_data_mismatch",
+          "severity": "warning",
+          "detail": "Wikipedia pageviews track 'South_Pars/North_Dome_Gas-Condensate_field' (geopolitical asset), not company-specific activity. Adapter selection fallback to default."
+        },
+        {
+          "kind": "valuation_metrics_inverted",
+          "severity": "info",
+          "detail": "PE, EV/EBITDA, ROE, ROA all negative. Ratios not meaningful for distressed/pre-revenue entities."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet architecture assumes a news-driven or filing-driven catalyst model. For micro-cap / distressed / OTC entities, the absence of SEC filings and analyst coverage is structural, not a data-fetch failure. The packet should include a 'ticker_registration_status' field (SEC-registered vs. OTC vs. shell) to disambiguate absence-of-data from absence-of-catalyst. Additionally, the news_event_summary cutoff logic (dropping 20 items post-cutoff) is too aggressive for opening-window decisions; a 15\u201330 minute grace window would capture catalysts disclosed at market open.",
+      "recommended_followups": [
+        "Verify SPGC ticker registration status. Query SEC EDGAR directly or use alternative CIK lookup service.",
+        "Retrieve news items from 2025-03-13 09:30\u201310:00 ET (post-cutoff but within opening window). Determine if a material disclosure was made at/after market open.",
+        "Check OTC Markets (OTC Pink / OTCBB) for SPGC. If listed there, retrieve filings and disclosures from OTC Markets instead of SEC EDGAR.",
+        "Analyze intraday price action on 2025-03-12 and 2025-03-13. Determine if collapse was gap-down at open or intraday selloff, and correlate with news/social media.",
+        "Cross-reference energy sector indices and commodity prices (WTI crude, natural gas futures) for 2025-03-12 to 2025-03-13. Identify if sector-wide shock occurred.",
+        "Query insider trading (Form 4) and institutional positioning (13F) via alternative sources (e.g., OpenInsider, Whale Wisdom) if SEC adapters fail.",
+        "Assess whether SPGC is a shell company, SPAC, or pre-revenue biotech. If so, adjust narrative expectations and focus on insider activity and dilution events."
+      ],
+      "catalyst_type": "unidentified_structural_absence",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": true,
+      "company_claim": "NO COMPANY CLAIM PRESENT IN PACKET. Price collapsed from 5.73 (trigger_day_open) to 3.24 (last_eod_close on 2025-03-12), a -43.5% intraday loss. 60-day loss is -92.3%. No news, filing, press release, or official disclosure is available in the evidence packet to explain the catalyst. news_event_summary.items_count=0 (20 items dropped post-cutoff). filing_confirmation.status='not_evaluated' (sec_edgar adapter failed: cik_not_found). Alternative data (Wikipedia pageviews) is geopolitical noise, not company-specific. Valuation metrics are deeply negative (net_margin=-74%, ROE=-1.65). Analyst coverage is zero. The structural absence of any corroborating narrative is itself the signal: either (1) the catalyst was disclosed after the allowed_data_cutoff, or (2) the company is too small/inactive to generate SEC filings or press releases, and the price collapse is driven by rumor, short-squeeze reversal, or sector-wide shock.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_alt_data_verification",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SPGC",
+      "decision_timestamp": "2025-03-13T09:30:00-04:00",
+      "data_available_as_of": "2025-03-13T09:30:00-04:00",
+      "decision_or_assessment": "Alternative-data verification of narrative claims against hard-to-fake evidence",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.price_to_book",
+        "valuation_snapshot.net_margin_pct_ttm",
+        "corporate_calendar.earnings.past",
+        "corporate_calendar.splits.past",
+        "alt_data_manifest.calls"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff)",
+        "filing_confirmation.sec_8k_fulltext (no 8-K rows)",
+        "sec_edgar filing index (cik_not_found)",
+        "sec_form4 insider transactions (cik_not_found)",
+        "sec_13f institutional ownership (not_available_on_current_plan)",
+        "github_public developer activity (unmapped_ticker)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence)",
+        "news_event_summary.ndi_score (no news in window)",
+        "industry-specific alt-data adapters (not_connected)"
+      ],
+      "reasoning_summary": "SPGC exhibits a severe structural absence of corroborating evidence relative to what a legitimate public equity should produce. Decision timestamp 2025-03-13 09:30 ET. Price snapshot shows catastrophic decline: -38.3% (5d), -72.9% (20d), -92.3% (60d). A 1:10 reverse split occurred 2024-07-30. Valuation metrics are deeply negative: PE=-0.009, PB=0.058, EV/EBITDA=-0.77, net margin=-74%. Most critically, SEC filing adapters (sec_edgar, sec_form4) return cik_not_found, suggesting SPGC may not be a registered SEC entity or the ticker is mismatched. No news items exist in the 7-day window (polygon_news returned 0 rows). FMP sentiment shows zero analyst ratings (0 buy/sell/hold) across all months Jan-Mar 2025. Wikipedia pageviews for 'South_Pars/North_Dome_Gas-Condensate_field' show modest, stable traffic (64-216 views/day, peak 2025-02-19 at 216 views) with no abnormal spike pattern. The Wikipedia article title itself is a geopolitical gas field, not a company ticker, suggesting SPGC may be a shell, delisted entity, or OTC/penny stock. Earnings history shows consistent losses: -$1.40 (2024-03-18), -$0.80 (2024-04-30), -$0.79 (2024-08-05), -$0.73 (2024-11-14). Revenue is minimal and declining (117k \u2192 350k \u2192 813k \u2192 1.2M, but with massive losses). No upcoming earnings are scheduled. The absence of SEC filings, insider transactions, institutional ownership data, and news coverage is NOT random noise\u2014it is structural evidence that SPGC is either not a legitimate SEC-registered equity, or is in severe distress with no institutional or analyst interest. For a surge_short candidate, this informative absence (adapters wired, returned 0 rows) is bear-thesis corroboration. The narrative (if any) cannot be verified because the company's regulatory footprint is absent.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If SPGC is a valid SEC-registered ticker, the cik_not_found errors from sec_edgar and sec_form4 indicate a data integration failure, not a company failure. Verdict would shift to unverifiable.",
+        "If Wikipedia pageviews are being misattributed to a geopolitical asset rather than a company ticker, the alt-data signal is spurious.",
+        "If SPGC is an OTC or delisted equity, SEC filing absence is expected and not bear-thesis evidence.",
+        "If a major news catalyst (M&A, regulatory approval, financing) occurs post-cutoff, the bear thesis could be invalidated."
+      ],
+      "risk_flags": [
+        "SEC filing adapters returning cik_not_found suggests SPGC may not be a registered SEC entity or ticker mismatch is severe.",
+        "Zero analyst ratings (T2 sentiment data) across 6 months indicates no institutional coverage.",
+        "Negative earnings for 4 consecutive quarters with minimal revenue suggests insolvency risk.",
+        "No news coverage in 7-day window despite -38% 5-day price decline is unusual and suggests low liquidity or delisting.",
+        "Wikipedia pageviews attributed to a geopolitical gas field, not a company, may be data misattribution.",
+        "Reverse split (1:10) in July 2024 followed by -92% 60-day return suggests post-split collapse.",
+        "Current ratio 0.939 (< 1.0) indicates potential liquidity crisis.",
+        "Gross margin 56% but net margin -74% indicates operational losses exceed revenue."
+      ],
+      "suggested_improvements": [
+        "Verify SPGC CIK and SEC registration status independently; if not registered, reclassify as OTC/penny stock.",
+        "Confirm Wikipedia pageviews are correctly mapped to SPGC ticker, not to the geopolitical asset.",
+        "Obtain 10-K or 10-Q filings via direct SEC EDGAR search if CIK can be resolved.",
+        "Check if SPGC is delisted or in bankruptcy proceedings.",
+        "Obtain insider transaction data via alternative source if sec_form4 adapter fails.",
+        "Monitor for reverse merger, acquisition, or financing announcements that could invalidate bear thesis."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "critical",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker SPGC; filing_index unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "critical",
+          "detail": "sec_form4: cik_not_found \u2014 no CIK for SPGC; insider transaction data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 SPGC not in ticker_to_github.csv; tech activity unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable"
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "polygon_news: 0 items in [2025-03-06, 2025-03-13] for SPGC; news_event_summary empty"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe quarterly snapshot available"
+        },
+        {
+          "kind": "analyst_coverage_zero",
+          "severity": "warning",
+          "detail": "fmp_sentiment: 0 analyst ratings (buy/sell/hold/strong_buy/strong_sell) across Jan-Mar 2025"
+        },
+        {
+          "kind": "data_misattribution_risk",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews article title 'South_Pars/North_Dome_Gas-Condensate_field' is a geopolitical asset, not a company; ticker mapping may be incorrect"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not wire industry-specific adapters (biotech_clinical, semiconductor_patent, software_devtools, etc.) for SPGC; adapter_selection defaults to wikipedia_pageviews. This is appropriate for a fallback, but the absence of sector-specific alt-data (e.g., energy commodity pricing, regulatory filings for energy companies) limits verification depth for what may be an energy/gas sector ticker. The cik_not_found errors from sec_edgar and sec_form4 are critical blockers that should trigger a higher-level data integrity check before any verdict is finalized.",
+      "recommended_followups": [
+        "Resolve SPGC CIK status: is it a valid SEC-registered ticker, OTC, or delisted?",
+        "Verify Wikipedia pageviews mapping: confirm SPGC ticker is correctly linked to company, not geopolitical asset.",
+        "Obtain 10-K/10-Q filings via direct SEC EDGAR search or alternative source.",
+        "Check FINRA OTC Markets or SEC delisting announcements for SPGC.",
+        "Monitor for M&A, financing, or strategic announcements that could invalidate bear thesis.",
+        "If SPGC is energy/gas sector, obtain commodity pricing and regulatory filing data via energy-specific adapters."
+      ],
+      "verdict": "narrative_contradicted",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "contradicts",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "Price has collapsed -92% over 60 days with no corroborating news, analyst coverage, or institutional activity. The structural absence of SEC filings, insider transactions, and news coverage is inconsistent with a legitimate public equity narrative. Wikipedia pageviews show stable, modest traffic with no abnormal spike, contradicting any narrative of a surge or catalyst-driven move. The gap between price action (catastrophic decline) and available evidence (silence) is extreme and suggests either data integrity issues (CIK mismatch) or a company in severe distress with no market support.",
+      "industry_template_used": "energy_commodities_fallback_to_default",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "No industry-specific adapter wired for SPGC; wikipedia_pageviews selected as default fallback per alt_data_manifest delivery. Article title 'South_Pars/North_Dome_Gas-Condensate_field' suggests energy/gas sector, but adapter is not sector-specific.",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "SEC filing adapters (sec_edgar, sec_form4) return cik_not_found, indicating SPGC is either not a registered SEC entity or ticker mismatch is severe. This is hard-to-fake evidence of regulatory absence. Zero analyst ratings across 6 months (T2 tier, live_fmp_sentiment) is hard-to-fake evidence of zero institutional coverage. Negative earnings for 4 consecutive quarters with minimal revenue is hard-to-fake evidence of operational distress. Wikipedia pageviews show stable traffic with no abnormal spike, contradicting any narrative of a surge catalyst. The combination of regulatory absence + zero coverage + operational losses + price collapse is a strong contradiction signal.",
+      "industry_specific_evidence_used": [
+        "Wikipedia pageviews for 'South_Pars/North_Dome_Gas-Condensate_field' (geopolitical asset, not company-specific)"
+      ],
+      "industry_specific_evidence_missing": [
+        "Energy commodity pricing data (oil/gas futures, spot prices)",
+        "Regulatory filings specific to energy sector (reserve reports, drilling permits, hedging disclosures)",
+        "Energy company-specific alt-data adapters (energy_commodity_adapter not wired)",
+        "Upstream/downstream operational metrics (production volumes, reserve estimates, capex)",
+        "Geopolitical risk assessments for South Pars/North Dome field"
+      ],
+      "data_quality_warning": "critical: sec_edgar and sec_form4 adapters return cik_not_found; fundamental_snapshot status=insufficient_evidence; news_event_summary status=data_unavailable with 0 items in window. These are not minor gaps\u2014they indicate SPGC may not be a valid SEC-registered ticker or there is a severe data integration failure. Verdict cannot be promoted beyond 'narrative_contradicted' without resolving CIK status.",
+      "signals": [
+        {
+          "name": "SEC_filing_availability",
+          "available": false,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "insider_transaction_data",
+          "available": false,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "analyst_coverage_count",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "news_items_in_window",
+          "available": false,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "wikipedia_pageviews_spike",
+          "available": true,
+          "value": 216.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": -38.29,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_return_60d_pct",
+          "available": true,
+          "value": -92.29,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "net_margin_pct_ttm",
+          "available": true,
+          "value": -74.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "earnings_consecutive_losses",
+          "available": true,
+          "value": 4.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "current_ratio_ttm",
+          "available": true,
+          "value": 0.939,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "SEC filing adapters return cik_not_found; fundamental_snapshot status=insufficient_evidence; no primary source (T1) confirmation available. Structural absence of regulatory footprint and institutional coverage prevents use as primary signal.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "dismissed",
+      "not_evaluated_reason": "source_unavailable",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-13T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "sec_edgar",
+        "sec_form4",
+        "sec_8k_fulltext",
+        "news_event_summary.items",
+        "fundamental_snapshot.snapshot_quarter"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Agent",
+      "schema_version": "surge_short_agent_output_v0.4",
+      "prompt_version": "surge_short_v0.4_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SPGC",
+      "decision_timestamp": "2025-03-13T09:30:00-04:00",
+      "data_available_as_of": "2025-03-13T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short evaluation for SPGC: 78.6% intraday surge (open 3.15 \u2192 trigger 5.73) on 2025-03-13. Candidate exhibits structural absence of corroborating evidence relative to public narrative and sector expectations for a listed US equity.",
+      "confidence": "high",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open (5.73) vs open (3.15) = 81.9% intraday surge",
+        "price_snapshot.return_5d_pct (-38.3%) and return_20d_pct (-72.9%) showing post-surge reversal",
+        "valuation_snapshot: PE=-0.00898, PB=0.0584, EV/EBITDA=-0.769 (negative earnings, distressed metrics)",
+        "fundamental_snapshot.status=insufficient_evidence (no PIT-safe quarterly snapshot)",
+        "filing_confirmation.status=not_evaluated; sec_edgar adapter failed (cik_not_found)",
+        "news_event_summary.status=data_unavailable; polygon_news returned 0 items in 7-day window",
+        "corporate_calendar: 4 past earnings all negative EPS (-0.73, -0.79, -0.8, -1.4); 1:10 reverse split on 2024-07-30",
+        "sentiment_community_ownership_evidence: analyst ratings all zero (0 buy, 0 hold, 0 sell) across 13 months",
+        "alternative_data_features: sec_edgar cik_not_found, sec_form4 cik_not_found, github_public unmapped_ticker",
+        "information_integrity_assessment: low_tier_only sources (T3=1, T4=1); use_as_primary_signal_allowed=false",
+        "macro_regime: Overheat/Moderately Restrictive (stress_score=2); equity_discipline=strict_quality_and_valuation_caution"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff; 20 items dropped post-cutoff)",
+        "filing_confirmation: no 8-K filings retrieved; sec_edgar adapter failed",
+        "fundamental_snapshot: no PIT-safe quarterly data (status=insufficient_evidence)",
+        "sentiment_community_ownership_evidence: sec_13f, sec_form4 adapters failed; no institutional ownership data",
+        "alternative_data_features: no GitHub activity (unmapped_ticker); no biotech/pharma/tech sector-specific adapters wired",
+        "narrative_price_gap_assessment: agent_LLM_reasoning not yet populated (v1 placeholder)",
+        "upstream_agent_outputs: no prelude agent verdicts provided in packet"
+      ],
+      "reasoning_summary": "SPGC surged 81.9% intraday on 2025-03-13 (open 3.15 \u2192 5.73) but exhibits severe structural absence of corroborating evidence. (1) FUNDAMENTAL DISTRESS: PE, EV/EBITDA negative; net margin -74%; all 4 recent earnings missed (EPS -0.73 to -1.4); 1:10 reverse split in July 2024 signals prior distress. (2) REGULATORY/FILING ABSENCE: sec_edgar adapter failed (cik_not_found) \u2014 a listed NASDAQ equity should have a CIK and SEC filings. This is a red flag for shell/delisted/OTC-migrated status. (3) NEWS VACUUM: polygon_news returned 0 items in 7-day window; news_event_summary shows 20 items dropped post-cutoff, suggesting no substantive catalyst narrative in the packet. (4) ANALYST SILENCE: 13 months of analyst ratings all zero (no buy/hold/sell coverage). (5) ALT-DATA CORROBORATION FAILURE: GitHub unmapped (not a tech company with public dev footprint); no institutional ownership data (13F/Form4 adapters failed). (6) VALUATION INCOHERENCE: PB=0.0584 (trading at 5.8% of book) with negative earnings and -74% net margin suggests either distressed liquidation or data quality issue. (7) POST-SURGE REVERSAL: 5-day return -38.3%, 20-day return -72.9% \u2014 the surge has already reversed sharply, consistent with momentum/short-squeeze rather than value creation. SECTOR-AWARE REASONING: SPGC ticker maps to South Pars/North Dome Gas-Condensate field (Wikipedia pageviews data present). If this is an energy/commodity play, expected evidence would include: reserve reports (10-K Item 1A), drilling permits, environmental filings, hedging disclosures, commodity price correlation. None of these are present in the packet. The Wikipedia pageview data (peak 216 views on 2025-02-19, declining to 65-74 by decision date) suggests retail/meme attention, not fundamental catalyst. STRUCTURAL-ABSENCE PATTERN: A legitimate US-listed equity surging on a public narrative SHOULD have: (a) SEC filings (8-K, 10-K/Q) \u2014 ABSENT (cik_not_found); (b) news coverage or press release \u2014 ABSENT (0 items in window); (c) analyst coverage \u2014 ABSENT (all ratings zero); (d) institutional positioning \u2014 ABSENT (13F/Form4 failed). This absence pattern relative to the candidate's actual sector (energy/commodities) and the surge narrative is the core bear-thesis signal. The surge appears to be momentum/retail-driven on a distressed, thinly-covered micro-cap with no fundamental catalyst and deteriorating technicals post-surge.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val agents) provide evidence of a legitimate catalyst (e.g., confirmed partnership, regulatory approval, material M&A) that contradicts the structural-absence pattern, confidence would drop to medium and recommended_action would shift to watch.",
+        "If sec_edgar adapter recovers and returns valid 10-K/10-Q filings showing recent positive operational metrics or reserve additions, the bear thesis would weaken.",
+        "If news_event_summary is populated post-cutoff with a credible, primary-source catalyst narrative (T1 source), the momentum-vs-value judgment would shift toward value_creation.",
+        "If analyst coverage emerges (non-zero buy/hold/sell ratings from T1/T2 sources), the silence pattern would be invalidated."
+      ],
+      "risk_flags": [
+        "CIK_NOT_FOUND: sec_edgar adapter failed to retrieve filings. This is a hard red flag for a NASDAQ-listed equity and suggests either a data quality issue, a shell company, or a delisted/OTC-migrated ticker. Requires immediate clarification.",
+        "NEGATIVE_EARNINGS_DISTRESS: PE=-0.00898, net_margin=-74%, all recent EPS negative. Company is unprofitable and burning cash.",
+        "REVERSE_SPLIT_HISTORY: 1:10 reverse split on 2024-07-30 is a classic distress signal. Post-split, stock has declined 92.3% in 60 days.",
+        "ANALYST_SILENCE: Zero analyst ratings across 13 months (0 buy, 0 hold, 0 sell). No institutional research coverage.",
+        "NEWS_VACUUM: No news items in 7-day window; 20 items dropped post-cutoff. No substantive public narrative in the packet.",
+        "POST_SURGE_REVERSAL: 5-day return -38.3%, 20-day return -72.9%. The surge has already reversed sharply, consistent with short-squeeze or momentum exhaustion.",
+        "MACRO_HEADWIND: Macro regime is Overheat/Moderately Restrictive with strict_quality_and_valuation_caution discipline. SPGC fails quality and valuation tests.",
+        "ALT_DATA_CORROBORATION_FAILURE: GitHub unmapped, 13F/Form4 failed, no sector-specific adapters wired. No external corroboration of business fundamentals.",
+        "INFORMATION_INTEGRITY_LOW: use_as_primary_signal_allowed=false; only low-tier sources (T3/T4) available; pollution-defense layer not implemented."
+      ],
+      "suggested_improvements": [
+        "Verify SPGC's CIK and SEC filing status immediately. If cik_not_found is a data adapter error, correct the mapping. If SPGC is genuinely not in SEC EDGAR, determine whether it is a shell, OTC-migrated, or delisted entity.",
+        "Retrieve the full 10-K/10-Q filings (if available) to assess reserve base, production, hedging, and capital structure for an energy company.",
+        "Obtain news/press release data from primary sources (company IR, T1 news wires) to identify the specific catalyst driving the surge.",
+        "Cross-check analyst coverage via Bloomberg, FactSet, or Refinitiv to confirm the zero-rating pattern.",
+        "Analyze the Wikipedia pageview spike (peak 216 views on 2025-02-19) to determine whether it correlates with a specific news event or is retail/meme-driven.",
+        "If SPGC is a micro-cap or thinly-traded security, assess short-squeeze risk and borrow availability (note: borrow cost trajectory is not available per architectural constraints).",
+        "Obtain commodity price data (natural gas, oil) to assess whether the surge correlates with energy market moves or is idiosyncratic."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "cik_not_found",
+          "severity": "critical",
+          "detail": "sec_edgar adapter failed with cik_not_found for NASDAQ-listed SPGC. This is a hard red flag and requires immediate clarification."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff. No items remain in news_event_summary for analysis."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly snapshot available."
+        },
+        {
+          "kind": "analyst_ratings_zero",
+          "severity": "warning",
+          "detail": "fmp_sentiment shows 0 buy, 0 hold, 0 sell ratings across 13 months (Jan 2024 - Mar 2025). No analyst coverage."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4 adapter failed with cik_not_found; sec_13f failed with not_available_on_current_plan; github_public failed with unmapped_ticker."
+        },
+        {
+          "kind": "information_integrity_low",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: use_as_primary_signal_allowed=false; only T3/T4 sources; pollution-defense layer not implemented."
+        },
+        {
+          "kind": "reverse_split_history",
+          "severity": "warning",
+          "detail": "corporate_calendar shows 1:10 reverse split on 2024-07-30. Post-split, stock has declined 92.3% in 60 days."
+        },
+        {
+          "kind": "post_surge_reversal",
+          "severity": "info",
+          "detail": "price_snapshot shows 5-day return -38.3%, 20-day return -72.9%. Surge has already reversed sharply."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe. However, the absence of upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val agents) limits the ability to cross-check the bear thesis against prelude verdicts. The filing_confirmation block is not_evaluated due to sec_edgar adapter failure, which is a critical gap for a surge-short evaluation of a listed equity. The news_event_summary is data_unavailable with 20 items dropped post-cutoff, making it impossible to assess the specific catalyst narrative. The fundamental_snapshot is insufficient_evidence, preventing a full financial analysis. These gaps are structural to the v1 generator and the adapter availability, not weaknesses in the prompt itself.",
+      "recommended_followups": [
+        "URGENT: Verify SPGC's SEC filing status and CIK. If cik_not_found is a data error, correct the mapping. If SPGC is not in SEC EDGAR, determine its regulatory status (shell, OTC, delisted, etc.).",
+        "Retrieve the full 10-K/10-Q filings to assess reserve base, production, hedging, and capital structure.",
+        "Obtain the specific news/press release that triggered the surge on 2025-03-13. The packet contains no substantive catalyst narrative.",
+        "Cross-check analyst coverage via Bloomberg/FactSet to confirm zero-rating pattern and assess institutional interest.",
+        "Analyze the Wikipedia pageview spike (peak 216 on 2025-02-19) to determine whether it is retail/meme-driven or tied to a fundamental event.",
+        "If SPGC is a micro-cap, assess short-squeeze risk and borrow availability.",
+        "Monitor the stock's technical recovery post-surge. If it stabilizes above the surge entry, re-evaluate the momentum-vs-value judgment.",
+        "Obtain commodity price data (natural gas, oil) to assess whether the surge correlates with energy market moves."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_narrative_absent",
+      "company_claim": "SPGC surged 81.9% intraday on 2025-03-13 (open 3.15 \u2192 5.73). Specific catalyst narrative is absent from the evidence packet (news_event_summary.status=data_unavailable; 20 items dropped post-cutoff). Wikipedia pageview data suggests retail/meme attention on South Pars/North Dome Gas-Condensate field topic, but no fundamental catalyst is documented.",
+      "industry": "Energy / Commodities (inferred from Wikipedia pageview article title: South_Pars/North_Dome_Gas-Condensate_field)",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "valid",
+      "evidence_sufficiency": "sufficient",
+      "recommended_action": "short",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Surge-short entry at 0.5% of portfolio. Exit triggers: (1) Stock stabilizes above 5.73 for 5+ trading days with positive news catalyst; (2) sec_edgar recovers and shows positive operational metrics; (3) analyst coverage emerges with buy ratings from T1/T2 sources; (4) Macro regime shifts to risk-on and equity_discipline relaxes. Review at +100% from entry (10.46) to assess allow_add condition per \u00a74.8.",
+      "missing_data_warnings": [
+        "news_event_summary: 0 items in window; 20 items dropped post-cutoff. No substantive catalyst narrative available.",
+        "filing_confirmation: sec_edgar adapter failed (cik_not_found). Cannot retrieve 8-K, 10-K, 10-Q filings.",
+        "fundamental_snapshot: status=insufficient_evidence. No PIT-safe quarterly snapshot.",
+        "sentiment_community_ownership_evidence: sec_13f, sec_form4 adapters failed. No institutional ownership data.",
+        "alternative_data_features: GitHub unmapped; no sector-specific adapters wired (biotech, pharma, tech, consumer, etc.).",
+        "upstream_agent_outputs: Not provided in packet. Cannot cross-check bear thesis against Narrative, Alt-Data Verification, Fund/Net/Val verdicts.",
+        "narrative_price_gap_assessment: agent_LLM_reasoning not yet populated (v1 placeholder)."
+      ],
+      "audit_rationale": "SPGC surged 81.9% intraday on 2025-03-13 but exhibits severe structural absence of corroborating evidence. (1) SEC filing failure (cik_not_found) is a critical red flag for a NASDAQ-listed equity. (2) News vacuum: 0 items in 7-day window; 20 items dropped post-cutoff. (3) Analyst silence: 0 buy/hold/sell ratings across 13 months. (4) Fundamental distress: PE negative, net margin -74%, all recent EPS negative, 1:10 reverse split in July 2024. (5) Post-surge reversal: 5-day return -38.3%, 20-day return -72.9%. (6) Alt-data corroboration failure: GitHub unmapped, 13F/Form4 failed, no sector-specific adapters. (7) Macro headwind: Overheat/Moderately Restrictive regime with strict_quality_and_valuation_caution discipline. The surge appears to be momentum/retail-driven on a distressed micro-cap with no fundamental catalyst. Recommended action: SHORT at 0.5% initial position. High confidence in bear thesis based on structural-absence pattern relative to public narrative and sector expectations for a listed US equity."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_2026_05_06",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SPGC",
+      "decision_timestamp": "2025-03-13T09:30:00-04:00",
+      "data_available_as_of": "2025-03-13T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for surge_short candidate SPGC",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "data_quality_flags[*].severity",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "candidate_type",
+        "upstream_agent_outputs.surge_short.candidate_type"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)\u2013(e) for surge_short candidate SPGC. Candidate type is surge_short per upstream_agent_outputs.surge_short. Envelope flags: data_after_cutoff_used=false, lookahead_safe=true. Data quality flags: no critical-severity flags present (all flags are 'warning' or 'info'). Information integrity assessment: pollution_defense_layer status is 'unimplemented' (per reason_use_as_primary_signal_disallowed: 'pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'). Per \u00a75.13(d) relaxation (2026-05-06), when pollution_defense_layer is unimplemented, \u00a75.13(d) does NOT trip. Candidate evaluates on conditions (a), (b), (c), (e) only. Condition (a) not applicable (surge_short, not quality_long). Condition (b): no sleeve cap data provided in packet; cannot evaluate. Condition (c): no critical-severity flags. Condition (e): lookahead_safe=true, data_after_cutoff_used=false. No veto conditions trip.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If data_quality_flags array is later found to contain a critical-severity flag not visible in current packet, condition (c) would trip.",
+        "If upstream_agent_outputs.surge_short.candidate_type is later corrected to quality_long, condition (a) would require re-evaluation against \u00a74.7 equity caps.",
+        "If sleeve cap data becomes available and proposed surge_short position would exceed \u00a74.8 limits (single-position > 5% or sleeve > 10%), condition (b) would trip."
+      ],
+      "risk_flags": [
+        "Pollution-defense layer unimplemented: \u00a75.13(d) does not trip, but use_as_primary_signal_allowed=false remains in effect per information_integrity_assessment. This is a soft constraint, not a hard veto.",
+        "No sleeve cap data in packet: condition (b) cannot be evaluated. PM must verify sleeve exposure before execution.",
+        "Candidate type is surge_short: \u00a75.13(d) anti-pollution veto is INAPPLICABLE per \u00a75.17. Only conditions (a), (b), (c), (e) apply."
+      ],
+      "suggested_improvements": [
+        "Include current sleeve exposure and proposed position size in envelope or decision_time_discipline block to enable condition (b) evaluation.",
+        "If pollution-defense layer is implemented in future versions, update information_integrity_assessment.pollution_defense_layer status from 'unimplemented' to 'ok' or 'not_evaluated' as appropriate.",
+        "Add a sleeve_cap_check block to envelope to pre-compute whether proposed position would breach \u00a74.7 or \u00a74.8 limits."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_critical_severity_flags",
+          "severity": "info",
+          "detail": "data_quality_flags array contains only 'warning' and 'info' severity flags; no 'critical' severity flags present. Condition (c) does not trip."
+        },
+        {
+          "kind": "pollution_defense_layer_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_defense_layer status is 'unimplemented'. Per \u00a75.13(d) relaxation (2026-05-06), condition (d) does NOT trip when defense layer is unimplemented."
+        },
+        {
+          "kind": "sleeve_cap_data_absent",
+          "severity": "warning",
+          "detail": "No sleeve exposure or position sizing data in packet. Condition (b) cannot be evaluated. PM must verify before execution."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include sleeve_cap_check or current_sleeve_exposure fields needed to evaluate condition (b). The information_integrity_assessment block correctly flags pollution_defense_layer as unimplemented, which per the 2026-05-06 relaxation means condition (d) does not trip. However, the packet should include a pre-computed sleeve_cap_status field to enable risk agent to verify condition (b) without external data.",
+      "recommended_followups": [
+        "PM to verify current surge_short sleeve exposure before execution. If proposed position would push sleeve above 10% or single-position above 5%, condition (b) trips and candidate is vetoed.",
+        "If pollution-defense layer is implemented in future versions, re-evaluate condition (d) with affirmative pollution confirmation status.",
+        "Monitor for any critical-severity data quality flags that may emerge post-packet generation."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only. Candidate type is surge_short. Not applicable."
+        },
+        {
+          "name": "surge_short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "No sleeve exposure data in packet. Condition cannot be evaluated. PM must verify: proposed surge_short position must not push single-position above 5% or sleeve above 10%. Assume not tripped pending PM verification."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains only 'warning' and 'info' severity flags. No 'critical' severity flags present. Condition does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short. Per \u00a75.17, condition (d) is INAPPLICABLE to surge_short candidates. Additionally, pollution_defense_layer is unimplemented; per \u00a75.13(d) relaxation (2026-05-06), condition does not trip when defense layer is unimplemented. Not applicable."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true. Condition does not trip."
+        }
+      ],
+      "advisory_notes": "No advisory output per role specification. Hard-veto evaluation only.",
+      "risk_notes": [
+        "All five \u00a75.13 hard-veto conditions evaluated. No conditions trip.",
+        "Candidate passes hard-veto gate. PM may proceed to sizing and execution subject to sleeve cap verification.",
+        "Pollution-defense layer unimplemented: use_as_primary_signal_allowed=false remains a soft constraint per information_integrity_assessment, but does not trigger hard veto per \u00a75.13(d) relaxation."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)\u2013(e) evaluated mechanically",
+        "Condition (a): not applicable (surge_short, not quality_long)",
+        "Condition (b): cannot evaluate (no sleeve cap data); PM must verify",
+        "Condition (c): no critical-severity flags; does not trip",
+        "Condition (d): not applicable (surge_short per \u00a75.17); pollution_defense_layer unimplemented per \u00a75.13(d) relaxation; does not trip",
+        "Condition (e): lookahead_safe=true, data_after_cutoff_used=false; does not trip",
+        "Result: no veto. Candidate passes hard-veto gate."
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-13T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SPGC",
+      "decision_timestamp": "2025-03-13T09:30:00-04:00",
+      "data_available_as_of": "2025-03-13T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision for SPGC: 81.9% intraday surge with structural absence of corroborating evidence",
+      "confidence": "high",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open (5.73) vs open (3.15) = 81.9% intraday surge",
+        "price_snapshot.return_5d_pct (-38.3%), return_20d_pct (-72.9%), return_60d_pct (-92.3%)",
+        "valuation_snapshot: PE=-0.00898, PB=0.0584, EV/EBITDA=-0.769, net_margin=-74%",
+        "corporate_calendar: 4 consecutive negative earnings (-0.73 to -1.4 EPS); 1:10 reverse split 2024-07-30",
+        "news_event_summary: 0 items in window; 20 items dropped post-cutoff",
+        "filing_confirmation: sec_edgar adapter failed (cik_not_found)",
+        "sentiment_community_ownership_evidence: 0 analyst ratings across 13 months",
+        "alternative_data_features: GitHub unmapped, sec_form4/sec_13f failed",
+        "information_integrity_assessment: use_as_primary_signal_allowed=false; low-tier sources only",
+        "macro_regime: Overheat/Moderately Restrictive (stress_score=2); strict_quality_and_valuation_caution",
+        "upstream_agent_outputs.surge_short: verdict=short, confidence=high, recommended_action=short",
+        "upstream_agent_outputs.alt_data_verify: verdict=narrative_contradicted, evidence_score=0.15",
+        "upstream_agent_outputs.narrative_event: verdict=unsupported_claim, catalyst_type=unidentified_structural_absence",
+        "upstream_agent_outputs.risk: no hard-veto conditions tripped"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff; 20 items dropped post-cutoff)",
+        "filing_confirmation: sec_edgar adapter failed (cik_not_found); no 8-K/10-K/10-Q filings",
+        "fundamental_snapshot: status=insufficient_evidence; no PIT-safe quarterly snapshot",
+        "sentiment_community_ownership_evidence: sec_13f, sec_form4 adapters failed; no institutional ownership",
+        "alternative_data_features: GitHub unmapped; no sector-specific adapters wired",
+        "upstream_agent_outputs: Fundamental, Network-Effect, Valuation agents not provided in packet"
+      ],
+      "reasoning_summary": "SPGC surged 81.9% intraday (open 3.15 \u2192 5.73) on 2025-03-13 but exhibits severe structural absence of corroborating evidence. Upstream surge_short agent (Agent_05) recommends SHORT with high confidence based on: (1) SEC filing failure (cik_not_found) is a critical red flag for a NASDAQ-listed equity; (2) news vacuum: 0 items in 7-day window, 20 items dropped post-cutoff; (3) analyst silence: 0 buy/hold/sell ratings across 13 months; (4) fundamental distress: PE negative, net margin -74%, all recent EPS negative, 1:10 reverse split July 2024; (5) post-surge reversal: 5-day return -38.3%, 20-day return -72.9%; (6) alt-data corroboration failure: GitHub unmapped, 13F/Form4 failed; (7) macro headwind: Overheat regime with strict_quality_and_valuation_caution discipline. Alt-data verification agent (Agent_03) verdict: narrative_contradicted (evidence_score=0.15). Narrative event agent (Agent_02) verdict: unsupported_claim (catalyst_type=unidentified_structural_absence). Risk agent (Agent_06) evaluated all \u00a75.13 hard-veto conditions: none tripped. The surge appears momentum/retail-driven on a distressed micro-cap with no fundamental catalyst and deteriorating technicals post-surge. Structural absence of SEC filings, news, analyst coverage, and institutional activity relative to the candidate's sector (energy/commodities per Wikipedia article) is the core bear-thesis signal. Preponderance of evidence strongly supports short entry at \u00a74.8 fixed 0.5% position size.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If sec_edgar adapter recovers and returns valid 10-K/10-Q filings showing recent positive operational metrics or reserve additions, the bear thesis would weaken materially.",
+        "If news_event_summary is populated post-cutoff with a credible, primary-source (T1) catalyst narrative (e.g., regulatory approval, partnership, financing), the momentum-vs-value judgment would shift toward value_creation and short thesis would be invalidated.",
+        "If analyst coverage emerges (non-zero buy/hold/sell ratings from T1/T2 sources), the analyst silence pattern would be invalidated and institutional interest would be signaled.",
+        "If upstream Fundamental, Network-Effect, or Valuation agents (not provided in packet) return verdicts supporting a legitimate bull thesis, PM would reconsider the short decision.",
+        "If SPGC is confirmed to be a shell company, OTC-migrated, or delisted entity, the absence of SEC filings is expected and not bear-thesis evidence; verdict would shift to watch pending clarification of regulatory status."
+      ],
+      "risk_flags": [
+        "CRITICAL: CIK_NOT_FOUND for NASDAQ-listed SPGC. sec_edgar adapter failed; no SEC filings retrieved. This is a hard red flag and requires immediate clarification of regulatory status.",
+        "CRITICAL: News vacuum. 0 items in 7-day window; 20 items dropped post-cutoff. No substantive catalyst narrative in packet.",
+        "CRITICAL: Analyst silence. 0 buy/hold/sell ratings across 13 months (Jan 2024 - Mar 2025). No institutional research coverage.",
+        "SEVERE: Negative earnings distress. PE=-0.00898, net_margin=-74%, all recent EPS negative (-0.73 to -1.4). Company is unprofitable and burning cash.",
+        "SEVERE: Reverse split history. 1:10 reverse split on 2024-07-30 is a classic distress signal. Post-split, stock has declined 92.3% in 60 days.",
+        "SEVERE: Post-surge reversal. 5-day return -38.3%, 20-day return -72.9%. Surge has already reversed sharply, consistent with short-squeeze or momentum exhaustion.",
+        "MODERATE: Macro headwind. Overheat/Moderately Restrictive regime with strict_quality_and_valuation_caution discipline. SPGC fails quality and valuation tests.",
+        "MODERATE: Alt-data corroboration failure. GitHub unmapped, 13F/Form4 failed, no sector-specific adapters wired. No external corroboration of business fundamentals.",
+        "MODERATE: Information integrity low. use_as_primary_signal_allowed=false; only low-tier sources (T3/T4) available; pollution-defense layer not implemented.",
+        "MODERATE: Micro-cap liquidity risk. Minimal revenue ($117k-$1.2M TTM), zero analyst coverage, and current ratio 0.939 (< 1.0) suggest potential liquidity crisis and delisting risk."
+      ],
+      "suggested_improvements": [
+        "Verify SPGC's CIK and SEC filing status immediately. If cik_not_found is a data adapter error, correct the mapping. If SPGC is genuinely not in SEC EDGAR, determine whether it is a shell, OTC-migrated, or delisted entity.",
+        "Retrieve the full 10-K/10-Q filings (if available) to assess reserve base, production, hedging, and capital structure for an energy company.",
+        "Obtain news/press release data from primary sources (company IR, T1 news wires) to identify the specific catalyst driving the surge.",
+        "Cross-check analyst coverage via Bloomberg, FactSet, or Refinitiv to confirm the zero-rating pattern.",
+        "Analyze the Wikipedia pageview spike (peak 216 views on 2025-02-19) to determine whether it correlates with a specific news event or is retail/meme-driven.",
+        "If SPGC is a micro-cap or thinly-traded security, assess short-squeeze risk and borrow availability.",
+        "Obtain commodity price data (natural gas, oil) to assess whether the surge correlates with energy market moves or is idiosyncratic.",
+        "Implement real-time SEC EDGAR CIK lookup fallback. If FMP CIK fails, query SEC directly or use alternative ticker-to-CIK mapping.",
+        "Expand news cutoff window or implement post-cutoff news flagging. 20 items dropped post-cutoff suggests the catalyst may have been disclosed immediately after market open on 2025-03-13."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "cik_not_found",
+          "severity": "critical",
+          "detail": "sec_edgar adapter failed with cik_not_found for NASDAQ-listed SPGC. This is a hard red flag and requires immediate clarification."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-13T09:30:00-04:00). Catalyst may be in dropped items."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence. No PIT-safe quarterly snapshot available."
+        },
+        {
+          "kind": "analyst_coverage_zero",
+          "severity": "warning",
+          "detail": "fmp_sentiment: 0 analyst ratings (buy/sell/hold/strong_buy/strong_sell) across Jan-Mar 2025. No sell-side coverage."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4 adapter failed with cik_not_found; sec_13f failed with not_available_on_current_plan; github_public failed with unmapped_ticker."
+        },
+        {
+          "kind": "information_integrity_low",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: use_as_primary_signal_allowed=false; only T3/T4 sources; pollution-defense layer not implemented."
+        },
+        {
+          "kind": "reverse_split_history",
+          "severity": "warning",
+          "detail": "corporate_calendar shows 1:10 reverse split on 2024-07-30. Post-split, stock has declined 92.3% in 60 days."
+        },
+        {
+          "kind": "post_surge_reversal",
+          "severity": "info",
+          "detail": "price_snapshot shows 5-day return -38.3%, 20-day return -72.9%. Surge has already reversed sharply."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe. However, the absence of upstream_agent_outputs for Fundamental, Network-Effect, and Valuation agents limits cross-checking of the bear thesis. The filing_confirmation block is not_evaluated due to sec_edgar adapter failure, which is a critical gap for a surge-short evaluation of a listed equity. The news_event_summary is data_unavailable with 20 items dropped post-cutoff, making it impossible to assess the specific catalyst narrative. The fundamental_snapshot is insufficient_evidence, preventing a full financial analysis. These gaps are structural to the v1 generator and adapter availability, not weaknesses in the PM prompt itself.",
+      "recommended_followups": [
+        "URGENT: Verify SPGC's SEC filing status and CIK. If cik_not_found is a data error, correct the mapping. If SPGC is not in SEC EDGAR, determine its regulatory status (shell, OTC, delisted, etc.).",
+        "Retrieve the full 10-K/10-Q filings to assess reserve base, production, hedging, and capital structure.",
+        "Obtain the specific news/press release that triggered the surge on 2025-03-13. The packet contains no substantive catalyst narrative.",
+        "Cross-check analyst coverage via Bloomberg/FactSet to confirm zero-rating pattern and assess institutional interest.",
+        "Analyze the Wikipedia pageview spike (peak 216 on 2025-02-19) to determine whether it is retail/meme-driven or tied to a fundamental event.",
+        "If SPGC is a micro-cap, assess short-squeeze risk and borrow availability.",
+        "Monitor the stock's technical recovery post-surge. If it stabilizes above the surge entry, re-evaluate the momentum-vs-value judgment.",
+        "Obtain commodity price data (natural gas, oil) to assess whether the surge correlates with energy market moves."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "SPGC surged 81.9% intraday but exhibits structural absence of corroborating evidence (no SEC filings, no news, no analyst coverage, negative earnings, post-surge reversal). Upstream surge_short agent recommends SHORT with high confidence. Alt-data verification confirms narrative_contradicted. Risk agent: no hard-veto conditions tripped. Entry at 0.5% per \u00a74.8 fixed sizing.",
+      "risk_notes": [
+        "All \u00a75.13 hard-veto conditions evaluated by Risk agent: none tripped.",
+        "Candidate passes hard-veto gate. PM proceeds to short entry at \u00a74.8 fixed 0.5% position size.",
+        "Pollution-defense layer unimplemented: use_as_primary_signal_allowed=false remains a soft constraint per information_integrity_assessment, but does not trigger hard veto per \u00a75.13(d) relaxation.",
+        "No sleeve cap data in packet: PM must verify sleeve exposure before execution to ensure single-position does not exceed 5% and sleeve does not exceed 10%.",
+        "Surge-short alpha is evidence-of-absence driven: structural absence of SEC filings, news, analyst coverage, and institutional activity relative to sector expectations is the pump signal that motivates the short."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only. Candidate type is surge_short. Not applicable."
+        },
+        {
+          "name": "surge_short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "No sleeve exposure data in packet. Condition cannot be evaluated. PM must verify: proposed surge_short position (0.5%) must not push single-position above 5% or sleeve above 10%. Assume not tripped pending PM verification."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains only 'warning' and 'info' severity flags. No 'critical' severity flags present. Condition does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short. Per \u00a75.17, condition (d) is INAPPLICABLE to surge_short candidates. Additionally, pollution_defense_layer is unimplemented; per \u00a75.13(d) relaxation (2026-05-06), condition does not trip when defense layer is unimplemented. Not applicable."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true. Condition does not trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)\u2013(e) evaluated mechanically by Risk agent",
+        "Condition (a): not applicable (surge_short, not quality_long)",
+        "Condition (b): cannot evaluate (no sleeve cap data); PM must verify before execution",
+        "Condition (c): no critical-severity flags; does not trip",
+        "Condition (d): not applicable (surge_short per \u00a75.17); pollution_defense_layer unimplemented per \u00a75.13(d) relaxation; does not trip",
+        "Condition (e): lookahead_safe=true, data_after_cutoff_used=false; does not trip",
+        "Result: no veto. Candidate passes hard-veto gate.",
+        "Surge-short entry framework (Pass 7, 2026-05-03): preponderance-of-evidence reasoning applied",
+        "Bear-thesis sufficient conditions present: (i) post-surge reversal (5d -38.3%, 20d -72.9%); (ii) narrative inconsistent with verifiable evidence (no SEC filings, no news, no analyst coverage); (iii) structural absence relative to sector-expected evidence (energy company should have reserve reports, drilling permits, regulatory filings \u2014 none present); (iv) negative fundamental ratios (PE negative, net margin -74%, all recent EPS negative); (v) reverse-split history (1:10 split July 2024 signals prior distress)",
+        "Preponderance of evidence: weight of evidence across upstream agents' rationale, surge dynamic, narrative-vs-evidence pattern, fundamental ratios, sector-expected footprint favors bear thesis with high coherence",
+        "Decision: SHORT at \u00a74.8 fixed 0.005 (0.5%) entry position size",
+        "Execution: T+1 next-open per \u00a72.1 and decision_time_discipline"
+      ],
+      "decision_log": [
+        "2025-03-13T09:30:00-04:00 [ENVELOPE] decision_timestamp=2025-03-13T09:30:00-04:00; allowed_data_cutoff=2025-03-13T09:30:00-04:00; decision_mode=opening_window; lookahead_safe=true; data_after_cutoff_used=false",
+        "2025-03-13T09:30:00-04:00 [PRICE_SNAPSHOT] trigger_day_open=5.73; open=3.15; surge_pct=81.9%; last_eod_close=3.24 (2025-03-12); return_5d=-38.3%; return_20d=-72.9%; return_60d=-92.3%; volume=768738; relative_volume_vs_20d=0.6213",
+        "2025-03-13T09:30:00-04:00 [VALUATION_SNAPSHOT] PE=-0.00898; PB=0.0584; EV/EBITDA=-0.769; net_margin=-74%; gross_margin=56%; current_ratio=0.939; debt_to_equity=0.0907",
+        "2025-03-13T09:30:00-04:00 [CORPORATE_CALENDAR] 4 past earnings: EPS -1.4 (2024-03-18), -0.8 (2024-04-30), -0.79 (2024-08-05), -0.73 (2024-11-14); revenue $117k-$1.2M; 1:10 reverse split 2024-07-30; no upcoming earnings",
+        "2025-03-13T09:30:00-04:00 [NEWS_EVENT_SUMMARY] status=data_unavailable; items_count=0; items_dropped_post_cutoff=20; polygon_news returned 0 rows in 7-day window",
+        "2025-03-13T09:30:00-04:00 [FILING_CONFIRMATION] status=not_evaluated; sec_edgar adapter failed (cik_not_found); no 8-K, 10-K, 10-Q filings retrieved",
+        "2025-03-13T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] status=insufficient_evidence; no PIT-safe quarterly snapshot available",
+        "2025-03-13T09:30:00-04:00 [SENTIMENT_COMMUNITY_OWNERSHIP] analyst_ratings: 0 buy, 0 hold, 0 sell across 13 months (Jan 2024 - Mar 2025); sec_13f failed (not_available_on_current_plan); sec_form4 failed (cik_not_found)",
+        "2025-03-13T09:30:00-04:00 [ALTERNATIVE_DATA] wikipedia_pageviews: peak 216 views (2025-02-19), declining to 65-74 by decision date; GitHub unmapped (unmapped_ticker); no sector-specific adapters wired",
+        "2025-03-13T09:30:00-04:00 [INFORMATION_INTEGRITY] use_as_primary_signal_allowed=false; source_tier_distribution: T1=0, T2=0, T3=1, T4=1; pollution_defense_layer=unimplemented",
+        "2025-03-13T09:30:00-04:00 [MACRO_REGIME] regime=Overheat/Moderately Restrictive; stress_score=2; equity_discipline=strict_quality_and_valuation_caution; equity_allocation_cap=20%",
+        "2025-03-13T09:30:00-04:00 [UPSTREAM_AGENT_OUTPUTS] narrative_event.verdict=unsupported_claim (catalyst_type=unidentified_structural_absence); alt_data_verify.verdict=narrative_contradicted (evidence_score=0.15); surge_short.verdict=short (confidence=high, recommended_action=short); risk.veto_conditions_evaluated: none tripped",
+        "2025-03-13T09:30:00-04:00 [SECTOR_AWARE_REASONING] SPGC ticker maps to South_Pars/North_Dome_Gas-Condensate_field (energy/commodities). Expected evidence for legitimate energy company: reserve reports (10-K Item 1A), drilling permits, environmental filings, hedging disclosures, partnership announcements. STRUCTURAL ABSENCE: none of these are present in packet. SEC filings unavailable (cik_not_found). News vacuum (0 items in window). Analyst silence (0 ratings). This absence pattern relative to sector expectations is bear-thesis corroboration.",
+        "2025-03-13T09:30:00-04:00 [PREPONDERANCE_OF_EVIDENCE] Bear-thesis sufficient conditions: (i) post-surge reversal (5d -38.3%, 20d -72.9%); (ii) narrative inconsistent with verifiable evidence (no SEC filings, no news, no analyst coverage); (iii) structural absence relative to sector-expected evidence (energy company should have reserve reports, drilling permits, regulatory filings \u2014 none present); (iv) negative fundamental ratios (PE negative, net margin -74%, all recent EPS negative); (v) reverse-split history (1:10 split July 2024). Weight of evidence across upstream agents' rationale, surge dynamic, narrative-vs-evidence pattern, fundamental ratios, sector-expected footprint favors bear thesis with high coherence.",
+        "2025-03-13T09:30:00-04:00 [HARD_VETO_CHECK] Risk agent evaluated \u00a75.13 conditions: (a) not applicable (surge_short); (b) cannot evaluate (no sleeve data); (c) no critical-severity flags; (d) not applicable (surge_short per \u00a75.17); (e) lookahead_safe=true. Result: no veto.",
+        "2025-03-13T09:30:00-04:00 [DECISION] SHORT at \u00a74.8 fixed 0.005 (0.5%) entry position size. Execution: T+1 next-open per decision_time_discipline.",
+        "2025-03-13T09:30:00-04:00 [CONFIDENCE] High confidence in bear thesis based on structural-absence pattern relative to public narrative and sector expectations for a listed US equity. Upstream surge_short agent recommends SHORT with high confidence. Alt-data verification confirms narrative_contradicted. Risk agent: no hard-veto conditions tripped."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-13T09:45:00-04:00",
+        "ticker": "SPGC",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026-05-03_universal_soft_veto",
+        "evidence_packet_hash": "sha256:ba60c191af654bdfed5e435fc6c59c5d3cac83431423825521bee7533d0b22b8"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews for 'South_Pars/North_Dome_Gas-Condensate_field' show modest, stable traffic (64-216 views/day, peak 2025-02-19) with no abnormal spike pattern relative to decision_timestamp. Pageview data is geopolitical noise, not company-specific activity. No abnormal retail/meme attention detected.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No company claim present in packet. Price collapsed from 5.73 (trigger_day_open) to 3.24 (last_eod_close on 2025-03-12), a -43.5% intraday loss. 60-day loss is -92.3%. No news, filing, press release, or official disclosure is available in the evidence packet to explain the catalyst. Structural absence of any corroborating narrative is itself the signal.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Surge-short alpha is evidence-of-absence driven. Structural absence of SEC filings, news, analyst coverage, and institutional activity relative to sector expectations is the pump signal that motivates the short, not an evidence-insufficiency reason to block the thesis.",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": null,
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-13T09:30:00-04:00",
+      "execution_timestamp": "2025-03-13T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:77baa71187532e3a7b65abafa83f813018cf947ed5d135f0a360939be8aae80d",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

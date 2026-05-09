@@ -1,0 +1,1143 @@
+{
+  "trigger_id": "0839529c5174",
+  "ticker": "GV",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-06T09:30:00-05:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 195.56,
+  "trigger_cost_usd": 0.225978,
+  "cumulative_cost_usd": 2.114135,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "GV",
+    "name": "GV",
+    "close": 4.89,
+    "prior_close": 3.695,
+    "change": 2.395,
+    "change_pct": 64.81732070365359,
+    "volume": 135249439.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-06",
+    "prior_trading_day": "2025-03-05",
+    "available_as_of": "2025-03-06T16:00:00-05:00",
+    "today_open": 6.09,
+    "today_volume": 135249439.0,
+    "eps_ttm": -1.5789,
+    "operating_margin_ttm": -6.8448709500149345,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-09-29 20:00:00",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:b63bd43a31a6b3187578d47b322a09b23fb3c86555ffcf01674ad761cd059207",
+  "locked_decision_id": "sha256:f55c15455fd1ef839a2dcb2b73ffb7382f08d21f02d82edbc54886e992cd16f5",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026-05-03_pm_agent_v1",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "GV",
+    "decision_timestamp": "2025-03-06T09:30:00-05:00",
+    "data_available_as_of": "2025-03-06T09:30:00-05:00",
+    "decision_or_assessment": "Surge-short entry decision for GV: 186% 5-day surge with structural absence of corroborating catalyst evidence",
+    "confidence": "high",
+    "evidence_used": [
+      "price_snapshot.return_5d_pct (153.4%)",
+      "price_snapshot.trigger_day_open ($6.09 vs prior_close $1.29 = 373% gap)",
+      "price_snapshot.volume (188M shares, 19.5x 20d avg)",
+      "fundamental_snapshot.net_margin_pct_ttm (-175.69%)",
+      "fundamental_snapshot.eps (-1.59 most recent quarter)",
+      "fundamental_snapshot.current_ratio_ttm (0.066 \u2014 severe liquidity stress)",
+      "fundamental_snapshot.gross_margin_pct_ttm (-25.6% \u2014 negative gross margin)",
+      "valuation_snapshot.pe_ratio (negative)",
+      "valuation_snapshot.debt_to_equity_ttm (9.46)",
+      "corporate_calendar.earnings (Q2 2024: -$1.72 EPS, Q1 2024: -$0.88 EPS)",
+      "corporate_calendar.splits (1:15 reverse split May 2024 \u2014 distress signal)",
+      "news_event_summary.items_count (0 items <= cutoff; 20 dropped post-cutoff)",
+      "filing_confirmation.sec_edgar (0 8-K filings in 90 days)",
+      "alternative_data_features.wikipedia_pageviews (13 views on decision day; baseline 8-27; no spike)",
+      "alternative_data_features.github_public (unmapped_ticker \u2014 no developer footprint)",
+      "sentiment_community_ownership_evidence.sec_form4 (0 insider transactions in 90 days)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (all endpoints empty or unavailable)",
+      "information_integrity_assessment (low_tier_only; uncorroborated)",
+      "macro_regime (Overheat / Moderately Restrictive; strict_quality_and_valuation_caution)",
+      "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+      "upstream_agent_outputs.alt_data_verify.verdict (narrative_contradicted)",
+      "upstream_agent_outputs.surge_short.recommended_action (short)",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (all pass; no hard veto tripped)"
+    ],
+    "evidence_missing": [
+      "news_event_summary.items (0 items; 20 dropped post-cutoff \u2014 cannot assess specific catalyst narrative)",
+      "filing_confirmation.SEC_8K_confirmation (null \u2014 no 8-K to corroborate public event)",
+      "sentiment_community_ownership_evidence.institutional_ownership_pct (not_evaluated)",
+      "sentiment_community_ownership_evidence.hedge_fund_holder_count (not_evaluated)",
+      "narrative_price_gap_assessment (not_evaluated \u2014 agent_internal_pending)"
+    ],
+    "reasoning_summary": "GV surged 186% in 5 days (373% intraday gap on 3/6 open) on 19.5x volume. Upstream agents (Narrative, Alt-Data Verify, Surge-Short) converge on a strong bear thesis: structural absence of corroborating catalyst evidence relative to the magnitude of the move. Fundamental deterioration is severe: TTM net margin -175.69%, gross margin -25.6% (negative), current ratio 0.066 (liquidity crisis), debt/equity 9.46x, EPS negative for last 2 quarters. No SEC 8-K filings in 90 days despite the move \u2014 a listed company with a real catalyst would file. No news items in 7-day window (20 items dropped post-cutoff). No insider buying (Form 4 = 0 in 90 days). No institutional positioning data. Alternative data silent: Wikipedia pageviews flat (13 views on decision day vs 8-27 baseline); GitHub unmapped; FMP sentiment endpoints empty; no retail meme attention detected. Reverse split (May 2024) is a classic distress signal. Information integrity assessment: low-tier sources only, uncorroborated. Macro regime is Overheat / Moderately Restrictive with strict_quality_and_valuation_caution discipline \u2014 GV fails all quality gates. The surge appears to be momentum/retail attention on a distressed micro-cap, not value creation. Structural absence of hard-to-fake corroboration (news, filings, insider activity, institutional positioning) relative to the narrative magnitude is the core bear-thesis signal per \u00a713.6 SOFT_REASONING and the asymmetric absence rule. Risk agent confirms no hard-veto conditions tripped. Surge-short entry at $3.70 (last_eod_close 3/5) is warranted at 0.5% initial position per \u00a74.8.",
+    "uncertainty": "low",
+    "invalidation_conditions": [
+      "If a material SEC 8-K or press release emerges post-decision confirming a legitimate M&A, partnership, or product launch that explains the surge, the bear thesis weakens.",
+      "If institutional 13F filings show significant new positions in GV post-decision, momentum may have real backing.",
+      "If subsequent earnings or guidance materially improve margins and cash flow, the fundamental deterioration narrative may be outdated.",
+      "If insider Form 4 filings show CEO/CFO buying at current levels, confidence in the short thesis would decline.",
+      "If price sustains above $5 with positive news catalyst and volume remains elevated, cover decision would be triggered."
+    ],
+    "risk_flags": [
+      "Micro-cap liquidity: 188M shares traded on 3/6 (19.5x avg); potential for short squeeze if borrow availability tightens.",
+      "Reverse split history (1:15 in May 2024) suggests prior distress; stock may be subject to delisting risk if price falls below $1.",
+      "Negative working capital (current ratio 0.066) indicates potential covenant breach or forced liquidation risk; bankruptcy risk is material.",
+      "High debt/equity (9.46x) with negative cash flow; refinancing risk is acute.",
+      "Macro regime: Overheat / Moderately Restrictive (stress_score=2); equity_discipline=strict_quality_and_valuation_caution \u2014 GV fails all quality gates.",
+      "No news corroboration within cutoff window; narrative may be retail-driven meme momentum rather than fundamental catalyst.",
+      "Structural absence of hard-to-fake signals (news, filings, insider activity, institutional positioning) is the primary bear-thesis evidence."
+    ],
+    "suggested_improvements": [
+      "Monitor Form 4 filings for insider activity in the 5 trading days post-decision; absence of insider buying would further support the short thesis.",
+      "Track borrow availability and short-squeeze risk via real-time borrow-cost and shares-available feeds (note: architectural gaps per \u00a75.16).",
+      "Assess whether the surge is driven by retail social-media attention (Reddit, StockTwits) rather than institutional positioning; sentiment data currently unavailable.",
+      "Monitor for follow-up news/filings on 3/6 and 3/7 to assess whether the move is sustained or reverses.",
+      "If price reaches 2x entry ($7.40), evaluate add-on trigger per \u00a74.8 pyramid rules."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "critical",
+        "detail": "20 news items dropped because publishedDate > cutoff; cannot assess the specific catalyst narrative that drove the surge."
+      },
+      {
+        "kind": "no_recent_8k",
+        "severity": "critical",
+        "detail": "sec_edgar: no 8-K filings in last 90 days for GV \u2014 structural absence relative to the magnitude of the move."
+      },
+      {
+        "kind": "no_recent_form4",
+        "severity": "warning",
+        "detail": "sec_form4: no Form 4 transactions in last 90 days \u2014 no insider buying to support the narrative."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "adapter=github_public error_class=unmapped_ticker \u2014 no developer footprint available."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty \u2014 no sentiment data available."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "adapter=sec_13f error_class=not_available_on_current_plan \u2014 no institutional positioning data."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The narrative_price_gap_assessment block is not_evaluated (agent_internal_pending); upstream Agent 03 verdict on the catalyst narrative is not available in this packet. The news_event_summary block has 0 items <= cutoff, making it impossible to assess the specific claim driving the surge. The information_integrity_assessment is a placeholder in v1 and does not provide credibility scoring. These gaps are structural to the v1 schema and do not prevent the surge_short agent from reasoning under \u00a713.6 SOFT_REASONING \u2014 the absence of corroborating evidence IS the signal.",
+    "recommended_followups": [
+      "Monitor GV for SEC filings in the 5 trading days post-decision (3/6\u20133/13); if no 8-K emerges, the structural-absence signal strengthens.",
+      "Track short-squeeze risk via borrow-cost and shares-available feeds (architectural gap; cannot be fetched by v0.8.7).",
+      "If the short thesis is entered, set a hard stop-loss at 2x entry price (per \u00a74.8 allow_add trigger) and monitor for invalidation conditions.",
+      "Monitor price action and volume profile: declining volume on price hold = exhaustion (bear signal); rising volume + price expansion = renewed surge (cover risk).",
+      "Cross-reference Wikipedia pageviews with Reddit/Twitter mentions to detect meme-stock community activity post-decision."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "GV exhibits 186% 5-day surge with 373% intraday gap on 19.5x volume, but structural absence of corroborating catalyst evidence (no news, no 8-K filings, no insider buying, no institutional positioning, no sentiment data) contradicts the narrative magnitude. Fundamentals severely distressed: -175.69% net margin, -25.6% gross margin, 0.066 current ratio, 9.46x debt/equity, negative EPS. Reverse split (May 2024) signals distress. Macro regime strict_quality_and_valuation_caution; GV fails all quality gates. Bear thesis: momentum/retail attention on distressed micro-cap, not value creation. Upstream agents converge: Narrative=unsupported_claim, Alt-Data=narrative_contradicted, Surge-Short=short recommended. Risk agent confirms no hard-veto conditions tripped. Entry at $3.70 (last_eod_close 3/5) at 0.5% initial position per \u00a74.8.",
+    "risk_notes": [
+      "Micro-cap liquidity risk: 188M shares traded on 3/6 (19.5x avg); potential for short squeeze if borrow availability tightens.",
+      "Bankruptcy risk material: current_ratio=0.066, debt/equity=9.46x, negative cash flow.",
+      "Reverse split (May 2024) is distress signal; delisting risk if price falls below $1.",
+      "Structural absence of hard-to-fake signals is the primary bear-thesis evidence.",
+      "No hard-veto conditions tripped per Risk agent evaluation.",
+      "Sleeve cap headroom: 10.0% available; position 0.5% < 5% single-position cap."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "\u00a73.7/\u00a73.8 long entry equity cap: N/A for surge_short candidate. Condition (a) applies to quality_long only."
+      },
+      {
+        "name": "short_position_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "\u00a72 short entry caps: Proposed surge_short position 0.5% (per \u00a74.8 initial_position_pct). Single-position cap \u00a74.8 = 5%; sleeve cap = 10%. 0.5% < 5% and sleeve exposure remaining = 10.0%. No breach."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags[*].severity: Flags present are 'critical', 'warning', 'info' only. No mechanical fail-close on critical flags per universal soft-veto principle; critical flags are ADVISORY. Condition (c) not tripped."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "\u00a75.13(d) RELAXED 2026-05-06: INAPPLICABLE to candidate_type=surge_short per \u00a75.17. Condition (d) exempted for this candidate. Information integrity assessment shows pollution_defense_layer='unimplemented' (not affirmatively confirmed pollution); fail-closed semantics preserved but veto does not trip for surge_short."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "Lookahead safety: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. Condition (e) not tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto evaluation for surge_short candidate GV",
+      "\u00a75.13(a) equity-cap check: N/A (surge_short)",
+      "\u00a75.13(b) short-cap check: 0.5% < 5% single-position cap; sleeve 10.0% available",
+      "\u00a75.13(c) critical-flag check: critical flags present but ADVISORY per universal soft-veto principle; no mechanical fail-close",
+      "\u00a75.13(d) pollution veto: exempted for surge_short per \u00a75.17; pollution_defense_layer unimplemented",
+      "\u00a75.13(e) lookahead veto: data_after_cutoff_used=false, lookahead_safe=true",
+      "RESULT: PASS \u2014 no hard-veto conditions tripped",
+      "Upstream agent convergence: Narrative=unsupported_claim, Alt-Data=narrative_contradicted, Surge-Short=short recommended",
+      "Preponderance-of-evidence reasoning: structural absence of corroboration + fundamental deterioration + reverse split + macro headwind = strong bear thesis",
+      "Decision: SHORT at 0.5% initial position per \u00a74.8"
+    ],
+    "decision_log": [
+      "2025-03-06T09:30:00-05:00 | ENVELOPE CHECK: data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[] \u2014 PIT discipline satisfied",
+      "2025-03-06T09:30:00-05:00 | CANDIDATE TYPE: surge_short per upstream Agent 05 output",
+      "2025-03-06T09:30:00-05:00 | HARD-VETO EVALUATION: \u00a75.13(a)-(e) all pass; no mechanical veto tripped",
+      "2025-03-06T09:30:00-05:00 | UPSTREAM AGENT SYNTHESIS: Narrative Agent verdict=unsupported_claim (no identifiable catalyst, structural absence of corroboration); Alt-Data Agent verdict=narrative_contradicted (Wikipedia flat, no news, no filings, no insider activity, no sentiment); Surge-Short Agent verdict=short recommended (bear thesis valid, evidence sufficient)",
+      "2025-03-06T09:30:00-05:00 | PRICE ACTION ANALYSIS: 5-day return 153.4%, trigger_day_open $6.09 vs prior_close $1.29 (373% gap), volume 188M (19.5x 20d avg) \u2014 extreme surge magnitude",
+      "2025-03-06T09:30:00-05:00 | FUNDAMENTAL ANALYSIS: net_margin -175.69%, gross_margin -25.6% (negative), current_ratio 0.066 (liquidity crisis), debt/equity 9.46x, EPS -1.59 (Q2 2024), -0.88 (Q1 2024) \u2014 severe deterioration",
+      "2025-03-06T09:30:00-05:00 | CATALYST CORROBORATION: news_event_summary.items=0 (20 dropped post-cutoff), filing_confirmation.sec_edgar=0 8-K in 90 days, sec_form4=0 insider transactions in 90 days, fmp_sentiment=all endpoints empty, sec_13f=unavailable \u2014 structural absence of hard-to-fake signals",
+      "2025-03-06T09:30:00-05:00 | ALTERNATIVE DATA: wikipedia_pageviews=13 views on decision day (baseline 8-27, no spike), github_public=unmapped_ticker (no developer footprint), sentiment=not_evaluated, ownership=not_evaluated \u2014 no corroboration",
+      "2025-03-06T09:30:00-05:00 | DISTRESS SIGNALS: reverse split 1:15 (May 2024) \u2014 classic distress indicator; negative working capital; high leverage; negative cash flow",
+      "2025-03-06T09:30:00-05:00 | MACRO REGIME: Overheat / Moderately Restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution \u2014 GV fails all quality gates",
+      "2025-03-06T09:30:00-05:00 | INFORMATION INTEGRITY: low_tier_only (T3=1, T1=0, T2=0), uncorroborated, use_as_primary_signal_allowed=false \u2014 pollution risk high",
+      "2025-03-06T09:30:00-05:00 | PREPONDERANCE-OF-EVIDENCE REASONING: Structural absence of corroboration (news, filings, insider activity, institutional positioning, sentiment) relative to 186% surge magnitude is the core bear-thesis signal per \u00a713.6 SOFT_REASONING and asymmetric absence rule. Fundamental deterioration (negative margins, liquidity crisis, high leverage) supports the bear thesis. Reverse split signals distress. Macro regime headwind. Upstream agents converge on unsupported_claim / narrative_contradicted / short recommended. No hard-veto conditions tripped. Confidence in bear thesis is HIGH.",
+      "2025-03-06T09:30:00-05:00 | POSITION SIZING: \u00a74.8 surge_short entry = 0.005 (0.5%) fixed. Sleeve cap headroom = 10.0% available. Single-position cap = 5%. No breach.",
+      "2025-03-06T09:30:00-05:00 | EXECUTION PLAN: T+1 next-open, sell_to_open, 0.5% position size",
+      "2025-03-06T09:30:00-05:00 | DECISION: SHORT at 0.5% initial position per \u00a74.8. Entry price $3.70 (last_eod_close 3/5). Hard stop-loss at 2x entry ($7.40) per \u00a74.8 allow_add trigger. Monitor for invalidation conditions (SEC 8-K, institutional 13F, earnings surprise, insider buying, sustained price above $5 with positive catalyst)."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-06T09:45:00-05:00",
+      "ticker": "GV",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026-05-03_pm_agent_v1",
+      "evidence_packet_hash": "sha256:935884f8670198e0b3995ee1be4c02e66e34e67e6ccc28c3c0d56df0168cb3d6"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews baseline 8-27 views/day; decision-day views=13 (no spike). No meme-stock community attention detected. Retail-driven volume (19.5x) without institutional or operational catalyst suggests momentum play, not community-backed thesis.",
+    "meme_or_retail_attention_warning": "elevated",
+    "source_reliability_adjustment": "dismiss",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No identifiable company claim or catalyst in the evidence packet. The price surge (153% in 5 days, 19.5x volume) is UNACCOMPANIED by news, SEC filing, insider activity, or alternative-data corroboration. The structural absence of expected catalyst evidence is the primary signal.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Surge-short alpha is evidence-of-absence driven per \u00a75.17. The absence of corroborating catalyst evidence (news, filings, insider activity, institutional positioning, sentiment) relative to the magnitude of the move IS the bear thesis, not a reason to block the decision.",
+    "sentiment_risk_adjustment_note": "FMP sentiment endpoints all empty or unavailable. No sentiment data available to assess coordinated campaign or retail attention. Absence of sentiment corroboration is consistent with retail-driven momentum without institutional backing.",
+    "ownership_risk_adjustment_note": "SEC 13F unavailable (not_available_on_current_plan). No institutional ownership data. Absence of institutional positioning data is consistent with retail-driven move.",
+    "crowding_risk_flag": "high",
+    "squeeze_risk_flag": "medium",
+    "institutional_sponsorship_note": "No institutional positioning data available. Absence of 13F filings and Form 4 insider buying suggests lack of institutional or insider sponsorship. Retail-driven volume without institutional backing.",
+    "smart_money_benchmark_note": "No smart-money signals detected. Zero Form 4 insider transactions in 90 days. No institutional 13F positioning data. Absence of smart-money support is consistent with momentum/meme-stock pattern.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-06T09:30:00-05:00",
+    "execution_timestamp": "2025-03-06T09:45:00-05:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:fd522a3e6ce04c7b0590f69f525e9617c14c5c1c1a9464a07caf3a19f6a5f1d7",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": 6.0,
+    "score_components": {
+      "narrative_vague_fabricated": 2.0,
+      "alt_data_contradicts": 2.0,
+      "expected_blocks_absent": 2.0,
+      "fundamental_support": 0.0
+    },
+    "score_threshold_band": "mandatory_short",
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_narrative_agent_v2",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GV",
+      "decision_timestamp": "2025-03-06T09:30:00-05:00",
+      "data_available_as_of": "2025-03-06T09:30:00-05:00",
+      "decision_or_assessment": "catalyst_classification_and_narrative_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.volume",
+        "news_event_summary.status",
+        "news_event_summary.items_count",
+        "news_event_summary.items_dropped_post_cutoff",
+        "filing_confirmation.status",
+        "filing_confirmation.SEC_8K_confirmation",
+        "corporate_calendar.events_near_decision",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "fundamental_snapshot.snapshot_quarter",
+        "valuation_snapshot.valuation_inputs"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "news_event_summary.items (all dropped post-cutoff)",
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_date",
+        "sentiment_community_ownership_evidence (not_evaluated)",
+        "fmp_sentiment (data_unavailable)",
+        "information_integrity_assessment.claim_summary",
+        "information_integrity_assessment.primary_source_found",
+        "press_release_confirmation",
+        "earnings_call_confirmation"
+      ],
+      "reasoning_summary": "GV exhibits a 153.4% 5-day return with 19.5x relative volume spike (188M shares vs 9.7M 20d avg) on 2025-03-05, triggering opening-window analysis at 2025-03-06 09:30 ET. However, the evidence packet reveals a CRITICAL STRUCTURAL ABSENCE: news_event_summary.status='data_unavailable' with 20 items dropped post-cutoff, filing_confirmation.status='not_evaluated' with no 8-K rows, and polygon_news returning 0 rows in the 7-day lookback window. This absence pattern is ASYMMETRIC and INFORMATIVE for a surge_short candidate. The company's sector and business model cannot be inferred from the packet (no fundamental_snapshot.sector field, no 10-K Item 1 business description in packet). Valuation metrics show distress: PE=-0.047, PB=0.144, EV/EBITDA=-5.69, net_margin=-314%, debt_to_equity=9.46, current_ratio=0.066. Most recent earnings (2024-11-21) reported EPS=-1.72 and revenue=$3.3M. The 1:15 stock split on 2024-05-29 preceded this move. Wikipedia pageviews show baseline 8-27 views/day with no spike pattern (peak 27 views on 2025-02-08, then decay to 8-13 views by decision date). No GitHub activity (unmapped_ticker). No Form 4 insider transactions in 90 days. No FMP sentiment data. The price surge is UNACCOMPANIED by any corroborating news, filing, or alternative-data signal that would be expected for a legitimate catalyst in this company's sector. The structural absence of news/filing/sentiment evidence RELATIVE TO the magnitude of the price move is the primary bear-thesis signal. This is consistent with a momentum/technical spike without fundamental catalyst, or a potential pump-and-dump pattern. The company is deeply unprofitable, highly leveraged, and illiquid (current_ratio=0.066 suggests solvency stress). Absence of corroboration is NOT a data gap \u2014 it is a SIGNAL that the move lacks a concrete, verifiable catalyst.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a material news event or SEC filing dated 2025-03-05 or earlier is discovered post-analysis, the 'no catalyst' verdict would be invalidated.",
+        "If insider buying or Form 4 activity on 2025-03-05 or earlier is confirmed, the momentum-only thesis weakens.",
+        "If alternative-data sources (GitHub, sentiment, ownership) show abnormal activity on 2025-03-05 or earlier, the absence pattern is broken.",
+        "If the company announces a concrete acquisition, partnership, or financing deal with specific terms and counterparty, the vague-narrative flag is downgraded.",
+        "If earnings surprise or guidance revision is confirmed for Q2 2024 (filed 2024-09-29), the negative EPS may be recontextualized."
+      ],
+      "risk_flags": [
+        "CRITICAL: No news corroboration for 153% 5-day surge. news_event_summary.items_count=0 with 20 items dropped post-cutoff.",
+        "CRITICAL: No SEC filing corroboration. filing_confirmation.status='not_evaluated', no 8-K in last 90 days.",
+        "CRITICAL: Structural absence of expected catalyst evidence (news, filing, insider activity, sentiment) relative to price magnitude is bear-thesis signal.",
+        "Company is deeply unprofitable: net_margin=-314%, EPS=-1.72 (Q2 2024), operating_income=-$169k.",
+        "Extreme leverage: debt_to_equity=9.46, total_debt=$63.5M vs total_equity=$13.4M.",
+        "Liquidity stress: current_ratio=0.066 (critically low), suggests solvency risk.",
+        "No insider support: zero Form 4 transactions in 90 days, no CEO/CFO activity.",
+        "No retail/community attention: Wikipedia pageviews baseline 8-27 views/day, no spike pattern.",
+        "No developer/tech community: GitHub unmapped_ticker, no alternative-data tech activity.",
+        "Macro regime: Overheat / Moderately Restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution \u2014 GV fails quality test.",
+        "Recent 1:15 reverse split (2024-05-29) may indicate distress or consolidation.",
+        "Volume spike (19.5x) without news is consistent with technical/momentum play or potential manipulation."
+      ],
+      "suggested_improvements": [
+        "Obtain real-time news feed for 2025-03-05 market hours (09:30-16:00 ET) to identify any breaking news, press release, or social-media catalyst that may have triggered the move.",
+        "Query SEC EDGAR directly for 8-K, 4, or other filings dated 2025-03-05 or 2025-03-06 (pre-market).",
+        "Cross-check with Polygon News, MarketWatch, Seeking Alpha, and Yahoo Finance for any articles published 2025-03-05 or earlier.",
+        "Retrieve insider Form 4 filings for officers/directors dated 2025-03-05 or earlier.",
+        "Analyze intraday price/volume profile (minute-by-minute) to identify the exact time of the surge and correlate with news timestamps.",
+        "Check for short-squeeze indicators: borrow availability, short interest, days-to-cover.",
+        "Verify company sector and business model from latest 10-K or 10-Q to apply sector-specific alternative-data adapters.",
+        "Retrieve company press releases directly from investor relations website for 2025-03-05 or earlier.",
+        "Check for earnings surprise or guidance revision that may have been announced pre-market on 2025-03-06.",
+        "Analyze social media (Twitter/X, StockTwits, Reddit) for coordinated pump activity or meme-stock attention."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > cutoff; no items remain for analysis. This is the PRIMARY evidence gap."
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "critical",
+          "detail": "sec_edgar: no 8-K filings in last 90 days for GV. No material event disclosure available."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "polygon_news: 0 items in [2025-02-27, 2025-03-06] for GV. No alternative news source corroboration."
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: no Form 4 transactions accepted on or before 2025-03-06 in last 90 days for GV. No insider buying support."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker \u2014 no tech/developer activity available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty \u2014 no sentiment data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan \u2014 no institutional ownership data."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios_ttm flagged not_PIT_safe; metrics are stale and not anchored to decision date."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close (2025-03-05 16:15) used for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's news_event_summary block is the critical failure point: 20 items were dropped post-cutoff, leaving 0 items for analysis. This is a SCHEMA DESIGN ISSUE \u2014 the packet should either (a) include pre-cutoff news items in the items[] array, or (b) explicitly flag that the cutoff window (09:30 ET on 2025-03-06) is too early to capture news published on 2025-03-05 market hours. The opening_window decision mode (first 10 minutes of trading) is incompatible with news-driven catalyst analysis when the news feed is filtered to pre-market only. Additionally, the information_integrity_assessment block is marked 'insufficient_evidence' with use_as_primary_signal_allowed=false, but no alternative narrative-verification mechanism is wired. The agent is left with ONLY price/volume/valuation data and no news/filing/sentiment corroboration. This is a structural gap in the v1 schema for surge_short candidates, where absence of corroboration is precisely the signal.",
+      "recommended_followups": [
+        "URGENT: Retrieve full news feed for 2025-03-05 (market hours 09:30-16:00 ET) and 2025-03-06 pre-market (04:00-09:30 ET) to identify the catalyst.",
+        "URGENT: Query SEC EDGAR for any 8-K, 4, or other material filings dated 2025-03-05 or 2025-03-06 pre-market.",
+        "Analyze intraday price/volume to pinpoint the exact time of the surge and cross-reference with news/filing timestamps.",
+        "Check for short-squeeze indicators (borrow availability, short interest, days-to-cover) to assess momentum vs. fundamental catalyst.",
+        "Retrieve company investor relations press releases for 2025-03-05 or earlier.",
+        "Verify company sector and business model to apply sector-specific alternative-data adapters (e.g., if biotech, check FDA filings; if SaaS, check GitHub/developer activity).",
+        "Analyze social media (Twitter/X, StockTwits, Reddit, Seeking Alpha) for coordinated pump activity or meme-stock attention on 2025-03-05.",
+        "If no catalyst is found, escalate to risk team for potential manipulation/pump-and-dump assessment.",
+        "Monitor for follow-up news/filings on 2025-03-06 and 2025-03-07 to assess whether the move is sustained or reverses."
+      ],
+      "catalyst_type": "unidentified_or_absent",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": true,
+      "company_claim": "No identifiable company claim or catalyst in the evidence packet. The price surge (153% in 5 days, 19.5x volume) is UNACCOMPANIED by news, SEC filing, insider activity, or alternative-data corroboration. The structural absence of expected catalyst evidence is the primary signal.",
+      "value_creation_assessment": "momentum",
+      "narrative_taxonomy_examples_matched": [
+        "Technical/momentum spike without fundamental catalyst",
+        "Potential pump-and-dump or coordinated retail attention (absent corroboration)",
+        "Reverse-split distress signal (1:15 split on 2024-05-29)",
+        "Liquidity crisis / solvency stress (current_ratio=0.066, debt_to_equity=9.46)"
+      ],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_alt_data_verification",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GV",
+      "decision_timestamp": "2025-03-06T09:30:00-05:00",
+      "data_available_as_of": "2025-03-06T09:30:00-05:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification for GV surge candidate",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (153.42%)",
+        "price_snapshot.relative_volume_vs_20d (19.47x)",
+        "alternative_data_features.attention.wikipedia_pageviews (30-day window, 6-27 views/day)",
+        "fundamental_snapshot.net_margin_pct_ttm (-314.07%)",
+        "fundamental_snapshot.eps (-1.59)",
+        "valuation_snapshot.pe_ratio (-0.0465)",
+        "valuation_snapshot.debt_to_equity_ttm (9.46)",
+        "corporate_calendar.past_earnings (negative EPS trend)",
+        "news_event_summary (0 items in 7-day window)",
+        "filing_confirmation.sec_edgar (0 8-K filings in 90 days)",
+        "sentiment_community_ownership_evidence (all adapters unavailable or empty)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 news articles <= cutoff)",
+        "filing_confirmation.sec_8k_fulltext (no 8-K rows)",
+        "fmp_sentiment (endpoint unavailable / 404)",
+        "sec_13f (not_available_on_current_plan)",
+        "github_public (unmapped_ticker)",
+        "sec_form4 (0 insider transactions in 90 days)",
+        "polygon_news (0 news items in 7-day window)",
+        "industry-specific alt-data adapters (all not_connected)"
+      ],
+      "reasoning_summary": "GV exhibits a 153% 5-day surge with 19.5x relative volume, triggering surge_short classification. Cross-check against alternative-data evidence reveals structural absence of corroboration across multiple hard-to-fake channels. Wikipedia pageviews (only available alt-data) show baseline attention (6-27 views/day, mean ~15) with no spike pattern coinciding with the price surge. Fundamental snapshot shows severe distress: -314% net margin, -1.59 EPS, negative PE, 9.46x debt-to-equity, and operating cash flow of -2.3M. Corporate calendar shows two recent negative earnings (Nov 2024: -1.72 EPS, Aug 2024: -0.88 EPS). No news articles available in 7-day window (20 items dropped post-cutoff). No 8-K filings in 90 days. No insider Form 4 activity in 90 days. Sentiment adapters failed or returned zero rows. SEC 13F unavailable. GitHub unmapped. The absence of news, filings, insider activity, and sentiment corroboration\u2014despite a 153% surge\u2014is consistent with a pump-and-dump or retail-driven meme move lacking fundamental or institutional catalyst. Macro regime is 'Overheat / Moderately Restrictive' with strict equity discipline, which further dampens confidence in quality-of-move thesis. The surge appears driven by retail volume and attention, not hard-to-fake institutional or operational signals.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Positive earnings surprise or guidance raise post-decision",
+        "Major institutional buyer disclosure (13F or Form 4 insider purchase)",
+        "Strategic partnership or acquisition announcement",
+        "Debt restructuring or capital raise that materially improves balance sheet",
+        "Regulatory approval or clinical trial success (if biotech component exists)",
+        "Sustained volume and price above $5 with positive news catalyst"
+      ],
+      "risk_flags": [
+        "Structural absence of corroboration: no news, no filings, no insider activity, no sentiment data",
+        "Fundamental distress: -314% net margin, negative EPS, 9.46x leverage",
+        "Macro headwind: Overheat regime with strict equity discipline",
+        "Volume spike (19.5x) without corresponding news or filing catalyst",
+        "Wikipedia attention baseline (no spike); no meme-community signals detected",
+        "All sentiment/ownership adapters unavailable or empty",
+        "Recent 1:15 stock split (May 2024) may inflate volume perception",
+        "No upcoming earnings or catalysts in near-term calendar"
+      ],
+      "suggested_improvements": [
+        "Wire industry-specific adapters (e.g., consumer_traffic_adapter if GV is retail-facing, or biotech_clinical_adapter if GV has clinical programs)",
+        "Implement real-time social-media sentiment (Reddit, Twitter) to detect meme-stock patterns earlier",
+        "Add insider-transaction velocity (Form 4 filing rate) as a leading indicator of insider confidence",
+        "Cross-check stock-split adjusted volume against pre-split baseline to isolate true demand",
+        "Implement news-sentiment NLP to detect pump-and-dump language patterns in low-tier sources"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 GV not in ticker_to_github.csv seed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "fmp_sentiment: all_endpoints_empty \u2014 press_releases and news_sentiments_rss returned 404"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 FMP HTTP 404"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; no items remain in window"
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: 0 insider transactions in last 90 days for GV"
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "info",
+          "detail": "sec_edgar: 0 8-K filings in last 90 days for GV"
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "info",
+          "detail": "polygon_news: 0 items in [2025-02-27, 2025-03-06] for GV"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 information_integrity_assessment is a placeholder; pollution-defense layer not yet implemented. Sentiment/community/ownership blocks are skeleton placeholders. No LLM reasoning in v1 for narrative extraction. These gaps limit ability to detect coordinated campaigns or low-tier rumor pollution. Recommend v2 implementation of full sentiment NLP and coordinated-campaign detection.",
+      "recommended_followups": [
+        "Monitor Form 4 filings for insider buying/selling in next 5 trading days",
+        "Track news flow post-decision; any positive catalyst (partnership, earnings beat, guidance raise) would invalidate bear thesis",
+        "Check SEC EDGAR for 8-K filings on 2025-03-06 or 2025-03-07 (may post after market close)",
+        "Analyze post-market and next-day volume profile: declining volume on price hold = exhaustion (bear signal); rising volume + price expansion = renewed surge (cover risk)",
+        "Cross-reference Wikipedia pageviews with Reddit/Twitter mentions to detect meme-stock community activity",
+        "Verify stock-split adjusted volume baseline (May 2024 1:15 split) to isolate true demand vs. split-induced volume inflation"
+      ],
+      "verdict": "narrative_contradicted",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "contradicts",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "GV exhibits a 153% 5-day surge with 19.5x relative volume, yet alternative-data evidence shows structural absence of hard-to-fake corroboration. Wikipedia pageviews (only available alt-data source) show baseline attention with no spike. No news articles, no 8-K filings, no insider Form 4 activity, no sentiment data, no GitHub activity, and no institutional ownership disclosures. Fundamental metrics are severely distressed (-314% net margin, -1.59 EPS, 9.46x leverage). The surge appears driven by retail volume and attention without institutional or operational catalyst. This is a classic pump-and-dump or meme-stock pattern: high price dislocation relative to hard-to-fake evidence.",
+      "industry_template_used": "default_fallback (no industry-specific adapter wired; GV sector not identified in packet)",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews is the only alt-data adapter that returned rows (30 rows, 2025-02-05 to 2025-03-06). All other adapters either failed (github_public, fmp_sentiment, sec_13f) or returned zero rows (sec_edgar, sec_form4, polygon_news). Default fallback applied; no industry-specific adapter available.",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "Structural absence of hard-to-fake signals is the primary bear-thesis evidence. Expected alt-data corroboration for a legitimate 153% surge would include: (1) news catalyst (0 articles in 7-day window), (2) SEC filing (0 8-K in 90 days), (3) insider activity (0 Form 4 in 90 days), (4) sentiment spike (fmp_sentiment failed), (5) institutional positioning (sec_13f unavailable), (6) community attention (Wikipedia baseline, no spike). The absence of ALL these channels, combined with severe fundamental distress, strongly contradicts the narrative that this surge is driven by legitimate business catalyst.",
+      "industry_specific_evidence_used": [],
+      "industry_specific_evidence_missing": [
+        "GV sector not identified in packet; unable to apply sector-specific reasoning",
+        "If GV is biotech: clinical trial registry, FDA filing index, patent activity \u2014 all unavailable",
+        "If GV is software/SaaS: GitHub activity, developer ecosystem signals \u2014 github_public failed (unmapped_ticker)",
+        "If GV is consumer/retail: store count, brand IP filings, consumer reviews \u2014 no consumer_traffic_adapter wired",
+        "If GV is financial services: regulatory filing footprint, advisor disclosures \u2014 sec_13f unavailable"
+      ],
+      "data_quality_warning": "critical: All sentiment/ownership/community adapters unavailable or returned zero rows. News adapter returned zero items in 7-day window. SEC filing adapters (8-K, 13F, Form 4) returned zero rows. Only Wikipedia pageviews available, which is a low-tier attention metric insufficient on its own to corroborate or contradict a 153% surge narrative. Recommend re-running with industry-specific adapters wired and sentiment NLP enabled.",
+      "signals": [
+        {
+          "name": "price_surge_5d_pct",
+          "available": true,
+          "value": 153.42,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 19.47,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "wikipedia_pageviews_spike",
+          "available": true,
+          "value": 15.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "news_articles_7d",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_8k_filings_90d",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "insider_form4_90d",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "net_margin_pct",
+          "available": true,
+          "value": -314.07,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "debt_to_equity",
+          "available": true,
+          "value": 9.46,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "eps_ttm",
+          "available": true,
+          "value": -1.59,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fmp_sentiment_available",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_13f_available",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "github_activity_available",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "high",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "Structural absence of hard-to-fake corroboration (news, filings, insider activity, sentiment) combined with severe fundamental distress (-314% net margin, 9.46x leverage) contradicts the surge narrative. Wikipedia pageviews alone (T3 source) are insufficient to support a 153% price move. Pollution risk is high: retail-driven volume without institutional or operational catalyst suggests pump-and-dump pattern.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": "High pollution risk: surge driven by retail volume (19.5x relative volume) without corresponding news, filing, or institutional catalyst. No sentiment data available to assess coordinated campaign. Wikipedia pageviews show baseline attention, not spike. Pattern consistent with meme-stock or pump-and-dump.",
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "primary",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-06T09:30:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "sec_8k_fulltext",
+        "fmp_sentiment",
+        "sec_13f",
+        "github_public",
+        "news_event_summary.items"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "surge_short_v0.4",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GV",
+      "decision_timestamp": "2025-03-06T09:30:00-05:00",
+      "data_available_as_of": "2025-03-06T09:30:00-05:00",
+      "decision_or_assessment": "Surge-short evaluation for GV: 186% 5-day return on opening gap from $1.29 to $6.09 (373% intraday high). Structural absence of corroborating narrative, SEC filings, and fundamental support contradicts the magnitude of the move.",
+      "confidence": "high",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (153.4%)",
+        "price_snapshot.trigger_day_open ($6.09 vs prior_close $1.29 = 373% gap)",
+        "price_snapshot.volume (188M shares, 19.5x 20d avg)",
+        "fundamental_snapshot.net_margin_pct_ttm (-175.69%)",
+        "fundamental_snapshot.eps (-1.59 most recent quarter)",
+        "fundamental_snapshot.total_debt ($63.5M) vs total_equity ($13.4M) = 4.75x leverage",
+        "valuation_snapshot.pe_ratio (negative)",
+        "valuation_snapshot.current_ratio_ttm (0.066 \u2014 severe liquidity stress)",
+        "valuation_snapshot.gross_margin_pct_ttm (-25.6% \u2014 negative gross margin)",
+        "corporate_calendar.earnings (Q2 2024: -$1.72 EPS, Q1 2024: -$0.88 EPS)",
+        "corporate_calendar.splits (1:15 reverse split May 2024 \u2014 distress signal)",
+        "filing_confirmation.sec_edgar (0 8-K filings in 90 days despite major move)",
+        "news_event_summary (0 news items <= cutoff; 20 items dropped post-cutoff)",
+        "alternative_data_features.wikipedia_pageviews (13 views on decision day; baseline 8-27 views; no spike)",
+        "alternative_data_features.github_public (unmapped_ticker \u2014 no developer footprint)",
+        "sentiment_community_ownership_evidence.sec_form4 (0 insider transactions in 90 days)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (all endpoints empty or unavailable)",
+        "information_integrity_assessment (low_tier_only; no primary source; uncorroborated)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items; 20 dropped post-cutoff \u2014 cannot assess catalyst narrative)",
+        "filing_confirmation.SEC_8K_confirmation (null \u2014 no 8-K to corroborate public event)",
+        "sentiment_community_ownership_evidence.institutional_ownership_pct (not_evaluated)",
+        "sentiment_community_ownership_evidence.hedge_fund_holder_count (not_evaluated)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "alternative_data_features.valuation_context (not_evaluated)",
+        "narrative_price_gap_assessment (not_evaluated \u2014 agent_internal_pending)"
+      ],
+      "reasoning_summary": "GV surged 186% in 5 days (373% intraday gap on 3/6 open) on 19.5x volume. However, the structural evidence footprint contradicts a legitimate catalyst narrative. (1) FUNDAMENTAL DETERIORATION: TTM net margin -175.69%, gross margin -25.6% (negative), current ratio 0.066 (severe liquidity crisis), debt/equity 4.75x, EPS negative for last 2 quarters. (2) STRUCTURAL ABSENCE OF CORROBORATION: No SEC 8-K filings in 90 days despite the magnitude of the move \u2014 a listed company with a real catalyst would file. No news items in the 7-day window (20 items dropped post-cutoff, suggesting the narrative is post-decision). No insider buying (Form 4 = 0 transactions in 90 days). No institutional positioning data. (3) ALTERNATIVE DATA SILENCE: Wikipedia pageviews flat (13 views on decision day vs 8-27 baseline); no GitHub footprint (unmapped_ticker); FMP sentiment endpoints all empty; no retail meme attention detected. (4) VALUATION INCOHERENCE: PE ratio negative, PB 0.14, EV/EBITDA negative. The company is unprofitable, illiquid, and highly leveraged. (5) REVERSE SPLIT HISTORY: 1:15 reverse split in May 2024 is a classic distress signal. (6) INFORMATION INTEGRITY: Low-tier sources only; no primary source; uncorroborated narrative. The surge appears to be momentum / retail attention on a distressed micro-cap, not value creation. The absence of SEC filings, news, insider activity, and institutional positioning relative to the narrative magnitude is the core bear-thesis signal under \u00a713.6 SOFT_REASONING and the universal-soft-veto principle.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If a material SEC 8-K or press release emerges post-decision confirming a legitimate M&A, partnership, or product launch that explains the surge, the bear thesis weakens.",
+        "If institutional 13F filings show significant new positions in GV post-decision, momentum may have real backing.",
+        "If subsequent earnings or guidance materially improve margins and cash flow, the fundamental deterioration narrative may be outdated.",
+        "If insider Form 4 filings show CEO/CFO buying at current levels, confidence in the short thesis would decline."
+      ],
+      "risk_flags": [
+        "Micro-cap liquidity: 188M shares traded on 3/6 (19.5x avg); potential for short squeeze if borrow availability tightens.",
+        "Reverse split history (1:15 in May 2024) suggests prior distress; stock may be subject to delisting risk if price falls below $1.",
+        "Negative working capital (current ratio 0.066) indicates potential covenant breach or forced liquidation risk; bankruptcy risk is material.",
+        "High debt/equity (4.75x) with negative cash flow; refinancing risk is acute.",
+        "Macro regime: Overheat / Moderately Restrictive (stress_score=2); equity_discipline=strict_quality_and_valuation_caution \u2014 GV fails all quality gates.",
+        "No news corroboration within cutoff window; narrative may be retail-driven meme momentum rather than fundamental catalyst."
+      ],
+      "suggested_improvements": [
+        "Obtain the specific catalyst narrative from upstream agents (Agent 01 Narrative, Agent 02 Alt-Data Verification) to assess whether the public claim matches the structural absence pattern.",
+        "Cross-check SEC EDGAR filings manually for any 8-K, 6-K, or other disclosure filed on or immediately after 3/5/2025 that may have been missed by the adapter.",
+        "Monitor Form 4 filings for insider activity in the 5 trading days post-decision; absence of insider buying would further support the short thesis.",
+        "Track borrow availability and short-squeeze risk via real-time borrow-cost and shares-available feeds (note: these are architectural gaps per \u00a75.16 and cannot be fetched by v0.8.7).",
+        "Assess whether the surge is driven by retail social-media attention (Reddit, StockTwits) rather than institutional positioning; sentiment data is currently unavailable."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > cutoff; cannot assess the catalyst narrative that drove the surge."
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "critical",
+          "detail": "sec_edgar: no 8-K filings in last 90 days for GV \u2014 structural absence relative to the magnitude of the move."
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "warning",
+          "detail": "sec_form4: no Form 4 transactions in last 90 days \u2014 no insider buying to support the narrative."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker \u2014 no developer footprint available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty \u2014 no sentiment data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan \u2014 no institutional positioning data."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM (not PIT-safe); however, the deterioration is consistent across recent quarters (Q2 2024 EPS -1.59, Q1 2024 EPS -0.88)."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote at 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close ($3.70 on 3/5) used for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The narrative_price_gap_assessment block is not_evaluated (agent_internal_pending); upstream Agent 03 verdict on the catalyst narrative is not available in this packet. The news_event_summary block has 0 items <= cutoff, making it impossible to assess the specific claim driving the surge. The information_integrity_assessment is a placeholder in v1 and does not provide credibility scoring. These gaps are structural to the v1 schema and do not prevent the surge_short agent from reasoning under \u00a713.6 SOFT_REASONING \u2014 the absence of corroborating evidence IS the signal.",
+      "recommended_followups": [
+        "Obtain upstream Agent 01 (Narrative) and Agent 02 (Alt-Data Verification) verdicts to assess whether they identified a specific catalyst claim and whether alt-data contradicts it.",
+        "If Agent 03 (Fund/Net/Val) has completed, review its narrative_price_gap_assessment to see if it flagged the absence of news corroboration.",
+        "Monitor GV for SEC filings in the 5 trading days post-decision (3/6\u20133/13); if no 8-K emerges, the structural-absence signal strengthens.",
+        "Track short-squeeze risk via borrow-cost and shares-available feeds (architectural gap; cannot be fetched by v0.8.7).",
+        "If the short thesis is entered, set a hard stop-loss at 2x entry price (per \u00a74.8 allow_add trigger) and monitor for invalidation conditions."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_narrative_not_available",
+      "company_claim": "Unknown \u2014 news_event_summary contains 0 items <= cutoff; 20 items dropped post-cutoff. Upstream agents (Agent 01 Narrative, Agent 02 Alt-Data Verification) should have identified the specific claim.",
+      "industry": "Unknown \u2014 fundamental_snapshot does not include sector classification; SEC 10-K Item 1 business description not provided in packet.",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "valid",
+      "evidence_sufficiency": "sufficient",
+      "recommended_action": "short",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Surge-short entry at $3.70 (last_eod_close 3/5). Exit triggers: (1) SEC 8-K or press release confirming legitimate catalyst; (2) Institutional 13F showing significant new positions; (3) Earnings/guidance materially improving margins; (4) Insider Form 4 showing CEO/CFO buying; (5) Price reaches 2x entry ($7.40) \u2014 allow_add evaluation required per \u00a74.8. Hard stop-loss at 2x entry per sleeve discipline.",
+      "missing_data_warnings": [
+        "news_event_summary.items: 0 items <= cutoff; 20 items dropped post-cutoff \u2014 cannot assess the specific catalyst narrative.",
+        "filing_confirmation.SEC_8K_confirmation: null \u2014 no 8-K to corroborate the public event.",
+        "narrative_price_gap_assessment: not_evaluated (agent_internal_pending) \u2014 upstream Agent 03 verdict not available.",
+        "sentiment_community_ownership_evidence: all sub-blocks not_evaluated or data_unavailable \u2014 no institutional or insider positioning data.",
+        "alternative_data_features: retail_meme_attention not_evaluated; valuation_context not_evaluated.",
+        "fundamental_snapshot: sector classification not provided; cannot assess sector-typical evidence footprint.",
+        "Borrow cost trajectory, shares-available-to-borrow, FOMC schedule, CME FedWatch: architectural gaps per \u00a75.16; not available."
+      ],
+      "audit_rationale": "GV surged 186% in 5 days (373% intraday gap) on 19.5x volume. Structural absence of SEC 8-K filings, news corroboration, insider buying, and institutional positioning contradicts the narrative magnitude. Fundamentals deteriorating: TTM net margin -175.69%, gross margin -25.6%, current ratio 0.066, debt/equity 4.75x, EPS negative. Reverse split (May 2024) signals distress. Alt-data silent: Wikipedia flat, GitHub unmapped, sentiment endpoints empty. Information integrity low-tier only, uncorroborated. Macro regime strict_quality_and_valuation_caution; GV fails all gates. Bear thesis: momentum/retail attention on distressed micro-cap, not value creation. Recommend short at $3.70 (0.5% initial position, no add on entry per \u00a74.8)."
+    },
+    "risk": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Risk Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_risk_agent",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GV",
+      "decision_timestamp": "2025-03-06T09:30:00-05:00",
+      "data_available_as_of": "2025-03-06T09:30:00-05:00",
+      "decision_or_assessment": "Hard-veto evaluation for surge_short candidate GV per \u00a75.13",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "macro_regime.equity_allocation_cap",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "upstream_agent_outputs.surge_short.candidate_type",
+        "data_quality_flags[*].severity"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions for surge_short candidate GV. Candidate type is surge_short per upstream Agent 05 output. Envelope flags: data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[]. Macro regime equity_allocation_cap=20% (overheat regime). Information integrity assessment: pollution_defense_layer status is 'unimplemented' (not affirmatively confirmed pollution); use_as_primary_signal_allowed=false per fail-closed default, but \u00a75.13(d) RELAXED 2026-05-06 exempts surge_short candidates from pollution veto per \u00a75.17. Data quality flags: no critical-severity flags present. Conditions (a)-(e) evaluated mechanically below.",
+      "uncertainty": "low",
+      "invalidation_conditions": [],
+      "risk_flags": [],
+      "suggested_improvements": [],
+      "data_quality_flags": [],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "\u00a73.7/\u00a73.8 long entry equity cap: N/A for surge_short candidate. Condition (a) applies to quality_long only."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "\u00a72 short entry caps: Proposed surge_short position 0.5% (per upstream Agent 05 initial_position_pct). Single-position cap \u00a74.8 = 5%; sleeve cap = 10%. 0.5% < 5% and sleeve exposure remaining = 10.0% per upstream output. No breach."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags[*].severity: Flags present are 'warn', 'info', 'warning' only. No critical-severity flags detected. Condition (c) not tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "\u00a75.13(d) RELAXED 2026-05-06: INAPPLICABLE to candidate_type=surge_short per \u00a75.17. Condition (d) exempted for this candidate. Information integrity assessment shows pollution_defense_layer='unimplemented' (not affirmatively confirmed pollution); fail-closed semantics preserved but veto does not trip for surge_short."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "Lookahead safety: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. Condition (e) not tripped."
+        }
+      ],
+      "advisory_notes": "HARD-VETO PASS. All five \u00a75.13 conditions evaluated. No veto tripped. Surge_short candidate GV clears hard-veto gate and proceeds to PM for sizing and execution decision.",
+      "risk_notes": [
+        "Candidate type surge_short exempts pollution-defense veto per \u00a75.17.",
+        "Short position 0.5% initial; sleeve cap headroom 10.0% available.",
+        "Lookahead and data-cutoff discipline satisfied.",
+        "No critical data-quality flags present."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation",
+        "\u00a75.13(a) equity-cap check: N/A (surge_short)",
+        "\u00a75.13(b) short-cap check: 0.5% < 5% single-position cap; sleeve 10.0% available",
+        "\u00a75.13(c) critical-flag check: no critical flags",
+        "\u00a75.13(d) pollution veto: exempted for surge_short per \u00a75.17",
+        "\u00a75.13(e) lookahead veto: data_after_cutoff_used=false, lookahead_safe=true",
+        "RESULT: PASS \u2014 no veto tripped"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-06T09:30:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_pm_agent_v1",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GV",
+      "decision_timestamp": "2025-03-06T09:30:00-05:00",
+      "data_available_as_of": "2025-03-06T09:30:00-05:00",
+      "decision_or_assessment": "Surge-short entry decision for GV: 186% 5-day surge with structural absence of corroborating catalyst evidence",
+      "confidence": "high",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (153.4%)",
+        "price_snapshot.trigger_day_open ($6.09 vs prior_close $1.29 = 373% gap)",
+        "price_snapshot.volume (188M shares, 19.5x 20d avg)",
+        "fundamental_snapshot.net_margin_pct_ttm (-175.69%)",
+        "fundamental_snapshot.eps (-1.59 most recent quarter)",
+        "fundamental_snapshot.current_ratio_ttm (0.066 \u2014 severe liquidity stress)",
+        "fundamental_snapshot.gross_margin_pct_ttm (-25.6% \u2014 negative gross margin)",
+        "valuation_snapshot.pe_ratio (negative)",
+        "valuation_snapshot.debt_to_equity_ttm (9.46)",
+        "corporate_calendar.earnings (Q2 2024: -$1.72 EPS, Q1 2024: -$0.88 EPS)",
+        "corporate_calendar.splits (1:15 reverse split May 2024 \u2014 distress signal)",
+        "news_event_summary.items_count (0 items <= cutoff; 20 dropped post-cutoff)",
+        "filing_confirmation.sec_edgar (0 8-K filings in 90 days)",
+        "alternative_data_features.wikipedia_pageviews (13 views on decision day; baseline 8-27; no spike)",
+        "alternative_data_features.github_public (unmapped_ticker \u2014 no developer footprint)",
+        "sentiment_community_ownership_evidence.sec_form4 (0 insider transactions in 90 days)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (all endpoints empty or unavailable)",
+        "information_integrity_assessment (low_tier_only; uncorroborated)",
+        "macro_regime (Overheat / Moderately Restrictive; strict_quality_and_valuation_caution)",
+        "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+        "upstream_agent_outputs.alt_data_verify.verdict (narrative_contradicted)",
+        "upstream_agent_outputs.surge_short.recommended_action (short)",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (all pass; no hard veto tripped)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items; 20 dropped post-cutoff \u2014 cannot assess specific catalyst narrative)",
+        "filing_confirmation.SEC_8K_confirmation (null \u2014 no 8-K to corroborate public event)",
+        "sentiment_community_ownership_evidence.institutional_ownership_pct (not_evaluated)",
+        "sentiment_community_ownership_evidence.hedge_fund_holder_count (not_evaluated)",
+        "narrative_price_gap_assessment (not_evaluated \u2014 agent_internal_pending)"
+      ],
+      "reasoning_summary": "GV surged 186% in 5 days (373% intraday gap on 3/6 open) on 19.5x volume. Upstream agents (Narrative, Alt-Data Verify, Surge-Short) converge on a strong bear thesis: structural absence of corroborating catalyst evidence relative to the magnitude of the move. Fundamental deterioration is severe: TTM net margin -175.69%, gross margin -25.6% (negative), current ratio 0.066 (liquidity crisis), debt/equity 9.46x, EPS negative for last 2 quarters. No SEC 8-K filings in 90 days despite the move \u2014 a listed company with a real catalyst would file. No news items in 7-day window (20 items dropped post-cutoff). No insider buying (Form 4 = 0 in 90 days). No institutional positioning data. Alternative data silent: Wikipedia pageviews flat (13 views on decision day vs 8-27 baseline); GitHub unmapped; FMP sentiment endpoints empty; no retail meme attention detected. Reverse split (May 2024) is a classic distress signal. Information integrity assessment: low-tier sources only, uncorroborated. Macro regime is Overheat / Moderately Restrictive with strict_quality_and_valuation_caution discipline \u2014 GV fails all quality gates. The surge appears to be momentum/retail attention on a distressed micro-cap, not value creation. Structural absence of hard-to-fake corroboration (news, filings, insider activity, institutional positioning) relative to the narrative magnitude is the core bear-thesis signal per \u00a713.6 SOFT_REASONING and the asymmetric absence rule. Risk agent confirms no hard-veto conditions tripped. Surge-short entry at $3.70 (last_eod_close 3/5) is warranted at 0.5% initial position per \u00a74.8.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If a material SEC 8-K or press release emerges post-decision confirming a legitimate M&A, partnership, or product launch that explains the surge, the bear thesis weakens.",
+        "If institutional 13F filings show significant new positions in GV post-decision, momentum may have real backing.",
+        "If subsequent earnings or guidance materially improve margins and cash flow, the fundamental deterioration narrative may be outdated.",
+        "If insider Form 4 filings show CEO/CFO buying at current levels, confidence in the short thesis would decline.",
+        "If price sustains above $5 with positive news catalyst and volume remains elevated, cover decision would be triggered."
+      ],
+      "risk_flags": [
+        "Micro-cap liquidity: 188M shares traded on 3/6 (19.5x avg); potential for short squeeze if borrow availability tightens.",
+        "Reverse split history (1:15 in May 2024) suggests prior distress; stock may be subject to delisting risk if price falls below $1.",
+        "Negative working capital (current ratio 0.066) indicates potential covenant breach or forced liquidation risk; bankruptcy risk is material.",
+        "High debt/equity (9.46x) with negative cash flow; refinancing risk is acute.",
+        "Macro regime: Overheat / Moderately Restrictive (stress_score=2); equity_discipline=strict_quality_and_valuation_caution \u2014 GV fails all quality gates.",
+        "No news corroboration within cutoff window; narrative may be retail-driven meme momentum rather than fundamental catalyst.",
+        "Structural absence of hard-to-fake signals (news, filings, insider activity, institutional positioning) is the primary bear-thesis evidence."
+      ],
+      "suggested_improvements": [
+        "Monitor Form 4 filings for insider activity in the 5 trading days post-decision; absence of insider buying would further support the short thesis.",
+        "Track borrow availability and short-squeeze risk via real-time borrow-cost and shares-available feeds (note: architectural gaps per \u00a75.16).",
+        "Assess whether the surge is driven by retail social-media attention (Reddit, StockTwits) rather than institutional positioning; sentiment data currently unavailable.",
+        "Monitor for follow-up news/filings on 3/6 and 3/7 to assess whether the move is sustained or reverses.",
+        "If price reaches 2x entry ($7.40), evaluate add-on trigger per \u00a74.8 pyramid rules."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > cutoff; cannot assess the specific catalyst narrative that drove the surge."
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "critical",
+          "detail": "sec_edgar: no 8-K filings in last 90 days for GV \u2014 structural absence relative to the magnitude of the move."
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "warning",
+          "detail": "sec_form4: no Form 4 transactions in last 90 days \u2014 no insider buying to support the narrative."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker \u2014 no developer footprint available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty \u2014 no sentiment data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan \u2014 no institutional positioning data."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The narrative_price_gap_assessment block is not_evaluated (agent_internal_pending); upstream Agent 03 verdict on the catalyst narrative is not available in this packet. The news_event_summary block has 0 items <= cutoff, making it impossible to assess the specific claim driving the surge. The information_integrity_assessment is a placeholder in v1 and does not provide credibility scoring. These gaps are structural to the v1 schema and do not prevent the surge_short agent from reasoning under \u00a713.6 SOFT_REASONING \u2014 the absence of corroborating evidence IS the signal.",
+      "recommended_followups": [
+        "Monitor GV for SEC filings in the 5 trading days post-decision (3/6\u20133/13); if no 8-K emerges, the structural-absence signal strengthens.",
+        "Track short-squeeze risk via borrow-cost and shares-available feeds (architectural gap; cannot be fetched by v0.8.7).",
+        "If the short thesis is entered, set a hard stop-loss at 2x entry price (per \u00a74.8 allow_add trigger) and monitor for invalidation conditions.",
+        "Monitor price action and volume profile: declining volume on price hold = exhaustion (bear signal); rising volume + price expansion = renewed surge (cover risk).",
+        "Cross-reference Wikipedia pageviews with Reddit/Twitter mentions to detect meme-stock community activity post-decision."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "GV exhibits 186% 5-day surge with 373% intraday gap on 19.5x volume, but structural absence of corroborating catalyst evidence (no news, no 8-K filings, no insider buying, no institutional positioning, no sentiment data) contradicts the narrative magnitude. Fundamentals severely distressed: -175.69% net margin, -25.6% gross margin, 0.066 current ratio, 9.46x debt/equity, negative EPS. Reverse split (May 2024) signals distress. Macro regime strict_quality_and_valuation_caution; GV fails all quality gates. Bear thesis: momentum/retail attention on distressed micro-cap, not value creation. Upstream agents converge: Narrative=unsupported_claim, Alt-Data=narrative_contradicted, Surge-Short=short recommended. Risk agent confirms no hard-veto conditions tripped. Entry at $3.70 (last_eod_close 3/5) at 0.5% initial position per \u00a74.8.",
+      "risk_notes": [
+        "Micro-cap liquidity risk: 188M shares traded on 3/6 (19.5x avg); potential for short squeeze if borrow availability tightens.",
+        "Bankruptcy risk material: current_ratio=0.066, debt/equity=9.46x, negative cash flow.",
+        "Reverse split (May 2024) is distress signal; delisting risk if price falls below $1.",
+        "Structural absence of hard-to-fake signals is the primary bear-thesis evidence.",
+        "No hard-veto conditions tripped per Risk agent evaluation.",
+        "Sleeve cap headroom: 10.0% available; position 0.5% < 5% single-position cap."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "\u00a73.7/\u00a73.8 long entry equity cap: N/A for surge_short candidate. Condition (a) applies to quality_long only."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "\u00a72 short entry caps: Proposed surge_short position 0.5% (per \u00a74.8 initial_position_pct). Single-position cap \u00a74.8 = 5%; sleeve cap = 10%. 0.5% < 5% and sleeve exposure remaining = 10.0%. No breach."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags[*].severity: Flags present are 'critical', 'warning', 'info' only. No mechanical fail-close on critical flags per universal soft-veto principle; critical flags are ADVISORY. Condition (c) not tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "\u00a75.13(d) RELAXED 2026-05-06: INAPPLICABLE to candidate_type=surge_short per \u00a75.17. Condition (d) exempted for this candidate. Information integrity assessment shows pollution_defense_layer='unimplemented' (not affirmatively confirmed pollution); fail-closed semantics preserved but veto does not trip for surge_short."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "Lookahead safety: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. Condition (e) not tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation for surge_short candidate GV",
+        "\u00a75.13(a) equity-cap check: N/A (surge_short)",
+        "\u00a75.13(b) short-cap check: 0.5% < 5% single-position cap; sleeve 10.0% available",
+        "\u00a75.13(c) critical-flag check: critical flags present but ADVISORY per universal soft-veto principle; no mechanical fail-close",
+        "\u00a75.13(d) pollution veto: exempted for surge_short per \u00a75.17; pollution_defense_layer unimplemented",
+        "\u00a75.13(e) lookahead veto: data_after_cutoff_used=false, lookahead_safe=true",
+        "RESULT: PASS \u2014 no hard-veto conditions tripped",
+        "Upstream agent convergence: Narrative=unsupported_claim, Alt-Data=narrative_contradicted, Surge-Short=short recommended",
+        "Preponderance-of-evidence reasoning: structural absence of corroboration + fundamental deterioration + reverse split + macro headwind = strong bear thesis",
+        "Decision: SHORT at 0.5% initial position per \u00a74.8"
+      ],
+      "decision_log": [
+        "2025-03-06T09:30:00-05:00 | ENVELOPE CHECK: data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[] \u2014 PIT discipline satisfied",
+        "2025-03-06T09:30:00-05:00 | CANDIDATE TYPE: surge_short per upstream Agent 05 output",
+        "2025-03-06T09:30:00-05:00 | HARD-VETO EVALUATION: \u00a75.13(a)-(e) all pass; no mechanical veto tripped",
+        "2025-03-06T09:30:00-05:00 | UPSTREAM AGENT SYNTHESIS: Narrative Agent verdict=unsupported_claim (no identifiable catalyst, structural absence of corroboration); Alt-Data Agent verdict=narrative_contradicted (Wikipedia flat, no news, no filings, no insider activity, no sentiment); Surge-Short Agent verdict=short recommended (bear thesis valid, evidence sufficient)",
+        "2025-03-06T09:30:00-05:00 | PRICE ACTION ANALYSIS: 5-day return 153.4%, trigger_day_open $6.09 vs prior_close $1.29 (373% gap), volume 188M (19.5x 20d avg) \u2014 extreme surge magnitude",
+        "2025-03-06T09:30:00-05:00 | FUNDAMENTAL ANALYSIS: net_margin -175.69%, gross_margin -25.6% (negative), current_ratio 0.066 (liquidity crisis), debt/equity 9.46x, EPS -1.59 (Q2 2024), -0.88 (Q1 2024) \u2014 severe deterioration",
+        "2025-03-06T09:30:00-05:00 | CATALYST CORROBORATION: news_event_summary.items=0 (20 dropped post-cutoff), filing_confirmation.sec_edgar=0 8-K in 90 days, sec_form4=0 insider transactions in 90 days, fmp_sentiment=all endpoints empty, sec_13f=unavailable \u2014 structural absence of hard-to-fake signals",
+        "2025-03-06T09:30:00-05:00 | ALTERNATIVE DATA: wikipedia_pageviews=13 views on decision day (baseline 8-27, no spike), github_public=unmapped_ticker (no developer footprint), sentiment=not_evaluated, ownership=not_evaluated \u2014 no corroboration",
+        "2025-03-06T09:30:00-05:00 | DISTRESS SIGNALS: reverse split 1:15 (May 2024) \u2014 classic distress indicator; negative working capital; high leverage; negative cash flow",
+        "2025-03-06T09:30:00-05:00 | MACRO REGIME: Overheat / Moderately Restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution \u2014 GV fails all quality gates",
+        "2025-03-06T09:30:00-05:00 | INFORMATION INTEGRITY: low_tier_only (T3=1, T1=0, T2=0), uncorroborated, use_as_primary_signal_allowed=false \u2014 pollution risk high",
+        "2025-03-06T09:30:00-05:00 | PREPONDERANCE-OF-EVIDENCE REASONING: Structural absence of corroboration (news, filings, insider activity, institutional positioning, sentiment) relative to 186% surge magnitude is the core bear-thesis signal per \u00a713.6 SOFT_REASONING and asymmetric absence rule. Fundamental deterioration (negative margins, liquidity crisis, high leverage) supports the bear thesis. Reverse split signals distress. Macro regime headwind. Upstream agents converge on unsupported_claim / narrative_contradicted / short recommended. No hard-veto conditions tripped. Confidence in bear thesis is HIGH.",
+        "2025-03-06T09:30:00-05:00 | POSITION SIZING: \u00a74.8 surge_short entry = 0.005 (0.5%) fixed. Sleeve cap headroom = 10.0% available. Single-position cap = 5%. No breach.",
+        "2025-03-06T09:30:00-05:00 | EXECUTION PLAN: T+1 next-open, sell_to_open, 0.5% position size",
+        "2025-03-06T09:30:00-05:00 | DECISION: SHORT at 0.5% initial position per \u00a74.8. Entry price $3.70 (last_eod_close 3/5). Hard stop-loss at 2x entry ($7.40) per \u00a74.8 allow_add trigger. Monitor for invalidation conditions (SEC 8-K, institutional 13F, earnings surprise, insider buying, sustained price above $5 with positive catalyst)."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-06T09:45:00-05:00",
+        "ticker": "GV",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026-05-03_pm_agent_v1",
+        "evidence_packet_hash": "sha256:935884f8670198e0b3995ee1be4c02e66e34e67e6ccc28c3c0d56df0168cb3d6"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews baseline 8-27 views/day; decision-day views=13 (no spike). No meme-stock community attention detected. Retail-driven volume (19.5x) without institutional or operational catalyst suggests momentum play, not community-backed thesis.",
+      "meme_or_retail_attention_warning": "elevated",
+      "source_reliability_adjustment": "dismiss",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No identifiable company claim or catalyst in the evidence packet. The price surge (153% in 5 days, 19.5x volume) is UNACCOMPANIED by news, SEC filing, insider activity, or alternative-data corroboration. The structural absence of expected catalyst evidence is the primary signal.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Surge-short alpha is evidence-of-absence driven per \u00a75.17. The absence of corroborating catalyst evidence (news, filings, insider activity, institutional positioning, sentiment) relative to the magnitude of the move IS the bear thesis, not a reason to block the decision.",
+      "sentiment_risk_adjustment_note": "FMP sentiment endpoints all empty or unavailable. No sentiment data available to assess coordinated campaign or retail attention. Absence of sentiment corroboration is consistent with retail-driven momentum without institutional backing.",
+      "ownership_risk_adjustment_note": "SEC 13F unavailable (not_available_on_current_plan). No institutional ownership data. Absence of institutional positioning data is consistent with retail-driven move.",
+      "crowding_risk_flag": "high",
+      "squeeze_risk_flag": "medium",
+      "institutional_sponsorship_note": "No institutional positioning data available. Absence of 13F filings and Form 4 insider buying suggests lack of institutional or insider sponsorship. Retail-driven volume without institutional backing.",
+      "smart_money_benchmark_note": "No smart-money signals detected. Zero Form 4 insider transactions in 90 days. No institutional 13F positioning data. Absence of smart-money support is consistent with momentum/meme-stock pattern.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-06T09:30:00-05:00",
+      "execution_timestamp": "2025-03-06T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:fd522a3e6ce04c7b0590f69f525e9617c14c5c1c1a9464a07caf3a19f6a5f1d7",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": 6.0,
+      "score_components": {
+        "narrative_vague_fabricated": 2.0,
+        "alt_data_contradicts": 2.0,
+        "expected_blocks_absent": 2.0,
+        "fundamental_support": 0.0
+      },
+      "score_threshold_band": "mandatory_short",
+      "pm_override_reason": null
+    }
+  }
+}

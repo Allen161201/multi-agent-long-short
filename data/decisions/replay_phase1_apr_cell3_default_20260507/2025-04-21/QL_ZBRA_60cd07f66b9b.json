@@ -1,0 +1,1412 @@
+{
+  "trigger_id": "60cd07f66b9b",
+  "ticker": "ZBRA",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-04-21T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 276.05,
+  "trigger_cost_usd": 0.554078,
+  "cumulative_cost_usd": 8.324228,
+  "candidate_ranking_inputs": {
+    "ticker": "ZBRA",
+    "earliest_event_date": "2025-04-29",
+    "selection_reason": "earnings_window_14d",
+    "close": 222.05,
+    "t1_open": 226.36,
+    "t1_date": "2025-04-22"
+  },
+  "evidence_packet_hash": "sha256:512733fc63d2fadbd1a05e5b4605c73b113ace3404a977ae5c3bc0d2f6ad251c",
+  "locked_decision_id": "sha256:8ed06b26bd5eccc3c62010c4b8ee44161e0b0b871f7d83212b21bc5c97794188",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "Portfolio Manager (Final Decision Authority)",
+    "schema_version": "pm_agent_v1.0",
+    "prompt_version": "2026-05-03_pass8_soft_reasoning",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "ZBRA",
+    "decision_timestamp": "2025-04-21T09:30:00-04:00",
+    "data_available_as_of": "2025-04-21T09:30:00-04:00",
+    "decision_or_assessment": "Quality-long candidate evaluation post-46% drawdown; hard fundamental gate failure blocks execution",
+    "confidence": "high",
+    "evidence_used": [
+      "fundamental_gate_38.passes=false",
+      "fundamental_gate_38.failed_gates=[eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available]",
+      "upstream_agent_outputs.narrative_event.verdict=unsupported_claim",
+      "upstream_agent_outputs.alt_data_verify.recommendation_to_pm=needs_more_evidence",
+      "upstream_agent_outputs.valuation.valuation_assessment=very_expensive",
+      "upstream_agent_outputs.quality_long.recommended_action=no_trade",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated=[all conditions not tripped]",
+      "price_snapshot.return_60d_pct=-46.0898",
+      "price_snapshot.return_20d_pct=-20.4484",
+      "macro_regime.macro_regime=Strengthening",
+      "macro_regime.equity_discipline=strict_quality_and_valuation",
+      "valuation_snapshot.pe_ratio=27.477893454510742",
+      "valuation_snapshot.ev_to_ebitda=13.452903085907334",
+      "sentiment_community_ownership_evidence.fmp_sentiment (12 Buy, 3 Strong Buy, 8 Hold)",
+      "sentiment_community_ownership_evidence.sec_form4 (26 insider transactions, director purchases Feb 2025)",
+      "corporate_calendar.earnings (4 recent beats)",
+      "information_integrity_assessment.use_as_primary_signal_allowed=false"
+    ],
+    "evidence_missing": [
+      "fundamental_snapshot.eps_ttm (null)",
+      "fundamental_snapshot.operating_income (null)",
+      "fundamental_snapshot.operating_cash_flow (null)",
+      "news_event_summary.items (0 post-cutoff)",
+      "narrative_price_gap_assessment (not_evaluated)",
+      "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+      "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)"
+    ],
+    "reasoning_summary": "ZBRA is a quality-long candidate that has experienced a severe 46% 60-day drawdown and 20% 20-day decline. The macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline (equity cap 30%). Analyst sentiment remains constructive (12 Buy, 3 Strong Buy, 8 Hold as of early April 2025). Recent earnings (Feb 2025) beat estimates (EPS $4.00 vs $3.95 est, revenue $1.334B vs $1.317B est), and the prior three quarters also beat. Insider director Gustafsson purchased 3,227 shares on 2025-02-24/25 at ~$310, signaling confidence. Valuation is elevated (PE 27.5x, EV/EBITDA 13.5x) but not extreme for a quality industrial-tech company. However, the fundamental_gate_38 FAILS on two critical counts: (1) eps_ttm_or_net_income_ttm_not_positive (case (a) \u2014 underlying input is nonpositive, not a data gap), and (2) operating_margin_not_available. This is a HARD MECHANICAL VETO per \u00a73.8 that blocks any quality_long recommendation, regardless of other supportive signals. The fundamental_snapshot block is entirely null (status=insufficient_evidence), preventing verification of positive earnings and operating margin. The upstream quality_long agent recommends no_trade due to insufficient evidence to pass hard gates. The alt_data_verify agent recommends needs_more_evidence due to missing sector-expected alt-data (GitHub unmapped, sec_13f unavailable) and stub 8-K filing text. The valuation agent assesses very_expensive due to elevated multiples paired with nonpositive earnings. The risk agent confirms no \u00a75.13 veto conditions trip, but notes that \u00a73.8 fundamental gate failure is a separate hard mechanical veto that prevents execution. The narrative_event agent classifies the catalyst as unsupported_claim due to missing 8-K full text and news corroboration. The network_effect agent classifies ZBRA as narrative_hype (Layer 2-only evidence per R-NETWORK-09) with no Layer 1 developer ecosystem or SEC-disclosed operating metrics. DECISION LOGIC: The hard fundamental gate failure (\u00a73.8) is a mechanical veto that overrides all other considerations. No quality_long entry is permitted when eps_ttm and operating_margin_ttm cannot be confirmed positive. The drawdown (46% in 60 days) is severe but does not override the fundamental gate failure. The constructive analyst sentiment and insider buying are supportive but insufficient to overcome the hard gate. The elevated valuation (PE 27.5x) combined with nonpositive earnings is structurally expensive and represents a narrative-driven valuation disconnected from profitability. The macro regime's strict_quality_and_valuation discipline further reinforces caution. FINAL DECISION: no_trade. The candidate fails the hard fundamental gate per \u00a73.8 and cannot be executed as a quality_long entry. Recommend obtaining Q1 2025 10-Q filing to verify eps_ttm and operating_margin_ttm before reconsidering.",
+    "uncertainty": "low",
+    "invalidation_conditions": [
+      "Hard gate failure: eps_ttm not confirmed positive (null in fundamental_snapshot) \u2014 mechanical veto per \u00a73.8",
+      "Hard gate failure: operating_margin_ttm not confirmed positive (null in fundamental_snapshot) \u2014 mechanical veto per \u00a73.8",
+      "Fundamental snapshot status='insufficient_evidence' \u2014 no PIT-safe quarterly data available",
+      "Valuation snapshot marked not_PIT_safe for TTM ratios \u2014 cannot anchor to decision_timestamp",
+      "News event summary empty post-cutoff \u2014 no recent catalyst or narrative confirmation",
+      "Narrative price gap assessment not_evaluated \u2014 Agent 03 verdict pending"
+    ],
+    "risk_flags": [
+      "Hard fundamental gate failure: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available \u2014 mechanical veto per \u00a73.8",
+      "Severe drawdown: 46% in 60 days, 20% in 20 days \u2014 liquidity and momentum risk",
+      "Elevated PE ratio: 27.48x \u2014 valuation multiple compression risk if growth slows",
+      "Current ratio TTM: 0.97 \u2014 slightly below 1.0, working capital tightness",
+      "Negative PEG ratio: -1.39 \u2014 earnings growth is negative or undefined",
+      "No recent news coverage post-cutoff \u2014 information vacuum during selloff",
+      "Insider grants (March 2025) at $306.84 vs current $226.73 \u2014 underwater for executives",
+      "8-K filing (Feb 2025) with unregistered sales (item 2.02) \u2014 potential dilution signal",
+      "Macro regime strict_quality_and_valuation discipline \u2014 equity allocation capped at 30%",
+      "Fundamental snapshot entirely null \u2014 cannot verify positive earnings or operating margin"
+    ],
+    "suggested_improvements": [
+      "Obtain most recent 10-Q or 10-K filing to confirm eps_ttm > 0 and operating_margin_ttm > 0",
+      "Retrieve full 8-K text (Items 2.02, 9.01) to understand material agreement and financial statement changes",
+      "Collect post-cutoff news (after 2025-04-21) to assess whether selloff was temporary or reflects deteriorating fundamentals",
+      "Obtain industry peer valuation multiples to contextualize PE=27.48 and EV/EBITDA=13.45",
+      "Assess whether the March 2025 insider grants (at $306.84) represent confidence or forced equity comp",
+      "Evaluate whether the 46% drawdown reflects sector rotation (tech weakness) or company-specific deterioration",
+      "Wire GitHub adapter with ZBRA ticker mapping to assess developer ecosystem activity",
+      "Retrieve analyst consensus forward P/E to determine if current multiple is expected to compress"
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "fundamental_gate_failure",
+        "severity": "critical",
+        "detail": "fundamental_gate_38 fails on eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available \u2014 hard mechanical veto per \u00a73.8"
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "critical",
+        "detail": "fundamental_snapshot.status='insufficient_evidence' \u2014 all quarterly fields (eps, revenue, operating_income, operating_cash_flow, etc.) are null"
+      },
+      {
+        "kind": "ttm_snapshot_not_pit_safe",
+        "severity": "warning",
+        "detail": "valuation_snapshot.current_snapshot_not_PIT_safe=true \u2014 TTM ratios are not anchored to decision_timestamp"
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "news_event_summary.items_dropped_post_cutoff=20 \u2014 all news items filtered out; no recent narrative available"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public: unmapped_ticker \u2014 no tech activity data available"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f: not_available_on_current_plan \u2014 no institutional ownership data available"
+      },
+      {
+        "kind": "stub_data",
+        "severity": "info",
+        "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode \u2014 8-K text is deterministic placeholder, not ground truth"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The fundamental_snapshot block is entirely null, which triggers hard gate failure per \u00a73.8. This is a legitimate data gap (FMP endpoints returned no PIT-safe rows) rather than a hallucination. The valuation_snapshot provides TTM ratios that suggest elevated multiples, but without confirmed positive eps_ttm and operating_margin_ttm, the hard gate cannot pass. The distinction between case (a) (nonpositive denominator, real finding) and case (b) (field genuinely absent) is critical: the negative PEG and null fcf_yield are case (a) signals, not data gaps. The prompt correctly interprets these as bearish valuation findings. However, the absence of forward P/E, analyst consensus earnings, and management guidance limits the ability to assess whether the current multiple is a temporary repricing or a structural overvaluation.",
+    "recommended_followups": [
+      "URGENT: Obtain ZBRA's most recent 10-Q (Q1 2025) or 10-K (FY 2024) to confirm eps_ttm > 0 and operating_margin_ttm > 0",
+      "URGENT: Re-run this analysis after fundamental data is available and hard gates can be properly evaluated",
+      "HIGH: Retrieve full 8-K filing text to understand material agreement and financial statement changes (Items 2.02, 9.01)",
+      "HIGH: Assess whether the 46% drawdown is macro/sector-driven (tech weakness in April 2025) or company-specific",
+      "MEDIUM: Monitor insider buying/selling activity post-cutoff to gauge management confidence",
+      "MEDIUM: Evaluate the Feb 2025 8-K unregistered sales (item 2.02) to determine if dilutive",
+      "MEDIUM: Cross-check analyst consensus post-cutoff to see if sentiment has shifted from stable baseline",
+      "LOW: Obtain industry peer valuation multiples to contextualize PE=27.48 and EV/EBITDA=13.45"
+    ],
+    "candidate_type": "quality_long",
+    "decision": "no_trade",
+    "position_size_pct": 0.0,
+    "reason": "Hard fundamental gate failure (\u00a73.8): eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available. Mechanical veto blocks quality_long entry. Elevated valuation (PE 27.5x) paired with nonpositive earnings is structurally expensive. Severe 46% 60-day drawdown, elevated multiples, and missing fundamental data prevent execution despite constructive analyst sentiment and insider buying. Recommend obtaining Q1 2025 10-Q before reconsidering.",
+    "risk_notes": [
+      "\u00a73.8 fundamental gate failure is a hard mechanical veto that prevents quality_long execution",
+      "\u00a75.13 hard-veto conditions do not trip; risk agent confirms compliance",
+      "Execution blocked by rule engine (\u00a73.8 gate failure), not by risk agent (\u00a75.13)",
+      "No sleeve cap breach detected; macro regime equity cap (30%) not exceeded by proposed entry",
+      "Information integrity veto per \u00a75.13(d) does not trip (pollution_defense_layer unimplemented, relaxation applies)",
+      "Lookahead veto per \u00a75.13(e) does not trip (data_after_cutoff_used=false, lookahead_safe=true)"
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "No equity sleeve position data in packet; macro regime equity_allocation_cap=30% is not breached by proposed quality_long entry (no sizing provided)."
+      },
+      {
+        "name": "fundamental_gate_38_hard_veto_3_8",
+        "tripped": true,
+        "note": "eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available \u2014 hard mechanical veto per \u00a73.8 blocks quality_long execution"
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Pollution-defense layer status='unimplemented' per information_integrity_assessment.reason_use_as_primary_signal_disallowed. Per \u00a75.13(d) relaxation 2026-05-06, when pollution_defense_layer is unimplemented, the veto does NOT trip."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; no lookahead violation detected per \u00a75.4."
+      }
+    ],
+    "rule_engine_path": [
+      "Candidate type: quality_long",
+      "\u00a73.8 hard fundamental gate evaluation",
+      "Gate condition 1: eps_ttm > 0 \u2014 FAILED (eps_ttm_or_net_income_ttm_not_positive)",
+      "Gate condition 2: operating_margin_ttm > 0 \u2014 FAILED (operating_margin_not_available)",
+      "Result: fundamental_gate_38.passes=false",
+      "Hard mechanical veto triggered per \u00a73.8",
+      "Decision: no_trade (execution blocked by rule engine)",
+      "\u00a75.13 hard-veto conditions evaluated (informational only, gate already failed)",
+      "Condition (a) sleeve_cap_breach: not tripped",
+      "Condition (d) anti_pollution_integrity_veto: not tripped (relaxation applies)",
+      "Condition (e) lookahead_veto: not tripped",
+      "Final decision: no_trade"
+    ],
+    "decision_log": [
+      "2025-04-21T09:30:00-04:00 \u2014 PM Agent 07b receives evidence packet for ZBRA quality_long candidate",
+      "Upstream agents synthesized: narrative_event (unsupported_claim, low confidence), alt_data_verify (needs_more_evidence), valuation (very_expensive), quality_long (no_trade), risk (no \u00a75.13 veto conditions trip)",
+      "Fundamental gate evaluation: fundamental_gate_38.passes=false on two counts: (1) eps_ttm_or_net_income_ttm_not_positive, (2) operating_margin_not_available",
+      "Hard mechanical veto per \u00a73.8 triggered \u2014 quality_long entry blocked regardless of other signals",
+      "Price action context: 46% 60-day drawdown, 20% 20-day decline; macro regime Strengthening/Expansionary with strict_quality_and_valuation discipline",
+      "Valuation context: PE 27.5x, EV/EBITDA 13.5x, negative PEG -1.39 \u2014 elevated multiples paired with nonpositive earnings",
+      "Analyst sentiment: 12 Buy, 3 Strong Buy, 8 Hold as of 2025-04-01 \u2014 constructive but descriptor-only per \u00a711.13",
+      "Insider activity: 26 Form 4 transactions; director Gustafsson purchased 3,227 shares on 2025-02-24/25 at ~$310 \u2014 supportive but pre-dates drawdown",
+      "News corroboration: 0 items in 7-day window (20 dropped post-cutoff) \u2014 narrative isolation",
+      "8-K filing: 2025-02-13 with items 2.02 (unregistered sales) and 9.01 (financial statements) \u2014 full text stub data, not ground truth",
+      "Network effect classification: narrative_hype (Layer 2-only evidence per R-NETWORK-09) \u2014 no Layer 1 developer ecosystem or SEC-disclosed operating metrics",
+      "Risk agent evaluation: \u00a75.13 hard-veto conditions do not trip; \u00a73.8 fundamental gate failure is separate mechanical veto",
+      "PM synthesis: Hard fundamental gate failure (\u00a73.8) is a mechanical veto that overrides all other considerations. No quality_long entry permitted when eps_ttm and operating_margin_ttm cannot be confirmed positive. Elevated valuation (PE 27.5x) combined with nonpositive earnings is structurally expensive. Macro regime's strict_quality_and_valuation discipline reinforces caution. Severe drawdown (46% in 60 days) is notable but does not override hard gate.",
+      "Final decision: no_trade. Execution blocked by rule engine (\u00a73.8 gate failure). Recommend obtaining Q1 2025 10-Q filing to verify eps_ttm and operating_margin_ttm before reconsidering."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-21T09:45:00-04:00",
+      "ticker": null,
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026-05-03_pass8_soft_reasoning",
+      "evidence_packet_hash": "sha256:807747cedb5586d722c3b2346b060d47a0ae4675c98355cbb2d609ea03afd008"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": null,
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Hard fundamental gate failure (\u00a73.8) blocks quality_long execution; thesis cannot be confirmed without verified positive eps_ttm and operating_margin_ttm",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": null,
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": "Director Gustafsson purchased 3,227 shares on 2025-02-24/25 at ~$310; purchases pre-date 46% 60-day decline, suggesting insiders did not anticipate drawdown. Routine equity grants (March 2025) are not discretionary buying signals.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+    "execution_timestamp": "2025-04-21T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:ed53592b6613201d6cfb214c2b29f44a87ce3ddf8e6a140db40cabd10c15bae2",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1.0",
+      "prompt_version": "2026-05-03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ZBRA",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_narrative_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "filing_confirmation.SEC_8K_confirmation=true",
+        "filing_confirmation.filing_date=2025-02-13",
+        "filing_confirmation.filing_url",
+        "price_snapshot.return_5d_pct=1.5042",
+        "price_snapshot.return_20d_pct=-20.4484",
+        "price_snapshot.return_60d_pct=-46.0898",
+        "price_snapshot.relative_volume_vs_20d=0.4994",
+        "corporate_calendar.earnings.past[0].date=2025-02-13",
+        "corporate_calendar.earnings.past[0].eps_actual=4.0",
+        "corporate_calendar.earnings.past[0].eps_estimated=3.95",
+        "corporate_calendar.earnings.past[0].revenue_actual=1334000000",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.ownership_positioning.ownership_change_summary",
+        "fundamental_gate_38.passes=false"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items in window; 20 dropped post-cutoff)",
+        "news_event_summary.catalyst_type (null)",
+        "news_event_summary.trigger_article (null)",
+        "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text (stub mode, not ground truth)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence status)",
+        "narrative_price_gap_assessment (not_evaluated, pending Agent 03)"
+      ],
+      "reasoning_summary": "CATALYST CLASSIFICATION: The evidence packet shows ZBRA experienced a 1.5% 5-day return and a -20.4% 20-day return as of 2025-04-21 decision timestamp. The primary observable catalyst is an earnings beat on 2025-02-13 (EPS actual 4.0 vs. estimated 3.95; revenue actual $1.334B vs. estimated $1.317B). A Form 8-K was filed on 2025-02-13 (Items 2.02 and 9.01), confirming a material event disclosure. However, the news_event_summary block is data_unavailable with 0 items in the 7-day lookback window and 20 items dropped post-cutoff, preventing direct narrative corroboration. The filing_confirmation block confirms SEC_8K_confirmation=true, but the full_text extraction returned stub data (not ground truth). NARRATIVE SPECIFICITY: The earnings beat is concrete (specific dollar amounts, dates, named metrics). The 8-K filing is concrete (accession number, filing date, SEC URL). However, the CONTENT of the 8-K (Items 2.02 and 9.01) is not accessible in ground-truth form\u2014only stub text is available. This creates a critical gap: we know a material event was disclosed, but we cannot verify what the event actually was. SECTOR-AWARE REASONING: ZBRA is Zebra Technologies, a hardware/software company in the enterprise mobility and data capture space (barcode scanners, mobile computers, software). For this sector, expected corroborating evidence would include: (1) customer announcements or press releases, (2) product launch details, (3) partnership disclosures, (4) supply chain or operational updates. The absence of news items in the 7-day window is notable but not necessarily disqualifying\u2014earnings beats can drive price action without accompanying press releases. The Wikipedia pageview data shows elevated attention (peak 341 views on 2025-04-03, sustained 150-250 range through mid-April), consistent with a company in the news cycle. ALTERNATIVE DATA: FMP sentiment shows analyst ratings stable (3 Strong Buy, 9 Buy, 8 Hold as of 2025-04-01), no recent downgrades. SEC Form 4 insider transactions show 26 rows of activity (mostly grants and tax withholdings in early March 2025), with one director (Anders Gustafsson) making open-market purchases on 2025-02-24 and 2025-02-25 (500 shares at $311, 2,727 shares at $309.77), totaling ~$1M in buying. This insider buying is a positive signal but occurred AFTER the earnings date, so it is not a pre-announcement catalyst. VALUATION CONTEXT: PE=27.5x, PB=3.2x, EV/EBITDA=13.5x\u2014elevated multiples. The fundamental_gate_38 fails on eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available, indicating data quality issues or negative profitability signals. This is a red flag for quality assessment. PRICE ACTION INTERPRETATION: The 5-day return of +1.5% is modest. The 20-day return of -20.4% and 60-day return of -46.1% suggest the stock has been under pressure despite the earnings beat. This divergence (positive earnings, negative price trend) is unusual and suggests either (a) the market is pricing in forward headwinds, (b) the earnings beat was already priced in before 2025-02-13, or (c) there is a competing negative narrative not captured in the available evidence. VERDICT ON CATALYST SPECIFICITY: The earnings beat is CONCRETE and SPECIFIC (named metrics, dollar amounts, dates). The 8-K filing is CONCRETE (SEC filing, accession number, date). However, the CONTENT of the 8-K material event is OPAQUE (stub data only). The absence of corroborating news is NOTABLE but not DISQUALIFYING for a hardware/software company where earnings can be the primary catalyst. The insider buying is POSITIVE but LAGGED (post-earnings). Overall, the catalyst is PARTIALLY SUPPORTED: earnings beat is real and documented, but the broader narrative context (what the 8-K Item 2.02 actually disclosed, what drove the 20-day decline) remains UNCLEAR. CONFIDENCE RATIONALE: Low confidence because (1) the 8-K full text is unavailable (stub mode), (2) news corroboration is absent (data_unavailable), (3) the price action is contradictory (earnings beat but 20-day decline), (4) fundamental gate failure raises data quality concerns, (5) the macro regime is Strengthening/Expansionary but the stock is down significantly, suggesting idiosyncratic or sector-specific headwinds not captured in the packet.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K Item 2.02 (material agreement) or Item 9.01 (financial statements/exhibits) discloses a negative event (e.g., customer loss, supply chain disruption, regulatory action), the positive earnings beat narrative would be invalidated.",
+        "If the 20-day decline is driven by a competing negative catalyst (e.g., guidance cut, analyst downgrade, industry headwind) not visible in the packet, the earnings beat would be secondary.",
+        "If the fundamental_gate_38 failure indicates negative earnings or margin compression, the earnings beat may be a one-time event or accounting artifact, not sustainable value creation.",
+        "If insider buying by Gustafsson is followed by insider selling or lock-up expiration, the positive signal would be negated."
+      ],
+      "risk_flags": [
+        "CRITICAL: 8-K full text unavailable (stub mode) \u2014 cannot verify the material event disclosed in Items 2.02/9.01.",
+        "CRITICAL: News corroboration absent (0 items in 7-day window, 20 dropped post-cutoff) \u2014 narrative isolation.",
+        "HIGH: Price action contradictory \u2014 earnings beat on 2025-02-13 but 20-day return -20.4% as of 2025-04-21 (38 days later). This suggests the market is pricing in forward headwinds or the earnings beat was insufficient to offset other concerns.",
+        "HIGH: Fundamental gate failure (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available) \u2014 data quality issue or negative profitability signal.",
+        "MEDIUM: Valuation elevated (PE 27.5x, PB 3.2x, EV/EBITDA 13.5x) \u2014 limited margin of safety for a company with profitability concerns.",
+        "MEDIUM: Insider buying lagged earnings (2025-02-24/25 vs. 2025-02-13) \u2014 not a pre-announcement signal, may reflect opportunistic buying at lower prices.",
+        "MEDIUM: Analyst sentiment stable but not enthusiastic (3 Strong Buy, 9 Buy, 8 Hold) \u2014 no recent upgrade surge.",
+        "LOW: Wikipedia pageview spike (peak 341 on 2025-04-03) \u2014 elevated attention but not necessarily positive (could reflect negative news or short interest)."
+      ],
+      "suggested_improvements": [
+        "Retrieve the full text of the 8-K filing (Items 2.02 and 9.01) from SEC EDGAR to determine the nature of the material event and financial statements disclosed.",
+        "Expand news lookback window or use alternative news sources (e.g., Seeking Alpha, Benzinga, company press releases) to capture any narrative corroboration of the earnings beat or 8-K event.",
+        "Investigate the 20-day price decline (2025-02-13 to 2025-04-21) to identify competing catalysts: guidance cuts, analyst downgrades, sector headwinds, or macro shifts.",
+        "Resolve the fundamental_gate_38 failure by obtaining current-quarter or TTM earnings and margin data to assess profitability and sustainability.",
+        "Cross-reference insider buying (Gustafsson, 2025-02-24/25) with subsequent Form 4 filings to determine if the buying was sustained or reversed.",
+        "Analyze the Wikipedia pageview spike (peak 2025-04-03) to determine if it correlates with positive or negative news.",
+        "Obtain analyst reports or earnings call transcripts from 2025-02-13 to understand the market's interpretation of the earnings beat and forward guidance."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_data_unavailable",
+          "severity": "critical",
+          "detail": "news_event_summary.status=data_unavailable; 0 items in 7-day lookback; 20 items dropped post-cutoff. No narrative corroboration available."
+        },
+        {
+          "kind": "filing_text_stub_mode",
+          "severity": "critical",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext.extraction_status=stub; parsed_payload.text is placeholder, not ground truth. Cannot verify Items 2.02/9.01 content."
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "high",
+          "detail": "fundamental_gate_38.passes=false; failed_gates=[eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available]. Data quality or profitability concern."
+        },
+        {
+          "kind": "fundamental_snapshot_insufficient",
+          "severity": "high",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly data available."
+        },
+        {
+          "kind": "valuation_ttm_not_pit_safe",
+          "severity": "medium",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios without fiscal anchor; not point-in-time safe for decision."
+        },
+        {
+          "kind": "alt_data_adapter_failed",
+          "severity": "medium",
+          "detail": "alternative_data_features.tech_activity.github_public: unmapped_ticker \u2014 no GitHub activity data available."
+        },
+        {
+          "kind": "ownership_data_unavailable",
+          "severity": "medium",
+          "detail": "sentiment_community_ownership_evidence.sec_13f: not_available_on_current_plan \u2014 no institutional ownership data."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "price_snapshot.live_quote timestamp 2026-05-07T20:00:00+00:00 is after allowed_data_cutoff; retained for display only."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the critical gap is the unavailability of the 8-K full text (stub mode). This prevents verification of the material event disclosed, which is essential for catalyst classification. The news_event_summary block being data_unavailable is also problematic\u2014without news corroboration, the catalyst remains isolated to the earnings beat and insider buying, both of which are positive but insufficient to explain the 20-day price decline. The fundamental_gate_38 failure suggests data quality issues that should be resolved before making a trading decision. The packet would benefit from: (1) live 8-K text retrieval, (2) expanded news sources, (3) resolved fundamental data, (4) analyst report summaries.",
+      "recommended_followups": [
+        "URGENT: Retrieve full 8-K text from SEC EDGAR to verify Items 2.02 and 9.01 content.",
+        "URGENT: Investigate the 20-day price decline (2025-02-13 to 2025-04-21) to identify competing catalysts.",
+        "HIGH: Resolve fundamental_gate_38 failure by obtaining current earnings and margin data.",
+        "HIGH: Expand news lookback or use alternative sources to find narrative corroboration.",
+        "MEDIUM: Analyze Wikipedia pageview spike (2025-04-03 peak) to determine sentiment direction.",
+        "MEDIUM: Monitor insider Form 4 filings post-2025-02-25 to assess sustained buying conviction.",
+        "MEDIUM: Obtain analyst reports or earnings call transcripts from 2025-02-13 earnings date.",
+        "LOW: Cross-check valuation multiples (PE 27.5x, PB 3.2x) against sector peers to assess relative valuation."
+      ],
+      "catalyst_type": "earnings_beat_with_material_event_disclosure",
+      "catalyst_specificity_score": 0.55,
+      "vague_narrative_flag": false,
+      "company_claim": "ZBRA reported Q4 2024 earnings on 2025-02-13 with EPS beat (actual $4.00 vs. estimated $3.95) and revenue beat (actual $1.334B vs. estimated $1.317B). A Form 8-K was filed on the same date disclosing a material agreement (Item 2.02) and financial statements/exhibits (Item 9.01). Insider director Anders Gustafsson purchased 3,227 shares on 2025-02-24/25 at ~$310/share (~$1M total), signaling confidence. However, the stock declined 20.4% over the subsequent 38 days (2025-02-13 to 2025-04-21), suggesting the market is pricing in forward headwinds or the earnings beat was insufficient to offset other concerns.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "earnings_beat_with_positive_surprise",
+        "insider_buying_post_earnings",
+        "material_event_disclosure_via_8k",
+        "price_decline_despite_positive_catalyst"
+      ],
+      "evidence_sufficiency": "partial",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03_AltDataVerification",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ZBRA",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification: ZBRA equity narrative vs. alternative-data evidence",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "filing_confirmation.sec_edgar",
+        "filing_confirmation.sec_8k_fulltext",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.ev_to_ebitda",
+        "macro_regime.stress_score",
+        "corporate_calendar.earnings_history"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 rows post-cutoff)",
+        "fundamental_snapshot (insufficient_evidence status)",
+        "github_public (unmapped_ticker)",
+        "sec_13f (not_available_on_current_plan)",
+        "opencli_evidence (not_connected)",
+        "industry_specific_adapter_rows (software_devtools, semiconductor_patent, biotech_clinical, consumer_traffic, bank_regulatory, airline_travel, energy_commodity, auto_mobility, default_sec_gdelt all not_connected)"
+      ],
+      "reasoning_summary": "ZBRA is a hardware/software company (barcode scanning, mobile computing, data capture solutions). The packet shows: (1) Wikipedia pageviews spiked mid-March (peak 341 views on 2025-04-03), then moderated to 182 views on decision date (2025-04-21). (2) SEC 8-K filed 2025-02-13 (Items 2.02, 9.01 \u2014 material agreement / financial statements). (3) FMP analyst sentiment stable: 3 Strong Buy, 9 Buy, 8 Hold as of 2025-04-01 (no recent deterioration). (4) SEC Form 4 shows 26 insider transactions (mostly grants on 2025-03-04 and 2025-03-06, plus director purchases by Gustafsson on 2025-02-24/25). (5) Price action: -20.4% over 20d, -46.1% over 60d; relative volume 49.9% of 20d average (below normal). (6) Valuation: PE 27.5x, EV/EBITDA 13.5x, current_ratio 0.97 (tight liquidity). (7) Macro: Strengthening/Expansionary regime with strict quality discipline. (8) No news items in 7-day window (polygon_news returned 0 rows). (9) Fundamental gate failure: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available. SECTOR-AWARE REASONING: For a hardware/software company, expected alt-data corroboration would include: GitHub activity (developer ecosystem), patent filings (IP strength), supply-chain signals, customer/partner announcements. ACTUAL ALT-DATA FOOTPRINT: Wikipedia pageviews (attention metric, not operational), SEC filings (standard disclosure), analyst grades (sentiment descriptor), insider Form 4 (ownership activity). MISSING SECTOR-EXPECTED SIGNALS: No GitHub rows (unmapped), no patent activity adapter, no supply-chain data, no customer win/loss signals. The structural absence of developer-activity and IP-filing corroboration relative to what a tech-hardware company should produce is INFORMATIVE ABSENCE (source_flag='live_github_public_failed' with error_class='unmapped_ticker'). This is not a 'genuinely silent' case (adapter unavailable) but rather 'wired and returned 0 rows' \u2014 the adapter attempted to map ZBRA to GitHub and failed. For a company claiming innovation in mobile/IoT/AI-adjacent barcode solutions, zero GitHub footprint is sector-relevant bear evidence. The 8-K filing (Items 2.02, 9.01) is stub data (mock_fallback) \u2014 actual text not retrieved. Insider buying by director Gustafsson (500 + 2,727 shares on 2025-02-24/25 at ~$310) is a modest positive signal but occurs BEFORE the 20d / 60d price declines, suggesting insiders did not anticipate the drawdown. Form 4 grants (March 2025) are routine equity comp, not discretionary buying. Wikipedia attention spike (peak 341 views on 2025-04-03) is 18 days before decision date and has since moderated \u2014 suggests a transient event (news, earnings, announcement) that did not sustain. No corroborating news in polygon_news (0 rows in 7d window). Analyst sentiment (T2 source, descriptor-only per \u00a711.13) shows stable 3 SB / 9 B / 8 H \u2014 no recent upgrade or downgrade. Price momentum is sharply negative (-46% in 60d) despite stable analyst sentiment, suggesting market is pricing in information not yet reflected in analyst consensus or public filings. Fundamental gate failure (eps_ttm_or_net_income_ttm_not_positive) is a hard mechanical veto per rule engine. VERDICT LOGIC: The packet does not present a coherent narrative to verify. No explicit bull or bear thesis is stated in the evidence. The price action (sharp decline) is not corroborated by news (0 items), not contradicted by analyst sentiment (stable), and not explained by macro regime (Strengthening). The structural absence of GitHub / patent / supply-chain alt-data is sector-relevant bear evidence (informative absence), but it is not a contradiction of a stated narrative \u2014 it is an absence of corroboration for an unstated innovation narrative. The 8-K filing is present but text is stub (mock_fallback). Insider buying is modest and pre-dates the decline. Wikipedia attention is transient. The fundamental gate failure is a hard mechanical veto that prevents any 'support_thesis' recommendation. Given the lack of a clear narrative to verify, the absence of sector-expected alt-data corroboration, the hard fundamental gate failure, and the lack of news/catalyst explanation for the price decline, the verdict is INSUFFICIENT_EVIDENCE_TO_VERIFY with a recommendation to challenge any bull thesis and flag the fundamental gate failure as a blocking condition.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "fundamental_gate_38 fails: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available \u2014 hard mechanical veto per rule engine",
+        "No news catalyst in 7-day window (polygon_news returned 0 rows) \u2014 price decline unexplained by public information",
+        "8-K filing text is stub (mock_fallback) \u2014 cannot verify material agreement details",
+        "GitHub adapter returned 0 rows (unmapped_ticker) \u2014 sector-expected developer activity signal absent",
+        "Analyst sentiment stable despite 46% 60-day decline \u2014 market pricing in information not yet in consensus"
+      ],
+      "risk_flags": [
+        "fundamental_gate_failure: hard mechanical veto blocks any positive recommendation",
+        "informative_absence: GitHub / patent / supply-chain alt-data absent relative to sector expectations for hardware/software company",
+        "stub_data: 8-K filing text is mock_fallback, not ground truth",
+        "price_momentum_disconnect: 46% 60-day decline not explained by news, analyst sentiment, or macro regime",
+        "liquidity_concern: current_ratio 0.97 (below 1.0) indicates tight working capital",
+        "valuation_elevated: PE 27.5x, EV/EBITDA 13.5x in Strengthening/Expansionary regime with strict quality discipline",
+        "insider_timing: director purchases (Feb 2025) pre-date sharp price decline (20d / 60d), suggesting insiders did not anticipate drawdown",
+        "wikipedia_attention_transient: peak 341 views on 2025-04-03, moderated to 182 on decision date \u2014 suggests one-off event, not sustained narrative"
+      ],
+      "suggested_improvements": [
+        "Retrieve full 8-K text (Items 2.02, 9.01) to understand material agreement and financial statement changes",
+        "Wire GitHub adapter with ZBRA ticker mapping to assess developer ecosystem activity and code velocity",
+        "Connect patent activity adapter (USPTO, WIPO) to assess IP filing trends and innovation pipeline",
+        "Retrieve news items from decision date forward (post-cutoff) to understand what catalyst drove 46% 60-day decline",
+        "Obtain fundamental snapshot (income statement, balance sheet, cash flow) with PIT-safe filing dates to verify eps_ttm and operating_margin",
+        "Assess supply-chain signals (supplier announcements, customer win/loss press releases) via industry-specific adapter",
+        "Clarify insider transaction intent: were Feb 2025 purchases by Gustafsson discretionary (bullish signal) or routine (equity comp)?",
+        "Cross-check analyst downgrades post-cutoff to see if consensus has shifted since 2025-04-01 snapshot"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext: mock_fallback mode \u2014 text is deterministic placeholder, not ground truth"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 ZBRA not in ticker_to_github.csv; sector-expected signal absent"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "polygon_news: 0 items in [2025-04-14, 2025-04-21] \u2014 no news catalyst identified for price decline"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot: insufficient_evidence status \u2014 eps_ttm and operating_margin not available; fundamental_gate_38 fails"
+        },
+        {
+          "kind": "valuation_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot: TTM ratios not anchored to fiscal period; PE 27.5x, EV/EBITDA 13.5x are display-only"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment: use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented)"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not contain an explicit narrative claim to verify (e.g., 'ZBRA is a surge candidate due to AI pivot' or 'ZBRA is a short due to customer loss'). Agent 03 is designed to cross-check a narrative classified by Agent 02 against alt-data evidence. In this case, Agent 02's narrative is absent from the packet. The agent has inferred a potential bull narrative (stable analyst sentiment, insider buying, Wikipedia attention) and a potential bear narrative (sharp price decline, fundamental gate failure, missing sector-expected alt-data). Without an explicit narrative from Agent 02, the verification is speculative. Recommend that Agent 02 emit a clear narrative claim (candidate_type, thesis, catalyst) for Agent 03 to verify.",
+      "recommended_followups": [
+        "Obtain Agent 02 narrative classification: is ZBRA a surge_short, quality_long, or neutral candidate? What is the stated thesis?",
+        "Retrieve full 8-K filing text to understand material agreement and financial statement changes (Items 2.02, 9.01)",
+        "Verify fundamental snapshot: obtain PIT-safe income statement, balance sheet, cash flow to confirm eps_ttm and operating_margin status",
+        "Assess post-cutoff news (2025-04-21 onward) to identify catalyst for 46% 60-day price decline",
+        "Wire GitHub adapter with ZBRA mapping and assess code commit velocity, contributor count, and developer ecosystem activity",
+        "Connect patent activity adapter to assess IP filing trends and innovation pipeline relative to peers",
+        "Clarify insider transaction intent: interview or SEC filing analysis to determine if Feb 2025 purchases were discretionary or routine",
+        "Cross-check analyst consensus post-cutoff to see if sentiment has shifted from stable 3 SB / 9 B / 8 H baseline"
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.25,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "Price has declined 46% over 60 days and 20.4% over 20 days, yet analyst sentiment remains stable (3 SB / 9 B / 8 H as of 2025-04-01), no news catalyst is present in the 7-day window (polygon_news returned 0 rows), and macro regime is Strengthening/Expansionary. The gap between price action and public narrative is large and unexplained. Fundamental gate failure (eps_ttm_or_net_income_ttm_not_positive) suggests market may be pricing in earnings deterioration not yet disclosed. Wikipedia attention spike (peak 341 views on 2025-04-03) is transient and does not correlate with price recovery. Insider buying by director Gustafsson (Feb 2025) pre-dates the decline, suggesting insiders did not anticipate the drawdown. The structural absence of GitHub / patent / supply-chain alt-data corroboration (sector-expected for hardware/software company) is bear-thesis evidence but does not explain the specific timing of the decline.",
+      "industry_template_used": "hardware_software_iot_barcode_scanning",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews is the only industry-agnostic alt-data adapter that returned rows for ZBRA. Sector-specific adapters (software_devtools, semiconductor_patent, biotech_clinical, consumer_traffic, bank_regulatory, airline_travel, energy_commodity, auto_mobility, default_sec_gdelt) are all not_connected. GitHub adapter attempted but returned 0 rows (unmapped_ticker). Wikipedia pageviews serves as a proxy for public attention but does not provide operational or financial corroboration.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "SEC Form 4 insider transactions (26 rows, T1 source) show director purchases (Gustafsson, 500 + 2,727 shares on 2025-02-24/25 at ~$310) and routine equity grants (March 2025). These are hard-to-fake signals of insider confidence, but timing (pre-decline) and magnitude (modest relative to holdings) limit their weight. SEC 8-K filing (2025-02-13, Items 2.02, 9.01) is a hard-to-fake disclosure of material agreement, but text is stub (mock_fallback), so details cannot be verified. Fundamental gate failure (eps_ttm_or_net_income_ttm_not_positive) is a hard mechanical veto from the rule engine, indicating earnings deterioration or missing data. Wikipedia pageviews (30 rows, live_wikipedia_pageviews) show transient attention spike (peak 341 on 2025-04-03, moderated to 182 on decision date) \u2014 hard-to-fake in the sense that Wikipedia traffic is real, but not operational or financial in nature.",
+      "industry_specific_evidence_used": [
+        "SEC Form 4 insider transactions (T1 source, hard-to-fake)",
+        "SEC 8-K filing (T1 source, material agreement disclosure)",
+        "Wikipedia pageviews (attention metric, transient spike)",
+        "FMP analyst sentiment (T2 source, descriptor-only)"
+      ],
+      "industry_specific_evidence_missing": [
+        "GitHub activity (developer ecosystem, code velocity, contributor count) \u2014 adapter unmapped",
+        "Patent filings (USPTO, WIPO) \u2014 adapter not_connected",
+        "Supply-chain signals (supplier announcements, customer win/loss) \u2014 adapter not_connected",
+        "Product launch announcements (press releases, earnings call transcripts) \u2014 news_event_summary returned 0 rows",
+        "Clinical trial / regulatory approval data \u2014 not applicable to hardware/software company but included for completeness",
+        "Customer concentration / churn signals \u2014 not available in packet",
+        "Competitive win/loss data \u2014 not available in packet"
+      ],
+      "data_quality_warning": "critical: fundamental_gate_38 fails (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available); hard mechanical veto per rule engine prevents any positive recommendation. Additionally, 8-K filing text is stub (mock_fallback), and GitHub adapter returned 0 rows (unmapped_ticker), indicating sector-expected alt-data corroboration is absent.",
+      "signals": [
+        {
+          "name": "wikipedia_pageviews_spike",
+          "available": true,
+          "value": 341.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "wikipedia_pageviews_moderation",
+          "available": true,
+          "value": 182.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "sec_form4_insider_purchases",
+          "available": true,
+          "value": 3227.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "sec_form4_insider_grants",
+          "available": true,
+          "value": 26.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "sec_8k_filing_present",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "sec_8k_filing_text_stub",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fmp_analyst_sentiment_stable",
+          "available": true,
+          "value": 20.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "polygon_news_zero_rows",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_return_60d_negative",
+          "available": true,
+          "value": -46.0898,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_return_20d_negative",
+          "available": true,
+          "value": -20.4484,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "relative_volume_below_average",
+          "available": true,
+          "value": 0.4994,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "github_adapter_unmapped",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fundamental_gate_failure",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "current_ratio_below_one",
+          "available": true,
+          "value": 0.9697624190064795,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "pe_ratio_elevated",
+          "available": true,
+          "value": 27.477893454510742,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "macro_regime_strengthening",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "supports"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "OpenCLI not invoked in v1 generator; sec_8k_fulltext returned stub data (mock_fallback) with deterministic placeholder text",
+      "opencli_pit_safety_warning": "8-K filing text is anchored to filing_date 2025-02-13, which is <= allowed_data_cutoff 2025-04-21; PIT-safety holds for metadata, but stub text is not ground truth",
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 3,
+        "T2": 72,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "medium",
+      "primary_source_confirmation": true,
+      "reputable_source_confirmation": true,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "fundamental_gate_38 hard mechanical veto (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available) blocks any positive recommendation; 8-K filing text is stub (mock_fallback), not ground truth; GitHub adapter returned 0 rows (unmapped_ticker), indicating sector-expected alt-data corroboration absent; no news catalyst in 7-day window (polygon_news returned 0 rows) to explain 46% 60-day price decline",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": "Director Gustafsson purchased 500 + 2,727 shares on 2025-02-24/25 at ~$310; purchases pre-date 46% 60-day decline, suggesting insiders did not anticipate drawdown. Routine equity grants (March 2025) are not discretionary buying signals.",
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": "sec_13f adapter not_available_on_current_plan; institutional ownership concentration unknown",
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "dismissed",
+      "not_evaluated_reason": "pit_violation",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "news_event_summary (0 items post-cutoff)",
+        "fundamental_snapshot (insufficient_evidence status)",
+        "github_public (unmapped_ticker)",
+        "sec_13f (not_available_on_current_plan)",
+        "opencli_evidence (not_connected)"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Agent",
+      "schema_version": "v1.4_2026_04_29",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ZBRA",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "corporate_calendar.earnings_history",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.gross_margin_pct_ttm",
+        "valuation_snapshot.net_margin_pct_ttm"
+      ],
+      "evidence_missing": [
+        "github_public_developer_ecosystem",
+        "sec_disclosed_dau_mau_metrics",
+        "sec_disclosed_marketplace_gmv_or_take_rate",
+        "sec_disclosed_seller_cohort_retention",
+        "patent_activity_data",
+        "news_event_summary_items"
+      ],
+      "reasoning_summary": "ZBRA (Zebra Technologies) is a hardware/software company in mobile computing and data capture, not a platform or marketplace with direct network effects. The three-layer framework yields: Layer 1 (hard-to-fake) is EMPTY \u2014 no GitHub developer ecosystem (unmapped_ticker), no SEC-disclosed DAU/MAU/engagement metrics, no marketplace GMV or take-rate disclosure, no patent data wired. Layer 2 (attention) shows Wikipedia pageviews spiking mid-March to early April (peak 341 views on 2025-04-03, baseline ~100-200), and analyst sentiment stable (12 Buy/Hold/Strong Buy, 0 Sell as of 2025-04-01). Layer 3 (financials) shows revenue growth (Q1 FY2025 $1.334B vs Q4 FY2024 $1.255B, +6.3% QoQ), gross margin 47.31% TTM, net margin 7.77% TTM, PE 27.5x. The Wikipedia spike is Layer 2 only \u2014 textbook attention pollution per R-NETWORK-09. No Layer 1 evidence of genuine network compounding. The company's business model is B2B hardware + software (barcode scanners, mobile devices, enterprise software) \u2014 not a platform where users attract users or where ecosystem lock-in drives pricing power. The analyst sentiment and Wikipedia attention are corroborative noise, not proof of network economics. Classification: narrative_hype (L2-only pattern). Network effect evidence: weak (per R-NETWORK-09 mapping).",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If SEC 10-K/10-Q discloses DAU/MAU or marketplace metrics post-decision, classification would shift to emerging or strong_genuine.",
+        "If GitHub ecosystem data becomes available and shows >100 active contributors and >1000 dependent repos, Layer 1 evidence would upgrade classification.",
+        "If Wikipedia pageview spike correlates with a material product launch or partnership announcement (currently no news items in cutoff window), Layer 2 credibility would improve."
+      ],
+      "risk_flags": [
+        "Layer 1 completely absent \u2014 no developer ecosystem, no SEC operating metrics, no patent data.",
+        "Layer 2-only evidence (Wikipedia + analyst sentiment) is the textbook pollution failure mode per \u00a710.13 R-NETWORK-09.",
+        "No news items in cutoff window (20 items dropped post-cutoff) \u2014 cannot corroborate Wikipedia spike with catalyst.",
+        "Business model is B2B hardware/software, not a platform \u2014 network effect claim is structurally implausible.",
+        "Analyst sentiment is stable and unchanged over 2+ years (12-13 Buy/Hold/Strong Buy consistently) \u2014 not a recent shift.",
+        "Fundamental gate failure: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available \u2014 hard veto on quality_long."
+      ],
+      "suggested_improvements": [
+        "Wire GitHub adapter to detect if ZBRA has public developer repos or SDKs (currently unmapped_ticker).",
+        "Request SEC 10-K/10-Q disclosure of enterprise software user metrics (DAU, ARPU, cohort retention) if available.",
+        "Correlate Wikipedia pageview spike (mid-March to early April 2025) with press releases or earnings calls to identify catalyst.",
+        "Evaluate whether Zebra's enterprise software (Zebra Mobility Services, Zebra Analytics) exhibits two-sided marketplace dynamics (device users + enterprise customers).",
+        "Monitor insider trading (26 Form 4 rows show grants and tax withholding, no recent purchases) \u2014 no smart-money support signal."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "github_public: unmapped_ticker \u2014 no developer ecosystem data available"
+        },
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "fundamental_snapshot: status=insufficient_evidence \u2014 no SEC-disclosed operating metrics (DAU/MAU/take-rate)"
+        },
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "patent_activity: deferred per R-NETWORK-10 \u2014 adapter not wired in v0.8.7"
+        },
+        {
+          "kind": "layer_2_only",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews: 30 rows, peak 341 views on 2025-04-03; analyst_sentiment: stable 12-13 Buy/Hold/Strong Buy; no news catalyst in cutoff window"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff \u2014 cannot corroborate Wikipedia spike"
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available \u2014 hard veto on quality_long per \u00a73.8"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The three-layer framework correctly identifies ZBRA as a non-platform business with no Layer 1 evidence. The L2-only pattern (Wikipedia + analyst sentiment) is the textbook pollution case per R-NETWORK-09. However, the framework does not explicitly model B2B hardware/software businesses where network effects are structurally implausible \u2014 a sector-aware reading (Pass 6) would flag this earlier. The absence of news items in the cutoff window is a data gap that prevents corroboration of the Wikipedia spike; this is a legitimate absence, not a hallucination.",
+      "recommended_followups": [
+        "Confirm whether Zebra's enterprise software platform (Zebra Mobility Services, Zebra Analytics) has disclosed user cohort metrics in recent 10-K/10-Q filings.",
+        "If ZBRA is a surge_short candidate, the L2-only Wikipedia spike should NOT justify holding the short past the agentic exit point per \u00a710.14 R-COVER-02.",
+        "Monitor for future SEC filings that disclose platform/ecosystem metrics; if disclosed, re-run network-effect classification.",
+        "Evaluate whether the Wikipedia pageview spike (mid-March to early April) correlates with a specific product announcement, earnings beat, or analyst upgrade not captured in the cutoff window."
+      ],
+      "network_effect_score": 15,
+      "network_effect_evidence": "weak",
+      "pricing_power_assessment": "low",
+      "key_signals_used": [
+        "wikipedia_pageviews: 30-day window, peak 341 views on 2025-04-03, baseline 80-200 views",
+        "fmp_sentiment: analyst ratings stable 12-13 Buy/Hold/Strong Buy over 2+ years",
+        "sec_form4: 26 insider transactions (grants, tax withholding, 1 director purchase); no CEO/CFO recent buying",
+        "corporate_calendar: Q1 FY2025 earnings beat (EPS $4.00 vs $3.95 est, revenue $1.334B vs $1.317B est)",
+        "valuation_snapshot: PE 27.5x, PB 3.21x, EV/EBITDA 13.45x, gross margin 47.31%, net margin 7.77%"
+      ],
+      "key_signals_missing": [
+        "github_public: developer ecosystem (commits, forks, contributors, dependent repos)",
+        "sec_disclosed_dau_mau: daily/monthly active users or engagement metrics",
+        "sec_disclosed_marketplace_gmv_or_take_rate: transaction volume or platform economics",
+        "sec_disclosed_seller_cohort_retention: cohort survival or repeat-purchase rates",
+        "patent_activity: patent filings, grants, citations (adapter deferred per R-NETWORK-10)",
+        "news_event_summary: catalyst articles (20 items dropped post-cutoff, 0 items in window)"
+      ],
+      "classification": "narrative_hype",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "wikipedia_pageviews: 30-day window shows spike from ~100-200 baseline to peak 341 views on 2025-04-03, then decay to ~180 by 2025-04-21",
+        "fmp_sentiment: analyst ratings stable at 12-13 Buy/Hold/Strong Buy, 0 Sell, consistent over 2+ years (no recent upgrade)"
+      ],
+      "layer_3_evidence": [
+        "corporate_calendar: Q1 FY2025 revenue $1.334B (+6.3% QoQ vs Q4 FY2024 $1.255B), EPS $4.00 vs $3.95 est (beat)",
+        "valuation_snapshot: gross margin 47.31% TTM, net margin 7.77% TTM, PE 27.5x (elevated but not extreme for quality hardware/software)"
+      ],
+      "type_direct_vs_two_sided": "none",
+      "staleness_flags": [
+        "sec_operating_metrics_stale_or_absent: fundamental_snapshot status=insufficient_evidence, no DAU/MAU/take-rate disclosure",
+        "github_activity_stale_or_absent: github_public unmapped_ticker, no rows returned",
+        "news_catalyst_absent: news_event_summary status=data_unavailable, 20 items dropped post-cutoff, 0 items in window"
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ZBRA",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "very_expensive",
+      "confidence": "medium",
+      "evidence_used": [
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.peg_ratio",
+        "valuation_snapshot.price_to_sales",
+        "valuation_snapshot.price_to_book",
+        "valuation_snapshot.ev_to_ebitda",
+        "valuation_snapshot.gross_margin_pct_ttm",
+        "valuation_snapshot.net_margin_pct_ttm",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "macro_regime.macro_regime",
+        "macro_regime.equity_discipline",
+        "fundamental_gate_38.passes",
+        "fundamental_gate_38.failed_gates",
+        "corporate_calendar.earnings",
+        "sentiment_community_ownership_evidence.fmp_sentiment"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.eps_ttm",
+        "fundamental_snapshot.free_cash_flow_ttm",
+        "fundamental_snapshot.operating_income",
+        "valuation_snapshot.fcf_yield",
+        "valuation_snapshot.ev_to_ebit",
+        "news_event_summary.items",
+        "alternative_data_features.valuation_context"
+      ],
+      "reasoning_summary": "ZBRA exhibits a very_expensive valuation profile driven by elevated multiples in a Strengthening/Expansionary macro regime that mandates strict quality and valuation discipline. The P/E of 27.48x is elevated for an industrial/manufacturing equipment company, particularly when paired with a negative PEG ratio (-1.39) indicating earnings growth concerns. The P/B of 3.21x and EV/EBITDA of 13.45x are both above typical industrial sector medians. Critically, the fundamental_gate_38 fails on two counts: (1) eps_ttm or net_income_ttm is not positive (case (a) \u2014 underlying input is nonpositive, not a data gap), and (2) operating_margin is not available. This is a REAL FINDING, not a data absence. A company trading at 27.5x P/E while reporting negative or near-zero earnings is structurally expensive and represents a narrative-driven valuation disconnected from profitability. The 20-day return of -20.45% and 60-day return of -46.09% indicate significant recent drawdown, but in the Strengthening regime with strict_quality_and_valuation discipline, drawdowns alone do not override the fundamental gate failure and elevated multiples. The P/S of 2.08x is reasonable for industrial tech, but gross margin of 47.31% and net margin of 7.77% suggest operational leverage constraints. Analyst sentiment (3 Strong Buy, 9 Buy, 8 Hold as of 2025-04-01) remains constructive, but this is a descriptor only and does not override valuation mechanics. The absence of positive earnings (case (a) \u2014 nonpositive denominator) combined with elevated multiples on revenue and book value makes this a very_expensive candidate. The macro regime's strict_quality_and_valuation discipline further reinforces caution on elevated multiples paired with fundamental gate failure.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If fundamental_gate_38 is later overridden by confirmed positive earnings in the next quarterly filing, valuation_assessment may shift to expensive or fair depending on forward guidance.",
+        "If macro regime shifts to Crisis or Poor, margin-of-safety bonus per \u00a73.9 could apply to the 46% drawdown, potentially shifting assessment to expensive.",
+        "If alternative_data or narrative_price_gap_assessment reveals a material catalyst (e.g., major contract win, product launch) that justifies the multiple, assessment may be revisited."
+      ],
+      "risk_flags": [
+        "Fundamental gate failure: eps_ttm or net_income_ttm not positive \u2014 company is trading on narrative/growth expectations, not current profitability.",
+        "Negative PEG ratio (-1.39) suggests earnings growth is negative or undefined, making P/E multiple unjustifiable on traditional growth-adjusted basis.",
+        "Elevated P/E (27.48x) in Strengthening/Expansionary regime with strict_quality_and_valuation discipline is a red flag for late-cycle valuation vulnerability.",
+        "Significant drawdown (60-day: -46.09%) combined with elevated multiples suggests market repricing of growth expectations downward.",
+        "Operating margin unavailable; net margin of 7.77% is thin for a company trading at 27.5x earnings, indicating limited profitability cushion.",
+        "Analyst sentiment remains constructive (12 Buy/Strong Buy vs 8 Hold) despite fundamental gate failure \u2014 potential disconnect between analyst models and current earnings reality."
+      ],
+      "suggested_improvements": [
+        "Obtain confirmed TTM earnings (eps_ttm, net_income_ttm) from the most recent 10-Q or 10-K filing to verify the nonpositive signal and determine if gate failure is temporary (e.g., one-time charge) or structural.",
+        "Retrieve operating_income and operating_margin from fundamental_snapshot to assess operational profitability independent of financing/tax effects.",
+        "Obtain free_cash_flow_ttm to compute P/FCF and assess cash generation relative to valuation; negative FCF would further support very_expensive assessment.",
+        "Analyze forward guidance from the most recent earnings call (corporate_calendar shows 2025-02-13 earnings) to determine if management expects earnings recovery that would justify current multiple.",
+        "Cross-check analyst consensus forward P/E (not available in packet) to assess whether the 27.48x TTM multiple is expected to compress as earnings grow."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 fails on eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available \u2014 this is case (a), a real finding, not a data gap."
+        },
+        {
+          "kind": "ttm_snapshot_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios without fiscal anchor; current_snapshot_not_PIT_safe=true. Ratios are display-only for this decision."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.snapshot_quarter is entirely null; no PIT-safe quarterly data available. Gate failure is inferred from TTM inputs only."
+        },
+        {
+          "kind": "peg_ratio_negative",
+          "severity": "warning",
+          "detail": "PEG ratio is -1.39, indicating negative or undefined earnings growth. This is a real signal of earnings contraction or near-zero growth, not a data gap."
+        },
+        {
+          "kind": "fcf_yield_null",
+          "severity": "info",
+          "detail": "fcf_yield is null; free_cash_flow_ttm likely negative or unavailable. Cannot assess P/FCF; this weakens valuation evidence but does not override P/E and P/B findings."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The valuation_snapshot block correctly flags current_snapshot_not_PIT_safe=true, but the TTM ratios are the only valuation evidence available in the packet. The fundamental_snapshot is entirely null (status=insufficient_evidence), preventing cross-check of earnings via quarterly filings. The distinction between case (a) (nonpositive denominator, real finding) and case (b) (field genuinely absent) is critical here: the negative PEG and null fcf_yield are case (a) signals, not data gaps. The prompt correctly interprets these as bearish valuation findings. However, the absence of forward P/E, analyst consensus earnings, and management guidance limits the ability to assess whether the current multiple is a temporary repricing or a structural overvaluation.",
+      "recommended_followups": [
+        "Retrieve the 2025-02-13 earnings call transcript (corporate_calendar confirms this event) to assess management commentary on earnings trajectory and margin recovery.",
+        "Obtain forward P/E and analyst consensus EPS for FY2025 and FY2026 to determine if the 27.48x TTM multiple is expected to compress as earnings grow.",
+        "Verify whether the nonpositive earnings signal is due to a one-time charge (e.g., restructuring, acquisition write-down) or structural margin compression.",
+        "Monitor the next quarterly earnings release (corporate_calendar shows no upcoming earnings in the near-term window) for confirmation of earnings recovery or further deterioration.",
+        "Cross-check the 46% 60-day drawdown against sector peers (e.g., Honeywell, Rockwell Automation) to assess whether ZBRA's repricing is idiosyncratic or sector-wide."
+      ],
+      "valuation_score": 28,
+      "valuation_assessment": "very_expensive",
+      "margin_of_safety_assessment": "none",
+      "valuation_inputs_used": {
+        "pe_ratio": 27.477893454510742,
+        "peg_ratio": -1.3874305808312084,
+        "price_to_sales": 2.08417486971831,
+        "price_to_book": 3.208817546666667,
+        "ev_to_ebitda": 13.452903085907334,
+        "gross_margin_pct_ttm": 47.31,
+        "net_margin_pct_ttm": 7.77,
+        "debt_to_equity_ttm": 0.7848383500557413,
+        "current_ratio_ttm_pit": 0.9697624190064795,
+        "roe": 0.1149677596378104,
+        "roa": 0.04928252175958598,
+        "return_20d_pct": -20.4484,
+        "return_60d_pct": -46.0898,
+        "macro_regime": "Strengthening / Expansionary",
+        "equity_discipline": "strict_quality_and_valuation",
+        "fundamental_gate_passes": false,
+        "analyst_sentiment_buy_ratio": 0.6,
+        "analyst_sentiment_hold_ratio": 0.4
+      },
+      "valuation_inputs_missing": [
+        "eps_ttm (underlying input for P/E; nonpositive per gate failure)",
+        "free_cash_flow_ttm (underlying input for P/FCF; null in snapshot)",
+        "operating_income (underlying input for operating margin; unavailable per gate failure)",
+        "forward_pe (consensus analyst estimate)",
+        "forward_earnings_growth_rate (for PEG validation)",
+        "fcf_yield (null in snapshot)",
+        "ev_to_ebit (null in snapshot)",
+        "management_guidance_fy2025_eps",
+        "sector_median_pe (for peer comparison)",
+        "sector_median_pb (for peer comparison)"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Agent",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ZBRA",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long thesis evaluation for ZBRA following 46% 60-day selloff",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_60d_pct (-46.09%)",
+        "price_snapshot.return_20d_pct (-20.45%)",
+        "valuation_snapshot.pe_ratio (27.48)",
+        "valuation_snapshot.ev_to_ebitda (13.45)",
+        "valuation_snapshot.debt_to_equity_ttm (0.785)",
+        "corporate_calendar.earnings (4 recent beats)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (12 Buy, 8 Hold, 3 Strong Buy as of 2025-04-01)",
+        "sentiment_community_ownership_evidence.sec_form4 (26 insider transactions, mostly grants and tax withholding)",
+        "macro_regime (Strengthening/Expansionary, stress_score=1)",
+        "alternative_data_features.attention.wikipedia_pageviews (30-day window, peak 341 views 2025-04-03)",
+        "filing_confirmation (8-K filed 2025-02-13, items 2.02 and 9.01)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.eps_ttm (null)",
+        "fundamental_snapshot.operating_income (null)",
+        "fundamental_snapshot.operating_cash_flow (null)",
+        "fundamental_snapshot.net_income (null)",
+        "fundamental_snapshot.revenue (null)",
+        "news_event_summary.items (0 items post-cutoff)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "narrative_price_gap_assessment (not_evaluated, pending Agent 03)",
+        "valuation_snapshot.fcf_yield (null)",
+        "valuation_snapshot.ev_to_ebit (null)"
+      ],
+      "reasoning_summary": "ZBRA has experienced a severe 46% 60-day selloff and 20% 20-day decline. The valuation snapshot shows PE=27.48 and EV/EBITDA=13.45, which are elevated but not extreme for a quality industrial-tech company. Analyst sentiment remains constructive (12 Buy, 3 Strong Buy, 8 Hold as of early April). Recent earnings (Feb 2025) beat estimates (EPS 4.0 vs 3.95 est, revenue $1.334B vs $1.317B est), and the prior three quarters also beat. Debt-to-equity of 0.785 is sound. However, the fundamental_snapshot block is entirely null\u2014no TTM earnings, operating margin, or cash flow data available. This is a CRITICAL GATE FAILURE per \u00a73.8 hard rules: eps_ttm and operating_margin_ttm cannot be verified as positive. The macro regime is Strengthening/Expansionary (stress_score=1), which is supportive. Wikipedia pageviews show elevated attention (peak 341 on 2025-04-03, elevated through mid-April). Insider activity via Form 4 shows 26 transactions, predominantly grants to executives (March 2025) and tax withholding, with one director (Gustafsson) purchasing 3,227 shares on 2025-02-24/25 at ~$310, suggesting confidence. The 8-K filing (2025-02-13) with items 2.02 (unregistered sales) and 9.01 (financial statements) is present but full text is stub data. The selloff appears to be sector/macro-driven (tech weakness in April 2025) rather than company-specific, given the recent earnings beats and analyst support. However, without confirmed positive eps_ttm and operating_margin_ttm, the hard fundamental gates cannot pass. Valuation is fair-to-attractive on a PE basis (27.5x is reasonable for a quality industrial-tech franchise), but this cannot override the missing fundamental data gate.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Hard gate failure: eps_ttm not confirmed positive (null in fundamental_snapshot)",
+        "Hard gate failure: operating_margin_ttm not confirmed positive (null in fundamental_snapshot)",
+        "Hard gate failure: financial_health cannot be assessed (no operating_cash_flow, total_debt, total_equity data)",
+        "Fundamental snapshot status='insufficient_evidence' \u2014 no PIT-safe quarterly data available",
+        "Valuation snapshot marked not_PIT_safe for TTM ratios \u2014 cannot anchor to decision_timestamp",
+        "News event summary empty post-cutoff \u2014 no recent catalyst or narrative confirmation",
+        "Narrative price gap assessment not_evaluated \u2014 Agent 03 verdict pending"
+      ],
+      "risk_flags": [
+        "Severe drawdown (46% in 60 days, 20% in 20 days) \u2014 liquidity and momentum risk",
+        "Elevated PE ratio (27.48) \u2014 valuation multiple compression risk if growth slows",
+        "Current ratio TTM (0.97) \u2014 slightly below 1.0, working capital tightness",
+        "Gross margin stable (47.31%) but net margin low (7.77%) \u2014 operational leverage risk",
+        "No recent news coverage post-cutoff \u2014 information vacuum during selloff",
+        "Insider grants (March 2025) at $306.84 vs current $226.73 \u2014 underwater for executives",
+        "8-K filing (Feb 2025) with unregistered sales (item 2.02) \u2014 potential dilution signal",
+        "Macro regime strict_quality_and_valuation discipline \u2014 equity allocation capped at 30%"
+      ],
+      "suggested_improvements": [
+        "Obtain most recent 10-Q or 10-K filing to confirm eps_ttm, operating_margin_ttm, and operating_cash_flow",
+        "Verify whether the Feb 2025 8-K unregistered sales (item 2.02) represent secondary offering or insider sales",
+        "Collect post-cutoff news (after 2025-04-21) to assess whether selloff was temporary or reflects deteriorating fundamentals",
+        "Obtain industry peer valuation multiples to contextualize PE=27.48 and EV/EBITDA=13.45",
+        "Assess whether the March 2025 insider grants (at $306.84) represent confidence or forced equity comp",
+        "Evaluate whether the 46% drawdown reflects sector rotation (tech weakness) or company-specific deterioration"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status='insufficient_evidence' \u2014 all quarterly fields (eps, revenue, operating_income, operating_cash_flow, etc.) are null"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.current_snapshot_not_PIT_safe=true \u2014 TTM ratios are not anchored to decision_timestamp; cannot be used for hard gate verification"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary.items_dropped_post_cutoff=20 \u2014 all news items filtered out; no recent narrative available"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "price_snapshot.last_quote_after_cutoff=true \u2014 live quote at 2026-05-07 is after allowed_data_cutoff; last_eod_close (2025-04-17, $226.73) used for PIT anchoring"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no tech activity data available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 no institutional ownership data available"
+        },
+        {
+          "kind": "stub_data",
+          "severity": "info",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode \u2014 8-K text is deterministic placeholder, not ground truth"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The fundamental_snapshot block is entirely null, which triggers hard gate failure per \u00a73.8. However, the valuation_snapshot provides TTM ratios (PE, EV/EBITDA, debt-to-equity) that suggest the company is operationally sound. The disconnect arises because FMP's income_statement, balance_sheet, and cash_flow endpoints returned no PIT-safe rows. This may indicate a data lag or adapter issue rather than a true absence of fundamentals. The corporate_calendar shows 4 recent earnings beats (Feb, Oct, Jul, Apr 2024), which indirectly supports positive earnings, but without explicit eps_ttm confirmation, the hard gate cannot pass. The agent is constrained by the read-only evidence packet and cannot invoke external knowledge about ZBRA's actual Q1 2025 results (which may have been reported after the decision_timestamp).",
+      "recommended_followups": [
+        "Obtain ZBRA's most recent 10-Q (Q1 2025) or 10-K (FY 2024) to confirm eps_ttm > 0 and operating_margin_ttm > 0",
+        "Re-run this analysis after fundamental data is available and hard gates can be properly evaluated",
+        "Assess whether the 46% drawdown is macro/sector-driven (tech weakness in April 2025) or company-specific",
+        "Monitor insider buying/selling activity post-cutoff to gauge management confidence",
+        "Evaluate the Feb 2025 8-K unregistered sales (item 2.02) to determine if dilutive"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "uncertain",
+      "network_effect_evidence": "partial",
+      "valuation_assessment": "fair",
+      "selloff_origin_view": "mixed",
+      "thesis_status": "invalidated",
+      "evidence_sufficiency": "insufficient",
+      "recommended_action": "no_trade",
+      "initial_position_pct": 0.0,
+      "max_position_pct": 5.0,
+      "missing_data_warnings": [
+        "fundamental_snapshot.eps_ttm is null \u2014 cannot verify hard gate eps_ttm > 0",
+        "fundamental_snapshot.operating_income is null \u2014 cannot verify hard gate operating_margin_ttm > 0",
+        "fundamental_snapshot.operating_cash_flow is null \u2014 cannot assess financial_health sound condition",
+        "fundamental_snapshot.net_income is null \u2014 no direct profitability confirmation",
+        "valuation_snapshot.fcf_yield is null \u2014 cannot assess free cash flow valuation",
+        "news_event_summary.items is empty post-cutoff \u2014 no recent narrative or catalyst",
+        "narrative_price_gap_assessment is not_evaluated \u2014 Agent 03 verdict pending",
+        "sec_13f ownership data unavailable \u2014 cannot assess institutional support",
+        "github_public tech activity unavailable \u2014 cannot assess developer/community engagement"
+      ],
+      "audit_rationale": "ZBRA fails hard fundamental gate \u00a73.8: eps_ttm and operating_margin_ttm cannot be confirmed positive due to null fundamental_snapshot. Despite constructive analyst sentiment (12 Buy), recent earnings beats, sound debt-to-equity (0.785), and fair valuation (PE 27.5), the absence of verified positive earnings and operating margin mandates recommended_action='no_trade' per fail-closed rule. Selloff appears mixed (macro/sector + potential company-specific uncertainty). Thesis status='invalidated' due to insufficient evidence to pass hard gates. Recommend obtaining Q1 2025 10-Q before reconsidering."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Pass 8 Hard-Veto Checking)",
+      "schema_version": "risk_agent_v1.0",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ZBRA",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for candidate_type=quality_long",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "fundamental_gate_38.passes",
+        "fundamental_gate_38.failed_gates",
+        "macro_regime.equity_allocation_cap",
+        "valuation_snapshot.pe_ratio",
+        "price_snapshot.return_60d_pct"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)-(e) for candidate_type=quality_long. Condition (a): No equity sleeve cap breach detected (macro regime cap=30%, no sleeve position data provided in packet). Condition (b): Not applicable to quality_long (surge_short only). Condition (c): No critical-severity data_quality_flags present in packet. Condition (d): Information integrity veto per \u00a75.13(d) RELAXED 2026-05-06. The pollution_defense_layer status is 'unimplemented' (per information_integrity_assessment.reason_use_as_primary_signal_disallowed: 'pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'). Per the relaxation, when pollution_defense_layer is unimplemented, \u00a75.13(d) does NOT trip. The candidate evaluates on other criteria. Condition (e): Lookahead veto. envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; condition (e) does NOT trip. SUMMARY: No hard-veto conditions trip. However, fundamental_gate_38.passes=false (failed_gates: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available) is a HARD MECHANICAL VETO per \u00a73.8, which blocks any quality_long recommendation independent of \u00a75.13 veto conditions. The risk agent's role is to evaluate \u00a75.13 only; the fundamental gate failure is a separate rule-engine veto that prevents trade execution.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If pollution_defense_layer were implemented and returned pollution_confirmed=true with use_as_primary_signal_allowed=false and no T1/T2 corroboration, \u00a75.13(d) would trip.",
+        "If data_after_cutoff_used were true or lookahead_safe were false, \u00a75.13(e) would trip.",
+        "If a critical-severity data_quality_flag were present, \u00a75.13(c) would trip."
+      ],
+      "risk_flags": [
+        "fundamental_gate_38 hard veto: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available \u2014 blocks quality_long per \u00a73.8",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false \u2014 candidate cannot be used as primary signal per schema v1.1 decision #8",
+        "pollution_defense_layer unimplemented \u2014 \u00a75.13(d) relaxation applies; veto does not trip, but fail-closed semantics preserved"
+      ],
+      "suggested_improvements": [],
+      "data_quality_flags": [],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [],
+      "candidate_type": "quality_long",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "No equity sleeve position data in packet; macro regime equity_allocation_cap=30% is not breached by proposed quality_long entry (no sizing provided)."
+        },
+        {
+          "name": "surge_short_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) applies to surge_short only; candidate_type=quality_long; not applicable."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical' per \u00a75.10. Flags present are 'info', 'warning', 'insufficient_evidence' but not 'critical'."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Pollution-defense layer status='unimplemented' per information_integrity_assessment.reason_use_as_primary_signal_disallowed. Per \u00a75.13(d) relaxation 2026-05-06, when pollution_defense_layer is unimplemented, the veto does NOT trip. Candidate evaluates on other criteria. use_as_primary_signal_allowed=false is a schema-level flag, not a veto trip condition."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; no lookahead violation detected per \u00a75.4."
+        }
+      ],
+      "advisory_notes": "HARD-VETO PASS: No \u00a75.13 conditions (a)-(e) trip for this candidate. However, fundamental_gate_38 hard mechanical veto (\u00a73.8) blocks execution: eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available. This is a separate rule-engine veto independent of \u00a75.13. Risk agent confirms \u00a75.13 compliance; rule engine blocks trade via \u00a73.8 gate failure.",
+      "risk_notes": [
+        "\u00a75.13(d) relaxation applies: pollution_defense_layer unimplemented; veto does not trip.",
+        "\u00a73.8 fundamental gate failure is a hard mechanical veto that prevents quality_long execution.",
+        "No \u00a75.13 veto conditions trip; candidate passes risk-agent hard-veto check.",
+        "Execution blocked by rule engine (\u00a73.8), not by risk agent (\u00a75.13)."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation",
+        "Condition (a) sleeve_cap_breach: not tripped",
+        "Condition (b) surge_short_cap_breach: not applicable (quality_long)",
+        "Condition (c) critical_data_quality_flag: not tripped",
+        "Condition (d) anti_pollution_integrity_veto: not tripped (pollution_defense_layer unimplemented, relaxation applies)",
+        "Condition (e) lookahead_veto: not tripped",
+        "Result: no \u00a75.13 veto conditions trip",
+        "Note: \u00a73.8 fundamental_gate_38 hard veto blocks execution (separate from \u00a75.13)"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "Portfolio Manager (Final Decision Authority)",
+      "schema_version": "pm_agent_v1.0",
+      "prompt_version": "2026-05-03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ZBRA",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long candidate evaluation post-46% drawdown; hard fundamental gate failure blocks execution",
+      "confidence": "high",
+      "evidence_used": [
+        "fundamental_gate_38.passes=false",
+        "fundamental_gate_38.failed_gates=[eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available]",
+        "upstream_agent_outputs.narrative_event.verdict=unsupported_claim",
+        "upstream_agent_outputs.alt_data_verify.recommendation_to_pm=needs_more_evidence",
+        "upstream_agent_outputs.valuation.valuation_assessment=very_expensive",
+        "upstream_agent_outputs.quality_long.recommended_action=no_trade",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated=[all conditions not tripped]",
+        "price_snapshot.return_60d_pct=-46.0898",
+        "price_snapshot.return_20d_pct=-20.4484",
+        "macro_regime.macro_regime=Strengthening",
+        "macro_regime.equity_discipline=strict_quality_and_valuation",
+        "valuation_snapshot.pe_ratio=27.477893454510742",
+        "valuation_snapshot.ev_to_ebitda=13.452903085907334",
+        "sentiment_community_ownership_evidence.fmp_sentiment (12 Buy, 3 Strong Buy, 8 Hold)",
+        "sentiment_community_ownership_evidence.sec_form4 (26 insider transactions, director purchases Feb 2025)",
+        "corporate_calendar.earnings (4 recent beats)",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.eps_ttm (null)",
+        "fundamental_snapshot.operating_income (null)",
+        "fundamental_snapshot.operating_cash_flow (null)",
+        "news_event_summary.items (0 post-cutoff)",
+        "narrative_price_gap_assessment (not_evaluated)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)"
+      ],
+      "reasoning_summary": "ZBRA is a quality-long candidate that has experienced a severe 46% 60-day drawdown and 20% 20-day decline. The macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline (equity cap 30%). Analyst sentiment remains constructive (12 Buy, 3 Strong Buy, 8 Hold as of early April 2025). Recent earnings (Feb 2025) beat estimates (EPS $4.00 vs $3.95 est, revenue $1.334B vs $1.317B est), and the prior three quarters also beat. Insider director Gustafsson purchased 3,227 shares on 2025-02-24/25 at ~$310, signaling confidence. Valuation is elevated (PE 27.5x, EV/EBITDA 13.5x) but not extreme for a quality industrial-tech company. However, the fundamental_gate_38 FAILS on two critical counts: (1) eps_ttm_or_net_income_ttm_not_positive (case (a) \u2014 underlying input is nonpositive, not a data gap), and (2) operating_margin_not_available. This is a HARD MECHANICAL VETO per \u00a73.8 that blocks any quality_long recommendation, regardless of other supportive signals. The fundamental_snapshot block is entirely null (status=insufficient_evidence), preventing verification of positive earnings and operating margin. The upstream quality_long agent recommends no_trade due to insufficient evidence to pass hard gates. The alt_data_verify agent recommends needs_more_evidence due to missing sector-expected alt-data (GitHub unmapped, sec_13f unavailable) and stub 8-K filing text. The valuation agent assesses very_expensive due to elevated multiples paired with nonpositive earnings. The risk agent confirms no \u00a75.13 veto conditions trip, but notes that \u00a73.8 fundamental gate failure is a separate hard mechanical veto that prevents execution. The narrative_event agent classifies the catalyst as unsupported_claim due to missing 8-K full text and news corroboration. The network_effect agent classifies ZBRA as narrative_hype (Layer 2-only evidence per R-NETWORK-09) with no Layer 1 developer ecosystem or SEC-disclosed operating metrics. DECISION LOGIC: The hard fundamental gate failure (\u00a73.8) is a mechanical veto that overrides all other considerations. No quality_long entry is permitted when eps_ttm and operating_margin_ttm cannot be confirmed positive. The drawdown (46% in 60 days) is severe but does not override the fundamental gate failure. The constructive analyst sentiment and insider buying are supportive but insufficient to overcome the hard gate. The elevated valuation (PE 27.5x) combined with nonpositive earnings is structurally expensive and represents a narrative-driven valuation disconnected from profitability. The macro regime's strict_quality_and_valuation discipline further reinforces caution. FINAL DECISION: no_trade. The candidate fails the hard fundamental gate per \u00a73.8 and cannot be executed as a quality_long entry. Recommend obtaining Q1 2025 10-Q filing to verify eps_ttm and operating_margin_ttm before reconsidering.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "Hard gate failure: eps_ttm not confirmed positive (null in fundamental_snapshot) \u2014 mechanical veto per \u00a73.8",
+        "Hard gate failure: operating_margin_ttm not confirmed positive (null in fundamental_snapshot) \u2014 mechanical veto per \u00a73.8",
+        "Fundamental snapshot status='insufficient_evidence' \u2014 no PIT-safe quarterly data available",
+        "Valuation snapshot marked not_PIT_safe for TTM ratios \u2014 cannot anchor to decision_timestamp",
+        "News event summary empty post-cutoff \u2014 no recent catalyst or narrative confirmation",
+        "Narrative price gap assessment not_evaluated \u2014 Agent 03 verdict pending"
+      ],
+      "risk_flags": [
+        "Hard fundamental gate failure: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available \u2014 mechanical veto per \u00a73.8",
+        "Severe drawdown: 46% in 60 days, 20% in 20 days \u2014 liquidity and momentum risk",
+        "Elevated PE ratio: 27.48x \u2014 valuation multiple compression risk if growth slows",
+        "Current ratio TTM: 0.97 \u2014 slightly below 1.0, working capital tightness",
+        "Negative PEG ratio: -1.39 \u2014 earnings growth is negative or undefined",
+        "No recent news coverage post-cutoff \u2014 information vacuum during selloff",
+        "Insider grants (March 2025) at $306.84 vs current $226.73 \u2014 underwater for executives",
+        "8-K filing (Feb 2025) with unregistered sales (item 2.02) \u2014 potential dilution signal",
+        "Macro regime strict_quality_and_valuation discipline \u2014 equity allocation capped at 30%",
+        "Fundamental snapshot entirely null \u2014 cannot verify positive earnings or operating margin"
+      ],
+      "suggested_improvements": [
+        "Obtain most recent 10-Q or 10-K filing to confirm eps_ttm > 0 and operating_margin_ttm > 0",
+        "Retrieve full 8-K text (Items 2.02, 9.01) to understand material agreement and financial statement changes",
+        "Collect post-cutoff news (after 2025-04-21) to assess whether selloff was temporary or reflects deteriorating fundamentals",
+        "Obtain industry peer valuation multiples to contextualize PE=27.48 and EV/EBITDA=13.45",
+        "Assess whether the March 2025 insider grants (at $306.84) represent confidence or forced equity comp",
+        "Evaluate whether the 46% drawdown reflects sector rotation (tech weakness) or company-specific deterioration",
+        "Wire GitHub adapter with ZBRA ticker mapping to assess developer ecosystem activity",
+        "Retrieve analyst consensus forward P/E to determine if current multiple is expected to compress"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 fails on eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available \u2014 hard mechanical veto per \u00a73.8"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status='insufficient_evidence' \u2014 all quarterly fields (eps, revenue, operating_income, operating_cash_flow, etc.) are null"
+        },
+        {
+          "kind": "ttm_snapshot_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot.current_snapshot_not_PIT_safe=true \u2014 TTM ratios are not anchored to decision_timestamp"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary.items_dropped_post_cutoff=20 \u2014 all news items filtered out; no recent narrative available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no tech activity data available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 no institutional ownership data available"
+        },
+        {
+          "kind": "stub_data",
+          "severity": "info",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode \u2014 8-K text is deterministic placeholder, not ground truth"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The fundamental_snapshot block is entirely null, which triggers hard gate failure per \u00a73.8. This is a legitimate data gap (FMP endpoints returned no PIT-safe rows) rather than a hallucination. The valuation_snapshot provides TTM ratios that suggest elevated multiples, but without confirmed positive eps_ttm and operating_margin_ttm, the hard gate cannot pass. The distinction between case (a) (nonpositive denominator, real finding) and case (b) (field genuinely absent) is critical: the negative PEG and null fcf_yield are case (a) signals, not data gaps. The prompt correctly interprets these as bearish valuation findings. However, the absence of forward P/E, analyst consensus earnings, and management guidance limits the ability to assess whether the current multiple is a temporary repricing or a structural overvaluation.",
+      "recommended_followups": [
+        "URGENT: Obtain ZBRA's most recent 10-Q (Q1 2025) or 10-K (FY 2024) to confirm eps_ttm > 0 and operating_margin_ttm > 0",
+        "URGENT: Re-run this analysis after fundamental data is available and hard gates can be properly evaluated",
+        "HIGH: Retrieve full 8-K filing text to understand material agreement and financial statement changes (Items 2.02, 9.01)",
+        "HIGH: Assess whether the 46% drawdown is macro/sector-driven (tech weakness in April 2025) or company-specific",
+        "MEDIUM: Monitor insider buying/selling activity post-cutoff to gauge management confidence",
+        "MEDIUM: Evaluate the Feb 2025 8-K unregistered sales (item 2.02) to determine if dilutive",
+        "MEDIUM: Cross-check analyst consensus post-cutoff to see if sentiment has shifted from stable baseline",
+        "LOW: Obtain industry peer valuation multiples to contextualize PE=27.48 and EV/EBITDA=13.45"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Hard fundamental gate failure (\u00a73.8): eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available. Mechanical veto blocks quality_long entry. Elevated valuation (PE 27.5x) paired with nonpositive earnings is structurally expensive. Severe 46% 60-day drawdown, elevated multiples, and missing fundamental data prevent execution despite constructive analyst sentiment and insider buying. Recommend obtaining Q1 2025 10-Q before reconsidering.",
+      "risk_notes": [
+        "\u00a73.8 fundamental gate failure is a hard mechanical veto that prevents quality_long execution",
+        "\u00a75.13 hard-veto conditions do not trip; risk agent confirms compliance",
+        "Execution blocked by rule engine (\u00a73.8 gate failure), not by risk agent (\u00a75.13)",
+        "No sleeve cap breach detected; macro regime equity cap (30%) not exceeded by proposed entry",
+        "Information integrity veto per \u00a75.13(d) does not trip (pollution_defense_layer unimplemented, relaxation applies)",
+        "Lookahead veto per \u00a75.13(e) does not trip (data_after_cutoff_used=false, lookahead_safe=true)"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "No equity sleeve position data in packet; macro regime equity_allocation_cap=30% is not breached by proposed quality_long entry (no sizing provided)."
+        },
+        {
+          "name": "fundamental_gate_38_hard_veto_3_8",
+          "tripped": true,
+          "note": "eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available \u2014 hard mechanical veto per \u00a73.8 blocks quality_long execution"
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Pollution-defense layer status='unimplemented' per information_integrity_assessment.reason_use_as_primary_signal_disallowed. Per \u00a75.13(d) relaxation 2026-05-06, when pollution_defense_layer is unimplemented, the veto does NOT trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; no lookahead violation detected per \u00a75.4."
+        }
+      ],
+      "rule_engine_path": [
+        "Candidate type: quality_long",
+        "\u00a73.8 hard fundamental gate evaluation",
+        "Gate condition 1: eps_ttm > 0 \u2014 FAILED (eps_ttm_or_net_income_ttm_not_positive)",
+        "Gate condition 2: operating_margin_ttm > 0 \u2014 FAILED (operating_margin_not_available)",
+        "Result: fundamental_gate_38.passes=false",
+        "Hard mechanical veto triggered per \u00a73.8",
+        "Decision: no_trade (execution blocked by rule engine)",
+        "\u00a75.13 hard-veto conditions evaluated (informational only, gate already failed)",
+        "Condition (a) sleeve_cap_breach: not tripped",
+        "Condition (d) anti_pollution_integrity_veto: not tripped (relaxation applies)",
+        "Condition (e) lookahead_veto: not tripped",
+        "Final decision: no_trade"
+      ],
+      "decision_log": [
+        "2025-04-21T09:30:00-04:00 \u2014 PM Agent 07b receives evidence packet for ZBRA quality_long candidate",
+        "Upstream agents synthesized: narrative_event (unsupported_claim, low confidence), alt_data_verify (needs_more_evidence), valuation (very_expensive), quality_long (no_trade), risk (no \u00a75.13 veto conditions trip)",
+        "Fundamental gate evaluation: fundamental_gate_38.passes=false on two counts: (1) eps_ttm_or_net_income_ttm_not_positive, (2) operating_margin_not_available",
+        "Hard mechanical veto per \u00a73.8 triggered \u2014 quality_long entry blocked regardless of other signals",
+        "Price action context: 46% 60-day drawdown, 20% 20-day decline; macro regime Strengthening/Expansionary with strict_quality_and_valuation discipline",
+        "Valuation context: PE 27.5x, EV/EBITDA 13.5x, negative PEG -1.39 \u2014 elevated multiples paired with nonpositive earnings",
+        "Analyst sentiment: 12 Buy, 3 Strong Buy, 8 Hold as of 2025-04-01 \u2014 constructive but descriptor-only per \u00a711.13",
+        "Insider activity: 26 Form 4 transactions; director Gustafsson purchased 3,227 shares on 2025-02-24/25 at ~$310 \u2014 supportive but pre-dates drawdown",
+        "News corroboration: 0 items in 7-day window (20 dropped post-cutoff) \u2014 narrative isolation",
+        "8-K filing: 2025-02-13 with items 2.02 (unregistered sales) and 9.01 (financial statements) \u2014 full text stub data, not ground truth",
+        "Network effect classification: narrative_hype (Layer 2-only evidence per R-NETWORK-09) \u2014 no Layer 1 developer ecosystem or SEC-disclosed operating metrics",
+        "Risk agent evaluation: \u00a75.13 hard-veto conditions do not trip; \u00a73.8 fundamental gate failure is separate mechanical veto",
+        "PM synthesis: Hard fundamental gate failure (\u00a73.8) is a mechanical veto that overrides all other considerations. No quality_long entry permitted when eps_ttm and operating_margin_ttm cannot be confirmed positive. Elevated valuation (PE 27.5x) combined with nonpositive earnings is structurally expensive. Macro regime's strict_quality_and_valuation discipline reinforces caution. Severe drawdown (46% in 60 days) is notable but does not override hard gate.",
+        "Final decision: no_trade. Execution blocked by rule engine (\u00a73.8 gate failure). Recommend obtaining Q1 2025 10-Q filing to verify eps_ttm and operating_margin_ttm before reconsidering."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-21T09:45:00-04:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026-05-03_pass8_soft_reasoning",
+        "evidence_packet_hash": "sha256:807747cedb5586d722c3b2346b060d47a0ae4675c98355cbb2d609ea03afd008"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": null,
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Hard fundamental gate failure (\u00a73.8) blocks quality_long execution; thesis cannot be confirmed without verified positive eps_ttm and operating_margin_ttm",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": null,
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": "Director Gustafsson purchased 3,227 shares on 2025-02-24/25 at ~$310; purchases pre-date 46% 60-day decline, suggesting insiders did not anticipate drawdown. Routine equity grants (March 2025) are not discretionary buying signals.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "execution_timestamp": "2025-04-21T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:ed53592b6613201d6cfb214c2b29f44a87ce3ddf8e6a140db40cabd10c15bae2",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "trigger_id": "25aa57ca0ee8",
+  "ticker": "CMRX",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-05T09:30:00-05:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 69.15,
+  "trigger_cost_usd": 0.08191,
+  "cumulative_cost_usd": 0.371053,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "CMRX",
+    "name": "CMRX",
+    "close": 8.46,
+    "prior_close": 4.96,
+    "change": 3.4400000000000004,
+    "change_pct": 69.35483870967742,
+    "volume": 118555030.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-05",
+    "prior_trading_day": "2025-03-04",
+    "available_as_of": "2025-03-05T16:00:00-05:00",
+    "today_open": 8.4,
+    "today_volume": 118555030.0,
+    "eps_ttm": -0.9400000000000001,
+    "operating_margin_ttm": -58380.50314465408,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-07 07:28:26",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:5b23523628f614ba8c7d88859a513b0f86f9923392a88b12d37987058e86faf7",
+  "locked_decision_id": "sha256:c4d605155a8be9827a6c8e700645ecc4cff690194435f60c3ef3c3ef8ec96400",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation control)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CMRX",
+      "decision_timestamp": "2025-03-05T09:30:00-05:00",
+      "data_available_as_of": "2025-03-05T09:30:00-05:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "macro_regime (overheat, moderately restrictive)",
+        "valuation_snapshot (negative PE, negative ROA/ROE, extreme PB)",
+        "fundamental_snapshot (Q3 2024: -$22.9M net income on $26k revenue)",
+        "price_snapshot (last EOD close $4.96, 5d return +6.21%, 60d return +476.54%)",
+        "news_event_summary (1 item, dopamine receptor antagonist market commentary)",
+        "alternative_data_features (Wikipedia pageviews on RTCM_SC-104, 30-day window)",
+        "sentiment_community_ownership_evidence (analyst ratings: 1 SB, 4 B, 4 H as of 2025-03-01)",
+        "information_integrity_assessment (low_tier_only, uncorroborated, use_as_primary_signal_allowed=false)",
+        "corporate_calendar (4 past earnings events, no upcoming events near decision)"
+      ],
+      "evidence_missing": [
+        "alternative_data_features: all industry-specific adapters not_connected (biotech_clinical, semiconductor_patent, software_devtools, etc.)",
+        "alternative_data_features: retail_meme_attention not_evaluated",
+        "alternative_data_features: valuation_context not_evaluated",
+        "sentiment_community_ownership_evidence: ownership_positioning data_available=false (13F, Form 4, Def 14A all failed or not_evaluated)",
+        "sentiment_community_ownership_evidence: community_size not_evaluated",
+        "filing_confirmation: SEC 8-K not_evaluated (sec_edgar cik_not_found)",
+        "narrative_price_gap_assessment: agent_LLM_reasoning not_evaluated",
+        "price_snapshot: live quote after cutoff (2025-04-21, not usable for PIT)",
+        "fundamental_snapshot: no forward guidance or management commentary",
+        "news_event_summary: only 1 source (polygon_news), NDI requires \u22652 sources"
+      ],
+      "reasoning_summary": "CMRX exhibits severe fundamental distress (negative earnings, negative margins, minimal revenue) in an overheat macro regime requiring strict quality discipline. While analyst sentiment has improved (1 SB, 4 B as of Mar 2025 vs. prior holds), the company's Q3 2024 financials show -$22.9M net loss on $26k revenue, indicating pre-revenue or near-zero-revenue biotech status. The 60-day price surge (+476%) and Wikipedia attention spike (17-34 views/day Feb-Mar) suggest retail/speculative interest, but alternative data corroboration is absent: industry-specific adapters not wired, ownership data unavailable, information integrity assessment flags low-tier-only sources with no primary corroboration. The single news item (dopamine antagonist market commentary) is descriptive only and does not constitute a catalyst. Macro regime (overheat, 20% equity cap) and information integrity veto (uncorroborated, low-tier sources) combine to block both surge_short and quality_long sleeves. Insufficient evidence and missing alt-data verification mandate fail-closed decision.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Macro regime overheat with strict_quality_and_valuation_caution discipline: equity allocation capped at 20%, quality requirement elevated",
+        "Fundamental distress: negative net income (-$22.9M Q3 2024), negative ROE (-56.17%), negative ROA (-60.54%), minimal revenue ($26k)",
+        "Valuation snapshot not PIT-safe: TTM ratios used, no fiscal anchor; DCF display-only",
+        "Information integrity veto: use_as_primary_signal_allowed=false; corroboration_status=uncorroborated; evidence_credibility_assessment=low_tier_only",
+        "Alternative data corroboration absent: industry-specific adapters not_connected; retail_meme_attention not_evaluated; ownership_positioning data_available=false",
+        "News event summary: only 1 source (polygon_news); NDI requires \u22652 sources for credibility; item is market commentary, not company-specific catalyst",
+        "Filing confirmation: SEC 8-K not_evaluated (cik_not_found); no official disclosure corroboration available"
+      ],
+      "risk_flags": [
+        "Extreme valuation distortion: PE=-8.67, PB=6.30, EV/EBITDA=-7.99 (negative earnings make ratios unreliable)",
+        "Micro-cap / near-zero-revenue status: Q3 2024 revenue $26k, operating loss -$24.8M; cash burn evident",
+        "Speculative price action: 60-day return +476.54%, 5-day return +6.21%; volume elevated (2.03M shares, 98% of 20d avg)",
+        "Retail attention spike: Wikipedia pageviews 17-34/day Feb-Mar 2025; pattern consistent with retail discovery, not fundamental catalyst",
+        "Analyst sentiment improvement may reflect low base: 1 SB, 4 B, 4 H as of Mar 2025 vs. prior 0 SB, 0 B, 5 H; still mixed consensus",
+        "Macro headwind: overheat regime, moderately restrictive policy (DFF 4.33%, yield curve +0.26%), equity discipline strict",
+        "Information pollution risk: low-tier sources only; no T1 corroboration; coordinated_campaign_risk=unknown, bot_like_pattern_risk=unknown",
+        "Missing CIK: sec_edgar, sec_form4 both failed with cik_not_found; no SEC filing access for verification"
+      ],
+      "suggested_improvements": [
+        "Wire industry-specific alt-data adapters (biotech_clinical_adapter) to assess clinical trial progress, regulatory milestones, or pipeline advancement",
+        "Obtain SEC CIK mapping for CMRX to enable 13F, Form 4, and 8-K verification",
+        "Expand news source diversity: current 1 source (polygon_news) insufficient; require \u22652 independent sources for NDI credibility",
+        "Evaluate Wikipedia pageview spike (17-34 views/day) against baseline and peer cohort to distinguish retail attention from genuine catalyst",
+        "Assess analyst rating improvement (1 SB, 4 B vs. prior 0 SB, 0 B) for recency and conviction; check if driven by new data or sentiment reversion",
+        "Obtain forward guidance, management commentary, or investor presentation to contextualize revenue trajectory and cash burn rate",
+        "Cross-check dopamine antagonist market commentary against company's actual pipeline stage and competitive position",
+        "Evaluate short interest, borrow availability, and float to assess surge_short sleeve eligibility if fundamental thesis improves"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2025-04-21T20:00:00+00:00 is after allowed_data_cutoff 2025-03-05T09:30:00-05:00; quote retained for display only, not PIT-safe"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warn",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios; current_snapshot_not_PIT_safe=true; no fiscal anchor for PE, PB, EV/EBITDA"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff; only 1 item retained (2025-03-04 18:00:00)"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_edgar error_class=cik_not_found; no SEC filing index available for CMRX"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker; CMRX not in ticker_to_github.csv"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan; institutional ownership data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_form4 error_class=cik_not_found; insider ownership data unavailable"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warn",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false; source_tier_distribution T1=0 T2=0 T3=1 T4=2; corroboration_status=uncorroborated"
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "warn",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning data_available=false; 13F, Form 4, Def 14A all failed or not_evaluated"
+        },
+        {
+          "kind": "ndi_insufficient_sources",
+          "severity": "warn",
+          "detail": "news_event_summary.ndi_metadata: only 1 distinct source within 24h window; \u00a723.2 requires \u22652 sources for credibility"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Alternative data infrastructure incomplete in v1: industry-specific adapters (biotech_clinical, semiconductor_patent, software_devtools, etc.) all not_connected; retail_meme_attention not_evaluated; valuation_context not_evaluated. Information integrity assessment is placeholder-only; pollution-defense layer not implemented. Narrative price gap assessment not_evaluated (agent_LLM_reasoning pending). Filing confirmation not_evaluated (sec_edgar cik_not_found). These gaps prevent robust corroboration of the dopamine antagonist market thesis and retail attention spike. Recommend full alt-data wiring and LLM-based narrative analysis before re-evaluating.",
+      "recommended_followups": [
+        "Obtain CMRX CIK from SEC EDGAR to enable 13F, Form 4, 8-K, and press release verification",
+        "Wire biotech_clinical_adapter to assess clinical trial enrollment, regulatory milestones, and pipeline stage",
+        "Expand news source diversity to \u22652 independent sources; verify dopamine antagonist market commentary against company's actual pipeline",
+        "Evaluate analyst rating improvement (1 SB, 4 B as of Mar 2025) for recency, conviction, and data freshness",
+        "Assess Wikipedia pageview spike (17-34 views/day Feb-Mar) against baseline and peer cohort; distinguish retail attention from catalyst",
+        "Obtain forward guidance, management commentary, or investor presentation to contextualize revenue trajectory and cash burn",
+        "Monitor macro regime for shift out of overheat; if regime improves to risk-on, re-evaluate quality_long sleeve eligibility",
+        "If fundamental thesis improves (revenue ramp, profitability path, clinical milestone), re-evaluate surge_short sleeve with short interest and borrow data"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence and missing alt-data corroboration block both surge_short and quality_long sleeves. Macro overheat regime requires strict quality discipline; CMRX exhibits severe fundamental distress (negative earnings, minimal revenue, negative margins). Information integrity veto: low-tier sources only, uncorroborated, use_as_primary_signal_allowed=false. Alternative data absent: industry adapters not_connected, ownership data unavailable, retail attention spike unverified. Single news item is market commentary, not catalyst. Fail-closed per rule \u00a713.4.",
+      "risk_notes": [
+        "Macro regime overheat (stress_score=2) with strict_quality_and_valuation_caution discipline; equity allocation capped at 20%",
+        "Fundamental distress: Q3 2024 net loss -$22.9M on revenue $26k; negative ROE -56.17%, negative ROA -60.54%; cash burn evident",
+        "Valuation snapshot not PIT-safe: TTM ratios, no fiscal anchor; PE=-8.67, PB=6.30, EV/EBITDA=-7.99 unreliable due to negative earnings",
+        "Information integrity veto: corroboration_status=uncorroborated; evidence_credibility_assessment=low_tier_only; use_as_primary_signal_allowed=false",
+        "Alternative data corroboration absent: industry-specific adapters not_connected; retail_meme_attention not_evaluated; ownership_positioning data_available=false",
+        "News event summary: only 1 source (polygon_news); NDI requires \u22652 sources; item is market commentary, not company-specific catalyst",
+        "Speculative price action: 60-day return +476.54%, 5-day return +6.21%; volume elevated; pattern consistent with retail discovery, not fundamental catalyst",
+        "Filing confirmation not_evaluated: SEC 8-K not_evaluated (cik_not_found); no official disclosure corroboration available",
+        "Analyst sentiment improvement may reflect low base: 1 SB, 4 B, 4 H as of Mar 2025 vs. prior 0 SB, 0 B, 5 H; still mixed consensus",
+        "Missing CIK: sec_edgar, sec_form4, sec_13f all failed; no SEC filing access for verification"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "Alternative data corroboration absent: industry-specific adapters not_connected, retail_meme_attention not_evaluated, ownership_positioning data_available=false, filing_confirmation not_evaluated. News event summary: only 1 source (polygon_news); NDI requires \u22652 sources. Information integrity assessment: use_as_primary_signal_allowed=false, corroboration_status=uncorroborated, evidence_credibility_assessment=low_tier_only."
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": true,
+          "note": "Macro regime overheat with strict_quality_and_valuation_caution discipline; equity allocation capped at 20%. CMRX exhibits severe fundamental distress: Q3 2024 net loss -$22.9M on revenue $26k, negative ROE -56.17%, negative ROA -60.54%. Valuation snapshot not PIT-safe: TTM ratios, PE=-8.67, PB=6.30, EV/EBITDA=-7.99. Does not meet quality_long thresholds; surge_short not supported by alt-data verification."
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Industry-specific alt-data adapters not_connected (biotech_clinical, semiconductor_patent, software_devtools, consumer_traffic, bank_regulatory, airline_travel, energy_commodity, auto_mobility, default_sec_gdelt, opencli_public_web). Retail_meme_attention not_evaluated. Valuation_context not_evaluated. Ownership_positioning data_available=false (13F, Form 4, Def 14A all failed). Filing_confirmation not_evaluated (sec_edgar cik_not_found). Narrative_price_gap_assessment not_evaluated (agent_LLM_reasoning pending). These gaps prevent robust corroboration of thesis."
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false; corroboration_status=uncorroborated; evidence_credibility_assessment=low_tier_only; source_tier_distribution T1=0 T2=0 T3=1 T4=2. Pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8. News event summary: only 1 source (polygon_news); NDI requires \u22652 sources for credibility."
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; lookahead_violations=[]; hindsight_safe=true; hindsight_violations=[]. All forbidden paths scrubbed (10 fields removed). Decision timestamp 2025-03-05T09:30:00-05:00 is opening-window mode; last EOD close 2025-03-04 is PIT-safe; live quote 2025-04-21 is after cutoff and not used for decision."
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp=2025-03-05T09:30:00-05:00, allowed_data_cutoff=2025-03-05T09:30:00-05:00, lookahead_safe=true, data_after_cutoff_used=false",
+        "2. Evaluate macro_regime: overheat, moderately_restrictive, stress_score=2, equity_allocation_cap=20%, equity_discipline=strict_quality_and_valuation_caution",
+        "3. Evaluate fundamental_snapshot: Q3 2024 (accepted 2024-11-07), revenue=$26k, net_income=-$22.9M, operating_income=-$24.8M, eps=-0.26, net_margin=-87996.15%, roe=-56.17%, roa=-60.54%",
+        "4. Evaluate valuation_snapshot: PE=-8.67, PB=6.30, EV/EBITDA=-7.99, current_snapshot_not_PIT_safe=true, DCF_as_of_date=2025-04-23 (after cutoff, display-only)",
+        "5. Evaluate price_snapshot: last_eod_close=$4.96 (2025-03-04), return_5d=+6.21%, return_60d=+476.54%, volume=2.03M (98% of 20d avg), relative_volume_vs_20d=0.9805",
+        "6. Evaluate news_event_summary: 1 item (2025-03-04, dopamine antagonist market commentary), 20 items dropped post-cutoff, ndi_metadata: only 1 source (polygon_news), NDI requires \u22652 sources",
+        "7. Evaluate alternative_data_features: industry-specific adapters not_connected (biotech_clinical, semiconductor_patent, software_devtools, etc.), retail_meme_attention not_evaluated, valuation_context not_evaluated, wikipedia_pageviews 17-34 views/day Feb-Mar (unverified retail attention)",
+        "8. Evaluate information_integrity_assessment: use_as_primary_signal_allowed=false, corroboration_status=uncorroborated, evidence_credibility_assessment=low_tier_only, source_tier_distribution T1=0 T2=0 T3=1 T4=2, pollution-defense layer not implemented",
+        "9. Evaluate sentiment_community_ownership_evidence: ownership_positioning data_available=false (13F, Form 4, Def 14A all failed), community_size not_evaluated, analyst_ratings 1 SB 4 B 4 H as of 2025-03-01",
+        "10. Evaluate filing_confirmation: not_evaluated, sec_edgar cik_not_found, no 8-K rows available",
+        "11. Evaluate corporate_calendar: 4 past earnings events, no upcoming events near decision, near_event_window_trading_days=5",
+        "12. Check candidate_type=quality_long: fundamental distress (negative earnings, minimal revenue, negative margins) fails quality thresholds; macro overheat with strict_quality_and_valuation_caution discipline blocks equity allocation",
+        "13. Check candidate_type=surge_short: alternative data corroboration absent (industry adapters not_connected, ownership data unavailable, retail attention unverified); information integrity veto (uncorroborated, low-tier sources); news event summary insufficient (1 source, NDI requires \u22652)",
+        "14. Evaluate veto_conditions: insufficient_evidence=true, hard_risk_limit_breached=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true, lookahead_data_used=false",
+        "15. Decision: veto conditions tripped (4 of 5); decision=no_trade, position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T0: Envelope validation \u2014 decision_timestamp 2025-03-05T09:30:00-05:00, allowed_data_cutoff 2025-03-05T09:30:00-05:00, lookahead_safe=true, data_after_cutoff_used=false. Opening-window mode applies.",
+        "T1: Macro regime assessment \u2014 overheat (stress_score=2), moderately_restrictive (DFF 4.33%, yield_curve +0.26%), equity_allocation_cap=20%, equity_discipline=strict_quality_and_valuation_caution. Strict quality required.",
+        "T2: Fundamental analysis \u2014 Q3 2024 (PIT-safe, accepted 2024-11-07): revenue=$26k, net_income=-$22.9M, operating_income=-$24.8M, eps=-0.26, net_margin=-87996.15%, roe=-56.17%, roa=-60.54%. Severe distress.",
+        "T3: Valuation analysis \u2014 PE=-8.67 (negative earnings), PB=6.30, EV/EBITDA=-7.99 (negative EBITDA), current_snapshot_not_PIT_safe=true. TTM ratios unreliable. DCF display-only (as_of 2025-04-23, after cutoff).",
+        "T4: Price action analysis \u2014 last_eod_close=$4.96 (2025-03-04), return_5d=+6.21%, return_60d=+476.54%, volume=2.03M (98% of 20d avg). Speculative surge consistent with retail discovery, not fundamental catalyst.",
+        "T5: News catalyst assessment \u2014 1 item (2025-03-04, dopamine antagonist market commentary), 20 items dropped post-cutoff. NDI metadata: only 1 source (polygon_news); NDI requires \u22652 sources. Item is market commentary, not company-specific catalyst.",
+        "T6: Alternative data corroboration \u2014 industry-specific adapters not_connected (biotech_clinical, semiconductor_patent, software_devtools, consumer_traffic, bank_regulatory, airline_travel, energy_commodity, auto_mobility, default_sec_gdelt, opencli_public_web). Retail_meme_attention not_evaluated. Valuation_context not_evaluated. Wikipedia pageviews 17-34 views/day Feb-Mar unverified.",
+        "T7: Information integrity assessment \u2014 use_as_primary_signal_allowed=false, corroboration_status=uncorroborated, evidence_credibility_assessment=low_tier_only, source_tier_distribution T1=0 T2=0 T3=1 T4=2. Pollution-defense layer not implemented; fail-closed per schema v1.1 decision #8.",
+        "T8: Ownership and sentiment assessment \u2014 ownership_positioning data_available=false (13F, Form 4, Def 14A all failed or not_evaluated). Community_size not_evaluated. Analyst ratings 1 SB 4 B 4 H as of 2025-03-01 (improvement from prior 0 SB 0 B 5 H, but still mixed consensus).",
+        "T9: Filing confirmation assessment \u2014 not_evaluated, sec_edgar cik_not_found, no 8-K rows available. No official disclosure corroboration.",
+        "T10: Candidate type evaluation (quality_long) \u2014 fundamental distress (negative earnings, minimal revenue, negative margins) fails quality thresholds. Macro overheat with strict_quality_and_valuation_caution discipline blocks equity allocation. Candidate type not eligible.",
+        "T11: Candidate type evaluation (surge_short) \u2014 alternative data corroboration absent (industry adapters not_connected, ownership data unavailable, retail attention unverified). Information integrity veto (uncorroborated, low-tier sources). News event summary insufficient (1 source, NDI requires \u22652). Candidate type not eligible.",
+        "T12: Veto condition evaluation \u2014 insufficient_evidence=true (alt-data absent, news source insufficient, information integrity veto). hard_risk_limit_breached=true (macro overheat, fundamental distress, valuation not PIT-safe). missing_data_persists_beyond_tolerance=true (industry adapters not_connected, ownership data unavailable, filing confirmation not_evaluated). information_integrity_veto=true (uncorroborated, low-tier sources, use_as_primary_signal_allowed=false). lookahead_data_used=false (PIT-safe).",
+        "T13: Decision logic \u2014 4 of 5 veto conditions tripped. Per rule \u00a713.4 (fail-closed), decision=no_trade, position_size_pct=0.0. Immutable_decision_flag=true.",
+        "T14: Execution plan \u2014 order_type='T+1 next-open', execution_timestamp='2025-03-05T09:45:00-05:00', side='none', size_pct_of_portfolio=0.0."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-05T09:45:00-05:00",
+        "ticker": "CMRX",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:957086f3ddb6ee3e61417fcd84d005071c3f173131d881adc723f1f5435a93d9"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews spike (17-34 views/day Feb-Mar 2025) on RTCM_SC-104 article suggests retail attention, but unverified against baseline and peer cohort. Retail_meme_attention not_evaluated. No coordinated campaign or bot-like pattern risk assessment available.",
+      "meme_or_retail_attention_warning": "elevated",
+      "source_reliability_adjustment": "dismiss",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Dopamine antagonist market commentary (2025-03-04, polygon_news) is market-level analysis, not company-specific catalyst. No primary source (company press release, SEC filing, earnings call) corroborates CMRX's involvement or pipeline stage. Single news source insufficient for NDI credibility (requires \u22652 sources).",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Alternative data corroboration absent: industry-specific adapters not_connected (biotech_clinical, semiconductor_patent, software_devtools, etc.), retail_meme_attention not_evaluated, ownership_positioning data_available=false, filing_confirmation not_evaluated. Information integrity assessment: use_as_primary_signal_allowed=false, corroboration_status=uncorroborated, evidence_credibility_assessment=low_tier_only. News event summary: only 1 source (polygon_news); NDI requires \u22652 sources. Pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8. Essential blocks absent or insufficient; thesis confirmation blocked.",
+      "sentiment_risk_adjustment_note": "Analyst ratings improved (1 SB, 4 B, 4 H as of 2025-03-01 vs. prior 0 SB, 0 B, 5 H), but improvement may reflect low base and sentiment reversion rather than fundamental catalyst. No forward guidance or management commentary available to contextualize rating change. Sentiment data is descriptor-only; cannot override fundamental distress or information integrity veto.",
+      "ownership_risk_adjustment_note": "Ownership_positioning data_available=false; 13F, Form 4, Def 14A all failed or not_evaluated. No institutional ownership, insider ownership, or hedge fund positioning data available. Cannot assess crowding risk, smart money support, or insider conviction. Ownership data is descriptor-only; cannot override fundamental distress or information integrity veto.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional ownership data available (13F failed, cik_not_found). Cannot assess institutional sponsorship or support. Analyst ratings (1 SB, 4 B, 4 H) suggest some institutional interest, but ratings are descriptor-only and cannot override fundamental distress or information integrity veto.",
+      "smart_money_benchmark_note": "No ownership positioning data available (13F, Form 4, Def 14A all failed or not_evaluated). Cannot assess smart money support or insider conviction. Analyst ratings (1 SB, 4 B, 4 H) suggest some institutional interest, but ratings are descriptor-only and cannot override fundamental distress or information integrity veto.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-05T09:30:00-05:00",
+      "execution_timestamp": "2025-03-05T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:444275ac17eb24d6134e82fa39c8a72681a39a1fc571e9cdc64fcdbf0f8e64a1",
+      "immutable_decision_flag": true
+    }
+  }
+}

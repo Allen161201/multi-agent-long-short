@@ -1,0 +1,274 @@
+{
+  "trigger_id": "2b8df5185d90",
+  "ticker": "CKPT",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-10T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 52.13,
+  "trigger_cost_usd": 0.069585,
+  "cumulative_cost_usd": 0.93794,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "CKPT",
+    "name": "CKPT",
+    "close": 3.98,
+    "prior_close": 2.47,
+    "change": 1.6099999999999999,
+    "change_pct": 65.1821862348178,
+    "volume": 61924933.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-10",
+    "prior_trading_day": "2025-03-07",
+    "available_as_of": "2025-03-10T16:00:00-05:00",
+    "today_open": 4.08,
+    "today_volume": 61924933.0,
+    "eps_ttm": -1.44,
+    "operating_margin_ttm": -79817.02127659574,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-12 16:45:32",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:9082a71c98346d71d5d0c16028e031d575f762fdc3f4ac36b6e4fd4477b57c82",
+  "locked_decision_id": "sha256:7c02f98e189b9abab6f4e4171e4de6032fd5c434619753aac080be1ad18c3d2a",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation control)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CKPT",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "macro_regime (overheat, stress_score=2)",
+        "fundamental_snapshot (Q3 2024: revenue=0, net_income=-9.7M, equity=-12.6M)",
+        "valuation_snapshot (PE=-0.06, PB=0.16, EV/EBITDA=-8.37, all distressed)",
+        "price_snapshot (last_eod_close=2.47, 5d return=-13.6%, 20d return=-30.0%)",
+        "alternative_data_features (wikipedia_pageviews only; no industry-specific adapters)",
+        "sentiment_community_ownership_evidence (analyst ratings descriptor-only; no ownership data)",
+        "news_event_summary (no news items within cutoff window)",
+        "corporate_calendar (past earnings all negative EPS)",
+        "information_integrity_assessment (low_tier_only, uncorroborated, use_as_primary_signal_allowed=false)"
+      ],
+      "evidence_missing": [
+        "catalyst narrative (no news event summary items post-cutoff)",
+        "alternative data corroboration (industry-specific adapters not wired: software_devtools, semiconductor_patent, biotech_clinical, etc.)",
+        "ownership positioning (13F, Form 4, Def 14A all unavailable or not_evaluated)",
+        "SEC filing confirmation (sec_edgar cik_not_found, sec_8k not_connected)",
+        "github/developer activity (unmapped_ticker)",
+        "information integrity verification (pollution-defense layer not implemented in v1)",
+        "narrative_price_gap_assessment (agent_internal_pending, not_evaluated)"
+      ],
+      "reasoning_summary": "CKPT exhibits severe fundamental distress (negative equity, zero revenue, persistent losses) in an overheat macro regime. No catalyst or corroborating alt-data supports either a surge-short or quality-long thesis. Alternative data is sparse (wikipedia pageviews only, no industry-specific signals). Information integrity assessment explicitly forbids use as primary signal. Analyst sentiment is descriptor-only and cannot override missing fundamentals. Insufficient evidence and missing critical corroboration blocks both surge-short and quality-long sleeve eligibility.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "No credible catalyst identified",
+        "Alternative data severely limited (wikipedia only; industry adapters not wired)",
+        "Information integrity assessment: use_as_primary_signal_allowed=false",
+        "Ownership data unavailable (13F, Form 4, Def 14A all failed)",
+        "SEC filing confirmation unavailable (cik_not_found)",
+        "Narrative price gap assessment not_evaluated (agent_internal_pending)"
+      ],
+      "risk_flags": [
+        "Negative equity (-12.6M) signals insolvency risk",
+        "Zero revenue in latest quarter (Q3 2024)",
+        "Persistent operating losses (EPS -0.23, -0.18, -0.33, -1.1 over past 4 quarters)",
+        "Macro regime overheat with strict_quality_and_valuation_caution discipline",
+        "Price decline 5d=-13.6%, 20d=-30.0%, 60d=-41.3%",
+        "No news coverage within decision window",
+        "Alternative data corroboration absent",
+        "Information integrity veto: low_tier_only sources, uncorroborated"
+      ],
+      "suggested_improvements": [
+        "Wire industry-specific alt-data adapters (software_devtools, semiconductor_patent, biotech_clinical) to enable cross-check of business model claims",
+        "Implement pollution-defense layer in information_integrity_assessment to allow conditional use of low-tier sources",
+        "Obtain SEC filing confirmation (8-K, Form 4) to verify insider activity or material events",
+        "Resolve CIK mapping for CKPT to enable 13F ownership and Form 4 insider transaction analysis",
+        "Populate narrative_price_gap_assessment with LLM reasoning on price vs. news disconnect",
+        "Obtain github/developer community metrics if CKPT is a software/devtools company"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2025-05-30T20:00:00+00:00 is after allowed_data_cutoff; quote retained for display only"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_edgar error_class=cik_not_found extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_form4 error_class=cik_not_found extraction_status=failed"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 items dropped because publishedDate > cutoff; 0 items remain in window"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios_ttm flagged not_PIT_safe \u2014 for display only, not for PIT inputs"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not populate narrative_price_gap_assessment, filing_confirmation, or information_integrity_assessment with LLM reasoning. These blocks remain as placeholders. Pollution-defense layer not implemented; information_integrity_assessment defaults to use_as_primary_signal_allowed=false per fail-closed policy.",
+      "recommended_followups": [
+        "Await LLM population of narrative_price_gap_assessment to understand price decline vs. news gap",
+        "Resolve CKPT CIK mapping to enable SEC filing and ownership analysis",
+        "Wire industry-specific alt-data adapters to corroborate or contradict business model",
+        "Monitor for material news or SEC filings that would trigger re-evaluation",
+        "If CKPT is a software/devtools or semiconductor company, obtain github/patent metrics"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence and missing critical corroboration. Fundamental distress (negative equity, zero revenue, persistent losses) is real but not paired with credible catalyst or alt-data verification. Information integrity assessment forbids primary-signal use. Surge-short sleeve requires both catalyst AND corroboration; quality-long sleeve requires quality fundamentals. Neither threshold met. Fail-closed to no_trade pending alt-data wiring and narrative assessment.",
+      "risk_notes": [
+        "Negative equity (-12.6M) and zero revenue indicate potential insolvency or restructuring risk",
+        "Macro regime overheat with strict_quality_and_valuation_caution discipline caps equity allocation to 20%",
+        "No catalyst identified; news_event_summary empty within cutoff window",
+        "Alternative data severely limited: wikipedia pageviews only; industry-specific adapters not wired",
+        "Information integrity assessment: low_tier_only sources, uncorroborated, use_as_primary_signal_allowed=false",
+        "Ownership positioning data unavailable (13F, Form 4, Def 14A all failed or not_evaluated)",
+        "SEC filing confirmation unavailable (cik_not_found for sec_edgar, sec_form4)",
+        "Narrative price gap assessment not_evaluated (agent_internal_pending)",
+        "Price decline 5d=-13.6%, 20d=-30.0%, 60d=-41.3% suggests market repricing but no corroborating news",
+        "Analyst sentiment (1 Strong Buy, 2 Buy, 2 Hold as of 2025-03-01) is descriptor-only and cannot override missing fundamentals"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "Alternative data severely limited (wikipedia only; industry adapters not wired). Narrative assessment not_evaluated. Information integrity assessment forbids primary-signal use. Ownership data unavailable. SEC filing confirmation unavailable. Critical corroboration blocks missing."
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "No hard limit explicitly breached, but negative equity and zero revenue signal distress. Macro regime overheat with strict_quality_and_valuation_caution discipline applies."
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Narrative_price_gap_assessment not_evaluated. Filing_confirmation not_evaluated. Information_integrity_assessment forbids use. Ownership_positioning not_evaluated. SEC filing confirmation unavailable. Industry-specific alt-data adapters not wired."
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false. Tier distribution: T1=0, T2=0, T3=1, T4=1. Pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8."
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false, lookahead_safe=true, hindsight_safe=true. No lookahead violations detected."
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp=2025-03-10T09:30:00-04:00, allowed_data_cutoff=2025-03-10T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false",
+        "2. Evaluate macro_regime: overheat, stress_score=2, equity_discipline=strict_quality_and_valuation_caution, equity_allocation_cap=20%",
+        "3. Evaluate fundamental_snapshot: Q3 2024 (accepted 2024-11-12), revenue=0, net_income=-9.7M, equity=-12.6M, is_point_in_time_safe=true",
+        "4. Evaluate valuation_snapshot: PE=-0.06, PB=0.16, EV/EBITDA=-8.37, all distressed metrics, current_snapshot_not_PIT_safe=true",
+        "5. Evaluate price_snapshot: last_eod_close=2.47, 5d return=-13.6%, 20d return=-30.0%, 60d return=-41.3%, volume=619400",
+        "6. Evaluate news_event_summary: status=data_unavailable, items_count=0, items_dropped_post_cutoff=20, no catalyst identified",
+        "7. Evaluate alternative_data_features: wikipedia_pageviews only (30 rows, low attention), industry adapters not_wired, github_public unmapped_ticker, sec_13f/sec_form4 unavailable",
+        "8. Evaluate information_integrity_assessment: status=insufficient_evidence, use_as_primary_signal_allowed=false, tier_distribution T1=0 T2=0 T3=1 T4=1, corroboration_status=uncorroborated",
+        "9. Evaluate sentiment_community_ownership_evidence: analyst_ratings descriptor-only (1 SB, 2 B, 2 H), ownership_positioning not_evaluated, community_size not_evaluated",
+        "10. Evaluate corporate_calendar: no upcoming earnings, past earnings all negative EPS (-0.23, -0.18, -0.33, -1.1)",
+        "11. Evaluate filing_confirmation: status=not_evaluated, sec_edgar cik_not_found, sec_form4 cik_not_found, no 8-K rows available",
+        "12. Evaluate narrative_price_gap_assessment: status=not_evaluated, agent_internal_pending, uncertainty=high",
+        "13. Check surge_short sleeve eligibility: requires catalyst + corroboration. Catalyst absent (no news). Corroboration absent (alt-data limited, information_integrity_veto tripped). FAIL.",
+        "14. Check quality_long sleeve eligibility: requires quality fundamentals + macro fit. Fundamentals distressed (negative equity, zero revenue). Macro regime strict_quality_and_valuation_caution. FAIL.",
+        "15. Evaluate veto_conditions: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true, lookahead_data_used=false",
+        "16. Decision: no_trade (fail-closed due to multiple veto conditions tripped and missing critical corroboration)"
+      ],
+      "decision_log": [
+        "T0: Envelope validation passed. decision_timestamp=2025-03-10T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false.",
+        "T1: Macro regime assessed as overheat with stress_score=2. Equity discipline strict_quality_and_valuation_caution. Equity allocation cap 20%.",
+        "T2: Fundamental snapshot Q3 2024 (PIT-safe): revenue=0, net_income=-9.7M, operating_income=-9.7M, equity=-12.6M. Severe distress signal.",
+        "T3: Valuation snapshot TTM (not PIT-safe): PE=-0.06, PB=0.16, EV/EBITDA=-8.37. All metrics distressed or inverted.",
+        "T4: Price snapshot: last_eod_close=2.47 (2025-03-07), 5d return=-13.6%, 20d return=-30.0%, 60d return=-41.3%. Downtrend confirmed.",
+        "T5: News event summary: status=data_unavailable, items_count=0 within cutoff. No catalyst identified. 20 items dropped post-cutoff.",
+        "T6: Alternative data features: wikipedia_pageviews only (30 rows, low attention). Industry-specific adapters not_wired. GitHub unmapped_ticker. SEC adapters failed (cik_not_found).",
+        "T7: Information integrity assessment: status=insufficient_evidence, use_as_primary_signal_allowed=false. Tier distribution T1=0 T2=0 T3=1 T4=1. Corroboration_status=uncorroborated.",
+        "T8: Sentiment/ownership evidence: analyst_ratings descriptor-only (1 SB, 2 B, 2 H as of 2025-03-01). Ownership_positioning not_evaluated. Community_size not_evaluated.",
+        "T9: Corporate calendar: no upcoming earnings. Past earnings all negative EPS. No dividend or split events near decision.",
+        "T10: Filing confirmation: status=not_evaluated. sec_edgar cik_not_found. sec_form4 cik_not_found. No 8-K rows available.",
+        "T11: Narrative price gap assessment: status=not_evaluated, agent_internal_pending. Cannot assess price decline vs. news disconnect.",
+        "T12: Surge-short sleeve check: requires (1) catalyst + (2) corroboration. Catalyst absent (no news). Corroboration absent (alt-data limited, information_integrity_veto tripped). FAIL surge-short.",
+        "T13: Quality-long sleeve check: requires (1) quality fundamentals + (2) macro fit. Fundamentals distressed (negative equity, zero revenue). Macro regime strict_quality_and_valuation_caution. FAIL quality-long.",
+        "T14: Veto conditions: insufficient_evidence=true (missing alt-data, narrative, filing, ownership). missing_data_persists_beyond_tolerance=true (narrative_price_gap, filing_confirmation, ownership_positioning all not_evaluated). information_integrity_veto=true (use_as_primary_signal_allowed=false). lookahead_data_used=false (safe).",
+        "T15: Decision rule: multiple veto conditions tripped. Fail-closed to no_trade. position_size_pct=0.0.",
+        "T16: Audit: rule_version=v0.9.0_pass8_hardrule, evidence_packet_hash=sha256:58f8f683dc758e2c50f2445702b70dea107941f4317fb83bb8ccc5d479505d7f, locked_decision_id=sha256:764c1221b5fa60b80ef0967618881f8d958374c5de4bb40adbc060298bee6fc9."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-10T09:45:00-04:00",
+        "ticker": "CKPT",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:58f8f683dc758e2c50f2445702b70dea107941f4317fb83bb8ccc5d479505d7f"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show low, erratic attention (range 1-13 views/day over 30 days). No abnormal retail attention detected. Meme language flag false. Wallstreetbets flag false.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No claims to verify. Fundamental distress (negative equity, zero revenue) is documented in PIT-safe Q3 2024 filing. No narrative claim about catalyst or business model present.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Multiple critical blocks absent or not_evaluated: narrative_price_gap_assessment (agent_internal_pending), filing_confirmation (not_evaluated), information_integrity_assessment (use_as_primary_signal_allowed=false), ownership_positioning (not_evaluated). Alternative data severely limited (wikipedia only; industry adapters not_wired). Cannot confirm any thesis without these essential blocks.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment (1 SB, 2 B, 2 H as of 2025-03-01) is descriptor-only per schema. Cannot override missing fundamentals or absent catalyst. Sentiment data is T2-tier and cannot serve as primary signal.",
+      "ownership_risk_adjustment_note": "Ownership positioning data unavailable. 13F not_available_on_current_plan. Form 4 cik_not_found. Def 14A not_evaluated. Cannot assess insider activity, institutional crowding, or smart-money positioning.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "Institutional ownership data unavailable (13F failed). Cannot assess sponsorship or crowding risk.",
+      "smart_money_benchmark_note": "Smart-money positioning data unavailable (13F, Form 4 failed). Cannot benchmark against institutional activity.",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+      "execution_timestamp": "2025-03-10T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:764c1221b5fa60b80ef0967618881f8d958374c5de4bb40adbc060298bee6fc9",
+      "immutable_decision_flag": true
+    }
+  }
+}

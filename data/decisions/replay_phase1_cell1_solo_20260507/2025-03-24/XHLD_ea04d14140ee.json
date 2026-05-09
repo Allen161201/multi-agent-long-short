@@ -1,0 +1,280 @@
+{
+  "trigger_id": "ea04d14140ee",
+  "ticker": "XHLD",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-24T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 65.39,
+  "trigger_cost_usd": 0.057959,
+  "cumulative_cost_usd": 2.265193,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "XHLD",
+    "name": "XHLD",
+    "close": 32.25,
+    "prior_close": 21,
+    "change": 16.950000000000003,
+    "change_pct": 80.71428571428572,
+    "volume": 7190851.466667,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-24",
+    "prior_trading_day": "2025-03-21",
+    "available_as_of": "2025-03-24T16:00:00-05:00",
+    "today_open": 37.95,
+    "today_volume": 7190851.466667,
+    "eps_ttm": -1.2735,
+    "operating_margin_ttm": -50.63752276867031,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-09-30 00:00:00",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:57d61f909a14ec460eecd5db084878941e3af3dfe7ecd9a5098979694af956f7",
+  "locked_decision_id": "sha256:1b7b97de2071fe90f95c89b0b40a40c1c8f75ec6a52f196ecdecc57137aa110f",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation control)",
+      "schema_version": "RiskPMAgentOutput_v1",
+      "prompt_version": "baseline_solo_v1.0_2026_04_28",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "XHLD",
+      "decision_timestamp": "2025-03-24T09:30:00-04:00",
+      "data_available_as_of": "2025-03-24T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "macro_regime.overheat_stress_score_2",
+        "valuation_snapshot.negative_pe_negative_roe_negative_roa",
+        "valuation_snapshot.pb_0.75_ev_ebitda_negative",
+        "fundamental_snapshot.status_insufficient_evidence",
+        "news_event_summary.status_data_unavailable",
+        "alternative_data_features.adapters_not_connected",
+        "sentiment_community_ownership_evidence.sec_form4_insider_purchases_5_rows",
+        "price_snapshot.return_5d_pct_201_72_extreme_volatility",
+        "filing_confirmation.sec_8k_stub_data_only",
+        "information_integrity_assessment.use_as_primary_signal_allowed_false"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.income_statement_balance_sheet_cashflow_all_null",
+        "news_event_summary.no_catalyst_narrative_available",
+        "alternative_data_features.all_industry_adapters_not_connected",
+        "narrative_price_gap_assessment.not_evaluated_agent_llm_reasoning_pending",
+        "filing_confirmation.sec_8k_fulltext_stub_mode_not_ground_truth",
+        "sentiment_community_ownership_evidence.market_sentiment_scores_all_null",
+        "sentiment_community_ownership_evidence.institutional_ownership_pct_null",
+        "sentiment_community_ownership_evidence.hedge_fund_holder_count_null"
+      ],
+      "reasoning_summary": "XHLD exhibits extreme 5-day volatility (+201.7%) in overheat macro regime (stress=2, strict_quality_caution). Fundamentals unavailable; valuation shows negative PE/ROE/ROA; EV/EBITDA negative. No news catalyst within cutoff. Alt-data adapters unconnected; sec_form4 shows insider purchases (descriptor only, no buy signal per \u00a711.6). Filing is 8-K stub. Information integrity layer fail-closed (use_as_primary_signal_allowed=false). Insufficient evidence for either surge_short or quality_long sleeve. Macro discipline forbids equity exposure in overheat regime. Decision: no_trade pending fundamental data and narrative clarity.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "fundamental_snapshot.status=insufficient_evidence",
+        "news_event_summary.status=data_unavailable",
+        "alternative_data_features.adapters_not_connected",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false",
+        "macro_regime.equity_discipline=strict_quality_and_valuation_caution"
+      ],
+      "risk_flags": [
+        "extreme_5d_volatility_201_pct_return",
+        "negative_profitability_metrics_pe_roe_roa",
+        "no_fundamental_data_available",
+        "no_news_catalyst_within_cutoff",
+        "macro_overheat_regime_equity_cap_20_pct",
+        "alt_data_adapters_unconnected",
+        "filing_confirmation_stub_data_only",
+        "information_integrity_fail_closed",
+        "insider_purchases_descriptor_only_no_gate",
+        "price_snapshot_quote_after_cutoff_display_only"
+      ],
+      "suggested_improvements": [
+        "Obtain complete fundamental snapshot (income statement, balance sheet, cash flow) with PIT-safe filing dates",
+        "Retrieve news catalyst narrative from polygon_news or fmp_news with publishedDate <= cutoff",
+        "Connect industry-specific alt-data adapters (software_devtools, semiconductor_patent, biotech_clinical, etc.) to corroborate thesis",
+        "Evaluate narrative_price_gap_assessment via Agent-03 LLM reasoning once news/filing text is available",
+        "Clarify insider purchase intent via Form 4 context (director Price David Richard accumulated 20k shares Feb-Mar 2025); descriptor-only per \u00a711.6",
+        "Await macro regime shift out of overheat before considering equity positions",
+        "Verify information_integrity_assessment pollution-defense layer once v1.1+ schema implemented"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; all snapshot_quarter fields null"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "news_event_summary.status=data_unavailable; 20 items dropped post-cutoff; polygon_news returned 0 rows in [2025-03-17, 2025-03-24]"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker; sec_13f: not_available_on_current_plan"
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "filing_confirmation.sec_8k_fulltext: stub mode (deterministic, not ground truth); opencli adapter not installed"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "price_snapshot.live_quote at 2026-05-07T20:00:00+00:00 after allowed_data_cutoff; use last_eod_close=21 for PIT anchoring"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs flagged not_PIT_safe; TTM ratios used for display only"
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented)"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Baseline solo agent must collapse multi-agent reasoning into single decision. Missing upstream Agent-02 (Narrative), Agent-03 (Alt-Data Verification), Agent-04 (Fundamentals/Network), Agent-07 (Risk) verdicts. Narrative_price_gap_assessment marked not_evaluated; no LLM reasoning available in v1 generator. Information_integrity_assessment fail-closed by design. Insider Form 4 data is descriptor-only per \u00a711.6 and cannot drive decision. Macro regime overheat discipline (equity_cap=20%, strict_quality_caution) is hard constraint.",
+      "recommended_followups": [
+        "Resubmit XHLD when fundamental_snapshot.status transitions to 'ok' with PIT-safe filing dates",
+        "Await news catalyst (news_event_summary.status='ok' with items_count > 0 and publishedDate <= cutoff)",
+        "Monitor macro_regime for transition out of overheat; equity_discipline will relax to 'moderate_quality_focus' or 'balanced' at stress_score <= 1",
+        "Verify Form 4 insider purchase context via company press release or earnings call (not yet available)",
+        "Re-evaluate once alternative_data_features adapters are connected and returning rows",
+        "Check if XHLD is a micro-cap or shell company (negative profitability, low revenue, high volatility suggest early-stage or distressed)"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence to support surge_short or quality_long sleeve. Fundamentals unavailable; no news catalyst; macro overheat regime forbids equity exposure. Insider purchases are descriptor-only. Information integrity fail-closed. Extreme volatility and negative profitability metrics present risk but lack corroborating narrative and alt-data. Defer decision pending fundamental data, news catalyst, and macro regime shift.",
+      "risk_notes": [
+        "Macro regime overheat (stress_score=2) imposes strict_quality_and_valuation_caution discipline; equity_allocation_cap=20% portfolio-wide",
+        "Valuation snapshot shows PE=-0.164, ROE=-4.26%, ROA=-1.63%, EV/EBITDA=-0.439; negative profitability metrics preclude quality_long sleeve",
+        "Fundamental snapshot status=insufficient_evidence; no income statement, balance sheet, or cash flow data available for PIT-safe analysis",
+        "News event summary status=data_unavailable; no catalyst narrative within cutoff window; polygon_news returned 0 rows",
+        "Price snapshot shows extreme 5-day return of +201.7% and relative volume 3.82x 20-day average; suggests meme/retail attention or corporate event, but no corroborating news",
+        "Alternative data adapters not connected; cannot verify thesis via GitHub commits, patent filings, clinical trials, or industry-specific signals",
+        "Filing confirmation shows 8-K stub data only; sec_8k_fulltext extraction failed (opencli adapter not installed); cannot read Item 8.01 or 9.01 details",
+        "Sentiment community ownership evidence: market_sentiment scores all null; institutional_ownership_pct null; hedge_fund_holder_count null; sec_13f unavailable",
+        "Insider Form 4 shows 5 purchases by Director Price David Richard (Feb 27 - Mar 12, 2025) totaling ~12.4k USD; descriptor-only per \u00a711.6, no buy/sell gate",
+        "Information integrity assessment fail-closed: use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1",
+        "Narrative price gap assessment not_evaluated; no LLM reasoning available in v1 generator; cannot assess whether price spike is justified by catalyst",
+        "Wikipedia pageviews show modest attention (max 7 views on 2025-03-19, baseline 0-2 views most days); no abnormal retail attention detected",
+        "Lookahead_safe=true, data_after_cutoff_used=false; no hindsight violations; decision is replay-safe"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "fundamental_snapshot.status=insufficient_evidence; news_event_summary.status=data_unavailable; narrative_price_gap_assessment.status=not_evaluated; alternative_data_features adapters not connected"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "macro_regime.equity_allocation_cap=20% is portfolio-level constraint, not hard veto on individual position; no margin/derivatives/crypto used"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "fundamental_snapshot all fields null; news_event_summary items_count=0; alternative_data_features adapters unconnected; narrative_price_gap_assessment not_evaluated; information_integrity_assessment fail-closed"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8; pollution-defense layer unimplemented; fail-closed by design"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; hindsight_safe=true; no lookahead violations detected"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp=2025-03-24T09:30:00-04:00, allowed_data_cutoff=2025-03-24T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false",
+        "2. Evaluate macro_regime: status=ok, regime=overheat, stress_score=2, equity_discipline=strict_quality_and_valuation_caution, equity_allocation_cap=20%",
+        "3. Evaluate valuation_snapshot: status=ok, PE=-0.164, ROE=-4.26%, ROA=-1.63%, EV/EBITDA=-0.439; negative profitability precludes quality_long",
+        "4. Evaluate fundamental_snapshot: status=insufficient_evidence, all snapshot_quarter fields null; cannot assess earnings, cash flow, or balance sheet",
+        "5. Evaluate news_event_summary: status=data_unavailable, items_count=0, polygon_news returned 0 rows; no catalyst narrative available",
+        "6. Evaluate alternative_data_features: adapters not connected (github_public, sec_13f failed; software_devtools, semiconductor_patent, biotech_clinical, etc. not_connected); cannot corroborate thesis",
+        "7. Evaluate sentiment_community_ownership_evidence: market_sentiment scores null; institutional_ownership_pct null; sec_form4 shows 5 insider purchases (descriptor-only, no gate per \u00a711.6)",
+        "8. Evaluate information_integrity_assessment: use_as_primary_signal_allowed=false; pollution-defense layer unimplemented; fail-closed by design",
+        "9. Evaluate price_snapshot: return_5d_pct=+201.7%, relative_volume_vs_20d=3.82x; extreme volatility suggests event or retail attention, but no corroborating news",
+        "10. Evaluate filing_confirmation: sec_8k_stub_data_only; opencli adapter not installed; cannot read Item 8.01 or 9.01 details",
+        "11. Evaluate narrative_price_gap_assessment: status=not_evaluated; no LLM reasoning available in v1 generator; cannot assess price-catalyst alignment",
+        "12. Check surge_short sleeve eligibility: requires negative catalyst + corroborating alt-data + no veto. Missing: catalyst narrative, alt-data corroboration, fundamental data. Veto: insufficient_evidence, missing_data_persists, information_integrity_fail_closed. INELIGIBLE.",
+        "13. Check quality_long sleeve eligibility: requires positive fundamentals + quality metrics + no veto. Missing: fundamental data, positive profitability. Valuation shows negative PE/ROE/ROA. Veto: insufficient_evidence, missing_data_persists, information_integrity_fail_closed. INELIGIBLE.",
+        "14. Macro discipline check: overheat regime imposes strict_quality_and_valuation_caution; equity_allocation_cap=20% portfolio-wide; no individual position recommended until regime shifts",
+        "15. Final decision: no_trade. Position_size_pct=0.0. Defer pending fundamental data, news catalyst, and macro regime shift."
+      ],
+      "decision_log": [
+        "T+0 (2025-03-24T09:30:00-04:00): Baseline solo agent ingests full evidence packet; decision_mode=opening_window; lookahead_safe=true",
+        "T+1: Macro regime analysis: overheat (stress_score=2); equity_discipline=strict_quality_and_valuation_caution; equity_allocation_cap=20%",
+        "T+2: Valuation analysis: PE=-0.164, ROE=-4.26%, ROA=-1.63%, EV/EBITDA=-0.439; negative profitability metrics present",
+        "T+3: Fundamental analysis: fundamental_snapshot.status=insufficient_evidence; all snapshot_quarter fields null; cannot assess earnings, cash flow, balance sheet",
+        "T+4: Catalyst analysis: news_event_summary.status=data_unavailable; items_count=0; polygon_news returned 0 rows in [2025-03-17, 2025-03-24]; no narrative available",
+        "T+5: Alt-data analysis: alternative_data_features adapters not connected; github_public failed (unmapped_ticker); sec_13f failed (not_available_on_current_plan); cannot corroborate thesis",
+        "T+6: Sentiment/ownership analysis: market_sentiment scores null; institutional_ownership_pct null; sec_form4 shows 5 insider purchases (descriptor-only, no gate); no smart_money_support_assessment",
+        "T+7: Information integrity analysis: information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented; fail-closed by design",
+        "T+8: Price/volatility analysis: return_5d_pct=+201.7%, relative_volume_vs_20d=3.82x; extreme volatility suggests event or retail attention, but no corroborating news or filing text",
+        "T+9: Filing analysis: filing_confirmation shows 8-K stub data only; sec_8k_fulltext extraction failed (opencli adapter not installed); cannot read Item 8.01 or 9.01 details",
+        "T+10: Narrative gap analysis: narrative_price_gap_assessment.status=not_evaluated; no LLM reasoning available in v1 generator; cannot assess price-catalyst alignment",
+        "T+11: Sleeve eligibility check: surge_short requires negative catalyst + corroborating alt-data + no veto. Missing: catalyst narrative, alt-data corroboration. Veto: insufficient_evidence, missing_data_persists, information_integrity_fail_closed. INELIGIBLE.",
+        "T+12: Sleeve eligibility check: quality_long requires positive fundamentals + quality metrics + no veto. Missing: fundamental data, positive profitability. Valuation shows negative PE/ROE/ROA. Veto: insufficient_evidence, missing_data_persists, information_integrity_fail_closed. INELIGIBLE.",
+        "T+13: Macro discipline check: overheat regime (stress_score=2) imposes strict_quality_and_valuation_caution; equity_allocation_cap=20% portfolio-wide; no individual position recommended until regime shifts",
+        "T+14: Veto evaluation: insufficient_evidence=true (fundamentals, news, narrative all unavailable); missing_data_persists_beyond_tolerance=true (5+ critical blocks); information_integrity_veto=true (fail-closed); lookahead_data_used=false (safe)",
+        "T+15: Final decision: no_trade. Position_size_pct=0.0. Defer pending fundamental data, news catalyst, and macro regime shift. Immutable_decision_flag=true."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-24T09:45:00-04:00",
+        "ticker": "XHLD",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0_2026_04_28",
+        "evidence_packet_hash": "sha256:fc0470a300e3bb75bf491de66cb1c9d59251de049576cdd183927ed8d9bde079"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show modest attention (max 7 views on 2025-03-19, baseline 0-2 views most days); no abnormal retail attention detected. Meme_or_retail_attention_warning=not_evaluated (retail_meme_attention.status=not_evaluated). No evidence of coordinated campaign or bot-like patterns.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Filing confirmation shows 8-K stub data only; sec_8k_fulltext extraction failed (opencli adapter not installed); cannot verify Item 8.01 or 9.01 details. Insider Form 4 purchases are descriptor-only per \u00a711.6 and cannot drive decision.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "fundamental_snapshot.status=insufficient_evidence; news_event_summary.status=data_unavailable; narrative_price_gap_assessment.status=not_evaluated; information_integrity_assessment.use_as_primary_signal_allowed=false; alternative_data_features adapters not connected. Essential blocks absent or fail-closed. Cannot confirm thesis without fundamental data, news catalyst, and alt-data corroboration.",
+      "sentiment_risk_adjustment_note": "market_sentiment.sentiment_score=null; sentiment_change_1d/3d/7d all null; negative_news_intensity=null; positive_news_intensity=null. Sentiment data unavailable; no adjustment applied.",
+      "ownership_risk_adjustment_note": "institutional_ownership_pct=null; top_10_holder_concentration=null; hedge_fund_holder_count=null; sec_13f unavailable (not_available_on_current_plan). Ownership data unavailable; no adjustment applied. Insider Form 4 shows 5 purchases by Director Price David Richard (Feb 27 - Mar 12, 2025) totaling ~12.4k USD; descriptor-only per \u00a711.6, no gate.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "sec_13f unavailable (not_available_on_current_plan); institutional_ownership_pct=null; top_10_holder_concentration=null. Institutional sponsorship data unavailable; cannot assess.",
+      "smart_money_benchmark_note": "smart_money_support_assessment=not_evaluated; hedge_fund_holder_count=null; hedge_fund_ownership_change=null. Smart money benchmark data unavailable; cannot assess.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-24T09:30:00-04:00",
+      "execution_timestamp": "2025-03-24T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:1c8ffe214f21d3bccd3eb1ab87bd3c0c863f1703f6496d9038ab9e25d2962284",
+      "immutable_decision_flag": true
+    }
+  }
+}

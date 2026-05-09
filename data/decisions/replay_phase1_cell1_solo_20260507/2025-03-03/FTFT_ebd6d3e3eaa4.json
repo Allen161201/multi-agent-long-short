@@ -1,0 +1,268 @@
+{
+  "trigger_id": "ebd6d3e3eaa4",
+  "ticker": "FTFT",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-03T09:30:00-05:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 44.78,
+  "trigger_cost_usd": 0.061917,
+  "cumulative_cost_usd": 0.061917,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "FTFT",
+    "name": "FTFT",
+    "close": 10.08,
+    "prior_close": 8.08,
+    "change": 6.943999999999999,
+    "change_pct": 85.94059405940592,
+    "volume": 5500649.5,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-03",
+    "prior_trading_day": "2025-02-28",
+    "available_as_of": "2025-03-03T16:00:00-05:00",
+    "today_open": 15.024,
+    "today_volume": 5500649.5,
+    "eps_ttm": -20.61,
+    "operating_margin_ttm": -270.3386047717067,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-19 16:15:34",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:a2aae167c627ad162e791f8c35ffbfaafa040669185a5de1932da3606f331992",
+  "locked_decision_id": "sha256:4b71fe0e01b247211aadd2cc48fc5b6e62b5017752d1faa54e4fd32e7793d192",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-shot evidence synthesis)",
+      "schema_version": "RiskPMAgentOutput_v1",
+      "prompt_version": "baseline_solo_v1.0_2026_04_28",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "FTFT",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "macro_regime.overheat_stress_score_2",
+        "valuation_snapshot.negative_pe_and_roe",
+        "valuation_snapshot.extreme_leverage_ratios",
+        "price_snapshot.return_5d_pct_-14.77",
+        "price_snapshot.return_60d_pct_-53.02",
+        "fundamental_snapshot.insufficient_evidence_status",
+        "news_event_summary.data_unavailable_status",
+        "alternative_data_features.adapter_features_missing_all",
+        "sentiment_community_ownership_evidence.ownership_not_evaluated",
+        "filing_confirmation.8k_filed_2025_02_18",
+        "corporate_calendar.no_upcoming_earnings",
+        "information_integrity_assessment.use_as_primary_signal_disallowed"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.income_statement_pit_safe",
+        "fundamental_snapshot.balance_sheet_pit_safe",
+        "fundamental_snapshot.cash_flow_pit_safe",
+        "news_event_summary.catalyst_narrative",
+        "alternative_data_features.all_adapter_features",
+        "sentiment_community_ownership_evidence.ownership_positioning_data",
+        "narrative_price_gap_assessment.agent_llm_reasoning",
+        "price_snapshot.opening_window_first_10min_ohlcv"
+      ],
+      "reasoning_summary": "FTFT exhibits severe fundamental distress (negative PE, ROE, net margin -120.63%), macro headwinds (overheat regime, stress_score=2), and 60-day decline of -53%. Alternative data is absent (all adapter features missing), sentiment/ownership data unavailable, and no news catalyst within cutoff. Fundamental snapshot status is insufficient_evidence. Filing confirmation shows 8-K on 2025-02-18 but full text is stub. Information integrity assessment explicitly disallows use_as_primary_signal. Insufficient corroboration for either surge_short or quality_long sleeve. Fail-closed to no_trade pending upstream multi-agent decomposition.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "fundamental_snapshot.status=insufficient_evidence",
+        "alternative_data_features.adapter_features_missing=all",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false",
+        "sentiment_community_ownership_evidence.ownership_positioning.status=not_evaluated",
+        "narrative_price_gap_assessment.status=not_evaluated"
+      ],
+      "risk_flags": [
+        "negative_profitability_ttm",
+        "extreme_valuation_distress",
+        "macro_overheat_regime_equity_caution",
+        "severe_price_decline_60d",
+        "missing_fundamental_pit_safe_data",
+        "missing_alternative_data_corroboration",
+        "missing_news_catalyst_within_cutoff",
+        "missing_ownership_positioning_data",
+        "stub_data_in_filing_confirmation",
+        "no_analyst_coverage_fmp_sentiment"
+      ],
+      "suggested_improvements": [
+        "Obtain PIT-safe fundamental snapshot (income, balance, cashflow) with accepted_date <= cutoff",
+        "Wire alternative_data adapters to deliver real (non-stub) features for valuation, profitability, leverage context",
+        "Retrieve ownership_positioning data (13F, Form 4) with accepted_datetime <= cutoff for institutional/insider signal",
+        "Fetch news_event_summary items with publishedDate <= cutoff to establish catalyst narrative",
+        "Invoke Agent 03 (Narrative) to assess price-gap and filing context (8-K Item 8.01)",
+        "Evaluate macro regime's equity_allocation_cap=20% constraint against portfolio construction"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe income/balance/cashflow rows"
+        },
+        {
+          "kind": "alt_data_missing",
+          "severity": "warning",
+          "detail": "alternative_data_features.adapter_features_missing=[all]; no valuation/profitability/leverage context"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "news_event_summary: 20 items dropped (publishedDate > cutoff); 0 items retained"
+        },
+        {
+          "kind": "ownership_not_evaluated",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning.status=not_evaluated; no 13F/Form4 data"
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode (not ground truth)"
+        },
+        {
+          "kind": "analyst_coverage_zero",
+          "severity": "info",
+          "detail": "fmp_sentiment: 0 analyst ratings (StrongBuy=0, Buy=0, Hold=0, Sell=0, StrongSell=0) across 40 historical rows"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Baseline solo agent lacks upstream specialist decomposition (Agent 02 Narrative, Agent 03 Alt-Data, Agent 04 Fundamentals, Agent 07 Risk). Single-shot synthesis of 12 evidence blocks without cross-validation creates high uncertainty when blocks are sparse or contradictory. Information_integrity_assessment explicitly disallows use_as_primary_signal in v1, forcing fail-closed stance. Narrative_price_gap_assessment status=not_evaluated (pending Agent 03 LLM reasoning). Recommend multi-agent pipeline for this ticker.",
+      "recommended_followups": [
+        "Deploy multi-agent pipeline (Agent 02 \u2192 Agent 03 \u2192 Agent 04 \u2192 Agent 07 \u2192 PM) to decompose catalyst, corroboration, fundamentals, and risk in parallel",
+        "Obtain real alternative_data (not stub) for valuation_context, profitability_support, leverage_risk",
+        "Retrieve ownership_positioning (13F accepted_datetime <= cutoff) to assess institutional/insider positioning",
+        "Fetch news_event_summary items (publishedDate <= cutoff) and invoke Agent 02 Narrative for catalyst assessment",
+        "Evaluate macro regime's equity_allocation_cap=20% constraint; confirm FTFT fits within overheat discipline",
+        "Re-run decision at end-of-day or next trading day when more data (earnings, filings, news) may be available"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence across fundamental, alternative-data, and sentiment layers. Fundamental snapshot status=insufficient_evidence; alternative_data adapters missing all features; ownership_positioning not_evaluated; news_event_summary empty post-cutoff. Information_integrity_assessment explicitly disallows primary-signal use. Macro overheat regime (stress_score=2) mandates strict_quality_and_valuation_caution. Fail-closed to no_trade pending multi-agent decomposition.",
+      "risk_notes": [
+        "Negative PE (-0.54), ROE (-0.16), net margin (-120.63%) indicate severe distress; however, no PIT-safe fundamental data to confirm trend",
+        "60-day return -53.02% and 5-day return -14.77% suggest downward momentum, but no catalyst narrative to explain or validate short thesis",
+        "Macro regime overheat (stress_score=2) restricts equity exposure; equity_allocation_cap=20% applies",
+        "Alternative data completely absent (all adapter features missing); cannot corroborate valuation or profitability claims",
+        "Ownership positioning not evaluated; no institutional/insider signal to support or contradict short thesis",
+        "Filing confirmation shows 8-K (2025-02-18, Item 8.01) but full text is stub; cannot assess materiality",
+        "Zero analyst coverage (fmp_sentiment: 0 ratings); no external validation of thesis",
+        "Information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer not implemented in v1",
+        "Narrative_price_gap_assessment not_evaluated; Agent 03 reasoning required to assess price decline vs. catalyst",
+        "Baseline solo agent lacks decomposition; multi-agent pipeline recommended for robust decision"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "fundamental_snapshot.status=insufficient_evidence; alternative_data_features.adapter_features_missing=[all]; news_event_summary.status=data_unavailable; sentiment_community_ownership_evidence.ownership_positioning.status=not_evaluated; narrative_price_gap_assessment.status=not_evaluated"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "Macro regime overheat (stress_score=2) restricts equity to 20% allocation cap; no position size proposed, so cap not breached"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Fundamental snapshot, alternative_data, ownership_positioning, news_catalyst, and narrative_price_gap all missing or insufficient; exceeds tolerance for single-agent decision"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer not implemented in v1; fail-closed per schema v1.1 decision #8"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true; no lookahead violation detected"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp=2025-03-03T09:30:00-05:00, allowed_data_cutoff=2025-03-03T09:30:00-05:00, lookahead_safe=true, data_after_cutoff_used=false",
+        "2. Evaluate macro_regime: overheat, stress_score=2, equity_allocation_cap=20%, equity_discipline=strict_quality_and_valuation_caution",
+        "3. Evaluate valuation_snapshot: PE=-0.5393, PB=0.0567, EV/EBITDA=0.0054, ROE=-0.1638, net_margin=-120.63%; status=ok but TTM not PIT-safe",
+        "4. Evaluate fundamental_snapshot: status=insufficient_evidence; no PIT-safe income/balance/cashflow rows",
+        "5. Evaluate alternative_data_features: adapter_features_missing=[all]; no valuation/profitability/leverage context",
+        "6. Evaluate news_event_summary: status=data_unavailable; 0 items retained post-cutoff (20 dropped)",
+        "7. Evaluate sentiment_community_ownership_evidence: ownership_positioning.status=not_evaluated; no 13F/Form4 data",
+        "8. Evaluate information_integrity_assessment: use_as_primary_signal_allowed=false; pollution-defense not implemented",
+        "9. Evaluate narrative_price_gap_assessment: status=not_evaluated; Agent 03 reasoning required",
+        "10. Assess candidate_type=surge_short: requires catalyst corroboration (missing), alternative_data (missing), ownership signal (missing), news narrative (missing)",
+        "11. Assess candidate_type=quality_long: requires strong fundamentals (insufficient), growth narrative (missing), institutional support (not_evaluated)",
+        "12. Evaluate veto_conditions: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true",
+        "13. Decision: veto conditions tripped; fail-closed to no_trade; position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T+0: Ingest evidence packet; verify envelope (lookahead_safe=true, data_after_cutoff_used=false)",
+        "T+1: Assess macro regime (overheat, stress_score=2); equity_allocation_cap=20% applies",
+        "T+2: Assess valuation (PE=-0.54, ROE=-0.16, net_margin=-120.63%); TTM not PIT-safe; status=ok but not actionable",
+        "T+3: Assess fundamentals (status=insufficient_evidence); no PIT-safe income/balance/cashflow; cannot confirm distress trend",
+        "T+4: Assess alternative_data (adapter_features_missing=[all]); no corroboration for valuation or profitability claims",
+        "T+5: Assess news_event_summary (status=data_unavailable); 0 items post-cutoff; no catalyst narrative",
+        "T+6: Assess sentiment_community_ownership (ownership_positioning.status=not_evaluated); no institutional/insider signal",
+        "T+7: Assess information_integrity (use_as_primary_signal_allowed=false); pollution-defense not implemented; fail-closed",
+        "T+8: Assess narrative_price_gap (status=not_evaluated); Agent 03 reasoning required; cannot assess price decline vs. catalyst",
+        "T+9: Evaluate surge_short sleeve: requires catalyst (missing), corroboration (missing), alternative_data (missing), ownership (missing) \u2192 cannot meet all conditions",
+        "T+10: Evaluate quality_long sleeve: requires strong fundamentals (insufficient), growth narrative (missing), institutional support (not_evaluated) \u2192 cannot meet all conditions",
+        "T+11: Evaluate veto_conditions: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true",
+        "T+12: Decision: veto conditions tripped; fail-closed to no_trade; position_size_pct=0.0; recommend multi-agent pipeline"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-03T09:45:00-05:00",
+        "ticker": "FTFT",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0_2026_04_28",
+        "evidence_packet_hash": "sha256:e470eda9dde37ba27fb2b4e3a5770543b92ca74651a7e2afdf676b3edea2468c"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show elevated attention (peak 792 views on 2025-02-17, 811 on 2025-02-22); however, no meme_language_flag or wallstreetbets_flag detected. Retail attention descriptor only; does not override veto conditions.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Filing confirmation (8-K 2025-02-18, Item 8.01) is present but full text is stub; cannot verify materiality or claim content.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "fundamental_snapshot.status=insufficient_evidence; alternative_data_features.adapter_features_missing=[all]; information_integrity_assessment.use_as_primary_signal_allowed=false; narrative_price_gap_assessment.status=not_evaluated. Essential blocks absent or insufficient; fail-closed per \u00a713.6 null-block-handling clause.",
+      "sentiment_risk_adjustment_note": "fmp_sentiment: 0 analyst ratings across 40 historical rows; no sentiment signal available. Sentiment_community_ownership_evidence.market_sentiment.sentiment_score=null; cannot assess sentiment risk.",
+      "ownership_risk_adjustment_note": "ownership_positioning.status=not_evaluated; no 13F/Form4 data available. Cannot assess institutional/insider positioning or crowding risk.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional ownership data available (sec_13f adapter failed: not_available_on_current_plan). Cannot assess sponsorship or support.",
+      "smart_money_benchmark_note": "No smart money positioning data available. Ownership_positioning.smart_money_support_assessment=not_evaluated.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-03T09:30:00-05:00",
+      "execution_timestamp": "2025-03-03T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:71659e6be04bfbdba8f7931176776baeb45eda4f7c724b47e09924bc6e8699f2",
+      "immutable_decision_flag": true
+    }
+  }
+}

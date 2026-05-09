@@ -1,0 +1,287 @@
+{
+  "trigger_id": "ff11f19b2b0e",
+  "ticker": "DRMA",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-27T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 72.5,
+  "trigger_cost_usd": 0.065619,
+  "cumulative_cost_usd": 2.651847,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "DRMA",
+    "name": "DRMA",
+    "close": 14.2,
+    "prior_close": 13.5,
+    "change": 8.5,
+    "change_pct": 62.96296296296296,
+    "volume": 7633164.9,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-27",
+    "prior_trading_day": "2025-03-26",
+    "available_as_of": "2025-03-27T16:00:00-05:00",
+    "today_open": 22,
+    "today_volume": 7633164.9,
+    "eps_ttm": -153.2,
+    "operating_margin_ttm": null,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2025-03-17 16:15:32",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:f63e6e0d00e82c698a26391301db0bd713779e9495ca8bac44a3c82db6342c16",
+  "locked_decision_id": "sha256:e8c496cd055272152be9e14802b12f5603e5ca676f1cc89540de122d3ed83c71",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "baseline_solo_08",
+      "agent_role_label": "Baseline Solo Agent (single-shot evidence synthesis)",
+      "schema_version": "risk_pm_agent_output_v1",
+      "prompt_version": "baseline_solo_v1_2026_04_28",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DRMA",
+      "decision_timestamp": "2025-03-27T09:30:00-04:00",
+      "data_available_as_of": "2025-03-27T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.last_eod_close=1.35",
+        "price_snapshot.return_5d_pct=10.6557",
+        "price_snapshot.relative_volume_vs_20d=2.6351",
+        "valuation_snapshot.pe_ratio=-0.21 (negative earnings)",
+        "valuation_snapshot.price_to_book=0.2556",
+        "valuation_snapshot.ev_to_ebitda=0.8735",
+        "valuation_snapshot.roe=-1.309 (negative)",
+        "valuation_snapshot.roa=-0.961 (negative)",
+        "fundamental_snapshot.status=insufficient_evidence",
+        "news_event_summary.status=data_unavailable (0 items post-cutoff)",
+        "alternative_data_features.wikipedia_pageviews (30 rows, low attention ~8-25 views/day)",
+        "alternative_data_features.github_public=unmapped_ticker (failed)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (1 Strong Buy rating as of 2025-03-01)",
+        "sentiment_community_ownership_evidence.sec_form4 (4 insider grant transactions Jan 2025, no sales)",
+        "corporate_calendar.earnings (most recent 2025-03-17: EPS -3.15 vs est -1.5, miss)",
+        "corporate_calendar.splits (1:15 May 2024, 1:16 Mar 2023)",
+        "filing_confirmation.sec_8k (5 filings in 90d, most recent 2025-03-27 items 7.01/8.01/9.01)",
+        "macro_regime=Strengthening/Moderately Restrictive (stress_score=1, equity_cap=30%)",
+        "information_integrity_assessment.corroboration_status=T1_only",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.revenue, net_income, ebitda (status=insufficient_evidence)",
+        "fundamental_snapshot.operating_cash_flow, free_cash_flow",
+        "news_event_summary.catalyst_type, catalyst_specificity_score (0 items post-cutoff)",
+        "narrative_price_gap_assessment.agent_LLM_reasoning (not_evaluated, pending downstream)",
+        "alternative_data_features.retail_meme_attention (not_evaluated, not_connected)",
+        "alternative_data_features.valuation_context (not_evaluated, not_connected)",
+        "alternative_data_features.github_public (unmapped_ticker, failed)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "sentiment_community_ownership_evidence.institutional_ownership_pct",
+        "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)"
+      ],
+      "reasoning_summary": "DRMA exhibits severe profitability headwinds (negative PE, ROE, ROA) with insufficient fundamental data to support either long or short thesis. Recent earnings miss (EPS -3.15 vs -1.5 est) and multiple reverse splits (1:15, 1:16) signal distress. Alt-data is sparse: Wikipedia pageviews are low (~8-25/day), GitHub unmapped, no recent news post-cutoff. Analyst sentiment (1 Strong Buy) is descriptor-only and contradicted by fundamentals. Insider grants (no sales) are neutral. Macro regime (Moderately Restrictive, 30% equity cap) restricts position sizing. Information integrity assessment blocks primary-signal use. Fail-closed: insufficient evidence for surge_short (no corroborating alt-data catalyst) and insufficient evidence for quality_long (negative profitability, missing fundamentals). Decision: no_trade pending more evidence.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "fundamental_snapshot.status=insufficient_evidence \u2014 no income/balance/cashflow data",
+        "news_event_summary.status=data_unavailable \u2014 0 items post-cutoff, no catalyst narrative",
+        "alternative_data_features.adapter_selection.adapter_features_available=[] \u2014 no alt-data signals delivered",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false \u2014 pollution-defense layer not implemented",
+        "narrative_price_gap_assessment.status=not_evaluated \u2014 agent_LLM_reasoning missing"
+      ],
+      "risk_flags": [
+        "negative_profitability: PE=-0.21, ROE=-1.31, ROA=-0.96",
+        "earnings_miss: 2025-03-17 EPS -3.15 vs est -1.5 (miss by 110%)",
+        "reverse_splits: 1:15 (May 2024), 1:16 (Mar 2023) \u2014 distress signal",
+        "low_price: last_eod_close=1.35 \u2014 penny-stock territory post-splits",
+        "sparse_alt_data: Wikipedia views 8-25/day (low attention), GitHub unmapped, no news",
+        "analyst_sentiment_weak: 1 Strong Buy (descriptor-only, contradicted by fundamentals)",
+        "macro_headwind: Moderately Restrictive regime, 30% equity cap, strict_quality_and_valuation discipline",
+        "insider_activity_neutral: 4 grants (Jan 2025), 0 sales \u2014 no conviction signal",
+        "data_quality_degraded: fundamental_snapshot insufficient, news_event_summary unavailable, alt_data sparse"
+      ],
+      "suggested_improvements": [
+        "Obtain complete fundamental snapshot (income statement, balance sheet, cash flow) with PIT-safe filing dates",
+        "Retrieve recent news/catalyst narrative (news_event_summary currently empty post-cutoff)",
+        "Wire industry-specific alt-data adapters (biotech_clinical_adapter if DRMA is biotech) to assess pipeline/clinical progress",
+        "Resolve GitHub mapping or confirm ticker is not a software/devtools company",
+        "Implement information_integrity_assessment pollution-defense layer to enable primary-signal use",
+        "Obtain 13F institutional ownership data (currently not_available_on_current_plan) to assess smart-money positioning",
+        "Clarify insider grant context: are these equity refreshes (neutral) or compensation for distress (negative)?"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status=insufficient_evidence \u2014 no income/balance/cashflow rows available"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "news_event_summary.status=data_unavailable \u2014 0 items post-cutoff, 20 items dropped post-cutoff"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 DRMA not in ticker_to_github.csv"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 FMP HTTP 404"
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "info",
+          "detail": "alternative_data_features.retail_meme_attention: not_evaluated, not_connected"
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "info",
+          "detail": "alternative_data_features.valuation_context: not_evaluated, not_connected"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios, not PIT-safe; current_snapshot_not_PIT_safe=true"
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode (deterministic, not ground truth)"
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false \u2014 pollution-defense layer not implemented in v1"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Baseline solo agent must synthesize all evidence in one shot without upstream specialist verdicts. This creates a single point of failure: if any critical block is absent (fundamental_snapshot, news_event_summary, alt_data), the agent cannot decompose the decision into catalyst \u2192 corroboration \u2192 fundamentals \u2192 sleeve fit \u2192 risk. The multi-agent pipeline would have Agent-02 (Narrative) flag the missing catalyst, Agent-03 (Alt-Data) flag the missing corroboration, and Agent-04 (Fundamentals) flag the missing data \u2014 each with explicit confidence downweights. Here, the agent must collapse all three into a single 'no_trade' decision. This is the intended ablation: the baseline is less granular and less auditable.",
+      "recommended_followups": [
+        "Obtain fundamental snapshot (income, balance, cashflow) with filing_date <= 2025-03-27",
+        "Retrieve news/catalyst narrative for DRMA in 7d window pre-decision",
+        "Wire biotech_clinical_adapter if DRMA is a biotech company (clinical trial data, FDA events)",
+        "Resolve GitHub mapping or confirm DRMA is not a software/devtools company",
+        "Obtain 13F institutional ownership data to assess smart-money positioning",
+        "Clarify insider grant context and assess whether it signals distress or routine equity refresh",
+        "Re-evaluate once macro regime shifts to less restrictive (equity_cap > 30%)"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence for surge_short (no corroborating alt-data catalyst, sparse news, weak fundamentals) and insufficient evidence for quality_long (negative profitability, missing fundamentals, macro headwind). Fail-closed per rule \u00a713.4: when evidence is insufficient, emit no_trade with explicit evidence_missing list. Alt-data is primary verification mechanism; absence of alt-data signals (GitHub unmapped, 13F unavailable, retail attention not_evaluated) downgrades confidence to low. Fundamental snapshot status=insufficient_evidence blocks both sleeves. Decision locked until more evidence available.",
+      "risk_notes": [
+        "Negative profitability (PE=-0.21, ROE=-1.31, ROA=-0.96) disqualifies quality_long sleeve",
+        "Earnings miss (EPS -3.15 vs est -1.5) on 2025-03-17 suggests deteriorating fundamentals",
+        "Multiple reverse splits (1:15 May 2024, 1:16 Mar 2023) are classic distress signals",
+        "Low price (1.35) post-splits suggests penny-stock territory; liquidity risk",
+        "Sparse alt-data (Wikipedia 8-25 views/day, GitHub unmapped, no news post-cutoff) prevents corroboration",
+        "Analyst sentiment (1 Strong Buy) is descriptor-only and contradicted by fundamentals; cannot override",
+        "Macro regime (Moderately Restrictive, 30% equity cap) restricts position sizing even if decision were positive",
+        "Insider grants (4 transactions Jan 2025, 0 sales) are neutral; no conviction signal",
+        "Information integrity assessment blocks primary-signal use (pollution-defense layer not implemented)",
+        "Fundamental snapshot insufficient_evidence blocks both surge_short and quality_long thresholds"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "fundamental_snapshot.status=insufficient_evidence; news_event_summary.status=data_unavailable; alternative_data_features sparse (Wikipedia low, GitHub unmapped, 13F unavailable). Cannot confirm catalyst or corroboration."
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "No hard limit breached; macro regime allows 30% equity cap, position_size_pct=0.0 complies."
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "fundamental_snapshot (income/balance/cashflow), news_event_summary (0 items post-cutoff), alternative_data_features (GitHub unmapped, 13F unavailable, retail_meme_attention not_evaluated) all missing or unavailable. Tolerance exceeded."
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8."
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true; no lookahead violations detected."
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp=2025-03-27T09:30:00-04:00, allowed_data_cutoff=2025-03-27T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false \u2192 PIT-safe",
+        "2. Assess macro_regime: Strengthening/Moderately Restrictive (stress_score=1), equity_cap=30%, equity_discipline=strict_quality_and_valuation \u2192 restrictive environment",
+        "3. Assess catalyst (news_event_summary): status=data_unavailable, 0 items post-cutoff, 20 items dropped post-cutoff \u2192 no narrative catalyst available",
+        "4. Assess corroboration (alternative_data_features): Wikipedia pageviews low (8-25/day), GitHub unmapped (failed), retail_meme_attention not_evaluated, valuation_context not_evaluated, sec_13f unavailable \u2192 sparse alt-data, cannot corroborate",
+        "5. Assess fundamentals (fundamental_snapshot, valuation_snapshot): fundamental_snapshot.status=insufficient_evidence (no income/balance/cashflow), valuation_snapshot.pe_ratio=-0.21 (negative earnings), roe=-1.31, roa=-0.96 \u2192 severe profitability headwinds, missing data",
+        "6. Assess sleeve fit (surge_short): requires corroborating alt-data catalyst + negative fundamentals. Alt-data sparse, catalyst absent \u2192 surge_short not met",
+        "7. Assess sleeve fit (quality_long): requires positive profitability + strong fundamentals. Profitability negative (PE, ROE, ROA all negative), fundamentals insufficient \u2192 quality_long not met",
+        "8. Evaluate veto conditions: insufficient_evidence=true (missing fundamentals, news, alt-data), missing_data_persists_beyond_tolerance=true, information_integrity_veto=true (use_as_primary_signal_allowed=false) \u2192 multiple vetoes tripped",
+        "9. Decision: veto conditions tripped \u2192 decision=no_trade, position_size_pct=0.0, confidence=low, uncertainty=high"
+      ],
+      "decision_log": [
+        "T0: Envelope validation \u2014 PIT-safe, lookahead_safe=true, data_after_cutoff_used=false \u2713",
+        "T1: Macro regime assessment \u2014 Moderately Restrictive (stress_score=1), equity_cap=30%, strict_quality_and_valuation discipline \u2192 restrictive environment",
+        "T2: Catalyst assessment (Agent-02 equivalent) \u2014 news_event_summary.status=data_unavailable, 0 items post-cutoff \u2192 no narrative catalyst available",
+        "T3: Corroboration assessment (Agent-03 equivalent) \u2014 alternative_data_features sparse: Wikipedia 8-25 views/day (low), GitHub unmapped (failed), retail_meme_attention not_evaluated, sec_13f unavailable \u2192 cannot corroborate catalyst",
+        "T4: Fundamentals assessment (Agent-04 equivalent) \u2014 fundamental_snapshot.status=insufficient_evidence (no income/balance/cashflow), valuation_snapshot.pe_ratio=-0.21, roe=-1.31, roa=-0.96 \u2192 severe profitability headwinds, missing data",
+        "T5: Sleeve fit assessment (surge_short) \u2014 requires corroborating alt-data catalyst + negative fundamentals. Alt-data sparse, catalyst absent, fundamentals insufficient \u2192 surge_short not met",
+        "T6: Sleeve fit assessment (quality_long) \u2014 requires positive profitability + strong fundamentals. Profitability negative (PE, ROE, ROA all negative), fundamentals insufficient \u2192 quality_long not met",
+        "T7: Risk assessment (Agent-07 equivalent) \u2014 veto conditions: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true \u2192 multiple vetoes tripped",
+        "T8: Final decision \u2014 no_trade (fail-closed per rule \u00a713.4), position_size_pct=0.0, confidence=low, uncertainty=high"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-27T09:45:00-04:00",
+        "ticker": "DRMA",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1_2026_04_28",
+        "evidence_packet_hash": "sha256:4985567ddedf50cc96f3f2d045e4716c5cf7f41b187427caf6914f910bd163fe"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews 8-25/day (low attention), no meme language detected, no retail attention spike. Analyst sentiment (1 Strong Buy) is descriptor-only and contradicted by fundamentals.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Analyst sentiment (1 Strong Buy as of 2025-03-01) is descriptor-only per \u00a711.13; cannot override fundamentals. No primary source (news, filing, alt-data) corroborates bullish thesis.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "fundamental_snapshot.status=insufficient_evidence (no income/balance/cashflow data); information_integrity_assessment.use_as_primary_signal_allowed=false (pollution-defense layer not implemented); narrative_price_gap_assessment.status=not_evaluated (agent_LLM_reasoning missing). Essential blocks absent or blocked; fail-closed per rule \u00a713.6.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment (1 Strong Buy) contradicted by negative profitability (PE=-0.21, ROE=-1.31, ROA=-0.96) and earnings miss (EPS -3.15 vs est -1.5). Sentiment is descriptor-only; cannot create or flip decision.",
+      "ownership_risk_adjustment_note": "Insider grants (4 transactions Jan 2025, 0 sales) are neutral; no conviction signal. 13F institutional ownership unavailable (not_available_on_current_plan). Cannot assess smart-money positioning.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "13F data unavailable; cannot assess institutional ownership or sponsorship. Analyst sentiment (1 Strong Buy) is weak and contradicted by fundamentals.",
+      "smart_money_benchmark_note": "13F unavailable; cannot benchmark against smart-money positioning. Insider activity (4 grants, 0 sales) is neutral.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-27T09:30:00-04:00",
+      "execution_timestamp": "2025-03-27T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:1dd53060b6a2ca4714c876ed4269942f34a4b3b3c37bb93f9cef6843f5ec4630",
+      "immutable_decision_flag": true
+    }
+  }
+}

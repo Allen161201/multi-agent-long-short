@@ -1,0 +1,1485 @@
+{
+  "trigger_id": "677a49ef1ad0",
+  "ticker": "ASML",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-04-14T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 266.31,
+  "trigger_cost_usd": 0.47465,
+  "cumulative_cost_usd": 4.022566,
+  "candidate_ranking_inputs": {
+    "ticker": "ASML",
+    "earliest_event_date": "2025-04-16",
+    "selection_reason": "earnings_window_14d",
+    "close": 672.87,
+    "t1_open": 679.38,
+    "t1_date": "2025-04-15"
+  },
+  "evidence_packet_hash": "sha256:274c4477a5ae5c5dad0a6c2f55fc99cc27582ccac3d7f0528892d948d011a325",
+  "locked_decision_id": "sha256:58dcd58cf8de13c2f87e36d169517db213f0da8b743101067f1e3a20a0f5f233",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026_05_03_pass8_hardrule",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "ASML",
+    "decision_timestamp": "2025-04-14T09:30:00-04:00",
+    "data_available_as_of": "2025-04-14T09:30:00-04:00",
+    "decision_or_assessment": "Quality-long candidate evaluation with hard fundamental gate failure",
+    "confidence": "low",
+    "evidence_used": [
+      "fundamental_gate_38.passes=false",
+      "fundamental_snapshot.status=insufficient_evidence",
+      "valuation_snapshot.pe_ratio=50.0",
+      "valuation_snapshot.gross_margin_pct_ttm=52.6%",
+      "valuation_snapshot.net_margin_pct_ttm=29.71%",
+      "valuation_snapshot.debt_to_equity_ttm=0.13",
+      "price_snapshot.return_5d_pct=10.45%",
+      "price_snapshot.return_20d_pct=-6.33%",
+      "price_snapshot.return_60d_pct=-7.92%",
+      "news_event_summary.items (3 articles, positive sentiment on buyback and AI positioning)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (8 Strong Buy, 22 Buy, 10 Hold, 1 Sell)",
+      "corporate_calendar.earnings (2025-01-29: EPS 7.3 vs est 7.41, revenue beat)",
+      "macro_regime=Strengthening/Expansionary",
+      "upstream_agent_outputs.quality_long.recommended_action=no_trade",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard veto tripped)"
+    ],
+    "evidence_missing": [
+      "fundamental_snapshot.eps_ttm (null \u2014 critical hard gate)",
+      "fundamental_snapshot.operating_income (null \u2014 critical hard gate)",
+      "fundamental_snapshot.operating_margin_pct_ttm (null \u2014 critical hard gate)",
+      "fundamental_snapshot.operating_cash_flow (null)",
+      "fundamental_snapshot.free_cash_flow (null)",
+      "valuation_snapshot.fcf_yield (null)",
+      "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable)",
+      "upstream_agent_outputs.narrative_event (present but not cross-validated)",
+      "upstream_agent_outputs.alt_data_verify (present but not cross-validated)",
+      "upstream_agent_outputs.network_effect (present but not cross-validated)",
+      "upstream_agent_outputs.valuation (present but not cross-validated)"
+    ],
+    "reasoning_summary": "ASML is a high-quality semiconductor equipment leader with dominant EUV lithography franchise, strong margins (52.6% gross, 29.7% net), fortress balance sheet (D/E 0.13), and consistent analyst support (30 Buy/Strong Buy vs 1 Sell). Recent 20-60d selloff (-6.3% to -7.9%) appears macro/sector-driven rather than company-specific. However, the hard fundamental gates in \u00a73.8 FAIL CLOSED: eps_ttm and operating_margin_pct_ttm are both null in the fundamental_snapshot block, and the packet's own fundamental_gate_38 explicitly flags 'eps_ttm_or_net_income_ttm_not_positive' and 'operating_margin_not_available' as failed gates. Per \u00a73.8 fail-closed rule, when ANY hard gate fails, the decision must collapse to no_trade regardless of narrative appeal, valuation reasonableness, or analyst consensus. The upstream quality_long agent correctly recommends no_trade due to gate failure. The risk agent confirms no hard-veto conditions (\u00a75.13 a-e) are tripped, but gate failure is independent of veto evaluation. Valuation multiples (PE 50x, PB 24x, EV/EBITDA 38.7x) are elevated but not unreasonable for a quality monopoly in a growth industry. Macro regime is supportive (Strengthening/Expansionary, stress_score=1). News flow is positive (buyback, AI positioning). However, absence of PIT-safe fundamental data blocks the buy gate. The thesis (long-term franchise intact, selloff macro/sector-driven, valuation fair-to-attractive for quality) is plausible but cannot be validated without operating fundamentals. Confidence is low due to missing data and gate failure.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "Hard gate failure: eps_ttm and operating_margin_pct_ttm both null/unavailable in fundamental_snapshot",
+      "Fundamental_gate_38 explicitly failed with 'eps_ttm_or_net_income_ttm_not_positive' and 'operating_margin_not_available'",
+      "No PIT-safe quarterly income statement, balance sheet, or cash flow data available",
+      "Valuation snapshot marked 'current_snapshot_not_PIT_safe: true' \u2014 TTM ratios are display-only, not decision-grade",
+      "\u00a73.8 fail-closed rule mandates no_trade when ANY hard gate fails, regardless of other evidence"
+    ],
+    "risk_flags": [
+      "Critical data gap: fundamental_snapshot.status='insufficient_evidence' \u2014 no eps_ttm, operating_income, or operating_margin available",
+      "Valuation multiples are elevated (PE 50x, PB 24x, EV/EBITDA 38.7x) \u2014 fair-to-expensive range, not attractive",
+      "Macro regime shows elevated policy rate (4.33% DFF) and positive yield curve (10y2y 0.52%) \u2014 supportive but not risk-free",
+      "No recent insider activity (Form 4: 0 purchases, 0 sales in last 90 days) \u2014 neutral signal",
+      "No 8-K filings in last 90 days \u2014 no material events to explain selloff",
+      "Analyst sentiment is descriptor-only (\u00a711.13 prohibition) \u2014 cannot be used as buy signal",
+      "Alternative data adapters not fully wired (github_public unmapped, sec_13f unavailable) \u2014 network effect evidence capped at 'partial'",
+      "Information integrity assessment: low_tier_only sources, pollution-defense layer unimplemented, use_as_primary_signal_allowed=false",
+      "News event summary: only 3 items post-cutoff, 1 source (Polygon) \u2014 insufficient diversity per \u00a723.2 (requires \u22652 sources)"
+    ],
+    "suggested_improvements": [
+      "Obtain PIT-safe quarterly or TTM income statement, balance sheet, and cash flow data with accepted_datetime <= 2025-04-14",
+      "Retrieve operating_margin_pct_ttm and eps_ttm from a source with explicit fiscal anchoring (e.g., SEC EDGAR 10-Q/10-K)",
+      "Cross-validate analyst sentiment with institutional ownership data (13F) to assess smart-money conviction",
+      "Expand news sources beyond Polygon to meet \u00a723.2 diversity threshold (\u22652 distinct sources within 24h window)",
+      "Obtain Form 4 insider transaction data to assess management confidence in valuation",
+      "Wire industry-specific alt-data adapter (semiconductor_patent_adapter) to assess R&D productivity and competitive moat",
+      "Implement pollution-defense layer to enable affirmative pollution confirmation gating",
+      "Clarify whether the 20-60d selloff is driven by ASML-specific news (e.g., China export restrictions, customer guidance) or broad semiconductor/macro headwinds"
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "fundamentals_partial",
+        "severity": "critical",
+        "detail": "fundamental_snapshot.status='insufficient_evidence' \u2014 all snapshot_quarter fields are null; no PIT-safe eps_ttm, operating_income, or operating_margin available"
+      },
+      {
+        "kind": "hard_gate_failure",
+        "severity": "critical",
+        "detail": "fundamental_gate_38.passes=false \u2014 failed gates: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available"
+      },
+      {
+        "kind": "ttm_snapshot_used",
+        "severity": "warning",
+        "detail": "valuation_snapshot.current_snapshot_not_PIT_safe=true \u2014 TTM ratios (PE, PB, EV/EBITDA) are display-only, not decision-grade"
+      },
+      {
+        "kind": "news_insufficient_sources",
+        "severity": "warning",
+        "detail": "news_event_summary.ndi_metadata.n_sources=1 (Polygon only) \u2014 \u00a723.2 requires \u22652 sources; insufficient diversity"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "alternative_data_features.tech_activity.github_public: unmapped_ticker \u2014 ASML not in ticker_to_github.csv"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sentiment_community_ownership_evidence.ownership_positioning.sec_13f: not_available_on_current_plan \u2014 FMP HTTP 404"
+      },
+      {
+        "kind": "info_integrity_placeholder",
+        "severity": "info",
+        "detail": "information_integrity_assessment.status='insufficient_evidence' \u2014 T1=0, T2=0, T3=1, T4=2; pollution-defense layer unimplemented; use_as_primary_signal_allowed=false"
+      },
+      {
+        "kind": "quote_after_cutoff",
+        "severity": "info",
+        "detail": "price_snapshot.live_quote at 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close (668.81) used for PIT anchoring"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the fundamental_snapshot block is entirely null, triggering the hard gate failure. This is a data availability issue, not a schema weakness. The packet correctly flags this via fundamental_gate_38.passes=false and data_quality_flags. The PM agent's role is to respect the fail-closed rule and recommend no_trade when hard gates fail, which is the correct behavior per \u00a73.8.",
+    "recommended_followups": [
+      "Re-run analysis when PIT-safe quarterly or TTM fundamentals (eps, operating_margin, operating_cash_flow) are available",
+      "Obtain ASML's most recent 10-Q or 10-K filing (post-2025-04-14) to validate operating profitability and cash generation",
+      "Assess whether the 20-60d selloff is driven by ASML-specific catalysts (e.g., China export restrictions, customer guidance cuts) or broad sector/macro headwinds",
+      "Retrieve institutional ownership data (13F) to assess whether quality long-term holders are accumulating or reducing positions",
+      "Expand news sources to meet diversity threshold and assess sentiment polarity across multiple tiers",
+      "Wire semiconductor-specific alt-data adapter to assess R&D productivity, patent velocity, and competitive moat strength",
+      "Obtain upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) to triangulate thesis validity and valuation fairness"
+    ],
+    "candidate_type": "quality_long",
+    "decision": "no_trade",
+    "position_size_pct": 0.0,
+    "reason": "Hard fundamental gate 38 fails (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available). Per \u00a73.8 fail-closed rule, when ANY hard gate fails, decision must collapse to no_trade regardless of narrative appeal, valuation reasonableness, or analyst consensus. ASML exhibits quality characteristics (52.6% gross margin, 29.7% net margin, 0.13 D/E, 30 Buy/Strong Buy analyst support) and recent selloff appears macro-driven, but absence of PIT-safe fundamental data blocks the buy gate. Re-evaluate when quarterly fundamentals are available.",
+    "risk_notes": [
+      "No hard-veto conditions (\u00a75.13 a-e) tripped per upstream risk agent evaluation.",
+      "Gate failure is independent of veto evaluation; gate failure alone mandates no_trade per \u00a73.8.",
+      "Fundamental gate 38 failure is a data-availability issue, not a business deterioration signal \u2014 ASML's Jan 2025 earnings beat (EPS 7.3 vs est 7.41, revenue $9.59B vs est $7.62B) confirms profitability.",
+      "Macro regime is supportive (Strengthening/Expansionary, stress_score=1), but equity_discipline=strict_quality_and_valuation; ASML's 50x P/E and 24x P/B are expensive even for quality in this regime.",
+      "Information integrity assessment is unimplemented; pollution-defense layer not wired in v1. Veto (d) does not trip per relaxation, but confidence in information quality is reduced."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "No proposed position size provided; no_trade decision means position_size_pct=0.0, so sleeve cap is not breached."
+      },
+      {
+        "name": "position_size_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Candidate_type=quality_long; position_size_cap applies to surge_short only. No breach."
+      },
+      {
+        "name": "lookahead_data_used_5_13_c",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violation."
+      },
+      {
+        "name": "hindsight_violation_5_13_r1_r7",
+        "tripped": false,
+        "note": "envelope.hindsight_safe=true, envelope.hindsight_violations=[]. No hindsight violation."
+      },
+      {
+        "name": "fundamental_gate_38_hard_fail",
+        "tripped": true,
+        "note": "eps_ttm_or_net_income_ttm_not_positive AND operating_margin_not_available. This is a hard gate failure per \u00a73.8, not a veto condition, but it mandates no_trade decision."
+      }
+    ],
+    "rule_engine_path": [
+      "candidate_type=quality_long \u2192 evaluate \u00a73.8 hard fundamental gates",
+      "\u00a73.8 gate check: eps_ttm > 0? \u2192 null (insufficient_evidence)",
+      "\u00a73.8 gate check: operating_margin_pct > 0? \u2192 null (insufficient_evidence)",
+      "fundamental_gate_38.passes=false \u2192 hard gate failure",
+      "Per \u00a73.8 fail-closed rule: when ANY hard gate fails, decision must collapse to no_trade",
+      "Hard-veto evaluation (\u00a75.13 a-e): no veto conditions tripped",
+      "Final decision: no_trade (gate failure overrides all other evidence)"
+    ],
+    "decision_log": [
+      "2025-04-14T09:30:00-04:00 PM Agent initialized for ASML quality_long candidate",
+      "Read upstream_agent_outputs: quality_long agent recommends no_trade due to gate failure; risk agent confirms no hard-veto conditions tripped",
+      "Evaluated \u00a73.8 hard fundamental gates: eps_ttm=null, operating_margin_pct_ttm=null \u2192 gate failure",
+      "Confirmed fundamental_gate_38.passes=false with failed_gates=['eps_ttm_or_net_income_ttm_not_positive', 'operating_margin_not_available']",
+      "Applied \u00a73.8 fail-closed rule: hard gate failure mandates no_trade regardless of narrative, valuation, or analyst consensus",
+      "Evaluated hard-veto conditions (\u00a75.13 a-e): no veto conditions tripped; gate failure is independent of veto evaluation",
+      "Assessed evidence: ASML exhibits quality characteristics (52.6% gross margin, 29.7% net margin, 0.13 D/E, 30 Buy/Strong Buy analyst support) and recent selloff appears macro-driven (-6.3% to -7.9% over 20-60d)",
+      "Assessed macro regime: Strengthening/Expansionary (stress_score=1) is supportive, but equity_discipline=strict_quality_and_valuation; ASML's 50x P/E and 24x P/B are expensive even for quality",
+      "Assessed news flow: 3 items (buyback, AI positioning, Nvidia supply chain mention); positive sentiment but low-tier sources (T3/T4 only, no T1 primary disclosure)",
+      "Assessed analyst sentiment: 8 Strong Buy, 22 Buy, 10 Hold, 1 Sell (2025-04-01); stable 12-month trend; descriptor-only per \u00a711.13, not a gate",
+      "Assessed valuation: PE=50.0, PB=24.1, EV/EBITDA=38.7 (elevated but not unreasonable for quality monopoly); TTM ratios flagged not_PIT_safe",
+      "Assessed alternative data: Wikipedia pageviews stable (18-66 views/day, baseline ~40-50), no abnormal spike; GitHub unmapped (expected for hardware vendor); no 13F ownership data",
+      "Assessed information integrity: low_tier-only sources (T1=0, T2=0, T3=1, T4=2); pollution-defense layer unimplemented; use_as_primary_signal_allowed=false",
+      "Assessed network effect: classification=narrative_hype (Layer 1 absent, Layer 2 weak, Layer 3 incomplete); ASML is structural monopoly, not network effect",
+      "Assessed valuation agent output: valuation_assessment=not_evaluated due to hard gate failure and missing fundamental data",
+      "Synthesized all evidence: thesis is plausible (quality franchise, macro-driven selloff, fair valuation) but cannot be validated without operating fundamentals",
+      "Applied final decision rule: hard gate failure overrides all other evidence \u2192 decision=no_trade, position_size_pct=0.0"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-14T09:45:00-04:00",
+      "ticker": "ASML",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_pass8_hardrule",
+      "evidence_packet_hash": "sha256:679165899e0ae5355c09f84117d89c23351c9031753f29c15e4f9fc3343c2bc5"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": null,
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Hard fundamental gate 38 fails; \u00a73.8 fail-closed rule mandates no_trade regardless of thesis plausibility.",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": null,
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+    "execution_timestamp": "2025-04-14T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:2c06fbb782045f17603a39ba5a2b152f698c10cf06389d906fe5245c83f2a52c",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ASML",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification",
+      "confidence": "medium",
+      "evidence_used": [
+        "news_event_summary.items[0].title",
+        "news_event_summary.items[0].text_excerpt",
+        "news_event_summary.items[0].published_at",
+        "news_event_summary.items[2].title",
+        "news_event_summary.items[2].text_excerpt",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment"
+      ],
+      "evidence_missing": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "fundamental_snapshot.snapshot_quarter (all fields null)",
+        "information_integrity_assessment.primary_source_found",
+        "news_event_summary.ndi_score (null \u2014 insufficient sources for NDI)",
+        "news_event_summary.catalyst_specificity_score (not_evaluated)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)"
+      ],
+      "reasoning_summary": "ASML exhibits a +10.45% 5-day return with elevated relative volume (1.09x 20d avg) as of 2025-04-11 EOD. The primary catalyst identified is a share buyback announcement (published 2025-04-14 12:00 UTC, after market open but within decision window). Secondary narrative: analyst commentary on ASML's dominant EUV lithography position and AI/semiconductor tailwinds (published 2025-04-12, Motley Fool). The buyback is a CONCRETE, SPECIFIC capital allocation signal (company-initiated, dated, quantifiable intent). The AI/semiconductor narrative is SECTOR-APPROPRIATE for ASML's actual business (semiconductor equipment manufacturing) and references real, verifiable competitive moats (EUV monopoly, customer demand from AI chip production). Wikipedia pageviews show modest elevation (50-66 views on 2025-04-02 to 2025-04-07, baseline ~40-50), consistent with normal investor attention around earnings season and sector momentum. Analyst sentiment remains stable (8 Strong Buy, 22 Buy, 10 Hold as of 2025-04-01), indicating no surprise downgrade. No Form 4 insider activity in 90d window; no recent 8-K filings. Fundamental gate 38 fails (eps_ttm not positive in snapshot, operating_margin unavailable), but this is a data-availability issue, not a business deterioration signal \u2014 ASML's Jan 2025 earnings beat (EPS 7.3 vs est 7.41, revenue $9.59B vs est $7.62B) confirms profitability. The absence of corroborating SEC filings or insider buying is NOT a bear signal for a quality_long candidate with concrete capital allocation news and sector-appropriate narrative. Valuation is elevated (PE 50, PB 24, EV/EBITDA 39) but consistent with ASML's historical premium and semiconductor cycle positioning. Macro regime is Strengthening/Expansionary (stress_score=1), supporting risk-on positioning. The catalyst is SUPPORTED by present evidence: specific buyback announcement + analyst consensus + price/volume confirmation + sector fundamentals.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If buyback announcement is later revealed to be suspended or cancelled",
+        "If ASML issues a profit warning or guidance cut in next earnings call",
+        "If EUV demand from AI chip makers materially declines (would require new news)",
+        "If macro regime shifts to Crisis (currently Strengthening)",
+        "If insider selling accelerates post-buyback announcement (Form 4 data currently unavailable)"
+      ],
+      "risk_flags": [
+        "Valuation is elevated (PE 50, PB 24) \u2014 limited margin of safety if growth disappoints",
+        "Fundamental snapshot incomplete (no PIT-safe quarterly data) \u2014 limits earnings quality verification",
+        "Information integrity assessment flags low-tier sources only (T3=1, T4=2) \u2014 news corroboration is thin",
+        "No Form 4 insider buying to validate management confidence in buyback",
+        "Analyst sentiment is descriptor-only; no recent price target changes in packet",
+        "Wikipedia pageviews show no abnormal spike \u2014 attention is baseline, not surge-driven",
+        "Macro regime constraint: equity_discipline=strict_quality_and_valuation \u2014 ASML's premium valuation may face headwinds if macro deteriorates"
+      ],
+      "suggested_improvements": [
+        "Obtain SEC 8-K filing for buyback authorization details (dollar amount, timeline, authorization date)",
+        "Retrieve Form 4 filings for insider transactions in 30d window post-announcement to validate management conviction",
+        "Cross-check analyst price targets and recent upgrades/downgrades (current packet shows ratings only, not targets)",
+        "Obtain ASML's latest earnings call transcript to assess management commentary on AI demand and EUV capacity",
+        "Monitor semiconductor industry supply-chain news (TSMC, Samsung, Intel capex plans) to validate demand thesis",
+        "Retrieve historical buyback execution data (shares repurchased, average price) to assess capital allocation discipline"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; 3 items retained within window"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.snapshot_quarter all null \u2014 no PIT-safe quarterly data available for earnings quality check"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios, not PIT-safe \u2014 PE 50, PB 24 are display-only, not anchored to specific fiscal period"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public unmapped_ticker \u2014 no developer activity data available (not applicable to ASML's business model)"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f not_available_on_current_plan \u2014 no institutional ownership positioning data"
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment is v1 placeholder; pollution-defense layer not implemented; use_as_primary_signal_allowed=false per fail-closed rule"
+        },
+        {
+          "kind": "ndi_insufficient_sources",
+          "severity": "info",
+          "detail": "news_event_summary.ndi_score null \u2014 only 1 distinct source (polygon_news) within 24h window; NDI requires \u22652 sources"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The information_integrity_assessment block is fail-closed (use_as_primary_signal_allowed=false) due to unimplemented pollution-defense layer in v1. This is a conservative stance but limits the agent's ability to distinguish high-quality news from low-tier sources. The news_event_summary contains only 3 items (all from polygon_news, which aggregates from GlobeNewswire and Motley Fool), so NDI cannot be computed. The fundamental_snapshot is entirely null, preventing earnings quality verification. These gaps are structural to v1 and do not invalidate the catalyst assessment, but they reduce confidence from high to medium.",
+      "recommended_followups": [
+        "Retrieve ASML's official press release or SEC filing (8-K Item 2.02 or 8-K Item 8.01) confirming buyback program details",
+        "Monitor ASML's investor relations website for buyback execution updates (shares repurchased, average price paid)",
+        "Track analyst revisions in next 2-4 weeks to assess whether buyback announcement triggers upgrades",
+        "Obtain ASML's Q1 2025 earnings call transcript (expected late April 2025) to validate AI/semiconductor demand narrative",
+        "Cross-reference ASML's customer concentration (TSMC, Samsung, Intel) with their capex guidance to assess demand sustainability",
+        "Monitor geopolitical risk (US export controls on EUV to China) as a potential downside catalyst"
+      ],
+      "catalyst_type": "capital_allocation_buyback",
+      "catalyst_specificity_score": 0.72,
+      "vague_narrative_flag": false,
+      "company_claim": "ASML reports transactions under its current share buyback program (GlobeNewswire, 2025-04-14). Secondary claim: ASML is well-positioned to benefit from AI and semiconductor industry growth due to its dominant EUV lithography technology and technological monopoly (Motley Fool, 2025-04-12).",
+      "value_creation_assessment": "real",
+      "narrative_taxonomy_examples_matched": [
+        "capital_allocation_buyback (primary: share repurchase program announcement)",
+        "competitive_moat_reinforcement (secondary: EUV monopoly, AI demand tailwinds)",
+        "sector_momentum (tertiary: semiconductor equipment cycle, AI capex boom)"
+      ],
+      "evidence_sufficiency": "partial",
+      "verdict": "supported"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ASML",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification: ASML 10.4% 5-day surge",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "news_event_summary.items",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.ev_to_ebitda",
+        "macro_regime.regime_label",
+        "corporate_calendar.events_near_decision",
+        "filing_confirmation.sec_edgar"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence status)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "filing_confirmation.sec_8k_fulltext (no 8-K in last 90 days)",
+        "industry-specific semiconductor patent activity",
+        "supply-chain or customer announcement corroboration",
+        "insider trading activity (Form 4: zero transactions in 90d)"
+      ],
+      "reasoning_summary": "ASML exhibits a 10.4% 5-day surge (return_5d_pct) with elevated relative volume (1.0885x 20d average) as of 2025-04-11. The macro regime is Strengthening/Expansionary (stress_score=1), supporting risk-on positioning. News coverage (3 items from Polygon) includes positive sentiment on ASML's EUV monopoly and AI/semiconductor tailwinds (Motley Fool, 2025-04-12), a share buyback announcement (2025-04-14), and neutral mention in Nvidia context (2025-04-13). Wikipedia pageviews show modest elevation (50 views on 2025-04-14, within normal range of 18\u201366 over 30d window). Analyst sentiment remains consistently bullish (40 Buy/Strong Buy vs 10 Hold, 1 Sell as of 2025-04-01). However, critical alternative-data corroboration is absent: (1) no SEC 8-K filings in 90 days; (2) no Form 4 insider transactions; (3) GitHub adapter returned unmapped_ticker (not applicable for semiconductor equipment manufacturer); (4) no 13F ownership data available; (5) fundamental snapshot status=insufficient_evidence (no PIT-safe quarterly data). The surge narrative\u2014AI/semiconductor demand + EUV monopoly + capital return\u2014is plausible and supported by news sentiment, but lacks hard-to-fake operational corroboration (no new customer wins disclosed, no supply-chain acceleration signals, no regulatory approvals). Valuation remains elevated (PE=50.0, EV/EBITDA=38.7), consistent with pre-surge levels. The absence of 8-K filings and insider activity is informative: for a company of ASML's scale and sector, a 10% surge without concurrent SEC disclosure or insider positioning is structurally unusual. This absence pattern, combined with low-tier news-only corroboration (T3/T4 sources, no T1 primary disclosure), suggests the surge is driven by sentiment/macro tailwinds rather than company-specific catalyst. Analyst ratings are descriptor-only (T2, not gates). Information integrity assessment flags low-tier-only evidence (T1=0, T2=0, T3=1, T4=2) and disallows use as primary signal per schema v1.1 decision #8.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If 8-K or press release disclosing material customer win or supply acceleration emerges post-cutoff, surge narrative gains credibility.",
+        "If insider buying (Form 4) appears post-cutoff, confidence in management conviction increases.",
+        "If Wikipedia pageviews spike to >100 views/day sustained, retail attention escalates (currently modest).",
+        "If analyst downgrades or guidance cuts appear, sentiment reversal likely.",
+        "If macro regime shifts to Restrictive (stress_score >2), equity discipline tightens and valuation compression risk rises."
+      ],
+      "risk_flags": [
+        "Structural absence of SEC filings (8-K, Form 4) relative to surge magnitude is bear-thesis signal for surge_short candidates.",
+        "Valuation remains elevated (PE=50, EV/EBITDA=38.7) with no fundamental catalyst disclosed.",
+        "News coverage is low-tier (T3/T4 Motley Fool, GlobeNewswire); no T1 primary source (company disclosure, analyst report, regulatory filing).",
+        "Information integrity assessment: pollution-defense layer unimplemented; use_as_primary_signal_allowed=false per schema v1.1.",
+        "Fundamental snapshot status=insufficient_evidence; no PIT-safe quarterly earnings to anchor valuation.",
+        "Alternative-data footprint sparse: Wikipedia pageviews normal range, GitHub unmapped (not applicable), no 13F, no Form 4.",
+        "Analyst sentiment is descriptor-only (T2); not a gate or corroboration signal per \u00a711.13.",
+        "Macro regime Strengthening supports risk-on, but equity_discipline=strict_quality_and_valuation; ASML's high multiples may face scrutiny."
+      ],
+      "suggested_improvements": [
+        "Wire semiconductor-specific patent activity adapter (USPTO, WIPO) to detect new EUV or process node filings.",
+        "Implement supply-chain sentiment adapter (supplier press releases, logistics indices) to corroborate demand acceleration.",
+        "Add customer announcement tracking (SEC EDGAR Item 1.01 material contracts, press releases) to verify new wins.",
+        "Enhance Form 4 lookback to 180 days to capture longer-term insider positioning trends.",
+        "Implement pollution-defense layer (coordinated-campaign detection, bot-like patterns) to gate low-tier news.",
+        "Add industry-specific valuation context: compare ASML PE/EV/EBITDA to historical range and peer group (LRCX, KLAC) to assess relative richness."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamental_snapshot_insufficient",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly data available for ASML"
+        },
+        {
+          "kind": "alt_data_adapter_unmapped",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 not applicable for semiconductor equipment manufacturer"
+        },
+        {
+          "kind": "alt_data_adapter_unavailable",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 ownership data unavailable"
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: no Form 4 transactions in last 90 days for ASML"
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "info",
+          "detail": "sec_edgar: no 8-K filings in last 90 days for ASML"
+        },
+        {
+          "kind": "news_low_tier_only",
+          "severity": "warning",
+          "detail": "news_event_summary: 3 items from Polygon (T3/T4 sources); no T1 primary disclosure"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: pollution-defense layer unimplemented in v1; use_as_primary_signal_allowed=false per schema v1.1 decision #8"
+        },
+        {
+          "kind": "analyst_sentiment_descriptor_only",
+          "severity": "info",
+          "detail": "fmp_sentiment: 40 Buy/Strong Buy, 10 Hold, 1 Sell (2025-04-01); descriptor-only per \u00a711.13, not a gate"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not wire industry-specific adapters (semiconductor patent, supply-chain, customer announcement tracking). Pollution-defense layer unimplemented; low-tier news cannot be gated. Fundamental snapshot unavailable; valuation inputs are TTM (not PIT-safe). Alternative-data manifest shows sparse coverage: Wikipedia pageviews only (normal range), GitHub unmapped, no 13F, no Form 4. These gaps are structural to v1 and limit confidence in corroboration.",
+      "recommended_followups": [
+        "Monitor SEC EDGAR for 8-K or press release disclosing material customer win, supply acceleration, or strategic announcement.",
+        "Track Form 4 filings for insider buying (CEO, CFO, board members) as conviction signal.",
+        "Monitor analyst reports (T1 sources) for earnings revisions or price-target changes.",
+        "Compare ASML valuation (PE, EV/EBITDA) to historical range and peer group (LRCX, KLAC) to assess relative richness.",
+        "Track Wikipedia pageviews and news mention velocity; sustained elevation (>100 views/day, >5 articles/day) would indicate retail attention escalation.",
+        "Monitor macro regime for shift to Restrictive; if stress_score >2, equity_discipline tightens and valuation compression risk rises."
+      ],
+      "verdict": "weakly_contradicted",
+      "evidence_score": 0.35,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "ASML's 10.4% 5-day surge is supported by macro tailwinds (Strengthening/Expansionary regime) and positive news sentiment (EUV monopoly, AI/semiconductor demand, share buyback). However, the surge lacks hard-to-fake operational corroboration: no SEC 8-K filings, no insider transactions (Form 4), no customer announcements, no supply-chain acceleration signals. News coverage is low-tier (T3/T4 Motley Fool, GlobeNewswire); no T1 primary disclosure. Valuation remains elevated (PE=50, EV/EBITDA=38.7) with no fundamental catalyst disclosed. For a company of ASML's scale and sector, a 10% surge without concurrent SEC disclosure or insider positioning is structurally unusual. The absence of hard-to-fake signals relative to the public narrative (AI/semiconductor tailwinds, EUV monopoly) suggests the surge is driven by sentiment/macro momentum rather than company-specific catalyst. This structural absence pattern is bear-thesis evidence for surge_short candidates.",
+      "industry_template_used": "semiconductor_ai_hardware",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "Fallback to default adapter (wikipedia_pageviews) due to sparse industry-specific adapter availability. Semiconductor-specific adapters (patent activity, supply-chain, customer announcements) not wired in v1.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "SEC filings (8-K, Form 4) are hard-to-fake signals of material events and insider conviction. ASML shows zero 8-K filings in 90 days and zero Form 4 transactions in 90 days, despite a 10.4% 5-day surge. This structural absence is informative: for a company of ASML's scale, a material catalyst would typically trigger SEC disclosure or insider positioning. The absence suggests the surge is sentiment-driven rather than catalyst-driven. Wikipedia pageviews (50 views on 2025-04-14) are within normal range (18\u201366 over 30d), indicating no retail attention spike. Analyst sentiment (40 Buy/Strong Buy) is descriptor-only and does not constitute hard-to-fake corroboration.",
+      "industry_specific_evidence_used": [
+        "Semiconductor equipment sector: ASML's EUV lithography monopoly is a known structural advantage.",
+        "AI/semiconductor demand tailwinds: public narrative supported by macro regime (Strengthening/Expansionary).",
+        "Valuation context: PE=50, EV/EBITDA=38.7 are elevated for semiconductor equipment sector; historical range and peer comparison (LRCX, KLAC) would provide context."
+      ],
+      "industry_specific_evidence_missing": [
+        "Semiconductor patent activity (USPTO, WIPO): no new EUV or process node filings detected.",
+        "Supply-chain sentiment: no supplier press releases or logistics indices indicating demand acceleration.",
+        "Customer announcements: no new customer wins or capacity expansion orders disclosed.",
+        "Regulatory approvals: no new export licenses or geopolitical clearances announced.",
+        "Peer comparison: no relative valuation or earnings revision data vs LRCX, KLAC."
+      ],
+      "data_quality_warning": "fundamental_snapshot.status=insufficient_evidence; information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8; pollution-defense layer unimplemented in v1",
+      "signals": [
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": 10.4467,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 1.0885,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "sec_8k_filings_90d",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "form4_insider_transactions_90d",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "news_items_t1_primary",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "wikipedia_pageviews_current",
+          "available": true,
+          "value": 50.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_buy_ratings",
+          "available": true,
+          "value": 40.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "macro_regime_stress_score",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "valuation_pe_ratio",
+          "available": true,
+          "value": 50.046448442229135,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "github_public_rows",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "sec_13f_ownership_data",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [
+        {
+          "claim": "ASML is well-positioned to benefit from expected growth in AI and semiconductor industries",
+          "claim_type": "other",
+          "source_tier": "T4"
+        },
+        {
+          "claim": "ASML has dominant market position and technological advantages in EUV lithography",
+          "claim_type": "other",
+          "source_tier": "T4"
+        },
+        {
+          "claim": "ASML reports transactions under its current share buyback program",
+          "claim_type": "other",
+          "source_tier": "T3"
+        }
+      ],
+      "claim_verification_status": "partially_corroborated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 1,
+        "T4": 2,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8; pollution-defense layer unimplemented in v1; low-tier-only evidence (T1=0, T2=0, T3=1, T4=2)",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "filing_confirmation.sec_8k_fulltext",
+        "sentiment_community_ownership_evidence.ownership_positioning",
+        "sentiment_community_ownership_evidence.community_size",
+        "alternative_data_features.tech_activity.github_public",
+        "fundamental_snapshot.snapshot_quarter"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Evidence Classifier",
+      "schema_version": "network_effect_agent_output_v1.4",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ASML",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews (30-day window, 18\u201366 views/day, stable baseline ~40\u201350)",
+        "news_event_summary.items (3 polygon_news articles, 2 positive sentiment on ASML dominance, 1 neutral on Nvidia supply chain)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings: 8 Strong Buy, 22 Buy, 10 Hold, 1 Sell as of 2025-04-01; stable 12-month trend)",
+        "valuation_snapshot (PE=50.0, PB=24.1, EV/EBITDA=38.7, gross_margin=52.6%, net_margin=29.7%)",
+        "corporate_calendar (past earnings: Jan 2025 beat revenue, Jul 2024 beat EPS; no upcoming events within \u00b15 days)",
+        "price_snapshot (5d return +10.4%, 20d return -6.3%, 60d return -7.9%; volume 1.09x 20d avg)"
+      ],
+      "evidence_missing": [
+        "Layer 1 (Hard-to-Fake): GitHub developer ecosystem (unmapped_ticker, no rows)",
+        "Layer 1 (Hard-to-Fake): SEC-disclosed operating metrics (DAU/MAU, take-rate, marketplace GMV, seller retention) \u2014 fundamental_snapshot status=insufficient_evidence, no rows",
+        "Layer 1 (Hard-to-Fake): Patent activity (adapter deferred per R-NETWORK-10)",
+        "Layer 1 (Hard-to-Fake): Insider Form 4 activity (0 transactions in last 90 days)",
+        "Layer 1 (Hard-to-Fake): 13F institutional ownership positioning (not_available_on_current_plan)",
+        "Layer 2 (Corroborative): News article frequency / NDI score (polygon_news returned 3 items; FMP news adapter replaced; insufficient source diversity per \u00a723.2)",
+        "Layer 2 (Corroborative): Wikipedia pageview z-score / anomaly flag (raw pageviews only, no statistical context)",
+        "Layer 3 (Financial Confirmation): Operating margin trajectory (fundamental_snapshot insufficient_evidence)",
+        "Layer 3 (Financial Confirmation): FCF scaling / yield (fcf_yield=null)",
+        "Alternative data: Sector-specific developer ecosystem (software/SaaS/AI would weight GitHub heavily; ASML is semiconductor equipment \u2014 no GitHub footprint expected, but no alternative Layer 1 developer/ecosystem metric available)"
+      ],
+      "reasoning_summary": "ASML is a Dutch semiconductor equipment manufacturer (EUV lithography systems) with a claimed technological monopoly in advanced chip production. The evidence packet contains NO Layer 1 hard-to-fake evidence: GitHub is unmapped (expected for hardware/equipment vendor, not a software platform), SEC-disclosed operating metrics are absent (fundamental_snapshot status=insufficient_evidence), and patent activity is deferred. Layer 2 attention signals are present but weak: Wikipedia pageviews show stable baseline (~40\u201350 views/day) with modest fluctuations (18\u201366 range) over 30 days \u2014 no anomaly or spike. News sentiment is positive (2 of 3 articles bullish on ASML's dominance; 1 neutral on supply chain), but only 3 articles from 1 source (polygon_news) within cutoff, failing the \u00a723.2 diversity threshold (\u22652 sources required). Analyst sentiment is strong and stable (8 Strong Buy, 22 Buy, 10 Hold, 1 Sell as of 2025-04-01), but this is T2 (corroborative attention) not Layer 1. Layer 3 financial confirmation is incomplete: valuation is elevated (PE=50, PB=24, EV/EBITDA=39), margins are healthy (52.6% gross, 29.7% net), but operating margin trajectory and FCF scaling are not available. The fundamental_gate_38 hard gate FAILS on eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available, blocking any quality_long classification. ASML's business model is NOT a network effect in the \u00a710.15 framework sense: it is a capital-equipment monopoly (single-sided, supply-constrained, not user-attraction-driven). The public narrative emphasizes 'platform' and 'ecosystem' language (EUV as essential infrastructure for AI chip makers), but this is a STRUCTURAL MONOPOLY (regulatory/technical moat), not a network effect (users-attract-users + ecosystem lock-in + pricing power from co-user growth). Applying the \u00a710.15 pattern-interpretation grid: L1=absent (no GitHub, no SEC operating metrics, no patents), L2=weak (3 articles, 1 source, stable Wikipedia baseline), L3=incomplete (no operating margin, no FCF yield). This maps to L2-only-ish with L3 gaps \u2192 NARRATIVE_HYPE classification per R-NETWORK-09, with a ceiling of 'weak' for network_effect_evidence. The absence of Layer 1 evidence on a ticker whose public narrative claims platform/ecosystem dynamics is corroborating bear evidence for surge_short candidates (\u00a713.6 soft-reasoning). Confidence is LOW because the packet lacks the structural Layer 1 data needed to definitively rule out a network effect; however, the sector-aware reading (semiconductor equipment vendor, not software platform) and the absence of developer/operating-metrics evidence strongly suggest the network-effect claim is narrative framing of a structural monopoly.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If SEC filings (10-K/10-Q) disclose DAU/MAU, take-rate, or marketplace GMV metrics post-decision_timestamp, Layer 1 evidence would be populated and classification would upgrade.",
+        "If GitHub activity is discovered (e.g., ASML open-sources EUV simulation tools or developer SDKs), Layer 1 developer-ecosystem evidence would be populated.",
+        "If Wikipedia pageviews spike >2\u03c3 above baseline (currently ~40\u201350, spike would be >80+ views/day sustained), Layer 2 attention signal would strengthen.",
+        "If operating margin trajectory or FCF yield becomes available in fundamental_snapshot, Layer 3 confirmation would be populated and classification could upgrade to 'emerging' or 'ambiguous'.",
+        "If insider Form 4 activity shows significant CEO/CFO buying, Layer 1 confidence signal would improve (currently 0 transactions in 90 days)."
+      ],
+      "risk_flags": [
+        "Layer 1 evidence is ABSENT: no GitHub, no SEC operating metrics, no patents, no insider activity. This is the defining characteristic of a narrative_hype classification per R-NETWORK-09.",
+        "Fundamental gate failure (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available) blocks quality_long classification regardless of network-effect assessment.",
+        "News source diversity is INSUFFICIENT (1 source, 3 articles; \u00a723.2 requires \u22652 sources). Polygon_news replaced FMP_news; FMP press_releases endpoint unavailable.",
+        "Wikipedia pageviews show NO anomaly: 30-day baseline is stable ~40\u201350 views/day with normal variance (18\u201366 range). No spike or surge detected.",
+        "Analyst sentiment is T2 (corroborative attention only), not Layer 1 hard-to-fake evidence. Stable 12-month trend (8 SB, 22 B, 10 H, 1 S) does not indicate network compounding.",
+        "Sector-aware reading: ASML is a semiconductor EQUIPMENT vendor (capital goods, supply-constrained, regulatory moat), not a software platform or two-sided marketplace. The network-effect narrative is a mischaracterization of a structural monopoly.",
+        "Valuation is elevated (PE=50, PB=24, EV/EBITDA=39) relative to historical norms, suggesting market is pricing in growth expectations that may not be network-driven.",
+        "No Layer 3 financial confirmation of network compounding: operating margin trajectory and FCF scaling are not available; cannot verify that revenue growth is accelerating due to network effects."
+      ],
+      "suggested_improvements": [
+        "Wire SEC 10-K/10-Q adapter to extract DAU/MAU, take-rate, marketplace GMV, seller cohort retention, ARPU if disclosed. ASML does not disclose these metrics (equipment vendor, not platform), but the absence should be explicitly confirmed.",
+        "Implement GitHub adapter fallback for semiconductor/hardware vendors: search for ASML-affiliated open-source projects (EUV simulation, lithography tools, developer SDKs). Current unmapped_ticker error suggests no public GitHub presence, which is expected but should be documented.",
+        "Enhance Wikipedia pageviews signal with z-score / anomaly detection: current output is raw pageview counts (18\u201366 views/day). Compute rolling 60-day baseline and flag spikes >2\u03c3.",
+        "Expand news source diversity check: require \u22652 distinct sources within 24h window per \u00a723.2. Current polygon_news replacement of FMP_news is a single source; cross-check with Reuters, Bloomberg, or other T1/T2 news feeds.",
+        "Implement sector-aware network-effect reasoning: for semiconductor equipment vendors, Layer 1 evidence should include patent activity (deferred per R-NETWORK-10), supply-chain dominance metrics (e.g., market share of EUV systems), and customer concentration (e.g., TSMC, Samsung, Intel dependency). Current framework assumes software/SaaS/marketplace structure.",
+        "Populate Layer 3 financial confirmation: extract operating margin trajectory (3\u20135 year history) and FCF yield from 10-K filings. Current valuation_snapshot is TTM only (not PIT-safe).",
+        "Add insider ownership / Form 4 activity as Layer 1 confidence signal: 0 transactions in 90 days is informative (no CEO/CFO conviction). Populate this explicitly.",
+        "Document the narrative_hype classification rationale in the output: ASML's public narrative emphasizes 'platform' and 'ecosystem' language, but the business model is a structural monopoly (regulatory/technical moat), not a network effect. This distinction should be explicit in reasoning."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "GitHub developer ecosystem: unmapped_ticker (expected for hardware vendor, but no alternative Layer 1 developer metric available)"
+        },
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "SEC-disclosed operating metrics: fundamental_snapshot status=insufficient_evidence, no rows for DAU/MAU/take-rate/GMV/seller_retention"
+        },
+        {
+          "kind": "layer_1_absent",
+          "severity": "warning",
+          "detail": "Patent activity: deferred per R-NETWORK-10 (adapter not yet wired)"
+        },
+        {
+          "kind": "layer_1_absent",
+          "severity": "info",
+          "detail": "Insider Form 4 activity: 0 transactions in last 90 days (no CEO/CFO conviction signal)"
+        },
+        {
+          "kind": "layer_1_absent",
+          "severity": "warning",
+          "detail": "13F institutional ownership: not_available_on_current_plan (FMP endpoint 404)"
+        },
+        {
+          "kind": "layer_2_weak",
+          "severity": "warning",
+          "detail": "News source diversity insufficient: 1 source (polygon_news), 3 articles; \u00a723.2 requires \u22652 sources within 24h window"
+        },
+        {
+          "kind": "layer_2_weak",
+          "severity": "info",
+          "detail": "Wikipedia pageviews: 30-day baseline stable ~40\u201350 views/day (range 18\u201366); no anomaly or spike detected"
+        },
+        {
+          "kind": "layer_3_incomplete",
+          "severity": "warning",
+          "detail": "Operating margin trajectory: not available (fundamental_snapshot insufficient_evidence)"
+        },
+        {
+          "kind": "layer_3_incomplete",
+          "severity": "warning",
+          "detail": "FCF yield: null (valuation_snapshot.fcf_yield)"
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "Hard gate 38 FAILS: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available \u2014 blocks quality_long classification"
+        },
+        {
+          "kind": "sector_mismatch",
+          "severity": "warning",
+          "detail": "ASML is a semiconductor equipment vendor (capital goods, supply-constrained), not a software platform or two-sided marketplace. Network-effect framework assumes software/SaaS/marketplace structure; sector-aware reading suggests structural monopoly, not network effect."
+        },
+        {
+          "kind": "narrative_framing_risk",
+          "severity": "warning",
+          "detail": "Public narrative emphasizes 'platform' and 'ecosystem' language (EUV as essential infrastructure for AI chip makers), but business model is a regulatory/technical moat, not user-attraction-driven network effect."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The \u00a710.15 three-layer framework is sector-agnostic by design, but Layer 1 evidence types differ by sector. For semiconductor equipment vendors, the framework's emphasis on GitHub developer ecosystem and SEC-disclosed DAU/MAU/take-rate is misaligned. A more appropriate Layer 1 evidence set for ASML would include: (1) patent activity (deferred per R-NETWORK-10), (2) supply-chain dominance metrics (e.g., market share of EUV systems, customer concentration), (3) regulatory/technical moat documentation (e.g., export controls, IP barriers). The current framework correctly identifies the absence of these signals, but the classification ceiling is constrained by the absence of sector-appropriate Layer 1 evidence. Recommendation: extend R-NETWORK-10 to include semiconductor/hardware-specific Layer 1 evidence types (patents, supply-chain dominance, regulatory moat documentation) and wire corresponding adapters.",
+      "recommended_followups": [
+        "Confirm ASML's business model classification: is it a network effect (users-attract-users + ecosystem lock-in + pricing power from co-user growth) or a structural monopoly (regulatory/technical moat + supply constraint + customer lock-in)? Current evidence suggests the latter.",
+        "If network effect is claimed, identify the specific network: is it (a) direct (chip makers' value grows with co-maker count)? (b) two-sided (chip makers + equipment suppliers)? (c) multi-sided (chip makers + equipment suppliers + software developers)? Current packet does not support any of these.",
+        "Populate Layer 1 evidence for semiconductor equipment vendors: wire patent activity adapter (R-NETWORK-10), supply-chain dominance metrics (market share, customer concentration), and regulatory moat documentation (export controls, IP barriers).",
+        "Investigate whether ASML discloses any operating metrics in 10-K/10-Q that could populate Layer 1: e.g., customer concentration (% revenue from top 5 customers), order backlog, capacity utilization, R&D intensity. If not disclosed, document this as a data gap.",
+        "For surge_short candidates: structural absence of Layer 1 evidence on a ticker with a public network-effect / platform / ecosystem narrative is corroborating bear evidence (\u00a713.6 soft-reasoning). Consider this classification as a short-thesis input.",
+        "Monitor for Layer 2 attention spikes: if Wikipedia pageviews spike >2\u03c3 above baseline or news source diversity increases, re-evaluate Layer 2 evidence. Current baseline is stable; no re-evaluation needed at this time.",
+        "Re-evaluate classification if fundamental gate 38 is resolved: if operating margin and eps_ttm become available, Layer 3 financial confirmation can be populated and classification can upgrade from narrative_hype to ambiguous or emerging."
+      ],
+      "network_effect_score": 25,
+      "network_effect_evidence": "weak",
+      "pricing_power_assessment": "high",
+      "key_signals_used": [
+        "Wikipedia pageviews (30-day window, stable baseline ~40\u201350 views/day, no spike)",
+        "News sentiment (3 articles, 2 positive on ASML dominance, 1 neutral on supply chain; 1 source only)",
+        "Analyst ratings (8 Strong Buy, 22 Buy, 10 Hold, 1 Sell; stable 12-month trend)",
+        "Valuation multiples (PE=50, PB=24, EV/EBITDA=39; elevated but not anomalous for semiconductor equipment)",
+        "Gross margin (52.6%) and net margin (29.7%) \u2014 healthy, consistent with monopoly pricing power",
+        "Price momentum (5d +10.4%, 20d -6.3%, 60d -7.9%; mixed signal, no clear trend)"
+      ],
+      "key_signals_missing": [
+        "Layer 1 (Hard-to-Fake): GitHub developer ecosystem (unmapped_ticker, expected for hardware vendor but no alternative metric)",
+        "Layer 1 (Hard-to-Fake): SEC-disclosed operating metrics (DAU/MAU, take-rate, marketplace GMV, seller retention) \u2014 not applicable to equipment vendor, but absence should be confirmed",
+        "Layer 1 (Hard-to-Fake): Patent activity (deferred per R-NETWORK-10)",
+        "Layer 1 (Hard-to-Fake): Insider Form 4 activity (0 transactions in 90 days; no conviction signal)",
+        "Layer 1 (Hard-to-Fake): 13F institutional ownership (not_available_on_current_plan)",
+        "Layer 1 (Sector-Appropriate): Supply-chain dominance metrics (market share of EUV systems, customer concentration, order backlog)",
+        "Layer 1 (Sector-Appropriate): Regulatory moat documentation (export controls, IP barriers, licensing restrictions)",
+        "Layer 2 (Corroborative): News source diversity (1 source, 3 articles; \u00a723.2 requires \u22652 sources)",
+        "Layer 2 (Corroborative): Wikipedia pageview z-score / anomaly flag (raw pageviews only, no statistical context)",
+        "Layer 3 (Financial Confirmation): Operating margin trajectory (3\u20135 year history)",
+        "Layer 3 (Financial Confirmation): FCF yield (null in valuation_snapshot)",
+        "Layer 3 (Financial Confirmation): Revenue growth acceleration (no trend data available)"
+      ],
+      "classification": "narrative_hype",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "news_event_summary.items: 3 polygon_news articles (2 positive on ASML dominance, 1 neutral on Nvidia supply chain); 1 source only, insufficient diversity per \u00a723.2",
+        "sentiment_community_ownership_evidence.fmp_sentiment: analyst ratings 8 Strong Buy, 22 Buy, 10 Hold, 1 Sell (2025-04-01); stable 12-month trend, no recent upgrade/downgrade",
+        "alternative_data_features.attention.wikipedia_pageviews: 30-day window (2025-03-16 to 2025-04-14), baseline ~40\u201350 views/day, range 18\u201366, no anomaly or spike detected"
+      ],
+      "layer_3_evidence": [
+        "valuation_snapshot: PE=50.0, PB=24.1, EV/EBITDA=38.7 (elevated but not anomalous for semiconductor equipment); gross_margin=52.6%, net_margin=29.7% (healthy, consistent with monopoly pricing power)",
+        "price_snapshot: 5d return +10.4%, 20d return -6.3%, 60d return -7.9% (mixed signal, no clear trend); volume 1.09x 20d avg (normal)"
+      ],
+      "type_direct_vs_two_sided": "none",
+      "staleness_flags": [
+        "sec_operating_metrics_stale_>90d: fundamental_snapshot status=insufficient_evidence (no rows available)",
+        "github_activity_stale_>30d: github_public unmapped_ticker (no rows available)",
+        "analyst_sentiment_stale_>30d: fmp_sentiment as_of 2025-04-01 (13 days before decision_timestamp 2025-04-14, within 30d window, acceptable)",
+        "wikipedia_pageviews_current: as_of 2025-04-14 (same as decision_timestamp, not stale)"
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ASML",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "needs_more_evidence",
+      "confidence": "low",
+      "evidence_used": [
+        "valuation_snapshot.valuation_inputs (TTM ratios)",
+        "price_snapshot.last_eod_close (668.81 as of 2025-04-11)",
+        "price_snapshot.return_5d_pct (10.4467%)",
+        "macro_regime (Strengthening/Expansionary, stress_score=1)",
+        "fundamental_gate_38 (hard failure: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available)",
+        "news_event_summary (3 items, mixed sentiment on AI/semiconductor positioning)",
+        "corporate_calendar (recent earnings 2025-01-29: EPS 7.3 vs est 7.41, revenue beat)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.snapshot_quarter (all fields null \u2014 no PIT-safe quarterly income/balance/cashflow data)",
+        "underlying eps_ttm and free_cash_flow_ttm values (required to distinguish case (a) ratio-undefined from case (b) field-absent)",
+        "operating_margin_pct_ttm (required for sector-correct valuation framework for semiconductor equipment)",
+        "forward P/E or forward earnings guidance (TTM ratios alone insufficient for growth-stage assessment)",
+        "sector-specific valuation anchors (semiconductor equipment capex cycle, order book visibility, customer concentration)"
+      ],
+      "reasoning_summary": "ASML is a high-quality semiconductor equipment manufacturer (EUV lithography monopoly) trading at elevated multiples in a Strengthening macro regime. Valuation snapshot shows TTM P/E=50.0, P/B=24.1, EV/EBITDA=38.7, PEG=2.95 \u2014 all expensive by absolute standards. However, the fundamental_gate_38 hard failure (eps_ttm_or_net_income_ttm_not_positive + operating_margin_not_available) signals a critical data gap: the underlying inputs required to compute these ratios are absent from fundamental_snapshot.snapshot_quarter (all null). This is case (b) \u2014 a genuine data absence, not case (a) negative-earnings signal. Without the quarterly fundamental data, I cannot distinguish whether the TTM ratios reflect: (i) genuinely negative earnings (which would be a real bearish valuation finding), or (ii) a data fetch failure. The valuation_snapshot.current_snapshot_not_PIT_safe=true flag further indicates these TTM ratios are display-only, not PIT-anchored. Recent earnings (2025-01-29) showed EPS 7.3 (beat est 7.41) and revenue beat, suggesting profitability is present, but the absence of quarterly data prevents PIT-safe valuation reasoning. In Strengthening regime with strict_quality_and_valuation discipline, ASML's quality (dominant market position, high margins per valuation_inputs: gross_margin_pct_ttm=52.6%, net_margin_pct_ttm=29.71%) would normally warrant a 'fair' or 'expensive' descriptor. However, the hard gate failure and missing fundamental data force a conservative 'not_evaluated' assessment pending fundamental_agent confirmation and quarterly data retrieval.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If fundamental_snapshot.snapshot_quarter is populated with negative eps_ttm or negative net_income_ttm, valuation_assessment must shift to 'very_expensive' (case (a) bear thesis: surged on narrative while losing money).",
+        "If fundamental_snapshot.snapshot_quarter shows positive earnings and operating margin, and forward P/E is available, reassess as 'fair' or 'expensive' depending on growth rate and sector multiples.",
+        "If macro regime shifts to Crisis or Poor, apply margin-of-safety bonus per \u00a73.9 (deep drawdown context); current 10.4% 5d return and -7.9% 60d return do not yet constitute >=30% drawdown.",
+        "If news_event_summary reveals material negative catalyst (export restrictions, customer loss, capex cycle downturn), downgrade to 'very_expensive' or 'not_evaluated' pending fundamental reassessment."
+      ],
+      "risk_flags": [
+        "Hard fundamental gate failure (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available) \u2014 underlying inputs absent, not negative.",
+        "Valuation snapshot flagged not_PIT_safe (TTM ratios, no fiscal anchor) \u2014 display-only, not decision-grade.",
+        "Fundamental snapshot entirely null (status=insufficient_evidence) \u2014 no quarterly income, balance, or cashflow data available.",
+        "P/FCF is null (fcf_yield=null) \u2014 cannot assess free cash flow valuation; underlying free_cash_flow_ttm likely absent or negative.",
+        "Macro regime is Strengthening but equity_discipline=strict_quality_and_valuation \u2014 ASML's 50x P/E and 24x P/B are expensive even for quality in this regime.",
+        "Recent 5d return of +10.4% against 60d return of -7.9% suggests recent rally; valuation may be inflated by short-term momentum rather than fundamental repricing.",
+        "News sentiment mixed: positive on AI/semiconductor tailwinds and buyback, but no primary source confirmation of near-term catalysts."
+      ],
+      "suggested_improvements": [
+        "Retrieve quarterly fundamental data (income statement, balance sheet, cash flow) with accepted_date <= 2025-04-14 to populate fundamental_snapshot.snapshot_quarter and enable PIT-safe eps_ttm and free_cash_flow_ttm assessment.",
+        "Compute forward P/E using analyst consensus earnings estimates (if available) to assess growth-adjusted valuation; TTM P/E alone is insufficient for semiconductor equipment cyclical assessment.",
+        "Obtain sector-specific valuation anchors: historical P/E range for semiconductor equipment manufacturers, EV/EBITDA multiples during capex cycles, and order book visibility metrics.",
+        "Clarify whether P/FCF null is due to negative free_cash_flow_ttm (case (a) bear signal) or data absence (case (b) gap); if negative FCF, emit 'very_expensive' descriptor.",
+        "Cross-check recent earnings beat (2025-01-29: EPS 7.3 vs est 7.41, revenue beat) against quarterly data to confirm profitability and rule out negative earnings scenario."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamental_snapshot_null",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter is entirely null (status=insufficient_evidence); no quarterly income, balance, or cashflow data available for PIT-safe valuation."
+        },
+        {
+          "kind": "valuation_snapshot_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot.current_snapshot_not_PIT_safe=true; TTM ratios are display-only, not anchored to fiscal period."
+        },
+        {
+          "kind": "hard_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 failed: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available \u2014 underlying inputs absent."
+        },
+        {
+          "kind": "ratio_undefined_fcf_yield",
+          "severity": "warning",
+          "detail": "fcf_yield is null; underlying free_cash_flow_ttm likely absent or negative \u2014 cannot assess FCF valuation."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; only 3 items retained (all pre-cutoff)."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; use last_eod_close (668.81) for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The distinction between case (a) (ratio undefined due to nonpositive denominator, a real bearish finding) and case (b) (field genuinely absent, a data gap) is critical for surge_short candidates. ASML's hard gate failure on eps_ttm_or_net_income_ttm_not_positive could signal either: (i) negative earnings (case (a), very_expensive descriptor), or (ii) missing data (case (b), not_evaluated). The fundamental_snapshot.snapshot_quarter being entirely null prevents this distinction. The prompt correctly identifies this ambiguity but cannot resolve it without the underlying inputs. A future enhancement should ensure that when fundamental_gate_38 fails, the agent receives the raw eps_ttm and free_cash_flow_ttm values (even if negative) to disambiguate case (a) from case (b).",
+      "recommended_followups": [
+        "Fundamental Agent (Agent 02) should confirm whether fundamental_gate_38 failure is due to negative earnings (case (a)) or data absence (case (b)) by retrieving quarterly data.",
+        "If eps_ttm is negative or zero, emit valuation_assessment='very_expensive' with clear case (a) reasoning.",
+        "If eps_ttm is positive but operating_margin is unavailable, reassess valuation using available ratios (P/B, EV/EBITDA) and sector context.",
+        "Obtain forward P/E and PEG using analyst consensus to assess growth-adjusted valuation; current PEG=2.95 suggests expensive relative to growth, but TTM growth rate is not provided.",
+        "Cross-check recent earnings (2025-01-29) against quarterly data to confirm profitability trajectory and rule out negative earnings scenario."
+      ],
+      "valuation_score": 35,
+      "valuation_assessment": "not_evaluated",
+      "margin_of_safety_assessment": "not_evaluated",
+      "valuation_inputs_used": {
+        "pe_ratio": 50.046448442229135,
+        "peg_ratio": 2.9547423160292086,
+        "price_to_sales": 14.870977639073152,
+        "price_to_book": 24.05338582299143,
+        "ev_to_ebitda": 38.72816375424755,
+        "roe": 0.5196967298003722,
+        "roa": 0.2083020359754892,
+        "gross_margin_pct_ttm": 52.6,
+        "net_margin_pct_ttm": 29.71,
+        "debt_to_equity_ttm": 0.12989270025684727,
+        "current_ratio_ttm_pit": 1.3596115930599368,
+        "last_eod_close": 668.81,
+        "return_5d_pct": 10.4467,
+        "return_60d_pct": -7.9155,
+        "macro_regime": "Strengthening / Expansionary",
+        "equity_discipline": "strict_quality_and_valuation",
+        "recent_earnings_eps_actual": 7.3,
+        "recent_earnings_eps_estimated": 7.41,
+        "recent_earnings_revenue_beat": true,
+        "note": "TTM ratios flagged not_PIT_safe; fundamental_snapshot.snapshot_quarter is null; case (a) vs case (b) distinction unresolved."
+      },
+      "valuation_inputs_missing": [
+        "eps_ttm (underlying input for P/E; required to distinguish case (a) negative earnings from case (b) data absence)",
+        "free_cash_flow_ttm (underlying input for P/FCF; fcf_yield is null)",
+        "operating_margin_pct_ttm (required for sector-correct valuation framework)",
+        "forward_eps or analyst_consensus_eps (required for forward P/E and growth-adjusted valuation)",
+        "quarterly_net_income (fundamental_snapshot.snapshot_quarter is null)",
+        "quarterly_operating_income (fundamental_snapshot.snapshot_quarter is null)",
+        "quarterly_free_cash_flow (fundamental_snapshot.snapshot_quarter is null)",
+        "order_book_visibility (semiconductor equipment capex cycle indicator)",
+        "customer_concentration (concentration risk for EUV monopoly)",
+        "historical_pe_range_semiconductor_equipment (sector-specific valuation anchor)"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Thesis Evaluator",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ASML",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long thesis evaluation for ASML following recent selloff",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (10.45% recovery)",
+        "price_snapshot.return_20d_pct (-6.33% decline)",
+        "price_snapshot.return_60d_pct (-7.92% decline)",
+        "valuation_snapshot.pe_ratio (50.05x)",
+        "valuation_snapshot.price_to_book (24.05x)",
+        "valuation_snapshot.ev_to_ebitda (38.73x)",
+        "valuation_snapshot.gross_margin_pct_ttm (52.6%)",
+        "valuation_snapshot.net_margin_pct_ttm (29.71%)",
+        "valuation_snapshot.debt_to_equity_ttm (0.13)",
+        "news_event_summary.items (3 articles, positive sentiment on buyback and AI positioning)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings: 8 Strong Buy, 22 Buy, 10 Hold, 1 Sell as of 2025-04-01)",
+        "corporate_calendar.earnings (recent: 2025-01-29 EPS 7.3 vs est 7.41, revenue beat)",
+        "macro_regime (Strengthening/Expansionary, stress_score=1)",
+        "alternative_data_features.attention.wikipedia_pageviews (30-day window, views 18-66 range, no abnormal spike)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.eps_ttm (null \u2014 critical hard gate)",
+        "fundamental_snapshot.operating_income (null \u2014 critical hard gate)",
+        "fundamental_snapshot.operating_margin_ttm (null \u2014 critical hard gate)",
+        "fundamental_snapshot.operating_cash_flow (null \u2014 critical hard gate)",
+        "fundamental_snapshot.free_cash_flow (null)",
+        "valuation_snapshot.fcf_yield (null)",
+        "valuation_snapshot.ev_to_ebit (null)",
+        "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable \u2014 no 13F, Form 4, or DEF14A rows)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "filing_confirmation (no 8-K filings in last 90 days)",
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts not present in packet)"
+      ],
+      "reasoning_summary": "ASML is a high-quality semiconductor equipment leader with dominant EUV lithography franchise, strong margins (52.6% gross, 29.7% net), fortress balance sheet (D/E 0.13), and consistent analyst support (30 Buy/Strong Buy vs 1 Sell). Recent 20-60d selloff (-6.3% to -7.9%) appears macro/sector-driven (elevated policy rates, AI capex uncertainty) rather than company-specific. However, the hard fundamental gates in \u00a73.8 FAIL CLOSED: eps_ttm and operating_margin_ttm are both null in the fundamental_snapshot block, and the packet's own fundamental_gate_38 explicitly flags 'eps_ttm_or_net_income_ttm_not_positive' and 'operating_margin_not_available' as failed gates. Without positive EPS and operating margin data, the fail-closed rule mandates recommended_action='no_trade' regardless of valuation or narrative appeal. Valuation multiples (PE 50x, PB 24x, EV/EBITDA 38.7x) are elevated but not unreasonable for a quality monopoly in a growth industry. Analyst sentiment remains constructive (8 Strong Buy, 22 Buy as of April 2025). News flow is positive (buyback, AI positioning). Macro regime is supportive (Strengthening/Expansionary). However, absence of PIT-safe fundamental data blocks the buy gate. The thesis (long-term franchise intact, selloff macro/sector-driven, valuation fair-to-attractive for quality) is plausible but cannot be validated without operating fundamentals.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Hard gate failure: eps_ttm and operating_margin_ttm both null/unavailable in fundamental_snapshot",
+        "Fundamental_gate_38 explicitly failed with 'eps_ttm_or_net_income_ttm_not_positive' and 'operating_margin_not_available'",
+        "No PIT-safe quarterly income statement, balance sheet, or cash flow data available",
+        "Valuation snapshot marked 'current_snapshot_not_PIT_safe: true' \u2014 TTM ratios are display-only, not decision-grade",
+        "Upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) absent from packet \u2014 cannot cross-validate thesis"
+      ],
+      "risk_flags": [
+        "Critical data gap: fundamental_snapshot.status='insufficient_evidence' \u2014 no eps_ttm, operating_income, or operating_margin available",
+        "Valuation multiples are elevated (PE 50x, PB 24x, EV/EBITDA 38.7x) \u2014 fair-to-expensive range, not attractive",
+        "Macro regime shows elevated policy rate (4.33% DFF) and positive yield curve (10y2y 0.52%) \u2014 supportive but not risk-free",
+        "No recent insider activity (Form 4: 0 purchases, 0 sales in last 90 days) \u2014 neutral signal",
+        "No 8-K filings in last 90 days \u2014 no material events to explain selloff",
+        "Analyst sentiment is descriptor-only (\u00a711.13 prohibition) \u2014 cannot be used as buy signal",
+        "Alternative data adapters not fully wired (github_public unmapped, sec_13f unavailable) \u2014 network effect evidence capped at 'partial' per \u00a710.15",
+        "Information integrity assessment: low_tier_only sources, pollution-defense layer unimplemented, use_as_primary_signal_allowed=false",
+        "News event summary: only 3 items post-cutoff, 1 source (Polygon) \u2014 insufficient diversity per \u00a723.2 (requires \u22652 sources)"
+      ],
+      "suggested_improvements": [
+        "Obtain PIT-safe quarterly or TTM income statement, balance sheet, and cash flow data with accepted_datetime <= 2025-04-14",
+        "Retrieve operating_margin_ttm and eps_ttm from a source with explicit fiscal anchoring (e.g., SEC EDGAR 10-Q/10-K)",
+        "Cross-validate analyst sentiment with institutional ownership data (13F) to assess smart-money conviction",
+        "Expand news sources beyond Polygon to meet \u00a723.2 diversity threshold (\u22652 distinct sources within 24h window)",
+        "Obtain Form 4 insider transaction data to assess management confidence in valuation",
+        "Wire industry-specific alt-data adapter (semiconductor_patent_adapter) to assess R&D productivity and competitive moat",
+        "Retrieve upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) to triangulate thesis validity",
+        "Clarify whether the 20-60d selloff is driven by ASML-specific news (e.g., China export restrictions, customer guidance) or broad semiconductor/macro headwinds"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status='insufficient_evidence' \u2014 all snapshot_quarter fields are null; no PIT-safe eps_ttm, operating_income, or operating_margin available"
+        },
+        {
+          "kind": "hard_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38.passes=false \u2014 failed gates: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.current_snapshot_not_PIT_safe=true \u2014 TTM ratios (PE, PB, EV/EBITDA) are display-only, not decision-grade"
+        },
+        {
+          "kind": "news_insufficient_sources",
+          "severity": "warning",
+          "detail": "news_event_summary.ndi_metadata.n_sources=1 (Polygon only) \u2014 \u00a723.2 requires \u22652 sources; insufficient diversity"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "alternative_data_features.tech_activity.github_public: unmapped_ticker \u2014 ASML not in ticker_to_github.csv"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning.sec_13f: not_available_on_current_plan \u2014 FMP HTTP 404"
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.status='insufficient_evidence' \u2014 T1=0, T2=0, T3=1, T4=2; pollution-defense layer unimplemented; use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "upstream_agents_absent",
+          "severity": "warning",
+          "detail": "upstream_agent_outputs not present in packet \u2014 Narrative, Alt-Data Verification, Fund/Net/Val verdicts unavailable for cross-validation"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "price_snapshot.live_quote at 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close (668.81) used for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the fundamental_snapshot block is entirely null, triggering the hard gate failure. This is a data availability issue, not a schema weakness. The packet correctly flags this via fundamental_gate_38.passes=false and data_quality_flags. The agent's role is to respect the fail-closed rule and recommend no_trade when hard gates fail, which is the correct behavior per \u00a73.8.",
+      "recommended_followups": [
+        "Re-run analysis when PIT-safe quarterly or TTM fundamentals (eps, operating_margin, operating_cash_flow) are available",
+        "Obtain ASML's most recent 10-Q or 10-K filing (post-2025-04-14) to validate operating profitability and cash generation",
+        "Assess whether the 20-60d selloff is driven by ASML-specific catalysts (e.g., China export restrictions, customer guidance cuts) or broad sector/macro headwinds",
+        "Retrieve institutional ownership data (13F) to assess whether quality long-term holders are accumulating or reducing positions",
+        "Expand news sources to meet diversity threshold and assess sentiment polarity across multiple tiers",
+        "Wire semiconductor-specific alt-data adapter to assess R&D productivity, patent velocity, and competitive moat strength",
+        "Obtain upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) to triangulate thesis validity and valuation fairness"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "argues_against_long",
+      "network_effect_evidence": "partial",
+      "valuation_assessment": "fair",
+      "selloff_origin_view": "macro",
+      "thesis_status": "uncertain",
+      "evidence_sufficiency": "insufficient",
+      "recommended_action": "no_trade",
+      "initial_position_pct": 0.0,
+      "max_position_pct": 5.0,
+      "missing_data_warnings": [
+        "fundamental_snapshot.eps_ttm: null \u2014 required for hard gate \u00a73.8",
+        "fundamental_snapshot.operating_income: null \u2014 required for hard gate \u00a73.8",
+        "fundamental_snapshot.operating_margin_pct_ttm: null \u2014 required for hard gate \u00a73.8",
+        "fundamental_snapshot.operating_cash_flow: null \u2014 required for financial_health assessment",
+        "fundamental_snapshot.free_cash_flow: null \u2014 required for valuation context",
+        "valuation_snapshot.fcf_yield: null \u2014 required for valuation assessment",
+        "sentiment_community_ownership_evidence.ownership_positioning: data_unavailable \u2014 required for smart-money conviction assessment",
+        "upstream_agent_outputs: absent \u2014 Narrative, Alt-Data Verification, Fund/Net/Val verdicts not available for cross-validation"
+      ],
+      "audit_rationale": "ASML exhibits quality characteristics (52.6% gross margin, 29.7% net margin, 0.13 D/E, analyst support 30 Buy/Strong Buy) and recent selloff appears macro-driven. However, hard fundamental gates fail: eps_ttm and operating_margin_ttm are both null, and fundamental_gate_38 explicitly flags failure. Per \u00a73.8 fail-closed rule, when ANY hard gate fails, recommended_action must collapse to no_trade. Valuation multiples (PE 50x, PB 24x, EV/EBITDA 38.7x) are fair-to-expensive, not attractive. Evidence sufficiency is insufficient due to missing fundamentals and absent upstream verdicts. Thesis status is uncertain pending data availability."
+    },
+    "risk": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ASML",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "data_quality_flags[*].severity",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer status"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Pass 8 hard-veto evaluation for candidate_type=quality_long (ASML). Mechanical application of \u00a75.13 conditions (a)-(e): (a) Equity cap breach \u2014 not applicable, no proposed position size provided. (b) Short entry cap breach \u2014 not applicable, candidate_type=quality_long. (c) Critical data quality flags \u2014 none present (all flags are 'warning' or 'info' severity). (d) Anti-pollution integrity veto \u00a75.13(d) RELAXED 2026-05-06 \u2014 APPLIES to quality_long only when pollution_defense_layer affirmatively confirms pollution. Current state: information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence', reason='pollution-defense layer not implemented in v1'). Per \u00a75.13(d) relaxation, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, the veto does NOT trip. The condition requires AFFIRMATIVELY-CONFIRMED pollution (pollution_confirmed=true, not 'unimplemented' / 'not_evaluated' / 'pending'). Current packet shows pollution_confirmed is not present as a field; the block status is 'insufficient_evidence' with reason citing unimplemented layer. This maps to 'unimplemented' status \u2192 veto does NOT trip. (e) Lookahead veto \u2014 envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violation.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If data_after_cutoff_used were true, lookahead veto would trip.",
+        "If any data_quality_flags[*].severity were 'critical', veto (c) would trip.",
+        "If information_integrity_assessment.pollution_defense_layer returned status='ok' with pollution_confirmed=true AND use_as_primary_signal_allowed=false AND no T1/T2 corroboration, veto (d) would trip.",
+        "If proposed quality_long position would push equity sleeve above \u00a74.7 regime cap (30% in Strengthening regime), veto (a) would trip."
+      ],
+      "risk_flags": [
+        "Fundamental gate 38 fails (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available) \u2014 blocks quality_long classification per \u00a73.8, but this is a gate failure, not a veto condition.",
+        "Information integrity assessment is unimplemented; pollution-defense layer not wired in v1. Veto (d) does not trip per relaxation, but confidence in information quality is reduced.",
+        "Data quality flags present (warning/info severity) indicate incomplete fundamental snapshot and TTM-only valuation inputs, but none reach 'critical' severity threshold for veto (c)."
+      ],
+      "suggested_improvements": [
+        "Implement pollution-defense layer per \u00a75.13(d) to enable affirmative pollution confirmation and proper veto gating.",
+        "Populate fundamental_snapshot with PIT-safe quarterly data to resolve gate 38 failure and enable quality_long evaluation.",
+        "Wire industry-specific alt-data adapters (semiconductor patent, supply-chain, customer announcements) to strengthen Layer 1 evidence for network-effect assessment."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly data available"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.current_snapshot_not_PIT_safe=true; TTM ratios are display-only"
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.status=insufficient_evidence; pollution-defense layer unimplemented in v1"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "\u00a75.13(d) relaxation (2026-05-06) correctly preserves fail-closed semantics on AFFIRMATIVELY-CONFIRMED pollution while restoring evaluability when pollution_defense_layer is unimplemented. Current packet shows unimplemented status \u2192 veto does not trip. This is the intended behavior per the relaxation rule.",
+      "recommended_followups": [
+        "Implement pollution-defense layer to enable affirmative pollution confirmation gating.",
+        "Populate fundamental_snapshot with PIT-safe quarterly data to resolve gate 38 failure.",
+        "Re-evaluate quality_long candidate once fundamental gates pass and information integrity assessment is fully implemented."
+      ],
+      "candidate_type": "quality_long",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Equity cap breach condition not applicable \u2014 no proposed position size provided in packet. Condition (a) requires proposed quality-long position size to evaluate against \u00a74.7 regime cap (30% in Strengthening regime)."
+        },
+        {
+          "name": "short_entry_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Short entry cap condition not applicable \u2014 candidate_type=quality_long, not surge_short. Condition (b) applies only to surge_short candidates."
+        },
+        {
+          "name": "critical_data_quality_5_13_c",
+          "tripped": false,
+          "note": "No critical-severity data quality flags present. All flags in data_quality_flags array are 'warning' or 'info' severity. Condition (c) requires severity='critical' to trip."
+        },
+        {
+          "name": "pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Anti-pollution integrity veto does not trip. Condition (d) applies to quality_long only when pollution_defense_layer affirmatively confirms pollution (pollution_confirmed=true). Current state: information_integrity_assessment.status='insufficient_evidence', reason='pollution-defense layer not implemented in v1'. Per \u00a75.13(d) relaxation (2026-05-06), when pollution_defense_layer returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, the veto does NOT trip. Unimplemented status \u2192 veto does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "Lookahead veto does not trip. envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. Condition (e) requires data_after_cutoff_used=true OR lookahead_safe=false to trip."
+        }
+      ],
+      "advisory_notes": "No hard-veto conditions tripped. Candidate passes \u00a75.13 mechanical veto checks. However, candidate fails fundamental gate 38 (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available) per \u00a73.8, which blocks quality_long classification independent of veto evaluation. Risk agent role is hard-veto checking only; gate failures are evaluated by upstream agents.",
+      "risk_notes": [
+        "Veto (d) does not trip due to unimplemented pollution-defense layer, but this is a data-availability issue, not a pass. Confidence in information quality is reduced pending implementation.",
+        "Fundamental gate 38 failure is a separate blocking condition (\u00a73.8) that prevents quality_long classification regardless of veto status.",
+        "No position size provided in packet; veto (a) cannot be evaluated without proposed position size."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation initiated",
+        "candidate_type=quality_long \u2192 evaluate conditions (a), (c), (d), (e); skip (b)",
+        "Condition (a): no proposed position size provided \u2192 not applicable",
+        "Condition (c): data_quality_flags[*].severity check \u2192 no 'critical' flags \u2192 does not trip",
+        "Condition (d): pollution_defense_layer status check \u2192 unimplemented \u2192 per \u00a75.13(d) relaxation, does not trip",
+        "Condition (e): lookahead_safe=true, data_after_cutoff_used=false \u2192 does not trip",
+        "Result: no veto conditions tripped"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ASML",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long candidate evaluation with hard fundamental gate failure",
+      "confidence": "low",
+      "evidence_used": [
+        "fundamental_gate_38.passes=false",
+        "fundamental_snapshot.status=insufficient_evidence",
+        "valuation_snapshot.pe_ratio=50.0",
+        "valuation_snapshot.gross_margin_pct_ttm=52.6%",
+        "valuation_snapshot.net_margin_pct_ttm=29.71%",
+        "valuation_snapshot.debt_to_equity_ttm=0.13",
+        "price_snapshot.return_5d_pct=10.45%",
+        "price_snapshot.return_20d_pct=-6.33%",
+        "price_snapshot.return_60d_pct=-7.92%",
+        "news_event_summary.items (3 articles, positive sentiment on buyback and AI positioning)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (8 Strong Buy, 22 Buy, 10 Hold, 1 Sell)",
+        "corporate_calendar.earnings (2025-01-29: EPS 7.3 vs est 7.41, revenue beat)",
+        "macro_regime=Strengthening/Expansionary",
+        "upstream_agent_outputs.quality_long.recommended_action=no_trade",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard veto tripped)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.eps_ttm (null \u2014 critical hard gate)",
+        "fundamental_snapshot.operating_income (null \u2014 critical hard gate)",
+        "fundamental_snapshot.operating_margin_pct_ttm (null \u2014 critical hard gate)",
+        "fundamental_snapshot.operating_cash_flow (null)",
+        "fundamental_snapshot.free_cash_flow (null)",
+        "valuation_snapshot.fcf_yield (null)",
+        "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable)",
+        "upstream_agent_outputs.narrative_event (present but not cross-validated)",
+        "upstream_agent_outputs.alt_data_verify (present but not cross-validated)",
+        "upstream_agent_outputs.network_effect (present but not cross-validated)",
+        "upstream_agent_outputs.valuation (present but not cross-validated)"
+      ],
+      "reasoning_summary": "ASML is a high-quality semiconductor equipment leader with dominant EUV lithography franchise, strong margins (52.6% gross, 29.7% net), fortress balance sheet (D/E 0.13), and consistent analyst support (30 Buy/Strong Buy vs 1 Sell). Recent 20-60d selloff (-6.3% to -7.9%) appears macro/sector-driven rather than company-specific. However, the hard fundamental gates in \u00a73.8 FAIL CLOSED: eps_ttm and operating_margin_pct_ttm are both null in the fundamental_snapshot block, and the packet's own fundamental_gate_38 explicitly flags 'eps_ttm_or_net_income_ttm_not_positive' and 'operating_margin_not_available' as failed gates. Per \u00a73.8 fail-closed rule, when ANY hard gate fails, the decision must collapse to no_trade regardless of narrative appeal, valuation reasonableness, or analyst consensus. The upstream quality_long agent correctly recommends no_trade due to gate failure. The risk agent confirms no hard-veto conditions (\u00a75.13 a-e) are tripped, but gate failure is independent of veto evaluation. Valuation multiples (PE 50x, PB 24x, EV/EBITDA 38.7x) are elevated but not unreasonable for a quality monopoly in a growth industry. Macro regime is supportive (Strengthening/Expansionary, stress_score=1). News flow is positive (buyback, AI positioning). However, absence of PIT-safe fundamental data blocks the buy gate. The thesis (long-term franchise intact, selloff macro/sector-driven, valuation fair-to-attractive for quality) is plausible but cannot be validated without operating fundamentals. Confidence is low due to missing data and gate failure.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Hard gate failure: eps_ttm and operating_margin_pct_ttm both null/unavailable in fundamental_snapshot",
+        "Fundamental_gate_38 explicitly failed with 'eps_ttm_or_net_income_ttm_not_positive' and 'operating_margin_not_available'",
+        "No PIT-safe quarterly income statement, balance sheet, or cash flow data available",
+        "Valuation snapshot marked 'current_snapshot_not_PIT_safe: true' \u2014 TTM ratios are display-only, not decision-grade",
+        "\u00a73.8 fail-closed rule mandates no_trade when ANY hard gate fails, regardless of other evidence"
+      ],
+      "risk_flags": [
+        "Critical data gap: fundamental_snapshot.status='insufficient_evidence' \u2014 no eps_ttm, operating_income, or operating_margin available",
+        "Valuation multiples are elevated (PE 50x, PB 24x, EV/EBITDA 38.7x) \u2014 fair-to-expensive range, not attractive",
+        "Macro regime shows elevated policy rate (4.33% DFF) and positive yield curve (10y2y 0.52%) \u2014 supportive but not risk-free",
+        "No recent insider activity (Form 4: 0 purchases, 0 sales in last 90 days) \u2014 neutral signal",
+        "No 8-K filings in last 90 days \u2014 no material events to explain selloff",
+        "Analyst sentiment is descriptor-only (\u00a711.13 prohibition) \u2014 cannot be used as buy signal",
+        "Alternative data adapters not fully wired (github_public unmapped, sec_13f unavailable) \u2014 network effect evidence capped at 'partial'",
+        "Information integrity assessment: low_tier_only sources, pollution-defense layer unimplemented, use_as_primary_signal_allowed=false",
+        "News event summary: only 3 items post-cutoff, 1 source (Polygon) \u2014 insufficient diversity per \u00a723.2 (requires \u22652 sources)"
+      ],
+      "suggested_improvements": [
+        "Obtain PIT-safe quarterly or TTM income statement, balance sheet, and cash flow data with accepted_datetime <= 2025-04-14",
+        "Retrieve operating_margin_pct_ttm and eps_ttm from a source with explicit fiscal anchoring (e.g., SEC EDGAR 10-Q/10-K)",
+        "Cross-validate analyst sentiment with institutional ownership data (13F) to assess smart-money conviction",
+        "Expand news sources beyond Polygon to meet \u00a723.2 diversity threshold (\u22652 distinct sources within 24h window)",
+        "Obtain Form 4 insider transaction data to assess management confidence in valuation",
+        "Wire industry-specific alt-data adapter (semiconductor_patent_adapter) to assess R&D productivity and competitive moat",
+        "Implement pollution-defense layer to enable affirmative pollution confirmation gating",
+        "Clarify whether the 20-60d selloff is driven by ASML-specific news (e.g., China export restrictions, customer guidance) or broad semiconductor/macro headwinds"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status='insufficient_evidence' \u2014 all snapshot_quarter fields are null; no PIT-safe eps_ttm, operating_income, or operating_margin available"
+        },
+        {
+          "kind": "hard_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38.passes=false \u2014 failed gates: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.current_snapshot_not_PIT_safe=true \u2014 TTM ratios (PE, PB, EV/EBITDA) are display-only, not decision-grade"
+        },
+        {
+          "kind": "news_insufficient_sources",
+          "severity": "warning",
+          "detail": "news_event_summary.ndi_metadata.n_sources=1 (Polygon only) \u2014 \u00a723.2 requires \u22652 sources; insufficient diversity"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "alternative_data_features.tech_activity.github_public: unmapped_ticker \u2014 ASML not in ticker_to_github.csv"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning.sec_13f: not_available_on_current_plan \u2014 FMP HTTP 404"
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.status='insufficient_evidence' \u2014 T1=0, T2=0, T3=1, T4=2; pollution-defense layer unimplemented; use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "price_snapshot.live_quote at 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close (668.81) used for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the fundamental_snapshot block is entirely null, triggering the hard gate failure. This is a data availability issue, not a schema weakness. The packet correctly flags this via fundamental_gate_38.passes=false and data_quality_flags. The PM agent's role is to respect the fail-closed rule and recommend no_trade when hard gates fail, which is the correct behavior per \u00a73.8.",
+      "recommended_followups": [
+        "Re-run analysis when PIT-safe quarterly or TTM fundamentals (eps, operating_margin, operating_cash_flow) are available",
+        "Obtain ASML's most recent 10-Q or 10-K filing (post-2025-04-14) to validate operating profitability and cash generation",
+        "Assess whether the 20-60d selloff is driven by ASML-specific catalysts (e.g., China export restrictions, customer guidance cuts) or broad sector/macro headwinds",
+        "Retrieve institutional ownership data (13F) to assess whether quality long-term holders are accumulating or reducing positions",
+        "Expand news sources to meet diversity threshold and assess sentiment polarity across multiple tiers",
+        "Wire semiconductor-specific alt-data adapter to assess R&D productivity, patent velocity, and competitive moat strength",
+        "Obtain upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) to triangulate thesis validity and valuation fairness"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Hard fundamental gate 38 fails (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available). Per \u00a73.8 fail-closed rule, when ANY hard gate fails, decision must collapse to no_trade regardless of narrative appeal, valuation reasonableness, or analyst consensus. ASML exhibits quality characteristics (52.6% gross margin, 29.7% net margin, 0.13 D/E, 30 Buy/Strong Buy analyst support) and recent selloff appears macro-driven, but absence of PIT-safe fundamental data blocks the buy gate. Re-evaluate when quarterly fundamentals are available.",
+      "risk_notes": [
+        "No hard-veto conditions (\u00a75.13 a-e) tripped per upstream risk agent evaluation.",
+        "Gate failure is independent of veto evaluation; gate failure alone mandates no_trade per \u00a73.8.",
+        "Fundamental gate 38 failure is a data-availability issue, not a business deterioration signal \u2014 ASML's Jan 2025 earnings beat (EPS 7.3 vs est 7.41, revenue $9.59B vs est $7.62B) confirms profitability.",
+        "Macro regime is supportive (Strengthening/Expansionary, stress_score=1), but equity_discipline=strict_quality_and_valuation; ASML's 50x P/E and 24x P/B are expensive even for quality in this regime.",
+        "Information integrity assessment is unimplemented; pollution-defense layer not wired in v1. Veto (d) does not trip per relaxation, but confidence in information quality is reduced."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "No proposed position size provided; no_trade decision means position_size_pct=0.0, so sleeve cap is not breached."
+        },
+        {
+          "name": "position_size_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Candidate_type=quality_long; position_size_cap applies to surge_short only. No breach."
+        },
+        {
+          "name": "lookahead_data_used_5_13_c",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violation."
+        },
+        {
+          "name": "hindsight_violation_5_13_r1_r7",
+          "tripped": false,
+          "note": "envelope.hindsight_safe=true, envelope.hindsight_violations=[]. No hindsight violation."
+        },
+        {
+          "name": "fundamental_gate_38_hard_fail",
+          "tripped": true,
+          "note": "eps_ttm_or_net_income_ttm_not_positive AND operating_margin_not_available. This is a hard gate failure per \u00a73.8, not a veto condition, but it mandates no_trade decision."
+        }
+      ],
+      "rule_engine_path": [
+        "candidate_type=quality_long \u2192 evaluate \u00a73.8 hard fundamental gates",
+        "\u00a73.8 gate check: eps_ttm > 0? \u2192 null (insufficient_evidence)",
+        "\u00a73.8 gate check: operating_margin_pct > 0? \u2192 null (insufficient_evidence)",
+        "fundamental_gate_38.passes=false \u2192 hard gate failure",
+        "Per \u00a73.8 fail-closed rule: when ANY hard gate fails, decision must collapse to no_trade",
+        "Hard-veto evaluation (\u00a75.13 a-e): no veto conditions tripped",
+        "Final decision: no_trade (gate failure overrides all other evidence)"
+      ],
+      "decision_log": [
+        "2025-04-14T09:30:00-04:00 PM Agent initialized for ASML quality_long candidate",
+        "Read upstream_agent_outputs: quality_long agent recommends no_trade due to gate failure; risk agent confirms no hard-veto conditions tripped",
+        "Evaluated \u00a73.8 hard fundamental gates: eps_ttm=null, operating_margin_pct_ttm=null \u2192 gate failure",
+        "Confirmed fundamental_gate_38.passes=false with failed_gates=['eps_ttm_or_net_income_ttm_not_positive', 'operating_margin_not_available']",
+        "Applied \u00a73.8 fail-closed rule: hard gate failure mandates no_trade regardless of narrative, valuation, or analyst consensus",
+        "Evaluated hard-veto conditions (\u00a75.13 a-e): no veto conditions tripped; gate failure is independent of veto evaluation",
+        "Assessed evidence: ASML exhibits quality characteristics (52.6% gross margin, 29.7% net margin, 0.13 D/E, 30 Buy/Strong Buy analyst support) and recent selloff appears macro-driven (-6.3% to -7.9% over 20-60d)",
+        "Assessed macro regime: Strengthening/Expansionary (stress_score=1) is supportive, but equity_discipline=strict_quality_and_valuation; ASML's 50x P/E and 24x P/B are expensive even for quality",
+        "Assessed news flow: 3 items (buyback, AI positioning, Nvidia supply chain mention); positive sentiment but low-tier sources (T3/T4 only, no T1 primary disclosure)",
+        "Assessed analyst sentiment: 8 Strong Buy, 22 Buy, 10 Hold, 1 Sell (2025-04-01); stable 12-month trend; descriptor-only per \u00a711.13, not a gate",
+        "Assessed valuation: PE=50.0, PB=24.1, EV/EBITDA=38.7 (elevated but not unreasonable for quality monopoly); TTM ratios flagged not_PIT_safe",
+        "Assessed alternative data: Wikipedia pageviews stable (18-66 views/day, baseline ~40-50), no abnormal spike; GitHub unmapped (expected for hardware vendor); no 13F ownership data",
+        "Assessed information integrity: low_tier-only sources (T1=0, T2=0, T3=1, T4=2); pollution-defense layer unimplemented; use_as_primary_signal_allowed=false",
+        "Assessed network effect: classification=narrative_hype (Layer 1 absent, Layer 2 weak, Layer 3 incomplete); ASML is structural monopoly, not network effect",
+        "Assessed valuation agent output: valuation_assessment=not_evaluated due to hard gate failure and missing fundamental data",
+        "Synthesized all evidence: thesis is plausible (quality franchise, macro-driven selloff, fair valuation) but cannot be validated without operating fundamentals",
+        "Applied final decision rule: hard gate failure overrides all other evidence \u2192 decision=no_trade, position_size_pct=0.0"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-14T09:45:00-04:00",
+        "ticker": "ASML",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_pass8_hardrule",
+        "evidence_packet_hash": "sha256:679165899e0ae5355c09f84117d89c23351c9031753f29c15e4f9fc3343c2bc5"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": null,
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Hard fundamental gate 38 fails; \u00a73.8 fail-closed rule mandates no_trade regardless of thesis plausibility.",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": null,
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+      "execution_timestamp": "2025-04-14T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:2c06fbb782045f17603a39ba5a2b152f698c10cf06389d906fe5245c83f2a52c",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

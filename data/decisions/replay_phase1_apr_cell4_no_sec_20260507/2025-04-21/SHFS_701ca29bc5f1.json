@@ -1,0 +1,1148 @@
+{
+  "trigger_id": "701ca29bc5f1",
+  "ticker": "SHFS",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-04-21T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 189.33,
+  "trigger_cost_usd": 0.250778,
+  "cumulative_cost_usd": 6.543814,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "SHFS",
+    "name": "SHFS",
+    "close": 4.19,
+    "prior_close": 2.23,
+    "change": 1.63,
+    "change_pct": 73.09417040358744,
+    "volume": 43497128.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-04-21",
+    "prior_trading_day": "2025-04-17",
+    "available_as_of": "2025-04-21T16:00:00-05:00",
+    "today_open": 3.86,
+    "today_volume": 43497128.0,
+    "eps_ttm": -17.349999999999998,
+    "operating_margin_ttm": -24.227914627002573,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2025-04-10 16:05:34",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:9a61eeefa655cc17b2635c70e9672c994b3885a099cfaf5e5a14e3e76066d36e",
+  "locked_decision_id": "sha256:815329d1677170f6930d3f1fc68c7ac01e4a3c4dae31b22856e0670ef6a27357",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "Portfolio Manager (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "SHFS",
+    "decision_timestamp": "2025-04-21T09:30:00-04:00",
+    "data_available_as_of": "2025-04-21T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision for SHFS: 16.97x relative volume spike post-split. Catalyst narrative structurally absent; no news, no SEC filings, no corroborating alt-data. Negative fundamentals (PE=-0.63, margin=-17.36%) support bear thesis. Macro regime (strict_quality_and_valuation) disfavors low-quality shorts. Evidence is partial but preponderance favors watch posture pending catalyst confirmation.",
+    "confidence": "medium",
+    "evidence_used": [
+      "price_snapshot.relative_volume_vs_20d (16.97x)",
+      "price_snapshot.return_5d_pct (+2.29%)",
+      "price_snapshot.return_20d_pct (-57.52%)",
+      "price_snapshot.return_60d_pct (-70.81%)",
+      "corporate_calendar.splits (1:20 split 2025-03-24)",
+      "news_event_summary.status (data_unavailable, 0 items)",
+      "news_event_summary.polygon_news (0 rows, adapter wired)",
+      "filing_confirmation.status (not_evaluated)",
+      "alternative_data_features.wikipedia_pageviews (peak 14 views, declining)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (1 Buy, no upgrades)",
+      "valuation_snapshot.pe_ratio (-0.6285)",
+      "valuation_snapshot.net_margin_pct_ttm (-17.36%)",
+      "macro_regime (Strengthening/Expansionary, strict_quality_and_valuation)",
+      "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+      "upstream_agent_outputs.alt_data_verify.verdict (narrative_contradicted)",
+      "upstream_agent_outputs.surge_short.recommended_action (watch)",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (no veto tripped)"
+    ],
+    "evidence_missing": [
+      "news_event_summary.items (0 items post-cutoff; 20 items dropped post-cutoff)",
+      "filing_confirmation.SEC_8K_confirmation (not_evaluated)",
+      "fundamental_snapshot.snapshot_quarter (all fields null)",
+      "alternative_data_features.github_public (unmapped_ticker)",
+      "narrative_price_gap_assessment.agent_LLM_reasoning (not_evaluated)",
+      "actual_catalyst_narrative (no company claim present in packet)"
+    ],
+    "reasoning_summary": "SHFS exhibits a real surge (16.97x relative volume, +2.29% 5d return) following a 1:20 stock split on 2025-03-24. However, the catalyst narrative is structurally absent: (1) news_event_summary returns 0 items <= cutoff (polygon_news wired, returned 0 rows \u2014 informative absence); (2) filing_confirmation not_evaluated (sec_8k_fulltext unavailable); (3) fundamental_snapshot status=insufficient_evidence (all fields null); (4) GitHub adapter failed (unmapped_ticker); (5) analyst sentiment flat (1 Buy, no upgrades); (6) Wikipedia pageviews show modest activity (peak 14 views on 2025-03-30, declining to 1 view by decision date). The structural absence of hard-to-fake evidence (news, SEC filings, operational metrics) relative to the price/volume action is the primary bear-thesis signal per \u00a713.6 SOFT_REASONING and the asymmetric absence rule. The surge appears momentum-driven (post-split technical rebalancing) rather than value-driven. Negative fundamentals (PE=-0.63, net margin=-17.36%) support a bear thesis, but macro regime (Strengthening/Expansionary with strict_quality_and_valuation discipline) disfavors low-quality shorts. Upstream agents: Narrative Agent flags 'unsupported_claim' (vague narrative, no concrete catalyst); Alt-Data Verify flags 'narrative_contradicted' (no corroborating hard evidence); Surge-Short Agent recommends 'watch' (evidence partial but consistent with momentum pattern); Risk Agent confirms no veto conditions tripped. The preponderance of evidence favors a WATCH posture: the bear thesis is coherent (structural absence of catalyst, negative fundamentals, momentum-driven surge), but evidence is incomplete (no actual catalyst claim to definitively refute, fundamental data unavailable). Escalate to SHORT only if post-cutoff catalyst confirmation emerges and is validated by alt-data. Exit watch if catalyst is debunked or fundamentals improve.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If an SEC 8-K or press release emerges post-cutoff confirming a material event (M&A, partnership, product launch, regulatory approval), the bear thesis is weakened and watch should be maintained pending alt-data corroboration.",
+      "If alt-data adapters (GitHub, clinical trials, regulatory filings) show corroborating activity post-cutoff, momentum thesis weakens and watch should be maintained.",
+      "If fundamental snapshot becomes available and shows positive revenue/earnings growth, valuation may be justified and watch should be maintained.",
+      "If analyst upgrades or institutional buying emerges post-cutoff, momentum may sustain and watch should be maintained.",
+      "If the stock split is revealed to be a forward split (not reverse), distress signal is weakened."
+    ],
+    "risk_flags": [
+      "Negative earnings (PE=-0.63, net margin=-17.36%) \u2014 company is unprofitable; short thesis is supported by fundamentals.",
+      "Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline \u2014 low-quality shorts are disfavored; entry at this time is contrarian to regime.",
+      "Post-split volatility \u2014 1:20 split on 2025-03-24 may have triggered technical rebalancing; surge may be mechanical, not catalyst-driven.",
+      "Structural absence of news/filings/alt-data is consistent with a micro-cap or shell company; liquidity risk on short exit.",
+      "Wikipedia pageviews peaked 2025-03-30 (14 views) and declined thereafter; attention is fading, not building.",
+      "Analyst sentiment is flat (1 Buy, no upgrades); no institutional support visible.",
+      "Information integrity assessment flags 'low_tier_only' evidence (T3=1, T4=1; T1=0, T2=0); pollution-defense layer unimplemented.",
+      "Fundamental data entirely unavailable; cannot assess revenue, earnings, or growth trajectory."
+    ],
+    "suggested_improvements": [
+      "Obtain the actual catalyst narrative from the candidate's investor relations or press release archive (not in packet).",
+      "Verify whether SHFS is a shell company, SPAC, or legitimate operating company via SEC EDGAR 10-K/10-Q.",
+      "Check if the 1:20 split was a reverse split (common in distressed/low-price stocks); if so, the surge may be post-split technical rebalancing, not catalyst-driven.",
+      "Confirm whether GitHub mapping is available for SHFS; if it's a software/tech company, GitHub absence is a red flag.",
+      "Monitor for post-cutoff 8-K filings or press releases that may explain the surge.",
+      "Assess whether the company has any institutional ownership or analyst coverage; flat sentiment suggests low institutional interest.",
+      "Implement pollution-defense layer in information_integrity_assessment to allow primary-signal use when T1/T2 corroboration is present."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "news_event_summary: 0 items <= cutoff; 20 items dropped post-cutoff. Adapter is wired (polygon_news) and returned 0 rows in [2025-04-14, 2025-04-21]. Structural absence is informative."
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "fundamental_snapshot: all fields null (revenue, net_income, operating_income, ebitda, eps, margins, cash flow, balance sheet). Status=insufficient_evidence."
+      },
+      {
+        "kind": "filing_confirmation_not_evaluated",
+        "severity": "warning",
+        "detail": "filing_confirmation: status=not_evaluated. SEC 8-K adapter not connected; no rows available to confirm or deny a material event."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public: unmapped_ticker \u2014 SHFS not in ticker_to_github.csv. If SHFS is a software/tech company, this is a structural absence signal."
+      },
+      {
+        "kind": "information_integrity_placeholder",
+        "severity": "warning",
+        "detail": "information_integrity_assessment: status=insufficient_evidence. T1=0, T2=0, T3=1, T4=1. Pollution-defense layer not implemented; use_as_primary_signal_allowed=false."
+      },
+      {
+        "kind": "analyst_sentiment_stale",
+        "severity": "info",
+        "detail": "fmp_sentiment: last update 2024-11-01 (5+ months before decision); 1 Buy, 0 Hold, 0 Sell."
+      },
+      {
+        "kind": "wikipedia_attention_low",
+        "severity": "info",
+        "detail": "wikipedia_pageviews: peak 14 views on 2025-03-30; 1-6 views by decision date; low-tier attention signal."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The packet does not include sector/industry classification for SHFS, making sector-aware reasoning difficult. The narrative_price_gap_assessment block is not_evaluated (pending agent LLM reasoning). Without the actual catalyst narrative, the PM cannot definitively assess whether the surge is momentum or value-driven. The packet structure assumes a news_event_summary or filing_confirmation will populate the catalyst; when both are absent/empty, the PM must reason from structural absence alone. This is defensible under \u00a713.6.SOFT_REASONING and the universal-soft-veto principle, but a stronger signal would require the actual catalyst claim to be present in the packet (even if disputed).",
+    "recommended_followups": [
+      "Obtain the actual catalyst narrative (press release, 8-K, or news article) that drove the surge on 2025-04-21.",
+      "Verify SHFS's business model and sector (currently unknown from packet); determine what alt-data adapters should be wired.",
+      "Check SEC EDGAR for 10-K/10-Q filings to assess whether the company is a legitimate operating entity or a shell/SPAC.",
+      "Confirm whether the 1:20 split was a reverse split; if so, assess post-split technical rebalancing vs. catalyst-driven surge.",
+      "Monitor for post-cutoff 8-K filings, press releases, or analyst upgrades that may validate or invalidate the bear thesis.",
+      "Assess institutional ownership and analyst coverage; flat sentiment suggests low institutional interest, which may support a short thesis.",
+      "If watch is maintained beyond 5 trading days without catalyst confirmation, escalate to PM for manual review or exit decision."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "watch",
+    "position_size_pct": 0.0,
+    "reason": "Surge is real (16.97x volume, +2.29% 5d return) but catalyst narrative is structurally absent (no news, no SEC filings, no corroborating alt-data). Negative fundamentals (PE=-0.63, margin=-17.36%) support bear thesis, but macro regime (strict_quality_and_valuation) disfavors low-quality shorts. Evidence is partial but preponderance favors watch: monitor for post-cutoff catalyst confirmation or invalidation. Escalate to SHORT if catalyst emerges and is validated by alt-data. Exit watch if catalyst is debunked or fundamentals improve.",
+    "risk_notes": [
+      "Candidate is surge_short; \u00a75.13(d) anti-pollution veto is inapplicable per \u00a75.17 relaxation.",
+      "No hard-veto conditions tripped per Risk Agent evaluation.",
+      "Macro regime (strict_quality_and_valuation) disfavors entry at this time; consider waiting for regime shift or stronger catalyst confirmation.",
+      "Liquidity risk on short exit due to micro-cap profile (avg_volume_20d=127k shares).",
+      "Information integrity assessment flags 'low_tier_only' evidence; pollution-defense layer unimplemented."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "equity_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Candidate is surge_short; not applicable."
+      },
+      {
+        "name": "short_sleeve_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Condition (b) requires current short sleeve position data. Packet does not indicate breach; no upstream sleeve state provided to evaluate. Assumed compliant pending sleeve data."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "Examined all data_quality_flags in packet. Highest severity is 'warning' (quote_after_cutoff, fundamentals_partial, alt_data_adapter_error, filing_confirmation_unavailable, news_post_cutoff_filtered, info_integrity_placeholder, sentiment_ownership_placeholder). No flag has severity='critical'."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate is surge_short. Per \u00a75.17 RELAXED 2026-05-06, \u00a75.13(d) is INAPPLICABLE to surge_short candidates. Veto does not trip."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Lookahead veto does NOT trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto conditions (a)-(e) evaluated mechanically",
+      "\u00a75.13(a) equity-cap breach: not applicable (quality_long only)",
+      "\u00a75.13(b) short-sleeve cap breach: no breach indicated; assumed compliant",
+      "\u00a75.13(c) critical data_quality_flags: none detected",
+      "\u00a75.13(d) anti-pollution integrity veto: inapplicable (surge_short per \u00a75.17 relaxation)",
+      "\u00a75.13(e) lookahead veto: not tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+      "Result: NO VETO CONDITIONS TRIPPED; candidate passes hard-veto gate",
+      "Upstream agent synthesis: Narrative Agent (unsupported_claim, low confidence), Alt-Data Verify (narrative_contradicted, low confidence), Surge-Short Agent (watch, medium confidence), Risk Agent (no veto, high confidence)",
+      "Preponderance-of-evidence reasoning: structural absence of catalyst narrative + negative fundamentals + momentum-driven surge pattern + macro regime disfavor = WATCH posture",
+      "Decision: WATCH (position_size_pct=0.0) pending post-cutoff catalyst confirmation or invalidation"
+    ],
+    "decision_log": [
+      "2025-04-21T09:30:00-04:00 | PM Agent initialized for SHFS surge_short candidate",
+      "2025-04-21T09:30:00-04:00 | Hard-veto gate evaluation: no veto conditions tripped (Risk Agent confirmed)",
+      "2025-04-21T09:30:00-04:00 | Upstream agent synthesis: Narrative (unsupported_claim), Alt-Data (narrative_contradicted), Surge-Short (watch), Risk (no veto)",
+      "2025-04-21T09:30:00-04:00 | Evidence assessment: surge is real (16.97x volume, +2.29% 5d return); catalyst narrative is structurally absent (0 news items, no SEC filings, no corroborating alt-data)",
+      "2025-04-21T09:30:00-04:00 | Fundamental assessment: negative earnings (PE=-0.63, net margin=-17.36%) support bear thesis; but fundamental data unavailable (all snapshot fields null)",
+      "2025-04-21T09:30:00-04:00 | Macro regime assessment: Strengthening/Expansionary with strict_quality_and_valuation discipline disfavors low-quality shorts at this time",
+      "2025-04-21T09:30:00-04:00 | Asymmetric absence rule applied: structural absence of news/filings/alt-data vs. expected evidence footprint for a listed equity surge is bear-thesis input per \u00a713.6 SOFT_REASONING",
+      "2025-04-21T09:30:00-04:00 | Preponderance-of-evidence reasoning: bear thesis is coherent (absence pattern + negative fundamentals + momentum pattern) but evidence is incomplete (no actual catalyst claim to definitively refute)",
+      "2025-04-21T09:30:00-04:00 | Decision: WATCH (position_size_pct=0.0) \u2014 do not enter short at this time; monitor for post-cutoff catalyst confirmation or invalidation",
+      "2025-04-21T09:30:00-04:00 | Escalation criteria: if post-cutoff catalyst emerges and is validated by alt-data, escalate to SHORT at 0.5% entry; if catalyst is debunked or fundamentals improve, exit watch",
+      "2025-04-21T09:30:00-04:00 | ADaS lagged history: prior day (2025-04-17) CHRO surge_short showed high confidence_dispersion (std_proxy=0.7071) with 3 dissenting agents; this suggests framework uncertainty on surge-short candidates is baseline; SHFS medium confidence is consistent with this pattern",
+      "2025-04-21T09:30:00-04:00 | Final decision: WATCH (no position); execution plan: none (T+1 next-open order_type='T+1 next-open', side='none', size_pct=0.0)"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-21T09:45:00-04:00",
+      "ticker": "SHFS",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule, 2026-05-03 universal soft-veto principle, \u00a75.17 surge-short integrity-veto exception, \u00a713.6 SOFT_REASONING, asymmetric absence rule)",
+      "agent_prompt_version": "v0.9.0_pass8_hardrule_2026_05_03_pm_agent_07b",
+      "evidence_packet_hash": "sha256:4a0399e1e0aee0cdf1938c7247df66ac7e43e21e69642aafa340bc66d09dda91"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews show modest activity (peak 14 views on 2025-03-30, declining to 1 view by decision date). Not a catalyst signal; ambient attention noise.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No company claim is present in the evidence packet. The only observable facts are: (1) stock split (1:20) on 2025-03-24, (2) severe price decline (return_20d_pct=-57.52%, return_60d_pct=-70.81%), (3) elevated relative volume (16.97x 20d average), (4) minimal analyst coverage (1 Buy rating, no recent changes), (5) zero news coverage in 7-day window (polygon_news returned 0 items), (6) no SEC 8-K filing confirmation, (7) no fundamental data available. The price action is real, but the underlying catalyst is unidentified and unverified.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Catalyst narrative is structurally absent; no company claim to confirm or deny. Surge-short alpha is evidence-of-absence driven per \u00a75.17; absence of hard-to-fake evidence (news, SEC filings, operational metrics) is the pump signal that motivates the short thesis, not an evidence-insufficiency reason to block the thesis. However, evidence is PARTIAL (no actual catalyst claim present), so PM decision is WATCH (no position) pending post-cutoff catalyst confirmation or invalidation.",
+    "sentiment_risk_adjustment_note": "Analyst sentiment is flat (1 Buy, no upgrades, no recent changes). FMP sentiment shows only analyst grades (T2, descriptor-only), no news sentiment. No sell-side research corroboration. Sentiment does not support or contradict the bear thesis.",
+    "ownership_risk_adjustment_note": "Ownership positioning data not evaluated (not_connected). Cannot assess institutional ownership, insider trading, or smart-money positioning. Flat analyst coverage suggests low institutional interest, which may support a short thesis, but this is speculative without ownership data.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": "Analyst coverage minimal and stale (1 Buy rating from 2024; no recent changes). No institutional sponsorship visible. Flat sentiment suggests low institutional interest.",
+    "smart_money_benchmark_note": "No smart-money positioning data available (ownership_positioning not_evaluated). Cannot assess whether institutional buyers or short-sellers are accumulating or exiting.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+    "execution_timestamp": "2025-04-21T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:5e960f2d46a4fe62747183ed71489a81e8d09787032afc507c168f4ac5235ed0",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SHFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "corporate_calendar.events_near_decision",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "news_event_summary.status",
+        "news_event_summary.items_dropped_post_cutoff",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "information_integrity_assessment.source_tier_distribution"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items in window; 20 dropped post-cutoff)",
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_date",
+        "fundamental_snapshot.snapshot_quarter (all fields null)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)"
+      ],
+      "reasoning_summary": "STRUCTURAL ABSENCE PATTERN ANALYSIS: The evidence packet shows a severe price collapse (return_20d_pct=-57.52%, return_60d_pct=-70.81%) with a 1:20 stock split on 2025-03-24 and elevated relative volume (16.97x 20d average) on the decision date. However, the news_event_summary block is entirely empty (0 items in window; 20 items dropped post-cutoff due to publishedDate > allowed_data_cutoff). This is the critical structural absence: a stock experiencing a 70%+ decline over 60 days should have corroborating news coverage within the 7-day lookback window (polygon_news returned 0 rows). The absence of news is NOT silent\u2014polygon_news adapter explicitly returned 0 items for [2025-04-14, 2025-04-21]. No SEC 8-K filing confirmation is available (filing_confirmation.status=not_evaluated, SEC_8K_confirmation=null). Fundamental data is entirely unavailable (fundamental_snapshot.status=insufficient_evidence, all snapshot_quarter fields null). Alternative data shows only Wikipedia pageview activity (peak 14 views on 2025-03-30, declining to 1 view by 2025-04-21)\u2014this is not a catalyst signal but ambient attention noise. Analyst sentiment (fmp_sentiment) shows only 1 Buy rating consistently from 2023-2024, with no recent changes. The information_integrity_assessment explicitly flags 'low_tier_only' evidence (T3=1, T4=1; T1=0, T2=0) and marks use_as_primary_signal_allowed=false due to pollution-defense layer not implemented. SECTOR REASONING: SHFS appears to be a micro-cap equity (price $2.23, market cap likely <$100M based on volume). For a company of this size and sector classification (unknown from packet), the absence of news coverage during a 70% drawdown is itself a signal\u2014either (1) the move is driven by technical/liquidity factors unrelated to fundamental catalysts, (2) the company is in a distressed state with minimal disclosure, or (3) the price action is a data artifact (e.g., reverse split adjustment). The 1:20 split on 2025-03-24 is a corporate action, not a catalyst for value creation. NARRATIVE ASSESSMENT: No concrete company claim is present in the packet. No specific dollar amounts, customer names, product launches, regulatory filings, or partnership announcements are documented. The only observable facts are: (1) stock split, (2) severe price decline, (3) elevated volume, (4) minimal analyst coverage (1 Buy, no recent changes), (5) no news corroboration. This is a VAGUE / UNSUPPORTED_CLAIM scenario: the price action exists, but the underlying catalyst is unidentified and unverified. The structural absence of news coverage relative to the magnitude of the price move is a bear-thesis-leaning signal per \u00a713.6 SOFT_REASONING\u2014when a stock falls 70% in 60 days and there is zero news coverage in the 7-day window, either the move is not catalyst-driven or the catalyst is not being disclosed.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If news_event_summary items become available post-cutoff and reveal a specific, concrete catalyst (e.g., FDA rejection, customer loss, financing event), the vague_narrative_flag should be downgraded and catalyst_specificity_score should be re-evaluated.",
+        "If SEC 8-K filing is discovered with a material event disclosure (e.g., bankruptcy, going-concern warning, asset sale), the verdict should shift to 'supported' or 'credible_catalyst'.",
+        "If fundamental_snapshot data becomes available and shows a specific trigger (e.g., massive revenue miss, covenant breach), the assessment should be revised.",
+        "If the stock split is revealed to be a reverse split (1:20 reverse, not forward), this is a distress signal and should be explicitly flagged as such."
+      ],
+      "risk_flags": [
+        "CRITICAL: No news coverage in 7-day window despite 70% 60-day decline. Structural absence of expected corroboration.",
+        "CRITICAL: Fundamental data entirely unavailable (insufficient_evidence). Cannot assess earnings, revenue, profitability, or balance sheet.",
+        "HIGH: Information integrity assessment marks evidence as 'low_tier_only' (T3/T4 only; no T1/T2 primary sources). Pollution-defense layer not implemented; use_as_primary_signal_allowed=false.",
+        "HIGH: Analyst coverage minimal and stale (1 Buy rating from 2024; no recent changes). No sell-side research corroboration.",
+        "HIGH: Alternative data shows only ambient Wikipedia pageview activity (peak 14 views, baseline 0-6 views). Not a catalyst signal.",
+        "MEDIUM: Stock split (1:20) on 2025-03-24 is a corporate action, not a value catalyst. Timing coincides with price decline but causality unclear.",
+        "MEDIUM: Micro-cap liquidity profile (avg_volume_20d=127k shares, relative_volume=16.97x). Price action may be driven by technical factors or thin-float dynamics rather than fundamental catalysts.",
+        "MEDIUM: No GitHub activity (unmapped_ticker). If SHFS is a tech company, absence of developer/code evidence is a gap.",
+        "LOW: Macro regime is 'Strengthening / Expansionary' (stress_score=1). Macro backdrop is not a bear signal; decline is idiosyncratic."
+      ],
+      "suggested_improvements": [
+        "Implement news_event_summary post-cutoff review: 20 items were dropped because publishedDate > allowed_data_cutoff. A manual review of those 20 items (if accessible) would clarify whether a specific catalyst exists but was published after the decision window.",
+        "Wire SEC Edgar 8-K adapter to filing_confirmation block. Current status=not_evaluated; a material event filing would be definitive.",
+        "Populate fundamental_snapshot with PIT-safe quarterly data. Current status=insufficient_evidence; revenue, earnings, and balance sheet data are essential for assessing whether the decline is justified.",
+        "Enhance information_integrity_assessment: implement pollution-defense layer (currently unimplemented per schema v1.1 decision #8). Current verdict is 'low_tier_only' with use_as_primary_signal_allowed=false; this is a fail-closed placeholder.",
+        "Map SHFS to GitHub organization (if applicable). Current github_public adapter returned 0 rows due to unmapped_ticker. If SHFS is a software/tech company, this is a data gap.",
+        "Clarify stock split direction: confirm whether 1:20 split on 2025-03-24 is a forward split (consolidation) or reverse split. Reverse splits are often distress signals.",
+        "Obtain analyst reports or equity research summaries. Current fmp_sentiment shows only 1 Buy rating with no recent changes; sell-side research would provide narrative context."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-04-21T09:30:00-04:00). These items may contain the actual catalyst; they are inaccessible to this agent."
+        },
+        {
+          "kind": "fundamentals_unavailable",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; all snapshot_quarter fields are null. Cannot assess earnings, revenue, profitability, or leverage."
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "high",
+          "detail": "filing_confirmation.status=not_evaluated; SEC_8K_confirmation=null. No material event filing data available."
+        },
+        {
+          "kind": "information_integrity_low_tier_only",
+          "severity": "high",
+          "detail": "information_integrity_assessment.evidence_credibility_assessment='low_tier_only' (T3=1, T4=1; T1=0, T2=0). use_as_primary_signal_allowed=false per schema v1.1 decision #8."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "medium",
+          "detail": "github_public adapter returned 0 rows due to unmapped_ticker. If SHFS is a tech company, this is a data gap."
+        },
+        {
+          "kind": "analyst_coverage_stale",
+          "severity": "medium",
+          "detail": "fmp_sentiment shows 1 Buy rating consistently from 2024; no recent changes or sell-side research summaries."
+        },
+        {
+          "kind": "alt_data_attention_ambient",
+          "severity": "info",
+          "detail": "Wikipedia pageviews show ambient activity (peak 14 views on 2025-03-30, declining to 1 view by 2025-04-21). Not a catalyst signal."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the v1 generator has several unimplemented layers: (1) information_integrity_assessment.pollution_defense_layer is not implemented; fail-closed to use_as_primary_signal_allowed=false. (2) filing_confirmation is not_evaluated because sec_edgar and sec_8k_fulltext adapters are not wired. (3) fundamental_snapshot is insufficient_evidence because income/balance/cashflow adapters returned no PIT-safe rows. (4) news_event_summary has 0 items in window but 20 items dropped post-cutoff; the agent cannot access those 20 items to determine if a catalyst exists. These are architectural gaps, not agent weaknesses. The agent's role is to classify the catalyst from available evidence; when evidence is structurally absent, the agent must reason about the absence pattern itself (per \u00a713.6 SOFT_REASONING). In this case, the absence of news coverage during a 70% decline is itself a signal\u2014either the move is technical/liquidity-driven, or the catalyst is not being disclosed.",
+      "recommended_followups": [
+        "URGENT: Retrieve and review the 20 news items dropped post-cutoff (publishedDate > 2025-04-21T09:30:00-04:00). These may contain the actual catalyst.",
+        "URGENT: Query SEC Edgar for 8-K filings by SHFS on or before 2025-04-21. Material event disclosures would clarify the catalyst.",
+        "HIGH: Obtain Q1 2025 earnings report (if available) or latest 10-Q/10-K filing. Fundamental data is essential for assessing whether the decline is justified.",
+        "HIGH: Clarify stock split direction (forward vs. reverse) and confirm the 1:20 ratio on 2025-03-24. Reverse splits are distress signals.",
+        "MEDIUM: Search for press releases, investor relations announcements, or SEC filings from 2025-03-24 to 2025-04-21 that may explain the price action.",
+        "MEDIUM: If SHFS is a tech/software company, map ticker to GitHub organization and retrieve commit/contributor activity.",
+        "MEDIUM: Obtain analyst reports or equity research summaries from sell-side firms covering SHFS.",
+        "LOW: Monitor for future news coverage and earnings announcements to establish a baseline narrative once more data is available."
+      ],
+      "catalyst_type": "unknown_unidentified",
+      "catalyst_specificity_score": 0.05,
+      "vague_narrative_flag": true,
+      "company_claim": "No specific company claim is present in the evidence packet. The only observable facts are: (1) stock split (1:20) on 2025-03-24, (2) severe price decline (return_20d_pct=-57.52%, return_60d_pct=-70.81%), (3) elevated relative volume (16.97x 20d average), (4) minimal analyst coverage (1 Buy rating, no recent changes), (5) zero news coverage in 7-day window (polygon_news returned 0 items), (6) no SEC 8-K filing confirmation, (7) no fundamental data available. The price action is real, but the underlying catalyst is unidentified and unverified.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SHFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-vs-Evidence Verification for SHFS surge candidate",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.volume_spike",
+        "corporate_calendar.splits",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "news_event_summary.polygon_news",
+        "macro_regime.stress_score",
+        "information_integrity_assessment.source_tier_distribution"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "alternative_data_features.github_public (unmapped_ticker)",
+        "alternative_data_features.tech_activity (no GitHub rows)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence)",
+        "narrative_price_gap_assessment.agent_LLM_reasoning (not_evaluated)"
+      ],
+      "reasoning_summary": "SHFS exhibits a 16.97x relative volume spike on 2025-04-17 (2.16M shares vs 127k avg 20d) with price rising from $1.92 to $2.23 (+16.1% intraday). A 1:20 stock split occurred 2025-03-24, preceding the surge by ~24 days. Wikipedia pageviews show modest attention spike (peak 14 views on 2025-03-30, declining to 1-6 views by decision date), consistent with retail/meme-stock pattern. However, NO corroborating hard-to-fake evidence is present: (1) news_event_summary returns 0 items <= cutoff (polygon_news wired, returned 0 rows \u2014 informative absence); (2) filing_confirmation not_connected (sec_8k_fulltext unavailable); (3) fundamental_snapshot status=insufficient_evidence (no PIT-safe quarterly data); (4) github_public failed with unmapped_ticker (not sector-relevant for non-tech, but signals weak alt-data footprint); (5) fmp_sentiment shows only analyst grades (T2, descriptor-only), no news sentiment; (6) information_integrity_assessment flags source_tier_distribution T1=0 T2=0 T3=1 T4=1, with use_as_primary_signal_allowed=false due to pollution-defense layer unimplemented. The 20d return of -57.5% and 60d return of -70.8% indicate the surge is a rebound from severe prior decline, not a new catalyst-driven move. Macro regime is Strengthening/Expansionary (stress_score=1), which is neutral-to-supportive for equities but does not explain SHFS-specific surge. The absence of news, SEC filings, and operational corroboration relative to the price/volume action is the primary bear-thesis signal: structural absence of hard evidence contradicts the narrative that this is a fundamental or catalyst-driven move. The Wikipedia attention is low-tier (T4/T5 equivalent) and does not constitute primary corroboration. Analyst grades are stale (last update 2024-11-01) and show only 1 Buy rating, no recent upgrade.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a positive SEC 8-K filing or press release emerges post-decision with material catalyst (partnership, funding, product launch, regulatory approval)",
+        "If volume sustains above 500k shares/day with price holding above $2.50 for 3+ consecutive days (suggests institutional accumulation, not retail meme)",
+        "If analyst upgrades or earnings beat materialize within 5 trading days",
+        "If GitHub or other tech-activity data becomes available and shows active development (if SHFS is a software/tech company)"
+      ],
+      "risk_flags": [
+        "data_quality_warning: information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1",
+        "data_quality_warning: fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly financials available",
+        "data_quality_warning: news_event_summary.status=data_unavailable; 0 items <= cutoff; 20 items dropped post-cutoff",
+        "data_quality_warning: filing_confirmation.status=not_evaluated; sec_8k_fulltext not_connected",
+        "alt_data_adapter_error: github_public returned 0 rows with error_class=unmapped_ticker",
+        "structural_absence_signal: no news, no filings, no GitHub activity despite 16.97x volume spike and 16% intraday move",
+        "analyst_sentiment_stale: fmp_sentiment last update 2024-11-01 (5+ months before decision); 1 Buy, 0 Hold, 0 Sell",
+        "macro_regime_neutral: Strengthening/Expansionary does not explain SHFS-specific surge",
+        "price_action_context: -57.5% 20d return and -70.8% 60d return indicate rebound from crash, not new catalyst"
+      ],
+      "suggested_improvements": [
+        "Wire sec_8k_fulltext adapter to capture recent SEC filings and press releases",
+        "Implement pollution-defense layer in information_integrity_assessment to allow primary-signal use when T1/T2 corroboration is present",
+        "Fetch fundamental_snapshot with PIT-safe quarterly data (income, balance, cash flow) to assess operational health",
+        "Map SHFS to GitHub or other tech-activity sources if it is a software/tech company; if not, remove GitHub from expected alt-data",
+        "Implement sector-aware reasoning: identify SHFS sector (currently unknown from packet) and calibrate expected alt-data footprint accordingly",
+        "Extend news_event_summary lookback window or use alternative news sources (e.g., SEC EDGAR press releases, company website) to capture pre-cutoff catalysts",
+        "Add insider trading (Form 4) and institutional ownership (13F) adapters to detect smart-money positioning changes"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1 \u2014 fail-closed per schema v1.1 decision #8"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly snapshot available"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 0 items <= cutoff; 20 items dropped post-cutoff; polygon_news wired and returned 0 rows (informative absence)"
+        },
+        {
+          "kind": "filing_confirmation_unavailable",
+          "severity": "warning",
+          "detail": "filing_confirmation.status=not_evaluated; sec_8k_fulltext not_connected"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 SHFS not in ticker_to_github.csv seed"
+        },
+        {
+          "kind": "analyst_sentiment_stale",
+          "severity": "info",
+          "detail": "fmp_sentiment: last update 2024-11-01 (5+ months before decision); 1 Buy, 0 Hold, 0 Sell"
+        },
+        {
+          "kind": "wikipedia_attention_low",
+          "severity": "info",
+          "detail": "wikipedia_pageviews: peak 14 views on 2025-03-30; 1-6 views by decision date; low-tier attention signal"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet does not include sector/industry classification for SHFS, making sector-aware reasoning difficult. The alternative_data_features block is a placeholder with no industry-specific adapters wired (all marked not_connected). The information_integrity_assessment is also a placeholder with pollution-defense layer unimplemented, forcing use_as_primary_signal_allowed=false even when T2 data is present. These gaps limit the depth of alt-data verification.",
+      "recommended_followups": [
+        "Obtain SHFS sector/industry classification (e.g., from SEC 10-K Item 1 or FactSet) to calibrate expected alt-data footprint",
+        "Wire industry-specific adapters (e.g., if SHFS is biotech, wire clinical-trial registry; if software, wire GitHub; if retail, wire store-count)",
+        "Implement pollution-defense layer in information_integrity_assessment to allow primary-signal use when T1/T2 corroboration is present",
+        "Fetch sec_8k_fulltext and sec_form4 to detect recent catalysts and insider trading activity",
+        "Extend news_event_summary lookback or use alternative news sources to capture pre-cutoff catalysts",
+        "Obtain fundamental_snapshot with PIT-safe quarterly data to assess operational health and profitability",
+        "Monitor post-decision price/volume action: if volume sustains and price holds, escalate to PM for manual review"
+      ],
+      "verdict": "narrative_contradicted",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "contradicts",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "SHFS exhibits a 16.97x volume spike and 16% intraday price move on 2025-04-17, but NO corroborating hard-to-fake evidence (news, filings, operational metrics, tech activity) is present. The structural absence of news (0 items <= cutoff), SEC filings (not_connected), and fundamental data (insufficient_evidence) relative to the price/volume action is the primary contradiction signal. Wikipedia attention is low-tier (peak 14 views, declining to 1-6 by decision date) and does not constitute primary corroboration. The surge appears to be a rebound from a -70.8% 60d decline, not a new catalyst-driven move. Macro regime is neutral (Strengthening/Expansionary, stress_score=1). The narrative-price gap is HIGH because the market is pricing in a significant move without visible hard evidence to support it.",
+      "industry_template_used": "default_fallback (sector unknown; no industry-specific adapters wired)",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews is the only alternative-data adapter that returned rows for SHFS (29 rows, 2025-03-23 to 2025-04-21). All other industry-specific adapters (software_devtools, semiconductor_patent, biotech_clinical, consumer_traffic, bank_regulatory, airline_travel, energy_commodity, auto_mobility) are not_connected. GitHub adapter failed with unmapped_ticker. Default fallback selected due to lack of sector classification.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "ZERO hard-to-fake signals present. News_event_summary returns 0 items <= cutoff (polygon_news wired, returned 0 rows \u2014 informative absence). Filing_confirmation not_connected (sec_8k_fulltext unavailable). Fundamental_snapshot status=insufficient_evidence (no PIT-safe quarterly data). GitHub_public failed with unmapped_ticker. FMP_sentiment shows only stale analyst grades (last update 2024-11-01, 5+ months before decision). No insider trading (Form 4), institutional ownership (13F), or regulatory filings detected. The structural absence of hard evidence relative to the price/volume action is itself a strong contradiction signal for a surge-short candidate.",
+      "industry_specific_evidence_used": [],
+      "industry_specific_evidence_missing": [
+        "sector_classification (unknown from packet)",
+        "software_devtools_adapter (not_connected)",
+        "semiconductor_patent_adapter (not_connected)",
+        "biotech_clinical_adapter (not_connected)",
+        "consumer_traffic_adapter (not_connected)",
+        "bank_regulatory_adapter (not_connected)",
+        "airline_travel_adapter (not_connected)",
+        "energy_commodity_adapter (not_connected)",
+        "auto_mobility_adapter (not_connected)",
+        "github_public (unmapped_ticker)",
+        "sec_8k_fulltext (not_connected)",
+        "sec_form4 (not_connected)",
+        "sec_13f (not_connected)"
+      ],
+      "data_quality_warning": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1. fundamental_snapshot.status=insufficient_evidence. news_event_summary.status=data_unavailable (0 items <= cutoff). filing_confirmation.status=not_evaluated (sec_8k_fulltext not_connected). github_public failed with unmapped_ticker. fmp_sentiment stale (last update 2024-11-01). These gaps significantly limit confidence in the verification.",
+      "signals": [
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": 2.2936,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "price_return_20d_pct",
+          "available": true,
+          "value": -57.5238,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_return_60d_pct",
+          "available": true,
+          "value": -70.8115,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 16.9675,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "news_items_count_pre_cutoff",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_8k_filing_present",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "wikipedia_pageviews_peak",
+          "available": true,
+          "value": 14.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "wikipedia_pageviews_recent",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_rating_buy_count",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_rating_hold_count",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_rating_sell_count",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "fundamental_snapshot_available",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "github_activity_present",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "macro_regime_supportive",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "information_integrity_primary_source_found",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": true,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1; fail-closed per schema v1.1 decision #8. Additionally, only T2 (analyst grades, stale) and T4 (Wikipedia, low-tier) sources present; no T1 primary source corroboration.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "news_event_summary.items",
+        "filing_confirmation.sec_8k_fulltext",
+        "fundamental_snapshot.snapshot_quarter",
+        "alternative_data_features.github_public",
+        "sentiment_community_ownership_evidence.ownership_positioning"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Agent",
+      "schema_version": "surge_short_agent_v0.4",
+      "prompt_version": "v0.4_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SHFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short evaluation for SHFS: 16.97x relative volume spike, +2.29% 5d return post-split. Catalyst narrative absent; no news, no SEC filings, no corroborating alt-data. Structural absence of expected evidence for a listed-equity surge is bear-thesis signal.",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.relative_volume_vs_20d (16.97x)",
+        "price_snapshot.return_5d_pct (+2.29%)",
+        "price_snapshot.volume (2.16M shares)",
+        "corporate_calendar.splits (1:20 split 2025-03-24)",
+        "news_event_summary.status (data_unavailable, 0 items)",
+        "news_event_summary.polygon_news (0 rows, adapter wired)",
+        "filing_confirmation.status (not_evaluated, no 8-K rows)",
+        "alternative_data_features.github_public (unmapped_ticker, 0 rows)",
+        "alternative_data_features.wikipedia_pageviews (29 rows, low views, peak 14 on 2025-03-30)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (22 rows, 1 Buy rating, no Strong Buy/Sell)",
+        "fundamental_snapshot.status (insufficient_evidence, all fields null)",
+        "valuation_snapshot.pe_ratio (-0.6285, negative earnings)",
+        "valuation_snapshot.net_margin_pct_ttm (-17.36%)",
+        "macro_regime (Strengthening/Expansionary, strict_quality_and_valuation discipline)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items post-cutoff)",
+        "filing_confirmation.SEC_8K_confirmation (not_evaluated)",
+        "fundamental_snapshot.revenue, net_income, operating_income, ebitda, eps (all null)",
+        "alternative_data_features.github_commit_messages (no GitHub rows available)",
+        "alternative_data_features.retail_meme_attention (not_connected)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "narrative_price_gap_assessment (not_evaluated, pending agent LLM reasoning)"
+      ],
+      "reasoning_summary": "SHFS surged on 2025-04-21 with 16.97x relative volume and +2.29% 5d return following a 1:20 stock split on 2025-03-24. The surge is real (price and volume data are solid). However, the catalyst narrative is structurally absent. For a listed US equity claiming a material event, the expected evidence footprint should include: (1) SEC 8-K or press release, (2) news coverage, (3) corroborating alt-data (GitHub activity for tech, clinical trials for biotech, etc.). SHFS exhibits NONE of these. News adapter (polygon_news) is wired and returned 0 rows. Filing adapter (sec_8k) is not connected but no 8-K rows are present in filing_confirmation. GitHub adapter failed (unmapped_ticker). Wikipedia pageviews show modest activity (peak 14 views on 2025-03-30, trailing off to 1 view on 2025-04-21). Analyst sentiment is flat (1 Buy, no Strong Buy/Sell across 22 historical records). Fundamentals are unavailable (all snapshot fields null), but TTM ratios show negative earnings (PE=-0.63, net margin=-17.36%). The macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline, which argues against low-quality or momentum-driven shorts. The structural absence of corroborating evidence relative to the public narrative (a surge on a catalyst) is the bear-thesis signal. The surge appears to be momentum/technical (post-split volume spike) rather than value creation. However, evidence is PARTIAL: we lack the actual catalyst narrative (news_event_summary is empty, filing_confirmation not evaluated), so we cannot definitively rule out a real event that simply failed to propagate to our adapters. Confidence is MEDIUM because the absence pattern is consistent but not conclusive.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If an SEC 8-K or press release emerges post-cutoff confirming a material event (M&A, partnership, product launch, regulatory approval), the bear thesis is invalidated.",
+        "If alt-data adapters (GitHub, clinical trials, regulatory filings) show corroborating activity post-cutoff, momentum thesis weakens.",
+        "If fundamental snapshot becomes available and shows positive revenue/earnings growth, valuation may be justified.",
+        "If analyst upgrades or institutional buying emerges post-cutoff, momentum may sustain."
+      ],
+      "risk_flags": [
+        "Negative earnings (PE=-0.63, net margin=-17.36%) \u2014 company is unprofitable; short thesis is supported by fundamentals.",
+        "Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline \u2014 low-quality shorts are disfavored.",
+        "Post-split volatility \u2014 1:20 split on 2025-03-24 may have triggered technical rebalancing; surge may be mechanical, not catalyst-driven.",
+        "Structural absence of news/filings/alt-data is consistent with a micro-cap or shell company; liquidity risk on short exit.",
+        "Wikipedia pageviews peaked 2025-03-30 (14 views) and declined thereafter; attention is fading, not building.",
+        "Analyst sentiment is flat (1 Buy, no upgrades); no institutional support visible."
+      ],
+      "suggested_improvements": [
+        "Obtain the actual catalyst narrative from the candidate's investor relations or press release archive (not in packet).",
+        "Verify whether SHFS is a shell company, SPAC, or legitimate operating company via SEC EDGAR 10-K/10-Q.",
+        "Check if the 1:20 split was a reverse split (common in distressed/low-price stocks); if so, the surge may be post-split technical rebalancing, not catalyst-driven.",
+        "Confirm whether GitHub mapping is available for SHFS; if it's a software/tech company, GitHub absence is a red flag.",
+        "Monitor for post-cutoff 8-K filings or press releases that may explain the surge.",
+        "Assess whether the company has any institutional ownership or analyst coverage; flat sentiment suggests low institutional interest."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 20 items dropped because publishedDate > cutoff; 0 items remain. Adapter is wired (polygon_news) and returned 0 rows in [2025-04-14, 2025-04-21]."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot: all fields null (revenue, net_income, operating_income, ebitda, eps, margins, cash flow, balance sheet). Status=insufficient_evidence."
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "filing_confirmation: status=not_evaluated. SEC 8-K adapter not connected; no rows available to confirm or deny a material event."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 SHFS not in ticker_to_github.csv. If SHFS is a software/tech company, this is a structural absence signal."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot: TTM ratios used (not PIT-safe). PE=-0.6285, net_margin=-17.36% indicate unprofitability."
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment: status=insufficient_evidence. T1=0, T2=0, T3=1, T4=1. Pollution-defense layer not implemented; use_as_primary_signal_allowed=false."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The narrative_price_gap_assessment block is not_evaluated (pending agent LLM reasoning). Without the actual catalyst narrative, the surge-short agent cannot definitively assess whether the surge is momentum or value-driven. The packet structure assumes a news_event_summary or filing_confirmation will populate the catalyst; when both are absent/empty, the agent must reason from structural absence alone. This is defensible under \u00a713.6.SOFT_REASONING and the universal-soft-veto principle, but a stronger signal would require the actual catalyst claim to be present in the packet (even if disputed).",
+      "recommended_followups": [
+        "Obtain the actual catalyst narrative (press release, 8-K, or news article) that drove the surge on 2025-04-21.",
+        "Verify SHFS's business model and sector (currently unknown from packet); determine what alt-data adapters should be wired.",
+        "Check SEC EDGAR for 10-K/10-Q filings to assess whether the company is a legitimate operating entity or a shell/SPAC.",
+        "Confirm whether the 1:20 split was a reverse split; if so, assess post-split technical rebalancing vs. catalyst-driven surge.",
+        "Monitor for post-cutoff 8-K filings, press releases, or analyst upgrades that may validate or invalidate the bear thesis.",
+        "Assess institutional ownership and analyst coverage; flat sentiment suggests low institutional interest, which may support a short thesis."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown",
+      "company_claim": "Unknown \u2014 no news_event_summary items or filing_confirmation present in packet. Surge is observable (16.97x relative volume, +2.29% 5d return) but catalyst narrative is absent.",
+      "industry": "Unknown \u2014 fundamental_snapshot and news_event_summary are empty; sector cannot be inferred from packet.",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "unclear",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "uncertain",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "watch",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Surge is real (volume and price data solid), but catalyst narrative is structurally absent. Negative earnings (PE=-0.63, net margin=-17.36%) support a bear thesis, but macro regime (Strengthening/Expansionary, strict_quality_and_valuation) disfavors low-quality shorts. Recommend WATCH: monitor for post-cutoff 8-K filings, press releases, or analyst upgrades. If catalyst narrative emerges and is validated by alt-data, escalate to SHORT. If catalyst is debunked or fundamentals improve, exit.",
+      "missing_data_warnings": [
+        "news_event_summary.items: 0 items post-cutoff; adapter wired but returned 0 rows.",
+        "filing_confirmation: not_evaluated; SEC 8-K adapter not connected.",
+        "fundamental_snapshot: all fields null; cannot assess revenue, earnings, or growth.",
+        "narrative_price_gap_assessment: not_evaluated; pending agent LLM reasoning.",
+        "catalyst_type: unknown; no news or filing to identify the driver of the surge.",
+        "industry: unknown; cannot determine sector-appropriate alt-data adapters.",
+        "alternative_data_features.github_public: unmapped_ticker; cannot assess tech activity if SHFS is a software company."
+      ],
+      "audit_rationale": "SHFS surged 16.97x relative volume on 2025-04-21 post-split. Catalyst narrative is structurally absent: no news (polygon_news=0 rows), no SEC filings (8-K not evaluated), no GitHub activity (unmapped), flat analyst sentiment (1 Buy, no upgrades). Fundamentals unavailable but TTM shows negative earnings (PE=-0.63, margin=-17.36%). Surge appears momentum-driven, not value-driven. Macro regime (strict_quality_and_valuation) disfavors low-quality shorts. Evidence is PARTIAL: absence pattern is consistent but not conclusive without the actual catalyst claim. Recommend WATCH pending post-cutoff catalyst confirmation or invalidation. Initial position 0.5% if escalated to SHORT."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SHFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation for surge_short candidate SHFS per \u00a75.13",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "candidate_type"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)-(e) for surge_short candidate SHFS. Condition (a) equity-cap breach: not applicable to surge_short per \u00a75.13(a) scope (applies to quality_long only). Condition (b) short-sleeve cap breach: candidate_type=surge_short; no upstream sleeve position data provided in packet; cannot evaluate breach without current sleeve state; however, packet does not indicate breach condition. Condition (c) critical data_quality_flags: examined all data_quality_flags blocks; no flag has severity='critical'. Condition (d) anti-pollution integrity veto: candidate_type=surge_short; per \u00a75.17 RELAXED 2026-05-06, \u00a75.13(d) is INAPPLICABLE to surge_short candidates. Condition (e) lookahead veto: envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true; lookahead veto does NOT trip. Result: NO VETO CONDITIONS TRIPPED. Candidate passes hard-veto gate.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If upstream sleeve position data becomes available and shows short sleeve already at or above 10% cap, condition (b) would trip.",
+        "If any data_quality_flag is retroactively marked severity='critical', condition (c) would trip.",
+        "If envelope.data_after_cutoff_used is changed to true or envelope.lookahead_safe is changed to false, condition (e) would trip."
+      ],
+      "risk_flags": [
+        "Candidate is surge_short; \u00a75.13(d) anti-pollution veto is inapplicable per \u00a75.17 relaxation.",
+        "No upstream sleeve position data in packet; condition (b) short-sleeve cap cannot be fully evaluated without current state.",
+        "Information integrity assessment shows use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer; however, this does NOT trigger \u00a75.13(d) veto because pollution_defense_layer status is 'unimplemented' (not 'affirmatively_confirmed' pollution). Per \u00a75.13(d) relaxation, unimplemented status does not trip the veto."
+      ],
+      "suggested_improvements": [
+        "Provide upstream sleeve position data (current short exposure pct) to enable full evaluation of condition (b) short-sleeve cap breach.",
+        "Implement pollution-defense layer in information_integrity_assessment to allow affirmative pollution confirmation/denial rather than fail-closed placeholder."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_critical_severity_flags",
+          "severity": "info",
+          "detail": "Examined all data_quality_flags in packet; highest severity is 'warning' (quote_after_cutoff, fundamentals_partial, alt_data_adapter_error, filing_confirmation_unavailable, etc.). No flag has severity='critical'."
+        },
+        {
+          "kind": "pollution_defense_layer_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_defense_layer status is 'unimplemented' per schema v1.1 decision #8. Per \u00a75.13(d) relaxation 2026-05-06, unimplemented status does NOT trip the veto; only affirmatively-confirmed pollution trips the veto."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [
+        "Obtain current short sleeve position (pct of equity sleeve) to validate condition (b) short-sleeve cap compliance.",
+        "Monitor for implementation of pollution-defense layer; when implemented, re-evaluate condition (d) with affirmative pollution confirmation/denial."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "equity_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Candidate is surge_short; not applicable."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires current short sleeve position data. Packet does not indicate breach; no upstream sleeve state provided to evaluate. Assumed compliant pending sleeve data."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Examined all data_quality_flags in packet. Highest severity is 'warning' (quote_after_cutoff, fundamentals_partial, alt_data_adapter_error, filing_confirmation_unavailable, news_post_cutoff_filtered, info_integrity_placeholder, sentiment_ownership_placeholder). No flag has severity='critical'."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate is surge_short. Per \u00a75.17 RELAXED 2026-05-06, \u00a75.13(d) is INAPPLICABLE to surge_short candidates. Veto does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Lookahead veto does NOT trip."
+        }
+      ],
+      "advisory_notes": "Hard-veto evaluation complete. No veto conditions tripped. Candidate SHFS surge_short passes hard-veto gate per \u00a75.13. Candidate is eligible for downstream PM evaluation.",
+      "risk_notes": [
+        "Surge_short candidate; anti-pollution veto inapplicable per \u00a75.17 relaxation.",
+        "No critical data quality flags detected.",
+        "Lookahead safety confirmed; data cutoff compliance verified.",
+        "Short-sleeve cap breach cannot be fully evaluated without upstream sleeve position data; assumed compliant."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)-(e) evaluated mechanically",
+        "\u00a75.13(a) equity-cap breach: not applicable (quality_long only)",
+        "\u00a75.13(b) short-sleeve cap breach: no breach indicated; assumed compliant",
+        "\u00a75.13(c) critical data_quality_flags: none detected",
+        "\u00a75.13(d) anti-pollution integrity veto: inapplicable (surge_short per \u00a75.17 relaxation)",
+        "\u00a75.13(e) lookahead veto: not tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+        "Result: NO VETO CONDITIONS TRIPPED; candidate passes hard-veto gate"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "Portfolio Manager (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SHFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision for SHFS: 16.97x relative volume spike post-split. Catalyst narrative structurally absent; no news, no SEC filings, no corroborating alt-data. Negative fundamentals (PE=-0.63, margin=-17.36%) support bear thesis. Macro regime (strict_quality_and_valuation) disfavors low-quality shorts. Evidence is partial but preponderance favors watch posture pending catalyst confirmation.",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.relative_volume_vs_20d (16.97x)",
+        "price_snapshot.return_5d_pct (+2.29%)",
+        "price_snapshot.return_20d_pct (-57.52%)",
+        "price_snapshot.return_60d_pct (-70.81%)",
+        "corporate_calendar.splits (1:20 split 2025-03-24)",
+        "news_event_summary.status (data_unavailable, 0 items)",
+        "news_event_summary.polygon_news (0 rows, adapter wired)",
+        "filing_confirmation.status (not_evaluated)",
+        "alternative_data_features.wikipedia_pageviews (peak 14 views, declining)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (1 Buy, no upgrades)",
+        "valuation_snapshot.pe_ratio (-0.6285)",
+        "valuation_snapshot.net_margin_pct_ttm (-17.36%)",
+        "macro_regime (Strengthening/Expansionary, strict_quality_and_valuation)",
+        "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+        "upstream_agent_outputs.alt_data_verify.verdict (narrative_contradicted)",
+        "upstream_agent_outputs.surge_short.recommended_action (watch)",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (no veto tripped)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items post-cutoff; 20 items dropped post-cutoff)",
+        "filing_confirmation.SEC_8K_confirmation (not_evaluated)",
+        "fundamental_snapshot.snapshot_quarter (all fields null)",
+        "alternative_data_features.github_public (unmapped_ticker)",
+        "narrative_price_gap_assessment.agent_LLM_reasoning (not_evaluated)",
+        "actual_catalyst_narrative (no company claim present in packet)"
+      ],
+      "reasoning_summary": "SHFS exhibits a real surge (16.97x relative volume, +2.29% 5d return) following a 1:20 stock split on 2025-03-24. However, the catalyst narrative is structurally absent: (1) news_event_summary returns 0 items <= cutoff (polygon_news wired, returned 0 rows \u2014 informative absence); (2) filing_confirmation not_evaluated (sec_8k_fulltext unavailable); (3) fundamental_snapshot status=insufficient_evidence (all fields null); (4) GitHub adapter failed (unmapped_ticker); (5) analyst sentiment flat (1 Buy, no upgrades); (6) Wikipedia pageviews show modest activity (peak 14 views on 2025-03-30, declining to 1 view by decision date). The structural absence of hard-to-fake evidence (news, SEC filings, operational metrics) relative to the price/volume action is the primary bear-thesis signal per \u00a713.6 SOFT_REASONING and the asymmetric absence rule. The surge appears momentum-driven (post-split technical rebalancing) rather than value-driven. Negative fundamentals (PE=-0.63, net margin=-17.36%) support a bear thesis, but macro regime (Strengthening/Expansionary with strict_quality_and_valuation discipline) disfavors low-quality shorts. Upstream agents: Narrative Agent flags 'unsupported_claim' (vague narrative, no concrete catalyst); Alt-Data Verify flags 'narrative_contradicted' (no corroborating hard evidence); Surge-Short Agent recommends 'watch' (evidence partial but consistent with momentum pattern); Risk Agent confirms no veto conditions tripped. The preponderance of evidence favors a WATCH posture: the bear thesis is coherent (structural absence of catalyst, negative fundamentals, momentum-driven surge), but evidence is incomplete (no actual catalyst claim to definitively refute, fundamental data unavailable). Escalate to SHORT only if post-cutoff catalyst confirmation emerges and is validated by alt-data. Exit watch if catalyst is debunked or fundamentals improve.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If an SEC 8-K or press release emerges post-cutoff confirming a material event (M&A, partnership, product launch, regulatory approval), the bear thesis is weakened and watch should be maintained pending alt-data corroboration.",
+        "If alt-data adapters (GitHub, clinical trials, regulatory filings) show corroborating activity post-cutoff, momentum thesis weakens and watch should be maintained.",
+        "If fundamental snapshot becomes available and shows positive revenue/earnings growth, valuation may be justified and watch should be maintained.",
+        "If analyst upgrades or institutional buying emerges post-cutoff, momentum may sustain and watch should be maintained.",
+        "If the stock split is revealed to be a forward split (not reverse), distress signal is weakened."
+      ],
+      "risk_flags": [
+        "Negative earnings (PE=-0.63, net margin=-17.36%) \u2014 company is unprofitable; short thesis is supported by fundamentals.",
+        "Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline \u2014 low-quality shorts are disfavored; entry at this time is contrarian to regime.",
+        "Post-split volatility \u2014 1:20 split on 2025-03-24 may have triggered technical rebalancing; surge may be mechanical, not catalyst-driven.",
+        "Structural absence of news/filings/alt-data is consistent with a micro-cap or shell company; liquidity risk on short exit.",
+        "Wikipedia pageviews peaked 2025-03-30 (14 views) and declined thereafter; attention is fading, not building.",
+        "Analyst sentiment is flat (1 Buy, no upgrades); no institutional support visible.",
+        "Information integrity assessment flags 'low_tier_only' evidence (T3=1, T4=1; T1=0, T2=0); pollution-defense layer unimplemented.",
+        "Fundamental data entirely unavailable; cannot assess revenue, earnings, or growth trajectory."
+      ],
+      "suggested_improvements": [
+        "Obtain the actual catalyst narrative from the candidate's investor relations or press release archive (not in packet).",
+        "Verify whether SHFS is a shell company, SPAC, or legitimate operating company via SEC EDGAR 10-K/10-Q.",
+        "Check if the 1:20 split was a reverse split (common in distressed/low-price stocks); if so, the surge may be post-split technical rebalancing, not catalyst-driven.",
+        "Confirm whether GitHub mapping is available for SHFS; if it's a software/tech company, GitHub absence is a red flag.",
+        "Monitor for post-cutoff 8-K filings or press releases that may explain the surge.",
+        "Assess whether the company has any institutional ownership or analyst coverage; flat sentiment suggests low institutional interest.",
+        "Implement pollution-defense layer in information_integrity_assessment to allow primary-signal use when T1/T2 corroboration is present."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 0 items <= cutoff; 20 items dropped post-cutoff. Adapter is wired (polygon_news) and returned 0 rows in [2025-04-14, 2025-04-21]. Structural absence is informative."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot: all fields null (revenue, net_income, operating_income, ebitda, eps, margins, cash flow, balance sheet). Status=insufficient_evidence."
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "filing_confirmation: status=not_evaluated. SEC 8-K adapter not connected; no rows available to confirm or deny a material event."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 SHFS not in ticker_to_github.csv. If SHFS is a software/tech company, this is a structural absence signal."
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: status=insufficient_evidence. T1=0, T2=0, T3=1, T4=1. Pollution-defense layer not implemented; use_as_primary_signal_allowed=false."
+        },
+        {
+          "kind": "analyst_sentiment_stale",
+          "severity": "info",
+          "detail": "fmp_sentiment: last update 2024-11-01 (5+ months before decision); 1 Buy, 0 Hold, 0 Sell."
+        },
+        {
+          "kind": "wikipedia_attention_low",
+          "severity": "info",
+          "detail": "wikipedia_pageviews: peak 14 views on 2025-03-30; 1-6 views by decision date; low-tier attention signal."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet does not include sector/industry classification for SHFS, making sector-aware reasoning difficult. The narrative_price_gap_assessment block is not_evaluated (pending agent LLM reasoning). Without the actual catalyst narrative, the PM cannot definitively assess whether the surge is momentum or value-driven. The packet structure assumes a news_event_summary or filing_confirmation will populate the catalyst; when both are absent/empty, the PM must reason from structural absence alone. This is defensible under \u00a713.6.SOFT_REASONING and the universal-soft-veto principle, but a stronger signal would require the actual catalyst claim to be present in the packet (even if disputed).",
+      "recommended_followups": [
+        "Obtain the actual catalyst narrative (press release, 8-K, or news article) that drove the surge on 2025-04-21.",
+        "Verify SHFS's business model and sector (currently unknown from packet); determine what alt-data adapters should be wired.",
+        "Check SEC EDGAR for 10-K/10-Q filings to assess whether the company is a legitimate operating entity or a shell/SPAC.",
+        "Confirm whether the 1:20 split was a reverse split; if so, assess post-split technical rebalancing vs. catalyst-driven surge.",
+        "Monitor for post-cutoff 8-K filings, press releases, or analyst upgrades that may validate or invalidate the bear thesis.",
+        "Assess institutional ownership and analyst coverage; flat sentiment suggests low institutional interest, which may support a short thesis.",
+        "If watch is maintained beyond 5 trading days without catalyst confirmation, escalate to PM for manual review or exit decision."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "watch",
+      "position_size_pct": 0.0,
+      "reason": "Surge is real (16.97x volume, +2.29% 5d return) but catalyst narrative is structurally absent (no news, no SEC filings, no corroborating alt-data). Negative fundamentals (PE=-0.63, margin=-17.36%) support bear thesis, but macro regime (strict_quality_and_valuation) disfavors low-quality shorts. Evidence is partial but preponderance favors watch: monitor for post-cutoff catalyst confirmation or invalidation. Escalate to SHORT if catalyst emerges and is validated by alt-data. Exit watch if catalyst is debunked or fundamentals improve.",
+      "risk_notes": [
+        "Candidate is surge_short; \u00a75.13(d) anti-pollution veto is inapplicable per \u00a75.17 relaxation.",
+        "No hard-veto conditions tripped per Risk Agent evaluation.",
+        "Macro regime (strict_quality_and_valuation) disfavors entry at this time; consider waiting for regime shift or stronger catalyst confirmation.",
+        "Liquidity risk on short exit due to micro-cap profile (avg_volume_20d=127k shares).",
+        "Information integrity assessment flags 'low_tier_only' evidence; pollution-defense layer unimplemented."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "equity_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Candidate is surge_short; not applicable."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires current short sleeve position data. Packet does not indicate breach; no upstream sleeve state provided to evaluate. Assumed compliant pending sleeve data."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Examined all data_quality_flags in packet. Highest severity is 'warning' (quote_after_cutoff, fundamentals_partial, alt_data_adapter_error, filing_confirmation_unavailable, news_post_cutoff_filtered, info_integrity_placeholder, sentiment_ownership_placeholder). No flag has severity='critical'."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate is surge_short. Per \u00a75.17 RELAXED 2026-05-06, \u00a75.13(d) is INAPPLICABLE to surge_short candidates. Veto does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Lookahead veto does NOT trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)-(e) evaluated mechanically",
+        "\u00a75.13(a) equity-cap breach: not applicable (quality_long only)",
+        "\u00a75.13(b) short-sleeve cap breach: no breach indicated; assumed compliant",
+        "\u00a75.13(c) critical data_quality_flags: none detected",
+        "\u00a75.13(d) anti-pollution integrity veto: inapplicable (surge_short per \u00a75.17 relaxation)",
+        "\u00a75.13(e) lookahead veto: not tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+        "Result: NO VETO CONDITIONS TRIPPED; candidate passes hard-veto gate",
+        "Upstream agent synthesis: Narrative Agent (unsupported_claim, low confidence), Alt-Data Verify (narrative_contradicted, low confidence), Surge-Short Agent (watch, medium confidence), Risk Agent (no veto, high confidence)",
+        "Preponderance-of-evidence reasoning: structural absence of catalyst narrative + negative fundamentals + momentum-driven surge pattern + macro regime disfavor = WATCH posture",
+        "Decision: WATCH (position_size_pct=0.0) pending post-cutoff catalyst confirmation or invalidation"
+      ],
+      "decision_log": [
+        "2025-04-21T09:30:00-04:00 | PM Agent initialized for SHFS surge_short candidate",
+        "2025-04-21T09:30:00-04:00 | Hard-veto gate evaluation: no veto conditions tripped (Risk Agent confirmed)",
+        "2025-04-21T09:30:00-04:00 | Upstream agent synthesis: Narrative (unsupported_claim), Alt-Data (narrative_contradicted), Surge-Short (watch), Risk (no veto)",
+        "2025-04-21T09:30:00-04:00 | Evidence assessment: surge is real (16.97x volume, +2.29% 5d return); catalyst narrative is structurally absent (0 news items, no SEC filings, no corroborating alt-data)",
+        "2025-04-21T09:30:00-04:00 | Fundamental assessment: negative earnings (PE=-0.63, net margin=-17.36%) support bear thesis; but fundamental data unavailable (all snapshot fields null)",
+        "2025-04-21T09:30:00-04:00 | Macro regime assessment: Strengthening/Expansionary with strict_quality_and_valuation discipline disfavors low-quality shorts at this time",
+        "2025-04-21T09:30:00-04:00 | Asymmetric absence rule applied: structural absence of news/filings/alt-data vs. expected evidence footprint for a listed equity surge is bear-thesis input per \u00a713.6 SOFT_REASONING",
+        "2025-04-21T09:30:00-04:00 | Preponderance-of-evidence reasoning: bear thesis is coherent (absence pattern + negative fundamentals + momentum pattern) but evidence is incomplete (no actual catalyst claim to definitively refute)",
+        "2025-04-21T09:30:00-04:00 | Decision: WATCH (position_size_pct=0.0) \u2014 do not enter short at this time; monitor for post-cutoff catalyst confirmation or invalidation",
+        "2025-04-21T09:30:00-04:00 | Escalation criteria: if post-cutoff catalyst emerges and is validated by alt-data, escalate to SHORT at 0.5% entry; if catalyst is debunked or fundamentals improve, exit watch",
+        "2025-04-21T09:30:00-04:00 | ADaS lagged history: prior day (2025-04-17) CHRO surge_short showed high confidence_dispersion (std_proxy=0.7071) with 3 dissenting agents; this suggests framework uncertainty on surge-short candidates is baseline; SHFS medium confidence is consistent with this pattern",
+        "2025-04-21T09:30:00-04:00 | Final decision: WATCH (no position); execution plan: none (T+1 next-open order_type='T+1 next-open', side='none', size_pct=0.0)"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-21T09:45:00-04:00",
+        "ticker": "SHFS",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule, 2026-05-03 universal soft-veto principle, \u00a75.17 surge-short integrity-veto exception, \u00a713.6 SOFT_REASONING, asymmetric absence rule)",
+        "agent_prompt_version": "v0.9.0_pass8_hardrule_2026_05_03_pm_agent_07b",
+        "evidence_packet_hash": "sha256:4a0399e1e0aee0cdf1938c7247df66ac7e43e21e69642aafa340bc66d09dda91"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show modest activity (peak 14 views on 2025-03-30, declining to 1 view by decision date). Not a catalyst signal; ambient attention noise.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No company claim is present in the evidence packet. The only observable facts are: (1) stock split (1:20) on 2025-03-24, (2) severe price decline (return_20d_pct=-57.52%, return_60d_pct=-70.81%), (3) elevated relative volume (16.97x 20d average), (4) minimal analyst coverage (1 Buy rating, no recent changes), (5) zero news coverage in 7-day window (polygon_news returned 0 items), (6) no SEC 8-K filing confirmation, (7) no fundamental data available. The price action is real, but the underlying catalyst is unidentified and unverified.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Catalyst narrative is structurally absent; no company claim to confirm or deny. Surge-short alpha is evidence-of-absence driven per \u00a75.17; absence of hard-to-fake evidence (news, SEC filings, operational metrics) is the pump signal that motivates the short thesis, not an evidence-insufficiency reason to block the thesis. However, evidence is PARTIAL (no actual catalyst claim present), so PM decision is WATCH (no position) pending post-cutoff catalyst confirmation or invalidation.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment is flat (1 Buy, no upgrades, no recent changes). FMP sentiment shows only analyst grades (T2, descriptor-only), no news sentiment. No sell-side research corroboration. Sentiment does not support or contradict the bear thesis.",
+      "ownership_risk_adjustment_note": "Ownership positioning data not evaluated (not_connected). Cannot assess institutional ownership, insider trading, or smart-money positioning. Flat analyst coverage suggests low institutional interest, which may support a short thesis, but this is speculative without ownership data.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "Analyst coverage minimal and stale (1 Buy rating from 2024; no recent changes). No institutional sponsorship visible. Flat sentiment suggests low institutional interest.",
+      "smart_money_benchmark_note": "No smart-money positioning data available (ownership_positioning not_evaluated). Cannot assess whether institutional buyers or short-sellers are accumulating or exiting.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "execution_timestamp": "2025-04-21T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:5e960f2d46a4fe62747183ed71489a81e8d09787032afc507c168f4ac5235ed0",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

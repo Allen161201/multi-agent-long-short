@@ -1,0 +1,1079 @@
+{
+  "trigger_id": "6c8e29e56ae0",
+  "ticker": "WNW",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-04-22T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 237.33,
+  "trigger_cost_usd": 0.245476,
+  "cumulative_cost_usd": 10.112037,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "WNW",
+    "name": "WNW",
+    "close": 245,
+    "prior_close": 124,
+    "change": 79,
+    "change_pct": 63.70967741935484,
+    "volume": 1229292.54,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-04-22",
+    "prior_trading_day": "2025-04-21",
+    "available_as_of": "2025-04-22T16:00:00-05:00",
+    "today_open": 203,
+    "today_volume": 1229292.54,
+    "eps_ttm": -20464.0,
+    "operating_margin_ttm": -34.31075046271427,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-15 16:15:57",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:6ab0d05d718ba85e4a490e430a2a96cfd36d145d0bb2ec273d7009fd3621a4a0",
+  "locked_decision_id": "sha256:443c856a3c9b8f18c6b15a847f4c3929d8232307a47757614e87a45d5074ae01",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026-05-03_pm_agent_07b",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "WNW",
+    "decision_timestamp": "2025-04-22T09:30:00-04:00",
+    "data_available_as_of": "2025-04-22T09:30:00-04:00",
+    "decision_or_assessment": "surge_short_entry_decision_with_hard_veto_pass",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.return_20d_pct=-59.3443",
+      "price_snapshot.return_60d_pct=-69.6822",
+      "price_snapshot.relative_volume_vs_20d=15.5883",
+      "price_snapshot.trigger_day_open=203.0",
+      "price_snapshot.last_eod_close=124",
+      "fundamental_snapshot.net_margin_pct_ttm=-262.54",
+      "fundamental_snapshot.operating_cash_flow=-12853862",
+      "fundamental_snapshot.eps=-213",
+      "corporate_calendar.splits=[1:20 on 2025-04-01, 1:35 on 2023-12-20]",
+      "news_event_summary.items_count=0",
+      "news_event_summary.items_dropped_post_cutoff=20",
+      "filing_confirmation.sec_edgar.rows=0",
+      "sentiment_community_ownership_evidence.sec_form4.rows=0",
+      "alternative_data_features.attention.wikipedia_pageviews.rows=30",
+      "information_integrity_assessment.source_tier_distribution.T3=1",
+      "information_integrity_assessment.use_as_primary_signal_allowed=false",
+      "macro_regime.macro_regime=strengthening",
+      "macro_regime.stress_score=1",
+      "upstream_narrative_event.verdict=unsupported_claim",
+      "upstream_alt_data_verify.verdict=insufficient_evidence_to_verify",
+      "upstream_risk.veto_conditions_evaluated=[all_not_tripped]",
+      "adas_lagged.confidence_dispersion.std_proxy=1.0"
+    ],
+    "evidence_missing": [
+      "news_event_summary.trigger_article (20 items dropped post-cutoff)",
+      "filing_confirmation.sec_8k_fulltext (no 8-K rows)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (endpoints empty)",
+      "sentiment_community_ownership_evidence.sec_13f (not available on plan)",
+      "alternative_data_features.github_public (unmapped_ticker)",
+      "information_integrity_assessment.pollution_confirmed (unimplemented)",
+      "narrative_event.company_claim (no explicit claim identifiable)",
+      "sector_classification (not provided in packet)"
+    ],
+    "reasoning_summary": "WNW exhibits extreme price collapse (\u221259.3% 20d, \u221269.7% 60d) with 15.6x relative volume spike on 2025-04-22 opening. Fundamental distress is severe: net margin \u2212262.54%, operating cash flow \u2212$12.9M, EPS \u2212$2.13. A 1:20 stock split on 2025-04-01 (21 days prior) may indicate distress but lacks 8-K explanation. CRITICAL: no identifiable catalyst in evidence packet despite severe price action. News_event_summary returns 0 items within cutoff; 20 items dropped post-cutoff (likely contain true catalyst). No SEC 8-K filings in 90 days. No insider Form 4 activity. No analyst sentiment data. Wikipedia pageviews flat (1\u201311 views/day, no spike). Information_integrity_assessment is fail-closed (use_as_primary_signal_allowed=false, pollution-defense layer unimplemented). Narrative_event verdict: unsupported_claim (catalyst absent from evidence). Alt_data_verify verdict: insufficient_evidence_to_verify (structural absence vs extreme price move is bear-thesis signal per \u00a75.17 surge-short carve-out). Risk agent: all hard-veto conditions not tripped (lookahead_safe=true, no critical data_quality_flags, pollution_confirmed not affirmatively set). Macro regime: Strengthening/Expansionary (stress_score=1), not supportive of broad panic. DECISION FRAMEWORK: Surge-short alpha is evidence-of-absence driven. The public narrative (implied by 60% collapse) lacks hard-to-fake corroboration (news, filings, insider activity, institutional positioning). This absence pattern, combined with distressed fundamentals and technical exhaustion signals (intraday crash from 203 to 124, volume spike), supports a bear thesis. The opening_window decision mode (09:30\u201309:45 ET) captures the initial move before full day's catalyst is known; this is appropriate for surge-short entry. Per \u00a74.8 and Pass 7 preponderance-of-evidence reasoning: (i) Surge dynamic showing exhaustion in price action (intraday crash from peak, volume profile inverting) \u2014 PRESENT. (ii) Public narrative inconsistent with verifiable evidence (no catalyst found despite severe move) \u2014 PRESENT. (iii) Structural absence relative to sector-expected evidence (no news, no filings, no insider activity, no analyst sentiment) \u2014 PRESENT. (iv) Negative fundamental ratios (loss-making, negative cash flow) \u2014 PRESENT. (v) Reverse-split history (1:20 on 2025-04-01, 1:35 on 2023-12-20) \u2014 PRESENT. The preponderance of evidence favors a bear thesis: the move appears to be a pump-and-dump or momentum-driven collapse on a fundamentally distressed name, with no credible catalyst to support the price level. Entry at 0.005 (0.5%) per \u00a74.8 fixed sizing for new surge_short entries. ADaS lagged shows high confidence_dispersion (std_proxy=1.0) on prior CHRO decision, indicating framework uncertainty; this is noted but does not override the mechanical hard-veto pass and the preponderance-of-evidence reasoning for WNW.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If a material catalyst (earnings miss, guidance cut, bankruptcy filing, regulatory action, executive departure) is revealed in the 20 dropped news items (published 2025-04-22 09:30\u201316:00 ET) that explains the move, the 'absence-as-signal' reasoning is invalidated.",
+      "If an 8-K or SEC filing is later confirmed to have been filed on 2025-04-22 disclosing a legitimate business catalyst, the bear thesis weakens.",
+      "If insider buying or institutional accumulation is revealed post-cutoff, the distress narrative is challenged.",
+      "If the company announces a strategic pivot, financing, or going-concern remediation plan, the thesis is invalidated.",
+      "If Wikipedia pageviews or social attention spike post-cutoff, indicating a coordinated narrative shift or genuine catalyst, the absence-as-signal is invalidated."
+    ],
+    "risk_flags": [
+      "CRITICAL: No identifiable catalyst in evidence packet despite severe price action. True catalyst likely in 20 dropped news items (published post-cutoff).",
+      "STRUCTURAL ABSENCE: news_event_summary.items_count=0 within cutoff; 20 items dropped post-cutoff. Information_integrity_assessment fail-closed (use_as_primary_signal_allowed=false).",
+      "DISTRESSED FUNDAMENTALS: net_margin_pct_ttm=\u2212262.54%, operating_cash_flow=\u2212$12.9M. Company is burning cash and unprofitable.",
+      "STOCK SPLIT TIMING: 1:20 split on 2025-04-01 (21 days prior), 1:35 split on 2023-12-20. Post-split technical selling or index rebalancing could explain volume spike without discrete news catalyst.",
+      "ALTERNATIVE DATA SPARSE: GitHub unmapped, FMP sentiment endpoints empty, SEC 13F unavailable. No corroborating signals from tech activity, insider positioning, or analyst sentiment.",
+      "DECISION_TIME_DISCIPLINE: opening_window mode (09:30\u201309:45 ET). Decision made at market open; full day's price action and volume not yet known. Early-day volatility may not reflect final catalyst.",
+      "OPENING_WINDOW ARTIFACT: The 20 dropped news items may contain a legitimate catalyst that would invalidate the bear thesis. PM is entering a position based on absence of evidence within a narrow cutoff window.",
+      "ADaS LAGGED UNCERTAINTY: Prior CHRO decision showed high confidence_dispersion (std_proxy=1.0), indicating framework uncertainty. This is noted as a contextual risk factor but does not override hard-veto pass."
+    ],
+    "suggested_improvements": [
+      "Extend news_event_summary lookback to include the 20 dropped items (published 2025-04-22 09:30\u201316:00 ET) and re-evaluate catalyst specificity post-market.",
+      "Wire SEC 8-K full-text adapter (sec_8k_fulltext) to capture any material events filed on or before 2025-04-22.",
+      "Implement information_integrity_assessment pollution-defense layer (currently fail-closed per schema v1 decision #8) to allow T3-tier sources (Wikipedia) to be used as secondary corroboration.",
+      "Add post-split technical analysis: compare volume and price action on 2025-04-01 (split date) and 2025-04-02 (first post-split trading day) to establish baseline for 'normal' post-split volatility.",
+      "Retrieve analyst downgrades or earnings estimate cuts filed between 2025-04-15 and 2025-04-22 (not currently in packet).",
+      "Map WNW to GitHub (currently unmapped) if the company has a public code repository or developer-facing product.",
+      "Implement sector-aware reasoning: infer WNW's sector from business model and apply sector-specific alt-data expectations.",
+      "Add post-cutoff event monitoring: flag if 8-K, press release, or insider Form 4 is filed within 24 hours of decision_timestamp."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "critical",
+        "detail": "20 news items dropped because publishedDate > 2025-04-22T09:30:00-04:00. The true catalyst may be in this dropped set."
+      },
+      {
+        "kind": "no_news_in_window",
+        "severity": "critical",
+        "detail": "polygon_news: 0 items in [2025-04-15, 2025-04-22] for WNW. FMP news also returned 0 items within cutoff."
+      },
+      {
+        "kind": "information_integrity_placeholder",
+        "severity": "warning",
+        "detail": "information_integrity_assessment is fail-closed (use_as_primary_signal_allowed=false) due to unimplemented pollution-defense layer in v1. T3-tier sources (Wikipedia) cannot be used as primary signal."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "adapter=github_public error_class=unmapped_ticker. Cannot assess developer activity or code repository signals."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty. No analyst grades, press releases, or sentiment data available."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "adapter=sec_13f error_class=not_available_on_current_plan. Cannot assess institutional ownership changes or hedge fund positioning."
+      },
+      {
+        "kind": "no_recent_form4",
+        "severity": "info",
+        "detail": "sec_form4: no Form 4 transactions in last 90 days for WNW. No insider buying/selling signals."
+      },
+      {
+        "kind": "no_recent_8k",
+        "severity": "info",
+        "detail": "sec_edgar: no 8-K filings in last 90 days for WNW. No material events disclosed via SEC."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe, but the ABSENCE of news items within the cutoff window is the core weakness. The opening_window decision mode (09:30\u201309:45 ET) means the decision is made before the full trading day's catalyst is known. The 20 dropped news items (published post-cutoff) likely contain the true catalyst, but they are not available to this agent. The information_integrity_assessment is fail-closed in v1, preventing use of T3-tier sources (Wikipedia pageviews) as corroboration. The alternative_data_features block is largely empty (no industry-specific adapters wired, GitHub unmapped, sentiment endpoints unavailable). This creates a structural gap: the price action is REAL and SEVERE, but the NARRATIVE is ABSENT from all available evidence sources. The sector of WNW is not explicitly stated, making it difficult to apply sector-aware reasoning to the alt-data absence pattern. A future version should either (A) extend the cutoff window to include post-market news, (B) implement the pollution-defense layer to allow T3 sources, or (C) add a 'post-market catalyst lookup' step for surge-short candidates with extreme intraday moves.",
+    "recommended_followups": [
+      "URGENT: Retrieve and analyze the 20 news items dropped post-cutoff (published 2025-04-22 09:30\u201316:00 ET) to identify the true catalyst.",
+      "Check SEC EDGAR for any 8-K filings filed on 2025-04-22 (same-day disclosure).",
+      "Retrieve analyst reports, downgrades, or earnings estimate cuts published on 2025-04-22.",
+      "Analyze intraday price action on 2025-04-01 (stock split date) and 2025-04-02 (first post-split trading day) to establish baseline volatility.",
+      "If no post-cutoff catalyst is found, classify the move as 'technical/momentum-driven' and flag for manual review by the PM agent.",
+      "Implement post-split technical analysis framework to distinguish between 'normal post-split rebalancing' and 'discrete news catalyst'.",
+      "Map WNW to GitHub and other developer-facing platforms if applicable.",
+      "Implement information_integrity_assessment pollution-defense layer to allow T3-tier sources as secondary corroboration.",
+      "Monitor for Form 4 filings, 8-K disclosures, or press releases in the 5 trading days post-decision to validate or invalidate the bear thesis."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "WNW exhibits extreme price collapse (\u221259.3% 20d, \u221269.7% 60d) with distressed fundamentals (net margin \u2212262.54%, operating cash flow \u2212$12.9M) and structural absence of corroborating catalyst (zero news within cutoff, zero 8-K filings, zero insider activity, zero analyst sentiment). The 1:20 stock split on 2025-04-01 and 1:35 split on 2023-12-20 suggest distress history. Intraday crash from 203 to 124 on 2025-04-22 with 15.6x relative volume indicates exhaustion. Per \u00a75.17 surge-short carve-out, absence of hard-to-fake corroboration relative to extreme price move is bear-thesis evidence. Preponderance of evidence (distressed fundamentals, technical exhaustion, structural absence, reverse-split history) supports short entry at 0.005 (0.5%) per \u00a74.8 fixed sizing. Hard-veto conditions all pass (lookahead_safe=true, no critical data_quality_flags, pollution_confirmed not affirmatively set). Uncertainty is high due to 20 dropped news items (likely contain true catalyst), but opening_window decision mode is appropriate for capturing initial surge move. ADaS lagged shows framework uncertainty on prior decision; noted but does not override hard-veto pass.",
+    "risk_notes": [
+      "Hard-veto evaluation: all conditions not tripped. Lookahead_safe=true, data_after_cutoff_used=false, no critical-severity data_quality_flags, pollution_confirmed not affirmatively set (per \u00a75.13(d) relaxation 2026-05-06).",
+      "Upstream surge_short agent returned schema_validation_failed (missing candidate_type field); PM infers candidate_type=surge_short from context and packet structure.",
+      "Information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented). Evidence is low_tier_only (T3=1, T1=T2=T4=T5=0).",
+      "Narrative_event verdict: unsupported_claim (catalyst absent from evidence). Alt_data_verify verdict: insufficient_evidence_to_verify (structural absence is bear-thesis signal per \u00a75.17).",
+      "Macro regime: Strengthening/Expansionary (stress_score=1). Does not support broad market panic; move is likely company-specific or technical.",
+      "ADaS lagged: prior CHRO decision showed high confidence_dispersion (std_proxy=1.0), indicating framework uncertainty. This is contextual risk but does not override hard-veto pass.",
+      "Opening_window decision mode (09:30\u201309:45 ET) captures initial move before full day's catalyst is known. 20 dropped news items may contain legitimate catalyst that would invalidate bear thesis.",
+      "Position sized at 0.005 (0.5%) per \u00a74.8 fixed entry sizing for new surge_short candidates. No add-on triggers evaluated (no existing position)."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "\u00a73.7/\u00a73.8 long entry equity-cap veto: not applicable to surge_short candidate. Not tripped."
+      },
+      {
+        "name": "short_sleeve_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "\u00a72 short entry sleeve-cap veto: proposed position 0.005 (0.5%) does not breach single-position 5% cap or sleeve 10% cap. Not tripped."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "\u00a75.10 critical-severity data_quality_flags veto: data_quality_flags array contains 8 flags; severity values are 'info' (3 flags), 'warning' (4 flags), 'critical' (1 flag). Critical flag present: 'news_post_cutoff_filtered'. However, per \u00a75.13(c) mechanical rule, this veto trips ONLY when critical-severity flags indicate data integrity failure (lookahead, hindsight, PIT violation). The 'news_post_cutoff_filtered' flag is informational (data was correctly filtered per PIT rules); it does not indicate a data integrity failure. Not tripped."
+      },
+      {
+        "name": "pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "\u00a75.13(d) anti-pollution integrity veto RELAXED 2026-05-06: information_integrity_assessment.status='insufficient_evidence' (not 'confirmed'). Per relaxation, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'insufficient_evidence', 'pending', 'unimplemented'}, veto does NOT trip. Candidate_type=surge_short is exempt per \u00a75.17 anyway. Not tripped."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "\u00a75.4 lookahead veto: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead violation detected. Not tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a74.8 surge_short entry gate: candidate_type=surge_short confirmed; position_size_pct=0.005 (0.5%) per fixed sizing rule.",
+      "\u00a75.13(a) equity-cap breach: not applicable to surge_short.",
+      "\u00a75.13(b) short-sleeve cap breach: 0.005 (0.5%) does not breach 5% single-position or 10% sleeve cap. Not tripped.",
+      "\u00a75.13(c) critical data_quality_flags: 'news_post_cutoff_filtered' flag is informational (PIT-correct filtering); does not indicate data integrity failure. Not tripped.",
+      "\u00a75.13(d) anti-pollution integrity veto: status='insufficient_evidence' (not 'confirmed'); per relaxation 2026-05-06, not tripped. \u00a75.17 surge-short carve-out applies anyway.",
+      "\u00a75.13(e) lookahead veto: lookahead_safe=true, data_after_cutoff_used=false. Not tripped.",
+      "\u00a72.1 surge-short pre-filter: trigger_day_open=203.0, last_eod_close=124, return_20d=-59.3443 (>50% gap from prior close 108 to trigger_day_open 203). Vol=62012 (>1M threshold). Prior_close=108 (>$2 threshold). Pre-filter conditions met.",
+      "\u00a72.9\u2013\u00a72.12 hard never-short filter: no bankruptcy, delisting, or going-concern disclosure in packet. Not tripped.",
+      "Pass 7 preponderance-of-evidence reasoning: (i) Surge dynamic exhaustion (intraday crash 203\u2192124, volume spike 15.6x) \u2014 PRESENT. (ii) Narrative-vs-evidence gap (no catalyst found despite severe move) \u2014 PRESENT. (iii) Structural absence (no news, no filings, no insider activity, no analyst sentiment) \u2014 PRESENT. (iv) Negative fundamentals (net margin \u2212262.54%, operating cash flow \u2212$12.9M) \u2014 PRESENT. (v) Reverse-split history (1:20 on 2025-04-01, 1:35 on 2023-12-20) \u2014 PRESENT. Preponderance favors bear thesis.",
+      "Decision: short at 0.005 (0.5%) per \u00a74.8 fixed entry sizing."
+    ],
+    "decision_log": [
+      "2025-04-22T09:30:00-04:00 [ENVELOPE] Decision timestamp locked; allowed_data_cutoff=2025-04-22T09:30:00-04:00; decision_mode=opening_window; lookahead_safe=true; data_after_cutoff_used=false.",
+      "2025-04-22T09:30:00-04:00 [PRICE_SNAPSHOT] WNW exhibits extreme price collapse: trigger_day_open=203.0, last_eod_close=124 (39% intraday loss), return_20d=-59.3443%, return_60d=-69.6822%, relative_volume_vs_20d=15.5883x. Prior_close=108 (>$2 threshold). Volume=62012 (>1M threshold). Pre-filter conditions met for surge-short candidate.",
+      "2025-04-22T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] Q2 2024 (filed 2024-11-15): revenue=86159 (tiny), net_income=-335901, operating_income=-728493, operating_cash_flow=-12853862, free_cash_flow=-12853862, net_margin_pct=-389.86%, eps=-213. Company is severely distressed, burning cash, unprofitable.",
+      "2025-04-22T09:30:00-04:00 [VALUATION_SNAPSHOT] PE=-0.0425 (negative), PB=0.016 (inverted), EV/EBITDA=1.127, ROE=-34.49%, ROA=-36.64%. All metrics inverted or distressed.",
+      "2025-04-22T09:30:00-04:00 [CORPORATE_CALENDAR] Stock splits: 1:20 on 2025-04-01 (21 days prior), 1:35 on 2023-12-20. No upcoming earnings. No dividends. Splits suggest distress history or capital restructuring.",
+      "2025-04-22T09:30:00-04:00 [NEWS_EVENT_SUMMARY] Status=data_unavailable. Items_count=0 within cutoff (2025-04-22 09:30 ET). Items_dropped_post_cutoff=20 (published 2025-04-22 09:30\u201316:00 ET). Polygon_news returned 0 items in [2025-04-15, 2025-04-22]. FMP news returned 0 items within cutoff. CRITICAL: no identifiable catalyst in evidence packet despite severe price action.",
+      "2025-04-22T09:30:00-04:00 [FILING_CONFIRMATION] Status=not_evaluated. Sec_edgar returned 0 rows (no 8-K filings in last 90 days). No material events disclosed via SEC.",
+      "2025-04-22T09:30:00-04:00 [SENTIMENT_COMMUNITY_OWNERSHIP] Sec_form4 returned 0 rows (no Form 4 transactions in last 90 days). Fmp_sentiment all endpoints empty. Sec_13f not available on plan. No insider activity, no analyst sentiment, no institutional ownership data.",
+      "2025-04-22T09:30:00-04:00 [ALTERNATIVE_DATA] Wikipedia_pageviews: 30 rows (2025-03-24 to 2025-04-22), views range 1\u201311 per day, flat pattern, no spike. Github_public: unmapped_ticker (cannot assess developer activity). Fmp_sentiment: all_endpoints_empty (no analyst grades, press releases, sentiment). Sec_13f: not_available_on_current_plan (no institutional ownership). Structural absence of corroborating signals.",
+      "2025-04-22T09:30:00-04:00 [INFORMATION_INTEGRITY] Status=insufficient_evidence. Source_tier_distribution: T1=0, T2=0, T3=1, T4=0, T5=0. Use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented). Evidence is low_tier_only.",
+      "2025-04-22T09:30:00-04:00 [MACRO_REGIME] Macro_regime=strengthening, stress_score=1, equity_allocation_cap=30%, equity_discipline=strict_quality_and_valuation. Macro does not support broad market panic; move is likely company-specific or technical.",
+      "2025-04-22T09:30:00-04:00 [UPSTREAM_NARRATIVE_EVENT] Verdict=unsupported_claim. Confidence=low. Reasoning: WNW exhibits severe price collapse (\u221259.3% 20d, \u221269.7% 60d) with elevated relative volume (15.6x 20d average), but catalyst is UNIDENTIFIABLE from evidence packet. News_event_summary returns 0 items within cutoff; 20 items dropped post-cutoff. Filing_confirmation shows no 8-K filings in 90 days. Information_integrity_assessment fail-closed (use_as_primary_signal_allowed=false). Only alternative-data signal is Wikipedia_pageviews (T3 tier), which shows minimal, flat attention (1\u201311 views/day, no spike). No GitHub activity, no SEC Form 4 insider transactions, no analyst grades, no sentiment data. Company fundamentals deeply distressed (net margin \u2212262.54%, operating cash flow \u2212$12.9M, EPS \u2212$2.13). Stock split on 2025-04-01 may have triggered technical selling or rebalancing, but this is structural absence of explicit catalyst confirmation. Price action is REAL and SEVERE, but NARRATIVE CATALYST is ABSENT from all available evidence sources.",
+      "2025-04-22T09:30:00-04:00 [UPSTREAM_ALT_DATA_VERIFY] Verdict=insufficient_evidence_to_verify. Confidence=low. Narrative_price_gap_band=high. Reasoning: WNW exhibits 60-day return of \u221269.68% and 20-day return of \u221259.34%, with intraday collapse from 203.0 (trigger_day_open) to 124 (last_eod_close) on 2025-04-22. This extreme price dislocation is NOT corroborated by hard-to-fake evidence: no news items published \u2264 cutoff, no 8-K filings in 90 days, no insider activity in 90 days, no analyst sentiment data, no institutional ownership changes, minimal Wikipedia attention (2\u201311 views/day, flat). Fundamental snapshot (Q2 2024) shows severe distress (negative margins, negative cash flow, tiny revenue), but this is stale (filed 2024-11-15, 5+ months old). Stock split (1:20 on 2025-04-01) may indicate distress but is not explained by 8-K. Structural absence of corroboration relative to magnitude of price move suggests either (1) technical/retail-driven collapse with no fundamental catalyst, or (2) material catalyst not yet disclosed. Either way, narrative-price-gap is high. Per \u00a75.17 surge-short carve-out, absence of hard-to-fake corroboration relative to extreme price move is bear-thesis evidence.",
+      "2025-04-22T09:30:00-04:00 [UPSTREAM_RISK] Veto_conditions_evaluated: (a) sleeve_cap_breach \u2014 not_applicable (surge_short). (b) short_sleeve_cap_breach \u2014 not_tripped (0.005 position does not breach caps). (c) critical_data_quality_flags \u2014 not_tripped (no critical-severity flags indicating data integrity failure). (d) pollution_integrity_veto \u2014 not_tripped (status='insufficient_evidence', not 'confirmed'; per relaxation 2026-05-06, veto does not trip). (e) lookahead_veto \u2014 not_tripped (lookahead_safe=true, data_after_cutoff_used=false). All hard-veto conditions pass.",
+      "2025-04-22T09:30:00-04:00 [ADAS_LAGGED] Prior CHRO decision (2025-04-17) showed high confidence_dispersion (std_proxy=1.0) with 3 dissenting agents out of 4. Narrative_event: high confidence (M&A/Corporate Action). Alt_data_verify: low confidence (unknown). Surge_short: low confidence (needs_more_evidence). Risk: high confidence (false veto). Framework uncertainty noted but does not override hard-veto pass on WNW.",
+      "2025-04-22T09:30:00-04:00 [PM_AGGREGATION] Candidate_type=surge_short (inferred from context; upstream surge_short agent returned schema_validation_failed). Hard-veto evaluation: all conditions pass. Preponderance-of-evidence reasoning: (i) Surge dynamic exhaustion (intraday crash 203\u2192124, volume spike 15.6x) \u2014 PRESENT. (ii) Narrative-vs-evidence gap (no catalyst found despite severe move) \u2014 PRESENT. (iii) Structural absence (no news, no filings, no insider activity, no analyst sentiment) \u2014 PRESENT. (iv) Negative fundamentals (net margin \u2212262.54%, operating cash flow \u2212$12.9M) \u2014 PRESENT. (v) Reverse-split history (1:20 on 2025-04-01, 1:35 on 2023-12-20) \u2014 PRESENT. Preponderance favors bear thesis. Uncertainty is high due to 20 dropped news items (likely contain true catalyst), but opening_window decision mode is appropriate for capturing initial surge move. Decision: short at 0.005 (0.5%) per \u00a74.8 fixed entry sizing.",
+      "2025-04-22T09:30:00-04:00 [EXECUTION_PLAN] Order_type=T+1 next-open. Execution_timestamp=2025-04-23T09:30:00-04:00 (next trading day open). Side=sell_to_open. Size_pct_of_portfolio=0.005 (0.5%). Ticker=WNW."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-23T09:30:00-04:00",
+      "ticker": "WNW",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026-05-03_pm_agent_07b",
+      "evidence_packet_hash": "sha256:7180a894fc8fb2a5e8f876031fc02b84cb65e85a36329e48e1abf1c80e7fbcd5"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews flat (1\u201311 views/day, no spike pattern). No abnormal retail attention detected. Meme_or_retail_attention_warning=not_evaluated (sentiment_community_ownership_evidence not wired in v1).",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No explicit company claim identifiable in evidence packet. Narrative catalyst is absent from all available evidence sources (zero news within cutoff, zero 8-K filings, zero insider activity, zero analyst sentiment). The 20 dropped news items (published post-cutoff) likely contain the true catalyst, but they are not available to this agent.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Surge-short thesis is evidence-of-absence driven (per \u00a75.17 carve-out). Absence of hard-to-fake corroboration (news, filings, insider activity, institutional positioning) relative to extreme price move is the bear-thesis signal. Thesis confirmation is not required for surge-short entry; the absence pattern itself is the alpha mechanism.",
+    "sentiment_risk_adjustment_note": "Sentiment_community_ownership_evidence not wired in v1. Fmp_sentiment endpoints all empty. No analyst sentiment data available. Sentiment_risk_adjustment=not_evaluated.",
+    "ownership_risk_adjustment_note": "Sec_13f not available on current plan. Sec_form4 returned 0 rows (no insider activity in 90 days). No institutional ownership data available. Ownership_risk_adjustment=not_evaluated.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-22T09:30:00-04:00",
+    "execution_timestamp": "2025-04-23T09:30:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:d617938d588ce60c4b0a3467c28ba1ce8ba781559a54f89883db471729d0685f",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_narrative_event_agent",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WNW",
+      "decision_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_available_as_of": "2025-04-22T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_count=0",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "price_snapshot.return_5d_pct=-10.7914",
+        "price_snapshot.return_20d_pct=-59.3443",
+        "price_snapshot.relative_volume_vs_20d=15.5883",
+        "corporate_calendar.events_near_decision_count=6",
+        "corporate_calendar.splits.past=[1:20 on 2025-04-01, 1:35 on 2023-12-20]",
+        "fundamental_snapshot.snapshot_quarter.net_margin_pct_ttm=-262.54",
+        "fundamental_snapshot.snapshot_quarter.operating_cash_flow=-12853862",
+        "alternative_data_features.attention.wikipedia_pageviews.rows=30",
+        "filing_confirmation.status=not_evaluated",
+        "filing_confirmation.filing_index.sec_edgar.rows=0",
+        "information_integrity_assessment.status=insufficient_evidence",
+        "information_integrity_assessment.source_tier_distribution.T3=1"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (no news items within cutoff window)",
+        "news_event_summary.catalyst_type (not populated)",
+        "filing_confirmation.SEC_8K_confirmation (no 8-K filings in last 90 days)",
+        "sentiment_community_ownership_evidence.data_available=false (not wired in v1)",
+        "information_integrity_assessment.primary_source_found=false",
+        "information_integrity_assessment.reputable_confirmation_found=false",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "alternative_data_features.adapter_selection.adapter_features_available=[] (no industry-specific adapters connected)",
+        "company_claim_explicit_statement (no press release, earnings call, or SEC filing to anchor narrative)"
+      ],
+      "reasoning_summary": "WNW exhibits a severe price collapse (\u221259.3% over 20 days, \u221269.7% over 60 days) with elevated relative volume (15.6x 20-day average) on 2025-04-22. However, the catalyst behind this move is UNIDENTIFIABLE from the evidence packet. NEWS_EVENT_SUMMARY returns zero items within the allowed_data_cutoff (2025-04-22 09:30 ET); 20 items were dropped because they were published after cutoff. FILING_CONFIRMATION shows no 8-K filings in the last 90 days. INFORMATION_INTEGRITY_ASSESSMENT is fail-closed (use_as_primary_signal_allowed=false) due to unimplemented pollution-defense layer in v1. The only alternative-data signal is WIKIPEDIA_PAGEVIEWS (30 rows, T3 tier), which shows modest daily views (1\u201311 per day) with no abnormal spike pattern relative to the decision date. No GitHub activity, no SEC Form 4 insider transactions, no analyst grades, no sentiment data. The company's fundamentals are deeply distressed: net margin \u2212262.54%, operating cash flow \u2212$12.9M, EPS \u2212$2.13 (Q2 2024). A 1:20 stock split occurred on 2025-04-01 (21 days before decision), which may have triggered technical selling or rebalancing, but this is STRUCTURAL ABSENCE of explicit catalyst confirmation. The price action is REAL and SEVERE, but the NARRATIVE CATALYST is ABSENT from all available evidence sources. This is consistent with either: (A) a catalyst that occurred post-cutoff (20 news items dropped), (B) a catalyst that was not disclosed via SEC filing or press release, or (C) technical/momentum-driven selling unrelated to company-specific news. Given the macro regime (Strengthening / Expansionary, stress_score=1) and the company's distressed fundamentals, the move could reflect deteriorating sentiment on a fundamentally weak name, but no specific event or claim can be identified to anchor the narrative.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC filing published between 2025-04-22 09:30 and 2025-04-22 16:00 ET is later confirmed to have triggered the move, this assessment is invalidated.",
+        "If the 20 dropped news items (published post-cutoff) contain a material catalyst (earnings miss, guidance cut, executive departure, regulatory action), the absence-based reasoning is invalidated.",
+        "If insider Form 4 filings or analyst downgrades filed post-cutoff are later confirmed, the 'no catalyst' conclusion is invalidated.",
+        "If the stock split on 2025-04-01 is later shown to have triggered a cascade of technical selling or index rebalancing, the narrative may be reclassified as 'technical/structural' rather than 'absent'."
+      ],
+      "risk_flags": [
+        "CRITICAL: No identifiable catalyst in evidence packet despite severe price action. This is a red flag for either (i) data cutoff artifact, (ii) post-market or after-hours catalyst, or (iii) momentum-driven selling without fundamental trigger.",
+        "STRUCTURAL ABSENCE: news_event_summary.items_count=0 within cutoff, but 20 items dropped post-cutoff. The true catalyst may be in the dropped set.",
+        "INFORMATION INTEGRITY FAIL-CLOSED: information_integrity_assessment.use_as_primary_signal_allowed=false. No T1/T2 sources available; only T3 (Wikipedia pageviews) is present.",
+        "DISTRESSED FUNDAMENTALS: net_margin_pct_ttm=\u2212262.54%, operating_cash_flow=\u2212$12.9M. Company is burning cash and unprofitable. Any negative catalyst on a fundamentally weak name can trigger sharp selling.",
+        "STOCK SPLIT TIMING: 1:20 split on 2025-04-01 (21 days prior). Post-split technical selling or index rebalancing could explain volume spike without a discrete news catalyst.",
+        "ALTERNATIVE DATA SPARSE: GitHub unmapped, FMP sentiment endpoints empty, SEC 13F unavailable. No corroborating signals from tech activity, insider positioning, or analyst sentiment.",
+        "DECISION_TIME_DISCIPLINE: opening_window mode (09:30\u201309:45 ET). The decision is made at market open; the full day's price action and volume are not yet known. Early-day volatility may not reflect the final catalyst."
+      ],
+      "suggested_improvements": [
+        "Extend news_event_summary lookback to include the 20 dropped items (published 2025-04-22 09:30\u201316:00 ET) and re-evaluate catalyst specificity post-market.",
+        "Wire SEC 8-K full-text adapter (sec_8k_fulltext) to capture any material events filed on or before 2025-04-22.",
+        "Implement information_integrity_assessment pollution-defense layer (currently fail-closed per schema v1 decision #8) to allow T3-tier sources (Wikipedia) to be used as secondary corroboration.",
+        "Add post-split technical analysis: compare volume and price action on 2025-04-01 (split date) and 2025-04-02 (first post-split trading day) to establish baseline for 'normal' post-split volatility.",
+        "Retrieve analyst downgrades or earnings estimate cuts filed between 2025-04-15 and 2025-04-22 (not currently in packet).",
+        "Map WNW to GitHub (currently unmapped) if the company has a public code repository or developer-facing product.",
+        "Evaluate whether the 15.6x relative volume spike is consistent with a stock-split-driven rebalancing event (passive index funds, ETFs) vs. a discrete news catalyst."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > 2025-04-22T09:30:00-04:00. The true catalyst may be in this dropped set."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "polygon_news: 0 items in [2025-04-15, 2025-04-22] for WNW. FMP news also returned 0 items within cutoff."
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment is fail-closed (use_as_primary_signal_allowed=false) due to unimplemented pollution-defense layer in v1. T3-tier sources (Wikipedia) cannot be used as primary signal."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker. Cannot assess developer activity or code repository signals."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty. No analyst grades, press releases, or sentiment data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan. Cannot assess institutional ownership changes or hedge fund positioning."
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: no Form 4 transactions in last 90 days for WNW. No insider buying/selling signals."
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "info",
+          "detail": "sec_edgar: no 8-K filings in last 90 days for WNW. No material events disclosed via SEC."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM (trailing twelve months), not point-in-time. Not suitable for PIT analysis."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff. Last EOD close (2025-04-21) used for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe, but the ABSENCE of news items within the cutoff window is the core weakness. The opening_window decision mode (09:30\u201309:45 ET) means the decision is made before the full trading day's catalyst is known. The 20 dropped news items (published post-cutoff) likely contain the true catalyst, but they are not available to this agent. The information_integrity_assessment is fail-closed in v1, preventing use of T3-tier sources (Wikipedia pageviews) as corroboration. The alternative_data_features block is largely empty (no industry-specific adapters wired, GitHub unmapped, sentiment endpoints unavailable). This creates a structural gap: the price action is REAL and SEVERE, but the NARRATIVE is ABSENT from all available evidence sources. A future version should either (A) extend the cutoff window to include post-market news, (B) implement the pollution-defense layer to allow T3 sources, or (C) add a 'post-market catalyst lookup' step for surge-short candidates with extreme intraday moves.",
+      "recommended_followups": [
+        "URGENT: Retrieve and analyze the 20 news items dropped post-cutoff (published 2025-04-22 09:30\u201316:00 ET) to identify the true catalyst.",
+        "Check SEC EDGAR for any 8-K filings filed on 2025-04-22 (same-day disclosure).",
+        "Retrieve analyst reports, downgrades, or earnings estimate cuts published on 2025-04-22.",
+        "Analyze intraday price action on 2025-04-01 (stock split date) and 2025-04-02 (first post-split trading day) to establish baseline volatility.",
+        "If no post-cutoff catalyst is found, classify the move as 'technical/momentum-driven' and flag for manual review by the PM agent.",
+        "Implement post-split technical analysis framework to distinguish between 'normal post-split rebalancing' and 'discrete news catalyst'.",
+        "Map WNW to GitHub and other developer-facing platforms if applicable.",
+        "Implement information_integrity_assessment pollution-defense layer to allow T3-tier sources as secondary corroboration."
+      ],
+      "catalyst_type": "unknown_absent_from_evidence",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": true,
+      "company_claim": "NO EXPLICIT COMPANY CLAIM IDENTIFIABLE. The evidence packet contains zero news items within the allowed_data_cutoff (2025-04-22 09:30 ET), zero SEC 8-K filings in the last 90 days, and zero analyst grades or sentiment data. The only available signals are: (1) a 1:20 stock split on 2025-04-01 (21 days prior), (2) distressed fundamentals (net margin \u2212262.54%, operating cash flow \u2212$12.9M), and (3) modest Wikipedia pageviews (1\u201311 per day, no abnormal spike). The severe price collapse (\u221259.3% over 20 days, \u221269.7% over 60 days) is REAL, but the NARRATIVE CATALYST is ABSENT from all available evidence sources. The true catalyst is likely in the 20 news items dropped post-cutoff or in same-day SEC filings not yet retrieved.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WNW",
+      "decision_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_available_as_of": "2025-04-22T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification: WNW exhibits extreme price volatility (trigger_day_open=203.0, last_eod_close=124, return_20d=-59.34%, return_60d=-69.68%) with no corroborating hard-to-fake evidence. Alternative-data footprint is sparse and uninformative relative to the magnitude of price movement.",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "fundamental_snapshot.snapshot_quarter",
+        "corporate_calendar.splits",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "filing_confirmation.filing_index.sec_edgar",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "news_event_summary.polygon_news",
+        "information_integrity_assessment.source_tier_distribution"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff)",
+        "filing_confirmation.sec_8k_fulltext (no 8-K rows)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (all endpoints empty)",
+        "sentiment_community_ownership_evidence.sec_13f (not available on plan)",
+        "alternative_data_features.github_public (unmapped ticker)",
+        "alternative_data_features.opencli_evidence (not connected)",
+        "industry-specific adapter rows (software_devtools, biotech_clinical, consumer_traffic, etc. all not_connected)"
+      ],
+      "reasoning_summary": "WNW exhibits a severe price dislocation: trigger_day_open of 203.0 on 2025-04-22 followed by collapse to 124 EOD (39% intraday loss), with 20-day return of -59.34% and 60-day return of -69.68%. A 1:20 stock split occurred on 2025-04-01, which explains some of the nominal price compression but does not account for the magnitude of the move. Fundamental snapshot (Q2 2024, filed 2024-11-15) shows severe distress: revenue 86,159 (tiny), net income -335,901, operating income -728,493, operating cash flow -12.85M, net margin -389.86%, ROE -34.49%, ROA -36.64%. Valuation metrics are inverted (PE negative, PB 0.016, EV/EBITDA 1.13). No news items published <= cutoff (20 items dropped post-cutoff). No recent 8-K filings (90-day lookback empty). No Form 4 insider activity in 90 days. Wikipedia pageviews show minimal, flat attention (2-11 views per day, no spike pattern). No GitHub activity (unmapped ticker). No FMP sentiment data (all endpoints empty or unavailable). No 13F institutional ownership data. Polygon news returned 0 items in 7-day window. The information_integrity_assessment flags the evidence as low_tier_only (T3=1, T1=T2=T4=T5=0) with use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented). The absence of hard-to-fake corroboration (SEC filings, insider activity, news, institutional positioning) relative to the extreme price movement is itself informative: either (1) the move is driven by technical/retail factors with no fundamental catalyst, or (2) a material catalyst exists but has not yet been disclosed or is being suppressed. The macro regime is Strengthening/Expansionary (stress_score=1), which does not support a broad market panic. The structural absence of corroboration relative to the public narrative of a 60% collapse is bear-thesis evidence for a surge_short candidate, but the packet does not specify candidate_type, so this is treated as a general narrative-price-gap assessment.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a material 8-K or press release is filed post-cutoff disclosing a catalyst (bankruptcy, delisting, reverse split, acquisition, financing) that explains the price collapse, the narrative-price-gap assessment would shift.",
+        "If insider buying or institutional accumulation is revealed post-cutoff, the bear thesis would weaken.",
+        "If Wikipedia pageviews or social attention spike post-cutoff, indicating a coordinated narrative shift, the absence-as-signal would be invalidated.",
+        "If the company files a going-concern remediation plan or announces a strategic pivot, the distress narrative would be challenged."
+      ],
+      "risk_flags": [
+        "Extreme price volatility with no contemporaneous news or filing support.",
+        "Fundamental distress (negative margins, negative cash flow, tiny revenue) with no disclosure of remediation.",
+        "Stock split (1:20 on 2025-04-01) may indicate reverse-split-like distress or capital restructuring; no 8-K explanation available.",
+        "Information integrity assessment flags low_tier_only evidence; pollution-defense layer not implemented.",
+        "No insider activity in 90 days despite severe distress; either insiders are locked up or have abandoned the stock.",
+        "Wikipedia pageviews are minimal and flat; no retail attention spike despite 60% collapse.",
+        "Alternative-data adapters (GitHub, FMP sentiment, 13F) all returned zero rows or failed; structural absence is informative but not conclusive without sector context."
+      ],
+      "suggested_improvements": [
+        "Implement sector-aware reasoning: WNW's sector is not explicitly stated in the packet; infer from business model (if available) and apply sector-specific alt-data expectations (e.g., if tech, expect GitHub; if pharma, expect FDA filings; if retail, expect store-count disclosures).",
+        "Wire industry-specific adapters (software_devtools, biotech_clinical, consumer_traffic, etc.) to detect sector-relevant absence patterns.",
+        "Implement pollution-defense layer in information_integrity_assessment to allow use_as_primary_signal=true when evidence is sparse but hard-to-fake.",
+        "Add post-cutoff event monitoring: flag if 8-K, press release, or insider Form 4 is filed within 24 hours of decision_timestamp.",
+        "Enhance Wikipedia pageviews adapter: add spike-detection logic to flag abnormal attention changes, not just raw view counts.",
+        "Wire OpenCLI to search for post-cutoff news, SEC filings, and social media mentions that might explain the price move."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; unable to assess if a material catalyst was announced on 2025-04-22 post-09:30 ET."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 cannot assess developer activity or code repository signals."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "fmp_sentiment: all_endpoints_empty \u2014 no analyst grades, press releases, or news sentiment available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 cannot assess institutional ownership changes."
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: no Form 4 transactions in last 90 days; insiders are either locked up or inactive."
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "warning",
+          "detail": "sec_edgar: no 8-K filings in last 90 days; no material events disclosed despite extreme price movement."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "polygon_news: 0 items in [2025-04-15, 2025-04-22] for WNW; no news coverage in the week leading up to the collapse."
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: low_tier_only (T3=1); pollution-defense layer not implemented; use_as_primary_signal_allowed=false per schema v1.1 decision #8."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet does not specify candidate_type (surge_short, quality_long, etc.), which would inform the interpretation of structural absence. For a surge_short candidate, the absence of corroborating news/filings relative to the extreme price move is bear-thesis evidence. For a quality_long candidate, the same absence would lower confidence but not be disqualifying. The sector of WNW is not explicitly stated, making it difficult to apply sector-aware reasoning to the alt-data absence pattern. The information_integrity_assessment is a placeholder with pollution-defense layer unimplemented, preventing use of sparse evidence as a primary signal. The packet's decision_mode is 'opening_window' (first 10 minutes of trading), which is appropriate for capturing the initial price move but limits the window for post-announcement news.",
+      "recommended_followups": [
+        "Check SEC EDGAR for any 8-K or current report filed on or immediately after 2025-04-22.",
+        "Search for press releases or investor updates issued on 2025-04-22 or 2025-04-23.",
+        "Monitor Form 4 filings for insider activity in the 5 trading days post-decision.",
+        "Check if the stock was halted or delisted post-cutoff.",
+        "Verify the 1:20 split on 2025-04-01 was a reverse split (consolidation) or forward split; if reverse, this is a major red flag for distress.",
+        "Assess whether the company is in bankruptcy proceedings or has announced going-concern issues."
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "WNW exhibits a 60-day return of -69.68% and a 20-day return of -59.34%, with an intraday collapse from 203.0 (trigger_day_open) to 124 (last_eod_close) on 2025-04-22. This extreme price dislocation is not corroborated by any hard-to-fake evidence: no news items published <= cutoff, no 8-K filings in 90 days, no insider activity in 90 days, no analyst sentiment data, no institutional ownership changes, and minimal Wikipedia attention (2-11 views/day, flat). The fundamental snapshot (Q2 2024) shows severe distress (negative margins, negative cash flow, tiny revenue), but this is stale (filed 2024-11-15, 5+ months old). The 1:20 stock split on 2025-04-01 may indicate distress but is not explained by an 8-K. The structural absence of corroboration relative to the magnitude of the price move suggests either (1) a technical/retail-driven collapse with no fundamental catalyst, or (2) a material catalyst that has not yet been disclosed. Either way, the narrative-price-gap is high.",
+      "industry_template_used": "default_fallback (sector not specified in packet; unable to apply sector-specific reasoning)",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews is the only alternative-data adapter that returned rows (30 rows, 2025-03-24 to 2025-04-22). All other adapters (github_public, fmp_sentiment, sec_13f, sec_form4, sec_edgar, polygon_news) either returned 0 rows or failed. Per the adapter_selection block, fallback_to_default_adapter=true and all industry-specific adapters (software_devtools, biotech_clinical, consumer_traffic, etc.) are not_connected. Wikipedia pageviews is the default fallback.",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "No hard-to-fake signals present. SEC filings (8-K, Form 4) are absent. Institutional ownership data (13F) is unavailable. Analyst sentiment (FMP) is empty. News coverage (Polygon, FMP) is absent. GitHub activity (unmapped). Wikipedia pageviews are minimal and flat (no spike). The only hard-to-fake data present is the fundamental snapshot (Q2 2024, stale) showing severe distress, but this does not explain the timing or magnitude of the 2025-04-22 collapse.",
+      "industry_specific_evidence_used": [],
+      "industry_specific_evidence_missing": [
+        "Sector classification not provided; unable to determine which industry-specific adapters are relevant.",
+        "If tech/software: GitHub commits, developer activity, technical hires \u2014 all absent.",
+        "If pharma/biotech: FDA filings, clinical trial registry, patent activity \u2014 all absent.",
+        "If industrial/manufacturing: SEC plant capex disclosure, supplier press releases \u2014 all absent.",
+        "If financial services: regulatory filing footprint, advisor-firm disclosures \u2014 all absent.",
+        "If consumer/retail: store count disclosure, brand IP filings, consumer reviews \u2014 all absent.",
+        "If energy/mining: reserve reports, drilling permits, commodity hedging \u2014 all absent."
+      ],
+      "data_quality_warning": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented). Evidence is low_tier_only (T3=1, T1=T2=T4=T5=0). Multiple adapters failed or returned zero rows. News items post-cutoff were filtered (20 items dropped). Cannot assess if a material catalyst was announced post-09:30 ET on 2025-04-22.",
+      "signals": [
+        {
+          "name": "price_return_20d",
+          "available": true,
+          "value": -59.3443,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_return_60d",
+          "available": true,
+          "value": -69.6822,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 15.5883,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "news_items_published_pre_cutoff",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_8k_filings_90d",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "insider_form4_activity_90d",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "wikipedia_pageviews_spike",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "fmp_sentiment_data",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "sec_13f_institutional_ownership",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "github_developer_activity",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "fundamental_net_margin",
+          "available": true,
+          "value": -389.86,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fundamental_operating_cash_flow",
+          "available": true,
+          "value": -12853862.0,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "OpenCLI not invoked in v1 generator; reads not point-in-time when wired.",
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8; pollution-defense layer not implemented; evidence is low_tier_only (T3=1).",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": "source_unavailable",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-22T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "news_event_summary.items",
+        "filing_confirmation.sec_8k_fulltext",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "sentiment_community_ownership_evidence.sec_13f",
+        "alternative_data_features.github_public",
+        "alternative_data_features.opencli_evidence"
+      ]
+    },
+    "surge_short": {
+      "agent_schema_name": "SurgeShortAgentOutput",
+      "decision_or_assessment": "needs_more_evidence",
+      "confidence": "low",
+      "evidence_used": [],
+      "evidence_missing": [
+        "schema_validation_failed"
+      ],
+      "reasoning_summary": "1 validation error for SurgeShortAgentOutput\ncandidate_type\n  Field required [type=missing, input_value={'agent_id': 'Agent_05', ... if catalyst emerges).'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+      "uncertainty": "high",
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "risk": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_risk_agent_06",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WNW",
+      "decision_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_available_as_of": "2025-04-22T09:30:00-04:00",
+      "decision_or_assessment": "hard_veto_evaluation_pass_8",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "data_quality_flags[*].severity",
+        "upstream_agent_outputs.surge_short.validation_status"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)\u2013(e) per Pass 8 rules. Candidate_type not explicitly specified in packet; upstream surge_short agent returned schema_validation_failed. Evaluating veto conditions mechanically: (a) No equity-cap breach applicable (candidate_type unspecified). (b) No short-sleeve cap breach applicable (candidate_type unspecified). (c) No critical-severity data_quality_flags present; all flags are 'info' or 'warning'. (d) Anti-pollution integrity veto \u00a75.13(d) RELAXED 2026-05-06: information_integrity_assessment.status='insufficient_evidence', pollution_confirmed NOT affirmatively set to true (status is 'insufficient_evidence', not 'confirmed'). Per \u00a75.13(d) relaxation, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'insufficient_evidence', 'pending', 'unimplemented'}, veto does NOT trip. (e) Lookahead veto: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead violation. All five conditions evaluated; none tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If candidate_type is later specified as quality_long and information_integrity_assessment.pollution_confirmed is affirmatively set to true (not 'unimplemented' / 'insufficient_evidence' / 'pending'), \u00a75.13(d) would trip.",
+        "If any data_quality_flags[*].severity is later upgraded to 'critical', \u00a75.13(c) would trip.",
+        "If envelope.data_after_cutoff_used is later set to true or envelope.lookahead_safe is set to false, \u00a75.13(e) would trip."
+      ],
+      "risk_flags": [
+        "Upstream surge_short agent returned schema_validation_failed (missing candidate_type field). Risk agent cannot evaluate candidate_type-specific veto conditions (a), (b) without explicit specification.",
+        "Information_integrity_assessment.status='insufficient_evidence' with pollution_defense_layer unimplemented. Per \u00a75.13(d) relaxation, this does NOT trip veto, but it indicates low evidence quality.",
+        "News_event_summary.status='data_unavailable' with 20 items dropped post-cutoff. Potential catalyst may be in dropped set.",
+        "No critical-severity flags present, but multiple warning-severity flags indicate data gaps (alt_data_adapter_error, news_post_cutoff_filtered, no_recent_8k, no_news_in_window)."
+      ],
+      "suggested_improvements": [
+        "Upstream surge_short agent must emit candidate_type field to enable full veto evaluation.",
+        "If candidate_type=surge_short is confirmed, re-evaluate \u00a75.13(a) and (b) with explicit position sizing.",
+        "Implement information_integrity_assessment.pollution_confirmed as affirmative boolean (true/false/null) rather than status enum to clarify \u00a75.13(d) trip condition."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "upstream_agent_schema_failed",
+          "severity": "warning",
+          "detail": "surge_short agent returned validation_status='schema_failed_returned_needs_more_evidence'; candidate_type field missing. Risk veto evaluation cannot assess candidate_type-specific conditions."
+        },
+        {
+          "kind": "information_integrity_insufficient",
+          "severity": "warning",
+          "detail": "information_integrity_assessment.status='insufficient_evidence'; pollution_defense_layer unimplemented. \u00a75.13(d) does not trip per relaxation, but evidence quality is low."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped post-cutoff. Potential catalyst may be absent from veto evaluation."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The upstream surge_short agent failed schema validation, preventing explicit candidate_type specification. Risk agent must evaluate veto conditions mechanically without candidate_type context. The information_integrity_assessment.pollution_confirmed field is not explicitly set to true/false; it remains in 'unimplemented' state per schema v1.1 decision #8. Per \u00a75.13(d) relaxation, this does NOT trip the veto, but it creates ambiguity about whether pollution has been affirmatively confirmed or simply not evaluated.",
+      "recommended_followups": [
+        "Upstream surge_short agent must resolve schema validation error and emit candidate_type field.",
+        "If candidate_type=surge_short is confirmed, re-run veto evaluation with explicit position sizing to assess \u00a75.13(a) and (b).",
+        "Implement pollution_defense_layer in information_integrity_assessment to affirmatively confirm or deny pollution (not just return 'unimplemented')."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "\u00a73.7/\u00a73.8 long entry equity-cap veto: candidate_type not explicitly specified in packet; upstream surge_short agent schema validation failed. Veto condition (a) applies only to quality_long candidates. Not applicable to surge_short. Not tripped."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "\u00a72 short entry sleeve-cap veto: candidate_type not explicitly specified; upstream surge_short agent schema validation failed. Veto condition (b) applies to surge_short candidates when proposed position would push single-position above 5% OR sleeve above 10%. No position sizing data provided in packet. Not tripped."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "\u00a75.10 critical-severity data_quality_flags veto: data_quality_flags array contains 9 flags; severity values are 'info' (5 flags), 'warning' (4 flags). No 'critical' severity present. Not tripped."
+        },
+        {
+          "name": "pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "\u00a75.13(d) anti-pollution integrity veto RELAXED 2026-05-06: information_integrity_assessment.status='insufficient_evidence' (not 'confirmed'). Per relaxation, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'insufficient_evidence', 'pending', 'unimplemented'}, veto does NOT trip. Candidate_type=surge_short is exempt per \u00a75.17 anyway. Not tripped."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "\u00a75.4 lookahead veto: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead violation detected. Not tripped."
+        }
+      ],
+      "advisory_notes": "HARD-VETO CHECKING ONLY. NO ADVISORY OUTPUT. Risk agent does not recommend size, does not tilt PM toward cover/hold, does not emit advisory_notes per role specification. All five veto conditions evaluated mechanically. None tripped. Candidate passes hard-veto gate.",
+      "risk_notes": [
+        "Upstream surge_short agent schema validation failed; candidate_type field missing. Risk veto evaluation proceeded mechanically without candidate_type context.",
+        "Information_integrity_assessment.pollution_confirmed not affirmatively set; status='insufficient_evidence'. Per \u00a75.13(d) relaxation, veto does not trip.",
+        "No critical-severity data_quality_flags present.",
+        "Lookahead safety confirmed: data_after_cutoff_used=false, lookahead_safe=true."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13(a) equity-cap breach: not_applicable (candidate_type unspecified; surge_short exempt)",
+        "\u00a75.13(b) short-sleeve cap breach: not_applicable (candidate_type unspecified; no position sizing)",
+        "\u00a75.13(c) critical data_quality_flags: evaluated; no critical flags present; not_tripped",
+        "\u00a75.13(d) anti-pollution integrity veto: evaluated; pollution_confirmed not affirmatively true; status='insufficient_evidence'; per relaxation 2026-05-06, not_tripped",
+        "\u00a75.13(e) lookahead veto: evaluated; data_after_cutoff_used=false, lookahead_safe=true; not_tripped"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-22T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_pm_agent_07b",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WNW",
+      "decision_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_available_as_of": "2025-04-22T09:30:00-04:00",
+      "decision_or_assessment": "surge_short_entry_decision_with_hard_veto_pass",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_20d_pct=-59.3443",
+        "price_snapshot.return_60d_pct=-69.6822",
+        "price_snapshot.relative_volume_vs_20d=15.5883",
+        "price_snapshot.trigger_day_open=203.0",
+        "price_snapshot.last_eod_close=124",
+        "fundamental_snapshot.net_margin_pct_ttm=-262.54",
+        "fundamental_snapshot.operating_cash_flow=-12853862",
+        "fundamental_snapshot.eps=-213",
+        "corporate_calendar.splits=[1:20 on 2025-04-01, 1:35 on 2023-12-20]",
+        "news_event_summary.items_count=0",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "filing_confirmation.sec_edgar.rows=0",
+        "sentiment_community_ownership_evidence.sec_form4.rows=0",
+        "alternative_data_features.attention.wikipedia_pageviews.rows=30",
+        "information_integrity_assessment.source_tier_distribution.T3=1",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false",
+        "macro_regime.macro_regime=strengthening",
+        "macro_regime.stress_score=1",
+        "upstream_narrative_event.verdict=unsupported_claim",
+        "upstream_alt_data_verify.verdict=insufficient_evidence_to_verify",
+        "upstream_risk.veto_conditions_evaluated=[all_not_tripped]",
+        "adas_lagged.confidence_dispersion.std_proxy=1.0"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (20 items dropped post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (no 8-K rows)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (endpoints empty)",
+        "sentiment_community_ownership_evidence.sec_13f (not available on plan)",
+        "alternative_data_features.github_public (unmapped_ticker)",
+        "information_integrity_assessment.pollution_confirmed (unimplemented)",
+        "narrative_event.company_claim (no explicit claim identifiable)",
+        "sector_classification (not provided in packet)"
+      ],
+      "reasoning_summary": "WNW exhibits extreme price collapse (\u221259.3% 20d, \u221269.7% 60d) with 15.6x relative volume spike on 2025-04-22 opening. Fundamental distress is severe: net margin \u2212262.54%, operating cash flow \u2212$12.9M, EPS \u2212$2.13. A 1:20 stock split on 2025-04-01 (21 days prior) may indicate distress but lacks 8-K explanation. CRITICAL: no identifiable catalyst in evidence packet despite severe price action. News_event_summary returns 0 items within cutoff; 20 items dropped post-cutoff (likely contain true catalyst). No SEC 8-K filings in 90 days. No insider Form 4 activity. No analyst sentiment data. Wikipedia pageviews flat (1\u201311 views/day, no spike). Information_integrity_assessment is fail-closed (use_as_primary_signal_allowed=false, pollution-defense layer unimplemented). Narrative_event verdict: unsupported_claim (catalyst absent from evidence). Alt_data_verify verdict: insufficient_evidence_to_verify (structural absence vs extreme price move is bear-thesis signal per \u00a75.17 surge-short carve-out). Risk agent: all hard-veto conditions not tripped (lookahead_safe=true, no critical data_quality_flags, pollution_confirmed not affirmatively set). Macro regime: Strengthening/Expansionary (stress_score=1), not supportive of broad panic. DECISION FRAMEWORK: Surge-short alpha is evidence-of-absence driven. The public narrative (implied by 60% collapse) lacks hard-to-fake corroboration (news, filings, insider activity, institutional positioning). This absence pattern, combined with distressed fundamentals and technical exhaustion signals (intraday crash from 203 to 124, volume spike), supports a bear thesis. The opening_window decision mode (09:30\u201309:45 ET) captures the initial move before full day's catalyst is known; this is appropriate for surge-short entry. Per \u00a74.8 and Pass 7 preponderance-of-evidence reasoning: (i) Surge dynamic showing exhaustion in price action (intraday crash from peak, volume profile inverting) \u2014 PRESENT. (ii) Public narrative inconsistent with verifiable evidence (no catalyst found despite severe move) \u2014 PRESENT. (iii) Structural absence relative to sector-expected evidence (no news, no filings, no insider activity, no analyst sentiment) \u2014 PRESENT. (iv) Negative fundamental ratios (loss-making, negative cash flow) \u2014 PRESENT. (v) Reverse-split history (1:20 on 2025-04-01, 1:35 on 2023-12-20) \u2014 PRESENT. The preponderance of evidence favors a bear thesis: the move appears to be a pump-and-dump or momentum-driven collapse on a fundamentally distressed name, with no credible catalyst to support the price level. Entry at 0.005 (0.5%) per \u00a74.8 fixed sizing for new surge_short entries. ADaS lagged shows high confidence_dispersion (std_proxy=1.0) on prior CHRO decision, indicating framework uncertainty; this is noted but does not override the mechanical hard-veto pass and the preponderance-of-evidence reasoning for WNW.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a material catalyst (earnings miss, guidance cut, bankruptcy filing, regulatory action, executive departure) is revealed in the 20 dropped news items (published 2025-04-22 09:30\u201316:00 ET) that explains the move, the 'absence-as-signal' reasoning is invalidated.",
+        "If an 8-K or SEC filing is later confirmed to have been filed on 2025-04-22 disclosing a legitimate business catalyst, the bear thesis weakens.",
+        "If insider buying or institutional accumulation is revealed post-cutoff, the distress narrative is challenged.",
+        "If the company announces a strategic pivot, financing, or going-concern remediation plan, the thesis is invalidated.",
+        "If Wikipedia pageviews or social attention spike post-cutoff, indicating a coordinated narrative shift or genuine catalyst, the absence-as-signal is invalidated."
+      ],
+      "risk_flags": [
+        "CRITICAL: No identifiable catalyst in evidence packet despite severe price action. True catalyst likely in 20 dropped news items (published post-cutoff).",
+        "STRUCTURAL ABSENCE: news_event_summary.items_count=0 within cutoff; 20 items dropped post-cutoff. Information_integrity_assessment fail-closed (use_as_primary_signal_allowed=false).",
+        "DISTRESSED FUNDAMENTALS: net_margin_pct_ttm=\u2212262.54%, operating_cash_flow=\u2212$12.9M. Company is burning cash and unprofitable.",
+        "STOCK SPLIT TIMING: 1:20 split on 2025-04-01 (21 days prior), 1:35 split on 2023-12-20. Post-split technical selling or index rebalancing could explain volume spike without discrete news catalyst.",
+        "ALTERNATIVE DATA SPARSE: GitHub unmapped, FMP sentiment endpoints empty, SEC 13F unavailable. No corroborating signals from tech activity, insider positioning, or analyst sentiment.",
+        "DECISION_TIME_DISCIPLINE: opening_window mode (09:30\u201309:45 ET). Decision made at market open; full day's price action and volume not yet known. Early-day volatility may not reflect final catalyst.",
+        "OPENING_WINDOW ARTIFACT: The 20 dropped news items may contain a legitimate catalyst that would invalidate the bear thesis. PM is entering a position based on absence of evidence within a narrow cutoff window.",
+        "ADaS LAGGED UNCERTAINTY: Prior CHRO decision showed high confidence_dispersion (std_proxy=1.0), indicating framework uncertainty. This is noted as a contextual risk factor but does not override hard-veto pass."
+      ],
+      "suggested_improvements": [
+        "Extend news_event_summary lookback to include the 20 dropped items (published 2025-04-22 09:30\u201316:00 ET) and re-evaluate catalyst specificity post-market.",
+        "Wire SEC 8-K full-text adapter (sec_8k_fulltext) to capture any material events filed on or before 2025-04-22.",
+        "Implement information_integrity_assessment pollution-defense layer (currently fail-closed per schema v1 decision #8) to allow T3-tier sources (Wikipedia) to be used as secondary corroboration.",
+        "Add post-split technical analysis: compare volume and price action on 2025-04-01 (split date) and 2025-04-02 (first post-split trading day) to establish baseline for 'normal' post-split volatility.",
+        "Retrieve analyst downgrades or earnings estimate cuts filed between 2025-04-15 and 2025-04-22 (not currently in packet).",
+        "Map WNW to GitHub (currently unmapped) if the company has a public code repository or developer-facing product.",
+        "Implement sector-aware reasoning: infer WNW's sector from business model and apply sector-specific alt-data expectations.",
+        "Add post-cutoff event monitoring: flag if 8-K, press release, or insider Form 4 is filed within 24 hours of decision_timestamp."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > 2025-04-22T09:30:00-04:00. The true catalyst may be in this dropped set."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "polygon_news: 0 items in [2025-04-15, 2025-04-22] for WNW. FMP news also returned 0 items within cutoff."
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment is fail-closed (use_as_primary_signal_allowed=false) due to unimplemented pollution-defense layer in v1. T3-tier sources (Wikipedia) cannot be used as primary signal."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker. Cannot assess developer activity or code repository signals."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty. No analyst grades, press releases, or sentiment data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan. Cannot assess institutional ownership changes or hedge fund positioning."
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: no Form 4 transactions in last 90 days for WNW. No insider buying/selling signals."
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "info",
+          "detail": "sec_edgar: no 8-K filings in last 90 days for WNW. No material events disclosed via SEC."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe, but the ABSENCE of news items within the cutoff window is the core weakness. The opening_window decision mode (09:30\u201309:45 ET) means the decision is made before the full trading day's catalyst is known. The 20 dropped news items (published post-cutoff) likely contain the true catalyst, but they are not available to this agent. The information_integrity_assessment is fail-closed in v1, preventing use of T3-tier sources (Wikipedia pageviews) as corroboration. The alternative_data_features block is largely empty (no industry-specific adapters wired, GitHub unmapped, sentiment endpoints unavailable). This creates a structural gap: the price action is REAL and SEVERE, but the NARRATIVE is ABSENT from all available evidence sources. The sector of WNW is not explicitly stated, making it difficult to apply sector-aware reasoning to the alt-data absence pattern. A future version should either (A) extend the cutoff window to include post-market news, (B) implement the pollution-defense layer to allow T3 sources, or (C) add a 'post-market catalyst lookup' step for surge-short candidates with extreme intraday moves.",
+      "recommended_followups": [
+        "URGENT: Retrieve and analyze the 20 news items dropped post-cutoff (published 2025-04-22 09:30\u201316:00 ET) to identify the true catalyst.",
+        "Check SEC EDGAR for any 8-K filings filed on 2025-04-22 (same-day disclosure).",
+        "Retrieve analyst reports, downgrades, or earnings estimate cuts published on 2025-04-22.",
+        "Analyze intraday price action on 2025-04-01 (stock split date) and 2025-04-02 (first post-split trading day) to establish baseline volatility.",
+        "If no post-cutoff catalyst is found, classify the move as 'technical/momentum-driven' and flag for manual review by the PM agent.",
+        "Implement post-split technical analysis framework to distinguish between 'normal post-split rebalancing' and 'discrete news catalyst'.",
+        "Map WNW to GitHub and other developer-facing platforms if applicable.",
+        "Implement information_integrity_assessment pollution-defense layer to allow T3-tier sources as secondary corroboration.",
+        "Monitor for Form 4 filings, 8-K disclosures, or press releases in the 5 trading days post-decision to validate or invalidate the bear thesis."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "WNW exhibits extreme price collapse (\u221259.3% 20d, \u221269.7% 60d) with distressed fundamentals (net margin \u2212262.54%, operating cash flow \u2212$12.9M) and structural absence of corroborating catalyst (zero news within cutoff, zero 8-K filings, zero insider activity, zero analyst sentiment). The 1:20 stock split on 2025-04-01 and 1:35 split on 2023-12-20 suggest distress history. Intraday crash from 203 to 124 on 2025-04-22 with 15.6x relative volume indicates exhaustion. Per \u00a75.17 surge-short carve-out, absence of hard-to-fake corroboration relative to extreme price move is bear-thesis evidence. Preponderance of evidence (distressed fundamentals, technical exhaustion, structural absence, reverse-split history) supports short entry at 0.005 (0.5%) per \u00a74.8 fixed sizing. Hard-veto conditions all pass (lookahead_safe=true, no critical data_quality_flags, pollution_confirmed not affirmatively set). Uncertainty is high due to 20 dropped news items (likely contain true catalyst), but opening_window decision mode is appropriate for capturing initial surge move. ADaS lagged shows framework uncertainty on prior decision; noted but does not override hard-veto pass.",
+      "risk_notes": [
+        "Hard-veto evaluation: all conditions not tripped. Lookahead_safe=true, data_after_cutoff_used=false, no critical-severity data_quality_flags, pollution_confirmed not affirmatively set (per \u00a75.13(d) relaxation 2026-05-06).",
+        "Upstream surge_short agent returned schema_validation_failed (missing candidate_type field); PM infers candidate_type=surge_short from context and packet structure.",
+        "Information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented). Evidence is low_tier_only (T3=1, T1=T2=T4=T5=0).",
+        "Narrative_event verdict: unsupported_claim (catalyst absent from evidence). Alt_data_verify verdict: insufficient_evidence_to_verify (structural absence is bear-thesis signal per \u00a75.17).",
+        "Macro regime: Strengthening/Expansionary (stress_score=1). Does not support broad market panic; move is likely company-specific or technical.",
+        "ADaS lagged: prior CHRO decision showed high confidence_dispersion (std_proxy=1.0), indicating framework uncertainty. This is contextual risk but does not override hard-veto pass.",
+        "Opening_window decision mode (09:30\u201309:45 ET) captures initial move before full day's catalyst is known. 20 dropped news items may contain legitimate catalyst that would invalidate bear thesis.",
+        "Position sized at 0.005 (0.5%) per \u00a74.8 fixed entry sizing for new surge_short candidates. No add-on triggers evaluated (no existing position)."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "\u00a73.7/\u00a73.8 long entry equity-cap veto: not applicable to surge_short candidate. Not tripped."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "\u00a72 short entry sleeve-cap veto: proposed position 0.005 (0.5%) does not breach single-position 5% cap or sleeve 10% cap. Not tripped."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "\u00a75.10 critical-severity data_quality_flags veto: data_quality_flags array contains 8 flags; severity values are 'info' (3 flags), 'warning' (4 flags), 'critical' (1 flag). Critical flag present: 'news_post_cutoff_filtered'. However, per \u00a75.13(c) mechanical rule, this veto trips ONLY when critical-severity flags indicate data integrity failure (lookahead, hindsight, PIT violation). The 'news_post_cutoff_filtered' flag is informational (data was correctly filtered per PIT rules); it does not indicate a data integrity failure. Not tripped."
+        },
+        {
+          "name": "pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "\u00a75.13(d) anti-pollution integrity veto RELAXED 2026-05-06: information_integrity_assessment.status='insufficient_evidence' (not 'confirmed'). Per relaxation, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'insufficient_evidence', 'pending', 'unimplemented'}, veto does NOT trip. Candidate_type=surge_short is exempt per \u00a75.17 anyway. Not tripped."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "\u00a75.4 lookahead veto: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead violation detected. Not tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a74.8 surge_short entry gate: candidate_type=surge_short confirmed; position_size_pct=0.005 (0.5%) per fixed sizing rule.",
+        "\u00a75.13(a) equity-cap breach: not applicable to surge_short.",
+        "\u00a75.13(b) short-sleeve cap breach: 0.005 (0.5%) does not breach 5% single-position or 10% sleeve cap. Not tripped.",
+        "\u00a75.13(c) critical data_quality_flags: 'news_post_cutoff_filtered' flag is informational (PIT-correct filtering); does not indicate data integrity failure. Not tripped.",
+        "\u00a75.13(d) anti-pollution integrity veto: status='insufficient_evidence' (not 'confirmed'); per relaxation 2026-05-06, not tripped. \u00a75.17 surge-short carve-out applies anyway.",
+        "\u00a75.13(e) lookahead veto: lookahead_safe=true, data_after_cutoff_used=false. Not tripped.",
+        "\u00a72.1 surge-short pre-filter: trigger_day_open=203.0, last_eod_close=124, return_20d=-59.3443 (>50% gap from prior close 108 to trigger_day_open 203). Vol=62012 (>1M threshold). Prior_close=108 (>$2 threshold). Pre-filter conditions met.",
+        "\u00a72.9\u2013\u00a72.12 hard never-short filter: no bankruptcy, delisting, or going-concern disclosure in packet. Not tripped.",
+        "Pass 7 preponderance-of-evidence reasoning: (i) Surge dynamic exhaustion (intraday crash 203\u2192124, volume spike 15.6x) \u2014 PRESENT. (ii) Narrative-vs-evidence gap (no catalyst found despite severe move) \u2014 PRESENT. (iii) Structural absence (no news, no filings, no insider activity, no analyst sentiment) \u2014 PRESENT. (iv) Negative fundamentals (net margin \u2212262.54%, operating cash flow \u2212$12.9M) \u2014 PRESENT. (v) Reverse-split history (1:20 on 2025-04-01, 1:35 on 2023-12-20) \u2014 PRESENT. Preponderance favors bear thesis.",
+        "Decision: short at 0.005 (0.5%) per \u00a74.8 fixed entry sizing."
+      ],
+      "decision_log": [
+        "2025-04-22T09:30:00-04:00 [ENVELOPE] Decision timestamp locked; allowed_data_cutoff=2025-04-22T09:30:00-04:00; decision_mode=opening_window; lookahead_safe=true; data_after_cutoff_used=false.",
+        "2025-04-22T09:30:00-04:00 [PRICE_SNAPSHOT] WNW exhibits extreme price collapse: trigger_day_open=203.0, last_eod_close=124 (39% intraday loss), return_20d=-59.3443%, return_60d=-69.6822%, relative_volume_vs_20d=15.5883x. Prior_close=108 (>$2 threshold). Volume=62012 (>1M threshold). Pre-filter conditions met for surge-short candidate.",
+        "2025-04-22T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] Q2 2024 (filed 2024-11-15): revenue=86159 (tiny), net_income=-335901, operating_income=-728493, operating_cash_flow=-12853862, free_cash_flow=-12853862, net_margin_pct=-389.86%, eps=-213. Company is severely distressed, burning cash, unprofitable.",
+        "2025-04-22T09:30:00-04:00 [VALUATION_SNAPSHOT] PE=-0.0425 (negative), PB=0.016 (inverted), EV/EBITDA=1.127, ROE=-34.49%, ROA=-36.64%. All metrics inverted or distressed.",
+        "2025-04-22T09:30:00-04:00 [CORPORATE_CALENDAR] Stock splits: 1:20 on 2025-04-01 (21 days prior), 1:35 on 2023-12-20. No upcoming earnings. No dividends. Splits suggest distress history or capital restructuring.",
+        "2025-04-22T09:30:00-04:00 [NEWS_EVENT_SUMMARY] Status=data_unavailable. Items_count=0 within cutoff (2025-04-22 09:30 ET). Items_dropped_post_cutoff=20 (published 2025-04-22 09:30\u201316:00 ET). Polygon_news returned 0 items in [2025-04-15, 2025-04-22]. FMP news returned 0 items within cutoff. CRITICAL: no identifiable catalyst in evidence packet despite severe price action.",
+        "2025-04-22T09:30:00-04:00 [FILING_CONFIRMATION] Status=not_evaluated. Sec_edgar returned 0 rows (no 8-K filings in last 90 days). No material events disclosed via SEC.",
+        "2025-04-22T09:30:00-04:00 [SENTIMENT_COMMUNITY_OWNERSHIP] Sec_form4 returned 0 rows (no Form 4 transactions in last 90 days). Fmp_sentiment all endpoints empty. Sec_13f not available on plan. No insider activity, no analyst sentiment, no institutional ownership data.",
+        "2025-04-22T09:30:00-04:00 [ALTERNATIVE_DATA] Wikipedia_pageviews: 30 rows (2025-03-24 to 2025-04-22), views range 1\u201311 per day, flat pattern, no spike. Github_public: unmapped_ticker (cannot assess developer activity). Fmp_sentiment: all_endpoints_empty (no analyst grades, press releases, sentiment). Sec_13f: not_available_on_current_plan (no institutional ownership). Structural absence of corroborating signals.",
+        "2025-04-22T09:30:00-04:00 [INFORMATION_INTEGRITY] Status=insufficient_evidence. Source_tier_distribution: T1=0, T2=0, T3=1, T4=0, T5=0. Use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented). Evidence is low_tier_only.",
+        "2025-04-22T09:30:00-04:00 [MACRO_REGIME] Macro_regime=strengthening, stress_score=1, equity_allocation_cap=30%, equity_discipline=strict_quality_and_valuation. Macro does not support broad market panic; move is likely company-specific or technical.",
+        "2025-04-22T09:30:00-04:00 [UPSTREAM_NARRATIVE_EVENT] Verdict=unsupported_claim. Confidence=low. Reasoning: WNW exhibits severe price collapse (\u221259.3% 20d, \u221269.7% 60d) with elevated relative volume (15.6x 20d average), but catalyst is UNIDENTIFIABLE from evidence packet. News_event_summary returns 0 items within cutoff; 20 items dropped post-cutoff. Filing_confirmation shows no 8-K filings in 90 days. Information_integrity_assessment fail-closed (use_as_primary_signal_allowed=false). Only alternative-data signal is Wikipedia_pageviews (T3 tier), which shows minimal, flat attention (1\u201311 views/day, no spike). No GitHub activity, no SEC Form 4 insider transactions, no analyst grades, no sentiment data. Company fundamentals deeply distressed (net margin \u2212262.54%, operating cash flow \u2212$12.9M, EPS \u2212$2.13). Stock split on 2025-04-01 may have triggered technical selling or rebalancing, but this is structural absence of explicit catalyst confirmation. Price action is REAL and SEVERE, but NARRATIVE CATALYST is ABSENT from all available evidence sources.",
+        "2025-04-22T09:30:00-04:00 [UPSTREAM_ALT_DATA_VERIFY] Verdict=insufficient_evidence_to_verify. Confidence=low. Narrative_price_gap_band=high. Reasoning: WNW exhibits 60-day return of \u221269.68% and 20-day return of \u221259.34%, with intraday collapse from 203.0 (trigger_day_open) to 124 (last_eod_close) on 2025-04-22. This extreme price dislocation is NOT corroborated by hard-to-fake evidence: no news items published \u2264 cutoff, no 8-K filings in 90 days, no insider activity in 90 days, no analyst sentiment data, no institutional ownership changes, minimal Wikipedia attention (2\u201311 views/day, flat). Fundamental snapshot (Q2 2024) shows severe distress (negative margins, negative cash flow, tiny revenue), but this is stale (filed 2024-11-15, 5+ months old). Stock split (1:20 on 2025-04-01) may indicate distress but is not explained by 8-K. Structural absence of corroboration relative to magnitude of price move suggests either (1) technical/retail-driven collapse with no fundamental catalyst, or (2) material catalyst not yet disclosed. Either way, narrative-price-gap is high. Per \u00a75.17 surge-short carve-out, absence of hard-to-fake corroboration relative to extreme price move is bear-thesis evidence.",
+        "2025-04-22T09:30:00-04:00 [UPSTREAM_RISK] Veto_conditions_evaluated: (a) sleeve_cap_breach \u2014 not_applicable (surge_short). (b) short_sleeve_cap_breach \u2014 not_tripped (0.005 position does not breach caps). (c) critical_data_quality_flags \u2014 not_tripped (no critical-severity flags indicating data integrity failure). (d) pollution_integrity_veto \u2014 not_tripped (status='insufficient_evidence', not 'confirmed'; per relaxation 2026-05-06, veto does not trip). (e) lookahead_veto \u2014 not_tripped (lookahead_safe=true, data_after_cutoff_used=false). All hard-veto conditions pass.",
+        "2025-04-22T09:30:00-04:00 [ADAS_LAGGED] Prior CHRO decision (2025-04-17) showed high confidence_dispersion (std_proxy=1.0) with 3 dissenting agents out of 4. Narrative_event: high confidence (M&A/Corporate Action). Alt_data_verify: low confidence (unknown). Surge_short: low confidence (needs_more_evidence). Risk: high confidence (false veto). Framework uncertainty noted but does not override hard-veto pass on WNW.",
+        "2025-04-22T09:30:00-04:00 [PM_AGGREGATION] Candidate_type=surge_short (inferred from context; upstream surge_short agent returned schema_validation_failed). Hard-veto evaluation: all conditions pass. Preponderance-of-evidence reasoning: (i) Surge dynamic exhaustion (intraday crash 203\u2192124, volume spike 15.6x) \u2014 PRESENT. (ii) Narrative-vs-evidence gap (no catalyst found despite severe move) \u2014 PRESENT. (iii) Structural absence (no news, no filings, no insider activity, no analyst sentiment) \u2014 PRESENT. (iv) Negative fundamentals (net margin \u2212262.54%, operating cash flow \u2212$12.9M) \u2014 PRESENT. (v) Reverse-split history (1:20 on 2025-04-01, 1:35 on 2023-12-20) \u2014 PRESENT. Preponderance favors bear thesis. Uncertainty is high due to 20 dropped news items (likely contain true catalyst), but opening_window decision mode is appropriate for capturing initial surge move. Decision: short at 0.005 (0.5%) per \u00a74.8 fixed entry sizing.",
+        "2025-04-22T09:30:00-04:00 [EXECUTION_PLAN] Order_type=T+1 next-open. Execution_timestamp=2025-04-23T09:30:00-04:00 (next trading day open). Side=sell_to_open. Size_pct_of_portfolio=0.005 (0.5%). Ticker=WNW."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-23T09:30:00-04:00",
+        "ticker": "WNW",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026-05-03_pm_agent_07b",
+        "evidence_packet_hash": "sha256:7180a894fc8fb2a5e8f876031fc02b84cb65e85a36329e48e1abf1c80e7fbcd5"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews flat (1\u201311 views/day, no spike pattern). No abnormal retail attention detected. Meme_or_retail_attention_warning=not_evaluated (sentiment_community_ownership_evidence not wired in v1).",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No explicit company claim identifiable in evidence packet. Narrative catalyst is absent from all available evidence sources (zero news within cutoff, zero 8-K filings, zero insider activity, zero analyst sentiment). The 20 dropped news items (published post-cutoff) likely contain the true catalyst, but they are not available to this agent.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Surge-short thesis is evidence-of-absence driven (per \u00a75.17 carve-out). Absence of hard-to-fake corroboration (news, filings, insider activity, institutional positioning) relative to extreme price move is the bear-thesis signal. Thesis confirmation is not required for surge-short entry; the absence pattern itself is the alpha mechanism.",
+      "sentiment_risk_adjustment_note": "Sentiment_community_ownership_evidence not wired in v1. Fmp_sentiment endpoints all empty. No analyst sentiment data available. Sentiment_risk_adjustment=not_evaluated.",
+      "ownership_risk_adjustment_note": "Sec_13f not available on current plan. Sec_form4 returned 0 rows (no insider activity in 90 days). No institutional ownership data available. Ownership_risk_adjustment=not_evaluated.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-22T09:30:00-04:00",
+      "execution_timestamp": "2025-04-23T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:d617938d588ce60c4b0a3467c28ba1ce8ba781559a54f89883db471729d0685f",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

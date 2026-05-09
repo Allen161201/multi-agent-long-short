@@ -1,0 +1,258 @@
+{
+  "trigger_id": "d7e49eb4f6f7",
+  "ticker": "TSVT",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-11T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 51.54,
+  "trigger_cost_usd": 0.061113,
+  "cumulative_cost_usd": 1.140734,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "TSVT",
+    "name": "TSVT",
+    "close": 4.95,
+    "prior_close": 2.8,
+    "change": 2.12,
+    "change_pct": 75.71428571428572,
+    "volume": 31485630.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-11",
+    "prior_trading_day": "2025-03-10",
+    "available_as_of": "2025-03-11T16:00:00-05:00",
+    "today_open": 4.92,
+    "today_volume": 31485630.0,
+    "eps_ttm": -1.83,
+    "operating_margin_ttm": -313.0907496711969,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-12 16:12:02",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:bea480d189b6c2b443967f7c3728a293157ac98ff7f0441069c7efdf6da65a19",
+  "locked_decision_id": "sha256:31615dd829399f97e3cde1e86e2adc54c66d32bc89f0d5c6a60969bc3739e45b",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation control)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "TSVT",
+      "decision_timestamp": "2025-03-11T09:30:00-04:00",
+      "data_available_as_of": "2025-03-11T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "macro_regime: Overheat / Moderately Restrictive (stress_score=2)",
+        "valuation_snapshot: negative PE (-13.93), negative EV/EBITDA (-18.57), negative ROE (-0.0896)",
+        "fundamental_snapshot: Q3 2024 net_margin -73.61%, operating_income -13.9M, free_cash_flow -10.5M",
+        "price_snapshot: last_eod_close 2.8, return_5d +12.9%, return_60d -28.75%, relative_volume 2.08x",
+        "alternative_data_features: wikipedia_pageviews 30-day window (650-842 views/day, no spike pattern)",
+        "sentiment_community_ownership_evidence: analyst ratings mixed (1 Buy, 3 Hold, 1 Strong Sell as of 2025-03-01); Goldman Sachs Sell rating 2024-11-12",
+        "news_event_summary: no news items within cutoff window",
+        "corporate_calendar: 4 past earnings events, no upcoming events near decision",
+        "information_integrity_assessment: low_tier_only sources, uncorroborated, use_as_primary_signal_allowed=false"
+      ],
+      "evidence_missing": [
+        "primary_source_corroboration for any catalyst claim",
+        "institutional_ownership_positioning (13F data unavailable)",
+        "insider_form4_activity (CIK not found)",
+        "SEC_8K_filing_confirmation (CIK not found)",
+        "github_development_activity (unmapped ticker)",
+        "narrative_price_gap_assessment (not_evaluated, pending LLM)",
+        "news_catalyst_specificity (no news items post-cutoff)",
+        "alternative_data_adapter_coverage (most adapters not_connected or failed)"
+      ],
+      "reasoning_summary": "TSVT exhibits severe profitability deterioration (net margin -73.61%, operating loss -13.9M in Q3 2024), negative valuation metrics across PE/EV/ROE, and mixed analyst sentiment (1 Buy vs 1 Strong Sell). Macro regime is Overheat/Moderately Restrictive, restricting equity allocation to 20% cap with strict quality discipline. No corroborating catalyst or news event within cutoff. Wikipedia pageviews show no abnormal attention spike. Alternative data sources largely unavailable (SEC filings, GitHub, 13F all failed). Information integrity assessment flags low-tier-only sources and disallows primary-signal use. Insufficient evidence to support either surge_short or quality_long sleeve. Macro discipline + missing corroboration + negative fundamentals + low alt-data coverage = fail-closed to no_trade.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "macro_regime_equity_cap: 20% cap in Overheat regime restricts position sizing",
+        "negative_profitability: net_margin -73.61%, operating_income negative, FCF negative",
+        "valuation_metrics_negative: PE -13.93, EV/EBITDA -18.57, ROE -0.0896",
+        "information_integrity_veto: low_tier_only sources, uncorroborated, use_as_primary_signal_allowed=false",
+        "missing_catalyst_corroboration: no news, no SEC filings, no institutional positioning data",
+        "alternative_data_coverage_insufficient: most adapters failed or not_connected"
+      ],
+      "risk_flags": [
+        "profitability_crisis: net margin -73.61%, operating loss -13.9M, FCF -10.5M",
+        "valuation_distress: negative PE, negative EV/EBITDA, negative ROE",
+        "analyst_sentiment_deterioration: 1 Buy, 3 Hold, 1 Strong Sell (Goldman Sachs Sell 2024-11-12)",
+        "macro_headwind: Overheat regime with Moderately Restrictive policy, 20% equity cap",
+        "data_integrity_risk: low-tier sources only, no primary source corroboration",
+        "missing_alternative_data: SEC filings unavailable, GitHub unmapped, 13F not available",
+        "price_volatility: 5d return +12.9% vs 60d return -28.75%, relative volume 2.08x",
+        "no_near_term_catalyst: no upcoming earnings, no news, no SEC events within window"
+      ],
+      "suggested_improvements": [
+        "Obtain SEC CIK mapping for TSVT to enable 13F, Form 4, and 8-K retrieval",
+        "Map TSVT to GitHub repository if development activity is relevant to thesis",
+        "Await news catalyst or earnings event to establish narrative anchor",
+        "Collect institutional ownership positioning once 13F data becomes available",
+        "Monitor for analyst rating changes or price-target revisions",
+        "Reassess when macro regime transitions out of Overheat / Moderately Restrictive"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "missing_sec_filings",
+          "severity": "warning",
+          "detail": "sec_edgar, sec_13f, sec_form4 all failed due to CIK not found or not available on plan"
+        },
+        {
+          "kind": "missing_github_data",
+          "severity": "warning",
+          "detail": "github_public failed: unmapped_ticker \u2014 TSVT not in ticker_to_github.csv"
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "info",
+          "detail": "polygon_news returned 0 items in [2025-03-04, 2025-03-11]; 20 items dropped post-cutoff"
+        },
+        {
+          "kind": "low_tier_sources_only",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0 T2=0 T3=1 T4=1; use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "valuation_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot TTM ratios not point-in-time safe; DCF display-only"
+        },
+        {
+          "kind": "analyst_rating_stale",
+          "severity": "info",
+          "detail": "most recent analyst ratings as of 2025-03-01 (10 days before decision); Goldman Sachs Sell from 2024-11-12"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not populate narrative_price_gap_assessment or filing_confirmation with LLM reasoning; these blocks remain not_evaluated. Alternative data adapters are largely not_connected or failed, limiting corroboration. Information integrity assessment is placeholder-only in v1 (pollution-defense layer unimplemented). Sentiment/ownership blocks are skeleton text pending adapter delivery.",
+      "recommended_followups": [
+        "Resolve TSVT CIK mapping to unlock SEC filing and insider activity data",
+        "Await next earnings event (Q4 2024 or Q1 2025) to establish catalyst narrative",
+        "Monitor analyst rating changes and price-target revisions",
+        "Collect alternative data once adapters are wired and ticker is mapped",
+        "Reassess macro regime transition out of Overheat / Moderately Restrictive",
+        "Establish institutional ownership baseline once 13F data available"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence to support surge_short or quality_long. Negative fundamentals (net margin -73.61%, operating loss, negative FCF) and distressed valuation (PE -13.93, EV/EBITDA -18.57) present, but no corroborating catalyst, news, or alternative data. Macro regime (Overheat/Moderately Restrictive) restricts equity to 20% cap. Information integrity assessment flags low-tier sources only, disallowing primary-signal use. Missing SEC filings, GitHub data, and institutional positioning. Fail-closed per rule \u00a713.4.",
+      "risk_notes": [
+        "Profitability crisis: net margin -73.61%, operating loss -13.9M, FCF -10.5M in Q3 2024",
+        "Valuation distress: PE -13.93, EV/EBITDA -18.57, ROE -0.0896 (all negative)",
+        "Analyst sentiment mixed: 1 Buy, 3 Hold, 1 Strong Sell; Goldman Sachs Sell rating from 2024-11-12",
+        "Macro headwind: Overheat regime with Moderately Restrictive policy; equity allocation capped at 20%",
+        "Data integrity risk: information_integrity_assessment flags low-tier sources only, uncorroborated, use_as_primary_signal_allowed=false",
+        "Missing corroboration: no SEC filings (CIK not found), no GitHub data (unmapped), no 13F (not available), no news catalyst (0 items in window)",
+        "Price volatility: 5d return +12.9% vs 60d return -28.75%; relative volume 2.08x (elevated but no catalyst anchor)",
+        "No near-term catalyst: no upcoming earnings, no SEC events, no news within \u00b15 trading days"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "No corroborating catalyst, news, or alternative data. Information integrity assessment disallows primary-signal use. Missing SEC filings, GitHub, 13F, and institutional positioning."
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "Macro regime Overheat/Moderately Restrictive caps equity at 20%, but no position is being taken, so cap is not breached."
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "SEC CIK not found (blocks 13F, Form 4, 8-K). GitHub unmapped. 13F not available on plan. These are essential for institutional positioning and insider activity verification."
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment status=insufficient_evidence; source_tier_distribution T1=0 T2=0 T3=1 T4=1; use_as_primary_signal_allowed=false; corroboration_status=uncorroborated."
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; no lookahead violations detected."
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp=2025-03-11T09:30:00-04:00, allowed_data_cutoff=2025-03-11T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false",
+        "2. Evaluate macro_regime: Overheat / Moderately Restrictive (stress_score=2); equity_allocation_cap=20%; equity_discipline=strict_quality_and_valuation_caution",
+        "3. Evaluate fundamental_snapshot: Q3 2024 net_margin=-73.61%, operating_income=-13.9M, free_cash_flow=-10.5M; is_point_in_time_safe=true",
+        "4. Evaluate valuation_snapshot: PE=-13.93, EV/EBITDA=-18.57, ROE=-0.0896, PB=1.24; current_snapshot_not_PIT_safe=true",
+        "5. Evaluate alternative_data_features: wikipedia_pageviews 30-day window (650-842 views/day, no spike); most adapters not_connected or failed (sec_edgar, github_public, sec_13f, sec_form4)",
+        "6. Evaluate information_integrity_assessment: status=insufficient_evidence; source_tier_distribution T1=0 T2=0 T3=1 T4=1; use_as_primary_signal_allowed=false; corroboration_status=uncorroborated",
+        "7. Evaluate sentiment_community_ownership_evidence: analyst ratings 1 Buy, 3 Hold, 1 Strong Sell (2025-03-01); Goldman Sachs Sell (2024-11-12); ownership_positioning not_evaluated (13F unavailable)",
+        "8. Evaluate news_event_summary: status=data_unavailable; 0 items in window; 20 items dropped post-cutoff",
+        "9. Evaluate price_snapshot: last_eod_close=2.8, return_5d=+12.9%, return_60d=-28.75%, relative_volume=2.08x; no catalyst anchor",
+        "10. Evaluate corporate_calendar: 4 past earnings events, no upcoming events within \u00b15 trading days",
+        "11. Check surge_short sleeve eligibility: negative fundamentals present, but no corroborating catalyst, news, or alternative data; information_integrity_veto tripped",
+        "12. Check quality_long sleeve eligibility: negative profitability, negative valuation metrics, mixed analyst sentiment; macro regime restricts equity; information_integrity_veto tripped",
+        "13. Evaluate veto_conditions: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true",
+        "14. Decision: veto conditions tripped; fail-closed to no_trade per rule \u00a713.4"
+      ],
+      "decision_log": [
+        "T+0: Catalyst assessment \u2014 no news catalyst within cutoff window; no SEC filings available (CIK not found); no GitHub activity (unmapped); no institutional positioning (13F unavailable). Narrative anchor absent.",
+        "T+1: External corroboration assessment \u2014 alternative_data_features: wikipedia_pageviews show no abnormal attention spike (650-842 views/day, flat trend); no retail meme attention detected; no community size data; no ownership positioning. Alt-data coverage insufficient.",
+        "T+2: Fundamentals assessment \u2014 Q3 2024 net_margin -73.61%, operating_income -13.9M, free_cash_flow -10.5M; valuation metrics negative (PE -13.93, EV/EBITDA -18.57, ROE -0.0896); analyst sentiment mixed (1 Buy, 3 Hold, 1 Strong Sell). Distress signals present but unverified.",
+        "T+3: Sleeve eligibility assessment \u2014 surge_short candidate: negative fundamentals present, but no corroborating catalyst or news; information_integrity_assessment disallows primary-signal use (low-tier sources only, uncorroborated). Surge_short conditions not met. quality_long candidate: negative profitability, negative valuation, mixed sentiment; macro regime restricts equity to 20% cap; information_integrity_veto tripped. Quality_long conditions not met.",
+        "T+4: Macro regime assessment \u2014 Overheat / Moderately Restrictive (stress_score=2); equity_allocation_cap=20%; equity_discipline=strict_quality_and_valuation_caution. Restrictive environment limits position sizing and requires high-quality thesis. TSVT does not meet quality threshold.",
+        "T+5: Risk assessment \u2014 profitability_crisis (net margin -73.61%), valuation_distress (PE -13.93), analyst_sentiment_deterioration (1 Buy, 3 Hold, 1 Strong Sell), macro_headwind (Overheat regime), data_integrity_risk (low-tier sources only), missing_alternative_data (SEC, GitHub, 13F), price_volatility (5d +12.9% vs 60d -28.75%), no_near_term_catalyst. Risk profile unacceptable without corroboration.",
+        "T+6: Veto evaluation \u2014 insufficient_evidence=true (no corroborating catalyst, news, or alt-data); missing_data_persists_beyond_tolerance=true (SEC CIK not found, GitHub unmapped, 13F unavailable); information_integrity_veto=true (low-tier sources only, uncorroborated, use_as_primary_signal_allowed=false). Multiple vetos tripped.",
+        "T+7: Final decision \u2014 veto conditions tripped; fail-closed to no_trade per rule \u00a713.4. Position_size_pct=0.0. Await SEC CIK mapping, news catalyst, or macro regime transition before reassessment."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-11T09:45:00-04:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:bdb93aa5e423ed889bc3c4a01b87a4bdf9193fcb01ca12013631598e06de46b8"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show no abnormal attention spike (650-842 views/day, flat 30-day trend). No retail meme attention detected. Community size data not available.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "dismiss",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No primary source corroboration available. Information integrity assessment flags low-tier sources only (T1=0, T2=0, T3=1, T4=1). Use_as_primary_signal_allowed=false per schema v1.1 decision #8.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "information_integrity_assessment status=insufficient_evidence; source_tier_distribution low-tier only; use_as_primary_signal_allowed=false; corroboration_status=uncorroborated. Essential blocks (SEC filings, GitHub, 13F, news catalyst) unavailable or failed. Fail-closed per rule \u00a713.6.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment mixed: 1 Buy, 3 Hold, 1 Strong Sell (as of 2025-03-01). Goldman Sachs Sell rating from 2024-11-12. Sentiment data is descriptor-only and cannot override veto conditions.",
+      "ownership_risk_adjustment_note": "Ownership positioning data not available (13F unavailable on plan, Form 4 CIK not found). Cannot assess institutional sponsorship or smart money support. Ownership_crowding_risk=unknown.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "Institutional ownership data unavailable (13F not available on plan). Cannot assess sponsorship or crowding risk.",
+      "smart_money_benchmark_note": "No institutional positioning data available. Cannot benchmark against smart money activity.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-11T09:30:00-04:00",
+      "execution_timestamp": "2025-03-11T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:7363755910eb4f5f5a8f913271a7b92e8a2ae8aca7dfb9376e1e627f20344695",
+      "immutable_decision_flag": true
+    }
+  }
+}

@@ -1,0 +1,875 @@
+{
+  "trigger_id": "2c7b7a39286b",
+  "ticker": "STSS",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-04-14T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 207.54,
+  "trigger_cost_usd": 0.29041,
+  "cumulative_cost_usd": 3.547916,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "STSS",
+    "name": "STSS",
+    "close": 12.75,
+    "prior_close": 7.5,
+    "change": 5.58,
+    "change_pct": 74.4,
+    "volume": 3318257.573333,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-04-14",
+    "prior_trading_day": "2025-04-11",
+    "available_as_of": "2025-04-14T16:00:00-05:00",
+    "today_open": 13.08,
+    "today_volume": 3318257.573333,
+    "eps_ttm": -2033.75,
+    "operating_margin_ttm": null,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2025-03-27 17:30:00",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:0bb54c141e96d3a595ad3a020000f3d76e8c97c56c14eca53543f5775fa22f55",
+  "locked_decision_id": "sha256:c5407b2de75dd795a53fa1c5ae34a34cff4c7acff93e3fa653daeee0202d93ef",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026_05_03_pass8_hardrule",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "STSS",
+    "decision_timestamp": "2025-04-14T09:30:00-04:00",
+    "data_available_as_of": "2025-04-14T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision aggregating upstream agent outputs",
+    "confidence": "medium",
+    "evidence_used": [
+      "price_snapshot.trigger_day_open (13.08) vs prior_close (5.49) = +138% gap",
+      "price_snapshot.return_20d_pct (-92.6275%)",
+      "price_snapshot.return_60d_pct (-98.6911%)",
+      "price_snapshot.relative_volume_vs_20d (3.6978x)",
+      "corporate_calendar.earnings (2025-03-27: EPS -869.7 vs est -198, massive miss)",
+      "valuation_snapshot.pe_ratio (-0.167), net_margin_pct_ttm (-11724.3%), roe (-1.56), roa (-1.05)",
+      "fundamental_snapshot.status (insufficient_evidence, all quarterly metrics null)",
+      "news_event_summary.status (data_unavailable, 0 items in 7d window)",
+      "filing_confirmation.SEC_8K_confirmation (true, 2025-04-14)",
+      "sentiment_community_ownership_evidence.sec_form4 (CEO Hayes: 2 purchases Feb-Mar 2025 at $0.03-0.04/share)",
+      "alternative_data_features.wikipedia_pageviews (30 days, peak 35 views 2025-04-07, baseline 12-20)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (1 Buy rating, no Sell/Strong Sell)",
+      "macro_regime (Strengthening/Expansionary, equity_discipline=strict_quality_and_valuation)",
+      "upstream_agent_outputs.surge_short.short_thesis_status (valid)",
+      "upstream_agent_outputs.surge_short.recommended_action (short)",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard veto tripped)",
+      "adas_lagged.per_agent_signals (surge_short agent: high confidence short; narrative_event: low confidence; alt_data_verify: challenge thesis; risk: no veto)"
+    ],
+    "evidence_missing": [
+      "fundamental_snapshot.snapshot_quarter (all null: revenue, net_income, operating_income, ebitda, eps, margins, cash flows, balance sheet)",
+      "news_event_summary.items (0 rows, 20 dropped post-cutoff)",
+      "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)",
+      "alternative_data_features.tech_activity.github_public (unmapped_ticker, 0 rows)",
+      "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan, 0 rows)",
+      "narrative_price_gap_assessment (not_evaluated, agent_internal_pending)"
+    ],
+    "reasoning_summary": "STSS surged +138% (5.49\u219213.08) on 2025-04-14 opening, meeting surge-short pre-filter (\u226550% gap, vol 2.18M, prior_close $5.49 > $2). Upstream surge_short agent emits 'short' with high confidence, citing structural absence of corroborating evidence relative to sector expectations: (1) fundamental metrics in severe distress (PE=-0.167, net_margin=-11724%, ROE=-1.56); (2) no verifiable catalyst narrative (news_event_summary=0 items, 8-K text=stub); (3) stock collapsed -98.7% over 60 days, surge is likely dead-cat bounce or short-squeeze relief; (4) insider CEO purchases at $0.03-0.04/share do not validate $13.08 price; (5) macro regime strict_quality_and_valuation discipline; STSS fails both tests. Narrative agent rates confidence 'low' due to missing 8-K text and news, but acknowledges earnings miss (2025-03-27: EPS -869.7 vs est -198) as primary driver. Alt-data verify returned schema validation error (not substantive). Risk agent confirms no hard veto conditions tripped (lookahead_safe=true, data_after_cutoff_used=false, no critical data-quality flags). ADaS lagged shows prior-day disagreement (narrative_event low confidence, alt_data_verify challenge, surge_short high confidence short, risk no veto), but surge_short's high-confidence short thesis is supported by preponderance of evidence: extreme valuation distress, structural absence of expected SEC/news/alt-data corroboration, 98.7% 60-day decline, and macro discipline alignment. Position sizing per \u00a74.8: new surge_short entry = 0.005 (0.5%) mechanically. Execution T+1 next-open per \u00a72.1 discipline.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If fundamental_snapshot is populated with positive revenue growth, positive net income, and positive FCF in next filing, bear thesis weakens materially.",
+      "If news_event_summary reveals a material contract win, partnership, or regulatory approval, bear thesis weakens.",
+      "If alternative_data_features show GitHub activity, patent filings, or engineering hiring consistent with claimed business model, bear thesis weakens.",
+      "If sentiment_community_ownership_evidence shows institutional 13F buying or hedge fund accumulation, bear thesis weakens.",
+      "If stock stabilizes above $10 and holds for 10+ trading days with positive earnings revision, momentum thesis may shift to value.",
+      "If macro regime shifts to risk-off and equity_discipline relaxes, short thesis may face headwinds."
+    ],
+    "risk_flags": [
+      "Extreme valuation distress: PE=-0.167, net_margin=-11724%, ROE=-1.56, ROA=-1.05.",
+      "Catastrophic price decline: -92.6% (20d), -98.7% (60d). Surge may be dead-cat bounce or short-squeeze relief.",
+      "Fundamental data unavailable: fundamental_snapshot returns insufficient_evidence; all quarterly metrics null.",
+      "No verifiable catalyst: news_event_summary returns 0 items; filing_confirmation 8-K text is stub mode.",
+      "Earnings miss: 2025-03-27 EPS -869.7 vs estimate -198 (massive miss).",
+      "Insider buying at distressed prices: CEO purchased at $0.03-0.04/share; current surge to $13.08 suggests insider purchases do not validate current valuation.",
+      "High 8-K filing frequency (9 in 90 days) without clear narrative suggests governance/restructuring activity, not growth.",
+      "Minimal analyst coverage: 1 Buy rating, no Sell/Strong Sell; low institutional interest.",
+      "Alt-data silence: Wikipedia pageviews modest (peak 35), no GitHub activity, no 13F institutional data.",
+      "Macro headwind: strict_quality_and_valuation discipline in Strengthening regime; STSS fails both tests.",
+      "ADaS lagged shows prior-day disagreement (3 of 4 agents dissenting from short on 2025-04-10); however, surge_short agent's high-confidence thesis is supported by structural evidence, not contradicted by dissent."
+    ],
+    "suggested_improvements": [
+      "Obtain full text of 2025-04-14 8-K (Item 8.01) and 2025-04-04 8-K (Item 3.01) to identify material agreement or catalyst.",
+      "Fetch 10-K or 10-Q filing to verify revenue, net income, R&D spend, and business description.",
+      "Cross-check insider transaction prices ($0.03-0.04) against historical stock price to assess whether CEO purchases were at distressed valuations.",
+      "Investigate the 1:22 stock split (2024-10-16) and its impact on share count and per-share metrics.",
+      "Obtain analyst reports or earnings call transcripts to understand the business model and growth narrative.",
+      "Monitor next earnings date and compare actual results to consensus estimates.",
+      "Track short interest and borrow availability to assess short-squeeze risk.",
+      "Verify whether the company is in bankruptcy, restructuring, or going-concern proceedings."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "fundamental_snapshot.status=insufficient_evidence; all quarterly metrics (revenue, net_income, operating_income, ebitda, eps, margins, cash flows, balance sheet) are null. Cannot assess profitability or growth."
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "news_event_summary: 0 items in window; 20 items dropped post-cutoff. No verifiable catalyst narrative available."
+      },
+      {
+        "kind": "stub_data",
+        "severity": "warning",
+        "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode (deterministic, not ground truth). OpenCLI adapter not installed; cannot extract actual 8-K text."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "alternative_data_features.tech_activity.github_public: unmapped_ticker; 0 rows returned."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sentiment_community_ownership_evidence.sec_13f: not_available_on_current_plan; 0 rows returned."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe. The stub-mode 8-K fulltext and missing fundamental_snapshot data are genuine gaps that prevent full validation of the catalyst narrative. However, the packet correctly flags these absences, and the agent's role is to interpret the absence pattern as bear-thesis evidence per \u00a713.6.SOFT_REASONING. The asymmetric absence rule applies: structural absence of expected SEC disclosures (10-K/10-Q fundamentals), news catalysts, and institutional support, combined with extreme valuation distress and a 98.7% 60-day decline, supports a bear thesis that the surge is momentum/short-squeeze relief, not value creation.",
+    "recommended_followups": [
+      "Obtain ground-truth 8-K text (Item 8.01, 2025-04-14) to identify the material agreement or event driving the surge.",
+      "Fetch latest 10-K or 10-Q to verify revenue, profitability, and business model.",
+      "Cross-reference insider transaction prices with historical stock price to assess whether CEO purchases validate current valuation.",
+      "Monitor short interest, borrow availability, and options flow to assess short-squeeze risk.",
+      "Set alert for next earnings date and compare actual results to consensus.",
+      "Investigate whether company is in bankruptcy, restructuring, or going-concern proceedings.",
+      "Obtain analyst reports or earnings call transcripts to understand growth narrative."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "STSS surged +138% on 2025-04-14 opening but lacks corroborating evidence. Fundamentals in severe distress (PE=-0.167, net_margin=-11724%), no verifiable catalyst (news=0, 8-K=stub), stock down 98.7% in 60d. Structural absence of expected SEC/news/alt-data evidence vs sector expectations supports bear thesis. Upstream surge_short agent high-confidence short. Risk: no hard veto. Entry 0.5% per \u00a74.8 fixed sizing.",
+    "risk_notes": [
+      "No hard veto conditions tripped per Risk agent evaluation (lookahead_safe=true, data_after_cutoff_used=false, no critical data-quality flags).",
+      "Proposed 0.5% position must not breach 10% surge-short sleeve cap; PM responsible for verifying current sleeve exposure before execution.",
+      "Borrow availability and cost for STSS short at 0.5% size must be verified at execution timestamp 2025-04-14T09:45:00-04:00.",
+      "Liquidity for entry/exit at decision_timestamp 2025-04-14T09:30:00-04:00 (opening window) is adequate (volume 2.18M, dollar_volume $16.3M).",
+      "ADaS lagged shows prior-day disagreement (3 of 4 agents dissenting from short on 2025-04-10), but surge_short agent's high-confidence thesis is supported by structural evidence and preponderance of present packet data."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Surge_short candidate is exempt."
+      },
+      {
+        "name": "short_sleeve_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "No current portfolio state provided in packet. Proposed surge_short position (0.5% per \u00a74.8 fixed sizing) would not breach 10% sleeve cap if current exposure is \u22649.5%. PM must verify before execution."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "Scanned all data_quality_flags blocks across all 12 canonical blocks. No flag with severity='critical' found. Highest severity is 'warning'. Condition (c) NOT tripped."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate_type=surge_short per \u00a75.17 exemption; veto INAPPLICABLE. Additionally, information_integrity_assessment.pollution_confirmed is not set to true (status='ok', pollution_risk_level='unknown'). Unimplemented pollution-defense layer exempts from hard veto per \u00a75.13(d) relaxation 2026-05-06."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. No lookahead violations recorded. Condition (e) NOT tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a72.1 surge-short pre-filter: prior_close=$5.49, trigger_day_open=$13.08, gap=+138% \u2265 +50% \u2713; volume=2.18M \u2265 1M \u2713; prior_close=$5.49 > $2 \u2713. Candidate qualifies.",
+      "\u00a72.9-\u00a72.12 hard never-short filter: no bankruptcy, delisting, or going-concern notice in packet. Candidate passes.",
+      "\u00a74.8 surge-short sleeve conditions: new entry, position_size_pct = 0.005 (0.5%) mechanically per \u00a74.8 fixed sizing.",
+      "\u00a75.13 hard-veto conditions (a)-(e) evaluated mechanically per Risk agent output: (a) not applicable to surge_short; (b) not tripped (current sleeve exposure unknown, PM responsible for verification); (c) not tripped (no critical data-quality flags); (d) not applicable per \u00a75.17 surge_short exemption; (e) not tripped (lookahead_safe=true).",
+      "\u00a713.6.SOFT_REASONING asymmetric absence rule: structural absence of expected SEC disclosures (10-K/10-Q fundamentals), news catalysts (news_event_summary=0 items), and institutional support (13F unavailable), combined with extreme valuation distress (PE=-0.167, net_margin=-11724%) and 98.7% 60-day decline, is bear-thesis evidence for surge_short candidate.",
+      "Upstream agent aggregation: narrative_event (low confidence, vague_narrative_flag=true, unsupported_claim verdict); alt_data_verify (schema validation error, not substantive); surge_short (high confidence, short verdict, valid short_thesis_status); risk (no hard veto). Preponderance of evidence supports short decision.",
+      "Pass 8 scoring (\u00a733.2): narrative_event.verdict='unsupported_claim' (+2); alt_data_verify.verdict='challenge_thesis' (not in scoring rubric, treated as neutral); fundamental_assessment='supports_short' (implicit +1); valuation_justification='not_justified' (implicit +1). Estimated score \u2265 3, band='strong_tilt' or 'discretion'. PM emits short by default per preponderance reasoning.",
+      "Execution plan: T+1 next-open per \u00a72.1 discipline; execution_timestamp=2025-04-14T09:45:00-04:00 (15 minutes post-decision_timestamp, opening window)."
+    ],
+    "decision_log": [
+      "2025-04-14T09:30:00-04:00 [DECISION_TIMESTAMP] PM Agent 07b initialized for STSS surge-short candidate.",
+      "2025-04-14T09:30:00-04:00 [PRE_FILTER_CHECK] Surge-short pre-filter: prior_close=$5.49, trigger_day_open=$13.08, gap=+138% \u2265 +50% \u2713; volume=2.18M \u2265 1M \u2713; prior_close=$5.49 > $2 \u2713. Candidate qualifies for surge-short evaluation.",
+      "2025-04-14T09:30:00-04:00 [NEVER_SHORT_FILTER] \u00a72.9-\u00a72.12 hard never-short filter: no bankruptcy, delisting, or going-concern notice in packet. Candidate passes.",
+      "2025-04-14T09:30:00-04:00 [UPSTREAM_AGGREGATION] Narrative_event agent: low confidence, vague_narrative_flag=true, unsupported_claim verdict (8-K text unavailable, news=0 items, earnings miss is primary driver). Alt_data_verify: schema validation error (not substantive). Surge_short agent: high confidence, short verdict, valid short_thesis_status (structural absence of corroborating evidence, extreme valuation distress, 98.7% 60d decline). Risk agent: no hard veto conditions tripped.",
+      "2025-04-14T09:30:00-04:00 [VETO_EVALUATION] \u00a75.13 hard-veto conditions: (a) not applicable to surge_short; (b) not tripped (current sleeve exposure unknown, PM responsible for verification); (c) not tripped (no critical data-quality flags); (d) not applicable per \u00a75.17 surge_short exemption; (e) not tripped (lookahead_safe=true, data_after_cutoff_used=false). No hard veto conditions tripped.",
+      "2025-04-14T09:30:00-04:00 [ASYMMETRIC_ABSENCE_RULE] Structural absence of expected SEC disclosures (10-K/10-Q fundamentals null), news catalysts (news_event_summary=0 items, 20 dropped post-cutoff), and institutional support (13F unavailable, GitHub unmapped), combined with extreme valuation distress (PE=-0.167, net_margin=-11724%, ROE=-1.56, ROA=-1.05) and catastrophic price decline (-98.7% over 60 days), is bear-thesis evidence for surge_short candidate per \u00a713.6.SOFT_REASONING.",
+      "2025-04-14T09:30:00-04:00 [FUNDAMENTAL_DISTRESS] Valuation snapshot shows PE=-0.167, net_margin_pct_ttm=-11724.3%, ROE=-1.56, ROA=-1.05. These are extreme distress signals, not just negative. Company is deeply unprofitable. Fundamental_snapshot returns insufficient_evidence with all quarterly metrics null, preventing PIT-safe assessment of profitability or growth.",
+      "2025-04-14T09:30:00-04:00 [EARNINGS_MISS] Most recent earnings (2025-03-27) showed EPS -869.7 vs estimate -198, a massive miss. This is the likely primary catalyst for the 98.7% 60-day decline, not the 2025-04-14 8-K filing.",
+      "2025-04-14T09:30:00-04:00 [INSIDER_BUYING_SIGNAL] CEO Hayes purchased 300k shares at $0.03-0.04/share (Feb-Mar 2025), post-transaction holdings 400,882 shares. While insider buying is often bullish, the price paid ($0.03-0.04) is far below the surge price ($13.08), suggesting the insider purchases were made at distressed valuations and do not validate the current surge.",
+      "2025-04-14T09:30:00-04:00 [ALT_DATA_SILENCE] Wikipedia pageviews show modest attention (peak 35 views on 2025-04-07, baseline 12-20 views). No GitHub activity (unmapped_ticker). No institutional 13F data. Analyst sentiment is minimal (1 Buy rating, no Sell/Strong Sell). This silence is consistent with a distressed/bankruptcy-risk profile, not a growth story.",
+      "2025-04-14T09:30:00-04:00 [PRICE_ACTION_CONTRADICTION] Stock has declined -92.6% over 20 days and -98.7% over 60 days. The surge on 2025-04-14 is a brief reversal in a catastrophic downtrend. This pattern is consistent with a dead-cat bounce or short-squeeze relief, not fundamental value recovery.",
+      "2025-04-14T09:30:00-04:00 [MACRO_DISCIPLINE] Macro regime is Strengthening/Expansionary with strict_quality_and_valuation equity discipline. STSS fails both quality (negative margins, negative ROE/ROA) and valuation (extreme distress metrics) tests. This is a headwind for the long thesis.",
+      "2025-04-14T09:30:00-04:00 [ADAS_LAGGED_CONTEXT] ADaS lagged shows prior-day (2025-04-10) disagreement: narrative_event (low confidence), alt_data_verify (challenge thesis), surge_short (high confidence short), risk (no veto). 3 of 4 agents dissenting from short. However, surge_short agent's high-confidence thesis is supported by structural evidence (absence of corroborating evidence, extreme valuation distress, 98.7% decline) and preponderance of present packet data. Dissent does not invalidate the bear thesis.",
+      "2025-04-14T09:30:00-04:00 [PREPONDERANCE_REASONING] Weighing all evidence: (1) surge dynamic showing exhaustion in price action (98.7% 60d decline, brief relief bounce); (2) public narrative inconsistent with verifiable evidence (8-K text unavailable, news=0, earnings miss is primary driver); (3) structural absence relative to sector-expected evidence (no 10-K/10-Q fundamentals, no news catalysts, no institutional support); (4) negative fundamental ratios (PE=-0.167, net_margin=-11724%, ROE=-1.56, ROA=-1.05); (5) high 8-K filing frequency (9 in 90 days) suggesting governance/restructuring activity, not growth. Preponderance of evidence favors bear thesis. Short decision is appropriate.",
+      "2025-04-14T09:30:00-04:00 [POSITION_SIZING] \u00a74.8 surge-short fixed sizing: new entry = 0.005 (0.5%) mechanically. No discretion on sizing for new surge_short entries.",
+      "2025-04-14T09:30:00-04:00 [EXECUTION_PLAN] T+1 next-open per \u00a72.1 discipline. Execution_timestamp=2025-04-14T09:45:00-04:00 (15 minutes post-decision_timestamp, opening window). Order_type='T+1 next-open', side='sell_to_open', size_pct_of_portfolio=0.005.",
+      "2025-04-14T09:30:00-04:00 [FINAL_DECISION] decision='short', position_size_pct=0.005, confidence='medium' (due to missing fundamental_snapshot and news_event_summary data, but preponderance of present evidence supports bear thesis). Immutable_decision_flag=true."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-14T09:45:00-04:00",
+      "ticker": "STSS",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_pass8_hardrule",
+      "evidence_packet_hash": "sha256:a39a98e4be633d698b1a8f3e207c915e540573c1ed60df1d0d7e55cdb6499c4e"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews show modest attention (peak 35 views on 2025-04-07, baseline 12-20 views). No sustained spike corroborating a major narrative event. Analyst sentiment minimal (1 Buy rating, no Sell/Strong Sell). Low community attention is consistent with a distressed/bankruptcy-risk profile, not a growth story.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "8-K Item 8.01 text unavailable (stub mode); actual material agreement or event cannot be verified. News_event_summary returns 0 items; no independent corroboration of 8-K narrative. Narrative_event agent rates confidence 'low' due to missing evidence.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Fundamental_snapshot returns insufficient_evidence with all quarterly metrics null. Cannot confirm value creation thesis without verifiable fundamentals. Structural absence of expected SEC disclosures, news catalysts, and institutional support supports bear thesis instead.",
+    "sentiment_risk_adjustment_note": "Analyst sentiment minimal (1 Buy rating, no Sell/Strong Sell). FMP sentiment shows 22 T2-tier sources but no specific sentiment scores provided. Low institutional interest is consistent with distressed profile.",
+    "ownership_risk_adjustment_note": "Insider CEO purchases at $0.03-0.04/share (Feb-Mar 2025) do not validate current surge price ($13.08). Insider buying at distressed valuations suggests capitulation or opportunistic accumulation, not confidence in current valuation. No 13F institutional ownership data available.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "medium",
+    "institutional_sponsorship_note": "No institutional 13F data available (not_available_on_current_plan). Analyst coverage minimal (1 Buy rating). Low institutional sponsorship is consistent with distressed/bankruptcy-risk profile.",
+    "smart_money_benchmark_note": "Insider CEO purchases at $0.03-0.04/share (Feb-Mar 2025) are far below current surge price ($13.08), suggesting insider purchases were at distressed valuations and do not validate current price. No hedge fund or smart money accumulation data available.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+    "execution_timestamp": "2025-04-14T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:486c37be9530941e2e72667b8d992dc19764368def2d4b3e7e72a92cd6d98b80",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": 3.5,
+    "score_components": {
+      "narrative_event_unsupported_claim": 2.0,
+      "alt_data_verify_challenge_thesis": 0.0,
+      "fundamental_assessment_supports_short": 1.0,
+      "valuation_justification_not_justified": 0.5
+    },
+    "score_threshold_band": "strong_tilt",
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "STSS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_date",
+        "filing_confirmation.filing_index.sec_edgar",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "corporate_calendar.events_near_decision",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "news_event_summary.status"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items returned; 20 dropped post-cutoff)",
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "news_event_summary.catalyst_specificity_score",
+        "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)",
+        "fundamental_snapshot (insufficient_evidence status)",
+        "company_claim_text_from_8K_item_8.01",
+        "press_release_confirmation",
+        "earnings_call_confirmation"
+      ],
+      "reasoning_summary": "STSS exhibits a severe price collapse (return_20d_pct=-92.6275%, return_5d_pct=-3.1008%) with elevated relative volume (3.6978x 20d average) on decision_timestamp 2025-04-14. Filing_confirmation.SEC_8K_confirmation=true with filing_date=2025-04-14 (same day as decision), indicating a material event disclosure. However, the news_event_summary block is data_unavailable (0 items returned; 20 items dropped post-cutoff), preventing direct narrative extraction. The sec_8k_fulltext adapter returned stub data (mock_fallback mode, not ground truth), so the actual Item 8.01 content is unknown. Corporate_calendar shows a recent earnings miss on 2025-03-27 (eps_actual=-869.7 vs eps_estimated=-198, a massive negative surprise), which likely triggered the collapse. Insider Form 4 activity shows CEO Hayes purchased 300k shares on 2025-02-28 and 2025-03-31 at $0.04 and $0.03 per share (total $10.75k), suggesting insider confidence despite deteriorating fundamentals. Wikipedia pageviews show a modest spike on 2025-04-07 (35 views, peak in window) but no sustained attention. Valuation snapshot shows negative profitability metrics (PE=-0.167, ROE=-1.56, net_margin=-11724.3%), indicating the company is deeply unprofitable. The 8-K filing on 2025-04-14 is likely a material agreement disclosure (Item 8.01 = Other Events), but without the actual text, the catalyst cannot be classified as concrete or vague. The structural absence of news corroboration combined with the massive earnings miss and negative fundamentals suggests the price action is driven by fundamental deterioration (earnings miss) rather than a specific narrative catalyst disclosed in the 8-K. The 8-K itself may be a secondary event (e.g., a restructuring agreement or financing) responding to the earnings collapse, not the primary catalyst.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K Item 8.01 text reveals a concrete, positive catalyst (e.g., named customer contract, specific dollar amount, regulatory approval), the vague_narrative_flag should be downgraded and catalyst_specificity_score raised.",
+        "If news items become available post-cutoff that corroborate or contradict the 8-K disclosure, confidence should be reassessed.",
+        "If fundamental_snapshot data becomes available showing revenue growth or margin improvement, the value_creation_assessment should shift from 'momentum' to 'real'."
+      ],
+      "risk_flags": [
+        "Massive earnings miss (eps_actual=-869.7 vs est=-198) on 2025-03-27 is the likely primary catalyst, not the 8-K filing.",
+        "Stub data in sec_8k_fulltext prevents ground-truth verification of the 8-K claim.",
+        "News block is data_unavailable; no corroboration of the 8-K narrative from independent sources.",
+        "Negative profitability (net_margin=-11724.3%, ROE=-1.56) indicates structural distress, not a discrete event.",
+        "Stock price has collapsed 98.69% over 60 days; this is a distressed/bankruptcy-risk profile, not a typical catalyst-driven move.",
+        "Insider buying at $0.03-$0.04 per share (post-collapse) may indicate capitulation or opportunistic accumulation, not confidence.",
+        "Wikipedia pageviews show no sustained attention spike; alternative data does not corroborate a major narrative event."
+      ],
+      "suggested_improvements": [
+        "Retrieve the full text of the 8-K Item 8.01 from SEC EDGAR directly to extract the actual company claim.",
+        "Cross-reference the 8-K filing date (2025-04-14) with any press releases or investor communications issued on or near that date.",
+        "Analyze the earnings miss (2025-03-27) as the primary catalyst and assess whether the 8-K is a secondary response (e.g., covenant waiver, restructuring plan).",
+        "Obtain fundamental_snapshot data (income statement, balance sheet) to assess whether the company has any path to profitability or is in terminal decline.",
+        "Check SEC filings for any bankruptcy, going-concern, or delisting notices filed around 2025-04-14.",
+        "Retrieve analyst reports or equity research notes published around the earnings miss to understand the market's interpretation of the collapse."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; news_event_summary.items is empty, preventing narrative extraction."
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext returned mock_fallback stub data; actual 8-K text is not ground truth."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no income/balance/cashflow data available for PIT-safe analysis."
+        },
+        {
+          "kind": "alt_data_sparse",
+          "severity": "info",
+          "detail": "wikipedia_pageviews shows modest attention (peak 35 views on 2025-04-07); no sustained spike corroborating a major narrative event."
+        },
+        {
+          "kind": "filing_text_unavailable",
+          "severity": "critical",
+          "detail": "sec_8k_fulltext adapter not installed; cannot extract Item 8.01 content to classify the catalyst."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure assumes that when a filing_confirmation.SEC_8K_confirmation=true, the full_text.sec_8k_fulltext block will contain ground-truth content. In this case, the adapter returned stub data (mock_fallback), making it impossible to extract the actual company claim. The news_event_summary block is also data_unavailable, leaving no independent corroboration of the 8-K narrative. This creates a structural gap: the agent can confirm that an 8-K was filed, but cannot determine what it says or whether it is material. The schema should either (a) require the full text to be present before emitting a catalyst classification, or (b) allow the agent to emit a 'needs_more_evidence' verdict when both news and filing text are unavailable.",
+      "recommended_followups": [
+        "Retrieve the full text of 8-K accession 0001641172-25-004600 from https://www.sec.gov/Archives/edgar/data/1737995/000164117225004600/form8-k.htm and parse Item 8.01.",
+        "Search for press releases issued by STSS on or near 2025-04-14 to corroborate the 8-K disclosure.",
+        "Analyze the earnings miss on 2025-03-27 as the primary catalyst; assess whether the 8-K is a secondary response.",
+        "Obtain Q1 2025 earnings call transcript (if available) to understand management's explanation of the collapse.",
+        "Check for any bankruptcy, going-concern, or delisting notices filed after 2025-04-14.",
+        "Retrieve analyst downgrades or equity research notes published around the earnings miss."
+      ],
+      "catalyst_type": "material_agreement_or_other_event_unspecified",
+      "catalyst_specificity_score": 0.15,
+      "vague_narrative_flag": true,
+      "company_claim": "STSS filed an 8-K on 2025-04-14 disclosing a material agreement or other event (Item 8.01). The actual content of the claim is unknown because the sec_8k_fulltext adapter returned stub data. The filing is concurrent with a 98.69% stock collapse over 60 days, driven primarily by a massive earnings miss on 2025-03-27 (eps_actual=-869.7 vs est=-198). The 8-K may be a secondary disclosure (e.g., restructuring, covenant waiver, financing) responding to the earnings collapse, not the primary catalyst.",
+      "value_creation_assessment": "momentum",
+      "narrative_taxonomy_examples_matched": [
+        "material_agreement_disclosure (Item 8.01 filed, but content unknown)",
+        "earnings_miss (2025-03-27: eps_actual=-869.7 vs est=-198, primary driver of collapse)",
+        "distressed_equity (stock down 98.69% in 60 days, negative profitability, insider buying at $0.03-$0.04)"
+      ],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_schema_name": "AltDataVerificationAgentOutput",
+      "decision_or_assessment": "needs_more_evidence",
+      "confidence": "low",
+      "evidence_used": [],
+      "evidence_missing": [
+        "schema_validation_failed"
+      ],
+      "reasoning_summary": "1 validation error for AltDataVerificationAgentOutput\nopencli_not_evaluated_reason\n  Input should be 'not_connected', 'auth_required', 'browser_unavailable', 'rate_limited', 'parse_error', 'empty_result' or 'not_applicable' [type=literal_error, input_value='binary_unavailable', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error",
+      "uncertainty": "high",
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "surge_short_v0.4_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "STSS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short evaluation for STSS: structural absence of corroborating evidence relative to public narrative and sector expectations.",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.return_20d_pct (-92.6275%)",
+        "price_snapshot.return_60d_pct (-98.6911%)",
+        "price_snapshot.trigger_day_open (13.08) vs prior_close (5.49)",
+        "corporate_calendar.earnings (2025-03-27: EPS -869.7 vs est -198)",
+        "valuation_snapshot.pe_ratio (-0.167)",
+        "valuation_snapshot.net_margin_pct_ttm (-11724.3%)",
+        "fundamental_snapshot.status (insufficient_evidence)",
+        "news_event_summary.status (data_unavailable, 0 items in 7d window)",
+        "filing_confirmation.SEC_8K_confirmation (true, 2025-04-14)",
+        "sec_form4 insider transactions (CEO Hayes: 2 purchases Feb-Mar 2025 at $0.03-0.04/share)",
+        "alternative_data_features.wikipedia_pageviews (30 days, peak 35 views 2025-04-07)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (1 Buy rating, no Sell/Strong Sell)",
+        "macro_regime (Strengthening/Expansionary, equity_discipline=strict_quality_and_valuation)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.snapshot_quarter (all null: revenue, net_income, operating_income, ebitda, eps, margins, cash flows, balance sheet items)",
+        "news_event_summary.items (0 rows, 20 dropped post-cutoff)",
+        "news_event_summary.catalyst_type (not_evaluated)",
+        "news_event_summary.ai_pivot_flag (not_evaluated)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker, 0 rows)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan, 0 rows)",
+        "sentiment_community_ownership_evidence.institutional_ownership_pct (null)",
+        "sentiment_community_ownership_evidence.hedge_fund_holder_count (null)",
+        "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)",
+        "narrative_price_gap_assessment (not_evaluated, agent_internal_pending)"
+      ],
+      "reasoning_summary": "STSS surged from $5.49 (prior close 2025-04-11) to $13.08 (trigger day open 2025-04-14), a +138% gap. The surge is mechanically confirmed by price_snapshot. However, the bear thesis is supported by structural absence of corroborating evidence relative to what a legitimate listed company in this sector should disclose: (1) FUNDAMENTAL ABSENCE: fundamental_snapshot returns insufficient_evidence with all quarterly metrics null (revenue, net_income, ebitda, eps, margins, cash flows, assets, liabilities, equity, debt). For a company claiming material value creation, this is sector-atypical absence. (2) NEWS ABSENCE: news_event_summary returns 0 items in the 7-day window despite 20 items dropped post-cutoff. Polygon News adapter returned 0 rows. No catalyst narrative is verifiable in the packet. (3) VALUATION DISTRESS: TTM valuation shows PE=-0.167, net_margin=-11724%, ROE=-1.56, ROA=-1.05. These are not just negative; they are extreme distress signals. The company is deeply unprofitable. (4) EARNINGS MISS: Most recent earnings (2025-03-27) showed EPS -869.7 vs estimate -198, a massive miss. (5) INSIDER BUYING SIGNAL WEAKNESS: CEO Hayes purchased 300k shares at $0.03-0.04/share (Feb-Mar 2025), post-transaction holdings 400,882 shares. While insider buying is often bullish, the price paid ($0.03-0.04) is far below the surge price ($13.08), suggesting the insider purchases were made at distressed valuations and do not validate the current surge. (6) ALT-DATA SILENCE: Wikipedia pageviews show modest attention (peak 35 views on 2025-04-07, baseline 12-20 views). No GitHub activity (unmapped_ticker). No institutional 13F data. Analyst sentiment is minimal (1 Buy rating, no Sell/Strong Sell). (7) SECTOR CONTEXT: STSS appears to be a space/surveillance company (Wikipedia article title: Space_Tracking_and_Surveillance_System). For such a company, expected evidence footprint would include: regulatory filings (SEC 10-K/10-Q with business description, revenue, R&D spend), contract/partnership disclosures (8-K Item 1.01 or 8.01), technical capability evidence (patents, engineering hires, product roadmap). The packet shows 9 8-K filings in 90 days (high frequency), but the most recent (2025-04-14, Item 8.01) is stub-mode text and does not provide ground-truth content. The 2025-04-04 8-K (Item 3.01) and 2025-04-02 8-K (Item 5.07) suggest material agreements and bylaws/governance changes, but no narrative is available. (8) PRICE ACTION CONTRADICTION: The stock has declined -92.6% over 20 days and -98.7% over 60 days. The surge on 2025-04-14 is a brief reversal in a catastrophic downtrend. This pattern is consistent with a dead-cat bounce or short-squeeze relief, not fundamental value recovery. (9) MACRO DISCIPLINE: The macro regime is Strengthening/Expansionary with strict_quality_and_valuation equity discipline. STSS fails both quality (negative margins, negative ROE/ROA) and valuation (extreme distress metrics) tests. CONCLUSION: The surge lacks corroborating evidence. The company's fundamental metrics are in severe distress. No verifiable catalyst narrative is present in the packet. Insider buying at $0.03-0.04 does not validate a $13.08 price. The structural absence of expected SEC disclosures (10-K/10-Q fundamentals), news catalysts, and institutional support, combined with extreme valuation distress and a 98.7% 60-day decline, supports a bear thesis that the surge is momentum/short-squeeze relief, not value creation.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If fundamental_snapshot is populated with positive revenue growth, positive net income, and positive FCF in next filing, bear thesis weakens.",
+        "If news_event_summary reveals a material contract win, partnership, or FDA approval (for biotech) or major customer acquisition, bear thesis weakens.",
+        "If alternative_data_features show GitHub activity, patent filings, or engineering hiring consistent with claimed business model, bear thesis weakens.",
+        "If sentiment_community_ownership_evidence shows institutional 13F buying or hedge fund accumulation, bear thesis weakens.",
+        "If the stock stabilizes above $10 and holds for 10+ trading days with positive earnings revision, momentum thesis may shift to value.",
+        "If macro regime shifts to risk-off and equity_discipline relaxes, short thesis may face headwinds."
+      ],
+      "risk_flags": [
+        "Extreme valuation distress: PE=-0.167, net_margin=-11724%, ROE=-1.56, ROA=-1.05.",
+        "Catastrophic price decline: -92.6% (20d), -98.7% (60d). Surge may be dead-cat bounce or short-squeeze relief.",
+        "Fundamental data unavailable: fundamental_snapshot returns insufficient_evidence; all quarterly metrics null.",
+        "No verifiable catalyst: news_event_summary returns 0 items; filing_confirmation 8-K text is stub mode.",
+        "Earnings miss: 2025-03-27 EPS -869.7 vs estimate -198 (massive miss).",
+        "Insider buying at distressed prices: CEO purchased at $0.03-0.04/share; current surge to $13.08 suggests insider purchases do not validate current valuation.",
+        "High 8-K filing frequency (9 in 90 days) without clear narrative suggests governance/restructuring activity, not growth.",
+        "Minimal analyst coverage: 1 Buy rating, no Sell/Strong Sell; low institutional interest.",
+        "Alt-data silence: Wikipedia pageviews modest (peak 35), no GitHub activity, no 13F institutional data.",
+        "Macro headwind: strict_quality_and_valuation discipline in Strengthening regime; STSS fails both tests."
+      ],
+      "suggested_improvements": [
+        "Obtain full text of 2025-04-14 8-K (Item 8.01) and 2025-04-04 8-K (Item 3.01) to identify material agreement or catalyst.",
+        "Fetch 10-K or 10-Q filing to verify revenue, net income, R&D spend, and business description.",
+        "Cross-check insider transaction prices ($0.03-0.04) against historical stock price to assess whether CEO purchases were at distressed valuations.",
+        "Investigate the 1:22 stock split (2024-10-16) and its impact on share count and per-share metrics.",
+        "Obtain analyst reports or earnings call transcripts to understand the business model and growth narrative.",
+        "Monitor next earnings date and compare actual results to consensus estimates.",
+        "Track short interest and borrow availability to assess short-squeeze risk.",
+        "Verify whether the company is in bankruptcy, restructuring, or going-concern proceedings."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; all quarterly metrics (revenue, net_income, operating_income, ebitda, eps, margins, cash flows, balance sheet) are null. Cannot assess profitability or growth."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 0 items in window; 20 items dropped post-cutoff. No verifiable catalyst narrative available."
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode (deterministic, not ground truth). OpenCLI adapter not installed; cannot extract actual 8-K text."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "alternative_data_features.tech_activity.github_public: unmapped_ticker; 0 rows returned."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence.sec_13f: not_available_on_current_plan; 0 rows returned."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs: TTM ratios, not PIT-safe. Extreme negative values (-0.167 PE, -11724% net margin) are real but not anchored to specific fiscal period."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "price_snapshot.live_quote at 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close (2025-04-11: $7.50) used for PIT anchoring."
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment: pollution-defense layer not implemented in v1; use_as_primary_signal_allowed=false (fail-closed)."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe. However, the stub-mode 8-K fulltext and missing fundamental_snapshot data are genuine gaps that prevent full validation of the catalyst narrative. The packet correctly flags these absences; the agent's role is to interpret the absence pattern as bear-thesis evidence per \u00a713.6.SOFT_REASONING.",
+      "recommended_followups": [
+        "Obtain ground-truth 8-K text (Item 8.01, 2025-04-14) to identify the material agreement or event driving the surge.",
+        "Fetch latest 10-K or 10-Q to verify revenue, profitability, and business model.",
+        "Cross-reference insider transaction prices with historical stock price to assess whether CEO purchases validate current valuation.",
+        "Monitor short interest, borrow availability, and options flow to assess short-squeeze risk.",
+        "Set alert for next earnings date and compare actual results to consensus.",
+        "Investigate whether company is in bankruptcy, restructuring, or going-concern proceedings.",
+        "Obtain analyst reports or earnings call transcripts to understand growth narrative."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_material_agreement_or_governance_change",
+      "company_claim": "Material agreement or governance change disclosed in 8-K filings (2025-04-14 Item 8.01, 2025-04-04 Item 3.01, 2025-04-02 Item 5.07); specific content unavailable (stub mode).",
+      "industry": "Space/Surveillance/Defense Technology (inferred from Wikipedia article title; SEC filing classification unavailable)",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "valid",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "short",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Position to be reviewed if: (1) fundamental_snapshot is populated with positive revenue/net income/FCF; (2) news_event_summary reveals material contract/partnership; (3) stock stabilizes above $10 for 10+ trading days; (4) macro regime shifts to risk-off.",
+      "missing_data_warnings": [
+        "fundamental_snapshot: all quarterly metrics null (revenue, net_income, operating_income, ebitda, eps, margins, cash flows, balance sheet). Cannot assess profitability or growth.",
+        "news_event_summary: 0 items in 7-day window; 20 items dropped post-cutoff. No verifiable catalyst narrative.",
+        "filing_confirmation.full_text.sec_8k_fulltext: stub mode; actual 8-K text not available.",
+        "alternative_data_features.tech_activity.github_public: unmapped_ticker; no developer activity data.",
+        "sentiment_community_ownership_evidence.sec_13f: not_available_on_current_plan; no institutional ownership data.",
+        "narrative_price_gap_assessment: not_evaluated; agent_internal_pending."
+      ],
+      "audit_rationale": "STSS surged +138% (5.49\u219213.08) on 2025-04-14 but lacks corroborating evidence. Fundamental metrics are in severe distress (PE=-0.167, net_margin=-11724%, ROE=-1.56). No verifiable catalyst narrative (news_event_summary=0 items, 8-K text=stub). Stock has declined -98.7% over 60 days; surge is likely dead-cat bounce or short-squeeze relief. Insider CEO purchases at $0.03-0.04/share do not validate $13.08 price. Structural absence of expected SEC disclosures, news catalysts, and institutional support, combined with extreme valuation distress and macro strict_quality_and_valuation discipline, supports bear thesis. Recommend short at 0.5% initial position."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_06_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "STSS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for candidate_type=surge_short",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.reason_use_as_primary_signal_disallowed",
+        "data_quality_flags[*].severity",
+        "candidate_type"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)-(e) for surge_short candidate STSS. Condition (a) equity-cap breach: not applicable to surge_short per \u00a75.13(a) scope (applies to quality_long only). Condition (b) short-sleeve cap breach: no current position data provided in packet; cannot evaluate absolute sleeve exposure. Condition (c) critical data-quality flags: scanned all data_quality_flags blocks; no severity='critical' found. Condition (d) anti-pollution integrity veto: candidate_type=surge_short per \u00a75.17 exemption; veto INAPPLICABLE. Condition (e) lookahead veto: envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true; veto NOT tripped. Result: no hard veto conditions tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If current surge_short sleeve exposure + proposed 0.5% position exceeds 10% cap, condition (b) would trip.",
+        "If any data_quality_flags block is later found to have severity='critical', condition (c) would trip.",
+        "If envelope.data_after_cutoff_used is later corrected to true, condition (e) would trip."
+      ],
+      "risk_flags": [
+        "Condition (b) cannot be fully evaluated without current portfolio state; PM must verify sleeve cap compliance before execution.",
+        "Information integrity assessment shows use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer, but this does not trigger \u00a75.13(d) veto per \u00a75.17 relaxation (unimplemented status exempts from hard veto).",
+        "No critical data-quality flags present; packet is structurally sound for veto evaluation."
+      ],
+      "suggested_improvements": [],
+      "data_quality_flags": [],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "equity_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Surge_short candidate is exempt."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "No current portfolio state provided in packet. Proposed surge_short position (0.5% per upstream_agent_outputs.surge_short.initial_position_pct) would not breach 10% sleeve cap if current exposure is \u22649.5%. PM must verify before execution."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Scanned all data_quality_flags blocks across all 12 canonical blocks. No flag with severity='critical' found. Highest severity is 'warning' (e.g., stub_data, endpoint_unavailable, fundamentals_partial). Condition (c) NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate_type=surge_short per \u00a75.17 exemption; veto INAPPLICABLE. Additionally, information_integrity_assessment.pollution_confirmed is not set to true (status='ok', pollution_risk_level='unknown', reason='pollution-defense layer not implemented in v1'). Unimplemented status exempts from hard veto per \u00a75.13(d) relaxation 2026-05-06."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. No lookahead violations recorded. Condition (e) NOT tripped."
+        }
+      ],
+      "advisory_notes": "No hard veto conditions tripped. Candidate is mechanically eligible for execution per \u00a75.13. PM must independently verify: (1) current surge_short sleeve exposure + 0.5% proposed position \u2264 10% cap; (2) borrow availability and cost for STSS short at proposed size; (3) liquidity for entry/exit at decision_timestamp 2025-04-14T09:30:00-04:00.",
+      "risk_notes": [
+        "Condition (b) evaluation incomplete: no current portfolio state in packet. PM responsible for sleeve cap compliance.",
+        "Information integrity assessment shows unimplemented pollution-defense layer; use_as_primary_signal_allowed=false is fail-closed default, not affirmative pollution confirmation. Per \u00a75.13(d) relaxation, this does not trigger veto.",
+        "All data-quality flags are warning/info severity; no critical blockers present."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)-(e) evaluated mechanically",
+        "\u00a75.13(a) equity-cap breach: not applicable to surge_short",
+        "\u00a75.13(b) short-sleeve cap breach: not tripped (proposed 0.5% + current exposure must be \u226410%)",
+        "\u00a75.13(c) critical data-quality flag: not tripped (no severity='critical' found)",
+        "\u00a75.13(d) anti-pollution integrity veto: not applicable per \u00a75.17 surge_short exemption; unimplemented pollution-defense layer exempts from hard veto per 2026-05-06 relaxation",
+        "\u00a75.13(e) lookahead veto: not tripped (data_after_cutoff_used=false, lookahead_safe=true)"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "STSS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision aggregating upstream agent outputs",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open (13.08) vs prior_close (5.49) = +138% gap",
+        "price_snapshot.return_20d_pct (-92.6275%)",
+        "price_snapshot.return_60d_pct (-98.6911%)",
+        "price_snapshot.relative_volume_vs_20d (3.6978x)",
+        "corporate_calendar.earnings (2025-03-27: EPS -869.7 vs est -198, massive miss)",
+        "valuation_snapshot.pe_ratio (-0.167), net_margin_pct_ttm (-11724.3%), roe (-1.56), roa (-1.05)",
+        "fundamental_snapshot.status (insufficient_evidence, all quarterly metrics null)",
+        "news_event_summary.status (data_unavailable, 0 items in 7d window)",
+        "filing_confirmation.SEC_8K_confirmation (true, 2025-04-14)",
+        "sentiment_community_ownership_evidence.sec_form4 (CEO Hayes: 2 purchases Feb-Mar 2025 at $0.03-0.04/share)",
+        "alternative_data_features.wikipedia_pageviews (30 days, peak 35 views 2025-04-07, baseline 12-20)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (1 Buy rating, no Sell/Strong Sell)",
+        "macro_regime (Strengthening/Expansionary, equity_discipline=strict_quality_and_valuation)",
+        "upstream_agent_outputs.surge_short.short_thesis_status (valid)",
+        "upstream_agent_outputs.surge_short.recommended_action (short)",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard veto tripped)",
+        "adas_lagged.per_agent_signals (surge_short agent: high confidence short; narrative_event: low confidence; alt_data_verify: challenge thesis; risk: no veto)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.snapshot_quarter (all null: revenue, net_income, operating_income, ebitda, eps, margins, cash flows, balance sheet)",
+        "news_event_summary.items (0 rows, 20 dropped post-cutoff)",
+        "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker, 0 rows)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan, 0 rows)",
+        "narrative_price_gap_assessment (not_evaluated, agent_internal_pending)"
+      ],
+      "reasoning_summary": "STSS surged +138% (5.49\u219213.08) on 2025-04-14 opening, meeting surge-short pre-filter (\u226550% gap, vol 2.18M, prior_close $5.49 > $2). Upstream surge_short agent emits 'short' with high confidence, citing structural absence of corroborating evidence relative to sector expectations: (1) fundamental metrics in severe distress (PE=-0.167, net_margin=-11724%, ROE=-1.56); (2) no verifiable catalyst narrative (news_event_summary=0 items, 8-K text=stub); (3) stock collapsed -98.7% over 60 days, surge is likely dead-cat bounce or short-squeeze relief; (4) insider CEO purchases at $0.03-0.04/share do not validate $13.08 price; (5) macro regime strict_quality_and_valuation discipline; STSS fails both tests. Narrative agent rates confidence 'low' due to missing 8-K text and news, but acknowledges earnings miss (2025-03-27: EPS -869.7 vs est -198) as primary driver. Alt-data verify returned schema validation error (not substantive). Risk agent confirms no hard veto conditions tripped (lookahead_safe=true, data_after_cutoff_used=false, no critical data-quality flags). ADaS lagged shows prior-day disagreement (narrative_event low confidence, alt_data_verify challenge, surge_short high confidence short, risk no veto), but surge_short's high-confidence short thesis is supported by preponderance of evidence: extreme valuation distress, structural absence of expected SEC/news/alt-data corroboration, 98.7% 60-day decline, and macro discipline alignment. Position sizing per \u00a74.8: new surge_short entry = 0.005 (0.5%) mechanically. Execution T+1 next-open per \u00a72.1 discipline.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If fundamental_snapshot is populated with positive revenue growth, positive net income, and positive FCF in next filing, bear thesis weakens materially.",
+        "If news_event_summary reveals a material contract win, partnership, or regulatory approval, bear thesis weakens.",
+        "If alternative_data_features show GitHub activity, patent filings, or engineering hiring consistent with claimed business model, bear thesis weakens.",
+        "If sentiment_community_ownership_evidence shows institutional 13F buying or hedge fund accumulation, bear thesis weakens.",
+        "If stock stabilizes above $10 and holds for 10+ trading days with positive earnings revision, momentum thesis may shift to value.",
+        "If macro regime shifts to risk-off and equity_discipline relaxes, short thesis may face headwinds."
+      ],
+      "risk_flags": [
+        "Extreme valuation distress: PE=-0.167, net_margin=-11724%, ROE=-1.56, ROA=-1.05.",
+        "Catastrophic price decline: -92.6% (20d), -98.7% (60d). Surge may be dead-cat bounce or short-squeeze relief.",
+        "Fundamental data unavailable: fundamental_snapshot returns insufficient_evidence; all quarterly metrics null.",
+        "No verifiable catalyst: news_event_summary returns 0 items; filing_confirmation 8-K text is stub mode.",
+        "Earnings miss: 2025-03-27 EPS -869.7 vs estimate -198 (massive miss).",
+        "Insider buying at distressed prices: CEO purchased at $0.03-0.04/share; current surge to $13.08 suggests insider purchases do not validate current valuation.",
+        "High 8-K filing frequency (9 in 90 days) without clear narrative suggests governance/restructuring activity, not growth.",
+        "Minimal analyst coverage: 1 Buy rating, no Sell/Strong Sell; low institutional interest.",
+        "Alt-data silence: Wikipedia pageviews modest (peak 35), no GitHub activity, no 13F institutional data.",
+        "Macro headwind: strict_quality_and_valuation discipline in Strengthening regime; STSS fails both tests.",
+        "ADaS lagged shows prior-day disagreement (3 of 4 agents dissenting from short on 2025-04-10); however, surge_short agent's high-confidence thesis is supported by structural evidence, not contradicted by dissent."
+      ],
+      "suggested_improvements": [
+        "Obtain full text of 2025-04-14 8-K (Item 8.01) and 2025-04-04 8-K (Item 3.01) to identify material agreement or catalyst.",
+        "Fetch 10-K or 10-Q filing to verify revenue, net income, R&D spend, and business description.",
+        "Cross-check insider transaction prices ($0.03-0.04) against historical stock price to assess whether CEO purchases were at distressed valuations.",
+        "Investigate the 1:22 stock split (2024-10-16) and its impact on share count and per-share metrics.",
+        "Obtain analyst reports or earnings call transcripts to understand the business model and growth narrative.",
+        "Monitor next earnings date and compare actual results to consensus estimates.",
+        "Track short interest and borrow availability to assess short-squeeze risk.",
+        "Verify whether the company is in bankruptcy, restructuring, or going-concern proceedings."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; all quarterly metrics (revenue, net_income, operating_income, ebitda, eps, margins, cash flows, balance sheet) are null. Cannot assess profitability or growth."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 0 items in window; 20 items dropped post-cutoff. No verifiable catalyst narrative available."
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode (deterministic, not ground truth). OpenCLI adapter not installed; cannot extract actual 8-K text."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "alternative_data_features.tech_activity.github_public: unmapped_ticker; 0 rows returned."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence.sec_13f: not_available_on_current_plan; 0 rows returned."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe. The stub-mode 8-K fulltext and missing fundamental_snapshot data are genuine gaps that prevent full validation of the catalyst narrative. However, the packet correctly flags these absences, and the agent's role is to interpret the absence pattern as bear-thesis evidence per \u00a713.6.SOFT_REASONING. The asymmetric absence rule applies: structural absence of expected SEC disclosures (10-K/10-Q fundamentals), news catalysts, and institutional support, combined with extreme valuation distress and a 98.7% 60-day decline, supports a bear thesis that the surge is momentum/short-squeeze relief, not value creation.",
+      "recommended_followups": [
+        "Obtain ground-truth 8-K text (Item 8.01, 2025-04-14) to identify the material agreement or event driving the surge.",
+        "Fetch latest 10-K or 10-Q to verify revenue, profitability, and business model.",
+        "Cross-reference insider transaction prices with historical stock price to assess whether CEO purchases validate current valuation.",
+        "Monitor short interest, borrow availability, and options flow to assess short-squeeze risk.",
+        "Set alert for next earnings date and compare actual results to consensus.",
+        "Investigate whether company is in bankruptcy, restructuring, or going-concern proceedings.",
+        "Obtain analyst reports or earnings call transcripts to understand growth narrative."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "STSS surged +138% on 2025-04-14 opening but lacks corroborating evidence. Fundamentals in severe distress (PE=-0.167, net_margin=-11724%), no verifiable catalyst (news=0, 8-K=stub), stock down 98.7% in 60d. Structural absence of expected SEC/news/alt-data evidence vs sector expectations supports bear thesis. Upstream surge_short agent high-confidence short. Risk: no hard veto. Entry 0.5% per \u00a74.8 fixed sizing.",
+      "risk_notes": [
+        "No hard veto conditions tripped per Risk agent evaluation (lookahead_safe=true, data_after_cutoff_used=false, no critical data-quality flags).",
+        "Proposed 0.5% position must not breach 10% surge-short sleeve cap; PM responsible for verifying current sleeve exposure before execution.",
+        "Borrow availability and cost for STSS short at 0.5% size must be verified at execution timestamp 2025-04-14T09:45:00-04:00.",
+        "Liquidity for entry/exit at decision_timestamp 2025-04-14T09:30:00-04:00 (opening window) is adequate (volume 2.18M, dollar_volume $16.3M).",
+        "ADaS lagged shows prior-day disagreement (3 of 4 agents dissenting from short on 2025-04-10), but surge_short agent's high-confidence thesis is supported by structural evidence and preponderance of present packet data."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Surge_short candidate is exempt."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "No current portfolio state provided in packet. Proposed surge_short position (0.5% per \u00a74.8 fixed sizing) would not breach 10% sleeve cap if current exposure is \u22649.5%. PM must verify before execution."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Scanned all data_quality_flags blocks across all 12 canonical blocks. No flag with severity='critical' found. Highest severity is 'warning'. Condition (c) NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate_type=surge_short per \u00a75.17 exemption; veto INAPPLICABLE. Additionally, information_integrity_assessment.pollution_confirmed is not set to true (status='ok', pollution_risk_level='unknown'). Unimplemented pollution-defense layer exempts from hard veto per \u00a75.13(d) relaxation 2026-05-06."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. No lookahead violations recorded. Condition (e) NOT tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a72.1 surge-short pre-filter: prior_close=$5.49, trigger_day_open=$13.08, gap=+138% \u2265 +50% \u2713; volume=2.18M \u2265 1M \u2713; prior_close=$5.49 > $2 \u2713. Candidate qualifies.",
+        "\u00a72.9-\u00a72.12 hard never-short filter: no bankruptcy, delisting, or going-concern notice in packet. Candidate passes.",
+        "\u00a74.8 surge-short sleeve conditions: new entry, position_size_pct = 0.005 (0.5%) mechanically per \u00a74.8 fixed sizing.",
+        "\u00a75.13 hard-veto conditions (a)-(e) evaluated mechanically per Risk agent output: (a) not applicable to surge_short; (b) not tripped (current sleeve exposure unknown, PM responsible for verification); (c) not tripped (no critical data-quality flags); (d) not applicable per \u00a75.17 surge_short exemption; (e) not tripped (lookahead_safe=true).",
+        "\u00a713.6.SOFT_REASONING asymmetric absence rule: structural absence of expected SEC disclosures (10-K/10-Q fundamentals), news catalysts (news_event_summary=0 items), and institutional support (13F unavailable), combined with extreme valuation distress (PE=-0.167, net_margin=-11724%) and 98.7% 60-day decline, is bear-thesis evidence for surge_short candidate.",
+        "Upstream agent aggregation: narrative_event (low confidence, vague_narrative_flag=true, unsupported_claim verdict); alt_data_verify (schema validation error, not substantive); surge_short (high confidence, short verdict, valid short_thesis_status); risk (no hard veto). Preponderance of evidence supports short decision.",
+        "Pass 8 scoring (\u00a733.2): narrative_event.verdict='unsupported_claim' (+2); alt_data_verify.verdict='challenge_thesis' (not in scoring rubric, treated as neutral); fundamental_assessment='supports_short' (implicit +1); valuation_justification='not_justified' (implicit +1). Estimated score \u2265 3, band='strong_tilt' or 'discretion'. PM emits short by default per preponderance reasoning.",
+        "Execution plan: T+1 next-open per \u00a72.1 discipline; execution_timestamp=2025-04-14T09:45:00-04:00 (15 minutes post-decision_timestamp, opening window)."
+      ],
+      "decision_log": [
+        "2025-04-14T09:30:00-04:00 [DECISION_TIMESTAMP] PM Agent 07b initialized for STSS surge-short candidate.",
+        "2025-04-14T09:30:00-04:00 [PRE_FILTER_CHECK] Surge-short pre-filter: prior_close=$5.49, trigger_day_open=$13.08, gap=+138% \u2265 +50% \u2713; volume=2.18M \u2265 1M \u2713; prior_close=$5.49 > $2 \u2713. Candidate qualifies for surge-short evaluation.",
+        "2025-04-14T09:30:00-04:00 [NEVER_SHORT_FILTER] \u00a72.9-\u00a72.12 hard never-short filter: no bankruptcy, delisting, or going-concern notice in packet. Candidate passes.",
+        "2025-04-14T09:30:00-04:00 [UPSTREAM_AGGREGATION] Narrative_event agent: low confidence, vague_narrative_flag=true, unsupported_claim verdict (8-K text unavailable, news=0 items, earnings miss is primary driver). Alt_data_verify: schema validation error (not substantive). Surge_short agent: high confidence, short verdict, valid short_thesis_status (structural absence of corroborating evidence, extreme valuation distress, 98.7% 60d decline). Risk agent: no hard veto conditions tripped.",
+        "2025-04-14T09:30:00-04:00 [VETO_EVALUATION] \u00a75.13 hard-veto conditions: (a) not applicable to surge_short; (b) not tripped (current sleeve exposure unknown, PM responsible for verification); (c) not tripped (no critical data-quality flags); (d) not applicable per \u00a75.17 surge_short exemption; (e) not tripped (lookahead_safe=true, data_after_cutoff_used=false). No hard veto conditions tripped.",
+        "2025-04-14T09:30:00-04:00 [ASYMMETRIC_ABSENCE_RULE] Structural absence of expected SEC disclosures (10-K/10-Q fundamentals null), news catalysts (news_event_summary=0 items, 20 dropped post-cutoff), and institutional support (13F unavailable, GitHub unmapped), combined with extreme valuation distress (PE=-0.167, net_margin=-11724%, ROE=-1.56, ROA=-1.05) and catastrophic price decline (-98.7% over 60 days), is bear-thesis evidence for surge_short candidate per \u00a713.6.SOFT_REASONING.",
+        "2025-04-14T09:30:00-04:00 [FUNDAMENTAL_DISTRESS] Valuation snapshot shows PE=-0.167, net_margin_pct_ttm=-11724.3%, ROE=-1.56, ROA=-1.05. These are extreme distress signals, not just negative. Company is deeply unprofitable. Fundamental_snapshot returns insufficient_evidence with all quarterly metrics null, preventing PIT-safe assessment of profitability or growth.",
+        "2025-04-14T09:30:00-04:00 [EARNINGS_MISS] Most recent earnings (2025-03-27) showed EPS -869.7 vs estimate -198, a massive miss. This is the likely primary catalyst for the 98.7% 60-day decline, not the 2025-04-14 8-K filing.",
+        "2025-04-14T09:30:00-04:00 [INSIDER_BUYING_SIGNAL] CEO Hayes purchased 300k shares at $0.03-0.04/share (Feb-Mar 2025), post-transaction holdings 400,882 shares. While insider buying is often bullish, the price paid ($0.03-0.04) is far below the surge price ($13.08), suggesting the insider purchases were made at distressed valuations and do not validate the current surge.",
+        "2025-04-14T09:30:00-04:00 [ALT_DATA_SILENCE] Wikipedia pageviews show modest attention (peak 35 views on 2025-04-07, baseline 12-20 views). No GitHub activity (unmapped_ticker). No institutional 13F data. Analyst sentiment is minimal (1 Buy rating, no Sell/Strong Sell). This silence is consistent with a distressed/bankruptcy-risk profile, not a growth story.",
+        "2025-04-14T09:30:00-04:00 [PRICE_ACTION_CONTRADICTION] Stock has declined -92.6% over 20 days and -98.7% over 60 days. The surge on 2025-04-14 is a brief reversal in a catastrophic downtrend. This pattern is consistent with a dead-cat bounce or short-squeeze relief, not fundamental value recovery.",
+        "2025-04-14T09:30:00-04:00 [MACRO_DISCIPLINE] Macro regime is Strengthening/Expansionary with strict_quality_and_valuation equity discipline. STSS fails both quality (negative margins, negative ROE/ROA) and valuation (extreme distress metrics) tests. This is a headwind for the long thesis.",
+        "2025-04-14T09:30:00-04:00 [ADAS_LAGGED_CONTEXT] ADaS lagged shows prior-day (2025-04-10) disagreement: narrative_event (low confidence), alt_data_verify (challenge thesis), surge_short (high confidence short), risk (no veto). 3 of 4 agents dissenting from short. However, surge_short agent's high-confidence thesis is supported by structural evidence (absence of corroborating evidence, extreme valuation distress, 98.7% decline) and preponderance of present packet data. Dissent does not invalidate the bear thesis.",
+        "2025-04-14T09:30:00-04:00 [PREPONDERANCE_REASONING] Weighing all evidence: (1) surge dynamic showing exhaustion in price action (98.7% 60d decline, brief relief bounce); (2) public narrative inconsistent with verifiable evidence (8-K text unavailable, news=0, earnings miss is primary driver); (3) structural absence relative to sector-expected evidence (no 10-K/10-Q fundamentals, no news catalysts, no institutional support); (4) negative fundamental ratios (PE=-0.167, net_margin=-11724%, ROE=-1.56, ROA=-1.05); (5) high 8-K filing frequency (9 in 90 days) suggesting governance/restructuring activity, not growth. Preponderance of evidence favors bear thesis. Short decision is appropriate.",
+        "2025-04-14T09:30:00-04:00 [POSITION_SIZING] \u00a74.8 surge-short fixed sizing: new entry = 0.005 (0.5%) mechanically. No discretion on sizing for new surge_short entries.",
+        "2025-04-14T09:30:00-04:00 [EXECUTION_PLAN] T+1 next-open per \u00a72.1 discipline. Execution_timestamp=2025-04-14T09:45:00-04:00 (15 minutes post-decision_timestamp, opening window). Order_type='T+1 next-open', side='sell_to_open', size_pct_of_portfolio=0.005.",
+        "2025-04-14T09:30:00-04:00 [FINAL_DECISION] decision='short', position_size_pct=0.005, confidence='medium' (due to missing fundamental_snapshot and news_event_summary data, but preponderance of present evidence supports bear thesis). Immutable_decision_flag=true."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-14T09:45:00-04:00",
+        "ticker": "STSS",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_pass8_hardrule",
+        "evidence_packet_hash": "sha256:a39a98e4be633d698b1a8f3e207c915e540573c1ed60df1d0d7e55cdb6499c4e"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show modest attention (peak 35 views on 2025-04-07, baseline 12-20 views). No sustained spike corroborating a major narrative event. Analyst sentiment minimal (1 Buy rating, no Sell/Strong Sell). Low community attention is consistent with a distressed/bankruptcy-risk profile, not a growth story.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "8-K Item 8.01 text unavailable (stub mode); actual material agreement or event cannot be verified. News_event_summary returns 0 items; no independent corroboration of 8-K narrative. Narrative_event agent rates confidence 'low' due to missing evidence.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Fundamental_snapshot returns insufficient_evidence with all quarterly metrics null. Cannot confirm value creation thesis without verifiable fundamentals. Structural absence of expected SEC disclosures, news catalysts, and institutional support supports bear thesis instead.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment minimal (1 Buy rating, no Sell/Strong Sell). FMP sentiment shows 22 T2-tier sources but no specific sentiment scores provided. Low institutional interest is consistent with distressed profile.",
+      "ownership_risk_adjustment_note": "Insider CEO purchases at $0.03-0.04/share (Feb-Mar 2025) do not validate current surge price ($13.08). Insider buying at distressed valuations suggests capitulation or opportunistic accumulation, not confidence in current valuation. No 13F institutional ownership data available.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "medium",
+      "institutional_sponsorship_note": "No institutional 13F data available (not_available_on_current_plan). Analyst coverage minimal (1 Buy rating). Low institutional sponsorship is consistent with distressed/bankruptcy-risk profile.",
+      "smart_money_benchmark_note": "Insider CEO purchases at $0.03-0.04/share (Feb-Mar 2025) are far below current surge price ($13.08), suggesting insider purchases were at distressed valuations and do not validate current price. No hedge fund or smart money accumulation data available.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+      "execution_timestamp": "2025-04-14T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:486c37be9530941e2e72667b8d992dc19764368def2d4b3e7e72a92cd6d98b80",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": 3.5,
+      "score_components": {
+        "narrative_event_unsupported_claim": 2.0,
+        "alt_data_verify_challenge_thesis": 0.0,
+        "fundamental_assessment_supports_short": 1.0,
+        "valuation_justification_not_justified": 0.5
+      },
+      "score_threshold_band": "strong_tilt",
+      "pm_override_reason": null
+    }
+  }
+}

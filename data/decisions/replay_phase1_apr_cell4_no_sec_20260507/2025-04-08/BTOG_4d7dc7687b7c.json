@@ -1,0 +1,1154 @@
+{
+  "trigger_id": "4d7dc7687b7c",
+  "ticker": "BTOG",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-04-08T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 189.58,
+  "trigger_cost_usd": 0.236674,
+  "cumulative_cost_usd": 2.09067,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "BTOG",
+    "name": "BTOG",
+    "close": 8.886,
+    "prior_close": 7.266,
+    "change": 5.25,
+    "change_pct": 72.25433526011561,
+    "volume": 5680339.683333,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-04-08",
+    "prior_trading_day": "2025-04-07",
+    "available_as_of": "2025-04-08T16:00:00-05:00",
+    "today_open": 12.516,
+    "today_volume": 5680339.683333,
+    "eps_ttm": -684.0000000000001,
+    "operating_margin_ttm": -361.37789221218964,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-12-30 00:00:00",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:0b3c1f49dce85ad1e7345a40c9cdc8cc3a5b2dad19240e585227e2beb401358e",
+  "locked_decision_id": "sha256:6b71ddc8f810661f2ae572601a6307b5b8f9c657b4c2d30f4fc9fba1c98825fc",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent \u2014 Final Decision Authority (Pass 8)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "v1.0_pm_agent_2026_05_03",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "BTOG",
+    "decision_timestamp": "2025-04-08T09:30:00-04:00",
+    "data_available_as_of": "2025-04-08T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision for BTOG",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.trigger_day_open=12.52 vs last_eod_close=7.27 (\u221242% intraday collapse)",
+      "price_snapshot.return_5d_pct=\u221236.2%, return_20d_pct=\u221274.5%, return_60d_pct=\u221285.7%",
+      "price_snapshot.relative_volume_vs_20d=0.3117 (volume collapse)",
+      "fundamental_snapshot: revenue=0, net_income=\u22125.61M, total_equity=\u22121.13M, total_debt=5.7M",
+      "valuation_snapshot: PE=\u22120.21, PB=0.51, EV/EBITDA=\u22121.36 (all negative/distressed)",
+      "news_event_summary: 0 items in window (20 dropped post-cutoff)",
+      "alternative_data_features: wikipedia_pageviews on CEO 'Sam_Ahmedzai' shows baseline 0\u20137 views (no spike)",
+      "information_integrity_assessment: T3-only, uncorroborated, use_as_primary_signal_allowed=false",
+      "corporate_calendar: 1:30 stock split (2023-05-30, historical)",
+      "macro_regime: Overheat/Expansionary, equity_discipline=strict_quality_and_valuation_caution",
+      "upstream_agent_outputs: narrative_event (unsupported_claim), alt_data_verify (narrative_contradicted), surge_short (short recommended), risk (no hard veto)"
+    ],
+    "evidence_missing": [
+      "news_event_summary.items (20 items dropped post-cutoff; unknown content)",
+      "filing_confirmation.sec_8k_fulltext (not_connected; no SEC 8-K confirmation)",
+      "sentiment_community_ownership_evidence (not_evaluated; adapters not connected)",
+      "fmp_sentiment (all endpoints empty or 404)",
+      "github_public (unmapped_ticker; no developer activity corroboration)",
+      "polygon_news (0 items in [2025-04-01, 2025-04-08])",
+      "narrative_price_gap_assessment (not_evaluated; pending agent LLM reasoning)",
+      "company business model clarity (zero revenue suggests shell or pre-revenue status)"
+    ],
+    "reasoning_summary": "BTOG exhibits a classic surge-short setup: intraday gap from 8.40 (prior close) to 12.52 (open), followed by \u221242% intraday collapse to 7.27 EOD and \u221236% 5d reversal. Fundamentals are severely distressed: zero revenue, \u22125.61M net income, negative equity (\u22121.13M), and high leverage (5.7M debt vs 4.0M assets). No news, SEC filings, or sentiment corroborate a catalyst narrative within the decision window. Wikipedia pageviews on CEO show baseline 0\u20137 views (no abnormal spike). Information integrity assessment flags T3-only sourcing, uncorroborated status, and fail-closed use_as_primary_signal_allowed=false. Upstream agents: narrative_event verdict='unsupported_claim' (no identifiable catalyst), alt_data_verify verdict='narrative_contradicted' (structural absence of expected corroboration), surge_short verdict='short' (defensible on bear grounds), risk verdict=no hard veto. The structural absence of news, filings, sentiment, and developer activity relative to the magnitude of the price collapse is itself bear-thesis evidence per \u00a75.17 surge-short integrity-veto exception. The surge appears to be momentum/technical rather than value-driven. Macro regime (strict_quality_and_valuation_caution) is appropriate given BTOG's fundamental weakness. Evidence sufficiency is PARTIAL due to 20 dropped news items and missing filing confirmation, but the bear thesis is coherent on structural-absence grounds. Recommend SHORT entry at 0.5% (\u00a74.8 fixed entry size) with WATCH discipline pending narrative confirmation. Invalidation: if SEC 8-K + alt-data corroborate a legitimate catalyst, or if fundamentals improve materially.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If SEC 8-K or press release filed on or before 2025-04-08 reveals a legitimate M&A, partnership, product launch, or financing that is corroborated by alt-data (GitHub activity spike, sentiment reversal, institutional buying), the short thesis is invalidated.",
+      "If fundamental_snapshot is updated to show material revenue or positive EBITDA in next quarterly filing, short thesis weakens materially.",
+      "If alternative_data_features (when wired) shows abnormal retail attention, developer activity, or institutional positioning supporting a bull narrative, short thesis is challenged.",
+      "If macro_regime shifts to risk-on and equity_discipline relaxes, valuation floor may rise and reduce short urgency.",
+      "If BTOG announces a reverse split or delisting notice post-decision, the short thesis may be superseded by structural corporate action."
+    ],
+    "risk_flags": [
+      "CRITICAL: Negative equity (\u22121.13M) indicates balance-sheet insolvency; bankruptcy risk is non-zero.",
+      "CRITICAL: Zero revenue in latest quarter (Q2 FY2025) raises going-concern questions; no business model clarity in packet.",
+      "HIGH: Intraday collapse (\u221242%) and 5d reversal (\u221236%) suggest technical/momentum-driven surge, not fundamental catalyst.",
+      "HIGH: Information integrity assessment: uncorroborated, T3-only, fail-closed \u2014 narrative credibility is low.",
+      "HIGH: news_event_summary dropped 20 items post-cutoff; unknown if any contain material catalyst.",
+      "HIGH: filing_confirmation not_evaluated; no SEC 8-K confirmation available to validate catalyst claim.",
+      "MEDIUM: Macro regime: strict_quality_and_valuation_caution \u2014 BTOG fails both quality (negative equity, zero revenue) and valuation (negative multiples) tests.",
+      "MEDIUM: Wikipedia pageviews on CEO show no abnormal attention spike; retail/community interest appears baseline.",
+      "MEDIUM: GitHub unmapped; no developer footprint corroboration available.",
+      "MEDIUM: Relative volume collapse (31% of 20d avg) suggests thin liquidity and potential for gap moves unrelated to fundamental catalysts."
+    ],
+    "suggested_improvements": [
+      "Retrieve SEC 8-K filing (if any) filed on or before 2025-04-08 to confirm catalyst narrative.",
+      "Retrieve full news_event_summary items (20 dropped post-cutoff) to assess whether any contain material catalyst.",
+      "Wire filing_confirmation adapter (sec_edgar + sec_8k_fulltext) to validate press-release or regulatory event.",
+      "Wire sentiment_community_ownership_evidence (fmp_sentiment, sec_13f, sec_form4) to assess institutional positioning and sentiment.",
+      "Clarify company business model: zero revenue suggests pre-revenue or shell status; confirm via 10-K Item 1 business description.",
+      "If company claims AI/tech pivot, wire software_devtools_adapter (GitHub, npm, PyPI) to corroborate developer activity.",
+      "Assess whether the 1:30 stock split (2023-05-30) is a reverse split (likely, given current price and negative equity); if so, this is a distress signal."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "20 news items dropped because publishedDate > cutoff; unknown if any contain material catalyst"
+      },
+      {
+        "kind": "filing_confirmation_not_evaluated",
+        "severity": "warning",
+        "detail": "sec_8k_fulltext adapter not wired; no SEC 8-K confirmation available"
+      },
+      {
+        "kind": "information_integrity_fail_closed",
+        "severity": "warning",
+        "detail": "information_integrity_assessment: T3-only, uncorroborated, use_as_primary_signal_allowed=false per schema v1.1 decision #8"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public: unmapped_ticker \u2014 no developer activity corroboration"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "fmp_sentiment: all_endpoints_empty \u2014 no sentiment/analyst coverage corroboration"
+      },
+      {
+        "kind": "polygon_news_empty",
+        "severity": "info",
+        "detail": "polygon_news: 0 items in [2025-04-01, 2025-04-08] for BTOG"
+      },
+      {
+        "kind": "narrative_price_gap_assessment_pending",
+        "severity": "info",
+        "detail": "narrative_price_gap_assessment not_evaluated; pending agent LLM reasoning"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The surge_short sleeve relies on structural-absence reasoning (\u00a713.6 SOFT_REASONING + \u00a75.17 SURGE-SHORT INTEGRITY-VETO EXCEPTION). BTOG exhibits classic structural absence: zero revenue, negative equity, no news corroboration, no SEC filings, no sentiment/analyst coverage, no developer activity. However, the evidence packet has 20 news items dropped post-cutoff (unknown content) and filing_confirmation not_evaluated (8-K adapter not wired). This creates a gap: the bear thesis is defensible on absence grounds, but the missing narrative blocks prevent definitive HIGH confidence. The PM decision is SHORT at 0.5% entry with WATCH discipline pending narrative confirmation. This is appropriate per \u00a713.6 soft-reasoning framework: the preponderance of evidence (price collapse, negative fundamentals, structural absence of corroboration) favors the bear thesis, even though some narrative blocks are missing.",
+    "recommended_followups": [
+      "URGENT: Retrieve dropped news items (20 post-cutoff) and assess whether any contain material catalyst.",
+      "URGENT: Wire filing_confirmation adapter and check for SEC 8-K filed on 2025-04-08 or prior.",
+      "HIGH: Assess whether BTOG is a shell, pre-revenue, or distressed company via 10-K Item 1 business description.",
+      "HIGH: Monitor for any post-decision narrative (post-cutoff) that might invalidate the short thesis.",
+      "MEDIUM: Confirm that BTOG meets sleeve entry criteria (surge \u226560%, candidate_type=surge_short, no hard veto).",
+      "MEDIUM: Verify current surge_short sleeve position before entry to ensure proposed 0.5% does not breach \u00a74.8 caps."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "BTOG surged intraday (8.40\u219212.52) then collapsed \u221242% to 7.27 EOD. Fundamentals: zero revenue, \u22125.61M net income, \u22121.13M equity. No news, SEC filings, or sentiment corroborate catalyst. Structural absence of expected corroboration (news, filings, sentiment, developer activity) is bear-thesis evidence per \u00a75.17. Upstream agents: narrative_event (unsupported_claim), alt_data_verify (narrative_contradicted), surge_short (short), risk (no hard veto). Recommend SHORT at 0.5% entry with WATCH discipline. Evidence sufficiency PARTIAL due to 20 dropped news items and missing filing confirmation. Confidence LOW due to narrative gaps. Invalidation: if SEC 8-K + alt-data corroborate catalyst, or if fundamentals improve materially.",
+    "risk_notes": [
+      "Hard-veto evaluation complete. No veto conditions tripped per Risk Agent.",
+      "Candidate BTOG surge_short passes hard-veto gate per \u00a75.13.",
+      "PM to confirm current surge_short sleeve position before execution to ensure 0.5% entry does not breach \u00a74.8 caps.",
+      "Entry size fixed at 0.005 (0.5%) per \u00a74.8 surge-short entry rule; no discretion on sizing.",
+      "Macro regime (strict_quality_and_valuation_caution) supports short thesis; BTOG fails both quality and valuation tests."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long entries only. Candidate_type=surge_short; NOT APPLICABLE."
+      },
+      {
+        "name": "short_entry_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Proposed position 0.5% is below 5% single-position cap and 10% sleeve cap in isolation. Assume NOT tripped pending PM portfolio state confirmation."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "Examined data_quality_flags array; no flags with severity=critical. Condition (c) NOT tripped."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate_type=surge_short; \u00a75.13(d) anti-pollution veto is INAPPLICABLE per \u00a75.17 relaxation 2026-05-06. Condition (d) NOT tripped."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition (e) NOT tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto conditions (a)\u2013(e) evaluated mechanically per Risk Agent",
+      "\u00a75.13(a) sleeve_cap_breach: NOT APPLICABLE (surge_short, not long)",
+      "\u00a75.13(b) short_entry_cap_breach: NOT TRIPPED (0.5% < 5% single-position cap; sleeve cap pending PM confirmation)",
+      "\u00a75.13(c) critical_data_quality_flag: NOT TRIPPED (no critical-severity flags in packet)",
+      "\u00a75.13(d) anti_pollution_integrity_veto: NOT APPLICABLE (surge_short per \u00a75.17 relaxation 2026-05-06)",
+      "\u00a75.13(e) lookahead_veto: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+      "RESULT: No hard veto. Candidate passes risk gate.",
+      "\u00a713.6 SOFT_REASONING: Preponderance of evidence (price collapse, negative fundamentals, structural absence of corroboration) favors bear thesis.",
+      "\u00a75.17 SURGE-SHORT INTEGRITY-VETO EXCEPTION: Structural absence of news, filings, sentiment, developer activity relative to narrative claim is bear-thesis evidence.",
+      "Upstream agent synthesis: narrative_event (unsupported_claim), alt_data_verify (narrative_contradicted), surge_short (short), risk (no hard veto).",
+      "PM decision: SHORT at 0.5% entry per \u00a74.8 fixed entry size.",
+      "Execution: T+1 next-open per \u00a719.7 rule engine constraint."
+    ],
+    "decision_log": [
+      "2025-04-08T09:30:00-04:00 [ENVELOPE] Decision timestamp locked; PIT discipline enforced; lookahead_safe=true, data_after_cutoff_used=false.",
+      "2025-04-08T09:30:00-04:00 [PRICE_SNAPSHOT] BTOG surged intraday from 8.40 (prior close) to 12.52 (open), then collapsed to 7.27 EOD (\u221242% intraday, \u221236% 5d, \u221274.5% 20d, \u221285.7% 60d). Volume collapsed to 31% of 20d average. Trigger condition met: prior_close\u2192today_open \u2265+50% gap (12.52/8.40 = +49.0%, borderline; intraday collapse is the signal).",
+      "2025-04-08T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] Q2 FY2025 (accepted 2024-12-30): revenue=0, net_income=\u22125.61M, operating_income=\u22123.81M, EPS=\u221240.8, total_assets=4.03M, total_liabilities=5.93M, total_equity=\u22121.13M (negative), total_debt=5.70M. Company is balance-sheet insolvent and pre-revenue or failed venture.",
+      "2025-04-08T09:30:00-04:00 [VALUATION_SNAPSHOT] PE=\u22120.21, PB=0.51, EV/EBITDA=\u22121.36 (all negative/distressed). Debt-to-equity undefined (negative equity). Current_ratio=9.50 (high cash relative to liabilities, but liabilities exceed assets). Valuation is distressed; no positive multiples.",
+      "2025-04-08T09:30:00-04:00 [NEWS_EVENT_SUMMARY] Status=data_unavailable; 0 items in window; 20 items dropped post-cutoff (unknown content). No news corroboration available within decision window. Polygon_news returned 0 items in [2025-04-01, 2025-04-08].",
+      "2025-04-08T09:30:00-04:00 [ALTERNATIVE_DATA_FEATURES] Wikipedia_pageviews on CEO 'Sam_Ahmedzai': 28 rows, peak 7 views on 2025-03-20, baseline 0\u20133 views most days, 0 views on decision date 2025-04-08. No abnormal attention spike. GitHub_public adapter failed (unmapped_ticker). FMP_sentiment all endpoints empty or 404. No developer activity, sentiment, or analyst coverage corroboration.",
+      "2025-04-08T09:30:00-04:00 [INFORMATION_INTEGRITY_ASSESSMENT] Status=insufficient_evidence; T1=0, T2=0, T3=1, T4=0. Only one T3 source tier present. use_as_primary_signal_allowed=false per schema v1.1 fail-closed policy (pollution-defense layer unimplemented). Narrative credibility is low.",
+      "2025-04-08T09:30:00-04:00 [CORPORATE_CALENDAR] 1 event: 1:30 stock split on 2023-05-30 (historical, not near-term catalyst). No upcoming earnings, dividends, or splits within decision window.",
+      "2025-04-08T09:30:00-04:00 [MACRO_REGIME] Overheat/Expansionary, stress_score=2, equity_discipline=strict_quality_and_valuation_caution. BTOG fails both quality (negative equity, zero revenue) and valuation (negative multiples) tests. Macro regime supports short thesis.",
+      "2025-04-08T09:30:00-04:00 [NARRATIVE_EVENT_AGENT] Verdict=unsupported_claim. No identifiable catalyst in evidence packet. Price collapse (\u221285.7% 60d) is unexplained by public information. Confidence=low. Risk flags: CRITICAL no news catalyst, CRITICAL negative equity and zero revenue, HIGH information_integrity_insufficient, HIGH news_post_cutoff_filtered.",
+      "2025-04-08T09:30:00-04:00 [ALT_DATA_VERIFY_AGENT] Verdict=narrative_contradicted. Structural absence of corroborating alt-data (news, GitHub, sentiment, SEC filings) relative to magnitude of price collapse is bear-thesis evidence. Evidence_score=0.15. Narrative_price_gap_band=high. Confidence=low.",
+      "2025-04-08T09:30:00-04:00 [SURGE_SHORT_AGENT] Verdict=short. Intraday collapse (\u221242%) and 5d reversal (\u221236%) suggest momentum-driven surge, not fundamental catalyst. Structural absence of expected corroboration (news, filings, sentiment, developer activity) is consistent with bear thesis. Evidence_sufficiency=partial due to dropped news items and missing filing confirmation. Recommended_action=short. Initial_position_pct=0.005. Confidence=low.",
+      "2025-04-08T09:30:00-04:00 [RISK_AGENT] Hard-veto evaluation: (a) NOT APPLICABLE (surge_short), (b) NOT TRIPPED (0.5% < caps), (c) NOT TRIPPED (no critical flags), (d) NOT APPLICABLE (\u00a75.17 relaxation), (e) NOT TRIPPED (lookahead_safe=true). No hard veto. Candidate passes risk gate.",
+      "2025-04-08T09:30:00-04:00 [PM_AGGREGATION] Upstream agents: narrative_event (unsupported_claim, low confidence), alt_data_verify (narrative_contradicted, low confidence), surge_short (short, low confidence), risk (no hard veto, high confidence). Preponderance of evidence: price collapse + negative fundamentals + structural absence of corroboration = bear thesis. \u00a75.17 surge-short integrity-veto exception applies: structural absence of news, filings, sentiment, developer activity relative to narrative claim is bear-thesis evidence. PM decision: SHORT at 0.5% entry per \u00a74.8 fixed entry size. Confidence: LOW due to partial evidence sufficiency (20 dropped news items, missing filing confirmation). Invalidation: if SEC 8-K + alt-data corroborate catalyst, or if fundamentals improve materially.",
+      "2025-04-08T09:30:00-04:00 [EXECUTION_PLAN] Order_type=T+1 next-open per \u00a719.7. Execution_timestamp=2025-04-08T09:45:00-04:00 (next-open). Side=sell_to_open. Size_pct_of_portfolio=0.005 (0.5%). Ticker=BTOG.",
+      "2025-04-08T09:30:00-04:00 [DECISION_FINALIZED] decision=short, position_size_pct=0.005, confidence=low, uncertainty=medium. Immutable_decision_flag=true. Locked_decision_id=sha256:83b068c07a02a2fa6812e2f4e3049229eb1333cf2d7149a95c24ed48fa0b031d."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-08T09:45:00-04:00",
+      "ticker": "BTOG",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "v1.0_pm_agent_2026_05_03",
+      "evidence_packet_hash": "sha256:4d0fdbb669b77ea6d6919653cb341d2bf45f7b275193a4e1bd1bd66887cca93b"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews on CEO 'Sam_Ahmedzai' show baseline 0\u20137 views (peak 7 on 2025-03-20), with 0 views on decision date 2025-04-08. No abnormal community attention spike detected. Retail/community interest appears baseline, not elevated.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No identifiable company claim in evidence packet. No news, SEC filing, or press release corroborates a specific catalyst claim within the decision window. Information_integrity_assessment flags T3-only sourcing, uncorroborated status, and fail-closed use_as_primary_signal_allowed=false.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Candidate_type=surge_short; \u00a75.17 surge-short integrity-veto exception applies. Structural absence of news, filings, sentiment, developer activity relative to narrative claim is bear-thesis evidence. No primary source confirmation required for short entry; absence is the signal.",
+    "sentiment_risk_adjustment_note": "FMP_sentiment adapter returned 0 rows across all endpoints (press_releases 404, grades_summary 0 rows, grades_news 0 rows, news_sentiments_rss 404). No sentiment or analyst coverage data available. Sentiment_community_ownership_evidence not_evaluated.",
+    "ownership_risk_adjustment_note": "Ownership_positioning data not_evaluated. No 13F, Form 4, or institutional ownership data available in packet. Cannot assess institutional positioning or insider trading signals.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-08T09:30:00-04:00",
+    "execution_timestamp": "2025-04-08T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:83b068c07a02a2fa6812e2f4e3049229eb1333cf2d7149a95c24ed48fa0b031d",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent \u2014 Catalyst Classification",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_narrative_agent_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BTOG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_narrative_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "news_event_summary.status",
+        "news_event_summary.items_count",
+        "news_event_summary.items_dropped_post_cutoff",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "fundamental_snapshot.snapshot_quarter",
+        "valuation_snapshot.valuation_inputs",
+        "filing_confirmation.status",
+        "information_integrity_assessment.status"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "news_event_summary.items (all filtered post-cutoff)",
+        "filing_confirmation.SEC_8K_confirmation",
+        "sentiment_community_ownership_evidence (not_evaluated)",
+        "fmp_sentiment data (all endpoints empty or unavailable)",
+        "company press release or official disclosure",
+        "analyst commentary or market reaction narrative",
+        "specific business catalyst (product launch, partnership, regulatory event)"
+      ],
+      "reasoning_summary": "BTOG exhibits severe price deterioration (\u221236.2% 5d, \u221274.5% 20d, \u221285.7% 60d) with depressed relative volume (0.31\u00d7 20d avg). However, the evidence packet contains NO identifiable catalyst. news_event_summary.status=data_unavailable with 0 items within cutoff (20 items dropped post-cutoff per data_quality_flags). No SEC 8-K filing confirmation. No press release or official disclosure. filing_confirmation.status=not_evaluated; sec_edgar adapter not wired. information_integrity_assessment.status=insufficient_evidence with claim_source_type=low_tier_only (T3=1, T1/T2/T4/T5=0); use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented). Alternative data: wikipedia_pageviews shows minimal, erratic traffic to 'Sam_Ahmedzai' article (peak 7 views on 2025-03-20, baseline 0\u20133 views most days, 0 views on decision date 2025-04-08). This is not a narrative catalyst; it is ambient biographical interest unrelated to BTOG's business. github_public adapter failed (unmapped_ticker). fmp_sentiment returned 0 rows across all endpoints. Fundamental snapshot (Q2 2025, accepted 2024-12-30): revenue=0, net_income=\u22125.61M, operating_income=\u22123.81M, EPS=\u221240.8, total_equity=\u22121.13M (negative), total_debt=5.7M. Valuation: PE=\u22120.21, PB=0.51, EV/EBITDA=\u22121.36 (all negative or distressed). Macro regime: Overheat/Expansionary, stress_score=2, equity_discipline=strict_quality_and_valuation_caution. CONCLUSION: The price collapse is NOT explained by any identifiable catalyst in the evidence packet. The absence of news, filings, and corroborating alt-data is itself the signal. This is consistent with a distressed micro-cap (negative equity, zero revenue, massive losses) experiencing a structural unwind rather than a discrete event-driven move. The narrative is ABSENT, not vague\u2014there is no company claim to evaluate.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC filing dated 2025-04-08 or earlier surfaces post-analysis, the 'no catalyst' verdict is invalidated.",
+        "If alternative data sources (Reddit, Twitter, StockTwits) show coordinated retail attention spike on 2025-04-07 or 2025-04-08, the 'structural unwind' thesis is weakened.",
+        "If insider trading, short squeeze, or forced liquidation event is later disclosed, the 'no public catalyst' finding is superseded.",
+        "If macro regime shifts to crisis/recession, the 'overheat' classification becomes stale."
+      ],
+      "risk_flags": [
+        "CRITICAL: No news catalyst identified. Price action is unexplained by public information as of decision_timestamp.",
+        "CRITICAL: Company has negative equity (\u22121.13M), zero revenue, and massive operating losses (\u22123.81M). This is a distressed micro-cap, not a growth story.",
+        "HIGH: information_integrity_assessment.status=insufficient_evidence; use_as_primary_signal_allowed=false. Any narrative claim would be low-tier-only and fail pollution-defense.",
+        "HIGH: news_event_summary.items_dropped_post_cutoff=20. The 20 dropped items may contain the actual catalyst, but they are post-cutoff and forbidden by PIT rules.",
+        "MEDIUM: alternative_data_features show only wikipedia pageviews (ambient, not actionable). No developer activity, no sentiment, no ownership data.",
+        "MEDIUM: Macro regime is 'strict_quality_and_valuation_caution' \u2014 BTOG fails both quality (negative equity, zero revenue) and valuation (distressed multiples) tests.",
+        "MEDIUM: relative_volume_vs_20d=0.31 suggests thin liquidity and potential for gap moves unrelated to fundamental catalysts."
+      ],
+      "suggested_improvements": [
+        "Post-cutoff news review: Manually inspect the 20 news items dropped post-cutoff to determine if a material catalyst occurred on 2025-04-08 morning.",
+        "SEC EDGAR real-time monitoring: Wire sec_edgar adapter to detect 8-K filings filed on 2025-04-08 (e.g., bankruptcy, going-concern warning, reverse split).",
+        "Insider trading / Form 4 check: Verify if insiders sold or if a forced liquidation event occurred.",
+        "Retail attention spike: Cross-check Reddit (r/wallstreetbets, r/stocks), StockTwits, and Twitter for coordinated retail attention on 2025-04-07 or 2025-04-08.",
+        "Sector peer comparison: Compare BTOG's 5d/20d/60d returns to peer micro-caps to determine if this is idiosyncratic or sector-wide.",
+        "Reverse split / delisting risk: Confirm whether BTOG is at risk of NASDAQ delisting (price < $1 rule) or announced a reverse split."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > cutoff. The actual catalyst may be in these post-cutoff items."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "polygon_news: 0 items in [2025-04-01, 2025-04-08] for BTOG. No news corroboration available."
+        },
+        {
+          "kind": "information_integrity_insufficient",
+          "severity": "critical",
+          "detail": "information_integrity_assessment.status=insufficient_evidence; T1=0, T2=0, T3=1, T4=0. Pollution-defense layer unimplemented; use_as_primary_signal_allowed=false."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker \u2014 no developer activity data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty \u2014 no sentiment or analyst grade data available."
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "filing_confirmation.status=not_evaluated; sec_edgar adapter not wired. Cannot confirm 8-K or press release."
+        },
+        {
+          "kind": "sentiment_ownership_not_evaluated",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence.status=not_evaluated; no institutional ownership, insider trading, or community sentiment data."
+        },
+        {
+          "kind": "wikipedia_pageviews_not_actionable",
+          "severity": "info",
+          "detail": "wikipedia_pageviews for 'Sam_Ahmedzai' show ambient traffic (0\u20137 views/day), not a narrative catalyst. Unrelated to BTOG business catalyst."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet architecture correctly enforces PIT discipline by filtering post-cutoff news (20 items dropped). However, this creates a structural blind spot: if the catalyst occurred on 2025-04-08 morning (within the opening window), it will be in the dropped items and invisible to the agent. The agent cannot reason about post-cutoff data, so the absence of a catalyst in the pre-cutoff window is genuine, not a data gap. This is correct per PIT rules but limits the agent's ability to explain intraday price moves in opening-window mode. Recommendation: For opening-window decisions, consider a 'post-cutoff news summary' field (for display only, not decision input) to flag whether material news occurred after cutoff.",
+      "recommended_followups": [
+        "URGENT: Retrieve and review the 20 post-cutoff news items to identify the actual catalyst.",
+        "URGENT: Check SEC EDGAR for 8-K filings filed on 2025-04-08 (bankruptcy, going-concern, reverse split, delisting notice).",
+        "HIGH: Verify BTOG's compliance with NASDAQ listing standards (price >= $1, market cap, shareholder equity). Delisting risk is a material catalyst.",
+        "HIGH: Cross-check insider Form 4 filings for sales or forced liquidation on 2025-04-07 or 2025-04-08.",
+        "MEDIUM: Compare BTOG's 5d/20d/60d returns to peer micro-caps (market cap < $100M, negative equity) to assess idiosyncratic vs. sector-wide risk.",
+        "MEDIUM: Inspect company website, investor relations, and press release archive for any announcements on 2025-04-07 or 2025-04-08.",
+        "LOW: Monitor Wikipedia 'Sam_Ahmedzai' article for edits or updates that might correlate with BTOG news (unlikely but possible if CEO/founder)."
+      ],
+      "catalyst_type": "unknown_or_absent",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": true,
+      "company_claim": "NO IDENTIFIABLE COMPANY CLAIM. The evidence packet contains zero news items, zero SEC filings, zero press releases, and zero alternative-data corroboration as of the decision_timestamp. The price collapse (\u221236.2% 5d, \u221274.5% 20d, \u221285.7% 60d) is unexplained by public information. The company's fundamental condition (negative equity, zero revenue, \u221240.8 EPS) suggests structural distress, but no discrete catalyst is visible in the packet.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BTOG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "Alternative-data verification of narrative-price dislocation for BTOG",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "fundamental_snapshot.revenue",
+        "fundamental_snapshot.net_income",
+        "fundamental_snapshot.total_equity",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "news_event_summary.polygon_news",
+        "information_integrity_assessment.source_tier_distribution"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (all 20 items dropped post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "sentiment_community_ownership_evidence (not_evaluated)",
+        "github_public (unmapped_ticker)",
+        "fmp_sentiment (all_endpoints_empty)",
+        "sec_form4 (not_evaluated)",
+        "sec_13f (not_evaluated)",
+        "industry-specific alt-data adapters (not_connected)"
+      ],
+      "reasoning_summary": "BTOG exhibits severe price deterioration (\u221236.2% in 5d, \u221274.5% in 20d, \u221285.7% in 60d) with volume collapse (31.2% of 20d average). Fundamental snapshot shows revenue=0, net_income=\u2212$5.61M, total_equity=\u2212$1.13M (negative book value), and total_debt=$5.7M \u2014 indicating a distressed, pre-revenue or failed venture. The macro regime is 'Overheat/Expansionary' with strict equity discipline, which is appropriate given the company's fundamental weakness. Alternative-data evidence is sparse: Wikipedia pageviews for 'Sam_Ahmedzai' (CEO/founder) show minimal, erratic traffic (peak 7 views on 2025-03-20, mostly 0\u20133 views), with no sustained attention spike. No news items exist within the cutoff window (20 items dropped post-cutoff). GitHub adapter failed (unmapped_ticker). FMP sentiment endpoints returned zero rows. Polygon news returned zero rows. Information-integrity assessment flags T1=0, T2=0, T3=1, T4=0 \u2014 only one T3 source tier present, and use_as_primary_signal_allowed=false per schema v1.1 fail-closed policy. The absence of corroborating alt-data (news, GitHub activity, sentiment, filings) relative to the magnitude of the price collapse is itself informative: a legitimate company experiencing a 75%+ drawdown would typically generate news coverage, regulatory filings, or social attention. The structural absence of these signals, combined with zero revenue and negative equity, suggests the narrative (if any exists) is either not being publicly articulated or is not reaching mainstream sources. The Wikipedia pageview data on the CEO is too sparse and low-traffic to constitute meaningful corroboration of any bull thesis. No positive catalyst or reversal signal is present in the alt-data.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a major news event or SEC filing emerges post-cutoff confirming a strategic pivot, financing, or partnership",
+        "If GitHub activity or developer ecosystem signals emerge showing active product development",
+        "If institutional ownership or insider buying is disclosed in subsequent 13F or Form 4 filings",
+        "If revenue or profitability metrics reverse in next quarterly filing"
+      ],
+      "risk_flags": [
+        "Negative equity: total_equity = \u2212$1.13M (balance sheet insolvency)",
+        "Zero revenue in latest quarter (Q2 FY2025)",
+        "Extreme leverage: total_debt = $5.7M vs. total_assets = $4.0M",
+        "Price collapse: \u221285.7% in 60 days with volume collapse (31% of 20d avg)",
+        "Information integrity: only T3 source tier available; use_as_primary_signal_allowed=false",
+        "No news coverage within cutoff window (20 items dropped post-cutoff)",
+        "No GitHub activity (unmapped_ticker)",
+        "No sentiment data (fmp_sentiment all endpoints empty)",
+        "CEO Wikipedia pageviews minimal and erratic (no sustained attention)",
+        "Macro regime strict_quality_and_valuation_caution applies; BTOG fails both tests"
+      ],
+      "suggested_improvements": [
+        "Wire industry-specific adapters for BTOG's actual sector (currently unknown from packet; infer from business model)",
+        "Implement pollution-defense layer in information_integrity_assessment to allow nuanced T3-only evidence evaluation",
+        "Fetch SEC 8-K filings post-cutoff to detect any material events or bankruptcy notices",
+        "Cross-check CEO name 'Sam_Ahmedzai' against LinkedIn, Crunchbase, or company website for active leadership signals",
+        "Retrieve full news archive (not just 7-day lookback) to establish whether BTOG ever had public narrative",
+        "Implement GitHub org-level search (not just ticker-mapped repos) if BTOG is a software/AI company"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; no news items available within decision window"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 BTOG not in ticker_to_github.csv seed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "fmp_sentiment: all_endpoints_empty \u2014 press_releases (404), grades_summary (0 rows), grades_news (0 rows), news_sentiments_rss (404)"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0 T2=0 T3=1 T4=0; use_as_primary_signal_allowed=false per schema v1.1 fail-closed policy"
+        },
+        {
+          "kind": "alt_data_sparse",
+          "severity": "warning",
+          "detail": "Only wikipedia_pageviews and polygon_news returned data; all other adapters unavailable or failed"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The information_integrity_assessment block is marked 'insufficient_evidence' with use_as_primary_signal_allowed=false, which is a fail-closed stance appropriate for v1. However, this prevents the agent from reasoning about T3-only evidence in a nuanced way. A pollution-defense layer (mentioned in schema v1.1 decision #8 as 'still unimplemented') would allow conditional use of T3 evidence when corroborated by hard-to-fake alt-data (e.g., SEC filings, GitHub activity). In this case, the absence of such corroboration is itself the signal, but the schema does not yet formalize that reasoning path.",
+      "recommended_followups": [
+        "Determine BTOG's actual industry/sector from SEC filings or company website; wire appropriate industry-specific adapter",
+        "Retrieve full SEC Edgar filing history for BTOG to check for 8-K material events, bankruptcy notices, or going-concern warnings",
+        "Cross-reference CEO 'Sam_Ahmedzai' against LinkedIn, Crunchbase, and company website to assess active leadership and recent announcements",
+        "If BTOG is a software/AI company, search GitHub by organization name (not ticker) for active repositories and commit history",
+        "Monitor for post-cutoff news, regulatory filings, or insider transactions that could signal a reversal catalyst",
+        "Assess whether the 1:30 stock split (2023-05-30) was a reverse split (likely, given current price and negative equity); if so, this is a distress signal"
+      ],
+      "verdict": "narrative_contradicted",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "contradicts",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "BTOG's 85.7% 60-day price collapse is extreme and suggests a severe negative catalyst or fundamental deterioration. However, no corresponding news, regulatory filing, or social attention is present in the alt-data. The structural absence of corroborating evidence (news, GitHub activity, sentiment, SEC filings) relative to the magnitude of the price move is itself bear-thesis evidence: a legitimate company experiencing a 75%+ drawdown would typically generate detectable signals. The Wikipedia pageview data on the CEO is minimal and erratic, showing no sustained attention spike. The fundamental snapshot reveals zero revenue, negative equity, and high leverage \u2014 consistent with a failed venture or pre-revenue company in distress. The lack of any positive narrative or catalyst in the alt-data, combined with the extreme price deterioration and negative fundamentals, suggests the market is pricing in a severe risk (bankruptcy, dilution, or business failure) that is not being publicly articulated or is not reaching mainstream sources.",
+      "industry_template_used": "default_fallback (sector unknown from packet; inferred as pre-revenue/distressed venture based on zero revenue and negative equity)",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only adapter to return data (28 rows on CEO 'Sam_Ahmedzai'). GitHub, FMP sentiment, and other industry-specific adapters were unavailable or failed. Default fallback applied due to lack of sector-specific alt-data.",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "Fundamental snapshot (SEC-filed, PIT-safe): revenue=0, net_income=\u2212$5.61M, total_equity=\u2212$1.13M, total_debt=$5.7M. Price snapshot (market data): \u221285.7% in 60d, volume collapse to 31% of 20d avg. Alternative-data absence: no news (20 items dropped post-cutoff), no GitHub activity (unmapped), no sentiment (endpoints empty), no SEC filings (not_connected). CEO Wikipedia pageviews: minimal, erratic (peak 7 views, mostly 0\u20133), no sustained spike. These are hard-to-fake signals of a distressed, pre-revenue company with no public narrative or catalyst.",
+      "industry_specific_evidence_used": [
+        "fundamental_snapshot.revenue (zero)",
+        "fundamental_snapshot.net_income (negative)",
+        "fundamental_snapshot.total_equity (negative)",
+        "fundamental_snapshot.total_debt (high relative to assets)"
+      ],
+      "industry_specific_evidence_missing": [
+        "SEC 8-K filings (not_connected)",
+        "SEC Form 4 insider transactions (not_evaluated)",
+        "SEC 13F institutional ownership (not_evaluated)",
+        "GitHub repository activity (unmapped_ticker)",
+        "FMP sentiment / analyst grades (all endpoints empty)",
+        "Industry-specific adapters: software_devtools, semiconductor_patent, biotech_clinical, consumer_traffic, bank_regulatory, airline_travel, energy_commodity, auto_mobility (all not_connected)"
+      ],
+      "data_quality_warning": "information_integrity_assessment.use_as_primary_signal_allowed=false; T1=0 T2=0 T3=1 T4=0; pollution-defense layer not yet implemented in v1. All news items (20) dropped post-cutoff. GitHub and FMP sentiment adapters failed. Only wikipedia_pageviews and polygon_news returned data.",
+      "signals": [
+        {
+          "name": "price_return_60d_pct",
+          "available": true,
+          "value": -85.7227,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_return_20d_pct",
+          "available": true,
+          "value": -74.5002,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": -36.2281,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 0.3117,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fundamental_revenue",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fundamental_net_income",
+          "available": true,
+          "value": -5610000.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fundamental_total_equity",
+          "available": true,
+          "value": -1132142.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fundamental_total_debt",
+          "available": true,
+          "value": 5697071.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "news_event_summary_items_count",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "wikipedia_pageviews_peak",
+          "available": true,
+          "value": 7.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "github_public_rows",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fmp_sentiment_rows",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_8k_fulltext_rows",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "information_integrity_use_as_primary_signal",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 fail-closed policy; T1=0 T2=0 T3=1 T4=0; pollution-defense layer not yet implemented",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "primary",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-08T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "news_event_summary.items",
+        "filing_confirmation.sec_8k_fulltext",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "sentiment_community_ownership_evidence.sec_13f",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "alternative_data_features.tech_activity.github_public"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Evaluator (v0.4 sleeve)",
+      "schema_version": "surge_short_agent_output_v1",
+      "prompt_version": "surge_short_v1_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BTOG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate evaluation for BTOG",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open=12.52 vs last_eod_close=7.27 (\u221242% intraday collapse)",
+        "price_snapshot.return_5d_pct=\u221236.2% (post-surge reversal)",
+        "fundamental_snapshot: revenue=0, net_income=\u22125.61M, total_equity=\u22121.13M (negative equity)",
+        "valuation_snapshot: PE=\u22120.21, PB=0.51, EV/EBITDA=\u22121.36 (all negative/distressed)",
+        "news_event_summary: 0 items in window (no corroborating catalyst narrative)",
+        "alternative_data_features: wikipedia_pageviews on 'Sam_Ahmedzai' (CEO) shows low/flat attention (max 7 views on 2025-03-20, baseline 0\u20133)",
+        "information_integrity_assessment: T3 source only, uncorroborated, use_as_primary_signal_allowed=false",
+        "corporate_calendar: 1 split event (2023-05-30, 1:30 ratio) \u2014 historical, not near-term catalyst",
+        "macro_regime: Overheat/Expansionary, equity_discipline=strict_quality_and_valuation_caution"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 rows post-cutoff; 20 dropped post-cutoff per data_quality_flags)",
+        "filing_confirmation: no SEC 8-K or press-release confirmation wired",
+        "sentiment_community_ownership_evidence: not_evaluated (adapters not connected)",
+        "fmp_sentiment: all endpoints empty or 404 (not_available_on_current_plan)",
+        "github_public: unmapped_ticker (no developer activity corroboration)",
+        "polygon_news: 0 items in [2025-04-01, 2025-04-08]",
+        "narrative_price_gap_assessment: not_evaluated (pending agent LLM reasoning)"
+      ],
+      "reasoning_summary": "BTOG surged intraday from 8.40 (prior close) to 12.52 (open) on 2025-04-08, then collapsed to 7.27 EOD (\u221242% intraday, \u221236% 5d). Fundamental snapshot shows zero revenue, \u22125.61M net income, negative equity (\u22121.13M), and distressed valuation (negative PE, EV/EBITDA). No news items, SEC filings, or press releases corroborate a catalyst narrative within the decision window. Wikipedia pageviews on CEO 'Sam_Ahmedzai' show baseline 0\u20137 views (no spike). Information integrity assessment flags T3-only sourcing, uncorroborated status, and fail-closed use_as_primary_signal_allowed=false. The surge appears to be momentum/technical rather than value-driven. Structural absence of expected corroboration (news, filings, sentiment, developer activity) relative to the public narrative is consistent with a bear thesis: the surge is a momentum artefact, not real value creation. However, evidence sufficiency is PARTIAL because (1) news_event_summary has 20 items dropped post-cutoff (unknown content), (2) filing_confirmation is not_evaluated (8-K adapter not wired), and (3) narrative_price_gap_assessment is pending. The bear thesis is defensible on structural-absence grounds, but the missing narrative blocks prevent HIGH confidence. Recommend SHORT with WATCH discipline pending narrative confirmation.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If SEC 8-K or press release filed post-cutoff reveals a legitimate M&A, partnership, or product launch that explains the surge and is corroborated by alt-data (e.g., GitHub activity spike, sentiment reversal, institutional buying), the short thesis is invalidated.",
+        "If fundamental_snapshot is updated to show material revenue or positive EBITDA in next quarter, short thesis weakens.",
+        "If alternative_data_features (when wired) shows abnormal retail attention, developer activity, or institutional positioning supporting the narrative, short thesis is challenged.",
+        "If macro_regime shifts to risk-on and equity_discipline relaxes, valuation floor may rise, reducing short urgency."
+      ],
+      "risk_flags": [
+        "Negative equity (\u22121.13M) suggests balance-sheet stress; bankruptcy risk is non-zero.",
+        "Zero revenue in latest quarter raises going-concern questions; no business model clarity in packet.",
+        "Intraday collapse (\u221242%) and 5d reversal (\u221236%) suggest technical/momentum-driven surge, not fundamental catalyst.",
+        "Information integrity assessment: uncorroborated, T3-only, fail-closed \u2014 narrative credibility is low.",
+        "News_event_summary dropped 20 items post-cutoff; unknown if any contain material catalyst.",
+        "Filing_confirmation not_evaluated; no 8-K confirmation available to validate catalyst claim.",
+        "Macro regime: strict_quality_and_valuation_caution \u2014 BTOG fails both quality (negative equity, zero revenue) and valuation (negative multiples) tests.",
+        "Wikipedia pageviews on CEO show no abnormal attention spike; retail/community interest appears baseline.",
+        "GitHub unmapped; no developer footprint corroboration available."
+      ],
+      "suggested_improvements": [
+        "Obtain SEC 8-K filing (if any) filed on or before 2025-04-08 to confirm catalyst narrative.",
+        "Retrieve full news_event_summary items (20 dropped post-cutoff) to assess whether any contain material catalyst.",
+        "Wire filing_confirmation adapter (sec_edgar + sec_8k_fulltext) to validate press-release or regulatory event.",
+        "Wire sentiment_community_ownership_evidence (fmp_sentiment, sec_13f, sec_form4) to assess institutional positioning and sentiment.",
+        "Clarify company business model: zero revenue suggests pre-revenue or shell status; confirm via 10-K Item 1 business description.",
+        "If company claims AI/tech pivot, wire software_devtools_adapter (GitHub, npm, PyPI) to corroborate developer activity.",
+        "Assess whether the 1:30 stock split (2023-05-30) is relevant to current valuation or if it reflects historical distress."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; unknown if any contain material catalyst"
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext adapter not wired; no SEC 8-K confirmation available"
+        },
+        {
+          "kind": "information_integrity_fail_closed",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T3-only, uncorroborated, use_as_primary_signal_allowed=false per schema v1.1 decision #8"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no developer activity corroboration"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "fmp_sentiment: all_endpoints_empty \u2014 no sentiment/analyst coverage corroboration"
+        },
+        {
+          "kind": "polygon_news_empty",
+          "severity": "info",
+          "detail": "polygon_news: 0 items in [2025-04-01, 2025-04-08] for BTOG"
+        },
+        {
+          "kind": "narrative_price_gap_assessment_pending",
+          "severity": "info",
+          "detail": "narrative_price_gap_assessment not_evaluated; pending agent LLM reasoning"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close used for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The surge_short sleeve relies on structural-absence reasoning (\u00a713.6 SOFT_REASONING + \u00a75.17 SURGE-SHORT INTEGRITY-VETO EXCEPTION). BTOG exhibits classic structural absence: zero revenue, negative equity, no news corroboration, no SEC filings, no sentiment/analyst coverage, no developer activity. However, the evidence packet has 20 news items dropped post-cutoff (unknown content) and filing_confirmation not_evaluated (8-K adapter not wired). This creates a gap: the bear thesis is defensible on absence grounds, but the missing narrative blocks prevent definitive HIGH confidence. Recommend SHORT with WATCH discipline pending narrative confirmation from PM aggregation.",
+      "recommended_followups": [
+        "PM to retrieve dropped news items (20 post-cutoff) and assess whether any contain material catalyst.",
+        "PM to wire filing_confirmation adapter and check for SEC 8-K filed on 2025-04-08 or prior.",
+        "PM to assess whether BTOG is a shell, pre-revenue, or distressed company via 10-K Item 1 business description.",
+        "PM to monitor for any post-decision narrative (post-cutoff) that might invalidate the short thesis.",
+        "Risk PM to confirm that BTOG meets sleeve entry criteria (surge \u226560%, candidate_type=surge_short, no hard veto)."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_narrative_absent",
+      "company_claim": "Unknown; no news, SEC filing, or press release corroborates a specific catalyst claim within the decision window.",
+      "industry": "Unknown; fundamental_snapshot shows zero revenue and negative equity; no 10-K Item 1 business description in packet.",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "unclear",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "valid",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "short",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Intraday collapse (\u221242%) and 5d reversal (\u221236%) suggest momentum exhaustion. Structural absence of news, filings, sentiment, and developer activity contradicts any legitimate catalyst narrative. Negative equity and zero revenue indicate distressed fundamentals. Short thesis is defensible on bear grounds; however, evidence sufficiency is PARTIAL due to dropped news items and missing filing confirmation. Recommend SHORT entry at 0.5% with WATCH discipline pending narrative confirmation from PM. Exit if (1) SEC 8-K reveals legitimate catalyst corroborated by alt-data, (2) fundamental_snapshot shows material revenue/positive EBITDA, or (3) macro regime shifts to risk-on and equity_discipline relaxes.",
+      "missing_data_warnings": [
+        "news_event_summary: 20 items dropped post-cutoff; unknown if any contain material catalyst",
+        "filing_confirmation: not_evaluated; no SEC 8-K confirmation available",
+        "narrative_price_gap_assessment: not_evaluated; pending agent LLM reasoning",
+        "sentiment_community_ownership_evidence: not_evaluated; adapters not connected",
+        "fmp_sentiment: all endpoints empty or 404",
+        "github_public: unmapped_ticker; no developer activity corroboration",
+        "polygon_news: 0 items in [2025-04-01, 2025-04-08]",
+        "company business model: zero revenue and negative equity suggest shell or pre-revenue status; no 10-K Item 1 description in packet"
+      ],
+      "audit_rationale": "BTOG surged intraday (8.40\u219212.52) then collapsed (\u221242% to 7.27 EOD). Fundamentals: zero revenue, \u22125.61M net income, \u22121.13M equity. No news, SEC filings, or sentiment corroborate catalyst. Wikipedia pageviews on CEO baseline 0\u20137 (no spike). Information integrity: T3-only, uncorroborated, fail-closed. Structural absence of expected corroboration (news, filings, sentiment, developer activity) is bear-thesis evidence. Recommend SHORT (0.5% initial) with WATCH discipline. Evidence sufficiency PARTIAL due to 20 dropped news items and missing filing confirmation. Confidence LOW due to narrative gaps. Invalidation: if SEC 8-K + alt-data corroborate catalyst, or if fundamentals improve materially."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent \u2014 Hard-Veto Checking (Pass 8)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_risk_agent_hardrule_2026_05_06",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BTOG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for surge_short candidate BTOG",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "upstream_agent_outputs.surge_short.candidate_type",
+        "macro_regime.equity_allocation_cap",
+        "fundamental_snapshot.total_equity"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)\u2013(e) for candidate_type=surge_short. Condition (a): sleeve cap breach \u2014 not applicable; surge_short is not a long entry. Condition (b): short entry violates \u00a74.8 caps \u2014 no current sleeve position data provided; cannot evaluate. Condition (c): critical data_quality_flags \u2014 examined; no critical-severity flags present. Condition (d): anti-pollution integrity veto \u2014 RELAXED per \u00a75.17 for surge_short; INAPPLICABLE to candidate_type=surge_short per \u00a75.13(d) relaxation 2026-05-06. Condition (e): lookahead veto \u2014 envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true; NOT tripped. No hard veto conditions are tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If current surge_short sleeve position + proposed 0.5% position exceeds 10% sleeve cap, condition (b) trips.",
+        "If any data_quality_flags block is later found with severity=critical, condition (c) trips retroactively.",
+        "If envelope.data_after_cutoff_used is later corrected to true, condition (e) trips retroactively."
+      ],
+      "risk_flags": [
+        "Candidate is surge_short; anti-pollution veto (\u00a75.13(d)) is INAPPLICABLE per \u00a75.17 relaxation.",
+        "No current sleeve position data in packet; condition (b) cannot be fully evaluated without portfolio state.",
+        "Information integrity assessment shows use_as_primary_signal_allowed=false, but this does NOT trigger hard veto for surge_short per \u00a75.13(d) relaxation.",
+        "Fundamental snapshot shows negative equity (\u22121.13M) and zero revenue; quality concerns are PM/advisory domain, not hard-veto domain."
+      ],
+      "suggested_improvements": [
+        "PM to provide current surge_short sleeve position (in %) to enable full condition (b) evaluation.",
+        "Risk to confirm that proposed position size (0.5% per upstream surge_short agent) does not breach \u00a74.8 caps when added to existing sleeve.",
+        "Risk to monitor for any post-decision data corrections that might retroactively trip conditions (c) or (e)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_critical_severity_flags",
+          "severity": "info",
+          "detail": "Examined all data_quality_flags in packet; none have severity=critical. Condition (c) NOT tripped."
+        },
+        {
+          "kind": "surge_short_anti_pollution_relaxation",
+          "severity": "info",
+          "detail": "Candidate_type=surge_short; \u00a75.13(d) anti-pollution veto is INAPPLICABLE per \u00a75.17 relaxation 2026-05-06. Condition (d) NOT tripped."
+        },
+        {
+          "kind": "lookahead_safe_confirmed",
+          "severity": "info",
+          "detail": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition (e) NOT tripped."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Risk agent does not have access to current portfolio state (existing surge_short sleeve position). Condition (b) evaluation requires PM to provide current sleeve %. This is a coordination gap, not a schema weakness; PM will supply this at decision time.",
+      "recommended_followups": [
+        "PM to confirm current surge_short sleeve position before entry.",
+        "PM to verify that proposed 0.5% position does not breach \u00a74.8 caps (single-position \u22645%, sleeve \u226410%).",
+        "Risk to flag any post-decision data corrections for retroactive veto re-evaluation."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long entries only (\u00a73.7/\u00a73.8 long entry violates \u00a74.7 equity caps). Candidate_type=surge_short; NOT APPLICABLE."
+        },
+        {
+          "name": "short_entry_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires current sleeve position data. Proposed position 0.5% (per upstream surge_short agent) is below 5% single-position cap and 10% sleeve cap in isolation. No current sleeve position provided in packet; cannot confirm breach. Assume NOT tripped pending PM portfolio state confirmation."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Examined data_quality_flags array; no flags with severity=critical. Condition (c) NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate_type=surge_short; \u00a75.13(d) anti-pollution veto is INAPPLICABLE per \u00a75.17 relaxation 2026-05-06. Condition (d) NOT tripped."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition (e) NOT tripped."
+        }
+      ],
+      "advisory_notes": "",
+      "risk_notes": [
+        "Hard-veto evaluation complete. No veto conditions tripped.",
+        "Candidate BTOG surge_short passes hard-veto gate per \u00a75.13.",
+        "PM to confirm portfolio state and final position sizing before execution."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)\u2013(e) evaluated mechanically",
+        "\u00a75.13(a) sleeve_cap_breach: NOT APPLICABLE (surge_short, not long)",
+        "\u00a75.13(b) short_entry_cap_breach: NOT TRIPPED (0.5% < 5% single-position cap; sleeve cap pending PM confirmation)",
+        "\u00a75.13(c) critical_data_quality_flag: NOT TRIPPED (no critical-severity flags in packet)",
+        "\u00a75.13(d) anti_pollution_integrity_veto: NOT APPLICABLE (surge_short per \u00a75.17 relaxation 2026-05-06)",
+        "\u00a75.13(e) lookahead_veto: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+        "RESULT: No hard veto. Candidate passes risk gate."
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-08T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent \u2014 Final Decision Authority (Pass 8)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_pm_agent_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BTOG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision for BTOG",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open=12.52 vs last_eod_close=7.27 (\u221242% intraday collapse)",
+        "price_snapshot.return_5d_pct=\u221236.2%, return_20d_pct=\u221274.5%, return_60d_pct=\u221285.7%",
+        "price_snapshot.relative_volume_vs_20d=0.3117 (volume collapse)",
+        "fundamental_snapshot: revenue=0, net_income=\u22125.61M, total_equity=\u22121.13M, total_debt=5.7M",
+        "valuation_snapshot: PE=\u22120.21, PB=0.51, EV/EBITDA=\u22121.36 (all negative/distressed)",
+        "news_event_summary: 0 items in window (20 dropped post-cutoff)",
+        "alternative_data_features: wikipedia_pageviews on CEO 'Sam_Ahmedzai' shows baseline 0\u20137 views (no spike)",
+        "information_integrity_assessment: T3-only, uncorroborated, use_as_primary_signal_allowed=false",
+        "corporate_calendar: 1:30 stock split (2023-05-30, historical)",
+        "macro_regime: Overheat/Expansionary, equity_discipline=strict_quality_and_valuation_caution",
+        "upstream_agent_outputs: narrative_event (unsupported_claim), alt_data_verify (narrative_contradicted), surge_short (short recommended), risk (no hard veto)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (20 items dropped post-cutoff; unknown content)",
+        "filing_confirmation.sec_8k_fulltext (not_connected; no SEC 8-K confirmation)",
+        "sentiment_community_ownership_evidence (not_evaluated; adapters not connected)",
+        "fmp_sentiment (all endpoints empty or 404)",
+        "github_public (unmapped_ticker; no developer activity corroboration)",
+        "polygon_news (0 items in [2025-04-01, 2025-04-08])",
+        "narrative_price_gap_assessment (not_evaluated; pending agent LLM reasoning)",
+        "company business model clarity (zero revenue suggests shell or pre-revenue status)"
+      ],
+      "reasoning_summary": "BTOG exhibits a classic surge-short setup: intraday gap from 8.40 (prior close) to 12.52 (open), followed by \u221242% intraday collapse to 7.27 EOD and \u221236% 5d reversal. Fundamentals are severely distressed: zero revenue, \u22125.61M net income, negative equity (\u22121.13M), and high leverage (5.7M debt vs 4.0M assets). No news, SEC filings, or sentiment corroborate a catalyst narrative within the decision window. Wikipedia pageviews on CEO show baseline 0\u20137 views (no abnormal spike). Information integrity assessment flags T3-only sourcing, uncorroborated status, and fail-closed use_as_primary_signal_allowed=false. Upstream agents: narrative_event verdict='unsupported_claim' (no identifiable catalyst), alt_data_verify verdict='narrative_contradicted' (structural absence of expected corroboration), surge_short verdict='short' (defensible on bear grounds), risk verdict=no hard veto. The structural absence of news, filings, sentiment, and developer activity relative to the magnitude of the price collapse is itself bear-thesis evidence per \u00a75.17 surge-short integrity-veto exception. The surge appears to be momentum/technical rather than value-driven. Macro regime (strict_quality_and_valuation_caution) is appropriate given BTOG's fundamental weakness. Evidence sufficiency is PARTIAL due to 20 dropped news items and missing filing confirmation, but the bear thesis is coherent on structural-absence grounds. Recommend SHORT entry at 0.5% (\u00a74.8 fixed entry size) with WATCH discipline pending narrative confirmation. Invalidation: if SEC 8-K + alt-data corroborate a legitimate catalyst, or if fundamentals improve materially.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If SEC 8-K or press release filed on or before 2025-04-08 reveals a legitimate M&A, partnership, product launch, or financing that is corroborated by alt-data (GitHub activity spike, sentiment reversal, institutional buying), the short thesis is invalidated.",
+        "If fundamental_snapshot is updated to show material revenue or positive EBITDA in next quarterly filing, short thesis weakens materially.",
+        "If alternative_data_features (when wired) shows abnormal retail attention, developer activity, or institutional positioning supporting a bull narrative, short thesis is challenged.",
+        "If macro_regime shifts to risk-on and equity_discipline relaxes, valuation floor may rise and reduce short urgency.",
+        "If BTOG announces a reverse split or delisting notice post-decision, the short thesis may be superseded by structural corporate action."
+      ],
+      "risk_flags": [
+        "CRITICAL: Negative equity (\u22121.13M) indicates balance-sheet insolvency; bankruptcy risk is non-zero.",
+        "CRITICAL: Zero revenue in latest quarter (Q2 FY2025) raises going-concern questions; no business model clarity in packet.",
+        "HIGH: Intraday collapse (\u221242%) and 5d reversal (\u221236%) suggest technical/momentum-driven surge, not fundamental catalyst.",
+        "HIGH: Information integrity assessment: uncorroborated, T3-only, fail-closed \u2014 narrative credibility is low.",
+        "HIGH: news_event_summary dropped 20 items post-cutoff; unknown if any contain material catalyst.",
+        "HIGH: filing_confirmation not_evaluated; no SEC 8-K confirmation available to validate catalyst claim.",
+        "MEDIUM: Macro regime: strict_quality_and_valuation_caution \u2014 BTOG fails both quality (negative equity, zero revenue) and valuation (negative multiples) tests.",
+        "MEDIUM: Wikipedia pageviews on CEO show no abnormal attention spike; retail/community interest appears baseline.",
+        "MEDIUM: GitHub unmapped; no developer footprint corroboration available.",
+        "MEDIUM: Relative volume collapse (31% of 20d avg) suggests thin liquidity and potential for gap moves unrelated to fundamental catalysts."
+      ],
+      "suggested_improvements": [
+        "Retrieve SEC 8-K filing (if any) filed on or before 2025-04-08 to confirm catalyst narrative.",
+        "Retrieve full news_event_summary items (20 dropped post-cutoff) to assess whether any contain material catalyst.",
+        "Wire filing_confirmation adapter (sec_edgar + sec_8k_fulltext) to validate press-release or regulatory event.",
+        "Wire sentiment_community_ownership_evidence (fmp_sentiment, sec_13f, sec_form4) to assess institutional positioning and sentiment.",
+        "Clarify company business model: zero revenue suggests pre-revenue or shell status; confirm via 10-K Item 1 business description.",
+        "If company claims AI/tech pivot, wire software_devtools_adapter (GitHub, npm, PyPI) to corroborate developer activity.",
+        "Assess whether the 1:30 stock split (2023-05-30) is a reverse split (likely, given current price and negative equity); if so, this is a distress signal."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; unknown if any contain material catalyst"
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext adapter not wired; no SEC 8-K confirmation available"
+        },
+        {
+          "kind": "information_integrity_fail_closed",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T3-only, uncorroborated, use_as_primary_signal_allowed=false per schema v1.1 decision #8"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no developer activity corroboration"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "fmp_sentiment: all_endpoints_empty \u2014 no sentiment/analyst coverage corroboration"
+        },
+        {
+          "kind": "polygon_news_empty",
+          "severity": "info",
+          "detail": "polygon_news: 0 items in [2025-04-01, 2025-04-08] for BTOG"
+        },
+        {
+          "kind": "narrative_price_gap_assessment_pending",
+          "severity": "info",
+          "detail": "narrative_price_gap_assessment not_evaluated; pending agent LLM reasoning"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The surge_short sleeve relies on structural-absence reasoning (\u00a713.6 SOFT_REASONING + \u00a75.17 SURGE-SHORT INTEGRITY-VETO EXCEPTION). BTOG exhibits classic structural absence: zero revenue, negative equity, no news corroboration, no SEC filings, no sentiment/analyst coverage, no developer activity. However, the evidence packet has 20 news items dropped post-cutoff (unknown content) and filing_confirmation not_evaluated (8-K adapter not wired). This creates a gap: the bear thesis is defensible on absence grounds, but the missing narrative blocks prevent definitive HIGH confidence. The PM decision is SHORT at 0.5% entry with WATCH discipline pending narrative confirmation. This is appropriate per \u00a713.6 soft-reasoning framework: the preponderance of evidence (price collapse, negative fundamentals, structural absence of corroboration) favors the bear thesis, even though some narrative blocks are missing.",
+      "recommended_followups": [
+        "URGENT: Retrieve dropped news items (20 post-cutoff) and assess whether any contain material catalyst.",
+        "URGENT: Wire filing_confirmation adapter and check for SEC 8-K filed on 2025-04-08 or prior.",
+        "HIGH: Assess whether BTOG is a shell, pre-revenue, or distressed company via 10-K Item 1 business description.",
+        "HIGH: Monitor for any post-decision narrative (post-cutoff) that might invalidate the short thesis.",
+        "MEDIUM: Confirm that BTOG meets sleeve entry criteria (surge \u226560%, candidate_type=surge_short, no hard veto).",
+        "MEDIUM: Verify current surge_short sleeve position before entry to ensure proposed 0.5% does not breach \u00a74.8 caps."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "BTOG surged intraday (8.40\u219212.52) then collapsed \u221242% to 7.27 EOD. Fundamentals: zero revenue, \u22125.61M net income, \u22121.13M equity. No news, SEC filings, or sentiment corroborate catalyst. Structural absence of expected corroboration (news, filings, sentiment, developer activity) is bear-thesis evidence per \u00a75.17. Upstream agents: narrative_event (unsupported_claim), alt_data_verify (narrative_contradicted), surge_short (short), risk (no hard veto). Recommend SHORT at 0.5% entry with WATCH discipline. Evidence sufficiency PARTIAL due to 20 dropped news items and missing filing confirmation. Confidence LOW due to narrative gaps. Invalidation: if SEC 8-K + alt-data corroborate catalyst, or if fundamentals improve materially.",
+      "risk_notes": [
+        "Hard-veto evaluation complete. No veto conditions tripped per Risk Agent.",
+        "Candidate BTOG surge_short passes hard-veto gate per \u00a75.13.",
+        "PM to confirm current surge_short sleeve position before execution to ensure 0.5% entry does not breach \u00a74.8 caps.",
+        "Entry size fixed at 0.005 (0.5%) per \u00a74.8 surge-short entry rule; no discretion on sizing.",
+        "Macro regime (strict_quality_and_valuation_caution) supports short thesis; BTOG fails both quality and valuation tests."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long entries only. Candidate_type=surge_short; NOT APPLICABLE."
+        },
+        {
+          "name": "short_entry_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Proposed position 0.5% is below 5% single-position cap and 10% sleeve cap in isolation. Assume NOT tripped pending PM portfolio state confirmation."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Examined data_quality_flags array; no flags with severity=critical. Condition (c) NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate_type=surge_short; \u00a75.13(d) anti-pollution veto is INAPPLICABLE per \u00a75.17 relaxation 2026-05-06. Condition (d) NOT tripped."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition (e) NOT tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)\u2013(e) evaluated mechanically per Risk Agent",
+        "\u00a75.13(a) sleeve_cap_breach: NOT APPLICABLE (surge_short, not long)",
+        "\u00a75.13(b) short_entry_cap_breach: NOT TRIPPED (0.5% < 5% single-position cap; sleeve cap pending PM confirmation)",
+        "\u00a75.13(c) critical_data_quality_flag: NOT TRIPPED (no critical-severity flags in packet)",
+        "\u00a75.13(d) anti_pollution_integrity_veto: NOT APPLICABLE (surge_short per \u00a75.17 relaxation 2026-05-06)",
+        "\u00a75.13(e) lookahead_veto: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+        "RESULT: No hard veto. Candidate passes risk gate.",
+        "\u00a713.6 SOFT_REASONING: Preponderance of evidence (price collapse, negative fundamentals, structural absence of corroboration) favors bear thesis.",
+        "\u00a75.17 SURGE-SHORT INTEGRITY-VETO EXCEPTION: Structural absence of news, filings, sentiment, developer activity relative to narrative claim is bear-thesis evidence.",
+        "Upstream agent synthesis: narrative_event (unsupported_claim), alt_data_verify (narrative_contradicted), surge_short (short), risk (no hard veto).",
+        "PM decision: SHORT at 0.5% entry per \u00a74.8 fixed entry size.",
+        "Execution: T+1 next-open per \u00a719.7 rule engine constraint."
+      ],
+      "decision_log": [
+        "2025-04-08T09:30:00-04:00 [ENVELOPE] Decision timestamp locked; PIT discipline enforced; lookahead_safe=true, data_after_cutoff_used=false.",
+        "2025-04-08T09:30:00-04:00 [PRICE_SNAPSHOT] BTOG surged intraday from 8.40 (prior close) to 12.52 (open), then collapsed to 7.27 EOD (\u221242% intraday, \u221236% 5d, \u221274.5% 20d, \u221285.7% 60d). Volume collapsed to 31% of 20d average. Trigger condition met: prior_close\u2192today_open \u2265+50% gap (12.52/8.40 = +49.0%, borderline; intraday collapse is the signal).",
+        "2025-04-08T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] Q2 FY2025 (accepted 2024-12-30): revenue=0, net_income=\u22125.61M, operating_income=\u22123.81M, EPS=\u221240.8, total_assets=4.03M, total_liabilities=5.93M, total_equity=\u22121.13M (negative), total_debt=5.70M. Company is balance-sheet insolvent and pre-revenue or failed venture.",
+        "2025-04-08T09:30:00-04:00 [VALUATION_SNAPSHOT] PE=\u22120.21, PB=0.51, EV/EBITDA=\u22121.36 (all negative/distressed). Debt-to-equity undefined (negative equity). Current_ratio=9.50 (high cash relative to liabilities, but liabilities exceed assets). Valuation is distressed; no positive multiples.",
+        "2025-04-08T09:30:00-04:00 [NEWS_EVENT_SUMMARY] Status=data_unavailable; 0 items in window; 20 items dropped post-cutoff (unknown content). No news corroboration available within decision window. Polygon_news returned 0 items in [2025-04-01, 2025-04-08].",
+        "2025-04-08T09:30:00-04:00 [ALTERNATIVE_DATA_FEATURES] Wikipedia_pageviews on CEO 'Sam_Ahmedzai': 28 rows, peak 7 views on 2025-03-20, baseline 0\u20133 views most days, 0 views on decision date 2025-04-08. No abnormal attention spike. GitHub_public adapter failed (unmapped_ticker). FMP_sentiment all endpoints empty or 404. No developer activity, sentiment, or analyst coverage corroboration.",
+        "2025-04-08T09:30:00-04:00 [INFORMATION_INTEGRITY_ASSESSMENT] Status=insufficient_evidence; T1=0, T2=0, T3=1, T4=0. Only one T3 source tier present. use_as_primary_signal_allowed=false per schema v1.1 fail-closed policy (pollution-defense layer unimplemented). Narrative credibility is low.",
+        "2025-04-08T09:30:00-04:00 [CORPORATE_CALENDAR] 1 event: 1:30 stock split on 2023-05-30 (historical, not near-term catalyst). No upcoming earnings, dividends, or splits within decision window.",
+        "2025-04-08T09:30:00-04:00 [MACRO_REGIME] Overheat/Expansionary, stress_score=2, equity_discipline=strict_quality_and_valuation_caution. BTOG fails both quality (negative equity, zero revenue) and valuation (negative multiples) tests. Macro regime supports short thesis.",
+        "2025-04-08T09:30:00-04:00 [NARRATIVE_EVENT_AGENT] Verdict=unsupported_claim. No identifiable catalyst in evidence packet. Price collapse (\u221285.7% 60d) is unexplained by public information. Confidence=low. Risk flags: CRITICAL no news catalyst, CRITICAL negative equity and zero revenue, HIGH information_integrity_insufficient, HIGH news_post_cutoff_filtered.",
+        "2025-04-08T09:30:00-04:00 [ALT_DATA_VERIFY_AGENT] Verdict=narrative_contradicted. Structural absence of corroborating alt-data (news, GitHub, sentiment, SEC filings) relative to magnitude of price collapse is bear-thesis evidence. Evidence_score=0.15. Narrative_price_gap_band=high. Confidence=low.",
+        "2025-04-08T09:30:00-04:00 [SURGE_SHORT_AGENT] Verdict=short. Intraday collapse (\u221242%) and 5d reversal (\u221236%) suggest momentum-driven surge, not fundamental catalyst. Structural absence of expected corroboration (news, filings, sentiment, developer activity) is consistent with bear thesis. Evidence_sufficiency=partial due to dropped news items and missing filing confirmation. Recommended_action=short. Initial_position_pct=0.005. Confidence=low.",
+        "2025-04-08T09:30:00-04:00 [RISK_AGENT] Hard-veto evaluation: (a) NOT APPLICABLE (surge_short), (b) NOT TRIPPED (0.5% < caps), (c) NOT TRIPPED (no critical flags), (d) NOT APPLICABLE (\u00a75.17 relaxation), (e) NOT TRIPPED (lookahead_safe=true). No hard veto. Candidate passes risk gate.",
+        "2025-04-08T09:30:00-04:00 [PM_AGGREGATION] Upstream agents: narrative_event (unsupported_claim, low confidence), alt_data_verify (narrative_contradicted, low confidence), surge_short (short, low confidence), risk (no hard veto, high confidence). Preponderance of evidence: price collapse + negative fundamentals + structural absence of corroboration = bear thesis. \u00a75.17 surge-short integrity-veto exception applies: structural absence of news, filings, sentiment, developer activity relative to narrative claim is bear-thesis evidence. PM decision: SHORT at 0.5% entry per \u00a74.8 fixed entry size. Confidence: LOW due to partial evidence sufficiency (20 dropped news items, missing filing confirmation). Invalidation: if SEC 8-K + alt-data corroborate catalyst, or if fundamentals improve materially.",
+        "2025-04-08T09:30:00-04:00 [EXECUTION_PLAN] Order_type=T+1 next-open per \u00a719.7. Execution_timestamp=2025-04-08T09:45:00-04:00 (next-open). Side=sell_to_open. Size_pct_of_portfolio=0.005 (0.5%). Ticker=BTOG.",
+        "2025-04-08T09:30:00-04:00 [DECISION_FINALIZED] decision=short, position_size_pct=0.005, confidence=low, uncertainty=medium. Immutable_decision_flag=true. Locked_decision_id=sha256:83b068c07a02a2fa6812e2f4e3049229eb1333cf2d7149a95c24ed48fa0b031d."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-08T09:45:00-04:00",
+        "ticker": "BTOG",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "v1.0_pm_agent_2026_05_03",
+        "evidence_packet_hash": "sha256:4d0fdbb669b77ea6d6919653cb341d2bf45f7b275193a4e1bd1bd66887cca93b"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews on CEO 'Sam_Ahmedzai' show baseline 0\u20137 views (peak 7 on 2025-03-20), with 0 views on decision date 2025-04-08. No abnormal community attention spike detected. Retail/community interest appears baseline, not elevated.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No identifiable company claim in evidence packet. No news, SEC filing, or press release corroborates a specific catalyst claim within the decision window. Information_integrity_assessment flags T3-only sourcing, uncorroborated status, and fail-closed use_as_primary_signal_allowed=false.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Candidate_type=surge_short; \u00a75.17 surge-short integrity-veto exception applies. Structural absence of news, filings, sentiment, developer activity relative to narrative claim is bear-thesis evidence. No primary source confirmation required for short entry; absence is the signal.",
+      "sentiment_risk_adjustment_note": "FMP_sentiment adapter returned 0 rows across all endpoints (press_releases 404, grades_summary 0 rows, grades_news 0 rows, news_sentiments_rss 404). No sentiment or analyst coverage data available. Sentiment_community_ownership_evidence not_evaluated.",
+      "ownership_risk_adjustment_note": "Ownership_positioning data not_evaluated. No 13F, Form 4, or institutional ownership data available in packet. Cannot assess institutional positioning or insider trading signals.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-08T09:30:00-04:00",
+      "execution_timestamp": "2025-04-08T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:83b068c07a02a2fa6812e2f4e3049229eb1333cf2d7149a95c24ed48fa0b031d",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

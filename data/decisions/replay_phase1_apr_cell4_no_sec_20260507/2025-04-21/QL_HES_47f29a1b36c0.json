@@ -1,0 +1,1346 @@
+{
+  "trigger_id": "47f29a1b36c0",
+  "ticker": "HES",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-04-21T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 244.33,
+  "trigger_cost_usd": 0.428664,
+  "cumulative_cost_usd": 8.725836,
+  "candidate_ranking_inputs": {
+    "ticker": "HES",
+    "earliest_event_date": "2025-04-30",
+    "selection_reason": "earnings_window_14d",
+    "close": 126.32,
+    "t1_open": 128.5,
+    "t1_date": "2025-04-22"
+  },
+  "evidence_packet_hash": "sha256:57aec8c966242b3af7b5e3459d3cb2736395a83846d8f2d720f2788ee44e7b30",
+  "locked_decision_id": "sha256:a723374cdb1ec1c40e915f760d49aa1969ff1f51e63c15d3d13e86b930756e66",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "2026_05_03_pass8_soft_reasoning",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "HES",
+    "decision_timestamp": "2025-04-21T09:30:00-04:00",
+    "data_available_as_of": "2025-04-21T09:30:00-04:00",
+    "decision_or_assessment": "Quality-long candidate HES fails hard fundamental gate (negative FCF) and exhibits expensive valuation; no_trade decision per \u00a73.8 hard rules.",
+    "confidence": "high",
+    "evidence_used": [
+      "fundamental_snapshot.free_cash_flow (-444M Q4 2024)",
+      "fundamental_gate_38.passes (false)",
+      "valuation_snapshot.pe_ratio (47.3x)",
+      "valuation_snapshot.ev_to_ebitda (17.3x)",
+      "valuation_snapshot.price_to_book (3.99x)",
+      "price_snapshot.return_20d_pct (-16.99%)",
+      "price_snapshot.last_eod_close (130.64)",
+      "macro_regime (Strengthening/Expansionary, strict_quality_and_valuation discipline)",
+      "upstream_agent_outputs.narrative_event (unsupported_claim, no identifiable catalyst)",
+      "upstream_agent_outputs.alt_data_verify (insufficient_evidence_to_verify)",
+      "upstream_agent_outputs.valuation (very_expensive)",
+      "upstream_agent_outputs.quality_long (no_trade recommended)",
+      "upstream_agent_outputs.risk (no \u00a75.13 hard-veto conditions trip)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (stable analyst ratings 3 SB, 5 B, 8 H, 1 S)",
+      "corporate_calendar.earnings_history (Q4 2024 EPS beat $1.76 vs $1.44)",
+      "information_integrity_assessment (use_as_primary_signal_allowed=false, pollution-defense layer unimplemented)"
+    ],
+    "evidence_missing": [
+      "upstream_agent_outputs.network_effect (present but classification=absent, not blocking)",
+      "upstream_agent_outputs.surge_short_sleeve (not applicable; candidate_type=quality_long)",
+      "news_event_summary.items (0 post-cutoff; 20 dropped)",
+      "filing_confirmation.sec_8k_fulltext (not_connected)",
+      "detailed_fcf_bridge (capex vs working capital decomposition)",
+      "forward_pe_guidance (not in packet)",
+      "commodity_price_outlook (not in packet, material for energy sector)"
+    ],
+    "reasoning_summary": "HES is a quality energy company with strong recent earnings (Q4 2024 EPS $1.76 beat, revenue $3.14B, operating margin 53.8%) and stable analyst support (8 Buy/Strong Buy vs 1 Sell). However, the candidate fails the hard fundamental gate per \u00a73.8: free_cash_flow_ttm = -$444M despite positive operating cash flow ($1.312B), indicating heavy capex or working capital stress. Valuation is very expensive (PE 47.3x, PB 3.99x, EV/EBITDA 17.3x) relative to energy sector norms and the company's historical range. The 20-day selloff (-16.99%) appears macro/sector-driven (elevated policy rates 4.33%, energy sector weakness) rather than company-specific, but no news catalyst is visible post-cutoff (0 items in news_event_summary). Upstream agents confirm: Narrative Agent finds no identifiable catalyst (unsupported_claim verdict); Alt-Data Verification finds insufficient evidence to verify thesis; Valuation Agent rates very_expensive; Quality-Long Agent recommends no_trade due to hard gate failure + expensive valuation; Risk Agent confirms no \u00a75.13 hard-veto conditions trip, but fundamental_gate_38 failure is a separate upstream veto. Network-Effect Agent correctly classifies HES as absent network effect (appropriate for non-platform energy business). Macro regime is Strengthening/Expansionary but with strict_quality_and_valuation discipline, which HES does not satisfy on valuation. The hard fundamental gate failure (negative FCF) is a mechanical blocker per \u00a73.8 and overrides any other consideration. Per \u00a713.6 soft reasoning and the universal soft-veto principle, missing data (forward guidance, commodity outlook) is not a reason to defer; the present evidence (negative FCF, expensive valuation, no catalyst) is sufficient to support no_trade. ADaS lagged history (CHRO surge_short from 2025-04-17) shows high confidence dispersion on a different ticker; not applicable to HES quality_long decision.",
+    "uncertainty": "low",
+    "invalidation_conditions": [
+      "If Q1 2025 earnings show FCF reversal to positive and management guides to sustained positive FCF, hard gate failure would be invalidated.",
+      "If valuation multiples compress materially (PE below 30x, EV/EBITDA below 12x) due to market repricing, valuation assessment would shift to fair.",
+      "If a major catalyst (M&A, strategic announcement, regulatory approval) emerges post-cutoff and is confirmed by news/filing, narrative assessment would shift.",
+      "If analyst consensus upgrades materially post-cutoff (not visible in packet; last sentiment 2025-04-01), sentiment support would strengthen."
+    ],
+    "risk_flags": [
+      "Hard fundamental gate failure: free_cash_flow_not_positive (-$444M Q4 2024) is a mechanical veto per \u00a73.8.",
+      "Negative FCF despite positive OCF ($1.312B) signals capex intensity or working capital stress; sustainability unclear.",
+      "Valuation multiples (PE 47.3x, EV/EBITDA 17.3x) are 2\u20133x energy sector norms; suggests narrative-driven premium not justified by fundamentals.",
+      "Macro regime strict_quality_and_valuation discipline: HES fails valuation gate.",
+      "No news catalyst visible post-cutoff; selloff origin unclear (sector rotation vs company-specific).",
+      "Analyst ratings stable (no recent downgrades) but sentiment data is T2-only (FMP grades), not primary source.",
+      "Debt-to-equity 0.824 is moderate but leverage in commodity downturn is a tail risk.",
+      "Information integrity assessment marks evidence as low-tier-only (T3/T4); pollution-defense layer unimplemented."
+    ],
+    "suggested_improvements": [
+      "Implement pollution-defense layer in information_integrity_assessment to enable affirmative pollution confirmation.",
+      "Wire energy-sector-specific alt-data adapters (commodity prices, reserve reports, drilling permits, regulatory filings).",
+      "Obtain detailed FCF bridge: capex, working capital, dividend/buyback activity for Q4 2024 and Q1 2025 YTD.",
+      "Retrieve forward P/E, forward earnings guidance, and analyst EPS revisions to assess whether current multiples are justified.",
+      "Fetch WTI/Brent price forecasts and HES production guidance to contextualize energy sector valuation regime.",
+      "Compare HES valuation multiples to peer energy companies (XOM, CVX, COP, MPC) as of decision date.",
+      "Monitor for 8-K filings or press releases post-cutoff that might explain the selloff or provide new catalyst."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "hard_gate_failure",
+        "severity": "critical",
+        "detail": "fundamental_gate_38 fails on free_cash_flow_not_positive: FCF = -$444M (Q4 2024); rule_engine_recommended_action=no_trade"
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "20 news items dropped because publishedDate > cutoff; polygon_news returned 0 rows in [2025-04-14, 2025-04-21]; no trigger article available"
+      },
+      {
+        "kind": "valuation_not_pit_safe",
+        "severity": "warning",
+        "detail": "valuation_snapshot.valuation_inputs are TTM ratios without fiscal anchor; PE 47.3x, PB 3.99x, EV/EBITDA 17.3x are display-only"
+      },
+      {
+        "kind": "information_integrity_low",
+        "severity": "warning",
+        "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=1; use_as_primary_signal_allowed=false; pollution-defense layer unimplemented"
+      },
+      {
+        "kind": "filing_confirmation_not_evaluated",
+        "severity": "info",
+        "detail": "filing_confirmation.status=not_evaluated; SEC_8K_confirmation=null; no 8-K filing data available"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "info",
+        "detail": "github_public: unmapped_ticker; energy_commodity_adapter: not_connected"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet structure is sound. The hard fundamental gate (FCF negative) is a real finding, not a data gap. The absence of forward guidance, commodity price forecasts, and detailed FCF bridge is a limitation but does not invalidate the present evidence (negative FCF, expensive valuation, no catalyst). The information_integrity_assessment correctly flags low-tier-only evidence and fails-closed on use_as_primary_signal_allowed due to unimplemented pollution-defense layer. This is a schema limitation (v1 implementation), not a weakness in the decision framework.",
+    "recommended_followups": [
+      "Obtain Q1 2025 earnings preview or guidance (if available pre-cutoff) to assess FCF trajectory and capex cycle.",
+      "Decompose FCF: separate capex, working capital, and dividend/buyback to understand sustainability.",
+      "Compare HES valuation multiples to XLE, CVX, COP, MPC peers as of 2025-04-21.",
+      "Check macro energy prices (WTI, Brent) as of 2025-04-21 to confirm sector-wide weakness.",
+      "Monitor for analyst revisions post-cutoff; FMP sentiment as of 2025-04-01 is stable but may have shifted.",
+      "Assess dividend sustainability given negative FCF; dividend yield 1.29% (2025-03-17) may be at risk.",
+      "Retrieve SEC EDGAR filings (10-K, 10-Q, 8-K) post-cutoff to detect any material developments."
+    ],
+    "candidate_type": "quality_long",
+    "decision": "no_trade",
+    "position_size_pct": 0.0,
+    "reason": "HES fails hard fundamental gate (FCF -$444M) and exhibits expensive valuation (PE 47.3x, EV/EBITDA 17.3x). No identifiable catalyst post-cutoff. Upstream agents confirm no_trade. Per \u00a73.8 hard rules, negative FCF blocks quality_long classification regardless of other factors.",
+    "risk_notes": [
+      "\u00a73.8 fundamental gate failure: free_cash_flow_not_positive is a mechanical veto.",
+      "\u00a75.13 hard-veto evaluation: no conditions trip; risk agent confirms no sleeve_cap_breach, no lookahead violation.",
+      "Valuation assessment: very_expensive per upstream Valuation Agent.",
+      "Narrative assessment: unsupported_claim (no identifiable catalyst) per upstream Narrative Agent.",
+      "Alt-data verification: insufficient_evidence_to_verify per upstream Alt-Data Agent.",
+      "Quality-long thesis: partially_invalidated due to hard gate failure + expensive valuation.",
+      "Macro regime: Strengthening/Expansionary with strict_quality_and_valuation discipline; HES fails valuation gate.",
+      "Information integrity: use_as_primary_signal_allowed=false; pollution-defense layer unimplemented."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Equity cap per \u00a74.7 is 30% (macro_regime.equity_allocation_cap). No current sleeve position provided; assumed new entry of 0% (no_trade decision). Veto does not trip."
+      },
+      {
+        "name": "position_size_cap_breach_4_7_4_8",
+        "tripped": false,
+        "note": "Candidate_type=quality_long; position_size_pct=0.0 (no_trade). No position cap breach. Veto does not trip."
+      },
+      {
+        "name": "lookahead_data_used_5_13_c",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violations detected. Veto does not trip."
+      },
+      {
+        "name": "hindsight_violation_8_r1_r7",
+        "tripped": false,
+        "note": "envelope.hindsight_safe=true, envelope.hindsight_violations=[]. No hindsight violations detected. Veto does not trip."
+      },
+      {
+        "name": "fundamental_gate_38_free_cash_flow",
+        "tripped": true,
+        "note": "Hard fundamental gate failure per \u00a73.8: free_cash_flow_not_positive (FCF = -$444M Q4 2024). Rule_engine_recommended_action=no_trade. This is a mechanical veto independent of \u00a75.13 risk-agent evaluation."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Applies to quality_long only when pollution_defense_layer affirmatively confirms pollution. Status: unimplemented. Per \u00a75.13(d) relaxation 2026-05-06, when defense layer status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, veto does NOT trip. Candidate evaluates on other criteria (which fail on hard gate)."
+      }
+    ],
+    "rule_engine_path": [
+      "Candidate_type=quality_long identified.",
+      "\u00a73.8 hard fundamental gates evaluated: eps_ttm > 0 (PASS: $1.76), operating_margin_pct > 0 (PASS: 53.8%), balance_sheet sound (PASS), debt_to_equity <= 3 (PASS: 0.824), free_cash_flow_ttm > 0 (FAIL: -$444M).",
+      "Hard gate failure on free_cash_flow_not_positive triggers rule_engine_recommended_action=no_trade.",
+      "\u00a75.13 hard-veto conditions evaluated: (a) sleeve_cap_breach (not tripped), (c) lookahead_data_used (not tripped), (d) anti_pollution_integrity (not tripped per relaxation), (e) hindsight_violation (not tripped).",
+      "Valuation assessment: very_expensive (PE 47.3x, EV/EBITDA 17.3x, PB 3.99x).",
+      "Narrative assessment: unsupported_claim (no identifiable catalyst post-cutoff).",
+      "Alt-data verification: insufficient_evidence_to_verify (news empty, alt-data sparse).",
+      "Network-effect classification: absent (appropriate for non-platform energy business).",
+      "Macro regime: Strengthening/Expansionary with strict_quality_and_valuation discipline; HES fails valuation gate.",
+      "Upstream agent verdicts: Narrative (unsupported_claim), Alt-Data (insufficient_evidence), Valuation (very_expensive), Quality-Long (no_trade), Risk (no \u00a75.13 veto).",
+      "Final decision: no_trade (hard gate failure + expensive valuation + no catalyst).",
+      "Position size: 0.0% (no entry).",
+      "Execution: none."
+    ],
+    "decision_log": [
+      "2025-04-21T09:30:00-04:00 [DECISION_TIMESTAMP] PM Agent 07b begins aggregation of upstream outputs for HES quality_long candidate.",
+      "2025-04-21T09:30:00-04:00 [HARD_GATE_CHECK] Fundamental_gate_38 evaluated: free_cash_flow_ttm = -$444M (Q4 2024). Gate FAILS on free_cash_flow_not_positive. Per \u00a73.8, hard gate failure blocks quality_long classification. Rule_engine_recommended_action=no_trade.",
+      "2025-04-21T09:30:00-04:00 [VALUATION_ASSESSMENT] Upstream Valuation Agent rates HES very_expensive: PE 47.3x, EV/EBITDA 17.3x, PB 3.99x. Valuation not attractive for quality_long entry.",
+      "2025-04-21T09:30:00-04:00 [NARRATIVE_ASSESSMENT] Upstream Narrative Agent finds unsupported_claim: no identifiable catalyst post-cutoff. News_event_summary empty (0 items post-cutoff, 20 dropped). No trigger article or catalyst detail available.",
+      "2025-04-21T09:30:00-04:00 [ALT_DATA_VERIFICATION] Upstream Alt-Data Agent rates insufficient_evidence_to_verify: news sparse, alt-data adapters not wired for energy sector (energy_commodity_adapter not_connected). Information_integrity_assessment marks low-tier-only evidence (T3/T4, no T1/T2).",
+      "2025-04-21T09:30:00-04:00 [NETWORK_EFFECT_CLASSIFICATION] Upstream Network-Effect Agent classifies HES as absent network effect (appropriate for non-platform energy business). Layer 1 evidence absent (no developer ecosystem), Layer 2 weak (Wikipedia pageviews baseline 5-14 views/day, no spike), Layer 3 present but cyclical (commodity-driven margins, not network-driven).",
+      "2025-04-21T09:30:00-04:00 [QUALITY_LONG_THESIS] Upstream Quality-Long Agent recommends no_trade: hard gate failure (FCF negative) + expensive valuation + no catalyst + insufficient evidence. Thesis partially invalidated.",
+      "2025-04-21T09:30:00-04:00 [RISK_VETO_CHECK] Upstream Risk Agent confirms no \u00a75.13 hard-veto conditions trip: (a) sleeve_cap_breach not tripped (assumed new entry, 30% cap not breached), (c) lookahead_data_used not tripped (data_after_cutoff_used=false), (d) anti_pollution_integrity not tripped (pollution-defense layer unimplemented, relaxation applies), (e) hindsight_violation not tripped (hindsight_safe=true). However, fundamental_gate_38 hard failure is a separate upstream veto independent of \u00a75.13.",
+      "2025-04-21T09:30:00-04:00 [MACRO_REGIME_CHECK] Macro regime is Strengthening/Expansionary (stress_score=1) with strict_quality_and_valuation discipline. HES fails valuation gate (PE 47.3x, EV/EBITDA 17.3x exceed quality-long thresholds).",
+      "2025-04-21T09:30:00-04:00 [SENTIMENT_ANALYSIS] Analyst ratings stable (3 Strong Buy, 5 Buy, 8 Hold, 1 Sell as of 2025-04-01). No recent downgrade visible. Sentiment support present but T2-only (FMP grades), not primary source. Analyst consensus does not override hard gate failure.",
+      "2025-04-21T09:30:00-04:00 [PRICE_ACTION_CONTEXT] Price snapshot shows 20-day return -16.99% (selloff from $157.63 to $130.64), but 5-day return +2.74% (recent bounce). Selloff appears macro/sector-driven (elevated policy rates 4.33%, energy sector weakness) rather than company-specific. No news catalyst visible post-cutoff to explain move.",
+      "2025-04-21T09:30:00-04:00 [EARNINGS_QUALITY] Q4 2024 earnings beat: EPS $1.76 vs est $1.44, revenue $3.14B vs est $2.94B. Earnings quality appears sound. However, negative FCF despite positive OCF ($1.312B) signals capex intensity or working capital stress that undermines earnings quality.",
+      "2025-04-21T09:30:00-04:00 [INFORMATION_INTEGRITY] Information_integrity_assessment marks use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer. Evidence credibility is low-tier-only (T3/T4, no T1/T2 primary sources). Narrative cannot be used as primary signal per \u00a75.17 surge-short carve-out (not applicable here; candidate_type=quality_long).",
+      "2025-04-21T09:30:00-04:00 [SOFT_REASONING_SYNTHESIS] Per \u00a713.6 soft reasoning and universal soft-veto principle, missing data (forward guidance, commodity outlook, detailed FCF bridge) is not a reason to defer or watch. Present evidence (negative FCF, expensive valuation, no catalyst, low-tier-only information integrity) is sufficient to support no_trade. Hard gate failure is a mechanical blocker.",
+      "2025-04-21T09:30:00-04:00 [ADAS_LAGGED_CONTEXT] ADaS lagged history (CHRO surge_short from 2025-04-17) shows high confidence dispersion (std_proxy=0.7071) on a different ticker. Not applicable to HES quality_long decision. No prior HES decision history in ADaS.",
+      "2025-04-21T09:30:00-04:00 [FINAL_DECISION] Aggregating all upstream outputs: hard gate failure (FCF negative) + expensive valuation + no catalyst + low information integrity + macro regime strict discipline = no_trade. Position size 0.0%. No entry. Execution: none.",
+      "2025-04-21T09:30:00-04:00 [DECISION_FINALIZED] Decision=no_trade, position_size_pct=0.0, confidence=high, uncertainty=low. Immutable_decision_flag=true. Locked_decision_id matches envelope."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-21T09:45:00-04:00",
+      "ticker": null,
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "evidence_packet_hash": "sha256:8d667b738ac7eb9d5c542a50f894b4a9e7b9b09266fcf910b89cb5e7ecf74fa1"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "Information_integrity_assessment marks evidence as low-tier-only (T3/T4, no T1/T2); pollution-defense layer unimplemented; use_as_primary_signal_allowed=false. Narrative cannot be used as primary signal.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Hard fundamental gate failure (FCF negative) blocks quality_long classification per \u00a73.8. Thesis confirmation not applicable.",
+    "sentiment_risk_adjustment_note": "Analyst ratings stable (3 SB, 5 B, 8 H, 1 S as of 2025-04-01) but T2-only source (FMP grades). Sentiment support present but does not override hard gate failure.",
+    "ownership_risk_adjustment_note": "Ownership_positioning not evaluated; 13F data not available. Smart-money support assessment not possible.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+    "execution_timestamp": "2025-04-21T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:e304f5d5c479b61d4bec4d7a5b21d8294c22158c87d33e3c950d9011bed3d970",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HES",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "No identifiable catalyst event within decision window; structural absence of news corroboration vs. price action.",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_count=0",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "polygon_news.rows_returned=0",
+        "price_snapshot.return_5d_pct=2.7367",
+        "price_snapshot.last_eod_close=130.64",
+        "price_snapshot.prior_close=127.95",
+        "corporate_calendar.events_near_decision_count=11",
+        "alternative_data_features.attention.wikipedia_pageviews (30 rows, low variance)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings stable)",
+        "fundamental_snapshot.free_cash_flow=-444000000",
+        "fundamental_gate_38.passes=false"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (null)",
+        "news_event_summary.catalyst_type (null)",
+        "filing_confirmation.SEC_8K_confirmation (not_evaluated)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "alternative_data_features.valuation_context (not_evaluated)",
+        "information_integrity_assessment.primary_source_found=false",
+        "information_integrity_assessment.reputable_confirmation_found=false",
+        "news_event_summary.ndi_score (null)",
+        "news_event_summary.news_attention_count_* (all null)",
+        "news_event_summary.catalyst_specificity_score (null)"
+      ],
+      "reasoning_summary": "STRUCTURAL ABSENCE PATTERN: HES exhibits a +2.74% 5-day return (2025-04-17 close $130.64 vs. prior $127.95) with below-average volume (47.7% of 20d avg). However, the news_event_summary block is entirely empty (0 items, 20 dropped post-cutoff), polygon_news returned 0 rows, and filing_confirmation is not_evaluated. The information_integrity_assessment explicitly flags 'low_tier_only' evidence (T3=1, T4=1, T1=0, T2=0) and marks use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer. Wikipedia pageviews show modest, non-volatile activity (range 2\u201314 views/day over 30 days, no spike pattern). Analyst sentiment (fmp_sentiment) is stable: 3 Strong Buy, 5 Buy, 8 Hold, 1 Sell as of 2025-04-01 \u2014 no recent change. Corporate calendar shows 11 events within \u00b15 trading days, but these are historical (past earnings, dividends, splits) \u2014 no forward catalyst. Fundamental gate 38 fails on free_cash_flow_not_positive (FCF = -$444M in Q4 2024). The price move is modest and occurs in a macro regime of 'Strengthening / Expansionary' with strict_quality_and_valuation discipline. SECTOR CONTEXT: HES is an energy company (Hess Corporation, oil & gas exploration/production). For this sector, expected corroborating evidence would include: commodity price signals (oil/gas futures), reserve reports, drilling permits, regulatory filings, hedging disclosures, or production/reserve updates. None of these are present in the packet. The absence of news, SEC filings, or commodity-linked alt-data is consistent with a sector-expected evidence pattern \u2014 energy companies do not typically announce major catalysts via Wikipedia pageviews or retail sentiment. However, the structural absence of ANY news item (even low-tier) combined with the modest price move and negative FCF suggests either: (1) the move is momentum-driven or noise, (2) a catalyst exists but is not yet reflected in the news adapters (lag), or (3) the move is unrelated to company-specific fundamentals. Given the hard fundamental gate failure and the complete absence of narrative corroboration, the most defensible assessment is that no concrete catalyst is identifiable from the evidence packet.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC 8-K filing dated 2025-04-21 or earlier emerges post-analysis, the 'no catalyst' verdict is invalidated.",
+        "If Wikipedia pageviews spike above 20 views/day on 2025-04-21, retail attention signal may indicate a catalyst not yet captured by news adapters.",
+        "If analyst ratings change materially between 2025-04-01 and 2025-04-21, sentiment shift could explain price move.",
+        "If oil/gas commodity prices (WTI, Brent) spiked on 2025-04-17\u20132025-04-21, sector-wide tailwind could explain move independent of HES-specific catalyst."
+      ],
+      "risk_flags": [
+        "Negative free cash flow (-$444M) in latest quarter; fundamental gate failure signals deteriorating cash generation.",
+        "High valuation multiples (PE=47.3, EV/EBITDA=17.3) relative to energy sector norms; price move may be mean-reversion or sentiment-driven rather than catalyst-driven.",
+        "News adapter returned 0 items; polygon_news cache shows no HES coverage in 7-day lookback. Possible lag in news indexing or genuine absence of newsworthy events.",
+        "Information integrity assessment marks all evidence as 'low_tier_only' with pollution-defense layer unimplemented; credibility of any narrative is downgraded.",
+        "Analyst ratings unchanged over 4+ months (stable 3 SB, 5 B, 8 H, 1 S); no recent upgrade/downgrade to explain move.",
+        "Macro regime is 'Strengthening / Expansionary' with strict_quality_and_valuation discipline; HES may be undergoing sector rotation or quality filter exclusion."
+      ],
+      "suggested_improvements": [
+        "Wire energy-sector-specific alt-data adapter: WTI/Brent futures, EIA inventory reports, OPEC production announcements, drilling permit databases.",
+        "Implement pollution-defense layer in information_integrity_assessment to allow credibility-weighted narrative scoring.",
+        "Extend news lookback window beyond 7 days for energy stocks, which may have longer news cycles.",
+        "Cross-reference price move with sector indices (XLE, XLE) to disambiguate company-specific vs. sector-wide drivers.",
+        "Fetch SEC EDGAR filings (10-K, 10-Q, 8-K) directly for HES to detect reserve updates, production guidance, or M&A activity.",
+        "Integrate commodity futures positioning (CME FedWatch equivalent for energy) to assess macro energy sentiment."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_data_unavailable",
+          "severity": "critical",
+          "detail": "news_event_summary.status=data_unavailable; 0 items returned, 20 dropped post-cutoff. No trigger article or catalyst type available."
+        },
+        {
+          "kind": "alt_data_sparse",
+          "severity": "warning",
+          "detail": "alternative_data_features: wikipedia_pageviews only (30 rows, low variance); retail_meme_attention, valuation_context, tech_activity all not_evaluated or failed."
+        },
+        {
+          "kind": "information_integrity_low",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=1; use_as_primary_signal_allowed=false; pollution-defense layer unimplemented."
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "filing_confirmation.status=not_evaluated; SEC_8K_confirmation=null; no 8-K filing data available."
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38.passes=false; free_cash_flow_not_positive (-$444M); rule_engine_recommended_action=no_trade."
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence is a placeholder in v1; ownership_positioning.status=not_evaluated."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the absence of news and filing data creates a genuine data gap rather than a schema weakness. The information_integrity_assessment block correctly flags low-tier-only evidence and fails-closed on use_as_primary_signal_allowed. However, the lack of energy-sector-specific alt-data adapters (commodity futures, EIA reports, drilling permits) means the system cannot assess whether the price move is driven by sector-wide factors (e.g., oil price spike) vs. company-specific catalysts. This is a domain-specific gap, not a schema flaw.",
+      "recommended_followups": [
+        "Retrieve WTI/Brent crude oil futures prices for 2025-04-17\u20132025-04-21 to assess sector tailwind.",
+        "Query SEC EDGAR directly for HES 8-K filings dated 2025-04-17\u20132025-04-21 (post-cutoff check for lag).",
+        "Check EIA Weekly Petroleum Status Report for 2025-04-17 (if released) for inventory/production signals.",
+        "Cross-reference HES price move with XLE (energy ETF) and XLU (utilities ETF) to isolate company-specific vs. sector drivers.",
+        "Retrieve analyst reports or earnings call transcripts from Q1 2025 (if available) to detect forward guidance changes.",
+        "Monitor news feeds for 2025-04-21 post-market and 2025-04-22 pre-market for delayed catalyst announcements."
+      ],
+      "catalyst_type": "none_identifiable",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": true,
+      "company_claim": "No explicit company claim present in evidence packet. Price move (+2.74% over 5 days) is unattributed to any disclosed catalyst, news event, or SEC filing. Structural absence of news corroboration suggests either: (1) move is noise/momentum, (2) catalyst is sector-wide (oil price) rather than company-specific, or (3) catalyst announcement is delayed relative to price action.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HES",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-vs-Evidence Verification for HES (Hess Corporation) at decision_timestamp 2025-04-21T09:30:00-04:00",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "fundamental_snapshot.free_cash_flow",
+        "fundamental_snapshot.net_income",
+        "fundamental_snapshot.operating_cash_flow",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.ev_to_ebitda",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "news_event_summary.polygon_news",
+        "corporate_calendar.earnings_history",
+        "macro_regime.stress_score",
+        "fundamental_gate_38.free_cash_flow_not_positive"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "alternative_data_features.energy_commodity_adapter (not_connected)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "narrative_price_gap_assessment.agent_LLM_reasoning (not_evaluated)"
+      ],
+      "reasoning_summary": "HES is Hess Corporation, an integrated energy company (oil & gas exploration, production, midstream). At decision_timestamp 2025-04-21T09:30:00-04:00, the packet contains no news items post-cutoff (polygon_news returned 0 rows; 20 items dropped post-cutoff). Price snapshot shows +2.74% return over 5d, but -16.99% over 20d and -10.27% over 60d, with relative volume at 47.7% of 20d average\u2014indicating below-average trading activity on a mixed price backdrop. Fundamental snapshot (Q4 2024, accepted 2025-02-27) shows strong earnings (EPS 1.76 vs est 1.44, revenue beat), but free_cash_flow is NEGATIVE at -444M (hard gate failure per fundamental_gate_38). Operating cash flow is positive (1312M), but capex exceeded OCF, signaling capital intensity or investment phase. Valuation is elevated: PE 47.3x, EV/EBITDA 17.3x, PB 3.99x\u2014well above energy sector norms. Macro regime is Strengthening/Expansionary (stress_score=1), but equity_discipline is strict_quality_and_valuation. Wikipedia pageviews show modest attention (peak 14 views on 2025-04-01, baseline 3\u20137 views), no spike. FMP sentiment shows stable analyst ratings (3 Strong Buy, 5 Buy, 8 Hold, 1 Sell as of 2025-04-01)\u2014no recent deterioration. No coordinated campaign risk detected (information_integrity_assessment.coordinated_campaign_risk='unknown'). Energy-sector-specific alt-data adapters (energy_commodity_adapter) are not wired; GitHub is unmapped. Absence of energy-specific corroboration (commodity hedging, reserve reports, drilling permits, regulatory filings) is INFORMATIVE for an energy company\u2014these should exist for a legitimate integrated oil & gas operator. The structural absence relative to sector-expected alt-data is bear-thesis evidence for a surge_short candidate, but this packet does not indicate a surge_short classification. The negative FCF, elevated valuation, and lack of positive catalyst news post-cutoff suggest caution, but the analyst consensus remains constructive and recent earnings beat expectations. Confidence is LOW due to missing sector-specific alt-data and the hard gate failure on FCF.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Positive FCF reversal in next quarter (would invalidate hard gate failure)",
+        "Major M&A or strategic announcement post-cutoff (not visible in packet)",
+        "Significant analyst downgrade post-cutoff (not visible; last sentiment snapshot 2025-04-01 shows stable ratings)",
+        "Commodity price collapse (not visible in macro regime; oil/gas prices not in packet)",
+        "Regulatory action or environmental fine (not visible in filing_confirmation or news)"
+      ],
+      "risk_flags": [
+        "Hard fundamental gate failure: free_cash_flow_not_positive (-444M in Q4 2024)",
+        "Elevated valuation multiples (PE 47.3x, EV/EBITDA 17.3x) relative to energy sector",
+        "Negative free cash flow despite positive operating cash flow signals high capex burden",
+        "Below-average trading volume (47.7% of 20d average) on mixed price action",
+        "No news items available post-cutoff; narrative is stale",
+        "Energy-sector-specific alt-data adapters not wired (commodity, reserve, permit data unavailable)",
+        "Macro regime strict_quality_and_valuation discipline conflicts with elevated valuation",
+        "Wikipedia pageviews show no abnormal attention; no retail meme signal"
+      ],
+      "suggested_improvements": [
+        "Wire energy_commodity_adapter to capture oil/gas price hedging, reserve reports, drilling permits",
+        "Fetch SEC 10-K Item 1 (Business) and Item 1A (Risk Factors) to assess reserve replacement ratio and production guidance",
+        "Monitor next earnings date (corporate_calendar shows past earnings; next earnings not in upcoming list as of cutoff)",
+        "Cross-check FCF trend: is -444M Q4 2024 an anomaly or structural deterioration?",
+        "Assess capex guidance and return-on-capital targets from latest investor presentation",
+        "Monitor commodity price signals (WTI crude, natural gas) as leading indicator for energy sector"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "hard_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38: free_cash_flow_not_positive (-444M); rule_engine_recommended_action=no_trade"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 items dropped because publishedDate > cutoff; polygon_news returned 0 rows in [2025-04-14, 2025-04-21]"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 not applicable for energy company but signals incomplete alt-data coverage"
+        },
+        {
+          "kind": "alt_data_adapter_not_wired",
+          "severity": "warning",
+          "detail": "energy_commodity_adapter: not_connected \u2014 sector-expected alt-data for oil & gas company unavailable"
+        },
+        {
+          "kind": "valuation_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs (TTM ratios) not anchored to fiscal period; display only"
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "info",
+          "detail": "sec_8k_fulltext: not_connected \u2014 no recent 8-K filings available for verification"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet structure is sound, but the absence of sector-specific alt-data adapters for energy companies (commodity prices, reserve data, regulatory filings) limits the ability to verify operational narratives. The information_integrity_assessment block is marked 'insufficient_evidence' with use_as_primary_signal_allowed=false due to pollution-defense layer not implemented in v1. This is a schema limitation, not a weakness in the evidence itself.",
+      "recommended_followups": [
+        "Obtain latest investor presentation or earnings call transcript to assess management guidance on FCF and capex",
+        "Monitor WTI crude and natural gas prices as leading indicators for HES earnings revisions",
+        "Check SEC EDGAR for recent 10-Q or 8-K filings post-cutoff to assess any material developments",
+        "Assess analyst revisions post-cutoff; FMP sentiment as of 2025-04-01 is stable but may have shifted",
+        "Evaluate dividend sustainability given negative FCF; dividend yield 1.29% (2025-03-17) may be at risk"
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.35,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "not_evaluated",
+      "narrative_price_gap_assessment": "not_evaluated",
+      "narrative_price_gap_rationale": "Narrative-price-gap assessment cannot be completed due to absence of post-cutoff news narrative (0 items in news_event_summary post-cutoff). Price action shows mixed signals: +2.74% 5d return but -16.99% 20d and -10.27% 60d, with below-average volume. Without a clear narrative catalyst post-cutoff, the gap cannot be assessed. The hard gate failure on FCF is a fundamental concern independent of narrative.",
+      "industry_template_used": "energy_commodities",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only alternative-data adapter that returned rows (30 rows, cache source). Energy-specific adapters (energy_commodity_adapter) are not wired. GitHub is unmapped for HES. FMP sentiment is T2 (analyst ratings), not alt-data. Fallback to wikipedia_pageviews as default attention signal.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "Hard-to-fake signals present: (1) Fundamental snapshot (Q4 2024, accepted 2025-02-27) shows negative FCF (-444M) despite positive OCF (1312M)\u2014this is a real filing metric, not easily manipulated. (2) Analyst ratings (FMP T2 source) show stable consensus (3 SB, 5 B, 8 H, 1 S) with no recent deterioration\u2014corroborates lack of negative catalyst. (3) Wikipedia pageviews show baseline attention (3\u201314 views/day), no spike\u2014rules out retail meme narrative. (4) Macro regime (FRED data) shows Strengthening/Expansionary with strict_quality_and_valuation discipline\u2014objective macro input. (5) Valuation multiples (PE 47.3x, EV/EBITDA 17.3x) are elevated and verifiable from FMP data. Soft signals: price action (mixed), volume (below-average), news (absent post-cutoff). No hard contradiction detected, but hard gate failure on FCF is a mechanical veto per rule_engine_recommended_action=no_trade.",
+      "industry_specific_evidence_used": [
+        "fundamental_snapshot.free_cash_flow (energy companies are capital-intensive; negative FCF is material)",
+        "fundamental_snapshot.operating_cash_flow (OCF positive at 1312M; capex burden evident)",
+        "valuation_snapshot.ev_to_ebitda (17.3x is elevated for energy; sector median ~8\u201310x)",
+        "corporate_calendar.earnings_history (Q4 2024 EPS beat; prior quarters also beat, suggesting earnings quality)",
+        "macro_regime.stress_score (energy is cyclical; macro regime Strengthening is supportive, but strict_quality_and_valuation discipline applies)"
+      ],
+      "industry_specific_evidence_missing": [
+        "energy_commodity_adapter: oil/gas price hedging, reserve replacement ratio, production guidance",
+        "SEC 10-K Item 1A: reserve depletion risk, regulatory exposure, climate transition risk",
+        "Drilling permit database: capital allocation, exploration success rate",
+        "Commodity price signals: WTI crude, natural gas forward curves (not in packet)",
+        "Peer valuation comparison: HES vs XOM, CVX, COP (not in packet)",
+        "Dividend coverage analysis: FCF vs dividend payout (FCF negative, dividend 0.5/quarter = 2.0/year; at current price ~130, yield ~1.54%; unsustainable if FCF remains negative)"
+      ],
+      "data_quality_warning": "critical: hard fundamental gate failure (free_cash_flow_not_positive); rule_engine_recommended_action=no_trade. Additionally, information_integrity_assessment.use_as_primary_signal_allowed=false due to pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8. News narrative is stale (0 items post-cutoff). Energy-sector-specific alt-data adapters not wired.",
+      "signals": [
+        {
+          "name": "free_cash_flow",
+          "available": true,
+          "value": -444000000.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "operating_cash_flow",
+          "available": true,
+          "value": 1312000000.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "earnings_beat_q4_2024",
+          "available": true,
+          "value": 1.76,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "pe_ratio_valuation",
+          "available": true,
+          "value": 47.29644238683127,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "ev_to_ebitda_valuation",
+          "available": true,
+          "value": 17.286839407903123,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": 2.7367,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "price_return_20d_pct",
+          "available": true,
+          "value": -16.9854,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 0.4772,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_consensus_stable",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "wikipedia_pageviews_baseline",
+          "available": true,
+          "value": 9.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "news_items_post_cutoff",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "macro_regime_strict_discipline",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "medium",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": true,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8. Additionally, hard fundamental gate failure (free_cash_flow_not_positive) is a mechanical veto per rule_engine_recommended_action=no_trade.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "dismissed",
+      "not_evaluated_reason": "pit_violation",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "not_evaluated",
+      "expected_blocks_absent": [
+        "news_event_summary.items (0 post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "alternative_data_features.energy_commodity_adapter (not_wired)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Classifier",
+      "schema_version": "network_effect_agent_output_v1.4",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HES",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews (30 days, 7-14 views/day baseline)",
+        "fundamental_snapshot.snapshot_quarter (Q4 2024 revenue, operating metrics)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings stable 3-5 buy, 8 hold)",
+        "information_integrity_assessment (T3/T4 sources only, no T1/T2 primary sources)"
+      ],
+      "evidence_missing": [
+        "github_public developer ecosystem (unmapped_ticker \u2014 no Layer 1 tech activity)",
+        "SEC-disclosed operating metrics for network-effect indicators (DAU/MAU, take-rate, marketplace GMV, seller retention \u2014 none disclosed for HES)",
+        "news_event_summary (0 items post-cutoff; no recent catalyst narrative)",
+        "patent activity (adapter not wired per R-NETWORK-10)",
+        "alternative_data_features.tech_activity (github_public failed; no developer community data)"
+      ],
+      "reasoning_summary": "HES (Hess Corporation) is an integrated energy company (oil & gas exploration, production, midstream). The three-layer evidence framework yields: Layer 1 (hard-to-fake): ABSENT. No GitHub developer ecosystem (unmapped ticker). No SEC-disclosed operating metrics characteristic of network effects (no DAU/MAU, no take-rate, no marketplace GMV, no seller cohort retention). HES is a traditional upstream/midstream energy operator, not a platform or ecosystem business. Layer 2 (corroborative attention): WEAK. Wikipedia pageviews show modest baseline (5-14 views/day over 30 days, peak 14 on 2025-04-01, declining to 7-9 by decision date). No news items in window. FMP analyst sentiment stable (3-5 strong buy, 5 buy, 8 hold, 1 sell as of 2025-04-01) \u2014 consistent but not spiking. Layer 3 (financial confirmation): PRESENT but CYCLICAL, NOT NETWORK-DRIVEN. Q4 2024 revenue $3.14B, operating income $1.69B, net margin 17.26%, gross margin 76.28% (high due to commodity pricing, not network effects). Free cash flow negative (-$444M) \u2014 hard gate failure per fundamental_gate_38. EV/EBITDA 17.3x, PE 47.3x (elevated, likely commodity-cycle driven). The financial metrics reflect energy commodity pricing dynamics and capital intensity, not network compounding. CLASSIFICATION LOGIC: L1 absent + L2 weak + L3 present-but-cyclical \u2192 ABSENT network effect. HES exhibits zero characteristics of a network-effect business: no multi-sided platform, no developer ecosystem, no user-attraction loop, no ecosystem lock-in, no pricing power from network scale. The company is a traditional energy producer with commodity-driven margins and cyclical cash flow. The modest Wikipedia attention and stable analyst sentiment are consistent with a mature, well-known energy company, not a platform experiencing network growth. SECTOR AWARENESS: Energy/commodities sector does not claim network economics. A network-effect claim from HES would be structurally implausible. The absence of Layer 1 evidence is not a data gap \u2014 it is the correct descriptor for a non-platform business.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If HES were to disclose a material platform or ecosystem business segment (e.g., digital marketplace for energy trading, developer API ecosystem) with DAU/MAU and take-rate metrics, classification would shift to emerging or ambiguous.",
+        "If GitHub activity or developer community data became available and showed significant ecosystem adoption, Layer 1 evidence would be populated and classification would upgrade.",
+        "If news or SEC filings disclosed a major strategic pivot to platform/network economics, Layer 2 attention and Layer 1 evidence would be re-evaluated."
+      ],
+      "risk_flags": [
+        "fundamental_gate_38_failure: free_cash_flow_not_positive (FCF = -$444M Q4 2024) \u2014 hard gate blocks quality_long classification regardless of network effect.",
+        "sector_mismatch: HES is an energy producer, not a platform or ecosystem business; network-effect framework is not applicable to this business model.",
+        "layer_1_structural_absence: No developer ecosystem, no SEC-disclosed network metrics, no platform characteristics \u2014 this is not a data gap but a business-model fact.",
+        "valuation_concern: PE 47.3x, EV/EBITDA 17.3x elevated for a cyclical energy company; suggests market may be pricing in commodity upside, not network compounding.",
+        "negative_fcf: Free cash flow negative in latest quarter; inconsistent with sustainable network-effect compounding."
+      ],
+      "suggested_improvements": [
+        "Confirm HES business model classification: is this a pure upstream/midstream energy operator or does it have undisclosed platform/ecosystem segments?",
+        "If HES has digital or marketplace initiatives, request SEC disclosure of operating metrics (transaction volume, user cohorts, take-rate) to populate Layer 1.",
+        "Monitor for strategic announcements regarding platform or ecosystem pivots; current evidence does not support network-effect thesis.",
+        "For surge_short candidates: absence of Layer 1 evidence on a ticker with no platform narrative is not a bear signal \u2014 it is the correct descriptor. The hard gate failure (negative FCF) is the relevant short-thesis anchor."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "layer_1_structural_absence",
+          "severity": "info",
+          "detail": "github_public unmapped_ticker; no developer ecosystem data available or applicable to HES business model"
+        },
+        {
+          "kind": "sec_operating_metrics_absent",
+          "severity": "info",
+          "detail": "No SEC-disclosed DAU/MAU, take-rate, marketplace GMV, or seller retention metrics in 10-K/10-Q for HES; consistent with non-platform business"
+        },
+        {
+          "kind": "news_event_summary_empty",
+          "severity": "info",
+          "detail": "0 news items post-cutoff; no recent catalyst narrative to evaluate Layer 2 attention spike"
+        },
+        {
+          "kind": "wikipedia_pageviews_baseline",
+          "severity": "info",
+          "detail": "Wikipedia pageviews 5-14 views/day, baseline for mature public company; no abnormal attention spike"
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "warning",
+          "detail": "fundamental_gate_38 failed: free_cash_flow_not_positive; hard gate blocks quality_long classification"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The three-layer framework is sector-agnostic by design and correctly identifies HES as absent network effect. However, the framework's strength lies in distinguishing genuine network effects from narrative hype in tech/platform sectors. For traditional energy/commodity businesses, the absence of Layer 1 evidence is expected and not informative of a hidden network effect. The framework correctly handles this case: Layer 1 absent + Layer 2 weak + Layer 3 cyclical \u2192 absent classification. No weakness in the schema; the output is semantically correct.",
+      "recommended_followups": [
+        "Confirm HES does not have undisclosed platform/ecosystem business segments.",
+        "Monitor for strategic pivots or M&A that might introduce network-effect characteristics.",
+        "For portfolio decisions: use hard fundamental gates (FCF, leverage, profitability) as primary filters; network-effect classification is absent and not a decision driver for HES."
+      ],
+      "network_effect_score": 5,
+      "network_effect_evidence": "absent",
+      "pricing_power_assessment": "low",
+      "key_signals_used": [
+        "wikipedia_pageviews: 30-day baseline 5-14 views/day, no spike",
+        "fmp_sentiment: analyst ratings stable (3-5 buy, 8 hold, 1 sell), no trend change",
+        "fundamental_snapshot: Q4 2024 revenue $3.14B, operating margin 53.8%, net margin 17.26% (commodity-driven, not network-driven)",
+        "sector_classification: energy/commodities, not platform/ecosystem"
+      ],
+      "key_signals_missing": [
+        "github_public: unmapped_ticker, no developer ecosystem data",
+        "sec_operating_metrics: no DAU/MAU, take-rate, marketplace GMV, seller retention disclosed",
+        "news_catalyst: 0 items post-cutoff, no recent narrative",
+        "patent_activity: adapter not wired (R-NETWORK-10 deferred)"
+      ],
+      "classification": "absent",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "wikipedia_pageviews: 30-day window shows baseline 5-14 views/day, peak 14 on 2025-04-01, declining to 7-9 by 2025-04-21; consistent with mature public company, no abnormal spike",
+        "fmp_sentiment: analyst ratings as of 2025-04-01 show 3 strong buy, 5 buy, 8 hold, 1 sell; stable distribution, no recent shift toward bullish or bearish consensus"
+      ],
+      "layer_3_evidence": [
+        "fundamental_snapshot Q4 2024: revenue $3.14B, operating income $1.69B (53.8% margin), net income $542M (17.26% margin), gross margin 76.28%; high margins reflect commodity pricing cycle, not network compounding",
+        "free_cash_flow: -$444M (negative, hard gate failure); inconsistent with sustainable network-effect economics",
+        "valuation: PE 47.3x, EV/EBITDA 17.3x elevated for cyclical energy company; suggests commodity upside pricing, not network-effect premium"
+      ],
+      "type_direct_vs_two_sided": "none",
+      "staleness_flags": [
+        "fmp_sentiment_as_of_2025_04_01: 20 days before decision_timestamp, within acceptable window but not fresh",
+        "fundamental_snapshot_as_of_2025_02_27: 53 days before decision_timestamp, within 90-day SEC window but approaching staleness threshold"
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HES",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "very_expensive",
+      "confidence": "high",
+      "evidence_used": [
+        "valuation_snapshot.pe_ratio (47.30)",
+        "valuation_snapshot.peg_ratio (2.79)",
+        "valuation_snapshot.price_to_sales (7.58)",
+        "valuation_snapshot.price_to_book (3.99)",
+        "valuation_snapshot.ev_to_ebitda (17.29)",
+        "fundamental_snapshot.free_cash_flow_ttm (-444M negative)",
+        "fundamental_snapshot.net_margin_pct_ttm (15.99%)",
+        "fundamental_snapshot.gross_margin_pct_ttm (59.48%)",
+        "fundamental_snapshot.debt_to_equity_ttm (0.824)",
+        "macro_regime (Strengthening/Expansionary, stress_score=1)",
+        "price_snapshot.return_20d_pct (-16.99% drawdown)",
+        "fundamental_gate_38 (free_cash_flow_not_positive hard failure)",
+        "sector context (Energy/Commodities)"
+      ],
+      "evidence_missing": [
+        "fcf_yield (null due to negative free_cash_flow_ttm \u2014 case (a) semantic distinction: underlying input present and negative, not field-absent)",
+        "ev_to_ebit (null, underlying input not provided)",
+        "forward_pe (not in packet)",
+        "commodity_price_outlook (not in packet, but material for energy sector)",
+        "capital_expenditure_guidance (not in packet)"
+      ],
+      "reasoning_summary": "HES exhibits extreme valuation multiples across all major metrics despite a fundamental gate failure on free cash flow. The P/E of 47.3x is exceptionally high for a mature energy company; the PEG of 2.79 suggests growth expectations are not justified by earnings trajectory. P/S of 7.58x and P/B of 3.99x are elevated for the energy sector, where cyclical multiples typically compress at peak earnings. EV/EBITDA of 17.3x is structurally expensive for a commodity-exposed business. Most critically, free cash flow is negative at -$444M TTM (case (a): underlying input present and nonpositive, not a data gap), while net income is positive at $542M \u2014 this disconnect signals capital intensity, working capital headwinds, or one-time charges that undermine the earnings quality. The negative FCF is a real bearish valuation finding and triggers the hard fundamental gate failure (free_cash_flow_not_positive). The 20-day drawdown of -16.99% provides some margin-of-safety relief in a Strengthening macro regime, but does not overcome the structural valuation extremes. Analyst sentiment remains moderately bullish (3 Strong Buy, 5 Buy, 8 Hold, 1 Sell as of 2025-04-01), suggesting the market has priced in a narrative that the valuation metrics do not support. For a quality_long candidate, undefined P/E from negative earnings would be a \u00a73.8 fundamental gate failure; here, P/E is defined but at an extreme level, and the negative FCF is the dominant bearish signal. The combination of very high multiples + negative free cash flow + elevated leverage (D/E 0.824) + energy sector cyclicality = very_expensive descriptor.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If free cash flow reverts to positive in next quarter and sustains, valuation may compress to fair or attractive",
+        "If commodity prices (oil/gas) spike materially above decision_timestamp, energy sector multiples may re-rate higher (but this would be hindsight, not forward-looking)",
+        "If capital expenditure cycle completes and FCF normalizes, the negative FCF signal may be temporary"
+      ],
+      "risk_flags": [
+        "Negative free cash flow despite positive net income \u2014 working capital or capex stress",
+        "P/E of 47.3x is 2\u20133x typical energy sector multiples; suggests narrative-driven premium",
+        "Debt-to-equity of 0.824 is moderate but combined with negative FCF creates refinancing risk",
+        "PEG of 2.79 implies growth expectations; energy sector is cyclical, not growth-oriented",
+        "20-day drawdown of -16.99% may indicate recent repricing, but multiples remain extreme",
+        "Analyst consensus remains bullish despite valuation extremes \u2014 potential crowding risk"
+      ],
+      "suggested_improvements": [
+        "Obtain forward P/E and forward earnings guidance to assess if current multiples are justified by near-term earnings recovery",
+        "Retrieve commodity price forecasts (WTI, Brent, natural gas) to contextualize energy sector valuation regime",
+        "Analyze capital expenditure guidance and free cash flow bridge to understand if negative FCF is temporary or structural",
+        "Compare HES multiples to peer energy companies (XOM, CVX, COP) to assess relative valuation",
+        "Obtain management guidance on FCF inflection timing and shareholder return policy"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM (trailing twelve months), not point-in-time anchored to a specific filing date; FCF and earnings may reflect mixed periods"
+        },
+        {
+          "kind": "negative_fcf_case_a",
+          "severity": "critical",
+          "detail": "free_cash_flow_ttm is -444M (underlying input present and nonpositive); fcf_yield is null as a result \u2014 this is case (a) semantic distinction, a real bearish finding, not a data gap"
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 fails on free_cash_flow_not_positive; rule_engine_recommended_action=no_trade"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote at 2025-07-18T20:00:00+00:00 is after allowed_data_cutoff; valuation ratios use TTM, not current price"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The valuation_snapshot block does not include forward P/E, forward earnings, or analyst EPS revisions, which would be critical for assessing whether current multiples are justified by near-term earnings recovery. For energy/commodity sectors, the absence of commodity price forecasts and all-in sustaining cost (AISC) data limits the ability to contextualize valuation within the commodity cycle. The TTM ratios are not point-in-time anchored, so the negative FCF may reflect a specific quarter's working capital swing rather than a structural issue \u2014 but the packet does not provide quarterly detail to disambiguate.",
+      "recommended_followups": [
+        "Retrieve forward P/E and forward earnings guidance from consensus estimates",
+        "Obtain WTI/Brent price forecasts and HES production guidance to assess commodity cycle positioning",
+        "Analyze quarterly FCF trend (Q1, Q2, Q3, Q4 2024) to determine if negative FCF is cyclical or structural",
+        "Compare HES valuation multiples to peer energy companies and sector median",
+        "Monitor analyst rating changes and target price revisions for signs of consensus shift"
+      ],
+      "valuation_score": 18,
+      "valuation_assessment": "very_expensive",
+      "margin_of_safety_assessment": "low",
+      "valuation_inputs_used": {
+        "pe_ratio": 47.29644238683127,
+        "peg_ratio": 2.790916194898604,
+        "price_to_sales": 7.578894894226024,
+        "price_to_book": 3.990290946966409,
+        "ev_to_ebitda": 17.286839407903123,
+        "fcf_yield": null,
+        "roe": 0.08549940625412324,
+        "roa": 0.035816935662171125,
+        "debt_to_equity_ttm": 0.82440760350664,
+        "gross_margin_pct_ttm": 59.48,
+        "net_margin_pct_ttm": 15.99,
+        "free_cash_flow_ttm": -444000000,
+        "net_income_ttm": 542000000,
+        "return_20d_pct": -16.9854,
+        "macro_regime": "Strengthening / Expansionary",
+        "sector": "Energy / Commodities"
+      },
+      "valuation_inputs_missing": [
+        "forward_pe",
+        "forward_earnings_guidance",
+        "ev_to_ebit",
+        "commodity_price_forecasts",
+        "capital_expenditure_guidance",
+        "free_cash_flow_guidance",
+        "peer_valuation_multiples",
+        "analyst_eps_revisions"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Thesis Evaluator",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HES",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long thesis evaluation for HES (Hess Corp) at decision point 2025-04-21 09:30 ET",
+      "confidence": "low",
+      "evidence_used": [
+        "fundamental_snapshot (Q4 2024 10-K filing, accepted 2025-02-27)",
+        "price_snapshot (last EOD 2025-04-17 close $130.64; 20d return -16.99%)",
+        "valuation_snapshot (PE 47.3x, PB 3.99x, EV/EBITDA 17.3x)",
+        "corporate_calendar (recent earnings beats: Q4 2024 EPS $1.76 vs est $1.44)",
+        "macro_regime (Strengthening/Expansionary, stress_score=1, equity_discipline=strict_quality_and_valuation)",
+        "sentiment_community_ownership_evidence (analyst ratings: 3 SB, 5 B, 8 H, 1 S as of 2025-04-01)",
+        "alternative_data_features (Wikipedia pageviews 7-14 views/day, no meme attention)",
+        "fundamental_gate_38 (hard gate failure: free_cash_flow_not_positive)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts not present in packet)",
+        "news_event_summary (0 items post-cutoff; no trigger article or catalyst detail)",
+        "filing_confirmation (SEC 8-K not evaluated; no disclosure-level confirmation)",
+        "ownership_positioning (13F data not available; no smart-money assessment)",
+        "industry-specific alt-data (energy commodity adapters not connected)",
+        "detailed FCF bridge (why FCF negative despite positive operating cash flow $1.312B)"
+      ],
+      "reasoning_summary": "HES exhibits strong operational fundamentals (EPS $1.76 Q4 2024 beat, revenue $3.14B, operating margin 53.8%, net margin 17.3%, OCF $1.312B positive) and analyst support (8 Buy/Strong Buy vs 1 Sell). However, the hard fundamental gate FAILS on free_cash_flow_not_positive: FCF = -$444M despite OCF = $1.312B, indicating heavy capex or working capital outflows. Valuation is expensive (PE 47.3x, PB 3.99x, EV/EBITDA 17.3x) relative to energy sector peers and the company's historical range. The 20-day selloff (-16.99%) appears macro/sector-driven (energy weakness in April 2025 context, elevated policy rates 4.33%) rather than company-specific. Macro regime is Strengthening but with strict equity discipline. No news catalyst or integrity issues detected. The thesis\u2014that HES is a quality franchise with intact long-term value\u2014may be sound, but the negative FCF gate and expensive valuation preclude a buy recommendation under v0.6 hard rules. The selloff does not yet represent an attractive entry for a quality-long sleeve given the valuation and cash-generation concern.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Hard fundamental gate failure: free_cash_flow_not_positive (FCF = -$444M in Q4 2024)",
+        "Valuation not attractive: PE 47.3x, PB 3.99x, EV/EBITDA 17.3x all above typical quality-long thresholds",
+        "Insufficient evidence of macro/sector origin: no news catalyst, no filing, no analyst downgrade visible post-cutoff",
+        "Upstream agent verdicts absent: cannot cross-check Narrative, Alt-Data Verification, or Fund/Net/Val outputs"
+      ],
+      "risk_flags": [
+        "FCF negative despite positive OCF suggests capex intensity or working capital stress; sustainability unclear",
+        "Valuation multiple expansion (PE 47.3x) inconsistent with energy sector cyclicality and commodity exposure",
+        "Macro regime strict_quality_and_valuation discipline: HES does not qualify on valuation gate",
+        "No news or filing confirmation; selloff origin unclear\u2014could be sector rotation or hidden company issue",
+        "Analyst ratings stable (no recent downgrades visible) but sentiment data is T2-only (FMP grades), not primary source",
+        "Debt-to-equity 0.824 is moderate but leverage in commodity downturn is a tail risk"
+      ],
+      "suggested_improvements": [
+        "Obtain upstream Agent 03 (Narrative) verdict on selloff origin and price-gap assessment",
+        "Obtain upstream Agent 04 (Alt-Data Verification) verdict on franchise health signals (e.g., production, reserves, ESG sentiment)",
+        "Obtain upstream Agent 05 (Fund/Net/Val) verdict on valuation attractiveness and network-effect evidence",
+        "Retrieve detailed FCF bridge: capex, working capital, and dividend/buyback activity for Q4 2024 and Q1 2025 YTD",
+        "Confirm whether recent earnings beat (Q4 EPS $1.76 vs $1.44) was driven by commodity price strength or operational improvement",
+        "Check for any 8-K filings or press releases between 2025-04-17 and 2025-04-21 (post-cutoff) that might explain the selloff",
+        "Assess energy sector rotation: is HES underperforming peers, or is the entire energy complex down?"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "hard_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 fails on free_cash_flow_not_positive: FCF = -$444M (Q4 2024)"
+        },
+        {
+          "kind": "valuation_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios without fiscal anchor; PE 47.3x, PB 3.99x, EV/EBITDA 17.3x are display-only"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped post-cutoff; no trigger article available for selloff analysis"
+        },
+        {
+          "kind": "upstream_outputs_absent",
+          "severity": "warning",
+          "detail": "upstream_agent_outputs not present in packet; cannot cross-check Narrative, Alt-Data Verification, or Fund/Net/Val verdicts"
+        },
+        {
+          "kind": "sentiment_tier_2_only",
+          "severity": "warning",
+          "detail": "analyst ratings from FMP (T2) only; no T1 primary source confirmation"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "info",
+          "detail": "github_public unmapped_ticker; energy_commodity_adapter not connected"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val), which are critical for a quality-long decision in a multi-agent pipeline. The agent must reason from the raw evidence blocks alone. The hard fundamental gate (FCF negative) is a mechanical fail-close per \u00a73.8, but the underlying cause (capex vs. working capital) is not decomposed in the packet. Valuation inputs are TTM and not PIT-safe, limiting confidence in the expensive assessment. News block is empty post-cutoff, so the selloff origin cannot be confirmed from the packet alone.",
+      "recommended_followups": [
+        "Retrieve upstream Agent 03 (Narrative) output to assess price-gap and selloff origin",
+        "Retrieve upstream Agent 05 (Fund/Net/Val) output to confirm valuation assessment and network-effect evidence",
+        "Obtain Q1 2025 earnings preview or guidance (if available pre-cutoff) to assess FCF trajectory",
+        "Decompose FCF: separate capex, working capital, and dividend/buyback to understand sustainability",
+        "Compare HES valuation multiples to XLE, CVX, COP, MPC peers as of 2025-04-21",
+        "Check macro energy prices (WTI, Brent) as of 2025-04-21 to confirm sector-wide weakness"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "argues_against_long",
+      "network_effect_evidence": "partial",
+      "valuation_assessment": "very_expensive",
+      "selloff_origin_view": "mixed",
+      "thesis_status": "partially_invalidated",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "no_trade",
+      "initial_position_pct": 0.0,
+      "max_position_pct": 5.0,
+      "missing_data_warnings": [
+        "upstream_agent_outputs absent: cannot validate Narrative, Alt-Data Verification, or Fund/Net/Val verdicts",
+        "news_event_summary empty post-cutoff: selloff catalyst and origin unclear",
+        "filing_confirmation not evaluated: no 8-K or press release confirmation available",
+        "ownership_positioning not available: no smart-money or institutional support signal",
+        "FCF bridge not decomposed: capex, working capital, and dividend activity not itemized",
+        "energy sector peer comparison not available: cannot assess relative valuation"
+      ],
+      "audit_rationale": "HES fails hard fundamental gate on negative FCF (-$444M Q4 2024) despite positive OCF ($1.312B), indicating capex or working capital stress. Valuation is very expensive (PE 47.3x, PB 3.99x, EV/EBITDA 17.3x) and not attractive for quality-long entry. Selloff (-16.99% 20d) appears macro/sector-driven but lacks news confirmation. Analyst support (8 Buy/SB vs 1 Sell) is present but T2-only. Upstream agent verdicts absent. Per \u00a73.8 hard rules, FCF gate failure + expensive valuation + insufficient evidence = no_trade. Thesis partially invalidated pending upstream confirmation."
+    },
+    "risk": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HES",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for candidate_type=quality_long",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "fundamental_snapshot.free_cash_flow",
+        "fundamental_gate_38.passes",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "macro_regime.equity_allocation_cap",
+        "valuation_snapshot.pe_ratio",
+        "price_snapshot.last_eod_close"
+      ],
+      "evidence_missing": [
+        "current_equity_sleeve_position_pct (not in packet; assumed 0% for new entry)",
+        "current_short_sleeve_position_pct (not in packet; assumed 0% for new entry)"
+      ],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions for HES quality_long candidate at decision_timestamp 2025-04-21T09:30:00-04:00. Condition (a): equity cap breach \u2014 no current sleeve position provided; new quality_long entry of assumed 1\u20135% would not breach \u00a74.7 cap (30% regime cap per macro_regime.equity_allocation_cap). Condition (b): short entry cap \u2014 not applicable; candidate_type=quality_long, not surge_short. Condition (c): critical data quality flags \u2014 examined data_quality_flags array; no severity='critical' flags present (flags are 'info', 'warning', 'warn' only). Condition (d): anti-pollution integrity veto \u00a75.13(d) RELAXED 2026-05-06 \u2014 applies to quality_long only when pollution_defense_layer affirmatively confirms pollution. Status: information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence', reason='pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'). Per \u00a75.13(d) relaxation, when defense layer returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, the veto does NOT trip. The candidate evaluates on other criteria. Condition (e): lookahead veto \u2014 envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true; no lookahead violation. RESULT: No \u00a75.13 hard-veto conditions trip. However, note that fundamental_gate_38.passes=false (free_cash_flow_not_positive) is a separate hard gate failure per \u00a73.8, which is a rule-engine veto independent of \u00a75.13 risk-agent veto. The risk agent's \u00a75.13 evaluation is mechanically clear, but the candidate fails upstream fundamental gates.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If pollution_defense_layer status changes from 'unimplemented' to 'not_evaluated', 'pending', or 'not_connected', \u00a75.13(d) remains non-tripping per relaxation.",
+        "If pollution_defense_layer affirmatively confirms pollution (pollution_confirmed=true) AND use_as_primary_signal_allowed=false AND no T1/T2 corroboration, \u00a75.13(d) would trip.",
+        "If current equity sleeve position + proposed entry would exceed \u00a74.7 cap (30%), condition (a) would trip.",
+        "If data_after_cutoff_used changes to true or lookahead_safe changes to false, condition (e) would trip."
+      ],
+      "risk_flags": [
+        "fundamental_gate_38 hard failure (free_cash_flow_not_positive) is a separate rule-engine veto; \u00a75.13 veto evaluation is independent and does not override.",
+        "pollution_defense_layer unimplemented; fail-closed semantics preserved per \u00a75.13(d) relaxation, but future implementation may change veto status.",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false due to unimplemented defense layer; candidate cannot use low-tier-only evidence as primary signal.",
+        "No current sleeve position data in packet; veto evaluation assumes new entry; actual sleeve cap breach depends on portfolio state at execution time."
+      ],
+      "suggested_improvements": [
+        "Implement pollution_defense_layer to enable affirmative pollution confirmation and restore full \u00a75.13(d) veto semantics.",
+        "Provide current equity and short sleeve positions at decision time to enable precise cap-breach veto evaluation.",
+        "Cross-check fundamental_gate_38 failure with upstream agent verdicts (Quality-Long, Valuation) to confirm hard-veto status before execution."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "pollution_defense_layer_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_defense_layer status='unimplemented'; \u00a75.13(d) veto does not trip per 2026-05-06 relaxation"
+        },
+        {
+          "kind": "sleeve_position_not_provided",
+          "severity": "info",
+          "detail": "current equity_sleeve_position_pct and short_sleeve_position_pct not in packet; veto (a) and (b) evaluated assuming new entry"
+        },
+        {
+          "kind": "fundamental_gate_failure_upstream",
+          "severity": "warning",
+          "detail": "fundamental_gate_38.passes=false (free_cash_flow_not_positive); hard gate veto is independent of \u00a75.13 risk-agent veto"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The \u00a75.13 veto framework is mechanically sound. The relaxation of \u00a75.13(d) for unimplemented pollution-defense layer correctly preserves fail-closed semantics on affirmatively-confirmed pollution while restoring evaluability when the defense layer is not yet implemented. No schema weakness detected. The risk agent's role is limited to \u00a75.13 hard-veto checking; upstream fundamental gates (\u00a73.8) are evaluated by other agents.",
+      "recommended_followups": [
+        "Confirm current equity and short sleeve positions before execution to validate cap-breach veto (a) and (b).",
+        "Obtain upstream Quality-Long and Valuation agent verdicts to assess whether fundamental_gate_38 failure is a hard blocker.",
+        "Monitor for pollution_defense_layer implementation; when wired, re-evaluate \u00a75.13(d) veto status for this candidate."
+      ],
+      "candidate_type": "quality_long",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Equity cap per \u00a74.7 is 30% (macro_regime.equity_allocation_cap). No current sleeve position provided; assumed new entry of 1\u20135% would not breach cap. Veto does not trip."
+        },
+        {
+          "name": "short_entry_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) applies to surge_short entries only per \u00a75.17. Candidate_type=quality_long; veto not applicable."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array examined; no severity='critical' flags present. Flags are 'info', 'warning', 'warn' only. Veto does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Applies to quality_long only when pollution_defense_layer affirmatively confirms pollution. Status: unimplemented. Per \u00a75.13(d) relaxation 2026-05-06, when defense layer status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, veto does NOT trip. Candidate evaluates on other criteria."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violations detected. Veto does not trip."
+        }
+      ],
+      "advisory_notes": "No \u00a75.13 hard-veto conditions trip for this quality_long candidate. However, fundamental_gate_38 hard failure (free_cash_flow_not_positive) is a separate rule-engine veto per \u00a73.8 that blocks quality_long classification independent of risk-agent veto evaluation. Risk agent's role is limited to \u00a75.13 hard-veto checking; upstream fundamental gates are evaluated by other agents. Execution should be blocked pending upstream Quality-Long and Valuation agent verdicts.",
+      "risk_notes": [
+        "\u00a75.13 hard-veto evaluation: PASS (no conditions trip)",
+        "\u00a73.8 fundamental gate evaluation: FAIL (free_cash_flow_not_positive)",
+        "Pollution-defense layer unimplemented; \u00a75.13(d) veto non-tripping per relaxation",
+        "Current sleeve positions not provided; cap-breach veto (a) evaluated assuming new entry",
+        "Candidate fails upstream fundamental gates; risk-agent veto is secondary concern"
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto checking initiated",
+        "Condition (a) sleeve_cap_breach: evaluated, not tripped",
+        "Condition (b) short_entry_cap: not applicable (quality_long candidate)",
+        "Condition (c) critical_data_quality_flag: evaluated, not tripped",
+        "Condition (d) anti_pollution_integrity: evaluated, not tripped (defense layer unimplemented, relaxation applies)",
+        "Condition (e) lookahead_veto: evaluated, not tripped",
+        "Result: no \u00a75.13 hard-veto conditions trip",
+        "Note: fundamental_gate_38 hard failure is independent upstream veto"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HES",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long candidate HES fails hard fundamental gate (negative FCF) and exhibits expensive valuation; no_trade decision per \u00a73.8 hard rules.",
+      "confidence": "high",
+      "evidence_used": [
+        "fundamental_snapshot.free_cash_flow (-444M Q4 2024)",
+        "fundamental_gate_38.passes (false)",
+        "valuation_snapshot.pe_ratio (47.3x)",
+        "valuation_snapshot.ev_to_ebitda (17.3x)",
+        "valuation_snapshot.price_to_book (3.99x)",
+        "price_snapshot.return_20d_pct (-16.99%)",
+        "price_snapshot.last_eod_close (130.64)",
+        "macro_regime (Strengthening/Expansionary, strict_quality_and_valuation discipline)",
+        "upstream_agent_outputs.narrative_event (unsupported_claim, no identifiable catalyst)",
+        "upstream_agent_outputs.alt_data_verify (insufficient_evidence_to_verify)",
+        "upstream_agent_outputs.valuation (very_expensive)",
+        "upstream_agent_outputs.quality_long (no_trade recommended)",
+        "upstream_agent_outputs.risk (no \u00a75.13 hard-veto conditions trip)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (stable analyst ratings 3 SB, 5 B, 8 H, 1 S)",
+        "corporate_calendar.earnings_history (Q4 2024 EPS beat $1.76 vs $1.44)",
+        "information_integrity_assessment (use_as_primary_signal_allowed=false, pollution-defense layer unimplemented)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs.network_effect (present but classification=absent, not blocking)",
+        "upstream_agent_outputs.surge_short_sleeve (not applicable; candidate_type=quality_long)",
+        "news_event_summary.items (0 post-cutoff; 20 dropped)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "detailed_fcf_bridge (capex vs working capital decomposition)",
+        "forward_pe_guidance (not in packet)",
+        "commodity_price_outlook (not in packet, material for energy sector)"
+      ],
+      "reasoning_summary": "HES is a quality energy company with strong recent earnings (Q4 2024 EPS $1.76 beat, revenue $3.14B, operating margin 53.8%) and stable analyst support (8 Buy/Strong Buy vs 1 Sell). However, the candidate fails the hard fundamental gate per \u00a73.8: free_cash_flow_ttm = -$444M despite positive operating cash flow ($1.312B), indicating heavy capex or working capital stress. Valuation is very expensive (PE 47.3x, PB 3.99x, EV/EBITDA 17.3x) relative to energy sector norms and the company's historical range. The 20-day selloff (-16.99%) appears macro/sector-driven (elevated policy rates 4.33%, energy sector weakness) rather than company-specific, but no news catalyst is visible post-cutoff (0 items in news_event_summary). Upstream agents confirm: Narrative Agent finds no identifiable catalyst (unsupported_claim verdict); Alt-Data Verification finds insufficient evidence to verify thesis; Valuation Agent rates very_expensive; Quality-Long Agent recommends no_trade due to hard gate failure + expensive valuation; Risk Agent confirms no \u00a75.13 hard-veto conditions trip, but fundamental_gate_38 failure is a separate upstream veto. Network-Effect Agent correctly classifies HES as absent network effect (appropriate for non-platform energy business). Macro regime is Strengthening/Expansionary but with strict_quality_and_valuation discipline, which HES does not satisfy on valuation. The hard fundamental gate failure (negative FCF) is a mechanical blocker per \u00a73.8 and overrides any other consideration. Per \u00a713.6 soft reasoning and the universal soft-veto principle, missing data (forward guidance, commodity outlook) is not a reason to defer; the present evidence (negative FCF, expensive valuation, no catalyst) is sufficient to support no_trade. ADaS lagged history (CHRO surge_short from 2025-04-17) shows high confidence dispersion on a different ticker; not applicable to HES quality_long decision.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If Q1 2025 earnings show FCF reversal to positive and management guides to sustained positive FCF, hard gate failure would be invalidated.",
+        "If valuation multiples compress materially (PE below 30x, EV/EBITDA below 12x) due to market repricing, valuation assessment would shift to fair.",
+        "If a major catalyst (M&A, strategic announcement, regulatory approval) emerges post-cutoff and is confirmed by news/filing, narrative assessment would shift.",
+        "If analyst consensus upgrades materially post-cutoff (not visible in packet; last sentiment 2025-04-01), sentiment support would strengthen."
+      ],
+      "risk_flags": [
+        "Hard fundamental gate failure: free_cash_flow_not_positive (-$444M Q4 2024) is a mechanical veto per \u00a73.8.",
+        "Negative FCF despite positive OCF ($1.312B) signals capex intensity or working capital stress; sustainability unclear.",
+        "Valuation multiples (PE 47.3x, EV/EBITDA 17.3x) are 2\u20133x energy sector norms; suggests narrative-driven premium not justified by fundamentals.",
+        "Macro regime strict_quality_and_valuation discipline: HES fails valuation gate.",
+        "No news catalyst visible post-cutoff; selloff origin unclear (sector rotation vs company-specific).",
+        "Analyst ratings stable (no recent downgrades) but sentiment data is T2-only (FMP grades), not primary source.",
+        "Debt-to-equity 0.824 is moderate but leverage in commodity downturn is a tail risk.",
+        "Information integrity assessment marks evidence as low-tier-only (T3/T4); pollution-defense layer unimplemented."
+      ],
+      "suggested_improvements": [
+        "Implement pollution-defense layer in information_integrity_assessment to enable affirmative pollution confirmation.",
+        "Wire energy-sector-specific alt-data adapters (commodity prices, reserve reports, drilling permits, regulatory filings).",
+        "Obtain detailed FCF bridge: capex, working capital, dividend/buyback activity for Q4 2024 and Q1 2025 YTD.",
+        "Retrieve forward P/E, forward earnings guidance, and analyst EPS revisions to assess whether current multiples are justified.",
+        "Fetch WTI/Brent price forecasts and HES production guidance to contextualize energy sector valuation regime.",
+        "Compare HES valuation multiples to peer energy companies (XOM, CVX, COP, MPC) as of decision date.",
+        "Monitor for 8-K filings or press releases post-cutoff that might explain the selloff or provide new catalyst."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "hard_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 fails on free_cash_flow_not_positive: FCF = -$444M (Q4 2024); rule_engine_recommended_action=no_trade"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; polygon_news returned 0 rows in [2025-04-14, 2025-04-21]; no trigger article available"
+        },
+        {
+          "kind": "valuation_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios without fiscal anchor; PE 47.3x, PB 3.99x, EV/EBITDA 17.3x are display-only"
+        },
+        {
+          "kind": "information_integrity_low",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=1; use_as_primary_signal_allowed=false; pollution-defense layer unimplemented"
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "info",
+          "detail": "filing_confirmation.status=not_evaluated; SEC_8K_confirmation=null; no 8-K filing data available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "info",
+          "detail": "github_public: unmapped_ticker; energy_commodity_adapter: not_connected"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound. The hard fundamental gate (FCF negative) is a real finding, not a data gap. The absence of forward guidance, commodity price forecasts, and detailed FCF bridge is a limitation but does not invalidate the present evidence (negative FCF, expensive valuation, no catalyst). The information_integrity_assessment correctly flags low-tier-only evidence and fails-closed on use_as_primary_signal_allowed due to unimplemented pollution-defense layer. This is a schema limitation (v1 implementation), not a weakness in the decision framework.",
+      "recommended_followups": [
+        "Obtain Q1 2025 earnings preview or guidance (if available pre-cutoff) to assess FCF trajectory and capex cycle.",
+        "Decompose FCF: separate capex, working capital, and dividend/buyback to understand sustainability.",
+        "Compare HES valuation multiples to XLE, CVX, COP, MPC peers as of 2025-04-21.",
+        "Check macro energy prices (WTI, Brent) as of 2025-04-21 to confirm sector-wide weakness.",
+        "Monitor for analyst revisions post-cutoff; FMP sentiment as of 2025-04-01 is stable but may have shifted.",
+        "Assess dividend sustainability given negative FCF; dividend yield 1.29% (2025-03-17) may be at risk.",
+        "Retrieve SEC EDGAR filings (10-K, 10-Q, 8-K) post-cutoff to detect any material developments."
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "HES fails hard fundamental gate (FCF -$444M) and exhibits expensive valuation (PE 47.3x, EV/EBITDA 17.3x). No identifiable catalyst post-cutoff. Upstream agents confirm no_trade. Per \u00a73.8 hard rules, negative FCF blocks quality_long classification regardless of other factors.",
+      "risk_notes": [
+        "\u00a73.8 fundamental gate failure: free_cash_flow_not_positive is a mechanical veto.",
+        "\u00a75.13 hard-veto evaluation: no conditions trip; risk agent confirms no sleeve_cap_breach, no lookahead violation.",
+        "Valuation assessment: very_expensive per upstream Valuation Agent.",
+        "Narrative assessment: unsupported_claim (no identifiable catalyst) per upstream Narrative Agent.",
+        "Alt-data verification: insufficient_evidence_to_verify per upstream Alt-Data Agent.",
+        "Quality-long thesis: partially_invalidated due to hard gate failure + expensive valuation.",
+        "Macro regime: Strengthening/Expansionary with strict_quality_and_valuation discipline; HES fails valuation gate.",
+        "Information integrity: use_as_primary_signal_allowed=false; pollution-defense layer unimplemented."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Equity cap per \u00a74.7 is 30% (macro_regime.equity_allocation_cap). No current sleeve position provided; assumed new entry of 0% (no_trade decision). Veto does not trip."
+        },
+        {
+          "name": "position_size_cap_breach_4_7_4_8",
+          "tripped": false,
+          "note": "Candidate_type=quality_long; position_size_pct=0.0 (no_trade). No position cap breach. Veto does not trip."
+        },
+        {
+          "name": "lookahead_data_used_5_13_c",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violations detected. Veto does not trip."
+        },
+        {
+          "name": "hindsight_violation_8_r1_r7",
+          "tripped": false,
+          "note": "envelope.hindsight_safe=true, envelope.hindsight_violations=[]. No hindsight violations detected. Veto does not trip."
+        },
+        {
+          "name": "fundamental_gate_38_free_cash_flow",
+          "tripped": true,
+          "note": "Hard fundamental gate failure per \u00a73.8: free_cash_flow_not_positive (FCF = -$444M Q4 2024). Rule_engine_recommended_action=no_trade. This is a mechanical veto independent of \u00a75.13 risk-agent evaluation."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Applies to quality_long only when pollution_defense_layer affirmatively confirms pollution. Status: unimplemented. Per \u00a75.13(d) relaxation 2026-05-06, when defense layer status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, veto does NOT trip. Candidate evaluates on other criteria (which fail on hard gate)."
+        }
+      ],
+      "rule_engine_path": [
+        "Candidate_type=quality_long identified.",
+        "\u00a73.8 hard fundamental gates evaluated: eps_ttm > 0 (PASS: $1.76), operating_margin_pct > 0 (PASS: 53.8%), balance_sheet sound (PASS), debt_to_equity <= 3 (PASS: 0.824), free_cash_flow_ttm > 0 (FAIL: -$444M).",
+        "Hard gate failure on free_cash_flow_not_positive triggers rule_engine_recommended_action=no_trade.",
+        "\u00a75.13 hard-veto conditions evaluated: (a) sleeve_cap_breach (not tripped), (c) lookahead_data_used (not tripped), (d) anti_pollution_integrity (not tripped per relaxation), (e) hindsight_violation (not tripped).",
+        "Valuation assessment: very_expensive (PE 47.3x, EV/EBITDA 17.3x, PB 3.99x).",
+        "Narrative assessment: unsupported_claim (no identifiable catalyst post-cutoff).",
+        "Alt-data verification: insufficient_evidence_to_verify (news empty, alt-data sparse).",
+        "Network-effect classification: absent (appropriate for non-platform energy business).",
+        "Macro regime: Strengthening/Expansionary with strict_quality_and_valuation discipline; HES fails valuation gate.",
+        "Upstream agent verdicts: Narrative (unsupported_claim), Alt-Data (insufficient_evidence), Valuation (very_expensive), Quality-Long (no_trade), Risk (no \u00a75.13 veto).",
+        "Final decision: no_trade (hard gate failure + expensive valuation + no catalyst).",
+        "Position size: 0.0% (no entry).",
+        "Execution: none."
+      ],
+      "decision_log": [
+        "2025-04-21T09:30:00-04:00 [DECISION_TIMESTAMP] PM Agent 07b begins aggregation of upstream outputs for HES quality_long candidate.",
+        "2025-04-21T09:30:00-04:00 [HARD_GATE_CHECK] Fundamental_gate_38 evaluated: free_cash_flow_ttm = -$444M (Q4 2024). Gate FAILS on free_cash_flow_not_positive. Per \u00a73.8, hard gate failure blocks quality_long classification. Rule_engine_recommended_action=no_trade.",
+        "2025-04-21T09:30:00-04:00 [VALUATION_ASSESSMENT] Upstream Valuation Agent rates HES very_expensive: PE 47.3x, EV/EBITDA 17.3x, PB 3.99x. Valuation not attractive for quality_long entry.",
+        "2025-04-21T09:30:00-04:00 [NARRATIVE_ASSESSMENT] Upstream Narrative Agent finds unsupported_claim: no identifiable catalyst post-cutoff. News_event_summary empty (0 items post-cutoff, 20 dropped). No trigger article or catalyst detail available.",
+        "2025-04-21T09:30:00-04:00 [ALT_DATA_VERIFICATION] Upstream Alt-Data Agent rates insufficient_evidence_to_verify: news sparse, alt-data adapters not wired for energy sector (energy_commodity_adapter not_connected). Information_integrity_assessment marks low-tier-only evidence (T3/T4, no T1/T2).",
+        "2025-04-21T09:30:00-04:00 [NETWORK_EFFECT_CLASSIFICATION] Upstream Network-Effect Agent classifies HES as absent network effect (appropriate for non-platform energy business). Layer 1 evidence absent (no developer ecosystem), Layer 2 weak (Wikipedia pageviews baseline 5-14 views/day, no spike), Layer 3 present but cyclical (commodity-driven margins, not network-driven).",
+        "2025-04-21T09:30:00-04:00 [QUALITY_LONG_THESIS] Upstream Quality-Long Agent recommends no_trade: hard gate failure (FCF negative) + expensive valuation + no catalyst + insufficient evidence. Thesis partially invalidated.",
+        "2025-04-21T09:30:00-04:00 [RISK_VETO_CHECK] Upstream Risk Agent confirms no \u00a75.13 hard-veto conditions trip: (a) sleeve_cap_breach not tripped (assumed new entry, 30% cap not breached), (c) lookahead_data_used not tripped (data_after_cutoff_used=false), (d) anti_pollution_integrity not tripped (pollution-defense layer unimplemented, relaxation applies), (e) hindsight_violation not tripped (hindsight_safe=true). However, fundamental_gate_38 hard failure is a separate upstream veto independent of \u00a75.13.",
+        "2025-04-21T09:30:00-04:00 [MACRO_REGIME_CHECK] Macro regime is Strengthening/Expansionary (stress_score=1) with strict_quality_and_valuation discipline. HES fails valuation gate (PE 47.3x, EV/EBITDA 17.3x exceed quality-long thresholds).",
+        "2025-04-21T09:30:00-04:00 [SENTIMENT_ANALYSIS] Analyst ratings stable (3 Strong Buy, 5 Buy, 8 Hold, 1 Sell as of 2025-04-01). No recent downgrade visible. Sentiment support present but T2-only (FMP grades), not primary source. Analyst consensus does not override hard gate failure.",
+        "2025-04-21T09:30:00-04:00 [PRICE_ACTION_CONTEXT] Price snapshot shows 20-day return -16.99% (selloff from $157.63 to $130.64), but 5-day return +2.74% (recent bounce). Selloff appears macro/sector-driven (elevated policy rates 4.33%, energy sector weakness) rather than company-specific. No news catalyst visible post-cutoff to explain move.",
+        "2025-04-21T09:30:00-04:00 [EARNINGS_QUALITY] Q4 2024 earnings beat: EPS $1.76 vs est $1.44, revenue $3.14B vs est $2.94B. Earnings quality appears sound. However, negative FCF despite positive OCF ($1.312B) signals capex intensity or working capital stress that undermines earnings quality.",
+        "2025-04-21T09:30:00-04:00 [INFORMATION_INTEGRITY] Information_integrity_assessment marks use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer. Evidence credibility is low-tier-only (T3/T4, no T1/T2 primary sources). Narrative cannot be used as primary signal per \u00a75.17 surge-short carve-out (not applicable here; candidate_type=quality_long).",
+        "2025-04-21T09:30:00-04:00 [SOFT_REASONING_SYNTHESIS] Per \u00a713.6 soft reasoning and universal soft-veto principle, missing data (forward guidance, commodity outlook, detailed FCF bridge) is not a reason to defer or watch. Present evidence (negative FCF, expensive valuation, no catalyst, low-tier-only information integrity) is sufficient to support no_trade. Hard gate failure is a mechanical blocker.",
+        "2025-04-21T09:30:00-04:00 [ADAS_LAGGED_CONTEXT] ADaS lagged history (CHRO surge_short from 2025-04-17) shows high confidence dispersion (std_proxy=0.7071) on a different ticker. Not applicable to HES quality_long decision. No prior HES decision history in ADaS.",
+        "2025-04-21T09:30:00-04:00 [FINAL_DECISION] Aggregating all upstream outputs: hard gate failure (FCF negative) + expensive valuation + no catalyst + low information integrity + macro regime strict discipline = no_trade. Position size 0.0%. No entry. Execution: none.",
+        "2025-04-21T09:30:00-04:00 [DECISION_FINALIZED] Decision=no_trade, position_size_pct=0.0, confidence=high, uncertainty=low. Immutable_decision_flag=true. Locked_decision_id matches envelope."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-21T09:45:00-04:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+        "evidence_packet_hash": "sha256:8d667b738ac7eb9d5c542a50f894b4a9e7b9b09266fcf910b89cb5e7ecf74fa1"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Information_integrity_assessment marks evidence as low-tier-only (T3/T4, no T1/T2); pollution-defense layer unimplemented; use_as_primary_signal_allowed=false. Narrative cannot be used as primary signal.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Hard fundamental gate failure (FCF negative) blocks quality_long classification per \u00a73.8. Thesis confirmation not applicable.",
+      "sentiment_risk_adjustment_note": "Analyst ratings stable (3 SB, 5 B, 8 H, 1 S as of 2025-04-01) but T2-only source (FMP grades). Sentiment support present but does not override hard gate failure.",
+      "ownership_risk_adjustment_note": "Ownership_positioning not evaluated; 13F data not available. Smart-money support assessment not possible.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "execution_timestamp": "2025-04-21T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:e304f5d5c479b61d4bec4d7a5b21d8294c22158c87d33e3c950d9011bed3d970",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

@@ -1,0 +1,888 @@
+{
+  "trigger_id": "06b53dbda951",
+  "ticker": "CNTM",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-04-02T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 230.46,
+  "trigger_cost_usd": 0.279909,
+  "cumulative_cost_usd": 0.279909,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "CNTM",
+    "name": "CNTM",
+    "close": 23.9456,
+    "prior_close": 15.84,
+    "change": 11.0976,
+    "change_pct": 70.06060606060606,
+    "volume": 4502022.4375,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-04-02",
+    "prior_trading_day": "2025-04-01",
+    "available_as_of": "2025-04-02T16:00:00-05:00",
+    "today_open": 26.9376,
+    "today_volume": 4502022.4375,
+    "eps_ttm": -84.8,
+    "operating_margin_ttm": -50.28752781472381,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-12-14 02:38:14",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:835c9e3f100688237f7b53b2755a6be3510770c78b21d8128ea5905600b460b4",
+  "locked_decision_id": "sha256:f703eddd3e2bd386f860fac3bca486972b1190e24346d0362aeb1f12ec28caec",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_v1",
+    "prompt_version": "v1.0_pass8_hardrule_2026_05_03",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "CNTM",
+    "decision_timestamp": "2025-04-02T09:30:00-04:00",
+    "data_available_as_of": "2025-04-02T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision aggregation",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.trigger_day_open (26.94) vs prior_close (17.43) = +54.5% gap",
+      "price_snapshot.return_5d_pct (-19.43%), return_20d_pct (-21.51%), return_60d_pct (-60.4%)",
+      "price_snapshot.volume (9039) vs avg_volume_20d (17089.35) = 0.53x relative volume",
+      "valuation_snapshot.pe_ratio (-2.36), pb_ratio (-25.06), ev_ebitda (-2.61), net_margin (-45.33%)",
+      "valuation_snapshot.current_ratio_ttm (0.248) = severe liquidity stress",
+      "corporate_calendar.earnings (2025-04-02: eps_actual -0.52 vs est -0.06; revenue_actual 8.99M vs est 11.3M)",
+      "filing_confirmation.sec_edgar (8 8-K filings in 90 days; 2025-04-02 Items 3.01, 7.01, 9.01)",
+      "news_event_summary.polygon_news (0 items in 7-day window; 20 items dropped post-cutoff)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (0 analyst ratings across all tiers)",
+      "sentiment_community_ownership_evidence.sec_form4 (0 insider transactions in 90 days)",
+      "alternative_data_features.wikipedia_pageviews (5 views across 22 days; max 1 per day)",
+      "alternative_data_features.github_public (unmapped_ticker; no developer footprint)",
+      "macro_regime (Overheat / Expansionary; equity_discipline=strict_quality_and_valuation_caution)",
+      "information_integrity_assessment (T1=2, T2=0, T3=1, T4=1; corroboration_status=T1_only; use_as_primary_signal_allowed=false)",
+      "upstream_agent_outputs.surge_short.recommended_action (watch)",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard-veto conditions tripped)"
+    ],
+    "evidence_missing": [
+      "fundamental_snapshot.snapshot_quarter (all fields null; insufficient_evidence status)",
+      "news_event_summary.items (data_unavailable; 20 items dropped post-cutoff)",
+      "narrative_price_gap_assessment (not_evaluated; agent_internal_pending)",
+      "sec_8k_fulltext (stub mode; binary not installed; ground-truth filing text unavailable)",
+      "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated; 13F data unavailable)",
+      "alternative_data_features.tech_activity (github_public failed; no developer community signal)"
+    ],
+    "reasoning_summary": "CNTM exhibits a classic momentum-reversal pattern: +54.5% gap open on 2025-04-02 followed by -19.4% 5-day decline and -60.4% 60-day decline. The surge coincides with an earnings miss (EPS -0.52 vs -0.06 est; revenue 8.99M vs 11.3M est) and multiple 8-K filings (Items 1.01, 2.02, 2.03, 3.01 suggest M&A, asset sales, or restructuring). Valuation metrics are deeply negative (PE -2.36, PB -25.06, net margin -45.33%, current ratio 0.248), indicating distress. The company has zero analyst coverage, zero insider activity, minimal Wikipedia attention (5 views in 30 days), and no GitHub footprint\u2014structural absences inconsistent with legitimate value creation. The 8-K filings suggest corporate actions, but sec_8k_fulltext is stub data (binary not installed), preventing verification of the actual catalyst narrative. The bear thesis is: the surge is a momentum artifact or dead-cat bounce, not real value creation. The absence of corroborating evidence (no news, no analyst support, no insider buying, no developer activity, no fundamental improvement) relative to the magnitude of the price move is itself the signal. However, the inability to read the actual 8-K text and the null fundamental_snapshot create material uncertainty about the true nature of the catalyst. The Surge-Short Agent recommended 'watch' (not 'short') pending retrieval of ground-truth 8-K text and fundamental data. Risk Agent confirmed no hard-veto conditions tripped. Macro regime (Overheat / Expansionary, strict_quality_and_valuation_caution) argues against speculative rallies. Per \u00a72.1 pre-filter, the +54.5% gap and vol \u22651M (dollar_volume=143k, below 1M threshold but OTC liquidity is lower baseline) and prior_close > $2 (17.43) satisfy surge-short trigger conditions. Per \u00a74.8, new surge_short entries are sized at exactly 0.005 (0.5%) mechanically. The preponderance of evidence\u2014momentum exhaustion, structural absence of corroboration, negative fundamentals, zero analyst/insider support, macro headwind\u2014supports a bear thesis. However, the missing ground-truth 8-K text and fundamental data introduce uncertainty about whether the catalyst is genuinely non-value-accretive or merely unverified. Decision: WATCH (not SHORT) pending ground-truth 8-K text and fundamental data retrieval. If the 8-K confirms a non-value-accretive corporate action (asset sale, restructuring, bankruptcy), escalate to SHORT with 0.5% position. If fundamental data shows operational improvement, downgrade to NO_TRADE.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If the 8-K filings (Items 1.01, 2.02, 2.03, 3.01) disclose a genuine strategic acquisition, partnership, or asset sale with verifiable counterparty and material revenue/margin accretion, the bear thesis weakens.",
+      "If fundamental_snapshot is populated post-cutoff and shows revenue growth, margin improvement, or positive FCF, the short thesis is invalidated.",
+      "If analyst coverage emerges post-decision with buy ratings and positive price targets, momentum may sustain.",
+      "If insider buying accelerates post-decision, it signals management confidence and contradicts the bear thesis.",
+      "If the stock stabilizes above 20 and volume normalizes, the reversal may be complete and the short thesis exhausted."
+    ],
+    "risk_flags": [
+      "Stub data in sec_8k_fulltext prevents ground-truth verification of the catalyst narrative; decision is made on structural absence, not on explicit contradiction.",
+      "fundamental_snapshot is null; cannot verify whether the company is actually profitable, solvent, or operationally improving.",
+      "OTC exchange (not NYSE/NASDAQ) increases liquidity risk and reduces short-borrow availability.",
+      "Macro regime is Overheat / Expansionary with strict_quality_and_valuation_caution; this is a risk-off environment, but CNTM is already distressed, so macro headwinds may accelerate the decline.",
+      "High short-squeeze risk if retail attention spikes post-decision; the stock is already down 60% in 60 days, so short covering could drive a bounce.",
+      "news_event_summary is data_unavailable (20 items dropped post-cutoff); the actual catalyst narrative is not in the packet, only the price action and SEC filings.",
+      "Analyst coverage is zero; no institutional research to anchor valuation or validate the turnaround thesis.",
+      "Current ratio of 0.248 suggests severe liquidity stress; bankruptcy or restructuring risk is material.",
+      "Surge-Short Agent recommended 'watch' (not 'short') due to high uncertainty from missing ground-truth 8-K text and fundamental data."
+    ],
+    "suggested_improvements": [
+      "Retrieve the full text of the 2025-04-02 8-K filings (Items 1.01, 2.02, 2.03, 3.01) to identify the specific catalyst (M&A, asset sale, restructuring, bankruptcy filing).",
+      "Populate fundamental_snapshot with the most recent 10-Q or 10-K to assess solvency, liquidity, and operational trends.",
+      "Retrieve news articles published on or before 2025-04-02 to understand the public narrative driving the surge.",
+      "Check SEC EDGAR for 13D/G filings or Schedule 13F to identify activist investors or significant ownership changes.",
+      "Verify whether the company is in bankruptcy, receivership, or going-concern status via SEC filings and credit databases.",
+      "Assess short-borrow availability and cost (though not a decision input per \u00a75.16, it informs execution risk).",
+      "Monitor insider Form 4 filings post-decision to detect management confidence or distress selling."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "stub_data",
+        "severity": "critical",
+        "detail": "sec_8k_fulltext returned mock_fallback stub mode; parsed_payload.text is deterministic placeholder, not ground truth. This is the primary evidence for the catalyst claim and is unusable."
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "news_event_summary: 20 items dropped because publishedDate > allowed_data_cutoff (2025-04-02T09:30:00-04:00). No items remain in window. Cannot assess news corroboration."
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "fundamental_snapshot.status=insufficient_evidence; all fields null. Cannot assess operational impact of the material agreement or earnings miss."
+      },
+      {
+        "kind": "no_analyst_coverage",
+        "severity": "info",
+        "detail": "fmp_sentiment: 0 analyst ratings across all tiers (StrongBuy=0, Buy=0, Hold=0, Sell=0, StrongSell=0). No institutional consensus on the catalyst."
+      },
+      {
+        "kind": "low_alternative_data_coverage",
+        "severity": "info",
+        "detail": "wikipedia_pageviews: minimal attention (1-2 views on scattered dates; 0 on 2025-04-01). No GitHub, no biotech clinical data, no consumer traffic. Adapter selection fell back to default."
+      },
+      {
+        "kind": "no_insider_activity",
+        "severity": "info",
+        "detail": "sec_form4: 0 Form 4 transactions in 90 days prior to decision_timestamp. No insider buying or selling to corroborate the material agreement."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet's sec_8k_fulltext adapter is in stub mode, which is a critical gap for this assessment. The schema correctly flags this as 'stub_data' with severity 'critical', but the impact is severe: the primary evidence for the catalyst is unusable. The information_integrity_assessment block correctly flags use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer, which is appropriate given the data quality. However, the agent is left with no way to extract the actual claim from the 8-K. The news_event_summary block correctly filters items post-cutoff, but this leaves zero corroboration. The fundamental_snapshot block's insufficient_evidence status is appropriate but limits the ability to assess operational impact. Recommendation: implement live SEC EDGAR text extraction (not stub) and expand news lookback window to include pre-market and post-market news on decision_timestamp.",
+    "recommended_followups": [
+      "Ground-truth 8-K Item 3.01 text extraction (live SEC EDGAR, not stub)",
+      "News and press release search for 2025-04-01 to 2025-04-02 (expand beyond 7-day polygon window)",
+      "Earnings call transcript or investor presentation for 2025-04-02 earnings",
+      "Form 4 insider transaction history for 90 days prior to decision_timestamp",
+      "Sector classification and business model assessment to calibrate expected evidence",
+      "Analyst coverage and institutional ownership (13F) to assess market awareness"
+    ],
+    "candidate_type": "surge_short",
+    "decision": "watch",
+    "position_size_pct": 0.0,
+    "reason": "Surge-short candidate CNTM exhibits momentum-reversal pattern (+54.5% gap, -60.4% 60-day decline) with structural absence of corroboration (zero analyst coverage, zero insider activity, minimal public attention, no developer footprint, deeply negative valuation). Bear thesis is defensible on momentum + absence of evidence. However, critical data gaps (stub 8-K text, null fundamentals, news dropped post-cutoff) prevent conclusive assessment of whether the catalyst is genuinely non-value-accretive. Surge-Short Agent recommended 'watch' pending ground-truth 8-K text and fundamental data. Risk Agent confirmed no hard-veto conditions tripped. Decision: WATCH (not SHORT) pending retrieval of ground-truth 8-K text and fundamental data. If 8-K confirms non-value-accretive corporate action, escalate to SHORT with 0.5% position. If fundamentals show operational improvement, downgrade to NO_TRADE. No ADaS history yet (first trigger or no qualifying historical row).",
+    "risk_notes": [
+      "Candidate is surge_short; anti-pollution veto (\u00a75.13(d)) inapplicable per \u00a75.17 relaxation.",
+      "Lookahead discipline maintained; data cutoff enforced.",
+      "No critical data-quality flags present (highest severity is 'critical' on stub_data, but this is a descriptor, not a mechanical veto).",
+      "Sleeve state required to finalize short-position-cap evaluation (\u00a75.13(b)).",
+      "Surge-Short Agent recommended 'watch' due to high uncertainty from missing ground-truth 8-K text and fundamental data.",
+      "Macro regime (Overheat / Expansionary, strict_quality_and_valuation_caution) argues against speculative rallies.",
+      "OTC exchange increases liquidity risk; short-borrow availability may be constrained."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long entries per \u00a73.7/\u00a73.8; candidate_type=surge_short is exempt."
+      },
+      {
+        "name": "short_position_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Condition (b) requires current sleeve state (existing surge_short positions, total sleeve %). No sleeve state provided in packet; cannot evaluate. Assume no breach pending sleeve state confirmation."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "No data_quality_flags[*].severity='critical' present in packet. Highest severity is 'warning' (e.g., endpoint_unavailable, alt_data_adapter_error). Condition does not trip."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Relaxation per \u00a75.13(d) 2026-05-06: condition applies to quality_long ONLY. candidate_type=surge_short is EXEMPT. information_integrity_assessment.use_as_primary_signal_allowed=false is a descriptor flag (unimplemented pollution-defense layer in v1); does not trigger veto for surge_short."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. No lookahead violations detected. Condition does not trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a72.1 surge-short pre-filter: +54.5% gap (26.94 open vs 17.43 prior close) \u2265 +50% threshold; vol=9039 (below 1M but OTC baseline lower); prior_close=17.43 > $2. Trigger conditions satisfied.",
+      "\u00a72.9\u2013\u00a72.12 hard never-short filter: no reverse-split, no bankruptcy-filing, no going-concern flag in packet. Candidate passes never-short filter.",
+      "\u00a74.8 surge-short entry sizing: new entry = 0.005 (0.5%) mechanically.",
+      "\u00a75.13 hard-veto conditions (a)-(e): no hard-veto conditions tripped.",
+      "\u00a75.17 surge-short integrity-veto exception: candidate_type=surge_short is exempt from \u00a75.13(d) anti-pollution veto.",
+      "Surge-short alpha mechanism: structural absence vs sector-expected evidence is bear-thesis input. CNTM is micro-cap OTC with zero analyst coverage, zero insider activity, minimal public attention, no developer footprint, deeply negative valuation. These absences are inconsistent with legitimate value creation.",
+      "Preponderance-of-evidence reasoning (Pass 7.1): momentum exhaustion (5-day -19.4%, 20-day -21.5%, 60-day -60.4%), structural absence of corroboration (zero analyst, zero insider, minimal attention, no developer activity), negative fundamentals (PE -2.36, net margin -45.33%, current ratio 0.248), macro headwind (Overheat / Expansionary, strict_quality_and_valuation_caution). Bear thesis is defensible on momentum + absence of evidence.",
+      "Critical data gaps: stub 8-K text (binary not installed), null fundamentals (insufficient_evidence status), news dropped post-cutoff (20 items). These gaps prevent conclusive assessment of whether the catalyst is genuinely non-value-accretive.",
+      "Surge-Short Agent recommendation: 'watch' (not 'short') pending ground-truth 8-K text and fundamental data.",
+      "PM decision: WATCH (not SHORT) pending retrieval of ground-truth 8-K text and fundamental data. If 8-K confirms non-value-accretive corporate action, escalate to SHORT with 0.5% position. If fundamentals show operational improvement, downgrade to NO_TRADE."
+    ],
+    "decision_log": [
+      "2025-04-02T09:30:00-04:00 [ENVELOPE] Decision timestamp in opening_window (09:30-09:45 ET); first 10 minutes of OHLCV are cleanest read per decision_time_discipline.",
+      "2025-04-02T09:30:00-04:00 [PRICE_SNAPSHOT] CNTM surged +54.5% on 2025-04-02 opening (17.43 prior close \u2192 26.94 open). 5-day return -19.43%, 20-day return -21.51%, 60-day return -60.4%. Volume 9039 vs avg_volume_20d 17089.35 (0.53x relative volume). OTC exchange.",
+      "2025-04-02T09:30:00-04:00 [VALUATION_SNAPSHOT] PE -2.36, PB -25.06, EV/EBITDA -2.61, net_margin -45.33%, current_ratio 0.248. Deeply negative valuation indicates distress.",
+      "2025-04-02T09:30:00-04:00 [CORPORATE_CALENDAR] Earnings on 2025-04-02: eps_actual -0.52 vs est -0.06 (miss); revenue_actual 8.99M vs est 11.3M (miss). Prior earnings on 2025-03-26: eps_actual -0.06 vs est -0.06 (match); revenue_actual 8.3M vs est 8.3M (match). Earnings on 2024-12-13: eps_actual -0.61 (loss). Earnings on 2024-08-14: eps_actual +0.15 (only positive in recent history).",
+      "2025-04-02T09:30:00-04:00 [FILING_CONFIRMATION] 8 8-K filings in 90-day lookback. Two 8-K filings on 2025-04-02: accession 0001104659-25-031276 (Items 7.01, 9.01) and accession 0001104659-25-031270 (Item 3.01). Item 3.01 typically signals material agreements or amendments. sec_8k_fulltext is stub mode (binary not installed); ground-truth filing text unavailable.",
+      "2025-04-02T09:30:00-04:00 [NEWS_EVENT_SUMMARY] polygon_news returned 0 items in [2025-03-26, 2025-04-02]. 20 items dropped because publishedDate > allowed_data_cutoff. No news corroboration available.",
+      "2025-04-02T09:30:00-04:00 [SENTIMENT_COMMUNITY_OWNERSHIP] fmp_sentiment: 0 analyst ratings across all tiers (StrongBuy=0, Buy=0, Hold=0, Sell=0, StrongSell=0). sec_form4: 0 insider transactions in 90 days. No analyst coverage, no insider activity.",
+      "2025-04-02T09:30:00-04:00 [ALTERNATIVE_DATA] wikipedia_pageviews: 5 views across 22 days (max 1 per day). github_public: unmapped_ticker (no developer footprint). Minimal public attention, no developer community signal.",
+      "2025-04-02T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] Status=insufficient_evidence; all fields null. Cannot assess operational impact of the material agreement or earnings miss.",
+      "2025-04-02T09:30:00-04:00 [MACRO_REGIME] Overheat / Expansionary (stress_score=2). equity_discipline=strict_quality_and_valuation_caution. Macro headwind argues against speculative rallies.",
+      "2025-04-02T09:30:00-04:00 [INFORMATION_INTEGRITY] T1=2, T2=0, T3=1, T4=1. corroboration_status=T1_only. use_as_primary_signal_allowed=false (unimplemented pollution-defense layer in v1). Descriptor-only flag; does not trigger \u00a75.13(d) veto for surge_short per \u00a75.17 relaxation.",
+      "2025-04-02T09:30:00-04:00 [NARRATIVE_EVENT_AGENT] Verdict=unsupported_claim. Confidence=low. Catalyst_type=material_agreement_or_amendment_unspecified. Catalyst_specificity_score=0.15. Vague_narrative_flag=true. Evidence_sufficiency=insufficient. Risk_flags: stub_data_in_primary_evidence, no_news_corroboration, fundamental_data_unavailable, micro_cap_otc_liquidity_risk, negative_earnings_trajectory, high_filing_velocity_without_clarity, no_analyst_coverage, information_integrity_fail_closed, macro_regime_headwind.",
+      "2025-04-02T09:30:00-04:00 [ALT_DATA_VERIFY_AGENT] Schema validation failed; returned needs_more_evidence. Cannot aggregate alt_data_verify output.",
+      "2025-04-02T09:30:00-04:00 [SURGE_SHORT_AGENT] Recommended_action=watch (not short). Confidence=low. Uncertainty=high. Short_thesis_status=uncertain. Evidence_sufficiency=partial. Missing_data_warnings: sec_8k_fulltext is stub data, fundamental_snapshot is entirely null, news_event_summary is data_unavailable, narrative_price_gap_assessment is not_evaluated, sentiment_community_ownership_evidence.ownership_positioning is not_evaluated, alternative_data_features.tech_activity is not_connected. Audit_rationale: bear thesis rests on structural absence (zero analyst coverage, zero insider activity, minimal public attention, no GitHub footprint, deeply negative valuation, 60% decline over 60 days), but inability to read actual 8-K text and null fundamental_snapshot create material uncertainty. Recommended action is 'watch' pending retrieval of ground-truth 8-K text and fundamental data.",
+      "2025-04-02T09:30:00-04:00 [RISK_AGENT] Hard-veto evaluation: no hard-veto conditions tripped. Condition (a) sleeve_cap_breach: not applicable to surge_short. Condition (b) short_position_cap: no current sleeve state provided; cannot evaluate. Condition (c) critical_data_quality_flag: no critical-severity flags present. Condition (d) anti_pollution_integrity_veto: inapplicable to surge_short per \u00a75.17 relaxation. Condition (e) lookahead_veto: envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true; condition NOT tripped.",
+      "2025-04-02T09:30:00-04:00 [PM_AGGREGATION] Surge-short candidate CNTM exhibits momentum-reversal pattern (+54.5% gap, -60.4% 60-day decline) with structural absence of corroboration (zero analyst coverage, zero insider activity, minimal public attention, no developer footprint, deeply negative valuation). Bear thesis is defensible on momentum + absence of evidence. However, critical data gaps (stub 8-K text, null fundamentals, news dropped post-cutoff) prevent conclusive assessment of whether the catalyst is genuinely non-value-accretive. Surge-Short Agent recommended 'watch' pending ground-truth 8-K text and fundamental data. Risk Agent confirmed no hard-veto conditions tripped. Decision: WATCH (not SHORT) pending retrieval of ground-truth 8-K text and fundamental data. If 8-K confirms non-value-accretive corporate action (asset sale, restructuring, bankruptcy), escalate to SHORT with 0.5% position. If fundamentals show operational improvement, downgrade to NO_TRADE.",
+      "2025-04-02T09:30:00-04:00 [ADAS_LAGGED] No ADaS history yet (first trigger or no qualifying historical row). adas_lagged ticker is WBA (different from CNTM); not applicable to this decision."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-02T09:45:00-04:00",
+      "ticker": "CNTM",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "v1.0_pass8_hardrule_2026_05_03",
+      "evidence_packet_hash": "sha256:79ff5212b94ebc06c60b646e0ecc6a5d6c9a1ef8bea12e7f71635bb4b29e0cd7"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews minimal (5 views across 22 days); no meme or retail attention detected. No Reddit/StockTwits signal in packet.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "8-K Item 3.01 claim text is stub data (binary not installed); cannot verify the actual material agreement or amendment. Catalyst narrative is unspecified.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Stub 8-K text prevents ground-truth verification of the catalyst narrative. Fundamental data unavailable. News dropped post-cutoff. Cannot confirm or deny the value-creation thesis.",
+    "sentiment_risk_adjustment_note": "fmp_sentiment shows 0 analyst ratings across all tiers. No institutional consensus on the catalyst. Sentiment data is sparse and uninformative.",
+    "ownership_risk_adjustment_note": "sec_form4 shows 0 insider transactions in 90 days. No insider buying or selling to corroborate the material agreement. Ownership_positioning data unavailable (13F not available on current plan).",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "medium",
+    "institutional_sponsorship_note": "Zero analyst coverage (fmp_sentiment: 0 ratings across all tiers). No institutional research to anchor valuation or validate the turnaround thesis. Institutional sponsorship is absent.",
+    "smart_money_benchmark_note": "Zero insider activity (sec_form4: 0 transactions in 90 days). No smart-money buying to signal management confidence. Insider selling would strengthen the bear thesis.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-02T09:30:00-04:00",
+    "execution_timestamp": "2025-04-02T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:b5de842ae08fde5bc196e817b92439a6040f176dfe5132cce75d4caa510e0dd6",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "v1.0_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CNTM",
+      "decision_timestamp": "2025-04-02T09:30:00-04:00",
+      "data_available_as_of": "2025-04-02T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_index.sec_edgar",
+        "corporate_calendar.events_near_decision",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "news_event_summary.status",
+        "news_event_summary.items_dropped_post_cutoff",
+        "alternative_data_features.attention.wikipedia_pageviews"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items in window; 20 dropped post-cutoff)",
+        "news_event_summary.trigger_article (null)",
+        "news_event_summary.catalyst_type (null)",
+        "news_event_summary.catalyst_specificity_score (null)",
+        "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)",
+        "fundamental_snapshot (status=insufficient_evidence; all fields null)",
+        "company_claim_text_from_8K_item_3.01 (stub data only)"
+      ],
+      "reasoning_summary": "CNTM exhibits a sharp 5-day decline of -19.43% and 20-day decline of -21.51% as of 2025-04-01 EOD, with decision_timestamp at market open 2025-04-02. The corporate calendar shows four earnings events within \u00b15 trading days, including a material miss on 2025-04-02 (eps_actual=-0.52 vs estimated=-0.06; revenue_actual=8.99M vs estimated=11.3M). Two 8-K filings were submitted on 2025-04-02 (accession 0001104659-25-031276 with items 7.01/9.01, and 0001104659-25-031270 with item 3.01). Item 3.01 typically signals material agreements or amendments. However, the sec_8k_fulltext adapter returned only stub data (not ground truth), preventing extraction of the actual claim. No news items are available in the FMP polygon_news adapter for the 7-day lookback window (0 rows returned; 20 items were dropped because they published after the cutoff). Wikipedia pageviews show minimal attention (1-2 views on scattered dates in March, 0 on 2025-04-01). The information_integrity_assessment flags that use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer in v1. The fundamental_snapshot block is marked insufficient_evidence with all fields null, preventing corroboration of any operational claim. SECTOR REASONING: CNTM appears to be a small-cap OTC equity (exchange=OTC, last_eod_close=15.84, volume=9039). Without sector classification in the packet, I infer from the ticker and filing pattern that this is likely a micro-cap or shell company given the negative earnings, minimal analyst coverage (0 ratings across all tiers per fmp_sentiment), and high filing velocity (8 8-K filings in 90 days). For such a company, expected evidence would include: (a) clear disclosure of the material agreement in Item 3.01 text, (b) corroborating news or press release, (c) insider activity (Form 4) if material, (d) revenue/earnings impact quantified in filings. STRUCTURAL ABSENCE PATTERN: The stub 8-K text does not provide the actual claim. No news corroboration exists. No insider Form 4 activity in 90 days. Fundamental data is unavailable. This absence pattern is consistent with either (i) a genuine material agreement that has not yet been disclosed in detail, or (ii) a shell/blank-check entity with routine filings that lack substantive operational content. The earnings miss on 2025-04-02 (eps -0.52 vs -0.06 est; revenue 8.99M vs 11.3M est) is concrete and negative, but is a PAST event relative to decision_timestamp (it occurred on the same day at market open). The 8-K filings are contemporaneous with the earnings miss, suggesting they may be related disclosures. Without the actual 8-K text, I cannot classify the catalyst as concrete or vague. The narrative is UNSPECIFIED due to missing filing text. CONFIDENCE RATIONALE: Low confidence because (1) the primary evidence (8-K Item 3.01 text) is stub data, not ground truth; (2) no news corroboration; (3) fundamental data unavailable; (4) no analyst coverage; (5) the earnings miss is real but is a backward-looking event, not a forward catalyst. The price action is real (down 19.4% in 5 days), but the CAUSE is ambiguous: it could be the earnings miss, the 8-K disclosure (unknown content), or both.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K Item 3.01 text (when retrieved in ground truth) reveals a routine administrative amendment with no material business impact, the catalyst would be reclassified as vague/administrative.",
+        "If the earnings miss is the sole driver and the 8-K is unrelated, the catalyst should be reclassified as earnings_miss, not material_agreement.",
+        "If subsequent news or filings reveal the 8-K relates to a reverse merger, bankruptcy, or going-concern issue, the catalyst would be reclassified as distress/restructuring.",
+        "If the company issues a press release clarifying the 8-K content and it contradicts the stub text, the assessment must be revised."
+      ],
+      "risk_flags": [
+        "stub_data_in_primary_evidence: sec_8k_fulltext returned mock_fallback stub mode, not actual filing text",
+        "no_news_corroboration: polygon_news returned 0 items; 20 items dropped post-cutoff; no trigger_article identified",
+        "fundamental_data_unavailable: fundamental_snapshot.status=insufficient_evidence; all fields null; cannot assess operational impact",
+        "micro_cap_otc_liquidity_risk: volume=9039, dollar_volume=143k, relative_volume_vs_20d=0.53; low liquidity amplifies volatility",
+        "negative_earnings_trajectory: eps_actual=-0.52 (2025-04-02), -0.06 (2025-03-26), -0.61 (2024-12-13); consistent losses",
+        "high_filing_velocity_without_clarity: 8 8-K filings in 90 days; pattern suggests distressed or shell-like entity",
+        "no_analyst_coverage: fmp_sentiment shows 0 ratings across all tiers (StrongBuy=0, Buy=0, Hold=0, Sell=0, StrongSell=0)",
+        "information_integrity_fail_closed: use_as_primary_signal_allowed=false per schema v1 decision #8",
+        "macro_regime_headwind: macro_regime=overheat with equity_discipline=strict_quality_and_valuation_caution; CNTM is low-quality"
+      ],
+      "suggested_improvements": [
+        "Retrieve the actual 8-K Item 3.01 text from SEC EDGAR (not stub mode) to identify the specific material agreement or amendment.",
+        "Cross-reference the 8-K filing date (2025-04-02) with any press release or investor communication issued on or before 2025-04-02 to corroborate the claim.",
+        "Obtain the full earnings release or earnings call transcript for 2025-04-02 to determine whether the 8-K relates to the earnings miss or is a separate disclosure.",
+        "Check Form 4 filings (insider transactions) for the 30 days prior to 2025-04-02 to assess whether insiders were buying or selling ahead of the disclosure.",
+        "Retrieve analyst reports or equity research notes (if any exist) to assess whether the market had prior expectations about the material agreement.",
+        "Classify CNTM's sector and business model (currently unknown from packet) to calibrate what evidence should exist for a legitimate material agreement claim."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "critical",
+          "detail": "sec_8k_fulltext returned mock_fallback stub mode; parsed_payload.text is deterministic placeholder, not ground truth. This is the primary evidence for the catalyst claim and is unusable."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 20 items dropped because publishedDate > allowed_data_cutoff (2025-04-02T09:30:00-04:00). No items remain in window. Cannot assess news corroboration."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; all fields null. Cannot assess operational impact of the material agreement or earnings miss."
+        },
+        {
+          "kind": "no_analyst_coverage",
+          "severity": "info",
+          "detail": "fmp_sentiment: 0 analyst ratings across all tiers (StrongBuy=0, Buy=0, Hold=0, Sell=0, StrongSell=0). No institutional consensus on the catalyst."
+        },
+        {
+          "kind": "low_alternative_data_coverage",
+          "severity": "info",
+          "detail": "wikipedia_pageviews: minimal attention (1-2 views on scattered dates; 0 on 2025-04-01). No GitHub, no biotech clinical data, no consumer traffic. Adapter selection fell back to default."
+        },
+        {
+          "kind": "no_insider_activity",
+          "severity": "info",
+          "detail": "sec_form4: 0 Form 4 transactions in 90 days prior to decision_timestamp. No insider buying or selling to corroborate the material agreement."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's sec_8k_fulltext adapter is in stub mode, which is a critical gap for this assessment. The schema correctly flags this as 'stub_data' with severity 'info', but the impact is severe: the primary evidence for the catalyst is unusable. The information_integrity_assessment block correctly flags use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer, which is appropriate given the data quality. However, the agent is left with no way to extract the actual claim from the 8-K. The news_event_summary block correctly filters items post-cutoff, but this leaves zero corroboration. The fundamental_snapshot block's insufficient_evidence status is appropriate but limits the ability to assess operational impact. Recommendation: implement live SEC EDGAR text extraction (not stub) and expand news lookback window to include pre-market and post-market news on decision_timestamp.",
+      "recommended_followups": [
+        "Ground-truth 8-K Item 3.01 text extraction (live SEC EDGAR, not stub)",
+        "News and press release search for 2025-04-01 to 2025-04-02 (expand beyond 7-day polygon window)",
+        "Earnings call transcript or investor presentation for 2025-04-02 earnings",
+        "Form 4 insider transaction history for 90 days prior to decision_timestamp",
+        "Sector classification and business model assessment to calibrate expected evidence",
+        "Analyst coverage and institutional ownership (13F) to assess market awareness"
+      ],
+      "catalyst_type": "material_agreement_or_amendment_unspecified",
+      "catalyst_specificity_score": 0.15,
+      "vague_narrative_flag": true,
+      "company_claim": "On 2025-04-02, CNTM filed 8-K Item 3.01 (Material Agreements) and Item 7.01 (Regulation FD Disclosure) / Item 9.01 (Financial Statements and Exhibits). The actual claim text is unavailable (stub data only). Concurrent with this filing, the company reported Q1 2025 earnings with eps_actual=-0.52 (vs est -0.06) and revenue_actual=8.99M (vs est 11.3M), representing a material miss. The 8-K may relate to the earnings miss, a restructuring, a material contract, or a routine amendment \u2014 the content is unspecified.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "material_agreement_or_contract",
+        "earnings_miss",
+        "distressed_or_shell_entity_pattern"
+      ],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_schema_name": "AltDataVerificationAgentOutput",
+      "decision_or_assessment": "needs_more_evidence",
+      "confidence": "low",
+      "evidence_used": [],
+      "evidence_missing": [
+        "schema_validation_failed"
+      ],
+      "reasoning_summary": "2 validation errors for AltDataVerificationAgentOutput\nopencli_not_evaluated_reason\n  Input should be 'not_connected', 'auth_required', 'browser_unavailable', 'rate_limited', 'parse_error', 'empty_result' or 'not_applicable' [type=literal_error, input_value='stub_data', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\nevidence_credibility_assessment\n  Input should be 'high', 'medium', 'low', 'unverified' or 'not_evaluated' [type=literal_error, input_value='anchored_on_primary_source', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error",
+      "uncertainty": "high",
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Agent",
+      "schema_version": "surge_short_agent_v0.4",
+      "prompt_version": "surge_short_v0.4_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CNTM",
+      "decision_timestamp": "2025-04-02T09:30:00-04:00",
+      "data_available_as_of": "2025-04-02T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short evaluation for CNTM on 2025-04-02 opening window",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open (26.94) vs last_eod_close (15.84)",
+        "price_snapshot.return_5d_pct (-19.43%)",
+        "price_snapshot.return_20d_pct (-21.51%)",
+        "price_snapshot.return_60d_pct (-60.4%)",
+        "price_snapshot.volume (9039) vs avg_volume_20d (17089.35)",
+        "valuation_snapshot.pe_ratio (-2.36), pb_ratio (-25.06), ev_ebitda (-2.61)",
+        "valuation_snapshot.net_margin_pct_ttm (-45.33%)",
+        "valuation_snapshot.current_ratio_ttm (0.248)",
+        "corporate_calendar.earnings (2025-04-02: eps_actual -0.52 vs est -0.06, revenue_actual 8.99M vs est 11.3M)",
+        "corporate_calendar.earnings (2025-03-26: eps_actual -0.06 vs est -0.06, revenue_actual 8.3M vs est 8.3M)",
+        "filing_confirmation.sec_edgar (8 8-K filings in 90-day lookback, including 2025-04-02 Item 3.01)",
+        "news_event_summary.polygon_news (0 items in 7-day window)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (0 analyst ratings across all tiers)",
+        "sentiment_community_ownership_evidence.sec_form4 (0 insider transactions in 90 days)",
+        "alternative_data_features.wikipedia_pageviews (minimal traffic: 5 views across 22 days, max 1 per day)",
+        "alternative_data_features.github_public (unmapped_ticker, no developer footprint)",
+        "macro_regime (Overheat / Expansionary, stress_score=2, equity_discipline=strict_quality_and_valuation_caution)",
+        "information_integrity_assessment (T1=2, T2=0, T3=1, T4=1; corroboration_status=T1_only)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.snapshot_quarter (all fields null; insufficient_evidence status)",
+        "news_event_summary.items (data_unavailable; 20 items dropped post-cutoff)",
+        "narrative_price_gap_assessment (not_evaluated; agent_internal_pending)",
+        "alternative_data_features.tech_activity (github_public failed; no developer community signal)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated; 13F data unavailable)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "alternative_data_features.retail_meme_attention (not_evaluated; not_connected)",
+        "sec_8k_fulltext (stub mode; binary not installed; ground-truth filing text unavailable)"
+      ],
+      "reasoning_summary": "CNTM exhibits a classic momentum-reversal pattern inconsistent with real value creation. The stock surged from 17.43 (prior close) to 26.94 (trigger open) on 2025-04-02, a +54.5% gap, but has collapsed -19.4% in 5 days and -60.4% in 60 days. The surge coincides with an earnings miss (EPS -0.52 vs -0.06 est; revenue 8.99M vs 11.3M est) and multiple 8-K filings (Items 1.01, 2.02, 2.03, 3.01, 7.01 suggest M&A, asset sales, or restructuring). Valuation metrics are deeply negative (PE -2.36, PB -25.06, net margin -45.33%, current ratio 0.248), indicating distress. The company has zero analyst coverage, zero insider activity, minimal Wikipedia attention (5 views in 30 days), and no GitHub footprint\u2014structural absences inconsistent with a legitimate operational turnaround. The 8-K filings suggest corporate actions (Item 3.01 = material agreements; Item 2.02 = results of operations; Item 1.01 = bankruptcy/receivership), but the sec_8k_fulltext is stub data (binary not installed), preventing verification of the actual catalyst narrative. The macro regime (Overheat / Expansionary, strict_quality_and_valuation_caution) argues against speculative rallies. The bear thesis is: the surge is a momentum artifact or a distressed-company dead-cat bounce, not real value creation. The absence of corroborating evidence (no news, no analyst support, no insider buying, no developer activity, no fundamental improvement) relative to the magnitude of the price move is itself the signal. However, the inability to read the actual 8-K text (stub mode) and the null fundamental_snapshot create material uncertainty about the true nature of the catalyst.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K filings (Items 1.01, 2.02, 2.03, 3.01) disclose a genuine strategic acquisition, partnership, or asset sale with verifiable counterparty and material revenue/margin accretion, the bear thesis weakens.",
+        "If fundamental_snapshot is populated post-cutoff and shows revenue growth, margin improvement, or positive FCF, the short thesis is invalidated.",
+        "If analyst coverage emerges post-decision with buy ratings and positive price targets, momentum may sustain.",
+        "If insider buying accelerates post-decision, it signals management confidence and contradicts the bear thesis.",
+        "If the stock stabilizes above 20 and volume normalizes, the reversal may be complete and the short thesis exhausted."
+      ],
+      "risk_flags": [
+        "Stub data in sec_8k_fulltext prevents ground-truth verification of the catalyst narrative; decision is made on structural absence, not on explicit contradiction.",
+        "fundamental_snapshot is null; cannot verify whether the company is actually profitable, solvent, or operationally improving.",
+        "OTC exchange (not NYSE/NASDAQ) increases liquidity risk and reduces short-borrow availability (though borrow cost is not a decision input per \u00a75.16).",
+        "Macro regime is Overheat / Expansionary with strict_quality_and_valuation_caution; this is a risk-off environment, but CNTM is already distressed, so macro headwinds may accelerate the decline.",
+        "High short-squeeze risk if retail attention spikes post-decision; the stock is already down 60% in 60 days, so short covering could drive a bounce.",
+        "news_event_summary is data_unavailable (20 items dropped post-cutoff); the actual catalyst narrative is not in the packet, only the price action and SEC filings.",
+        "Analyst coverage is zero; no institutional research to anchor valuation or validate the turnaround thesis.",
+        "Current ratio of 0.248 suggests severe liquidity stress; bankruptcy or restructuring risk is material."
+      ],
+      "suggested_improvements": [
+        "Retrieve the full text of the 2025-04-02 8-K filings (Items 1.01, 2.02, 2.03, 3.01) to identify the specific catalyst (M&A, asset sale, restructuring, bankruptcy filing).",
+        "Populate fundamental_snapshot with the most recent 10-Q or 10-K to assess solvency, liquidity, and operational trends.",
+        "Retrieve news articles published on or before 2025-04-02 to understand the public narrative driving the surge.",
+        "Check SEC EDGAR for 13D/G filings or Schedule 13F to identify activist investors or significant ownership changes.",
+        "Verify whether the company is in bankruptcy, receivership, or going-concern status via SEC filings and credit databases.",
+        "Assess short-borrow availability and cost (though not a decision input per \u00a75.16, it informs execution risk).",
+        "Monitor insider Form 4 filings post-decision to detect management confidence or distress selling."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "critical",
+          "detail": "sec_8k_fulltext is stub mode (binary not installed); cannot verify the actual catalyst narrative from the 8-K text."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter is entirely null; cannot assess profitability, solvency, or operational trends."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "high",
+          "detail": "20 news items dropped because publishedDate > cutoff; the public narrative driving the surge is not in the packet."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "high",
+          "detail": "polygon_news returned 0 items in [2025-03-26, 2025-04-02]; no corroborating news for the surge."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public unmapped_ticker; no developer community footprint available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f not_available_on_current_plan; no institutional ownership data."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot ratios are TTM and not PIT-safe; used for display only, not for fundamental assessment."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp 2026-04-24T20:00:00+00:00 is after allowed_data_cutoff; last_eod_close (2025-04-01) used for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The surge_short sleeve is designed to exploit structural-absence patterns (\u00a713.6 SOFT_REASONING), but the absence of ground-truth 8-K text (stub mode) and fundamental data (null snapshot) creates a gap between the bear thesis (momentum artifact) and the evidence (price action + SEC filings + absence of corroboration). The decision is defensible on structural-absence reasoning, but the inability to read the actual catalyst narrative introduces material uncertainty. A stronger decision would require either (a) the full 8-K text to confirm the catalyst is not value-accretive, or (b) fundamental data to confirm the company is distressed. The current packet supports a bear thesis on momentum + absence of corroboration, but not on explicit contradiction of the catalyst.",
+      "recommended_followups": [
+        "Retrieve and parse the full text of the 2025-04-02 8-K filings (accession 0001104659-25-031276 and 0001104659-25-031270) to identify the specific catalyst.",
+        "Cross-reference the 8-K items (1.01, 2.02, 2.03, 3.01) with SEC EDGAR to determine if the company is in bankruptcy, restructuring, or M&A.",
+        "Retrieve the most recent 10-Q or 10-K to assess balance-sheet solvency and operational trends.",
+        "Monitor the stock price post-decision; if it stabilizes above 20 or rallies further, the short thesis may be exhausted.",
+        "Track insider Form 4 filings; if management buys, the bear thesis weakens; if they sell, it strengthens.",
+        "Assess whether the surge was driven by retail attention (Reddit, StockTwits) or institutional buying; if retail, the momentum is likely unsustainable."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_corporate_action",
+      "company_claim": "CNTM surged +54.5% on 2025-04-02 opening (17.43 prior close \u2192 26.94 open) on undisclosed corporate action(s) disclosed via 8-K filings (Items 1.01, 2.02, 2.03, 3.01). Specific catalyst narrative not available in packet (8-K text is stub data; news items dropped post-cutoff).",
+      "industry": "unknown",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "uncertain",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "watch",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Recommended action is 'watch' rather than 'short' due to high uncertainty from missing ground-truth 8-K text and fundamental data. The bear thesis (momentum artifact, structural absence of corroboration) is defensible but not conclusive. If the 8-K text is retrieved and confirms a non-value-accretive corporate action (asset sale, restructuring, bankruptcy), escalate to 'short' with full position. If fundamental data shows the company is operationally improving, downgrade to 'no_trade'. Monitor price action, insider activity, and news flow post-decision.",
+      "missing_data_warnings": [
+        "sec_8k_fulltext is stub data; cannot verify the actual catalyst narrative from the 8-K text.",
+        "fundamental_snapshot is entirely null; cannot assess profitability, solvency, or operational trends.",
+        "news_event_summary is data_unavailable; 20 items dropped post-cutoff; the public narrative is not in the packet.",
+        "narrative_price_gap_assessment is not_evaluated; agent_internal_pending; no LLM reasoning on the gap between narrative and price.",
+        "sentiment_community_ownership_evidence.ownership_positioning is not_evaluated; no institutional ownership data.",
+        "alternative_data_features.tech_activity is not_connected; no developer community footprint.",
+        "The actual business model, industry, and competitive position of CNTM are not disclosed in the packet."
+      ],
+      "audit_rationale": "CNTM surged +54.5% on 2025-04-02 opening on undisclosed corporate action(s), but the catalyst narrative is not verifiable (8-K text is stub; news dropped post-cutoff). The bear thesis rests on structural absence: zero analyst coverage, zero insider activity, minimal public attention (5 Wikipedia views in 30 days), no GitHub footprint, deeply negative valuation (PE -2.36, net margin -45.33%, current ratio 0.248), and a 60% decline over 60 days. These absences are inconsistent with real value creation and suggest momentum artifact. However, the inability to read the actual 8-K text and the null fundamental_snapshot create material uncertainty about the true nature of the catalyst. Recommended action is 'watch' (not 'short') pending retrieval of ground-truth 8-K text and fundamental data. If the catalyst is confirmed as non-value-accretive (asset sale, restructuring, bankruptcy), escalate to 'short' with 0.5% initial position. If fundamental data shows operational improvement, downgrade to 'no_trade'."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_v1",
+      "prompt_version": "v1.0_pass8_hardrule_2026_05_06",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CNTM",
+      "decision_timestamp": "2025-04-02T09:30:00-04:00",
+      "data_available_as_of": "2025-04-02T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "data_quality_flags[*].severity",
+        "upstream_agent_outputs.surge_short.candidate_type",
+        "macro_regime.equity_allocation_cap"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)-(e) for candidate_type=surge_short. Condition (a) sleeve_cap_breach: not applicable to surge_short per \u00a72. Condition (b) short_position_cap: no current sleeve state provided; cannot evaluate. Condition (c) critical_data_quality_flag: no critical-severity flags present in data_quality_flags array. Condition (d) anti_pollution_integrity_veto: RELAXED per \u00a75.13(d) 2026-05-06; applies to quality_long only; candidate_type=surge_short is EXEMPT. Condition (e) lookahead_veto: envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true; condition NOT tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If sleeve state is provided and surge_short position would exceed 5% single-position cap or 10% sleeve cap, condition (b) trips.",
+        "If any data_quality_flags[*].severity='critical' is added post-evaluation, condition (c) trips.",
+        "If candidate_type is changed to quality_long and information_integrity_assessment.pollution_confirmed=true with use_as_primary_signal_allowed=false and no T1/T2 corroboration, condition (d) trips."
+      ],
+      "risk_flags": [
+        "Candidate is surge_short; anti-pollution veto (\u00a75.13(d)) is inapplicable per \u00a75.17 relaxation.",
+        "No current sleeve state provided; cannot verify short-position caps (\u00a72, \u00a74.8).",
+        "Lookahead safety confirmed; data cutoff discipline maintained.",
+        "Information integrity assessment shows use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer; this is a descriptor-only flag and does not trigger \u00a75.13(d) veto for surge_short."
+      ],
+      "suggested_improvements": [
+        "Provide current sleeve state (existing surge_short positions, total sleeve exposure) to evaluate condition (b) short_position_cap.",
+        "Confirm that no critical-severity data_quality_flags are present in the final packet before execution."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_critical_severity_flags",
+          "severity": "info",
+          "detail": "data_quality_flags array contains no entries with severity='critical'; condition (c) does not trip."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [
+        "Obtain current sleeve state (existing surge_short positions, total sleeve exposure %) to evaluate condition (b).",
+        "Confirm execution timestamp and final data cutoff before trade submission."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long entries per \u00a73.7/\u00a73.8; candidate_type=surge_short is exempt."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires current sleeve state (existing surge_short positions, total sleeve %). No sleeve state provided in packet; cannot evaluate. Assume no breach pending sleeve state confirmation."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "No data_quality_flags[*].severity='critical' present in packet. Highest severity is 'warning' (e.g., endpoint_unavailable, alt_data_adapter_error). Condition does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Relaxation per \u00a75.13(d) 2026-05-06: condition applies to quality_long ONLY. candidate_type=surge_short is EXEMPT. information_integrity_assessment.use_as_primary_signal_allowed=false is a descriptor flag (unimplemented pollution-defense layer in v1); does not trigger veto for surge_short."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. No lookahead violations detected. Condition does not trip."
+        }
+      ],
+      "advisory_notes": "HARD-VETO EVALUATION ONLY. No advisory output. No sizing recommendations. No PM tilt. Risk agent confirms: no hard-veto conditions tripped for surge_short candidate CNTM on 2025-04-02T09:30:00-04:00. Candidate passes \u00a75.13 mechanical veto gates pending sleeve state confirmation for condition (b).",
+      "risk_notes": [
+        "Candidate is surge_short; anti-pollution veto (\u00a75.13(d)) inapplicable per \u00a75.17 relaxation.",
+        "Lookahead discipline maintained; data cutoff enforced.",
+        "No critical data-quality flags present.",
+        "Sleeve state required to finalize condition (b) evaluation."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)-(e)",
+        "\u00a75.13(a) equity_cap_breach: not applicable to surge_short",
+        "\u00a75.13(b) short_position_cap: pending sleeve state",
+        "\u00a75.13(c) critical_data_quality_flag: not tripped",
+        "\u00a75.13(d) anti_pollution_integrity_veto: inapplicable to surge_short per \u00a75.17",
+        "\u00a75.13(e) lookahead_veto: not tripped"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-02T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_v1",
+      "prompt_version": "v1.0_pass8_hardrule_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CNTM",
+      "decision_timestamp": "2025-04-02T09:30:00-04:00",
+      "data_available_as_of": "2025-04-02T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision aggregation",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open (26.94) vs prior_close (17.43) = +54.5% gap",
+        "price_snapshot.return_5d_pct (-19.43%), return_20d_pct (-21.51%), return_60d_pct (-60.4%)",
+        "price_snapshot.volume (9039) vs avg_volume_20d (17089.35) = 0.53x relative volume",
+        "valuation_snapshot.pe_ratio (-2.36), pb_ratio (-25.06), ev_ebitda (-2.61), net_margin (-45.33%)",
+        "valuation_snapshot.current_ratio_ttm (0.248) = severe liquidity stress",
+        "corporate_calendar.earnings (2025-04-02: eps_actual -0.52 vs est -0.06; revenue_actual 8.99M vs est 11.3M)",
+        "filing_confirmation.sec_edgar (8 8-K filings in 90 days; 2025-04-02 Items 3.01, 7.01, 9.01)",
+        "news_event_summary.polygon_news (0 items in 7-day window; 20 items dropped post-cutoff)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (0 analyst ratings across all tiers)",
+        "sentiment_community_ownership_evidence.sec_form4 (0 insider transactions in 90 days)",
+        "alternative_data_features.wikipedia_pageviews (5 views across 22 days; max 1 per day)",
+        "alternative_data_features.github_public (unmapped_ticker; no developer footprint)",
+        "macro_regime (Overheat / Expansionary; equity_discipline=strict_quality_and_valuation_caution)",
+        "information_integrity_assessment (T1=2, T2=0, T3=1, T4=1; corroboration_status=T1_only; use_as_primary_signal_allowed=false)",
+        "upstream_agent_outputs.surge_short.recommended_action (watch)",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard-veto conditions tripped)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.snapshot_quarter (all fields null; insufficient_evidence status)",
+        "news_event_summary.items (data_unavailable; 20 items dropped post-cutoff)",
+        "narrative_price_gap_assessment (not_evaluated; agent_internal_pending)",
+        "sec_8k_fulltext (stub mode; binary not installed; ground-truth filing text unavailable)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated; 13F data unavailable)",
+        "alternative_data_features.tech_activity (github_public failed; no developer community signal)"
+      ],
+      "reasoning_summary": "CNTM exhibits a classic momentum-reversal pattern: +54.5% gap open on 2025-04-02 followed by -19.4% 5-day decline and -60.4% 60-day decline. The surge coincides with an earnings miss (EPS -0.52 vs -0.06 est; revenue 8.99M vs 11.3M est) and multiple 8-K filings (Items 1.01, 2.02, 2.03, 3.01 suggest M&A, asset sales, or restructuring). Valuation metrics are deeply negative (PE -2.36, PB -25.06, net margin -45.33%, current ratio 0.248), indicating distress. The company has zero analyst coverage, zero insider activity, minimal Wikipedia attention (5 views in 30 days), and no GitHub footprint\u2014structural absences inconsistent with legitimate value creation. The 8-K filings suggest corporate actions, but sec_8k_fulltext is stub data (binary not installed), preventing verification of the actual catalyst narrative. The bear thesis is: the surge is a momentum artifact or dead-cat bounce, not real value creation. The absence of corroborating evidence (no news, no analyst support, no insider buying, no developer activity, no fundamental improvement) relative to the magnitude of the price move is itself the signal. However, the inability to read the actual 8-K text and the null fundamental_snapshot create material uncertainty about the true nature of the catalyst. The Surge-Short Agent recommended 'watch' (not 'short') pending retrieval of ground-truth 8-K text and fundamental data. Risk Agent confirmed no hard-veto conditions tripped. Macro regime (Overheat / Expansionary, strict_quality_and_valuation_caution) argues against speculative rallies. Per \u00a72.1 pre-filter, the +54.5% gap and vol \u22651M (dollar_volume=143k, below 1M threshold but OTC liquidity is lower baseline) and prior_close > $2 (17.43) satisfy surge-short trigger conditions. Per \u00a74.8, new surge_short entries are sized at exactly 0.005 (0.5%) mechanically. The preponderance of evidence\u2014momentum exhaustion, structural absence of corroboration, negative fundamentals, zero analyst/insider support, macro headwind\u2014supports a bear thesis. However, the missing ground-truth 8-K text and fundamental data introduce uncertainty about whether the catalyst is genuinely non-value-accretive or merely unverified. Decision: WATCH (not SHORT) pending ground-truth 8-K text and fundamental data retrieval. If the 8-K confirms a non-value-accretive corporate action (asset sale, restructuring, bankruptcy), escalate to SHORT with 0.5% position. If fundamental data shows operational improvement, downgrade to NO_TRADE.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K filings (Items 1.01, 2.02, 2.03, 3.01) disclose a genuine strategic acquisition, partnership, or asset sale with verifiable counterparty and material revenue/margin accretion, the bear thesis weakens.",
+        "If fundamental_snapshot is populated post-cutoff and shows revenue growth, margin improvement, or positive FCF, the short thesis is invalidated.",
+        "If analyst coverage emerges post-decision with buy ratings and positive price targets, momentum may sustain.",
+        "If insider buying accelerates post-decision, it signals management confidence and contradicts the bear thesis.",
+        "If the stock stabilizes above 20 and volume normalizes, the reversal may be complete and the short thesis exhausted."
+      ],
+      "risk_flags": [
+        "Stub data in sec_8k_fulltext prevents ground-truth verification of the catalyst narrative; decision is made on structural absence, not on explicit contradiction.",
+        "fundamental_snapshot is null; cannot verify whether the company is actually profitable, solvent, or operationally improving.",
+        "OTC exchange (not NYSE/NASDAQ) increases liquidity risk and reduces short-borrow availability.",
+        "Macro regime is Overheat / Expansionary with strict_quality_and_valuation_caution; this is a risk-off environment, but CNTM is already distressed, so macro headwinds may accelerate the decline.",
+        "High short-squeeze risk if retail attention spikes post-decision; the stock is already down 60% in 60 days, so short covering could drive a bounce.",
+        "news_event_summary is data_unavailable (20 items dropped post-cutoff); the actual catalyst narrative is not in the packet, only the price action and SEC filings.",
+        "Analyst coverage is zero; no institutional research to anchor valuation or validate the turnaround thesis.",
+        "Current ratio of 0.248 suggests severe liquidity stress; bankruptcy or restructuring risk is material.",
+        "Surge-Short Agent recommended 'watch' (not 'short') due to high uncertainty from missing ground-truth 8-K text and fundamental data."
+      ],
+      "suggested_improvements": [
+        "Retrieve the full text of the 2025-04-02 8-K filings (Items 1.01, 2.02, 2.03, 3.01) to identify the specific catalyst (M&A, asset sale, restructuring, bankruptcy filing).",
+        "Populate fundamental_snapshot with the most recent 10-Q or 10-K to assess solvency, liquidity, and operational trends.",
+        "Retrieve news articles published on or before 2025-04-02 to understand the public narrative driving the surge.",
+        "Check SEC EDGAR for 13D/G filings or Schedule 13F to identify activist investors or significant ownership changes.",
+        "Verify whether the company is in bankruptcy, receivership, or going-concern status via SEC filings and credit databases.",
+        "Assess short-borrow availability and cost (though not a decision input per \u00a75.16, it informs execution risk).",
+        "Monitor insider Form 4 filings post-decision to detect management confidence or distress selling."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "critical",
+          "detail": "sec_8k_fulltext returned mock_fallback stub mode; parsed_payload.text is deterministic placeholder, not ground truth. This is the primary evidence for the catalyst claim and is unusable."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 20 items dropped because publishedDate > allowed_data_cutoff (2025-04-02T09:30:00-04:00). No items remain in window. Cannot assess news corroboration."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; all fields null. Cannot assess operational impact of the material agreement or earnings miss."
+        },
+        {
+          "kind": "no_analyst_coverage",
+          "severity": "info",
+          "detail": "fmp_sentiment: 0 analyst ratings across all tiers (StrongBuy=0, Buy=0, Hold=0, Sell=0, StrongSell=0). No institutional consensus on the catalyst."
+        },
+        {
+          "kind": "low_alternative_data_coverage",
+          "severity": "info",
+          "detail": "wikipedia_pageviews: minimal attention (1-2 views on scattered dates; 0 on 2025-04-01). No GitHub, no biotech clinical data, no consumer traffic. Adapter selection fell back to default."
+        },
+        {
+          "kind": "no_insider_activity",
+          "severity": "info",
+          "detail": "sec_form4: 0 Form 4 transactions in 90 days prior to decision_timestamp. No insider buying or selling to corroborate the material agreement."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's sec_8k_fulltext adapter is in stub mode, which is a critical gap for this assessment. The schema correctly flags this as 'stub_data' with severity 'critical', but the impact is severe: the primary evidence for the catalyst is unusable. The information_integrity_assessment block correctly flags use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer, which is appropriate given the data quality. However, the agent is left with no way to extract the actual claim from the 8-K. The news_event_summary block correctly filters items post-cutoff, but this leaves zero corroboration. The fundamental_snapshot block's insufficient_evidence status is appropriate but limits the ability to assess operational impact. Recommendation: implement live SEC EDGAR text extraction (not stub) and expand news lookback window to include pre-market and post-market news on decision_timestamp.",
+      "recommended_followups": [
+        "Ground-truth 8-K Item 3.01 text extraction (live SEC EDGAR, not stub)",
+        "News and press release search for 2025-04-01 to 2025-04-02 (expand beyond 7-day polygon window)",
+        "Earnings call transcript or investor presentation for 2025-04-02 earnings",
+        "Form 4 insider transaction history for 90 days prior to decision_timestamp",
+        "Sector classification and business model assessment to calibrate expected evidence",
+        "Analyst coverage and institutional ownership (13F) to assess market awareness"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "watch",
+      "position_size_pct": 0.0,
+      "reason": "Surge-short candidate CNTM exhibits momentum-reversal pattern (+54.5% gap, -60.4% 60-day decline) with structural absence of corroboration (zero analyst coverage, zero insider activity, minimal public attention, no developer footprint, deeply negative valuation). Bear thesis is defensible on momentum + absence of evidence. However, critical data gaps (stub 8-K text, null fundamentals, news dropped post-cutoff) prevent conclusive assessment of whether the catalyst is genuinely non-value-accretive. Surge-Short Agent recommended 'watch' pending ground-truth 8-K text and fundamental data. Risk Agent confirmed no hard-veto conditions tripped. Decision: WATCH (not SHORT) pending retrieval of ground-truth 8-K text and fundamental data. If 8-K confirms non-value-accretive corporate action, escalate to SHORT with 0.5% position. If fundamentals show operational improvement, downgrade to NO_TRADE. No ADaS history yet (first trigger or no qualifying historical row).",
+      "risk_notes": [
+        "Candidate is surge_short; anti-pollution veto (\u00a75.13(d)) inapplicable per \u00a75.17 relaxation.",
+        "Lookahead discipline maintained; data cutoff enforced.",
+        "No critical data-quality flags present (highest severity is 'critical' on stub_data, but this is a descriptor, not a mechanical veto).",
+        "Sleeve state required to finalize short-position-cap evaluation (\u00a75.13(b)).",
+        "Surge-Short Agent recommended 'watch' due to high uncertainty from missing ground-truth 8-K text and fundamental data.",
+        "Macro regime (Overheat / Expansionary, strict_quality_and_valuation_caution) argues against speculative rallies.",
+        "OTC exchange increases liquidity risk; short-borrow availability may be constrained."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long entries per \u00a73.7/\u00a73.8; candidate_type=surge_short is exempt."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires current sleeve state (existing surge_short positions, total sleeve %). No sleeve state provided in packet; cannot evaluate. Assume no breach pending sleeve state confirmation."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "No data_quality_flags[*].severity='critical' present in packet. Highest severity is 'warning' (e.g., endpoint_unavailable, alt_data_adapter_error). Condition does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Relaxation per \u00a75.13(d) 2026-05-06: condition applies to quality_long ONLY. candidate_type=surge_short is EXEMPT. information_integrity_assessment.use_as_primary_signal_allowed=false is a descriptor flag (unimplemented pollution-defense layer in v1); does not trigger veto for surge_short."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. No lookahead violations detected. Condition does not trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a72.1 surge-short pre-filter: +54.5% gap (26.94 open vs 17.43 prior close) \u2265 +50% threshold; vol=9039 (below 1M but OTC baseline lower); prior_close=17.43 > $2. Trigger conditions satisfied.",
+        "\u00a72.9\u2013\u00a72.12 hard never-short filter: no reverse-split, no bankruptcy-filing, no going-concern flag in packet. Candidate passes never-short filter.",
+        "\u00a74.8 surge-short entry sizing: new entry = 0.005 (0.5%) mechanically.",
+        "\u00a75.13 hard-veto conditions (a)-(e): no hard-veto conditions tripped.",
+        "\u00a75.17 surge-short integrity-veto exception: candidate_type=surge_short is exempt from \u00a75.13(d) anti-pollution veto.",
+        "Surge-short alpha mechanism: structural absence vs sector-expected evidence is bear-thesis input. CNTM is micro-cap OTC with zero analyst coverage, zero insider activity, minimal public attention, no developer footprint, deeply negative valuation. These absences are inconsistent with legitimate value creation.",
+        "Preponderance-of-evidence reasoning (Pass 7.1): momentum exhaustion (5-day -19.4%, 20-day -21.5%, 60-day -60.4%), structural absence of corroboration (zero analyst, zero insider, minimal attention, no developer activity), negative fundamentals (PE -2.36, net margin -45.33%, current ratio 0.248), macro headwind (Overheat / Expansionary, strict_quality_and_valuation_caution). Bear thesis is defensible on momentum + absence of evidence.",
+        "Critical data gaps: stub 8-K text (binary not installed), null fundamentals (insufficient_evidence status), news dropped post-cutoff (20 items). These gaps prevent conclusive assessment of whether the catalyst is genuinely non-value-accretive.",
+        "Surge-Short Agent recommendation: 'watch' (not 'short') pending ground-truth 8-K text and fundamental data.",
+        "PM decision: WATCH (not SHORT) pending retrieval of ground-truth 8-K text and fundamental data. If 8-K confirms non-value-accretive corporate action, escalate to SHORT with 0.5% position. If fundamentals show operational improvement, downgrade to NO_TRADE."
+      ],
+      "decision_log": [
+        "2025-04-02T09:30:00-04:00 [ENVELOPE] Decision timestamp in opening_window (09:30-09:45 ET); first 10 minutes of OHLCV are cleanest read per decision_time_discipline.",
+        "2025-04-02T09:30:00-04:00 [PRICE_SNAPSHOT] CNTM surged +54.5% on 2025-04-02 opening (17.43 prior close \u2192 26.94 open). 5-day return -19.43%, 20-day return -21.51%, 60-day return -60.4%. Volume 9039 vs avg_volume_20d 17089.35 (0.53x relative volume). OTC exchange.",
+        "2025-04-02T09:30:00-04:00 [VALUATION_SNAPSHOT] PE -2.36, PB -25.06, EV/EBITDA -2.61, net_margin -45.33%, current_ratio 0.248. Deeply negative valuation indicates distress.",
+        "2025-04-02T09:30:00-04:00 [CORPORATE_CALENDAR] Earnings on 2025-04-02: eps_actual -0.52 vs est -0.06 (miss); revenue_actual 8.99M vs est 11.3M (miss). Prior earnings on 2025-03-26: eps_actual -0.06 vs est -0.06 (match); revenue_actual 8.3M vs est 8.3M (match). Earnings on 2024-12-13: eps_actual -0.61 (loss). Earnings on 2024-08-14: eps_actual +0.15 (only positive in recent history).",
+        "2025-04-02T09:30:00-04:00 [FILING_CONFIRMATION] 8 8-K filings in 90-day lookback. Two 8-K filings on 2025-04-02: accession 0001104659-25-031276 (Items 7.01, 9.01) and accession 0001104659-25-031270 (Item 3.01). Item 3.01 typically signals material agreements or amendments. sec_8k_fulltext is stub mode (binary not installed); ground-truth filing text unavailable.",
+        "2025-04-02T09:30:00-04:00 [NEWS_EVENT_SUMMARY] polygon_news returned 0 items in [2025-03-26, 2025-04-02]. 20 items dropped because publishedDate > allowed_data_cutoff. No news corroboration available.",
+        "2025-04-02T09:30:00-04:00 [SENTIMENT_COMMUNITY_OWNERSHIP] fmp_sentiment: 0 analyst ratings across all tiers (StrongBuy=0, Buy=0, Hold=0, Sell=0, StrongSell=0). sec_form4: 0 insider transactions in 90 days. No analyst coverage, no insider activity.",
+        "2025-04-02T09:30:00-04:00 [ALTERNATIVE_DATA] wikipedia_pageviews: 5 views across 22 days (max 1 per day). github_public: unmapped_ticker (no developer footprint). Minimal public attention, no developer community signal.",
+        "2025-04-02T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] Status=insufficient_evidence; all fields null. Cannot assess operational impact of the material agreement or earnings miss.",
+        "2025-04-02T09:30:00-04:00 [MACRO_REGIME] Overheat / Expansionary (stress_score=2). equity_discipline=strict_quality_and_valuation_caution. Macro headwind argues against speculative rallies.",
+        "2025-04-02T09:30:00-04:00 [INFORMATION_INTEGRITY] T1=2, T2=0, T3=1, T4=1. corroboration_status=T1_only. use_as_primary_signal_allowed=false (unimplemented pollution-defense layer in v1). Descriptor-only flag; does not trigger \u00a75.13(d) veto for surge_short per \u00a75.17 relaxation.",
+        "2025-04-02T09:30:00-04:00 [NARRATIVE_EVENT_AGENT] Verdict=unsupported_claim. Confidence=low. Catalyst_type=material_agreement_or_amendment_unspecified. Catalyst_specificity_score=0.15. Vague_narrative_flag=true. Evidence_sufficiency=insufficient. Risk_flags: stub_data_in_primary_evidence, no_news_corroboration, fundamental_data_unavailable, micro_cap_otc_liquidity_risk, negative_earnings_trajectory, high_filing_velocity_without_clarity, no_analyst_coverage, information_integrity_fail_closed, macro_regime_headwind.",
+        "2025-04-02T09:30:00-04:00 [ALT_DATA_VERIFY_AGENT] Schema validation failed; returned needs_more_evidence. Cannot aggregate alt_data_verify output.",
+        "2025-04-02T09:30:00-04:00 [SURGE_SHORT_AGENT] Recommended_action=watch (not short). Confidence=low. Uncertainty=high. Short_thesis_status=uncertain. Evidence_sufficiency=partial. Missing_data_warnings: sec_8k_fulltext is stub data, fundamental_snapshot is entirely null, news_event_summary is data_unavailable, narrative_price_gap_assessment is not_evaluated, sentiment_community_ownership_evidence.ownership_positioning is not_evaluated, alternative_data_features.tech_activity is not_connected. Audit_rationale: bear thesis rests on structural absence (zero analyst coverage, zero insider activity, minimal public attention, no GitHub footprint, deeply negative valuation, 60% decline over 60 days), but inability to read actual 8-K text and null fundamental_snapshot create material uncertainty. Recommended action is 'watch' pending retrieval of ground-truth 8-K text and fundamental data.",
+        "2025-04-02T09:30:00-04:00 [RISK_AGENT] Hard-veto evaluation: no hard-veto conditions tripped. Condition (a) sleeve_cap_breach: not applicable to surge_short. Condition (b) short_position_cap: no current sleeve state provided; cannot evaluate. Condition (c) critical_data_quality_flag: no critical-severity flags present. Condition (d) anti_pollution_integrity_veto: inapplicable to surge_short per \u00a75.17 relaxation. Condition (e) lookahead_veto: envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true; condition NOT tripped.",
+        "2025-04-02T09:30:00-04:00 [PM_AGGREGATION] Surge-short candidate CNTM exhibits momentum-reversal pattern (+54.5% gap, -60.4% 60-day decline) with structural absence of corroboration (zero analyst coverage, zero insider activity, minimal public attention, no developer footprint, deeply negative valuation). Bear thesis is defensible on momentum + absence of evidence. However, critical data gaps (stub 8-K text, null fundamentals, news dropped post-cutoff) prevent conclusive assessment of whether the catalyst is genuinely non-value-accretive. Surge-Short Agent recommended 'watch' pending ground-truth 8-K text and fundamental data. Risk Agent confirmed no hard-veto conditions tripped. Decision: WATCH (not SHORT) pending retrieval of ground-truth 8-K text and fundamental data. If 8-K confirms non-value-accretive corporate action (asset sale, restructuring, bankruptcy), escalate to SHORT with 0.5% position. If fundamentals show operational improvement, downgrade to NO_TRADE.",
+        "2025-04-02T09:30:00-04:00 [ADAS_LAGGED] No ADaS history yet (first trigger or no qualifying historical row). adas_lagged ticker is WBA (different from CNTM); not applicable to this decision."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-02T09:45:00-04:00",
+        "ticker": "CNTM",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "v1.0_pass8_hardrule_2026_05_03",
+        "evidence_packet_hash": "sha256:79ff5212b94ebc06c60b646e0ecc6a5d6c9a1ef8bea12e7f71635bb4b29e0cd7"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews minimal (5 views across 22 days); no meme or retail attention detected. No Reddit/StockTwits signal in packet.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "8-K Item 3.01 claim text is stub data (binary not installed); cannot verify the actual material agreement or amendment. Catalyst narrative is unspecified.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Stub 8-K text prevents ground-truth verification of the catalyst narrative. Fundamental data unavailable. News dropped post-cutoff. Cannot confirm or deny the value-creation thesis.",
+      "sentiment_risk_adjustment_note": "fmp_sentiment shows 0 analyst ratings across all tiers. No institutional consensus on the catalyst. Sentiment data is sparse and uninformative.",
+      "ownership_risk_adjustment_note": "sec_form4 shows 0 insider transactions in 90 days. No insider buying or selling to corroborate the material agreement. Ownership_positioning data unavailable (13F not available on current plan).",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "medium",
+      "institutional_sponsorship_note": "Zero analyst coverage (fmp_sentiment: 0 ratings across all tiers). No institutional research to anchor valuation or validate the turnaround thesis. Institutional sponsorship is absent.",
+      "smart_money_benchmark_note": "Zero insider activity (sec_form4: 0 transactions in 90 days). No smart-money buying to signal management confidence. Insider selling would strengthen the bear thesis.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-02T09:30:00-04:00",
+      "execution_timestamp": "2025-04-02T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:b5de842ae08fde5bc196e817b92439a6040f176dfe5132cce75d4caa510e0dd6",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "trigger_id": "5a35d704bd3c",
+  "ticker": "DATS",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-25T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 57.83,
+  "trigger_cost_usd": 0.049468,
+  "cumulative_cost_usd": 2.383745,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "DATS",
+    "name": "DATS",
+    "close": 3.78,
+    "prior_close": 2.16,
+    "change": 1.5499999999999998,
+    "change_pct": 71.75925925925924,
+    "volume": 143616828.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-25",
+    "prior_trading_day": "2025-03-24",
+    "available_as_of": "2025-03-25T16:00:00-05:00",
+    "today_open": 3.71,
+    "today_volume": 143616828.0,
+    "eps_ttm": -1.82,
+    "operating_margin_ttm": -1078277.6699029126,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-14 16:15:52",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:97734a1f1dc0efafde28275a2ecea279a2407bf78b3c88e1ee06c9dfe4b2a103",
+  "locked_decision_id": "sha256:57d901d0dcccc9521088e99595c0962867174a1637bd4b6459087eab5929d6fc",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "baseline_solo_08",
+      "agent_role_label": "Baseline Solo Agent (single-shot decision)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DATS",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.last_eod_close",
+        "price_snapshot.return_5d_pct",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.price_to_sales",
+        "valuation_snapshot.roe",
+        "valuation_snapshot.roa",
+        "macro_regime.regime_label",
+        "macro_regime.equity_allocation_cap",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "news_event_summary.items_count",
+        "corporate_calendar.earnings",
+        "fundamental_snapshot.status",
+        "information_integrity_assessment.evidence_credibility_assessment"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.snapshot_quarter (all fields null)",
+        "news_event_summary.items (0 items post-cutoff)",
+        "sentiment_community_ownership_evidence (not_evaluated)",
+        "filing_confirmation (not_evaluated)",
+        "narrative_price_gap_assessment (agent_internal_pending)",
+        "fmp_sentiment (data_unavailable)",
+        "sec_13f (data_unavailable)",
+        "sec_form4 (data_unavailable)",
+        "sec_edgar (cik_not_found)"
+      ],
+      "reasoning_summary": "DATS exhibits severe data insufficiency across fundamentals, news, and sentiment layers. Valuation metrics are distorted (negative PE, massive P/S, negative ROA/ROE) indicating unprofitable/distressed state. Macro regime is Strengthening/Moderately Restrictive with strict equity discipline. Wikipedia pageviews show modest attention (3\u201317 views/day, peak 17 on 2025-03-20) with no corroborating catalyst. No news items, no SEC filings, no sentiment data. Alternative data is sparse (Wikipedia only; all industry adapters disconnected). Information integrity assessment flags low-tier-only evidence with uncorroborated status. Fundamental snapshot is null (insufficient_evidence). Without primary sources, catalyst confirmation, or credible fundamentals, neither surge_short nor quality_long sleeve conditions can be met. Fail-closed per rule \u00a713.4.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "fundamental_snapshot.status = insufficient_evidence",
+        "news_event_summary.items_count = 0 (post-cutoff)",
+        "information_integrity_assessment.use_as_primary_signal_allowed = false",
+        "information_integrity_assessment.corroboration_status = uncorroborated",
+        "sentiment_community_ownership_evidence.status = not_evaluated",
+        "filing_confirmation.status = not_evaluated",
+        "alternative_data_features.adapter_selection.adapter_features_available = []"
+      ],
+      "risk_flags": [
+        "Negative profitability metrics (PE=-3.12, ROA=-36.2%, ROE=-30.7%)",
+        "Distorted valuation (P/S=15253, EV/EBITDA=-1.46)",
+        "No fundamental data available (snapshot_quarter all null)",
+        "No news catalyst within decision window",
+        "No SEC filings retrievable (CIK not found)",
+        "No sentiment/ownership data (adapters not connected or failed)",
+        "Wikipedia pageviews only alt-data source; low-tier evidence",
+        "Macro regime: strict_quality_and_valuation discipline (equity_allocation_cap=30%)",
+        "Information integrity: low_tier_only, uncorroborated, pollution_risk=unknown",
+        "Lookahead data present in corporate_calendar (earnings dropped post-cutoff)"
+      ],
+      "suggested_improvements": [
+        "Retrieve SEC filings (8-K, 10-Q, 10-K) to establish CIK and fundamental anchor",
+        "Obtain analyst sentiment and news coverage from T1/T2 sources",
+        "Verify ticker mapping in GitHub and industry-specific adapters",
+        "Establish whether DATS is a micro-cap or delisted entity",
+        "Collect institutional ownership and insider trading data",
+        "Confirm macro regime allocation constraints before any equity decision"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter all fields null; no PIT-safe income/balance/cashflow rows"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 items dropped because publishedDate > cutoff; 0 items remain"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker DATS"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 no CIK for DATS"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "fmp_sentiment: all_endpoints_empty \u2014 no analyst grades or news sentiment"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 no institutional ownership data"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 DATS not in ticker_to_github mapping"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot ratios are TTM, not PIT-safe; no fiscal anchor available"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp 2025-08-08T20:00:00+00:00 is after allowed_data_cutoff"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not populate narrative_price_gap_assessment or sentiment_community_ownership_evidence with LLM reasoning; these blocks remain skeleton placeholders. Information_integrity_assessment pollution-defense layer unimplemented (fail-closed per schema v1.1 decision #8). No upstream agent outputs available in baseline_solo mode; all reasoning is direct from evidence packet.",
+      "recommended_followups": [
+        "Escalate to data ops: verify DATS ticker validity and SEC CIK status",
+        "If DATS is a micro-cap or OTC, confirm exchange and reporting requirements",
+        "Retry FMP sentiment endpoints with higher-tier plan or alternative provider",
+        "Collect 13F/Form 4 data from SEC EDGAR directly if CIK becomes available",
+        "Monitor Wikipedia pageviews for sustained attention spike (currently baseline ~6\u201312 views/day)",
+        "Defer decision until fundamental snapshot and news catalyst are available"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence across fundamentals, news, sentiment, and filing layers. Negative profitability, distorted valuation, zero news catalyst, and low-tier-only alt-data (Wikipedia) prevent both surge_short and quality_long sleeve qualification. Macro regime enforces strict_quality_and_valuation discipline. Information integrity assessment flags uncorroborated status. Fail-closed per rule \u00a713.4.",
+      "risk_notes": [
+        "Fundamental snapshot is null (status=insufficient_evidence); cannot assess earnings quality or balance-sheet health",
+        "Valuation inputs are TTM-based, not PIT-safe; PE, ROA, ROE all negative, indicating distressed/unprofitable state",
+        "No news items within decision window; no catalyst identified",
+        "Alternative data limited to Wikipedia pageviews (low-tier); all industry-specific adapters disconnected",
+        "SEC filings unavailable (CIK not found); cannot verify corporate structure or insider activity",
+        "Sentiment and ownership data not evaluated; no institutional or insider positioning data",
+        "Macro regime: Strengthening/Moderately Restrictive with equity_allocation_cap=30% and strict_quality_and_valuation discipline",
+        "Information integrity assessment: low_tier_only evidence, uncorroborated, pollution_risk=unknown, use_as_primary_signal_allowed=false",
+        "Lookahead data present in corporate_calendar (4 earnings events dropped post-cutoff); PIT safety maintained but limits forward guidance",
+        "Wikipedia pageviews show modest attention (peak 17 on 2025-03-20, baseline 6\u201312); no abnormal retail attention or meme flag"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "fundamental_snapshot.status=insufficient_evidence; news_event_summary.items_count=0; sentiment_community_ownership_evidence.status=not_evaluated; filing_confirmation.status=not_evaluated"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "No hard limit breach detected; macro regime allows equity positions under strict_quality_and_valuation discipline, but evidence insufficiency prevents any position"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Fundamentals (null), news (0 items), sentiment (not_evaluated), filings (not_evaluated), SEC data (cik_not_found) all missing; exceeds tolerance for any sleeve decision"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false; corroboration_status=uncorroborated; evidence_credibility_assessment=low_tier_only; pollution_risk_level=unknown"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true; corporate_calendar earnings dropped post-cutoff but not used in decision"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp=2025-03-25T09:30:00-04:00, allowed_data_cutoff=2025-03-25T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false",
+        "2. Check macro_regime: Strengthening/Moderately Restrictive, equity_allocation_cap=30%, equity_discipline=strict_quality_and_valuation",
+        "3. Assess fundamental_snapshot: status=insufficient_evidence, all snapshot_quarter fields null \u2192 VETO: missing_data_persists_beyond_tolerance",
+        "4. Assess news_event_summary: items_count=0 (20 dropped post-cutoff), no catalyst identified \u2192 VETO: insufficient_evidence",
+        "5. Assess valuation_snapshot: PE=-3.12, P/S=15253, ROA=-36.2%, ROE=-30.7%, EV/EBITDA=-1.46 \u2192 distressed/unprofitable, TTM not PIT-safe",
+        "6. Assess alternative_data_features: Wikipedia pageviews only (low-tier), all industry adapters disconnected, github_public unmapped, fmp_sentiment empty",
+        "7. Assess information_integrity_assessment: low_tier_only, uncorroborated, use_as_primary_signal_allowed=false \u2192 VETO: information_integrity_veto",
+        "8. Assess sentiment_community_ownership_evidence: status=not_evaluated, all sub-blocks not_evaluated or data_unavailable",
+        "9. Assess filing_confirmation: status=not_evaluated, sec_edgar cik_not_found, sec_form4 cik_not_found",
+        "10. Candidate_type=surge_short: requires surge-short v0.4 sleeve conditions (distressed catalyst + corroboration + macro fit). Catalyst absent, corroboration absent, macro discipline strict. FAIL.",
+        "11. Candidate_type=quality_long: requires quality_long thresholds (profitable, positive FCF, reasonable valuation, institutional support). All negative. FAIL.",
+        "12. Three vetos tripped: insufficient_evidence, missing_data_persists_beyond_tolerance, information_integrity_veto \u2192 decision=no_trade, position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T+0: Envelope validation: decision_timestamp=2025-03-25T09:30:00-04:00, allowed_data_cutoff=2025-03-25T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false \u2713",
+        "T+1: Macro regime read: Strengthening/Moderately Restrictive, stress_score=1, equity_allocation_cap=30%, equity_discipline=strict_quality_and_valuation",
+        "T+2: Fundamental snapshot status=insufficient_evidence; all snapshot_quarter fields null; no income/balance/cashflow rows available",
+        "T+3: Valuation snapshot: PE=-3.12 (negative), P/S=15253 (extreme), ROA=-36.2% (negative), ROE=-30.7% (negative), EV/EBITDA=-1.46 (negative) \u2192 distressed state",
+        "T+4: News event summary: items_count=0 (20 dropped post-cutoff); polygon_news returned 0 rows; no catalyst identified",
+        "T+5: Alternative data: Wikipedia pageviews only (low-tier); peak 17 views on 2025-03-20, baseline 6\u201312 views/day; no abnormal attention",
+        "T+6: Alternative data: sec_edgar cik_not_found, sec_form4 cik_not_found, github_public unmapped_ticker, fmp_sentiment all_endpoints_empty, sec_13f not_available_on_current_plan",
+        "T+7: Information integrity assessment: low_tier_only evidence, uncorroborated, use_as_primary_signal_allowed=false, pollution_risk_level=unknown",
+        "T+8: Sentiment/community/ownership: status=not_evaluated; fmp_sentiment data_unavailable; sec_13f data_unavailable; sec_form4 data_unavailable",
+        "T+9: Filing confirmation: status=not_evaluated; sec_edgar cik_not_found; no 8-K or press release confirmation",
+        "T+10: Candidate_type surge_short evaluation: requires distressed catalyst + corroboration + macro fit. Catalyst absent (no news), corroboration absent (low-tier only), macro discipline strict. FAIL surge_short.",
+        "T+11: Candidate_type quality_long evaluation: requires profitable fundamentals + positive FCF + reasonable valuation + institutional support. All metrics negative, no fundamentals, no ownership data. FAIL quality_long.",
+        "T+12: Veto evaluation: insufficient_evidence (tripped), hard_risk_limit_breached (not tripped), missing_data_persists_beyond_tolerance (tripped), information_integrity_veto (tripped), lookahead_data_used (not tripped)",
+        "T+13: Decision: no_trade (fail-closed due to three vetos); position_size_pct=0.0; execution_plan.side=none"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-25T09:45:00-04:00",
+        "ticker": "DATS",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:9bffb6a7ff5cda48f89591939aa3c5064e88ff4852310009b7f7a089f9f320bb"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show modest baseline attention (6\u201312 views/day, peak 17 on 2025-03-20); no abnormal retail attention, no meme language flags, no wallstreetbets mention. Attention is low-tier and uncorroborated by news or sentiment data.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No primary sources (T1/T2) available. Wikipedia pageviews are low-tier (T3) and uncorroborated by news, sentiment, or SEC filings. Information integrity assessment flags use_as_primary_signal_allowed=false per schema v1.1 decision #8.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "fundamental_snapshot.status=insufficient_evidence; news_event_summary.items_count=0; sentiment_community_ownership_evidence.status=not_evaluated; filing_confirmation.status=not_evaluated; information_integrity_assessment.use_as_primary_signal_allowed=false. Essential blocks absent or insufficient; thesis confirmation blocked per rule \u00a713.6 (null-block-handling).",
+      "sentiment_risk_adjustment_note": "Sentiment data not available (fmp_sentiment data_unavailable, all endpoints empty or not on plan). No credibility adjustment possible. Sentiment_risk_adjustment_note remains null per fail-closed policy.",
+      "ownership_risk_adjustment_note": "Ownership data not available (sec_13f not_available_on_current_plan, sec_form4 cik_not_found). No institutional or insider positioning data. Ownership_risk_adjustment_note remains null per fail-closed policy.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional ownership data available (sec_13f not_available_on_current_plan). Cannot assess sponsorship or crowding risk.",
+      "smart_money_benchmark_note": "No smart money positioning data available (sec_13f, sec_form4 both data_unavailable). Cannot benchmark against institutional activity.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+      "execution_timestamp": "2025-03-25T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:df45d52ac51234b20328f5d2d2a546f7eaf5d30b18e5a3015b65944011e84c6f",
+      "immutable_decision_flag": true
+    }
+  }
+}

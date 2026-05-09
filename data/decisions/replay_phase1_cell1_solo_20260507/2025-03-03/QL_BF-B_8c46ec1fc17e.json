@@ -1,0 +1,240 @@
+{
+  "trigger_id": "8c46ec1fc17e",
+  "ticker": "BF-B",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-03-03T09:30:00-05:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 43.2,
+  "trigger_cost_usd": 0.062525,
+  "cumulative_cost_usd": 0.124442,
+  "candidate_ranking_inputs": {
+    "ticker": "BF-B",
+    "earliest_event_date": "2025-03-04",
+    "selection_reason": "earnings_window_14d",
+    "close": 33.04,
+    "t1_open": 33.09,
+    "t1_date": "2025-03-04"
+  },
+  "evidence_packet_hash": "sha256:42fe38d04a52283fab92a97e698e0149c7eebff97608bb3b46dc0c109021ad27",
+  "locked_decision_id": "sha256:e7f7185a417a1d213003b3db3cc7d6e40fc697fe8dbd39d37ba98febd735eeff",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-shot evidence ingestion, no decomposition)",
+      "schema_version": "RiskPMAgentOutput_v1",
+      "prompt_version": "baseline_solo_v1.0_2026_04_28",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BF-B",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "high",
+      "evidence_used": [
+        "fundamental_gate_38 (hard gate failure)",
+        "macro_regime (overheat / moderately restrictive)",
+        "valuation_snapshot (PE 16.0, PB 3.17, EV/EBITDA 12.76)",
+        "price_snapshot (last_eod_close 33.11, 5d return +3.28%)",
+        "news_event_summary (no items post-cutoff)",
+        "alternative_data_features (wikipedia pageviews 30-day window, no meme/retail spike)",
+        "sentiment_community_ownership_evidence (analyst ratings mixed, no ownership data)",
+        "filing_confirmation (8-K Item 2.05 on 2025-01-14, stub text only)",
+        "corporate_calendar (no upcoming earnings/dividends near decision)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot (insufficient_evidence status; no PIT-safe income/balance/cashflow)",
+        "narrative_price_gap_assessment (not_evaluated; no LLM reasoning in v1)",
+        "news_event_summary catalyst detail (no items in window)",
+        "alternative_data_features (most adapters not_connected; only wikipedia_pageviews and fmp_sentiment available)",
+        "ownership_positioning (not_evaluated; 13F/Form4/Def14A not wired)",
+        "sec_8k_fulltext (stub mode; binary not installed)"
+      ],
+      "reasoning_summary": "BF-B fails fundamental_gate_38 on two hard criteria: eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available. Macro regime is overheat/moderately restrictive (equity_discipline=strict_quality_and_valuation_caution). Valuation is moderate (PE 16, PB 3.17) but fundamentals are insufficient for quality_long sleeve. No catalyst narrative (news_event_summary empty post-cutoff). Alternative data shows normal wikipedia pageviews (no meme spike). Analyst sentiment is mixed (3 strong buy, 2 buy, 11 hold, 2 sell, 3 strong sell as of 2025-03-01). Filing on 2025-01-14 (Item 2.05, stub text) does not constitute a verified catalyst. Insufficient evidence + hard fundamental gate failure \u2192 no_trade.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "fundamental_gate_38 failed: eps_ttm_or_net_income_ttm_not_positive",
+        "fundamental_gate_38 failed: operating_margin_not_available",
+        "fundamental_snapshot status=insufficient_evidence",
+        "news_event_summary status=data_unavailable (no items post-cutoff)",
+        "narrative_price_gap_assessment status=not_evaluated (no LLM in v1)"
+      ],
+      "risk_flags": [
+        "Hard fundamental gate failure blocks both surge_short and quality_long sleeves",
+        "Macro regime strict_quality_and_valuation_caution limits equity exposure to 20%",
+        "Valuation inputs are TTM (not PIT-safe); no fiscal anchor for fundamentals",
+        "Alternative data adapters mostly not_connected; only wikipedia_pageviews and fmp_sentiment available",
+        "Filing confirmation is stub mode (binary not installed); cannot verify 8-K Item 2.05 content",
+        "No recent insider activity (Form 4 shows 0 transactions in 90d lookback)",
+        "Analyst ratings show persistent mixed sentiment (hold-heavy distribution)"
+      ],
+      "suggested_improvements": [
+        "Wire alternative_data adapters (consumer_traffic, bank_regulatory, etc.) to capture industry-specific signals",
+        "Install sec_8k_fulltext binary or enable OpenCLI adapter to extract actual 8-K text",
+        "Obtain PIT-safe fundamental snapshot (income/balance/cashflow with accepted_date <= cutoff)",
+        "Implement narrative_price_gap_assessment LLM reasoning to evaluate filing vs. price move",
+        "Fetch 13F ownership data (currently not_available_on_current_plan) to assess institutional positioning",
+        "Extend news_event_summary lookback or cross-check with polygon_news for missed catalysts"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "hard_fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available \u2014 rule_engine_recommended_action=no_trade"
+        },
+        {
+          "kind": "fundamentals_insufficient",
+          "severity": "critical",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe quarterly data available"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "news_event_summary: 20 items dropped because publishedDate > cutoff; 0 items remain"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 BF-B not in ticker_to_github.csv"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 FMP HTTP 404"
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext: stub mode (deterministic, not ground truth); binary not installed"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios_ttm flagged not_PIT_safe \u2014 for display only, not PIT inputs"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-05-07T19:59:59+00:00 is after allowed_data_cutoff; use last_eod_close 33.11 for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not populate narrative_price_gap_assessment (LLM reasoning pending); information_integrity_assessment and sentiment_community_ownership_evidence are placeholders. Alternative data adapters are mostly not_connected. These gaps reduce confidence in catalyst detection and corroboration. Baseline solo agent must collapse all reasoning into one shot without upstream specialist verdicts.",
+      "recommended_followups": [
+        "Resubmit BF-B when fundamental_snapshot becomes available (PIT-safe income/balance/cashflow)",
+        "Monitor for next earnings announcement (no upcoming earnings in corporate_calendar)",
+        "Cross-check 8-K Item 2.05 (2025-01-14) with investor relations or press release when sec_8k_fulltext binary is available",
+        "Reassess if macro regime shifts from overheat to risk-on (would relax equity_discipline)",
+        "Track insider activity (Form 4) for CEO/CFO buying signals"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "veto",
+      "position_size_pct": 0.0,
+      "reason": "Hard fundamental gate failure (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available) + insufficient_evidence on fundamentals block both sleeves. Macro regime strict_quality_and_valuation_caution. No verified catalyst. Alternative data sparse. Fail-closed per rule \u00a713.4.",
+      "risk_notes": [
+        "fundamental_gate_38 tripped: rule_engine_recommended_action=no_trade",
+        "Macro regime overheat/moderately_restrictive limits equity to 20% allocation",
+        "Valuation moderate (PE 16, PB 3.17) but fundamentals insufficient for quality_long",
+        "No catalyst narrative (news_event_summary empty post-cutoff)",
+        "Alternative data corroboration absent (adapters not_connected)",
+        "Filing stub text cannot verify 8-K Item 2.05 content",
+        "Analyst sentiment mixed (hold-heavy); no institutional sponsorship signal",
+        "No insider buying (Form 4 shows 0 transactions in 90d)"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "fundamental_snapshot status=insufficient_evidence; narrative_price_gap_assessment not_evaluated; alternative_data adapters mostly not_connected"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": true,
+          "note": "fundamental_gate_38 failed on eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available; rule_engine_recommended_action=no_trade"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "fundamental_snapshot, narrative_price_gap_assessment, news_event_summary (0 items), alternative_data adapters (mostly not_connected)"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": false,
+          "note": "information_integrity_assessment status=ok; corroboration_status=T1_only; use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer not implemented)"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; no hindsight violations"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Check envelope: lookahead_safe=true, data_after_cutoff_used=false \u2192 proceed",
+        "2. Check fundamental_gate_38: passes=false, failed_gates=[eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available] \u2192 VETO",
+        "3. Check macro_regime: overheat/moderately_restrictive, equity_discipline=strict_quality_and_valuation_caution \u2192 restrict to quality_long only",
+        "4. Check fundamental_snapshot: status=insufficient_evidence \u2192 cannot confirm quality_long thesis",
+        "5. Check news_event_summary: status=data_unavailable, items_count=0 \u2192 no catalyst narrative",
+        "6. Check alternative_data_features: adapters mostly not_connected; wikipedia_pageviews shows normal activity (no meme spike) \u2192 no corroboration",
+        "7. Check sentiment_community_ownership_evidence: analyst ratings mixed (hold-heavy); ownership_positioning not_evaluated \u2192 no institutional sponsorship signal",
+        "8. Check filing_confirmation: 8-K Item 2.05 on 2025-01-14, stub text only \u2192 cannot verify content",
+        "9. Collapse to decision: insufficient_evidence + hard_risk_limit_breached \u2192 decision=veto, position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T0: Ingest evidence packet (ticker=BF-B, decision_timestamp=2025-03-03T09:30:00-05:00)",
+        "T1: Evaluate envelope: lookahead_safe=true, data_after_cutoff_used=false \u2192 PIT-safe",
+        "T2: Evaluate fundamental_gate_38: passes=false \u2192 hard veto triggered",
+        "T3: Evaluate macro_regime: overheat/moderately_restrictive, equity_discipline=strict_quality_and_valuation_caution \u2192 restrict equity to 20%",
+        "T4: Evaluate fundamental_snapshot: status=insufficient_evidence \u2192 cannot anchor quality_long thesis",
+        "T5: Evaluate news_event_summary: status=data_unavailable, items_count=0 \u2192 no catalyst narrative",
+        "T6: Evaluate alternative_data_features: wikipedia_pageviews (30-day window, normal activity), fmp_sentiment (mixed analyst ratings), most adapters not_connected \u2192 no corroboration",
+        "T7: Evaluate sentiment_community_ownership_evidence: analyst ratings 3 SB / 2 B / 11 H / 2 S / 3 SS (as of 2025-03-01), ownership_positioning not_evaluated \u2192 no institutional signal",
+        "T8: Evaluate filing_confirmation: 8-K Item 2.05 on 2025-01-14, sec_8k_fulltext stub mode \u2192 cannot verify content",
+        "T9: Evaluate corporate_calendar: no upcoming earnings/dividends near decision \u2192 no near-term catalyst",
+        "T10: Collapse to decision: insufficient_evidence + hard_risk_limit_breached + macro_regime_restrictive \u2192 decision=veto, position_size_pct=0.0"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-03T09:45:00-05:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0_2026_04_28",
+        "evidence_packet_hash": "sha256:6d893b2c482d5f56fe061ddff6226a4032533c48a113869e862fcc122e45c4d6"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show normal activity (30-day window, peak 276 views on 2025-02-26, current 148 on 2025-03-03); no abnormal retail attention detected.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "8-K Item 2.05 (2025-01-14) cannot be verified; sec_8k_fulltext is stub mode (binary not installed).",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "fundamental_snapshot status=insufficient_evidence; narrative_price_gap_assessment not_evaluated; alternative_data adapters mostly not_connected; hard fundamental gate failure blocks both sleeves.",
+      "sentiment_risk_adjustment_note": "Analyst ratings mixed (hold-heavy distribution); no sentiment spike detected. Sentiment is descriptor-only per \u00a711.13; cannot override hard gate failure.",
+      "ownership_risk_adjustment_note": "ownership_positioning not_evaluated; 13F/Form4/Def14A not wired. Form 4 shows 0 insider transactions in 90d lookback. No institutional sponsorship signal available.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional ownership data available (13F not_available_on_current_plan). Analyst ratings show mixed sentiment but are descriptor-only per \u00a711.13.",
+      "smart_money_benchmark_note": "No smart money positioning data available. Analyst ratings (mixed) are descriptor-only and cannot override hard fundamental gate failure.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-03T09:30:00-05:00",
+      "execution_timestamp": "2025-03-03T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:c45dbccb50b6cc91d99222d24332548e68fe157c40c3b3a1e77923f465938839",
+      "immutable_decision_flag": true
+    }
+  }
+}

@@ -1,0 +1,1292 @@
+{
+  "trigger_id": "b420968578ab",
+  "ticker": "HAS",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-04-14T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 229.23,
+  "trigger_cost_usd": 0.431107,
+  "cumulative_cost_usd": 4.917212,
+  "candidate_ranking_inputs": {
+    "ticker": "HAS",
+    "earliest_event_date": "2025-04-24",
+    "selection_reason": "earnings_window_14d",
+    "close": 53.35,
+    "t1_open": 53.04,
+    "t1_date": "2025-04-15"
+  },
+  "evidence_packet_hash": "sha256:60b34a7846e4e11ca3a7e33fc163a009ec01177cc978c64bcf617083f8ada760",
+  "locked_decision_id": "sha256:ff29fdb15ee4b6ef9ab46f4c56beff0b0592eb21bbd63db5450fc3fbd00698ae",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026_05_03_pass8_soft_reasoning",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "HAS",
+    "decision_timestamp": "2025-04-14T09:30:00-04:00",
+    "data_available_as_of": "2025-04-14T09:30:00-04:00",
+    "decision_or_assessment": "quality_long_entry_decision_post_tariff_selloff",
+    "confidence": "low",
+    "evidence_used": [
+      "fundamental_snapshot.snapshot_quarter (Q1 2025: revenue 887.1M, eps 0.71, op_margin 19.2%, net_margin 11.11%)",
+      "fundamental_snapshot.operating_cash_flow (138.1M positive)",
+      "fundamental_snapshot.free_cash_flow (124.3M positive)",
+      "corporate_calendar.earnings (recent beats: Feb 2025 eps 0.46 vs 0.38; Oct 2024 eps 1.73 vs 1.28)",
+      "corporate_calendar.dividends (0.7 quarterly, 4.4% yield)",
+      "price_snapshot.return_5d_pct (-3.56%)",
+      "price_snapshot.return_20d_pct (-12.96%)",
+      "news_event_summary (tariff-driven selloff, 2025-04-10)",
+      "macro_regime (Strengthening/Expansionary, equity_cap=30%)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01)",
+      "valuation_snapshot.valuation_inputs (PE negative TTM, PB 25.41, EV/EBITDA 70.51)",
+      "fundamental_gate_38 (passes: eps>0, op_margin>0, financial_health=sound)",
+      "upstream_agent_outputs (narrative_event, alt_data_verify, quality_long, risk)"
+    ],
+    "evidence_missing": [
+      "balance_sheet snapshot (total_assets, total_liabilities, total_equity, total_debt all null)",
+      "debt-to-equity verification (valuation_snapshot shows TTM=6.32, exceeds 3.0 gate threshold)",
+      "forward guidance on tariff impact quantification",
+      "ownership positioning data (13F, Form 4 not evaluated)",
+      "alternative data on consumer sentiment or retail traffic"
+    ],
+    "reasoning_summary": "HAS fails the \u00a73.8 hard fundamental gate on debt-to-equity: valuation_snapshot.debt_to_equity_ttm=6.32 exceeds the 3.0 threshold required for financial_health='sound'. Upstream quality_long agent explicitly recommends no_trade citing this gate failure. While recent operational performance is strong (Q1 2025 eps beat, positive FCF, consistent dividend), and analyst sentiment remains constructive (13 buy/strong-buy), the leverage profile and elevated valuation (PB 25.4, EV/EBITDA 70.5) do not support entry under strict quality-long discipline. The tariff-driven selloff (12-16% decline) appears macro/sector-driven rather than company-specific, but the combination of high leverage, expensive valuation, and unquantified tariff margin risk argues for no_trade pending balance-sheet verification and tariff impact quantification.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If debt-to-equity_ttm is corrected to \u22643.0 upon balance-sheet verification, gate would pass",
+      "If Q2 2025 earnings beat and management guides higher despite tariff commentary, thesis would strengthen",
+      "If tariff policy is reversed or exemptions granted for toy imports, near-term margin risk would diminish",
+      "If valuation multiples compress to 'fair' or 'attractive' range (PB <15, EV/EBITDA <40), entry risk would decrease"
+    ],
+    "risk_flags": [
+      "Hard-gate failure: debt-to-equity_ttm=6.32 exceeds 3.0 threshold for financial_health='sound'",
+      "Balance-sheet data absent: cannot independently verify debt levels or current_ratio",
+      "Valuation expensive: PB 25.4, EV/EBITDA 70.5 even post-12% selloff",
+      "TTM net margin negative (-6.86%) conflicts with recent quarter profitability (Q1 2025 +11.11%)",
+      "Tariff headwind unquantified: no company guidance on margin impact or mitigation",
+      "Macro regime strict_quality_and_valuation discipline disfavors elevated multiples",
+      "Upstream quality_long agent explicitly recommends no_trade due to gate failure"
+    ],
+    "suggested_improvements": [
+      "Obtain full balance-sheet snapshot to verify debt-to-equity independently",
+      "Retrieve management guidance on tariff mitigation strategy from next earnings call",
+      "Assess whether TTM window includes prior-year trough; clarify eps_ttm calculation",
+      "Compare HAS valuation multiples to sector peers (MAT, DECK, BOOT) to contextualize",
+      "Monitor Q2 2025 earnings for tariff impact quantification and forward guidance"
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "Balance-sheet fields (total_assets, total_liabilities, total_equity, total_debt) are null; cannot verify debt-to-equity independently"
+      },
+      {
+        "kind": "hard_gate_failure",
+        "severity": "critical",
+        "detail": "debt-to-equity_ttm=6.32 exceeds 3.0 threshold for financial_health='sound' per \u00a73.8"
+      },
+      {
+        "kind": "ttm_contradiction",
+        "severity": "warning",
+        "detail": "TTM net_margin_pct=-6.86% conflicts with Q1 2025 net_margin_pct=+11.11%; TTM window likely includes prior trough"
+      },
+      {
+        "kind": "valuation_expensive",
+        "severity": "warning",
+        "detail": "PB 25.41, EV/EBITDA 70.51 remain elevated despite 12-16% selloff; not 'attractive' or 'fair'"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The hard-gate rule (debt-to-equity \u2264 3.0) is binary and does not account for industry norms or leverage trends. However, per \u00a73.8 FAIL-CLOSED rules, the gate must be applied strictly. The absence of balance-sheet data prevents independent verification of the debt-to-equity ratio, but the TTM ratio from valuation_snapshot is present and exceeds the threshold. The contradiction between TTM negative earnings and recent-quarter positive earnings creates ambiguity, but the gate failure is mechanical and does not require resolution of this ambiguity.",
+    "recommended_followups": [
+      "Request full balance-sheet snapshot from FMP or SEC Edgar to verify debt levels",
+      "Obtain management guidance on tariff impact and mitigation from next earnings call",
+      "Reassess valuation multiples against historical ranges and peer group",
+      "Monitor Q2 2025 earnings for tariff impact quantification and forward guidance",
+      "Re-evaluate debt-to-equity ratio after next quarterly filing"
+    ],
+    "candidate_type": "quality_long",
+    "decision": "no_trade",
+    "position_size_pct": 0.0,
+    "reason": "HAS fails \u00a73.8 hard fundamental gate: debt-to-equity_ttm=6.32 exceeds 3.0 threshold. Upstream quality_long agent recommends no_trade. While recent ops strong (Q1 2025 beat, positive FCF) and analyst sentiment constructive (13 buy/strong-buy), leverage profile and expensive valuation (PB 25.4, EV/EBITDA 70.5) do not support entry. Tariff-driven selloff appears macro/sector-driven, but unquantified margin risk and balance-sheet data gaps argue for no_trade pending verification.",
+    "risk_notes": [
+      "Hard-gate failure on debt-to-equity_ttm=6.32 > 3.0 is mechanical and non-negotiable per \u00a73.8",
+      "Upstream quality_long agent explicitly recommends no_trade due to this gate failure",
+      "Risk agent passed all hard-veto conditions (sleeve_cap, lookahead, hindsight); no mechanical veto tripped",
+      "Advisory conditions (missing_data_persists, information_integrity) are present but do not override hard-gate failure",
+      "Valuation agent assesses HAS as expensive; margin-of-safety is low",
+      "Tariff narrative is vague per upstream narrative_event agent; lacks company-specific quantification"
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Current sleeve allocation not provided; assuming no breach. Quality-long entry does not mechanically breach \u00a74.7 equity cap (30% in Strengthening regime)."
+      },
+      {
+        "name": "position_size_cap_breach_4_7_4_8",
+        "tripped": false,
+        "note": "Candidate type is quality_long; surge-short cap check (\u00a74.8) is inapplicable. Quality-long sizing follows \u00a74.7 regime table; no position proposed (decision=no_trade)."
+      },
+      {
+        "name": "lookahead_data_used_5_13_c",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, lookahead_violations=[]. No lookahead veto triggered."
+      },
+      {
+        "name": "hindsight_violation_8_r1_r7",
+        "tripped": false,
+        "note": "No hindsight violations detected. All reasoning grounded in evidence available at decision_timestamp (2025-04-14T09:30:00-04:00)."
+      },
+      {
+        "name": "fundamental_hard_gate_3_8",
+        "tripped": true,
+        "note": "debt-to-equity_ttm=6.32 exceeds 3.0 threshold for financial_health='sound'. Gate FAILS. This is a hard-gate failure, not an advisory condition. Per \u00a73.8, when gate fields are PRESENT and fail, decision must be no_trade or veto."
+      }
+    ],
+    "rule_engine_path": [
+      "candidate_type=quality_long identified",
+      "\u00a73.8 hard fundamental gates evaluated: eps_ttm>0 (PASS), operating_margin_pct>0 (PASS), financial_health='sound' (FAIL: debt-to-equity_ttm=6.32 > 3.0)",
+      "Hard-gate failure on financial_health: decision forced to no_trade per \u00a73.8 FAIL-CLOSED rule",
+      "Valuation assessment: expensive (PB 25.4, EV/EBITDA 70.5) \u2014 does not meet 'attractive' or 'fair' requirement",
+      "Upstream quality_long agent recommends no_trade due to gate failure",
+      "Risk agent: all hard-veto conditions pass (sleeve_cap, lookahead, hindsight); no mechanical veto tripped",
+      "PM decision: no_trade (hard-gate failure + upstream recommendation + valuation expensive + tariff risk unquantified)"
+    ],
+    "decision_log": [
+      "2025-04-14T09:30:00-04:00 PM aggregation initiated for HAS quality_long candidate",
+      "Upstream agents read: narrative_event (vague catalyst), alt_data_verify (weakly_contradicted, needs_more_evidence), quality_long (no_trade), risk (hard-veto pass)",
+      "Fundamental gate 38 status: passes on eps>0, op_margin>0, but financial_health gate FAILS (debt-to-equity_ttm=6.32 > 3.0 threshold)",
+      "\u00a73.8 hard-gate failure is mechanical and non-negotiable: decision forced to no_trade",
+      "Valuation assessment: expensive (PB 25.4, EV/EBITDA 70.5); does not meet 'attractive' or 'fair' for buy gate",
+      "Upstream quality_long agent explicitly recommends no_trade citing debt-to-equity_ttm=6.32 > 3.0 hard-gate failure",
+      "Risk agent: all hard-veto conditions pass; no mechanical veto tripped; advisory conditions present but do not override hard-gate failure",
+      "Tariff narrative: vague per upstream narrative_event agent; lacks company-specific quantification; alt_data_verify recommends needs_more_evidence",
+      "Recent price action: -12.96% in 20d, -3.56% in 5d; appears macro/sector-driven (tariff uncertainty) rather than company-specific",
+      "Analyst sentiment: constructive (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01) but does not override hard-gate failure",
+      "Balance-sheet data absent: cannot independently verify debt-to-equity; TTM ratio from valuation_snapshot is present and exceeds threshold",
+      "PM decision: no_trade (hard-gate failure + upstream recommendation + valuation expensive + tariff risk unquantified + balance-sheet data gaps)",
+      "Position size: 0.0% (no_trade decision)",
+      "Execution plan: none (no_trade)"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-14T09:45:00-04:00",
+      "ticker": null,
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "evidence_packet_hash": "sha256:1bd05b405bfb20d89f36415460a85ddf48e6d36043c9d250caae38be9bd719ef"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": null,
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Hard-gate failure on debt-to-equity_ttm=6.32 > 3.0 threshold per \u00a73.8; no thesis confirmation allowed when fundamental gates fail",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": null,
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+    "execution_timestamp": "2025-04-14T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:8fdf59c93f49eb1ce4bda943d4742b673b791445251fd8b4c3f2e3b2491412b1",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification",
+      "confidence": "medium",
+      "evidence_used": [
+        "news_event_summary.items[0].title",
+        "news_event_summary.items[0].text_excerpt",
+        "news_event_summary.items[0].insights_for_ticker.sentiment",
+        "news_event_summary.items[1].title",
+        "news_event_summary.items[1].text_excerpt",
+        "news_event_summary.items[1].insights_for_ticker.sentiment",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.day_high",
+        "price_snapshot.day_low",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "fundamental_snapshot.snapshot_quarter.revenue",
+        "fundamental_snapshot.snapshot_quarter.net_income"
+      ],
+      "evidence_missing": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "news_event_summary.ndi_score",
+        "news_event_summary.catalyst_specificity_score",
+        "news_event_summary.trigger_article",
+        "alternative_data_features.retail_meme_attention",
+        "sentiment_community_ownership_evidence.ownership_positioning",
+        "information_integrity_assessment.primary_source_found"
+      ],
+      "reasoning_summary": "CATALYST IDENTIFICATION: The price action in HAS (Hasbro) on 2025-04-10 to 2025-04-14 is driven by a MACROECONOMIC / SECTOR-WIDE TARIFF SHOCK, not a company-specific event. Two news articles published 2025-04-10 (within the decision window) both cite tariff uncertainty as the primary headwind: (1) Motley Fool article 'These 5 Stocks Crashed as Tariff Reality Hits the Market' explicitly states 'Hasbro fell 9.8% as a result of the tariff-related uncertainty' and notes that 'higher import costs could put pressure on earnings and the overall economy'; (2) Investing.com article 'Are Tariffs Threatening Disney's Comeback Story?' identifies Disney's consumer products division (which includes licensed toys produced by Hasbro) as facing 'higher costs due to the tariffs, which may lead to price increases and suppressed demand.' SPECIFICITY ASSESSMENT: The catalyst is VAGUE in terms of company-specific claims. The articles do not cite: (a) a specific tariff rate or product category affected; (b) quantified impact on HAS margins or revenue; (c) a named customer or contract; (d) a specific filing date or regulatory action. Instead, the narrative relies on general sector exposure ('consumer goods stocks', 'import costs', 'supply chain'). The tariff shock is REAL and CONCRETE at the macro level (tariff policy is a documented fact), but the company-specific impact is UNQUANTIFIED and INDIRECT. PRICE ACTION CONTEXT: HAS declined 3.56% over 5 days (2025-04-09 to 2025-04-14), with a day-high of 52.17 and day-low of 49.08 on 2025-04-11, suggesting intraday volatility consistent with sector rotation. Wikipedia pageviews show a modest spike (31 views on 2025-03-29, 25 on 2025-03-28, declining to 15 by 2025-04-14), which does not indicate abnormal retail attention or meme-stock dynamics. FUNDAMENTAL CONTEXT: Q1 2025 earnings (accepted 2025-03-30) show revenue of $887.1M and net income of $98.6M, with EPS of $0.71 \u2014 these are recent and positive, but the tariff narrative suggests forward-looking margin compression risk. ABSENCE PATTERN: No SEC 8-K filing is present in the packet (filing_confirmation.status='not_evaluated'), no company press release is cited, and no official guidance revision is documented. The catalyst is entirely THIRD-PARTY NARRATIVE (news media) rather than company disclosure. This structural absence of official corroboration is consistent with a sector-wide macro shock rather than a company-specific catalyst. VERDICT: The catalyst is SUPPORTED by news evidence but VAGUE in specificity. It is a real macro headwind (tariffs are concrete policy), but the company's exposure is indirect and unquantified. This maps to the MACROECONOMIC / SECTOR RISK category in the taxonomy, not a company-specific catalyst.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If HAS issues an 8-K or press release quantifying tariff exposure and mitigation steps, the vague narrative would be upgraded to supported_claim.",
+        "If subsequent earnings guidance or analyst notes provide specific tariff impact estimates (e.g., 'X% margin headwind'), the catalyst would become more concrete.",
+        "If tariff policy is reversed or exemptions are granted for toy imports, the catalyst loses relevance.",
+        "If HAS stock rebounds sharply on sector-wide tariff relief news, the catalyst's explanatory power would be questioned."
+      ],
+      "risk_flags": [
+        "Macro-driven catalyst: HAS is a passive recipient of tariff shock, not an active driver. Limited company-specific mitigation levers visible in the narrative.",
+        "Unquantified impact: No specific margin or revenue impact disclosed. Investors are pricing in uncertainty, not a known cost.",
+        "Sector-wide contagion: Multiple consumer goods stocks (BOOT, DECK, MAT, NKE) are mentioned in the same articles, suggesting this is a sector rotation, not a HAS-specific story.",
+        "Absence of official disclosure: No 8-K, press release, or earnings guidance revision is present. The narrative is entirely third-party.",
+        "Wikipedia pageview spike is modest and declining: Does not suggest sustained retail attention or meme-stock dynamics.",
+        "Analyst sentiment remains stable: FMP sentiment data shows 5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01 (no recent downgrade visible in the packet)."
+      ],
+      "suggested_improvements": [
+        "Obtain SEC 8-K filings or press releases from HAS dated 2025-04-10 or later to confirm whether management has issued official guidance on tariff exposure.",
+        "Cross-reference tariff policy announcements (e.g., USTR statements, executive orders) with specific product categories (toys, games) to quantify HAS exposure.",
+        "Retrieve analyst reports or earnings call transcripts from 2025-04-14 or later to assess whether sell-side has revised estimates for tariff impact.",
+        "Monitor HAS supply chain disclosures (10-K Item 1A Risk Factors) to assess pre-existing tariff hedging or mitigation strategies.",
+        "Track competitor guidance (MAT, DECK, BOOT) to triangulate sector-wide tariff impact and isolate any HAS-specific factors."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; only 2 items retained within 7-day lookback window"
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "SEC 8-K adapter not wired in v1; no official company disclosure available to corroborate tariff narrative"
+        },
+        {
+          "kind": "ndi_score_unavailable",
+          "severity": "warning",
+          "detail": "news_event_summary.ndi_score is null; insufficient sources (n_sources=0) to compute narrative divergence; only 2 distinct articles available"
+        },
+        {
+          "kind": "alt_data_sparse",
+          "severity": "info",
+          "detail": "alternative_data_features: wikipedia_pageviews available but modest; retail_meme_attention not_evaluated; github_public failed (unmapped_ticker)"
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence is a v1 placeholder; no hedge fund positioning or insider trading data available"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet contains only 2 news articles within the decision window, both from third-party sources (Motley Fool, Investing.com) with no official company disclosure. The ndi_score is null due to insufficient sources (n_sources=0 < 2 required by \u00a723.2). This limits the agent's ability to assess narrative divergence or corroboration. The filing_confirmation block is not_evaluated, preventing verification of whether HAS has issued an official statement on tariff exposure. The alternative_data_features block is largely a placeholder in v1, with only wikipedia_pageviews available (modest spike, no meme-stock signal). The sentiment_community_ownership_evidence block provides analyst ratings (stable at 5 SB, 8 B, 3 H as of 2025-04-01) but no recent downgrades or insider selling. These gaps are structural to v1 and do not invalidate the catalyst classification, but they do limit confidence in assessing whether the tariff narrative is the primary driver vs. a secondary factor.",
+      "recommended_followups": [
+        "Retrieve HAS 8-K filings from 2025-04-10 onwards to confirm whether management has disclosed tariff exposure or mitigation plans.",
+        "Obtain earnings call transcript from HAS Q1 2025 earnings (if held after 2025-04-14) to assess management commentary on tariff headwinds.",
+        "Cross-reference USTR tariff announcements and product-level impact assessments to quantify HAS exposure (toys/games are typically subject to 25% tariffs under Section 301).",
+        "Monitor analyst downgrades or estimate revisions from 2025-04-14 onwards to assess sell-side consensus on tariff impact.",
+        "Track HAS stock price relative to sector peers (MAT, DECK, BOOT, NKE) to isolate company-specific vs. sector-wide factors."
+      ],
+      "catalyst_type": "macroeconomic_sector_shock",
+      "catalyst_specificity_score": 0.35,
+      "vague_narrative_flag": true,
+      "company_claim": "Hasbro is exposed to tariff-related cost pressures on imported toys and games, which may compress margins and suppress consumer demand. The company has not issued an official statement quantifying this exposure or mitigation steps. The narrative is entirely third-party (news media) and relies on general sector exposure rather than company-specific disclosures.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "macroeconomic_shock_sector_wide_tariff_policy",
+        "supply_chain_cost_pressure_unquantified",
+        "third_party_narrative_no_official_disclosure"
+      ],
+      "evidence_sufficiency": "partial",
+      "verdict": "vague"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03_AltDataVerification",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification: Tariff-driven consumer goods headwind narrative vs. alternative-data corroboration",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.items (2 articles on tariff impact)",
+        "price_snapshot.return_5d_pct (-3.56% decline)",
+        "price_snapshot.relative_volume_vs_20d (0.827, below average)",
+        "alternative_data_features.attention.wikipedia_pageviews (spike 2025-03-28 to 2025-03-29: 25-31 views)",
+        "fundamental_snapshot.snapshot_quarter (Q1 2025: revenue 887.1M, net_margin 11.11%)",
+        "corporate_calendar.earnings (recent beats: Feb 2025 EPS 0.46 vs 0.38 est; Oct 2024 EPS 1.73 vs 1.28 est)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings: 5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01)",
+        "information_integrity_assessment (T3=1, T4=2; low-tier only; pollution-defense layer unimplemented)"
+      ],
+      "evidence_missing": [
+        "SEC 8-K filing confirmation (filing_confirmation.status=not_evaluated; sec_8k_fulltext not wired)",
+        "Industry-specific consumer-traffic adapter (consumer_traffic_adapter not connected)",
+        "Retail store count or supply-chain disclosure (no alternative-data row)",
+        "Tariff-specific regulatory filing or company guidance update (no SEC filing post-cutoff)",
+        "GitHub or developer activity (not applicable to toy/consumer goods company; github_public returned 0 rows due to unmapped_ticker)",
+        "Ownership positioning data (sec_13f, sec_form4 not evaluated; no rows delivered)",
+        "OpenCLI web evidence (not connected in v1)"
+      ],
+      "reasoning_summary": "HAS (Hasbro) is a consumer goods / toy manufacturer facing a tariff-driven headwind narrative. Two news articles (Motley Fool, Investing.com) published 2025-04-10 cite tariff uncertainty as a driver of stock decline (9.8% fall cited). Price snapshot shows -3.56% 5-day return and below-average volume (0.827 vs 20d avg), consistent with a negative catalyst. Wikipedia pageviews show a modest spike (25-31 views on 2025-03-28 to 2025-03-29), but this is low absolute attention and does not indicate sustained retail or institutional interest. Analyst sentiment remains constructive (13 Buy/Strong Buy vs 3 Hold as of 2025-04-01), suggesting the tariff narrative has not yet triggered a consensus downgrade. Fundamental snapshot (Q1 2025) shows healthy revenue (887.1M) and positive net margin (11.11%), with recent earnings beats (Feb 2025 EPS beat by 21%, Oct 2024 by 35%). The narrative is plausible (tariffs do impact toy/consumer goods supply chains), but alternative-data corroboration is sparse: no SEC filing confirmation of tariff-specific guidance cut, no supply-chain disclosure, no regulatory filing, and no industry-specific adapter rows (consumer_traffic_adapter not wired). The information_integrity_assessment flags low-tier-only evidence (T3=1, T4=2) and notes that pollution-defense layer is unimplemented, forcing use_as_primary_signal_allowed=false. The absence of hard-to-fake evidence (SEC filing, supply-chain disclosure, regulatory action) relative to the public narrative is informative: for a surge_short candidate, structural absence of corroboration is bear-thesis input. However, the analyst consensus remains positive, and fundamentals remain solid, suggesting the market has not yet priced in a severe tariff impact. Confidence is low due to missing industry-specific alt-data and lack of official company guidance update.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Company issues 8-K or press release confirming tariff mitigation strategy or pricing power",
+        "Analyst consensus upgrades or maintains Buy ratings despite tariff commentary",
+        "Q2 2025 earnings beat expectations and management guides higher",
+        "Tariff policy reversal or exemption announced for toy/consumer goods imports",
+        "Supply-chain disclosure shows diversification away from tariff-exposed regions"
+      ],
+      "risk_flags": [
+        "Low-tier-only evidence (T3=1, T4=2); pollution-defense layer unimplemented per schema v1.1 decision #8",
+        "No SEC filing confirmation of tariff-specific guidance cut or warning",
+        "No industry-specific consumer-traffic or supply-chain adapter rows",
+        "Analyst consensus remains constructive (13 Buy/Strong Buy) despite negative news",
+        "Fundamentals remain solid (Q1 2025 revenue beat, positive margins, recent earnings beats)",
+        "Wikipedia pageviews spike is modest (25-31 views) and does not indicate sustained institutional attention",
+        "Volume below 20d average (0.827) suggests retail selling, not institutional capitulation",
+        "Tariff narrative is plausible but not yet corroborated by hard-to-fake evidence (SEC filing, supply-chain disclosure)"
+      ],
+      "suggested_improvements": [
+        "Wire consumer_traffic_adapter to capture retail foot-traffic or e-commerce signals for toy/consumer goods retailers",
+        "Implement supply-chain disclosure adapter to detect tariff-specific guidance or mitigation announcements",
+        "Enable sec_8k_fulltext to confirm whether company has issued tariff-related warnings or guidance cuts",
+        "Implement pollution-defense layer in information_integrity_assessment to distinguish coordinated campaigns from organic narrative",
+        "Add tariff-policy monitoring adapter to track regulatory changes that could invalidate the bear thesis",
+        "Enhance analyst-sentiment adapter to detect consensus downgrades or rating changes in response to tariff commentary"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "low_tier_only_evidence",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0 T2=0 T3=1 T4=2; pollution-defense layer unimplemented; use_as_primary_signal_allowed=false per schema v1.1 decision #8"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 not applicable to consumer goods company but flagged in manifest"
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext not wired; cannot confirm whether company issued tariff-related 8-K or press release"
+        },
+        {
+          "kind": "industry_adapter_not_connected",
+          "severity": "warning",
+          "detail": "consumer_traffic_adapter not connected; no retail foot-traffic or supply-chain signals available"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; only 2 items within cutoff window"
+        },
+        {
+          "kind": "analyst_sentiment_descriptor_only",
+          "severity": "info",
+          "detail": "fmp_sentiment rows are descriptor_only=true; not a gate or primary signal per \u00a711.13"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks industry-specific adapters for consumer goods / toy manufacturers. A consumer-traffic adapter (retail foot-traffic, e-commerce signals) would be highly relevant for validating tariff-impact narratives. Additionally, the pollution-defense layer is unimplemented in v1, forcing a fail-closed stance on low-tier-only evidence. The schema correctly flags this, but it limits the agent's ability to distinguish organic narrative from coordinated campaigns.",
+      "recommended_followups": [
+        "Await Q2 2025 earnings (expected ~July 2025) to see if tariff impact materializes in guidance or margins",
+        "Monitor for 8-K filing or press release from Hasbro addressing tariff mitigation or pricing strategy",
+        "Track analyst consensus for rating changes or target-price cuts in response to tariff commentary",
+        "Check for supply-chain disclosure or investor presentation slides addressing tariff exposure and mitigation",
+        "Monitor tariff policy developments (e.g., exemptions, negotiations) that could invalidate the bear thesis",
+        "Assess whether volume and price action stabilize or accelerate downward in coming weeks"
+      ],
+      "verdict": "weakly_contradicted",
+      "evidence_score": 0.35,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "medium",
+      "narrative_price_gap_assessment": "medium",
+      "narrative_price_gap_rationale": "The tariff-driven headwind narrative is plausible and supported by two news articles and a 3.56% 5-day price decline. However, alternative-data corroboration is sparse: analyst consensus remains constructive (13 Buy/Strong Buy), fundamentals remain solid (Q1 2025 revenue beat, positive margins, recent earnings beats), Wikipedia pageviews show only modest attention (25-31 views), and volume is below average (0.827 vs 20d avg). No SEC filing confirmation of tariff-specific guidance cut, no supply-chain disclosure, and no industry-specific adapter rows. The absence of hard-to-fake evidence relative to the public narrative suggests the market has not yet priced in a severe tariff impact, or the narrative is overblown. The gap between the negative news sentiment and the constructive analyst/fundamental backdrop is medium-sized, indicating moderate dislocation.",
+      "industry_template_used": "consumer_goods_retail_toy_manufacturing",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only industry-specific adapter that returned rows for HAS. Consumer_traffic_adapter, semiconductor_patent_adapter, biotech_clinical_adapter, bank_regulatory_adapter, airline_travel_adapter, energy_commodity_adapter, auto_mobility_adapter, and default_sec_gdelt_adapter were all not connected. OpenCLI was not invoked in v1. Wikipedia pageviews is a fallback attention metric and does not directly measure supply-chain or tariff-specific signals.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "No hard-to-fake signals present. SEC 8-K filing confirmation is absent (filing_confirmation.status=not_evaluated). No supply-chain disclosure, regulatory filing, or company guidance update. Analyst sentiment (T2 source) remains constructive but is descriptor-only per \u00a711.13 and cannot be used as a primary signal. Wikipedia pageviews (T5 equivalent) show modest spike but do not constitute hard-to-fake evidence of tariff impact. Fundamentals (Q1 2025 revenue, margins, earnings beats) are solid and do not support a severe tariff headwind narrative.",
+      "industry_specific_evidence_used": [
+        "Analyst sentiment (T2 source): 13 Buy/Strong Buy, 3 Hold as of 2025-04-01 \u2014 constructive despite tariff narrative",
+        "Fundamental snapshot (Q1 2025): revenue 887.1M, net_margin 11.11%, recent earnings beats (Feb 2025 EPS +21%, Oct 2024 +35%)",
+        "Price action: -3.56% 5-day return, volume 0.827 vs 20d avg (below average, consistent with retail selling not institutional capitulation)",
+        "Wikipedia pageviews: modest spike (25-31 views on 2025-03-28 to 2025-03-29), low absolute attention"
+      ],
+      "industry_specific_evidence_missing": [
+        "Consumer-traffic adapter (retail foot-traffic, e-commerce signals) \u2014 not connected",
+        "Supply-chain disclosure or tariff-mitigation announcement \u2014 no SEC filing confirmation",
+        "Tariff-policy monitoring adapter \u2014 not connected",
+        "Retail store count or inventory disclosure \u2014 no alternative-data row",
+        "Supplier press releases or manufacturing capacity announcements \u2014 no alternative-data row",
+        "Tariff-specific guidance cut or warning from company \u2014 no 8-K filing confirmation"
+      ],
+      "data_quality_warning": "low_tier_only_evidence; pollution_defense_layer_unimplemented; use_as_primary_signal_allowed=false per schema v1.1 decision #8",
+      "signals": [
+        {
+          "name": "news_sentiment_tariff_headwind",
+          "available": true,
+          "value": -0.8,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "price_5d_return",
+          "available": true,
+          "value": -3.56,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "volume_relative_to_20d_avg",
+          "available": true,
+          "value": 0.827,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_consensus_rating",
+          "available": true,
+          "value": 0.81,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "q1_2025_revenue_beat",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "q1_2025_net_margin",
+          "available": true,
+          "value": 11.11,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "wikipedia_pageviews_spike",
+          "available": true,
+          "value": 25.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "sec_8k_filing_confirmation",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "supply_chain_disclosure",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "tariff_policy_monitoring",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [
+        {
+          "claim": "Tariff uncertainty is weighing on consumer goods stocks, including Hasbro",
+          "claim_type": "other",
+          "source_tier": "T4"
+        },
+        {
+          "claim": "Hasbro fell 9.8% as a result of tariff-related uncertainty",
+          "claim_type": "other",
+          "source_tier": "T4"
+        },
+        {
+          "claim": "Disney's consumer products division, which includes licensed toys produced by Hasbro, is facing higher costs due to tariffs",
+          "claim_type": "other",
+          "source_tier": "T4"
+        }
+      ],
+      "claim_verification_status": "partially_corroborated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 1,
+        "T4": 2,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": true,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment: low_tier_only (T3=1, T4=2); pollution-defense layer unimplemented in v1; use_as_primary_signal_allowed=false per schema v1.1 decision #8",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": "pollution_risk_high",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "filing_confirmation.sec_8k_fulltext",
+        "alternative_data_features.consumer_traffic_adapter",
+        "alternative_data_features.supply_chain_disclosure_adapter",
+        "sentiment_community_ownership_evidence.sec_13f",
+        "sentiment_community_ownership_evidence.sec_form4"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Evidence Classifier",
+      "schema_version": "network_effect_agent_output_v1.4",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews (30-day trajectory, peak 31 views on 2025-03-29)",
+        "news_event_summary.items (2 articles, tariff-related negative sentiment, published 2025-04-10)",
+        "fundamental_snapshot.snapshot_quarter (Q1 2025: revenue 887.1M, net_margin 11.11%, operating_margin 19.23%)",
+        "price_snapshot.return_5d_pct (-3.56%), return_20d_pct (-12.96%)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings stable: 5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01)",
+        "corporate_calendar (consistent quarterly earnings, stable 0.7 dividend)"
+      ],
+      "evidence_missing": [
+        "github_public (unmapped_ticker \u2014 no developer ecosystem data available)",
+        "SEC-disclosed operating metrics for network-effect indicators (DAU/MAU, take-rate, marketplace GMV, seller cohort retention, ARPU)",
+        "Layer 1 hard-to-fake evidence (cryptographic/regulator-attested developer activity or operating metrics)",
+        "Patent activity (adapter deferred per R-NETWORK-10)",
+        "alternative_data_features.tech_activity (github_public failed; no developer community metrics)",
+        "filing_confirmation (not_evaluated \u2014 no 8-K or press release confirmation wired)"
+      ],
+      "reasoning_summary": "HAS (Hasbro) is a consumer goods / toy manufacturer with no meaningful network-effect economics. The three-layer framework yields: Layer 1 (hard-to-fake evidence) is EMPTY \u2014 no GitHub developer ecosystem (unmapped ticker), no SEC-disclosed operating metrics claiming network dynamics (Hasbro reports traditional toy/entertainment revenue, not platform/marketplace metrics). Layer 2 (attention) shows modest Wikipedia pageview activity (peak 31 views on 2025-03-29, baseline 5\u201312 views) and two recent news articles (2025-04-10) focused on tariff headwinds, not platform growth. Layer 3 (financials) shows stable Q1 2025 fundamentals (11.11% net margin, 19.23% operating margin, 887.1M revenue) with consistent analyst sentiment (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01) \u2014 but these reflect traditional toy/entertainment economics, not network compounding. The stock declined 3.56% over 5 days and 12.96% over 20 days, driven by tariff uncertainty (negative news sentiment), not platform dynamics. Hasbro's business model is licensing, manufacturing, and distribution of toys and entertainment IP \u2014 fundamentally a supply-chain and brand-driven business, not a network-effect platform. No cohort imbalance, no ecosystem lock-in, no pricing power from user-attracts-user dynamics. The Layer-2-only attention spike (Wikipedia + news) is textbook narrative pollution per R-NETWORK-09 \u2014 tariff headlines are cyclical macro noise, not evidence of network compounding. Classification: ABSENT (no Layer 1, Layer 2 is noise, Layer 3 is traditional business). Network effect evidence: ABSENT.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If Hasbro were to disclose a digital platform (e.g., marketplace, developer ecosystem, user-generated content network) with DAU/MAU growth and take-rate expansion in a 10-K/10-Q, Layer 1 evidence would materialize and classification would upgrade to at least 'emerging'.",
+        "If GitHub activity were mapped to HAS (currently unmapped), and showed sustained developer ecosystem growth, Layer 1 would be populated and classification would shift.",
+        "If Wikipedia pageview spike (2025-03-28 to 2025-03-29: 25\u201331 views) were corroborated by Layer 1 evidence (e.g., SEC disclosure of platform metrics), the classification would upgrade from 'narrative_hype' to 'emerging' or higher."
+      ],
+      "risk_flags": [
+        "Layer 1 completely absent \u2014 no developer ecosystem, no SEC-disclosed operating metrics claiming network dynamics.",
+        "Layer 2 attention is tariff-driven macro noise, not platform growth narrative \u2014 Wikipedia spike and news articles are cyclical, not structural.",
+        "Ticker unmapped in GitHub adapter \u2014 no developer community data available; this is structural absence, not data unavailability.",
+        "Hasbro's business model (toy manufacturing, IP licensing, distribution) has no inherent network-effect mechanics; pricing power derives from brand and IP, not user-attracts-user dynamics.",
+        "Analyst sentiment is stable and positive (5 SB, 8 B, 3 H) but reflects traditional toy/entertainment fundamentals, not network compounding.",
+        "Stock price decline (5d: -3.56%, 20d: -12.96%) is driven by tariff headwinds, not platform dynamics or network disconfirmation."
+      ],
+      "suggested_improvements": [
+        "If Hasbro launches a digital platform (e.g., user-generated content, marketplace, developer API), wire GitHub and SEC-operating-metrics adapters to capture Layer 1 evidence.",
+        "Clarify whether Hasbro's licensing partnerships (e.g., Disney, entertainment studios) constitute a two-sided marketplace; if so, request SEC disclosure of partner cohort retention and take-rate trajectory.",
+        "Monitor for any pivot toward digital/metaverse gaming or NFT-based IP licensing; such a shift would introduce genuine network-effect candidates.",
+        "Distinguish between tariff-driven price pressure (macro cyclical) and platform-growth narratives (structural); current news is the former, not evidence of network dynamics."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "github_public: unmapped_ticker \u2014 no developer ecosystem data; SEC-disclosed operating metrics do not claim network-effect indicators (DAU/MAU, take-rate, marketplace GMV, seller retention, ARPU)."
+        },
+        {
+          "kind": "layer_2_only_pollution",
+          "severity": "warning",
+          "detail": "Wikipedia pageview spike (2025-03-28 to 2025-03-29: 25\u201331 views) and news articles (2025-04-10, tariff-focused) are Layer 2 attention signals without Layer 1 corroboration; per R-NETWORK-09, this is narrative_hype pattern."
+        },
+        {
+          "kind": "adapter_unmapped",
+          "severity": "warning",
+          "detail": "github_public adapter returned 0 rows with error_class=unmapped_ticker; structural absence, not temporary data unavailability."
+        },
+        {
+          "kind": "news_sentiment_macro_driven",
+          "severity": "info",
+          "detail": "2 news articles (2025-04-10) focus on tariff impact on consumer goods supply chain, not platform/ecosystem growth; sentiment is negative but cyclical, not structural disconfirmation of network effect."
+        },
+        {
+          "kind": "analyst_sentiment_stable",
+          "severity": "info",
+          "detail": "FMP sentiment: 5 Strong Buy, 8 Buy, 3 Hold (as of 2025-04-01); stable over 12+ months; reflects traditional toy/entertainment fundamentals, not network compounding."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The three-layer framework correctly identifies HAS as absent-network-effect by design: Layer 1 is empty (no GitHub, no SEC operating metrics), Layer 2 is noise (tariff headlines), Layer 3 is traditional business. The framework's semantic ceiling (no L1 \u2192 no 'strong'; L2-only \u2192 'narrative_hype' or 'weak') is correctly applied. No schema weakness; the absence of Layer 1 evidence is the correct descriptor for a non-platform business.",
+      "recommended_followups": [
+        "Monitor Hasbro's investor relations for any disclosure of digital platform initiatives, marketplace metrics, or developer ecosystem programs.",
+        "If Hasbro announces a metaverse/gaming pivot or digital IP licensing platform, re-run network-effect analysis with updated Layer 1 evidence.",
+        "Distinguish between tariff-driven cyclical pressure and structural platform dynamics in future news-driven assessments.",
+        "Consider whether Hasbro's licensing partnerships (Disney, entertainment studios) could be reframed as a two-sided marketplace; if so, request SEC disclosure of partner cohort metrics."
+      ],
+      "network_effect_score": 5,
+      "network_effect_evidence": "absent",
+      "pricing_power_assessment": "medium",
+      "key_signals_used": [
+        "Wikipedia pageviews: 30-day trajectory, peak 31 views (2025-03-29), baseline 5\u201312 views \u2014 modest attention, not sustained spike.",
+        "News sentiment: 2 articles (2025-04-10), tariff-focused, negative sentiment \u2014 macro cyclical, not platform growth.",
+        "Analyst ratings: 5 Strong Buy, 8 Buy, 3 Hold (2025-04-01) \u2014 stable, positive, but reflects traditional toy/entertainment fundamentals.",
+        "Fundamentals: Q1 2025 revenue 887.1M, net margin 11.11%, operating margin 19.23% \u2014 healthy but traditional business metrics.",
+        "Price action: 5d return -3.56%, 20d return -12.96% \u2014 driven by tariff headwinds, not platform dynamics.",
+        "GitHub: unmapped_ticker, 0 rows \u2014 structural absence of developer ecosystem data."
+      ],
+      "key_signals_missing": [
+        "Layer 1 hard-to-fake evidence: GitHub developer ecosystem (commits, forks, contributors, dependent repos, PR cadence) \u2014 ABSENT.",
+        "Layer 1 hard-to-fake evidence: SEC-disclosed operating metrics (DAU/MAU, take-rate, marketplace GMV, seller cohort retention, ARPU) \u2014 NOT DISCLOSED.",
+        "Layer 1 hard-to-fake evidence: Patent activity (deferred per R-NETWORK-10) \u2014 NOT EVALUATED.",
+        "Layer 2 corroborative attention: sustained Wikipedia pageview growth or news frequency spike corroborating platform narrative \u2014 NOT PRESENT (tariff noise instead).",
+        "Layer 3 financial confirmation: revenue growth trajectory, operating margin expansion, FCF scaling driven by network compounding \u2014 NOT EVIDENT (traditional toy/entertainment economics).",
+        "Two-sided marketplace cohort metrics: partner/seller retention, take-rate trajectory, cohort imbalance signals \u2014 NOT DISCLOSED."
+      ],
+      "classification": "absent",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "Wikipedia pageviews: 30-day trajectory shows modest baseline (5\u201312 views) with peak on 2025-03-28 to 2025-03-29 (25\u201331 views); spike is small in absolute terms and lacks Layer 1 corroboration.",
+        "News articles: 2 items published 2025-04-10 (Motley Fool, Investing.com) focus on tariff impact on consumer goods supply chain; sentiment is negative but cyclical (macro), not platform-growth narrative."
+      ],
+      "layer_3_evidence": [
+        "Fundamental snapshot Q1 2025: revenue 887.1M, net income 98.6M, operating income 170.7M, net margin 11.11%, operating margin 19.23% \u2014 healthy traditional business metrics, no evidence of network-driven margin expansion or revenue acceleration.",
+        "Price action: 5d return -3.56%, 20d return -12.96% \u2014 decline driven by tariff uncertainty (negative news sentiment), not platform disconfirmation or network-effect collapse."
+      ],
+      "type_direct_vs_two_sided": "none",
+      "staleness_flags": [
+        "fmp_sentiment data as_of 2025-04-01 is 13 days before decision_timestamp (2025-04-14); within 30-day freshness window but trending toward stale.",
+        "Wikipedia pageviews data as_of 2025-04-14 is current (same day as decision_timestamp); not stale.",
+        "News articles published 2025-04-10 are 4 days before decision_timestamp; within freshness window."
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "valuation_assessment_emitted",
+      "confidence": "medium",
+      "evidence_used": [
+        "valuation_snapshot.valuation_inputs (TTM ratios)",
+        "fundamental_snapshot.snapshot_quarter (Q1 2025 PIT-safe income statement)",
+        "price_snapshot.last_eod_close (52.04 as of 2025-04-11)",
+        "macro_regime.regime_label (Strengthening / Expansionary)",
+        "corporate_calendar.earnings (recent beats: Q1 2025 EPS 0.71 vs est 0.38; Q4 2024 EPS 1.73 vs est 1.28)",
+        "news_event_summary (tariff-related negative sentiment, 2025-04-10)",
+        "fundamental_gate_38 (passes: eps>0, op_margin>0, financial_health=sound)"
+      ],
+      "evidence_missing": [
+        "balance_sheet snapshot (total_assets, total_liabilities, total_equity null in fundamental_snapshot)",
+        "forward P/E or analyst consensus earnings estimates",
+        "historical price-to-book trend (single snapshot P/B=25.41 without context)",
+        "sector-specific valuation benchmarks for consumer discretionary / toys",
+        "detailed tariff impact quantification on margins or guidance"
+      ],
+      "reasoning_summary": "HAS exhibits a critical valuation contradiction: TTM P/E is negative (-42.44) due to negative TTM net margin (-6.86%), yet the most recent PIT-safe quarterly snapshot (Q1 2025, accepted 2025-03-30) shows positive earnings (EPS 0.71, net_income 98.6M, net_margin 11.11%). This is case (a) per the ratio-undefined-vs-field-absent distinction: the underlying TTM inputs are present and reveal a nonpositive denominator (negative net margin), which is a REAL bearish finding, not a data gap. The TTM negative earnings signal is material and contradicts the recent quarter's profitability. This suggests either (i) prior-year quarters in the TTM window were deeply unprofitable, or (ii) TTM data is stale relative to the Q1 2025 turnaround. The recent earnings beats (Q1 EPS 0.71 vs 0.38 est; Q4 2024 EPS 1.73 vs 1.28 est) and strong revenue growth (Q1 revenue 887M vs 755M est) indicate operational recovery. However, P/B of 25.41 is structurally elevated for a consumer discretionary company, and EV/EBITDA of 70.51 is extremely high, suggesting the market is pricing in significant future growth or recovery premium. The stock has declined 12.96% over 20 days and 3.56% over 5 days, with negative news (tariff uncertainty) published 2025-04-10. Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline, which argues for caution on elevated multiples. The dividend yield of ~4.4% provides some downside cushion. Given the contradiction between TTM negative earnings and recent quarterly profitability, the elevated absolute multiples (P/B, EV/EBITDA), and the recent tariff-driven selloff, the valuation is assessed as expensive on a TTM basis, though the recent operational turnaround and strong beats suggest the TTM data may be lagging. The margin-of-safety is low given the elevated multiples and macro headwinds.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If Q2 2025 earnings miss consensus or guidance is withdrawn due to tariff impact, valuation would reset sharply lower",
+        "If TTM data is confirmed to reflect genuine operational distress (not just prior-year trough), the negative P/E becomes a structural profitability concern",
+        "If tariff costs materially compress gross margins below 70%, the dividend may be at risk and valuation would compress",
+        "If the stock rallies above 60 on momentum, the valuation becomes very_expensive and entry risk increases"
+      ],
+      "risk_flags": [
+        "TTM P/E negative (-42.44) due to negative TTM net margin (-6.86%) \u2014 case (a) real finding, not data gap",
+        "Contradiction between TTM negative earnings and Q1 2025 positive earnings (EPS 0.71) \u2014 suggests TTM window includes prior unprofitable quarters",
+        "P/B of 25.41 is structurally elevated for consumer discretionary; no balance-sheet snapshot to assess equity quality",
+        "EV/EBITDA of 70.51 is extremely high; implies market pricing in significant recovery or growth premium",
+        "Tariff uncertainty (published 2025-04-10) creates near-term earnings risk; consumer goods companies face margin pressure",
+        "Stock down 12.96% in 20 days; recent selloff may reflect tariff concerns not yet quantified in guidance",
+        "Debt-to-equity TTM of 6.32 is elevated; leverage risk if earnings deteriorate",
+        "Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline \u2014 elevated multiples are disfavored",
+        "No forward P/E or analyst consensus estimates available to assess relative valuation"
+      ],
+      "suggested_improvements": [
+        "Obtain forward P/E and analyst consensus earnings estimates for FY2025 and FY2026 to assess whether current multiples are justified by growth expectations",
+        "Retrieve balance-sheet snapshot (total_assets, total_liabilities, total_equity) to assess P/B validity and equity quality",
+        "Quantify tariff impact on gross margins and COGS; model scenario analysis for 5%, 10%, 15% tariff cost increases",
+        "Compare HAS P/B and EV/EBITDA to sector peers (MAT, DECK, BOOT) to contextualize valuation within consumer discretionary",
+        "Clarify TTM window: confirm which quarters are included in TTM net margin calculation and whether prior-year trough is driving negative TTM P/E",
+        "Monitor Q2 2025 earnings date and pre-announce guidance for tariff impact confirmation"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ratio_undefined_case_a",
+          "severity": "warning",
+          "detail": "P/E is negative (-42.44) due to negative TTM net margin (-6.86%); this is a real bearish finding (case a), not a data gap. Underlying inputs present and reveal nonpositive denominator."
+        },
+        {
+          "kind": "fundamental_contradiction",
+          "severity": "warning",
+          "detail": "TTM net margin is -6.86% (negative earnings), but Q1 2025 PIT-safe snapshot shows net margin +11.11% (positive earnings). TTM window likely includes prior unprofitable quarters; data is not stale but reflects historical trough."
+        },
+        {
+          "kind": "balance_sheet_missing",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.balance_sheet is null; total_assets, total_liabilities, total_equity unavailable. P/B ratio of 25.41 cannot be validated without equity snapshot."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios, not PIT-safe; used for descriptive assessment only, not as hard gate."
+        },
+        {
+          "kind": "forward_estimates_missing",
+          "severity": "warning",
+          "detail": "No forward P/E, forward earnings estimates, or analyst consensus available; cannot assess relative valuation or growth-adjusted multiples."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The case (a) vs case (b) distinction for ratio-undefined is correctly applied here: P/E is undefined due to negative TTM net margin (nonpositive denominator), which is a real bearish signal, not a data absence. However, the contradiction between TTM negative earnings and recent quarterly positive earnings creates ambiguity about whether the TTM data reflects genuine operational distress or a lagging window that includes a prior trough. The schema does not provide a 'TTM_includes_prior_trough' flag to disambiguate. A future enhancement would be to include TTM window composition (which quarters are included) and a flag indicating whether the most recent quarter is materially different from the TTM average.",
+      "recommended_followups": [
+        "Obtain Q2 2025 earnings date and pre-announce guidance to confirm tariff impact and validate Q1 turnaround sustainability",
+        "Retrieve analyst consensus forward earnings and P/E to assess whether 25.41 P/B and 70.51 EV/EBITDA are justified by growth",
+        "Compare HAS valuation multiples to MAT, DECK, BOOT, NKE to contextualize within consumer discretionary sector",
+        "Monitor tariff policy developments and quantify impact on COGS and gross margins",
+        "Assess dividend sustainability if tariff costs compress margins; current 4.4% yield may be at risk"
+      ],
+      "valuation_score": 35,
+      "valuation_assessment": "expensive",
+      "margin_of_safety_assessment": "low",
+      "valuation_inputs_used": {
+        "pe_ratio_ttm": -42.44198200992556,
+        "pe_ratio_status": "undefined_due_to_negative_ttm_net_margin",
+        "peg_ratio": 0.13635734875540503,
+        "price_to_sales": 2.9316960591751218,
+        "price_to_book": 25.41001857010213,
+        "ev_to_ebitda": 70.50830547056296,
+        "roe_ttm": -0.5473916549938452,
+        "roa_ttm": -0.05806916426512968,
+        "debt_to_equity_ttm": 6.315877437325906,
+        "gross_margin_pct_ttm": 70.26,
+        "net_margin_pct_ttm": -6.86,
+        "net_margin_pct_q1_2025_pit_safe": 11.11,
+        "eps_q1_2025_pit_safe": 0.71,
+        "last_eod_close": 52.04,
+        "dividend_yield_recent": 4.396294551734966,
+        "macro_regime": "Strengthening / Expansionary",
+        "equity_discipline": "strict_quality_and_valuation",
+        "recent_earnings_beats": "Q1 2025 EPS 0.71 vs 0.38 est; Q4 2024 EPS 1.73 vs 1.28 est",
+        "recent_price_action": "down 12.96% in 20d, down 3.56% in 5d",
+        "recent_news_sentiment": "negative (tariff uncertainty, 2025-04-10)"
+      },
+      "valuation_inputs_missing": [
+        "forward_pe_ratio",
+        "analyst_consensus_earnings_estimates",
+        "balance_sheet_snapshot (total_equity for P/B validation)",
+        "sector_peer_valuation_multiples",
+        "ttm_window_composition (which quarters included)",
+        "fcf_yield (fcf_yield is null in valuation_snapshot)",
+        "ev_to_ebit (ev_to_ebit is null in valuation_snapshot)"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Agent",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long thesis evaluation for Hasbro (HAS) following tariff-driven selloff",
+      "confidence": "medium",
+      "evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (Q1 2025: revenue 887.1M, operating_income 170.7M, operating_margin 19.2%, eps 0.71)",
+        "fundamental_snapshot.operating_cash_flow (138.1M positive last quarter)",
+        "fundamental_snapshot.free_cash_flow (124.3M positive)",
+        "corporate_calendar.earnings (4 recent beats: Feb 2025 eps 0.46 vs 0.38 est; Oct 2024 eps 1.73 vs 1.28 est)",
+        "corporate_calendar.dividends (consistent 0.7 quarterly, 4.4% yield)",
+        "price_snapshot.return_5d_pct (-3.56% recent decline)",
+        "price_snapshot.return_20d_pct (-12.96% recent decline)",
+        "news_event_summary (tariff-driven selloff narrative from Motley Fool and Investing.com)",
+        "macro_regime (Strengthening/Expansionary, stress_score=1, equity_discipline=strict_quality_and_valuation)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings: 5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01)",
+        "valuation_snapshot.valuation_inputs (PE negative due to TTM net margin -6.86%, but PB 25.4, EV/EBITDA 70.5)"
+      ],
+      "evidence_missing": [
+        "Balance sheet snapshot (total_assets, total_liabilities, total_equity, total_debt all null in fundamental_snapshot)",
+        "Debt-to-equity ratio for financial_health gate (valuation_snapshot shows debt_to_equity_ttm=6.32, exceeds 3.0 threshold)",
+        "TTM operating margin (only Q1 2025 operating_margin_pct available; TTM not in snapshot)",
+        "Alternative data on franchise health (consumer sentiment, retail traffic, brand strength)",
+        "Ownership positioning data (13F, Form 4, Def 14A not evaluated)",
+        "Detailed tariff impact quantification (news narrative only, no company guidance)",
+        "Forward guidance or management commentary on tariff mitigation"
+      ],
+      "reasoning_summary": "Hasbro exhibits strong recent operational performance (Q1 2025 revenue beat, positive operating income, positive FCF, consistent dividend) and analyst support (13 buy/strong-buy vs 3 hold). The 12-16% recent selloff appears macro/sector-driven (tariff uncertainty on consumer goods) rather than company-specific deterioration. However, the quality-long thesis faces a critical hard-gate failure: debt-to-equity_ttm=6.32 exceeds the 3.0 threshold required for financial_health='sound'. Additionally, TTM net margin is negative (-6.86%), which conflicts with the eps_ttm>0 gate requirement when interpreted strictly on a TTM basis. The most recent quarter (Q1 2025) shows positive eps (0.71) and strong operating margin (19.2%), but the TTM aggregation appears distorted by prior-year weakness. Valuation is expensive on traditional metrics (PB 25.4, EV/EBITDA 70.5) despite the selloff. The franchise (toys, entertainment licensing) remains intact, but leverage and valuation do not support a 'buy' recommendation under strict fail-closed rules.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Debt-to-equity_ttm=6.32 exceeds hard gate threshold of 3.0 (financial_health gate fails)",
+        "TTM net margin is negative (-6.86%), suggesting TTM eps may not be strictly positive when properly calculated",
+        "Valuation remains expensive (PB 25.4, EV/EBITDA 70.5) even after 12-16% decline; not 'attractive' or 'fair'",
+        "Balance sheet data absent; cannot independently verify debt levels or liquidity",
+        "Tariff impact on earnings not yet quantified; risk of margin compression if tariffs persist"
+      ],
+      "risk_flags": [
+        "High leverage: debt-to-equity_ttm=6.32 (well above 3.0 threshold); financial distress risk if revenue declines",
+        "Negative TTM net margin (-6.86%); recent quarter profitability may not be sustainable",
+        "Valuation multiple compression needed: PB 25.4 and EV/EBITDA 70.5 are elevated even post-selloff",
+        "Tariff headwind: consumer goods import costs rising; margin pressure likely unless passed to consumers",
+        "Cyclical exposure: toy/entertainment licensing sensitive to consumer discretionary spending and economic slowdown",
+        "Missing balance sheet data: cannot assess current ratio, working capital, or debt maturity profile"
+      ],
+      "suggested_improvements": [
+        "Obtain full balance sheet snapshot (total_assets, total_liabilities, total_equity, total_debt) to verify debt-to-equity and current_ratio independently",
+        "Calculate TTM eps and operating_margin from quarterly filings to confirm gate compliance",
+        "Gather management guidance on tariff mitigation (pricing power, supply chain diversification, cost reduction)",
+        "Assess consumer sentiment and retail traffic trends (alt-data) to validate franchise health claim",
+        "Compare valuation multiples to historical ranges and peer group to determine if 'attractive' or 'fair' is justified",
+        "Monitor next earnings call for tariff impact quantification and forward guidance"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "Balance sheet fields (total_assets, total_liabilities, total_equity, total_debt) are null; cannot independently verify debt-to-equity or current_ratio"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "Valuation_snapshot uses TTM ratios (not PIT-safe); TTM net_margin_pct=-6.86% conflicts with positive eps_ttm gate requirement"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped post-cutoff; only 2 items available (both tariff-related, published 2025-04-10)"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public adapter failed (unmapped_ticker); no tech/developer community data available"
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "info",
+          "detail": "Ownership positioning (13F, Form 4) not evaluated; cannot assess smart-money support or crowding"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The hard-gate rule (debt-to-equity <= 3.0) is binary and does not account for industry norms (consumer discretionary/toys may have higher leverage). However, per \u00a73.8 FAIL-CLOSED rules, the gate must be applied strictly. The TTM net margin being negative while recent-quarter eps is positive creates ambiguity in the eps_ttm>0 gate; the rule engine should clarify whether TTM is calculated from quarterly filings or from a rolling 4-quarter sum. The absence of balance sheet data is a critical gap that prevents independent verification of the debt-to-equity ratio.",
+      "recommended_followups": [
+        "Request full balance sheet snapshot from FMP or SEC Edgar to verify debt levels and financial_health classification",
+        "Obtain management guidance on tariff impact and mitigation strategy from next earnings call or investor relations",
+        "Reassess valuation multiples (PB, EV/EBITDA) against historical ranges and peer group to determine if 'attractive' or 'fair' is justified",
+        "Monitor consumer sentiment and retail traffic trends (alt-data) to validate franchise health and demand resilience",
+        "Re-evaluate debt-to-equity ratio after next quarterly filing to confirm whether leverage is improving or deteriorating"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "argues_against_long",
+      "network_effect_evidence": "partial",
+      "valuation_assessment": "expensive",
+      "selloff_origin_view": "macro",
+      "thesis_status": "partially_invalidated",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "no_trade",
+      "initial_position_pct": 0.0,
+      "max_position_pct": 5.0,
+      "missing_data_warnings": [
+        "Balance sheet snapshot (total_assets, total_liabilities, total_equity, total_debt) is null; cannot verify debt-to-equity or current_ratio independently",
+        "TTM operating_margin_pct not provided; only Q1 2025 operating_margin_pct (19.2%) available",
+        "Forward guidance on tariff impact not available; only news narrative provided",
+        "Ownership positioning (13F, Form 4, Def 14A) not evaluated; cannot assess institutional or insider support",
+        "Alternative data on consumer sentiment, retail traffic, or brand strength not available"
+      ],
+      "audit_rationale": "HAS fails hard-gate financial_health due to debt-to-equity_ttm=6.32 (exceeds 3.0 threshold). TTM net margin is negative (-6.86%), creating ambiguity on eps_ttm>0 gate. Recent quarter (Q1 2025) shows strong ops (eps 0.71, op_margin 19.2%, positive FCF), but TTM aggregation is distressed. Valuation is expensive (PB 25.4, EV/EBITDA 70.5) despite 12-16% selloff. Tariff-driven selloff appears macro/sector-driven, not company-specific, but leverage and valuation do not support buy. Recommend no_trade pending balance sheet verification and tariff impact quantification."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "hard_veto_evaluation_pass8",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "candidate_type",
+        "macro_regime.equity_allocation_cap",
+        "fundamental_gate_38.passes"
+      ],
+      "evidence_missing": [
+        "current_sleeve_equity_allocation_pct",
+        "current_surge_short_position_pct",
+        "current_single_position_pct"
+      ],
+      "reasoning_summary": "Pass 8 hard-veto evaluation for HAS candidate packet. Candidate type not specified in packet; assuming quality_long per context. Evaluated five veto conditions per \u00a75.13: (a) sleeve cap breach \u2014 no current sleeve data provided, cannot evaluate; (b) surge-short cap breach \u2014 not applicable (candidate_type=quality_long); (c) critical data quality flags \u2014 none present; (d) anti-pollution integrity veto \u2014 information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence', reason='pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'). Per \u00a75.13(d) relaxation (2026-05-06), when pollution_defense_layer is unimplemented or returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, the veto does NOT trip. The candidate evaluates on other criteria. (e) lookahead veto \u2014 envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, no lookahead_violations. No veto conditions tripped.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If current equity sleeve allocation + proposed position would exceed \u00a74.7 regime cap (30% in Strengthening/Expansionary regime), veto (a) would trip.",
+        "If candidate_type is surge_short and current single-position or sleeve allocation would breach \u00a74.8 caps (5% single, 10% sleeve), veto (b) would trip.",
+        "If any data_quality_flags block contains severity='critical', veto (c) would trip.",
+        "If pollution_defense_layer returns affirmatively-confirmed pollution (pollution_confirmed=true, not 'unimplemented') AND use_as_primary_signal_allowed=false AND no T1/T2 corroboration, veto (d) would trip for quality_long candidate.",
+        "If data_after_cutoff_used=true OR lookahead_safe=false, veto (e) would trip."
+      ],
+      "risk_flags": [
+        "Candidate type not explicitly specified in packet; assumed quality_long per context.",
+        "Current sleeve and position allocations not provided; cannot verify \u00a74.7 and \u00a74.8 compliance.",
+        "Information integrity assessment is insufficient_evidence with pollution_defense_layer unimplemented; fail-closed per v1.1 but does not trip veto under relaxation.",
+        "Fundamental gate 38 passes (eps>0, op_margin>0, financial_health=sound), but upstream quality_long agent recommends no_trade due to debt-to-equity_ttm=6.32 exceeding 3.0 threshold.",
+        "Valuation agent assesses HAS as expensive (PB 25.4, EV/EBITDA 70.5) despite 12-16% selloff.",
+        "Tariff-driven narrative is vague and lacks company-specific quantification per upstream narrative_event agent."
+      ],
+      "suggested_improvements": [
+        "Provide current_sleeve_equity_allocation_pct and current_single_position_pct to enable veto (a) and (b) evaluation.",
+        "Clarify candidate_type explicitly in packet envelope.",
+        "Implement pollution_defense_layer in information_integrity_assessment to enable affirmative pollution confirmation.",
+        "If quality_long candidate is advanced to PM, flag that upstream quality_long agent recommends no_trade due to hard-gate failure (debt-to-equity_ttm=6.32 > 3.0)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "candidate_type_not_specified",
+          "severity": "warning",
+          "detail": "candidate_type not present in envelope; assumed quality_long per context. Veto (b) surge-short cap check is inapplicable if assumption is correct."
+        },
+        {
+          "kind": "sleeve_allocation_missing",
+          "severity": "warning",
+          "detail": "current_sleeve_equity_allocation_pct not provided; cannot evaluate veto (a) sleeve cap breach against \u00a74.7 regime cap (30% in Strengthening/Expansionary)."
+        },
+        {
+          "kind": "position_allocation_missing",
+          "severity": "warning",
+          "detail": "current_single_position_pct and current_surge_short_sleeve_pct not provided; cannot evaluate veto (b) surge-short cap breach against \u00a74.8 limits (5% single, 10% sleeve)."
+        },
+        {
+          "kind": "pollution_defense_layer_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence'); per \u00a75.13(d) relaxation (2026-05-06), veto (d) does NOT trip when defense layer is unimplemented or returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet does not include current sleeve or position allocation data, which are required to evaluate vetos (a) and (b). The candidate_type field is not explicitly set in the envelope, requiring assumption. The information_integrity_assessment block correctly flags that pollution_defense_layer is unimplemented in v1, and the relaxation rule (\u00a75.13(d) 2026-05-06) correctly exempts this from veto-tripping. No schema weakness; the absence of allocation data is a runtime input gap, not a schema defect.",
+      "recommended_followups": [
+        "Obtain current_sleeve_equity_allocation_pct from portfolio state to evaluate veto (a).",
+        "Obtain current_single_position_pct and current_surge_short_sleeve_pct from portfolio state to evaluate veto (b).",
+        "Confirm candidate_type in packet envelope (quality_long or surge_short).",
+        "If quality_long candidate advances to PM, escalate upstream quality_long agent's no_trade recommendation due to debt-to-equity_ttm=6.32 exceeding 3.0 hard gate."
+      ],
+      "candidate_type": "quality_long",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Quality-long entry does not breach \u00a74.7 equity cap. Current sleeve allocation not provided; cannot verify. Assuming no breach pending portfolio state input."
+        },
+        {
+          "name": "surge_short_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Candidate type is quality_long; surge-short cap check (\u00a74.8) is inapplicable per \u00a75.17."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "No data_quality_flags blocks contain severity='critical'. Warnings and info flags present but do not trip veto."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence'). Per \u00a75.13(d) relaxation (2026-05-06), veto does NOT trip when defense layer is unimplemented or returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}. Candidate evaluates on other criteria."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "Envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, lookahead_violations=[]. No lookahead veto triggered."
+        }
+      ],
+      "advisory_notes": "HARD-VETO PASS: No veto conditions tripped. Candidate HAS (quality_long) passes all five \u00a75.13 hard-veto checks. However, upstream quality_long agent recommends no_trade due to hard-gate failure (debt-to-equity_ttm=6.32 exceeds 3.0 threshold for financial_health='sound'). Risk agent does not recommend sizing or advisory tilt; this is a hard-veto-only pass. PM should note upstream quality_long agent's no_trade recommendation and fundamental gate failure before advancing to position sizing.",
+      "risk_notes": [
+        "Veto (a) sleeve cap: cannot evaluate without current_sleeve_equity_allocation_pct. Assuming no breach pending portfolio state.",
+        "Veto (b) surge-short cap: inapplicable (candidate_type=quality_long).",
+        "Veto (c) critical flags: none present.",
+        "Veto (d) pollution integrity: defense layer unimplemented; relaxation rule applies; veto does not trip.",
+        "Veto (e) lookahead: data_after_cutoff_used=false, lookahead_safe=true; veto does not trip.",
+        "Upstream quality_long agent recommends no_trade due to debt-to-equity_ttm=6.32 > 3.0 hard gate failure. Risk agent does not override; PM should respect upstream gate failure."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation initiated",
+        "candidate_type=quality_long (assumed from context)",
+        "veto (a) sleeve_cap_breach: cannot evaluate (current_sleeve_allocation_pct missing); assume no breach",
+        "veto (b) surge_short_cap_breach: inapplicable per \u00a75.17 (candidate_type=quality_long)",
+        "veto (c) critical_data_quality_flag: no critical flags present; veto does not trip",
+        "veto (d) anti_pollution_integrity: pollution_defense_layer=unimplemented; per \u00a75.13(d) relaxation (2026-05-06), veto does not trip",
+        "veto (e) lookahead: data_after_cutoff_used=false, lookahead_safe=true; veto does not trip",
+        "result: all veto conditions pass; candidate eligible for downstream PM evaluation"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-14T09:30:00-04:00",
+      "data_available_as_of": "2025-04-14T09:30:00-04:00",
+      "decision_or_assessment": "quality_long_entry_decision_post_tariff_selloff",
+      "confidence": "low",
+      "evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (Q1 2025: revenue 887.1M, eps 0.71, op_margin 19.2%, net_margin 11.11%)",
+        "fundamental_snapshot.operating_cash_flow (138.1M positive)",
+        "fundamental_snapshot.free_cash_flow (124.3M positive)",
+        "corporate_calendar.earnings (recent beats: Feb 2025 eps 0.46 vs 0.38; Oct 2024 eps 1.73 vs 1.28)",
+        "corporate_calendar.dividends (0.7 quarterly, 4.4% yield)",
+        "price_snapshot.return_5d_pct (-3.56%)",
+        "price_snapshot.return_20d_pct (-12.96%)",
+        "news_event_summary (tariff-driven selloff, 2025-04-10)",
+        "macro_regime (Strengthening/Expansionary, equity_cap=30%)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01)",
+        "valuation_snapshot.valuation_inputs (PE negative TTM, PB 25.41, EV/EBITDA 70.51)",
+        "fundamental_gate_38 (passes: eps>0, op_margin>0, financial_health=sound)",
+        "upstream_agent_outputs (narrative_event, alt_data_verify, quality_long, risk)"
+      ],
+      "evidence_missing": [
+        "balance_sheet snapshot (total_assets, total_liabilities, total_equity, total_debt all null)",
+        "debt-to-equity verification (valuation_snapshot shows TTM=6.32, exceeds 3.0 gate threshold)",
+        "forward guidance on tariff impact quantification",
+        "ownership positioning data (13F, Form 4 not evaluated)",
+        "alternative data on consumer sentiment or retail traffic"
+      ],
+      "reasoning_summary": "HAS fails the \u00a73.8 hard fundamental gate on debt-to-equity: valuation_snapshot.debt_to_equity_ttm=6.32 exceeds the 3.0 threshold required for financial_health='sound'. Upstream quality_long agent explicitly recommends no_trade citing this gate failure. While recent operational performance is strong (Q1 2025 eps beat, positive FCF, consistent dividend), and analyst sentiment remains constructive (13 buy/strong-buy), the leverage profile and elevated valuation (PB 25.4, EV/EBITDA 70.5) do not support entry under strict quality-long discipline. The tariff-driven selloff (12-16% decline) appears macro/sector-driven rather than company-specific, but the combination of high leverage, expensive valuation, and unquantified tariff margin risk argues for no_trade pending balance-sheet verification and tariff impact quantification.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If debt-to-equity_ttm is corrected to \u22643.0 upon balance-sheet verification, gate would pass",
+        "If Q2 2025 earnings beat and management guides higher despite tariff commentary, thesis would strengthen",
+        "If tariff policy is reversed or exemptions granted for toy imports, near-term margin risk would diminish",
+        "If valuation multiples compress to 'fair' or 'attractive' range (PB <15, EV/EBITDA <40), entry risk would decrease"
+      ],
+      "risk_flags": [
+        "Hard-gate failure: debt-to-equity_ttm=6.32 exceeds 3.0 threshold for financial_health='sound'",
+        "Balance-sheet data absent: cannot independently verify debt levels or current_ratio",
+        "Valuation expensive: PB 25.4, EV/EBITDA 70.5 even post-12% selloff",
+        "TTM net margin negative (-6.86%) conflicts with recent quarter profitability (Q1 2025 +11.11%)",
+        "Tariff headwind unquantified: no company guidance on margin impact or mitigation",
+        "Macro regime strict_quality_and_valuation discipline disfavors elevated multiples",
+        "Upstream quality_long agent explicitly recommends no_trade due to gate failure"
+      ],
+      "suggested_improvements": [
+        "Obtain full balance-sheet snapshot to verify debt-to-equity independently",
+        "Retrieve management guidance on tariff mitigation strategy from next earnings call",
+        "Assess whether TTM window includes prior-year trough; clarify eps_ttm calculation",
+        "Compare HAS valuation multiples to sector peers (MAT, DECK, BOOT) to contextualize",
+        "Monitor Q2 2025 earnings for tariff impact quantification and forward guidance"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "Balance-sheet fields (total_assets, total_liabilities, total_equity, total_debt) are null; cannot verify debt-to-equity independently"
+        },
+        {
+          "kind": "hard_gate_failure",
+          "severity": "critical",
+          "detail": "debt-to-equity_ttm=6.32 exceeds 3.0 threshold for financial_health='sound' per \u00a73.8"
+        },
+        {
+          "kind": "ttm_contradiction",
+          "severity": "warning",
+          "detail": "TTM net_margin_pct=-6.86% conflicts with Q1 2025 net_margin_pct=+11.11%; TTM window likely includes prior trough"
+        },
+        {
+          "kind": "valuation_expensive",
+          "severity": "warning",
+          "detail": "PB 25.41, EV/EBITDA 70.51 remain elevated despite 12-16% selloff; not 'attractive' or 'fair'"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The hard-gate rule (debt-to-equity \u2264 3.0) is binary and does not account for industry norms or leverage trends. However, per \u00a73.8 FAIL-CLOSED rules, the gate must be applied strictly. The absence of balance-sheet data prevents independent verification of the debt-to-equity ratio, but the TTM ratio from valuation_snapshot is present and exceeds the threshold. The contradiction between TTM negative earnings and recent-quarter positive earnings creates ambiguity, but the gate failure is mechanical and does not require resolution of this ambiguity.",
+      "recommended_followups": [
+        "Request full balance-sheet snapshot from FMP or SEC Edgar to verify debt levels",
+        "Obtain management guidance on tariff impact and mitigation from next earnings call",
+        "Reassess valuation multiples against historical ranges and peer group",
+        "Monitor Q2 2025 earnings for tariff impact quantification and forward guidance",
+        "Re-evaluate debt-to-equity ratio after next quarterly filing"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "HAS fails \u00a73.8 hard fundamental gate: debt-to-equity_ttm=6.32 exceeds 3.0 threshold. Upstream quality_long agent recommends no_trade. While recent ops strong (Q1 2025 beat, positive FCF) and analyst sentiment constructive (13 buy/strong-buy), leverage profile and expensive valuation (PB 25.4, EV/EBITDA 70.5) do not support entry. Tariff-driven selloff appears macro/sector-driven, but unquantified margin risk and balance-sheet data gaps argue for no_trade pending verification.",
+      "risk_notes": [
+        "Hard-gate failure on debt-to-equity_ttm=6.32 > 3.0 is mechanical and non-negotiable per \u00a73.8",
+        "Upstream quality_long agent explicitly recommends no_trade due to this gate failure",
+        "Risk agent passed all hard-veto conditions (sleeve_cap, lookahead, hindsight); no mechanical veto tripped",
+        "Advisory conditions (missing_data_persists, information_integrity) are present but do not override hard-gate failure",
+        "Valuation agent assesses HAS as expensive; margin-of-safety is low",
+        "Tariff narrative is vague per upstream narrative_event agent; lacks company-specific quantification"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Current sleeve allocation not provided; assuming no breach. Quality-long entry does not mechanically breach \u00a74.7 equity cap (30% in Strengthening regime)."
+        },
+        {
+          "name": "position_size_cap_breach_4_7_4_8",
+          "tripped": false,
+          "note": "Candidate type is quality_long; surge-short cap check (\u00a74.8) is inapplicable. Quality-long sizing follows \u00a74.7 regime table; no position proposed (decision=no_trade)."
+        },
+        {
+          "name": "lookahead_data_used_5_13_c",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, lookahead_violations=[]. No lookahead veto triggered."
+        },
+        {
+          "name": "hindsight_violation_8_r1_r7",
+          "tripped": false,
+          "note": "No hindsight violations detected. All reasoning grounded in evidence available at decision_timestamp (2025-04-14T09:30:00-04:00)."
+        },
+        {
+          "name": "fundamental_hard_gate_3_8",
+          "tripped": true,
+          "note": "debt-to-equity_ttm=6.32 exceeds 3.0 threshold for financial_health='sound'. Gate FAILS. This is a hard-gate failure, not an advisory condition. Per \u00a73.8, when gate fields are PRESENT and fail, decision must be no_trade or veto."
+        }
+      ],
+      "rule_engine_path": [
+        "candidate_type=quality_long identified",
+        "\u00a73.8 hard fundamental gates evaluated: eps_ttm>0 (PASS), operating_margin_pct>0 (PASS), financial_health='sound' (FAIL: debt-to-equity_ttm=6.32 > 3.0)",
+        "Hard-gate failure on financial_health: decision forced to no_trade per \u00a73.8 FAIL-CLOSED rule",
+        "Valuation assessment: expensive (PB 25.4, EV/EBITDA 70.5) \u2014 does not meet 'attractive' or 'fair' requirement",
+        "Upstream quality_long agent recommends no_trade due to gate failure",
+        "Risk agent: all hard-veto conditions pass (sleeve_cap, lookahead, hindsight); no mechanical veto tripped",
+        "PM decision: no_trade (hard-gate failure + upstream recommendation + valuation expensive + tariff risk unquantified)"
+      ],
+      "decision_log": [
+        "2025-04-14T09:30:00-04:00 PM aggregation initiated for HAS quality_long candidate",
+        "Upstream agents read: narrative_event (vague catalyst), alt_data_verify (weakly_contradicted, needs_more_evidence), quality_long (no_trade), risk (hard-veto pass)",
+        "Fundamental gate 38 status: passes on eps>0, op_margin>0, but financial_health gate FAILS (debt-to-equity_ttm=6.32 > 3.0 threshold)",
+        "\u00a73.8 hard-gate failure is mechanical and non-negotiable: decision forced to no_trade",
+        "Valuation assessment: expensive (PB 25.4, EV/EBITDA 70.5); does not meet 'attractive' or 'fair' for buy gate",
+        "Upstream quality_long agent explicitly recommends no_trade citing debt-to-equity_ttm=6.32 > 3.0 hard-gate failure",
+        "Risk agent: all hard-veto conditions pass; no mechanical veto tripped; advisory conditions present but do not override hard-gate failure",
+        "Tariff narrative: vague per upstream narrative_event agent; lacks company-specific quantification; alt_data_verify recommends needs_more_evidence",
+        "Recent price action: -12.96% in 20d, -3.56% in 5d; appears macro/sector-driven (tariff uncertainty) rather than company-specific",
+        "Analyst sentiment: constructive (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01) but does not override hard-gate failure",
+        "Balance-sheet data absent: cannot independently verify debt-to-equity; TTM ratio from valuation_snapshot is present and exceeds threshold",
+        "PM decision: no_trade (hard-gate failure + upstream recommendation + valuation expensive + tariff risk unquantified + balance-sheet data gaps)",
+        "Position size: 0.0% (no_trade decision)",
+        "Execution plan: none (no_trade)"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-14T09:45:00-04:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+        "evidence_packet_hash": "sha256:1bd05b405bfb20d89f36415460a85ddf48e6d36043c9d250caae38be9bd719ef"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": null,
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Hard-gate failure on debt-to-equity_ttm=6.32 > 3.0 threshold per \u00a73.8; no thesis confirmation allowed when fundamental gates fail",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": null,
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-14T09:30:00-04:00",
+      "execution_timestamp": "2025-04-14T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:8fdf59c93f49eb1ce4bda943d4742b673b791445251fd8b4c3f2e3b2491412b1",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

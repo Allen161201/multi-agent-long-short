@@ -1,0 +1,265 @@
+{
+  "trigger_id": "10b844338510",
+  "ticker": "ARBB",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-05T09:30:00-05:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 51.69,
+  "trigger_cost_usd": 0.056233,
+  "cumulative_cost_usd": 0.289143,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "ARBB",
+    "name": "ARBB",
+    "close": 12.549,
+    "prior_close": 7.8,
+    "change": 5.5035,
+    "change_pct": 70.5576923076923,
+    "volume": 5861051.733333,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-05",
+    "prior_trading_day": "2025-03-04",
+    "available_as_of": "2025-03-05T16:00:00-05:00",
+    "today_open": 13.3035,
+    "today_volume": 5861051.733333,
+    "eps_ttm": -19.4,
+    "operating_margin_ttm": -27.766788450041947,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-12-30 00:00:00",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:10da50a4ec84b24a22818a88e9127472e380b92a95413bc0e70b1dc88d7c144e",
+  "locked_decision_id": "sha256:a0e936aa490cd6b8f998bdceaad146a202091b64e1e21ae6879512aa64ced9cc",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation baseline)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ARBB",
+      "decision_timestamp": "2025-03-05T09:30:00-05:00",
+      "data_available_as_of": "2025-03-05T09:30:00-05:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (23.8%)",
+        "price_snapshot.relative_volume_vs_20d (3.13x)",
+        "news_event_summary: $45M AI server order (2025-03-04)",
+        "fundamental_snapshot: Q2 2025 revenue $82.65M, net loss -$27.5M",
+        "valuation_snapshot: PE negative, PB 0.167, EV/EBITDA 0.050",
+        "macro_regime: Overheat / Moderately Restrictive (stress_score=2)",
+        "alternative_data_features: Wikipedia pageviews (low volume, max 7 views)",
+        "sentiment_community_ownership_evidence: analyst ratings (1 Buy, no recent changes)",
+        "information_integrity_assessment: low_tier_only sources, uncorroborated"
+      ],
+      "evidence_missing": [
+        "primary_source_corroboration for $45M order claim",
+        "alternative_data_verification (GitHub, SEC 13F, Form 4 all unavailable/failed)",
+        "detailed narrative analysis of catalyst credibility",
+        "institutional ownership positioning data",
+        "community attention metrics (Reddit, social signals not evaluated)",
+        "filing_confirmation (no 8-K in last 90 days)",
+        "price_snapshot.last_price (post-cutoff, cannot use)",
+        "fundamental_snapshot DCF valuation (not PIT-safe)"
+      ],
+      "reasoning_summary": "ARBB exhibits a sharp 5-day rally (+23.8%) on elevated volume (3.13x 20d avg) following a $45M AI server order announcement (2025-03-04). However, the company is deeply unprofitable (Q2 2025: -$27.5M net loss, -36% net margin), trades at negative PE, and has minimal analyst coverage (1 Buy rating, stale). The $45M order claim lacks primary-source corroboration\u2014information_integrity_assessment flags low_tier_only sources and uncorroborated status. Alternative data is sparse (Wikipedia pageviews max 7 views, GitHub unmapped, SEC 13F unavailable). Macro regime is restrictive (overheat, stress_score=2), disfavoring speculative equity. The surge in price and volume is consistent with retail/meme attention on an AI narrative, but without external verification of the order, fundamental deterioration, and missing alt-data corroboration, confidence is too low to initiate either a short or long position. Fail-closed to no_trade pending better evidence.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If $45M order is verified by independent source (SEC filing, customer press release, earnings call), thesis shifts to potential quality_long candidate",
+        "If short-squeeze risk is confirmed (high short interest, low float), surge_short sleeve becomes ineligible",
+        "If macro regime shifts to risk-on, equity allocation cap increases, enabling higher position sizes",
+        "If alternative_data adapters deliver corroborating evidence (GitHub activity, insider buying, institutional sponsorship), confidence increases"
+      ],
+      "risk_flags": [
+        "Unverified catalyst: $45M order claim lacks primary-source confirmation",
+        "Information integrity veto: low_tier_only sources, uncorroborated status",
+        "Fundamental deterioration: negative earnings, negative margins, negative ROA/ROE",
+        "Valuation distortion: negative PE, TTM ratios not PIT-safe",
+        "Macro headwind: Overheat regime with strict_quality_and_valuation_caution discipline",
+        "Retail/meme attention risk: sharp price spike, elevated volume, minimal analyst coverage",
+        "Missing corroboration: GitHub unmapped, SEC 13F unavailable, Form 4 no recent activity",
+        "Analyst coverage gap: only 1 Buy rating, no recent updates",
+        "Alternative data sparse: Wikipedia pageviews negligible, sentiment data stale (Nov 2024)"
+      ],
+      "suggested_improvements": [
+        "Obtain SEC 8-K or customer press release confirming $45M order details",
+        "Cross-check order claim with industry databases or customer announcements",
+        "Await next earnings call for management commentary on order pipeline",
+        "Monitor insider Form 4 filings for executive buying/selling signals",
+        "Collect GitHub activity if ARBB has public repositories (currently unmapped)",
+        "Re-evaluate once institutional ownership data becomes available (13F lag)",
+        "Assess short interest and float to rule out squeeze risk before surge_short consideration"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "unverified_catalyst",
+          "severity": "critical",
+          "detail": "news_event_summary: $45M order claim from single source (GlobeNewswire); no SEC filing, customer confirmation, or independent corroboration"
+        },
+        {
+          "kind": "information_integrity_veto",
+          "severity": "critical",
+          "detail": "information_integrity_assessment: low_tier_only (T3=1, T4=2), uncorroborated, use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "alt_data_unavailable",
+          "severity": "warning",
+          "detail": "alternative_data_features: GitHub unmapped (error), SEC 13F not_available_on_current_plan, retail_meme_attention not_evaluated"
+        },
+        {
+          "kind": "valuation_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot: TTM ratios (PE, PB, EV/EBITDA) not anchored to fiscal period; DCF display-only, not PIT-safe"
+        },
+        {
+          "kind": "sentiment_stale",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence: fmp_sentiment data as_of 2024-11-01 (4+ months old); ownership_positioning not_evaluated"
+        },
+        {
+          "kind": "filing_gap",
+          "severity": "info",
+          "detail": "filing_confirmation: no 8-K in last 90 days; sec_form4 no recent insider activity"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "price_snapshot: live quote 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; using last_eod_close 7.8 (2025-03-04)"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "narrative_price_gap_assessment is not_evaluated (pending Agent 03 LLM reasoning); filing_confirmation relies on sec_edgar adapter which returned 0 rows; alternative_data_features adapters mostly not_connected or failed; sentiment_community_ownership_evidence is a placeholder with no live ownership data. These gaps prevent full corroboration of the catalyst claim.",
+      "recommended_followups": [
+        "Wait for next earnings release (no upcoming earnings in calendar) to validate $45M order claim",
+        "Monitor SEC EDGAR for 8-K or 10-Q/10-K amendments disclosing the order",
+        "Check customer (Gajah Kapitalan Sdn Bhd) press releases or investor relations for independent confirmation",
+        "Re-run analysis once alternative_data adapters are fully wired (GitHub, SEC 13F, Form 4)",
+        "Reassess macro regime if Fed signals pivot away from restrictive policy",
+        "Collect institutional ownership data (13F) once available with acceptable PIT lag"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence to initiate position. Catalyst ($45M order) is unverified and sourced from low-tier only (T3/T4) outlets with no primary-source corroboration. Information integrity assessment flags uncorroborated status and disallows use as primary signal. Fundamental deterioration (negative earnings, margins, ROA/ROE) and macro headwind (Overheat regime, strict_quality_and_valuation_caution) disfavor both long and short. Alternative data sparse and mostly unavailable. Fail-closed pending better evidence.",
+      "risk_notes": [
+        "Catalyst unverified: $45M order claim lacks SEC filing, customer press release, or independent confirmation",
+        "Information integrity veto tripped: low_tier_only sources, uncorroborated, use_as_primary_signal_allowed=false",
+        "Fundamental deterioration: Q2 2025 net loss -$27.5M (-36% margin), negative ROA/ROE, negative PE",
+        "Valuation distortion: TTM ratios not PIT-safe, DCF display-only, cannot rely on valuation inputs for decision",
+        "Macro headwind: Overheat regime with strict_quality_and_valuation_caution discipline; equity_allocation_cap=20%",
+        "Retail/meme attention risk: sharp 5d rally (+23.8%), elevated volume (3.13x), minimal analyst coverage (1 Buy), Wikipedia pageviews negligible",
+        "Missing corroboration: GitHub unmapped, SEC 13F unavailable, Form 4 no recent activity, sentiment data stale (Nov 2024)",
+        "Surge_short ineligible: no evidence of short-squeeze risk, no hard short thesis without verified catalyst",
+        "Quality_long ineligible: unprofitable, deteriorating fundamentals, unverified catalyst, low analyst coverage",
+        "Alternative data gap: retail_meme_attention not_evaluated, valuation_context not_evaluated, ownership_positioning not_evaluated"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "Catalyst unverified (low_tier_only sources, uncorroborated); alternative_data sparse (GitHub unmapped, SEC 13F unavailable, Form 4 no activity); narrative_price_gap_assessment not_evaluated; sentiment/ownership data stale or unavailable"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment: low_tier_only (T3=1, T4=2), uncorroborated, use_as_primary_signal_allowed=false; pollution-defense layer not implemented in v1; fail-closed per schema v1.1 decision #8"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "No hard limit breached; macro regime allows 20% equity allocation; position_size_pct=0.0 respects all constraints"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Primary-source corroboration missing; alternative_data adapters mostly unavailable (GitHub, SEC 13F, Form 4); narrative_price_gap_assessment not_evaluated; sentiment/ownership data stale; filing_confirmation no 8-K in 90 days"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; all data anchored to 2025-03-05T09:30:00-05:00 or earlier; no post-cutoff information used in reasoning"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp=2025-03-05T09:30:00-05:00, allowed_data_cutoff=2025-03-05T09:30:00-05:00, lookahead_safe=true, data_after_cutoff_used=false \u2192 PIT-safe",
+        "2. Evaluate macro_regime: Overheat / Moderately Restrictive (stress_score=2) \u2192 equity_discipline=strict_quality_and_valuation_caution, equity_allocation_cap=20%",
+        "3. Assess catalyst (news_event_summary): $45M AI server order (2025-03-04) \u2192 positive sentiment, but source=GlobeNewswire (T3/T4), no primary-source confirmation",
+        "4. Check information_integrity_assessment: low_tier_only (T3=1, T4=2), uncorroborated, use_as_primary_signal_allowed=false \u2192 information_integrity_veto TRIPPED",
+        "5. Evaluate alternative_data_features: Wikipedia pageviews negligible (max 7 views), GitHub unmapped, SEC 13F unavailable, retail_meme_attention not_evaluated \u2192 alt_data_sparse, insufficient_evidence TRIPPED",
+        "6. Assess fundamentals: Q2 2025 revenue $82.65M, net loss -$27.5M, net_margin -36%, ROA -34%, ROE -33%, PE negative \u2192 deterioration, unprofitable",
+        "7. Evaluate valuation: PE negative, PB 0.167, EV/EBITDA 0.050, TTM ratios not_PIT_safe, DCF display-only \u2192 valuation distorted, cannot rely",
+        "8. Check sentiment/ownership: fmp_sentiment stale (Nov 2024), ownership_positioning not_evaluated, sec_form4 no recent activity \u2192 missing_data_persists_beyond_tolerance TRIPPED",
+        "9. Assess price action: 5d return +23.8%, relative_volume 3.13x, trigger_day_open 13.3 vs current 7.8 \u2192 retail/meme attention risk, but unverified catalyst",
+        "10. Evaluate sleeve eligibility: surge_short requires verified short thesis (not present); quality_long requires profitability + analyst support (not present) \u2192 both ineligible",
+        "11. Veto summary: insufficient_evidence=true, information_integrity_veto=true, missing_data_persists_beyond_tolerance=true \u2192 decision=no_trade, position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T0: Envelope check \u2014 PIT-safe, lookahead_safe=true, no post-cutoff data used",
+        "T1: Macro regime assessment \u2014 Overheat / Moderately Restrictive, strict_quality_and_valuation_caution discipline, 20% equity cap",
+        "T2: Catalyst identification \u2014 $45M AI server order (2025-03-04, GlobeNewswire) \u2192 positive sentiment, but low-tier source",
+        "T3: Information integrity check \u2014 low_tier_only (T3=1, T4=2), uncorroborated, use_as_primary_signal_allowed=false \u2192 VETO TRIPPED",
+        "T4: Alternative data verification \u2014 Wikipedia pageviews sparse, GitHub unmapped, SEC 13F unavailable, retail_meme_attention not_evaluated \u2192 insufficient_evidence TRIPPED",
+        "T5: Fundamental analysis \u2014 Q2 2025: revenue $82.65M, net loss -$27.5M, net_margin -36%, ROA -34%, ROE -33%, PE negative \u2192 deterioration, unprofitable",
+        "T6: Valuation assessment \u2014 PE negative, PB 0.167, EV/EBITDA 0.050, TTM not_PIT_safe, DCF display-only \u2192 distorted, unreliable",
+        "T7: Sentiment/ownership review \u2014 fmp_sentiment stale (Nov 2024), ownership_positioning not_evaluated, Form 4 no recent activity \u2192 missing_data_persists_beyond_tolerance TRIPPED",
+        "T8: Price action context \u2014 5d return +23.8%, relative_volume 3.13x, trigger_day_open 13.3 vs 7.8 \u2192 consistent with retail/meme attention, but unverified catalyst",
+        "T9: Sleeve eligibility \u2014 surge_short requires verified short thesis (absent); quality_long requires profitability + analyst support (absent) \u2192 both ineligible",
+        "T10: Final decision \u2014 three vetos tripped (insufficient_evidence, information_integrity_veto, missing_data_persists_beyond_tolerance) \u2192 decision=no_trade, position_size_pct=0.0, immutable_decision_flag=true"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-05T09:45:00-05:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:67b87823a69b855587cd3b1756376c29f26e1ad55ea228efc81481f83aed7250"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews negligible (max 7 views in 30d window); retail_meme_attention not_evaluated; no abnormal_attention_flag; price spike (+23.8% in 5d) and elevated volume (3.13x) suggest retail interest, but unverified catalyst limits confidence",
+      "meme_or_retail_attention_warning": "elevated",
+      "source_reliability_adjustment": "dismiss",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "dismiss",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "$45M AI server order claim sourced from GlobeNewswire (T3/T4 tier); no SEC filing, customer press release, or independent corroboration; information_integrity_assessment flags uncorroborated status and disallows use as primary signal",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "information_integrity_assessment: low_tier_only sources (T3=1, T4=2), uncorroborated, use_as_primary_signal_allowed=false; alternative_data sparse (GitHub unmapped, SEC 13F unavailable, Form 4 no activity); narrative_price_gap_assessment not_evaluated; sentiment/ownership data stale or unavailable. Essential corroboration blocks absent; fail-closed per \u00a713.6 null-block-handling and \u00a713.4 fail-closed clause.",
+      "sentiment_risk_adjustment_note": "fmp_sentiment data stale (as_of 2024-11-01, 4+ months old); analyst ratings show 1 Buy (from 2024-07 onward), no recent changes; sentiment_score null; no credibility-adjusted sentiment available. Sentiment data insufficient to support decision.",
+      "ownership_risk_adjustment_note": "ownership_positioning not_evaluated; sec_13f unavailable (not_available_on_current_plan); sec_form4 no recent insider activity (0 purchases, 0 sales in 30d); institutional_ownership_pct null; top_holders empty. Ownership data absent; cannot assess smart_money support or insider conviction.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional sponsorship data available; ownership_positioning not_evaluated; sec_13f unavailable; analyst coverage minimal (1 Buy rating, stale). Cannot assess institutional support.",
+      "smart_money_benchmark_note": "No smart_money_support_assessment available; ownership_positioning not_evaluated; sec_form4 no recent insider buying; sec_13f unavailable. Cannot benchmark against smart money.",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-05T09:30:00-05:00",
+      "execution_timestamp": "2025-03-05T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:c74907f04cc8cc52befff57a8ca673ec7716cea349680775c7d14a160a94f1f8",
+      "immutable_decision_flag": true
+    }
+  }
+}

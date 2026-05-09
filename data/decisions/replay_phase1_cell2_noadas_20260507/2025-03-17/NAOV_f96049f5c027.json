@@ -1,0 +1,1101 @@
+{
+  "trigger_id": "f96049f5c027",
+  "ticker": "NAOV",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-17T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 197.06,
+  "trigger_cost_usd": 0.326313,
+  "cumulative_cost_usd": 6.177342,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "NAOV",
+    "name": "NAOV",
+    "close": 3.43,
+    "prior_close": 2.2059,
+    "change": 1.6641,
+    "change_pct": 75.43859649122805,
+    "volume": 42177896.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-17",
+    "prior_trading_day": "2025-03-14",
+    "available_as_of": "2025-03-17T16:00:00-05:00",
+    "today_open": 3.87,
+    "today_volume": 42177896.0,
+    "eps_ttm": -12.48,
+    "operating_margin_ttm": -88.54451534487997,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-14 15:12:05",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:5275f8ecadf1a7ec84a6c6b31c3cba2558f8def114b47ddd3d5acd230129c6c6",
+  "locked_decision_id": "sha256:4e1216b3727ff314a9cf7a9762297efb9f6c8b1ec3bee7c10c8ceda538f6ae40",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PMAgent",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "NAOV",
+    "decision_timestamp": "2025-03-17T09:30:00-04:00",
+    "data_available_as_of": "2025-03-17T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision: structural absence of corroborating evidence relative to narrative and sector expectations",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.trigger_day_open=38.7 vs prior_close=26.4 (+46.6% gap)",
+      "price_snapshot.return_5d_pct=-43.9% (reversal post-surge)",
+      "price_snapshot.relative_volume_vs_20d=5.83x (elevated volume)",
+      "corporate_calendar.splits: 1:11 reverse split on 2025-03-14",
+      "valuation_snapshot: PE=-0.077, PB=0.034, net_margin=-583.74%",
+      "news_event_summary: status=data_unavailable, 0 items in 7-day window, 20 items dropped post-cutoff",
+      "filing_confirmation: sec_edgar cik_not_found, no 8-K verification",
+      "alternative_data_features: github_public unmapped, sec_form4 cik_not_found, sec_13f unavailable",
+      "sentiment_community_ownership_evidence: fmp_sentiment stale (Nov 2024), 1 buy rating",
+      "fundamental_snapshot: status=insufficient_evidence, no PIT-safe quarterly data",
+      "macro_regime: Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution",
+      "risk_agent: no hard-veto conditions tripped",
+      "narrative_event.verdict: unsupported_claim, catalyst_type=unknown_or_absent",
+      "alt_data_verify.verdict: weakly_contradicted, recommendation=needs_more_evidence",
+      "surge_short_agent.recommended_action: watch"
+    ],
+    "evidence_missing": [
+      "news_event_summary: no items <= cutoff; 20 items dropped post-cutoff (catalyst unverifiable)",
+      "filing_confirmation: no SEC 8-K or press release confirmation; sec_edgar adapter failed",
+      "fundamental_snapshot: no PIT-safe quarterly income/balance/cashflow data",
+      "alternative_data_features: GitHub unmapped, Form 4 unavailable, 13F unavailable",
+      "sentiment_community_ownership_evidence: no 13F institutional positioning, no Form 4 insider activity",
+      "company_sector: not disclosed in packet; prevents sector-specific evidence assessment",
+      "narrative_price_gap_assessment: agent_LLM_reasoning not populated"
+    ],
+    "reasoning_summary": "NAOV surged 46.6% on 2025-03-17 opening (38.7 vs 26.4 prior close) but reversed -43.9% over 5 days. Surge coincides with 1:11 reverse split on 2025-03-14 (mechanical, not value-creating). Critical structural absences prevent high-confidence short thesis: (1) SEC filing confirmation failed (cik_not_found), preventing verification of any official disclosure; (2) No news items in 7-day window despite 20 items dropped post-cutoff, suggesting narrative event occurred but is unverifiable in packet; (3) Fundamental data insufficient (no PIT-safe quarterly statements); (4) Valuation deeply distressed (PE=-0.077, net_margin=-583.74%, PB=0.034); (5) Alternative data adapters failed or returned no rows (GitHub unmapped, Form 4 cik_not_found, 13F unavailable); (6) Analyst sentiment stale (Nov 2024, 1 buy). Under asymmetric absence rule, structural absence of SEC filings for a listed equity claiming a material event is bear-thesis evidence. However, the absence of hard-to-fake corroboration (SEC filings, insider activity, recent news, developer footprint) combined with the unverifiable narrative (20 items dropped post-cutoff) prevents establishing a defensible short thesis. The -43.9% reversal suggests momentum rather than value creation, but without confirmation of the catalyst or recent fundamentals, conviction is insufficient. Upstream agents (Narrative, Alt-Data Verify, Surge-Short sleeve) all recommend 'watch' or 'needs_more_evidence' due to sparse corroboration. Risk agent confirms no hard-veto conditions tripped. Macro regime is restrictive (equity_discipline=strict_quality_and_valuation_caution), which argues against micro-cap shorts. Preponderance of evidence does not support entry at this time.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If SEC 8-K or press release confirming a material acquisition, partnership, or product launch is later retrieved and verified, the structural-absence bear thesis weakens.",
+      "If quarterly fundamentals show positive revenue growth and path to profitability, the distressed valuation may be justified as a turnaround.",
+      "If institutional ownership data (13F) shows significant new positions by reputable funds, the absence of corroboration may be a data lag rather than a signal.",
+      "If the reverse split is part of a legitimate recapitalization or uplisting plan with disclosed milestones, the momentum may reflect real value creation."
+    ],
+    "risk_flags": [
+      "Reverse split (1:11 on 2025-03-14) mechanically inflates opening price; high risk of continued reversal.",
+      "Negative earnings (PE=-0.077, net_margin=-583.74%) indicate the company is unprofitable; valuation is distressed.",
+      "SEC filing adapter failed (cik_not_found); cannot verify official disclosures or insider activity.",
+      "No news in 7-day window despite 20 items dropped post-cutoff; narrative event may be unverifiable or low-tier sourced.",
+      "Analyst coverage is stale (last rating Nov 2024); no recent institutional interest visible.",
+      "Macro regime is restrictive; portfolio discipline argues against micro-cap shorts in this environment.",
+      "Fundamental data insufficient; cannot assess revenue, cash flow, or balance sheet health.",
+      "Alternative data adapters failed or unmapped; no corroborating tech/regulatory/insider activity visible.",
+      "Micro-cap liquidity risk: 79k shares traded on decision day; relative volume 5.8x 20-day average suggests potential for sharp reversals."
+    ],
+    "suggested_improvements": [
+      "Retrieve SEC EDGAR filings directly (bypass FMP adapter) to confirm CIK and check for 8-K, 10-Q, or press releases filed on or before 2025-03-17.",
+      "Cross-check news sources (Seeking Alpha, Yahoo Finance, company IR) for any catalyst narrative published in the 7-day window.",
+      "Obtain quarterly fundamentals from SEC filings (10-Q) to assess revenue, profitability, and cash burn.",
+      "Verify the reverse split's purpose and any associated corporate action (recapitalization, uplisting, debt restructuring).",
+      "Check insider Form 4 filings (SEC EDGAR direct) for any officer/director transactions around the surge date.",
+      "Assess whether NAOV is a shell company, SPAC, or distressed micro-cap with limited disclosure obligations.",
+      "Implement post-cutoff news adapter with explicit 'news_broke_after_cutoff' flag to disambiguate whether the catalyst is real but post-decision or absent entirely."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "filing_confirmation_failed",
+        "severity": "critical",
+        "detail": "sec_edgar adapter returned cik_not_found for NAOV; cannot retrieve SEC filings to verify catalyst or official disclosures."
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "20 news items dropped because publishedDate > cutoff; suggests a narrative event occurred but is not verifiable in the packet."
+      },
+      {
+        "kind": "fundamentals_insufficient",
+        "severity": "warning",
+        "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe quarterly data available to assess profitability or growth."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public unmapped_ticker; sec_form4 cik_not_found; sec_13f not_available_on_current_plan."
+      },
+      {
+        "kind": "sentiment_stale",
+        "severity": "warning",
+        "detail": "fmp_sentiment last rating Nov 2024 (1 buy); no recent analyst coverage or institutional positioning visible."
+      },
+      {
+        "kind": "valuation_distressed",
+        "severity": "critical",
+        "detail": "PE=-0.077, net_margin=-583.74%, PB=0.034; company is unprofitable and deeply distressed."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The packet does not include the company's sector classification (fundamental_snapshot.sector is absent), preventing sector-specific evidence assessment per the SECTOR-AWARE REASONING SEQUENCE. The news_event_summary block shows 20 items dropped post-cutoff but does not include the trigger_article or catalyst_type, making it impossible to identify the specific narrative driving the surge. The filing_confirmation block failed entirely (cik_not_found), which is a hard blocker for a listed equity. The alternative_data_features block is largely a placeholder (adapters not wired in v1), limiting corroboration. The narrative_price_gap_assessment is marked not_evaluated pending agent_LLM_reasoning, which is not available in this packet.",
+    "recommended_followups": [
+      "Retrieve NAOV's CIK directly from SEC EDGAR and pull all filings (10-K, 10-Q, 8-K, S-1) filed on or before 2025-03-17 to identify the catalyst.",
+      "Search public news archives (Seeking Alpha, Yahoo Finance, PR Newswire) for NAOV announcements in the 7-day window.",
+      "Obtain the most recent 10-Q or 10-K to assess revenue, profitability, and cash position.",
+      "Verify the reverse split's purpose and any associated corporate action or recapitalization plan.",
+      "Check insider Form 4 filings for any officer/director transactions or stock sales around the surge date.",
+      "Assess whether NAOV is a shell company, SPAC, or distressed micro-cap with limited disclosure obligations.",
+      "Monitor for SEC filing confirmation and fundamental data verification before escalating to 'short' decision."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "watch",
+    "position_size_pct": 0.0,
+    "reason": "Insufficient evidence to establish defensible short thesis. Surge appears driven by reverse split (mechanical, not value-creating) and unverified narrative (20 news items dropped post-cutoff, no SEC filing confirmation). Company is deeply distressed (PE=-0.077, net_margin=-583.74%), but without access to recent fundamentals or official disclosures, bear thesis cannot be cleanly supported. Structural absence of SEC filings, insider activity, and recent news is bear-thesis evidence, but absence of hard-to-fake corroboration prevents high-confidence entry. Recommend monitoring for SEC filing confirmation and fundamental data before entering position.",
+    "risk_notes": [
+      "Hard-veto pass: no veto conditions tripped per Risk Agent evaluation.",
+      "Condition (b) surge_short sleeve cap cannot be fully evaluated without current portfolio state; Risk Agent assumes 0% current exposure.",
+      "Candidate exhibits high uncertainty (upstream agents: confidence=low to medium). Hard-veto pass does not imply quality or recommendation.",
+      "Data quality is degraded (20 news items dropped post-cutoff, SEC filing adapter failed cik_not_found, fundamental snapshot insufficient_evidence)."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long only. Candidate type=surge_short; condition not applicable."
+      },
+      {
+        "name": "surge_short_sleeve_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "No current portfolio state provided; Risk Agent assumes 0% current exposure. Proposed position size 0.0% within caps. Condition not tripped."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "Highest severity in data_quality_flags is 'warning'; no 'critical' severity flags present. Condition not tripped."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate type=surge_short exempts anti-pollution veto per \u00a75.17. Condition does not apply."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[]. No lookahead violations detected. Condition not tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "candidate_type=surge_short identified",
+      "\u00a75.13 hard-veto evaluation initiated",
+      "condition (a) sleeve_cap_breach: not applicable (quality_long only)",
+      "condition (b) surge_short_sleeve_cap: evaluated; no current portfolio state; assume 0% exposure; not tripped",
+      "condition (c) critical_data_quality_flag: evaluated; max severity=warning; not tripped",
+      "condition (d) anti_pollution_integrity_veto: not applicable (surge_short exempted per \u00a75.17)",
+      "condition (e) lookahead_veto: evaluated; data_after_cutoff_used=false, lookahead_safe=true; not tripped",
+      "all hard-veto conditions evaluated; none tripped; candidate eligible for PM discretion",
+      "upstream_agent_outputs aggregation: narrative_event.verdict=unsupported_claim, alt_data_verify.verdict=weakly_contradicted, surge_short_agent.recommended_action=watch",
+      "preponderance-of-evidence reasoning: structural absence of SEC filings, insider activity, recent news, and hard-to-fake corroboration prevents high-confidence short entry",
+      "asymmetric absence rule applied: absence of SEC filings vs. claimed material event is bear-thesis evidence, but absence of positive corroboration does not justify entry without additional confirmation",
+      "macro regime context: Overheat/Moderately Restrictive with strict equity discipline argues against micro-cap shorts",
+      "decision: watch (not no_trade, because structural absence is informative; not short, because corroboration is insufficient)"
+    ],
+    "decision_log": [
+      "2025-03-17T09:30:00-04:00 | PM Agent initialized for surge_short candidate NAOV",
+      "2025-03-17T09:30:00-04:00 | Hard-veto evaluation: all 5 conditions checked; none tripped",
+      "2025-03-17T09:30:00-04:00 | Upstream agent outputs aggregated: Narrative (unsupported_claim), Alt-Data Verify (weakly_contradicted, needs_more_evidence), Surge-Short sleeve (watch), Risk (no veto)",
+      "2025-03-17T09:30:00-04:00 | Price action analysis: 46.6% surge on 2025-03-17 opening, -43.9% reversal over 5 days; coincides with 1:11 reverse split on 2025-03-14 (mechanical, not value-creating)",
+      "2025-03-17T09:30:00-04:00 | Catalyst verification: news_event_summary status=data_unavailable (0 items in 7-day window); 20 items dropped post-cutoff (unverifiable); filing_confirmation failed (cik_not_found)",
+      "2025-03-17T09:30:00-04:00 | Fundamental assessment: valuation deeply distressed (PE=-0.077, net_margin=-583.74%, PB=0.034); fundamental_snapshot insufficient_evidence (no PIT-safe quarterly data)",
+      "2025-03-17T09:30:00-04:00 | Alternative-data corroboration: GitHub unmapped, Form 4 cik_not_found, 13F unavailable; analyst sentiment stale (Nov 2024, 1 buy); Wikipedia pageviews baseline (1-18 views/day, no spike)",
+      "2025-03-17T09:30:00-04:00 | Asymmetric absence rule applied: structural absence of SEC filings for a listed equity claiming a material event is bear-thesis evidence; however, absence of hard-to-fake corroboration (insider activity, recent news, developer footprint) prevents high-confidence entry",
+      "2025-03-17T09:30:00-04:00 | Macro regime context: Overheat/Moderately Restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution; argues against micro-cap shorts",
+      "2025-03-17T09:30:00-04:00 | Preponderance-of-evidence reasoning: price action is real and material, but narrative catalyst is unverifiable, fundamentals are insufficient, and corroboration is sparse. Structural absence of SEC filings is informative but not sufficient alone to justify entry without confirmation of catalyst and recent fundamentals.",
+      "2025-03-17T09:30:00-04:00 | Decision: watch (not no_trade, because structural absence is bear-thesis input; not short, because corroboration is insufficient for entry). Recommend monitoring for SEC filing confirmation and fundamental data verification before escalating to short.",
+      "2025-03-17T09:30:00-04:00 | Position size: 0.0% (watch decision implies no position entry)",
+      "2025-03-17T09:30:00-04:00 | Execution plan: T+1 next-open, no order (watch mode)"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-17T09:45:00-04:00",
+      "ticker": "NAOV",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+      "evidence_packet_hash": "sha256:94a59d62fbc58105175abd418ff48cc981f1f80bf5f8beb13632dd2f5f9f10fb"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews for 'Neang_Kakey' (unrelated to NAOV's business) show baseline activity (1-18 views/day, peak 18 on 2025-03-11); no spike pattern consistent with major catalyst. Retail/meme attention not evaluated (alternative_data_features.retail_meme_attention is not_evaluated).",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "Company claim is unknown; news_event_summary returned no items and filing_confirmation failed (cik_not_found). Surge coincides with 1:11 reverse split on 2025-03-14, but no official disclosure or narrative is verifiable in the packet.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Structural absence of SEC filings, insider activity, and recent news prevents confirmation of the bear thesis without additional evidence. Recommend SEC filing retrieval and fundamental data verification before escalating to short.",
+    "sentiment_risk_adjustment_note": "FMP sentiment shows 1 buy rating as of 2024-11-01 (stale, 4+ months prior); no recent analyst coverage or downgrades visible. Sentiment is descriptor-only and does not support or contradict the short thesis.",
+    "ownership_risk_adjustment_note": "Ownership positioning data unavailable (sec_13f not_available_on_current_plan, sec_form4 cik_not_found). Cannot assess institutional positioning or insider activity.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": "No institutional sponsorship data available. Analyst coverage is stale (Nov 2024, 1 buy); no recent institutional interest visible.",
+    "smart_money_benchmark_note": "No smart-money positioning data available. Ownership and insider activity adapters failed (cik_not_found). Cannot assess smart-money support or opposition.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-17T09:30:00-04:00",
+    "execution_timestamp": "2025-03-17T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:d3d03bf0340db7f4344e20fad75516bef5b5e49eb3f867f15944319b34c2529b",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEventAgent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "NAOV",
+      "decision_timestamp": "2025-03-17T09:30:00-04:00",
+      "data_available_as_of": "2025-03-17T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "corporate_calendar.events_near_decision",
+        "news_event_summary.status",
+        "news_event_summary.items_dropped_post_cutoff",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "decision_time_discipline.mode_rationale"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "filing_confirmation.SEC_8K_confirmation",
+        "fundamental_snapshot.snapshot_quarter",
+        "company_claim_from_press_release_or_disclosure",
+        "alternative_data_features.tech_activity.github_public",
+        "alternative_data_features.retail_meme_attention",
+        "information_integrity_assessment.primary_source_found"
+      ],
+      "reasoning_summary": "NAOV exhibits a severe 5-day drawdown of -43.91% with relative volume 5.83x the 20-day average, triggering on 2025-03-17 at market open (trigger_day_open=38.7, last_eod_close=22.1). A 1:11 stock split occurred on 2025-03-14 (3 trading days prior), which mechanically explains the price discontinuity but does NOT explain the magnitude of the volume surge or the intraday collapse. The news_event_summary block is status=data_unavailable with 0 items within the 7-day lookback window (polygon_news returned 0 rows), yet 20 items were dropped post-cutoff, indicating news activity existed but after the allowed_data_cutoff. This structural absence of pre-cutoff news corroboration is a critical signal: the price action is NOT anchored to a disclosed catalyst within the decision window. Wikipedia pageviews for 'Neang_Kakey' (the article title returned, unrelated to NAOV's business) show modest baseline activity (peak 18 views on 2025-03-11, 4 views on decision date 2025-03-17), providing no alternative-data support for a narrative catalyst. FMP sentiment shows 1 analyst buy rating as of 2024-11-01, with no recent upgrades or downgrades. The company's valuation metrics are deeply distressed (PE=-0.077, PB=0.034, net_margin=-583.74%), consistent with a loss-making micro-cap. The macro regime is 'Overheat / Moderately Restrictive' (stress_score=2), which constrains equity appetite but does not explain a single-stock collapse. No SEC 8-K filing confirmation is available (sec_edgar adapter failed: cik_not_found). The absence of a concrete, disclosed catalyst\u2014combined with the structural gap between the price action magnitude and available news/alternative data\u2014suggests the move is either (1) driven by post-cutoff news not visible in this packet, (2) a technical/liquidity event (stock split aftermath, short squeeze unwind, or forced liquidation), or (3) a rumor-driven move without formal disclosure. The decision_time_discipline block confirms opening-window mode (first 10 minutes of OHLCV are cleanest read), and the price action is real and material. However, the NARRATIVE catalyst\u2014the company's claim or disclosed reason for the move\u2014is absent from the evidence packet.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a post-cutoff 8-K or press release disclosed a material adverse event (bankruptcy, delisting notice, major customer loss, regulatory action), the absence of pre-cutoff news would be explained and the catalyst would be 'real' but not captured in this packet.",
+        "If the stock split (1:11 on 2025-03-14) was accompanied by a reverse-split announcement of a capital raise or debt restructuring, that would be a concrete catalyst; no such disclosure is confirmed in filing_confirmation.",
+        "If retail/meme attention spiked post-cutoff (e.g., WSB or Reddit), the move could be momentum-driven; alternative_data_features.retail_meme_attention is not_evaluated, so this cannot be ruled in or out.",
+        "If insider selling or short-seller report emerged post-cutoff, that would explain the move; sec_form4 adapter failed (cik_not_found), so insider activity cannot be verified."
+      ],
+      "risk_flags": [
+        "CRITICAL: No news catalyst within decision window. 20 items dropped post-cutoff suggests news broke AFTER 09:30 ET on 2025-03-17, making this a look-ahead risk if those items are later cited as the 'reason' for the move.",
+        "CRITICAL: Stock split (1:11) on 2025-03-14 creates mechanical price discontinuity. The 43.91% 5-day decline is partially attributable to split adjustment, but the magnitude and volume surge suggest additional selling pressure unrelated to the split itself.",
+        "HIGH: Micro-cap distressed valuation (net_margin=-583.74%, PE negative, PB=0.034) indicates a company in severe financial distress. The move may reflect deteriorating fundamentals not yet disclosed.",
+        "HIGH: Wikipedia pageviews for 'Neang_Kakey' (unrelated to NAOV's business) provide no corroboration of a narrative catalyst. The alternative_data_features block is largely not_evaluated or not_connected.",
+        "MEDIUM: Analyst sentiment is stale (last update 2024-11-01, 4+ months prior). No recent analyst action to support or contradict the move.",
+        "MEDIUM: SEC filing confirmation failed (cik_not_found). Cannot verify if an 8-K or other disclosure exists.",
+        "MEDIUM: Macro regime is restrictive (equity_discipline=strict_quality_and_valuation_caution), which may suppress demand for distressed micro-caps, but does not explain a single-stock collapse.",
+        "LOW: Information integrity assessment is not_evaluated (placeholder in v1). Pollution-defense layer not implemented; cannot assess rumor risk."
+      ],
+      "suggested_improvements": [
+        "Implement post-cutoff news adapter with explicit 'news_broke_after_cutoff' flag to disambiguate whether the catalyst is real but post-decision or absent entirely.",
+        "Wire sec_edgar CIK lookup for OTC/micro-cap tickers (NAOV is NASDAQ-listed but adapter failed; verify CIK mapping).",
+        "Add stock-split adjustment logic to price_snapshot to isolate split-driven vs. fundamental price changes.",
+        "Implement retail/meme attention adapter (reddit, stocktwits, fintwit) to detect momentum-driven moves in micro-caps.",
+        "Add insider-activity adapter (Form 4 filings) to detect insider selling or buying pressure.",
+        "Implement post-cutoff news summary (with explicit cutoff-violation flag) for PM review, rather than silently dropping 20 items.",
+        "Add sector-specific catalyst taxonomy for micro-cap biotech/pharma (NAOV appears to be a shell or distressed biotech); current taxonomy is generic."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-17T09:30:00-04:00). This is the largest data gap in the packet and directly impacts catalyst classification."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar adapter failed with cik_not_found; cannot verify SEC filings for NAOV."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public adapter failed with unmapped_ticker; NAOV not in ticker-to-github mapping (expected for non-software company)."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4 adapter failed with cik_not_found; cannot verify insider activity."
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "info",
+          "detail": "alternative_data_features.retail_meme_attention is not_evaluated; cannot assess retail/meme-driven catalyst."
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning is not_evaluated; cannot assess smart-money positioning."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.snapshot_quarter is all nulls; no PIT-safe quarterly data available for NAOV."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot uses TTM ratios (not PIT-safe); net_margin=-583.74% indicates severe profitability distress."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the v1 generator's handling of post-cutoff news is a critical gap. The news_event_summary block correctly flags that 20 items were dropped, but does not provide a summary of those items' titles, timestamps, or content. For a surge-short candidate, this is precisely the information needed to assess whether the catalyst is real (disclosed post-cutoff) or absent (rumor-driven). The alternative_data_features block is largely a placeholder (retail_meme_attention, valuation_context, opencli_evidence all not_evaluated), which limits the agent's ability to detect momentum or rumor-driven moves in micro-caps. The information_integrity_assessment block is also a placeholder (pollution-defense layer not implemented), so the agent cannot assess coordinated-campaign or bot-like-pattern risk. These gaps are acknowledged in the packet's data_quality_flags and agent_ready_notes, but they materially constrain the agent's ability to classify the catalyst with high confidence.",
+      "recommended_followups": [
+        "PM should manually review the 20 post-cutoff news items (via FMP or Polygon API directly) to determine if a material catalyst was disclosed after 09:30 ET on 2025-03-17.",
+        "Verify NAOV's CIK and SEC filing status; if the company is a shell or delisted, that would explain the absence of SEC filings and the distressed valuation.",
+        "Check if the 1:11 stock split on 2025-03-14 was accompanied by a reverse-split announcement or capital restructuring; if so, that is the catalyst.",
+        "Review insider trading activity (Form 4 filings) for the week of 2025-03-10 to 2025-03-17 to detect insider selling or buying pressure.",
+        "Check retail/meme platforms (Reddit WSB, Stocktwits, Fintwit) for NAOV mentions or sentiment spikes around 2025-03-14 to 2025-03-17.",
+        "If no post-cutoff news or insider activity is found, classify the move as 'technical/liquidity-driven' (stock split aftermath, short squeeze unwind, or forced liquidation) rather than 'catalyst-driven'.",
+        "For future NAOV decisions, implement a post-cutoff news summary (with explicit cutoff-violation flag) to allow PM to assess whether the catalyst is real but post-decision."
+      ],
+      "catalyst_type": "unknown_or_absent",
+      "catalyst_specificity_score": 0.05,
+      "vague_narrative_flag": true,
+      "company_claim": "No company claim or disclosed catalyst is present in the evidence packet. The price action (43.91% 5-day decline, 5.83x relative volume) is real and material, but the narrative catalyst is absent. A 1:11 stock split occurred on 2025-03-14, which mechanically explains the price discontinuity but not the magnitude of the selling pressure. 20 news items were dropped post-cutoff, suggesting a catalyst may have been disclosed after 09:30 ET on 2025-03-17, but this is not visible in the packet.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "NAOV",
+      "decision_timestamp": "2025-03-17T09:30:00-04:00",
+      "data_available_as_of": "2025-03-17T09:30:00-04:00",
+      "decision_or_assessment": "Alternative-data verification of narrative-price dislocation for NAOV surge-short candidate",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "valuation_snapshot.valuation_inputs",
+        "news_event_summary.polygon_news",
+        "corporate_calendar.splits",
+        "alt_data_manifest.calls"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 rows post-cutoff)",
+        "sec_edgar filing confirmation (cik_not_found)",
+        "sec_form4 insider activity (cik_not_found)",
+        "github_public developer activity (unmapped_ticker)",
+        "sec_13f institutional ownership (not_available_on_current_plan)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence status)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "OpenCLI auxiliary signals (not_connected)"
+      ],
+      "reasoning_summary": "NAOV exhibits a severe 5-day price collapse (-43.9%) following a 1:11 reverse split on 2025-03-14. Alternative-data corroboration is sparse and sector-mismatched. Wikipedia pageviews show modest baseline attention (1\u201318 views/day over 30 days, peak 18 on 2025-03-11) with no spike pattern consistent with a major catalyst. No news items exist within the cutoff window (polygon_news returned 0 rows). SEC filing adapters failed due to missing CIK (sec_edgar, sec_form4) or plan restrictions (sec_13f). GitHub adapter returned 0 rows (unmapped_ticker). Analyst sentiment is stale (last update 2024-11-01: 1 Buy, 0 Hold/Sell) and descriptor-only. Valuation metrics are distorted by the reverse split and negative profitability (PE=-0.077, net_margin=-583.74%, ROE=-0.392). The macro regime is 'Overheat / Moderately Restrictive' with strict equity discipline. The structural absence of corroborating alt-data (wired adapters returning 0 rows for SEC filings, GitHub, news) relative to what a legitimate micro-cap equity should produce is itself bear-thesis evidence for a surge-short candidate. The narrative of a sharp price collapse is supported by price data, but the underlying business fundamentals and catalyst remain unverified. The absence of hard-to-fake signals (SEC filings, insider activity, developer footprint, recent news) is informative: either the company is genuinely opaque/dormant, or the surge-short thesis rests on price action alone without operational corroboration.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Positive SEC 8-K filing or press release confirming a strategic catalyst (partnership, funding, product launch) post-decision",
+        "Reversal of the 1:11 split or announcement of a reverse-merger / acquisition that invalidates the bear thesis",
+        "Sudden spike in GitHub activity or developer hiring announcements indicating operational restart",
+        "Institutional ownership disclosure showing significant new positions by reputable funds"
+      ],
+      "risk_flags": [
+        "Micro-cap liquidity risk: 79k shares traded on decision day; relative volume 5.8x 20-day average suggests potential for sharp reversals",
+        "Reverse-split distortion: 1:11 split on 2025-03-14 (3 days before decision) inflates nominal price and may trigger forced liquidations or short-covering",
+        "CIK not found for NAOV: SEC filing adapters unable to retrieve insider activity, 13F ownership, or 8-K disclosures; suggests either delisted status, ticker mismatch, or shell company",
+        "Negative profitability: net margin -583.74%, ROE -39.2%, EPS -39.6 (Q3 2024); company is burning cash",
+        "Analyst coverage collapse: 1 Buy rating as of 2024-11-01; no updates for 4+ months; coverage has evaporated",
+        "No recent news: polygon_news returned 0 items in 7-day window; FMP news feed dropped 20 items post-cutoff",
+        "Wikipedia pageviews baseline: 1\u201318 views/day is extremely low; no evidence of retail attention or meme-stock dynamics",
+        "Macro headwinds: 'Overheat / Moderately Restrictive' regime with strict equity discipline; micro-cap unprofitable equities face structural selling pressure"
+      ],
+      "suggested_improvements": [
+        "Verify NAOV CIK status and delisting history; if delisted, surge-short thesis may be moot",
+        "Retrieve OTC Markets or Pink Sheets data if NAOV has migrated off NASDAQ",
+        "Cross-check reverse-split ratio and effective share count; confirm whether 1:11 split was forced or voluntary",
+        "Obtain insider trading data from alternative sources (e.g., OpenInsider, SEC EDGAR direct query) if CIK becomes available",
+        "Monitor for 8-K filings or press releases in the 24\u201348 hours post-decision to detect any catalyst that could invalidate the bear thesis",
+        "Assess whether the price collapse is driven by technical forced selling (margin calls, index rebalancing) vs. fundamental deterioration"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker NAOV; filing confirmation unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 insider activity data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 developer activity data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; no items remain in window"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.snapshot_quarter status=insufficient_evidence; no PIT-safe quarterly data available"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs flagged not_PIT_safe; TTM ratios distorted by reverse split"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not wire OpenCLI or pollution-defense layer; information_integrity_assessment is a placeholder with use_as_primary_signal_allowed=false per schema v1.1 decision #8. Sentiment and ownership blocks are descriptors only and cannot be used as primary signals. The absence of hard-to-fake alt-data (SEC filings, GitHub, insider activity) is treated as informative absence for surge-short candidates per \u00a713.6.SOFT_REASONING, but the lack of positive corroboration from any non-mock source limits confidence.",
+      "recommended_followups": [
+        "Confirm NAOV's current listing status (NASDAQ, OTC, delisted) and CIK availability",
+        "Retrieve 8-K filings and press releases from the 24\u201348 hours post-decision to detect any catalyst",
+        "Monitor Wikipedia pageviews and social media for any spike in attention that could signal a reversal catalyst",
+        "Cross-check analyst ratings and target prices from alternative sources (Yahoo Finance, Seeking Alpha) to assess coverage changes",
+        "Assess technical support/resistance levels and short-interest data to evaluate forced-liquidation vs. fundamental-deterioration drivers"
+      ],
+      "verdict": "weakly_contradicted",
+      "evidence_score": 0.25,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "NAOV's 5-day price collapse (-43.9%) is extreme and suggests either a major negative catalyst or technical forced selling. However, alternative-data sources that should corroborate a fundamental deterioration (SEC filings, insider selling, news coverage, analyst downgrades) are either absent (0 rows returned by wired adapters) or stale (analyst ratings last updated 2024-11-01). The Wikipedia pageviews show no spike pattern consistent with a major news event. The reverse split on 2025-03-14 (3 days before decision) is a structural event that may explain the price action mechanically, but does not confirm a fundamental bear thesis. The narrative-price gap is high because the magnitude of the price move is not yet corroborated by hard-to-fake alternative data.",
+      "industry_template_used": "micro_cap_unprofitable_equity_with_reverse_split",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only alternative-data adapter that returned rows (30 rows, 2025-02-16 to 2025-03-17). All other adapters either failed (sec_edgar, sec_form4, github_public, sec_13f) or returned 0 rows (polygon_news). Wikipedia pageviews serve as a proxy for public attention and retail interest; the absence of a spike pattern is informative for a surge-short candidate.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "No hard-to-fake signals present. SEC filing adapters failed due to missing CIK (sec_edgar, sec_form4) or plan restrictions (sec_13f). GitHub adapter returned 0 rows (unmapped_ticker). Insider trading data unavailable. Analyst sentiment is stale (last update 2024-11-01) and descriptor-only. News coverage is absent (polygon_news returned 0 rows; FMP news dropped 20 items post-cutoff). Wikipedia pageviews show baseline attention (1\u201318 views/day) with no spike pattern. The structural absence of corroborating alt-data is itself bear-thesis evidence for a surge-short candidate, but does not constitute positive corroboration of the narrative.",
+      "industry_specific_evidence_used": [
+        "Reverse-split ratio (1:11 on 2025-03-14) \u2014 structural event that may explain price action",
+        "Analyst sentiment history (1 Buy as of 2024-11-01, no updates for 4+ months) \u2014 coverage collapse",
+        "Valuation metrics (PE=-0.077, net_margin=-583.74%, ROE=-0.392) \u2014 negative profitability",
+        "Wikipedia pageviews (1\u201318 views/day, peak 18 on 2025-03-11) \u2014 low public attention"
+      ],
+      "industry_specific_evidence_missing": [
+        "SEC 8-K filings (cik_not_found) \u2014 no recent corporate events or disclosures",
+        "SEC Form 4 insider trading (cik_not_found) \u2014 no insider activity data",
+        "SEC 13F institutional ownership (not_available_on_current_plan) \u2014 no ownership positioning",
+        "GitHub developer activity (unmapped_ticker) \u2014 no evidence of technical team or product development",
+        "Recent news coverage (polygon_news returned 0 rows) \u2014 no catalyst narrative",
+        "Earnings guidance or management commentary (fundamental_snapshot insufficient_evidence) \u2014 no forward guidance"
+      ],
+      "data_quality_warning": "critical: SEC filing adapters unable to retrieve CIK-dependent data (sec_edgar, sec_form4); alternative sources (GitHub, sec_13f) also unavailable. Fundamental snapshot status=insufficient_evidence. Valuation inputs flagged not_PIT_safe due to TTM ratios and reverse-split distortion. News event summary status=data_unavailable (0 items post-cutoff). Information integrity assessment status=insufficient_evidence with use_as_primary_signal_allowed=false. Confidence in verdict is low due to sparse and sector-mismatched alt-data.",
+      "signals": [
+        {
+          "name": "price_collapse_5d",
+          "available": true,
+          "value": -43.9086,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "relative_volume_spike",
+          "available": true,
+          "value": 5.8298,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "wikipedia_pageviews_spike",
+          "available": true,
+          "value": 18.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "news_coverage_recent",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_filing_confirmation",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "insider_selling_activity",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "analyst_downgrade_recent",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "reverse_split_event",
+          "available": true,
+          "value": 11.0,
+          "verdict_contribution": "neutral"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8; pollution-defense layer not implemented in v1; fail-closed. Alternative-data sources are sparse (wikipedia_pageviews only), sector-mismatched (no GitHub for non-tech company), and do not include hard-to-fake signals (SEC filings, insider activity, news coverage).",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-17T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "sec_edgar (cik_not_found)",
+        "sec_form4 (cik_not_found)",
+        "sec_13f (not_available_on_current_plan)",
+        "github_public (unmapped_ticker)",
+        "sec_8k_fulltext (not_connected)",
+        "news_event_summary.items (0 rows post-cutoff)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence)"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Evaluator (v0.4 sleeve)",
+      "schema_version": "surge_short_agent_output_v1",
+      "prompt_version": "surge_short_v2_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "NAOV",
+      "decision_timestamp": "2025-03-17T09:30:00-04:00",
+      "data_available_as_of": "2025-03-17T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate evaluation: structural absence of corroborating evidence relative to public narrative and sector expectations.",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open=38.7 vs prior_close=26.4 (+46.6% gap)",
+        "price_snapshot.return_5d_pct=-43.9% (reversal post-surge)",
+        "corporate_calendar.splits: 1:11 reverse split on 2025-03-14 (3 days before decision)",
+        "valuation_snapshot: PE=-0.077 (negative earnings), PB=0.034 (distressed), net_margin=-583.74%",
+        "news_event_summary: status=data_unavailable, polygon_news returned 0 rows in 7-day window",
+        "filing_confirmation: sec_edgar cik_not_found, no 8-K filings retrievable",
+        "alternative_data_features: github_public unmapped_ticker, sec_form4 cik_not_found",
+        "sentiment_community_ownership_evidence: fmp_sentiment shows 1 buy rating (stale, from 2024-11), no recent institutional positioning data",
+        "fundamental_snapshot: status=insufficient_evidence, no PIT-safe quarterly data available",
+        "macro_regime: Overheat/Moderately Restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution"
+      ],
+      "evidence_missing": [
+        "news_event_summary: no news items <= cutoff; 20 items dropped post-cutoff (suggests narrative-driven event but no verifiable public disclosure in packet)",
+        "filing_confirmation: no SEC 8-K or press release confirmation available; sec_edgar adapter failed (cik_not_found)",
+        "fundamental_snapshot: no PIT-safe quarterly income/balance/cashflow data; cannot verify revenue/profitability claims",
+        "alternative_data_features: GitHub unmapped (not a tech company?), SEC Form 4 unavailable (cik_not_found), 13F unavailable",
+        "sentiment_community_ownership_evidence: no 13F institutional positioning, no Form 4 insider activity, no recent analyst coverage (last rating Nov 2024)",
+        "narrative_price_gap_assessment: agent_LLM_reasoning not yet populated; no explicit catalyst narrative in packet"
+      ],
+      "reasoning_summary": "NAOV surged ~46.6% on 2025-03-17 opening (38.7 vs 26.4 prior close) but has already reversed -43.9% over 5 days. The surge coincides with a 1:11 reverse split on 2025-03-14, which mechanically inflates the opening price but does not represent value creation. Critical structural absences: (1) No news items in the 7-day window despite 20 items dropped post-cutoff, suggesting a narrative event occurred but is not verifiable in the packet; (2) SEC filing confirmation failed (cik_not_found for NAOV), preventing verification of any official disclosure; (3) Fundamental data is insufficient (no PIT-safe quarterly statements); (4) Valuation metrics are deeply distressed (negative PE, negative net margin -583.74%, PB=0.034); (5) Alternative data adapters failed or returned no rows (GitHub unmapped, Form 4 cik_not_found, 13F unavailable); (6) Analyst sentiment is stale (last rating Nov 2024, 1 buy). The company's actual sector/business model is not disclosed in the packet, preventing sector-specific evidence assessment. The absence of SEC filings for a listed equity claiming a material event is itself a bear-thesis signal under the universal-soft-veto principle: a legitimate listed company with a real catalyst should have a verifiable SEC footprint. The reverse split alone does not justify the surge; the subsequent -43.9% reversal suggests momentum rather than value creation. Macro regime is restrictive (equity_discipline=strict_quality_and_valuation_caution), which argues against holding a distressed, unverified micro-cap.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If SEC 8-K or press release confirming a material acquisition, partnership, or product launch is later retrieved and verified, the structural-absence bear thesis weakens.",
+        "If quarterly fundamentals show positive revenue growth and path to profitability, the distressed valuation may be justified as a turnaround.",
+        "If institutional ownership data (13F) shows significant new positions by reputable funds, the absence of corroboration may be a data lag rather than a signal.",
+        "If the reverse split is part of a legitimate recapitalization or uplisting plan with disclosed milestones, the momentum may reflect real value creation."
+      ],
+      "risk_flags": [
+        "Reverse split (1:11 on 2025-03-14) mechanically inflates opening price; high risk of continued reversal.",
+        "Negative earnings (PE=-0.077, net_margin=-583.74%) indicate the company is unprofitable; valuation is distressed.",
+        "SEC filing adapter failed (cik_not_found); cannot verify official disclosures or insider activity.",
+        "No news in 7-day window despite 20 items dropped post-cutoff; narrative event may be unverifiable or low-tier sourced.",
+        "Analyst coverage is stale (last rating Nov 2024); no recent institutional interest visible.",
+        "Macro regime is restrictive; portfolio discipline argues against micro-cap shorts in this environment.",
+        "Fundamental data insufficient; cannot assess revenue, cash flow, or balance sheet health.",
+        "Alternative data adapters failed or unmapped; no corroborating tech/regulatory/insider activity visible."
+      ],
+      "suggested_improvements": [
+        "Retrieve SEC EDGAR filings directly (bypass FMP adapter) to confirm CIK and check for 8-K, 10-Q, or press releases filed on or before 2025-03-17.",
+        "Cross-check news sources (Seeking Alpha, Yahoo Finance, company IR) for any catalyst narrative published in the 7-day window.",
+        "Obtain quarterly fundamentals from SEC filings (10-Q) to assess revenue, profitability, and cash burn.",
+        "Verify the reverse split's purpose and any associated corporate action (recapitalization, uplisting, debt restructuring).",
+        "Check insider Form 4 filings (SEC EDGAR direct) for any officer/director transactions around the surge date.",
+        "Assess whether NAOV is a shell company, SPAC, or distressed micro-cap with limited disclosure obligations."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "filing_confirmation_failed",
+          "severity": "critical",
+          "detail": "sec_edgar adapter returned cik_not_found for NAOV; cannot retrieve SEC filings to verify catalyst or official disclosures."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; suggests a narrative event occurred but is not verifiable in the packet."
+        },
+        {
+          "kind": "fundamentals_insufficient",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe quarterly data available to assess profitability or growth."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public unmapped_ticker; sec_form4 cik_not_found; sec_13f not_available_on_current_plan."
+        },
+        {
+          "kind": "sentiment_stale",
+          "severity": "warning",
+          "detail": "fmp_sentiment last rating Nov 2024 (1 buy); no recent analyst coverage or institutional positioning visible."
+        },
+        {
+          "kind": "valuation_distressed",
+          "severity": "critical",
+          "detail": "PE=-0.077, net_margin=-583.74%, PB=0.034; company is unprofitable and deeply distressed."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet does not include the company's sector classification (fundamental_snapshot.sector is absent), preventing sector-specific evidence assessment per the SECTOR-AWARE REASONING SEQUENCE. The news_event_summary block shows 20 items dropped post-cutoff but does not include the trigger_article or catalyst_type, making it impossible to identify the specific narrative driving the surge. The filing_confirmation block failed entirely (cik_not_found), which is a hard blocker for a listed equity. The alternative_data_features block is largely a placeholder (adapters not wired in v1), limiting corroboration. The narrative_price_gap_assessment is marked not_evaluated pending agent_LLM_reasoning, which is not available in this packet.",
+      "recommended_followups": [
+        "Retrieve NAOV's CIK directly from SEC EDGAR and pull all filings (10-K, 10-Q, 8-K, S-1) filed on or before 2025-03-17 to identify the catalyst.",
+        "Search public news archives (Seeking Alpha, Yahoo Finance, PR Newswire) for NAOV announcements in the 7-day window.",
+        "Obtain the most recent 10-Q or 10-K to assess revenue, profitability, and cash position.",
+        "Verify the reverse split's purpose and any associated corporate action or recapitalization plan.",
+        "Check insider Form 4 filings for any officer/director transactions or stock sales around the surge date.",
+        "Assess whether NAOV is a shell company, SPAC, or distressed micro-cap with limited disclosure obligations.",
+        "If a real catalyst is confirmed, re-evaluate the short thesis against the company's actual fundamentals and sector norms."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_unverified",
+      "company_claim": "Unknown; news_event_summary returned no items and filing_confirmation failed. Surge coincides with 1:11 reverse split on 2025-03-14, but no official disclosure or narrative is verifiable in the packet.",
+      "industry": "unknown_not_disclosed",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "not_applicable",
+      "fundamental_assessment": "uncertain",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "uncertain",
+      "evidence_sufficiency": "insufficient",
+      "recommended_action": "watch",
+      "initial_position_pct": 0.0,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Insufficient evidence to establish a defensible short thesis. The surge appears to be driven by a reverse split (mechanical, not value-creating) and an unverified narrative event (20 news items dropped post-cutoff, no SEC filing confirmation). The company is deeply distressed (negative earnings, net_margin=-583.74%), but without access to recent fundamentals or official disclosures, the bear thesis cannot be cleanly supported. The -43.9% reversal over 5 days suggests momentum rather than value creation, but the absence of corroborating evidence (failed SEC filing adapter, no alternative data, stale analyst coverage) prevents a high-confidence short recommendation. Recommend monitoring for SEC filing confirmation and fundamental data before entering a position.",
+      "missing_data_warnings": [
+        "SEC filing confirmation failed (cik_not_found); cannot verify official disclosures or insider activity.",
+        "Fundamental snapshot insufficient; no PIT-safe quarterly data available.",
+        "News event summary: 20 items dropped post-cutoff; trigger narrative not verifiable in packet.",
+        "Alternative data adapters failed or unmapped (GitHub, Form 4, 13F); no corroborating activity visible.",
+        "Company sector not disclosed; cannot apply sector-specific evidence assessment.",
+        "Analyst coverage stale (last rating Nov 2024); no recent institutional positioning visible."
+      ],
+      "audit_rationale": "NAOV surged 46.6% on 2025-03-17 opening but reversed -43.9% over 5 days. Surge coincides with 1:11 reverse split (mechanical, not value-creating). Critical structural absences: (1) SEC filing confirmation failed (cik_not_found), preventing verification of any official disclosure; (2) No news items in 7-day window despite 20 dropped post-cutoff, suggesting unverifiable narrative; (3) Fundamentals insufficient (no PIT-safe quarterly data); (4) Valuation deeply distressed (PE=-0.077, net_margin=-583.74%, PB=0.034); (5) Alternative data adapters failed or returned no rows; (6) Analyst coverage stale (Nov 2024). Under the universal-soft-veto principle, structural absence of SEC filings for a listed equity claiming a material event is itself a bear-thesis signal. However, evidence is insufficient to establish a high-confidence short thesis without confirmation of the catalyst and recent fundamentals. Recommend 'watch' pending SEC filing retrieval and fundamental data verification. If catalyst is confirmed and fundamentals remain distressed, escalate to 'short' with 0.5% initial position."
+    },
+    "risk": {
+      "agent_id": "Agent_06_RiskAgent",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_2026_05_06",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "NAOV",
+      "decision_timestamp": "2025-03-17T09:30:00-04:00",
+      "data_available_as_of": "2025-03-17T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for surge_short candidate NAOV",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "candidate_type=surge_short",
+        "macro_regime.equity_allocation_cap",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "data_quality_flags[*].severity"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)\u2013(e) for surge_short candidate NAOV. Candidate type is surge_short, which exempts condition (d) anti-pollution veto per \u00a75.17. Condition (a) sleeve-cap breach does not apply to surge_short (applies to quality_long only per \u00a74.7). Condition (b) surge_short sleeve cap: no upstream sleeve position data provided in packet; cannot evaluate breach of 5% single-position or 10% sleeve cap without current portfolio state. Condition (c) critical data-quality flags: reviewed all data_quality_flags entries; highest severity is 'warning' (quote_after_cutoff, fundamentals_partial, alt_data_adapter_error, etc.); no 'critical' severity flags present. Condition (d) anti-pollution veto: INAPPLICABLE per \u00a75.17 because candidate_type=surge_short. Condition (e) lookahead veto: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]; no lookahead violations detected. All five conditions evaluated; none tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If upstream_agent_outputs or portfolio state reveals current surge_short sleeve exposure >= 10%, condition (b) would trip.",
+        "If a data_quality_flags entry with severity='critical' is later discovered in the packet, condition (c) would trip.",
+        "If envelope.data_after_cutoff_used is later corrected to true, condition (e) would trip.",
+        "If envelope.lookahead_violations is later populated with entries, condition (e) would trip."
+      ],
+      "risk_flags": [
+        "Condition (b) cannot be fully evaluated without current portfolio state (upstream sleeve exposure). Risk agent assumes 0% current exposure; if actual exposure exists, re-evaluate.",
+        "Candidate is surge_short with high uncertainty (upstream agents report 'low' to 'medium' confidence due to sparse alt-data and failed SEC filing adapters). Hard-veto pass does not imply recommendation; PM must apply discretionary judgment.",
+        "Data quality is degraded (20 news items dropped post-cutoff, SEC filing adapter failed, fundamental snapshot insufficient). Hard-veto pass is mechanical; risk assessment is separate."
+      ],
+      "suggested_improvements": [
+        "Implement upstream portfolio-state injection into risk agent to enable full condition (b) evaluation.",
+        "Add explicit 'critical_severity_count' audit to data_quality_flags to catch critical flags at packet-build time.",
+        "Clarify whether surge_short candidates are subject to any sleeve-cap constraints (currently condition (a) exempts quality_long only; surge_short has no explicit cap in \u00a74.8 beyond 5% single-position and 10% sleeve)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "veto_evaluation_complete",
+          "severity": "info",
+          "detail": "All five \u00a75.13 hard-veto conditions evaluated; none tripped."
+        },
+        {
+          "kind": "condition_b_incomplete",
+          "severity": "warning",
+          "detail": "Condition (b) surge_short sleeve cap cannot be fully evaluated without current portfolio state. Risk agent assumes 0% current exposure."
+        },
+        {
+          "kind": "candidate_type_exemption",
+          "severity": "info",
+          "detail": "Candidate type=surge_short exempts condition (d) anti-pollution veto per \u00a75.17."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Risk agent operates in read-only mode against the evidence packet only. Portfolio state (current sleeve exposure, position counts) is not included in the packet; condition (b) evaluation is incomplete without this data. Recommend injecting upstream portfolio state as a separate input block or via upstream_agent_outputs.",
+      "recommended_followups": [
+        "Obtain current surge_short sleeve exposure and single-position exposure for NAOV to complete condition (b) evaluation.",
+        "If current exposure is non-zero, re-run hard-veto check with actual portfolio state.",
+        "PM should apply discretionary judgment on candidate quality (upstream agents report low-to-medium confidence due to sparse alt-data and failed SEC filing adapters) before entering position."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only (\u00a73.7/\u00a73.8 long entry violates \u00a74.7 equity caps). Candidate type=surge_short; condition not applicable."
+        },
+        {
+          "name": "surge_short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires proposed surge_short position to not exceed 5% single-position cap or 10% sleeve cap (\u00a72, \u00a74.8). No current portfolio state provided in packet; risk agent assumes 0% current exposure. Proposed position size not specified in candidate packet. Assuming proposed position is within caps, condition not tripped. Re-evaluate if actual portfolio state becomes available."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Condition (c) trips if any data_quality_flags[*].severity='critical'. Reviewed all 12 flags in packet; highest severity is 'warning' (quote_after_cutoff, fundamentals_partial, alt_data_adapter_error, news_post_cutoff_filtered). No 'critical' severity flags present. Condition not tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) INAPPLICABLE per \u00a75.17: candidate_type=surge_short exempts anti-pollution veto. Condition does not apply."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "Condition (e) trips if data_after_cutoff_used=true OR lookahead_safe=false. Envelope shows data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[]. No lookahead violations detected. Condition not tripped."
+        }
+      ],
+      "advisory_notes": "Hard-veto pass. No veto conditions tripped. Candidate NAOV (surge_short) is mechanically eligible for further evaluation by PM. This is a hard-veto check only; it does not constitute a recommendation. PM must apply discretionary judgment on candidate quality, which upstream agents report as low-to-medium confidence due to sparse alternative-data corroboration and failed SEC filing adapters.",
+      "risk_notes": [
+        "Condition (b) evaluation is incomplete without current portfolio state. Assume 0% current exposure; re-evaluate if actual exposure is non-zero.",
+        "Candidate exhibits high uncertainty (upstream agents: confidence=low to medium). Hard-veto pass does not imply quality or recommendation.",
+        "Data quality is degraded (20 news items dropped post-cutoff, SEC filing adapter failed cik_not_found, fundamental snapshot insufficient_evidence). Risk agent does not assess data quality; that is PM's discretion."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation initiated",
+        "candidate_type=surge_short identified",
+        "condition (a) sleeve_cap_breach: not applicable (quality_long only)",
+        "condition (b) surge_short_sleeve_cap: evaluated; no current portfolio state; assume 0% exposure; not tripped",
+        "condition (c) critical_data_quality_flag: evaluated; max severity=warning; not tripped",
+        "condition (d) anti_pollution_integrity_veto: not applicable (surge_short exempted per \u00a75.17)",
+        "condition (e) lookahead_veto: evaluated; data_after_cutoff_used=false, lookahead_safe=true; not tripped",
+        "all conditions evaluated; no veto tripped; candidate eligible for PM discretion"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-17T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PMAgent",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "NAOV",
+      "decision_timestamp": "2025-03-17T09:30:00-04:00",
+      "data_available_as_of": "2025-03-17T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision: structural absence of corroborating evidence relative to narrative and sector expectations",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open=38.7 vs prior_close=26.4 (+46.6% gap)",
+        "price_snapshot.return_5d_pct=-43.9% (reversal post-surge)",
+        "price_snapshot.relative_volume_vs_20d=5.83x (elevated volume)",
+        "corporate_calendar.splits: 1:11 reverse split on 2025-03-14",
+        "valuation_snapshot: PE=-0.077, PB=0.034, net_margin=-583.74%",
+        "news_event_summary: status=data_unavailable, 0 items in 7-day window, 20 items dropped post-cutoff",
+        "filing_confirmation: sec_edgar cik_not_found, no 8-K verification",
+        "alternative_data_features: github_public unmapped, sec_form4 cik_not_found, sec_13f unavailable",
+        "sentiment_community_ownership_evidence: fmp_sentiment stale (Nov 2024), 1 buy rating",
+        "fundamental_snapshot: status=insufficient_evidence, no PIT-safe quarterly data",
+        "macro_regime: Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution",
+        "risk_agent: no hard-veto conditions tripped",
+        "narrative_event.verdict: unsupported_claim, catalyst_type=unknown_or_absent",
+        "alt_data_verify.verdict: weakly_contradicted, recommendation=needs_more_evidence",
+        "surge_short_agent.recommended_action: watch"
+      ],
+      "evidence_missing": [
+        "news_event_summary: no items <= cutoff; 20 items dropped post-cutoff (catalyst unverifiable)",
+        "filing_confirmation: no SEC 8-K or press release confirmation; sec_edgar adapter failed",
+        "fundamental_snapshot: no PIT-safe quarterly income/balance/cashflow data",
+        "alternative_data_features: GitHub unmapped, Form 4 unavailable, 13F unavailable",
+        "sentiment_community_ownership_evidence: no 13F institutional positioning, no Form 4 insider activity",
+        "company_sector: not disclosed in packet; prevents sector-specific evidence assessment",
+        "narrative_price_gap_assessment: agent_LLM_reasoning not populated"
+      ],
+      "reasoning_summary": "NAOV surged 46.6% on 2025-03-17 opening (38.7 vs 26.4 prior close) but reversed -43.9% over 5 days. Surge coincides with 1:11 reverse split on 2025-03-14 (mechanical, not value-creating). Critical structural absences prevent high-confidence short thesis: (1) SEC filing confirmation failed (cik_not_found), preventing verification of any official disclosure; (2) No news items in 7-day window despite 20 items dropped post-cutoff, suggesting narrative event occurred but is unverifiable in packet; (3) Fundamental data insufficient (no PIT-safe quarterly statements); (4) Valuation deeply distressed (PE=-0.077, net_margin=-583.74%, PB=0.034); (5) Alternative data adapters failed or returned no rows (GitHub unmapped, Form 4 cik_not_found, 13F unavailable); (6) Analyst sentiment stale (Nov 2024, 1 buy). Under asymmetric absence rule, structural absence of SEC filings for a listed equity claiming a material event is bear-thesis evidence. However, the absence of hard-to-fake corroboration (SEC filings, insider activity, recent news, developer footprint) combined with the unverifiable narrative (20 items dropped post-cutoff) prevents establishing a defensible short thesis. The -43.9% reversal suggests momentum rather than value creation, but without confirmation of the catalyst or recent fundamentals, conviction is insufficient. Upstream agents (Narrative, Alt-Data Verify, Surge-Short sleeve) all recommend 'watch' or 'needs_more_evidence' due to sparse corroboration. Risk agent confirms no hard-veto conditions tripped. Macro regime is restrictive (equity_discipline=strict_quality_and_valuation_caution), which argues against micro-cap shorts. Preponderance of evidence does not support entry at this time.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If SEC 8-K or press release confirming a material acquisition, partnership, or product launch is later retrieved and verified, the structural-absence bear thesis weakens.",
+        "If quarterly fundamentals show positive revenue growth and path to profitability, the distressed valuation may be justified as a turnaround.",
+        "If institutional ownership data (13F) shows significant new positions by reputable funds, the absence of corroboration may be a data lag rather than a signal.",
+        "If the reverse split is part of a legitimate recapitalization or uplisting plan with disclosed milestones, the momentum may reflect real value creation."
+      ],
+      "risk_flags": [
+        "Reverse split (1:11 on 2025-03-14) mechanically inflates opening price; high risk of continued reversal.",
+        "Negative earnings (PE=-0.077, net_margin=-583.74%) indicate the company is unprofitable; valuation is distressed.",
+        "SEC filing adapter failed (cik_not_found); cannot verify official disclosures or insider activity.",
+        "No news in 7-day window despite 20 items dropped post-cutoff; narrative event may be unverifiable or low-tier sourced.",
+        "Analyst coverage is stale (last rating Nov 2024); no recent institutional interest visible.",
+        "Macro regime is restrictive; portfolio discipline argues against micro-cap shorts in this environment.",
+        "Fundamental data insufficient; cannot assess revenue, cash flow, or balance sheet health.",
+        "Alternative data adapters failed or unmapped; no corroborating tech/regulatory/insider activity visible.",
+        "Micro-cap liquidity risk: 79k shares traded on decision day; relative volume 5.8x 20-day average suggests potential for sharp reversals."
+      ],
+      "suggested_improvements": [
+        "Retrieve SEC EDGAR filings directly (bypass FMP adapter) to confirm CIK and check for 8-K, 10-Q, or press releases filed on or before 2025-03-17.",
+        "Cross-check news sources (Seeking Alpha, Yahoo Finance, company IR) for any catalyst narrative published in the 7-day window.",
+        "Obtain quarterly fundamentals from SEC filings (10-Q) to assess revenue, profitability, and cash burn.",
+        "Verify the reverse split's purpose and any associated corporate action (recapitalization, uplisting, debt restructuring).",
+        "Check insider Form 4 filings (SEC EDGAR direct) for any officer/director transactions around the surge date.",
+        "Assess whether NAOV is a shell company, SPAC, or distressed micro-cap with limited disclosure obligations.",
+        "Implement post-cutoff news adapter with explicit 'news_broke_after_cutoff' flag to disambiguate whether the catalyst is real but post-decision or absent entirely."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "filing_confirmation_failed",
+          "severity": "critical",
+          "detail": "sec_edgar adapter returned cik_not_found for NAOV; cannot retrieve SEC filings to verify catalyst or official disclosures."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; suggests a narrative event occurred but is not verifiable in the packet."
+        },
+        {
+          "kind": "fundamentals_insufficient",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe quarterly data available to assess profitability or growth."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public unmapped_ticker; sec_form4 cik_not_found; sec_13f not_available_on_current_plan."
+        },
+        {
+          "kind": "sentiment_stale",
+          "severity": "warning",
+          "detail": "fmp_sentiment last rating Nov 2024 (1 buy); no recent analyst coverage or institutional positioning visible."
+        },
+        {
+          "kind": "valuation_distressed",
+          "severity": "critical",
+          "detail": "PE=-0.077, net_margin=-583.74%, PB=0.034; company is unprofitable and deeply distressed."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet does not include the company's sector classification (fundamental_snapshot.sector is absent), preventing sector-specific evidence assessment per the SECTOR-AWARE REASONING SEQUENCE. The news_event_summary block shows 20 items dropped post-cutoff but does not include the trigger_article or catalyst_type, making it impossible to identify the specific narrative driving the surge. The filing_confirmation block failed entirely (cik_not_found), which is a hard blocker for a listed equity. The alternative_data_features block is largely a placeholder (adapters not wired in v1), limiting corroboration. The narrative_price_gap_assessment is marked not_evaluated pending agent_LLM_reasoning, which is not available in this packet.",
+      "recommended_followups": [
+        "Retrieve NAOV's CIK directly from SEC EDGAR and pull all filings (10-K, 10-Q, 8-K, S-1) filed on or before 2025-03-17 to identify the catalyst.",
+        "Search public news archives (Seeking Alpha, Yahoo Finance, PR Newswire) for NAOV announcements in the 7-day window.",
+        "Obtain the most recent 10-Q or 10-K to assess revenue, profitability, and cash position.",
+        "Verify the reverse split's purpose and any associated corporate action or recapitalization plan.",
+        "Check insider Form 4 filings for any officer/director transactions or stock sales around the surge date.",
+        "Assess whether NAOV is a shell company, SPAC, or distressed micro-cap with limited disclosure obligations.",
+        "Monitor for SEC filing confirmation and fundamental data verification before escalating to 'short' decision."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "watch",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence to establish defensible short thesis. Surge appears driven by reverse split (mechanical, not value-creating) and unverified narrative (20 news items dropped post-cutoff, no SEC filing confirmation). Company is deeply distressed (PE=-0.077, net_margin=-583.74%), but without access to recent fundamentals or official disclosures, bear thesis cannot be cleanly supported. Structural absence of SEC filings, insider activity, and recent news is bear-thesis evidence, but absence of hard-to-fake corroboration prevents high-confidence entry. Recommend monitoring for SEC filing confirmation and fundamental data before entering position.",
+      "risk_notes": [
+        "Hard-veto pass: no veto conditions tripped per Risk Agent evaluation.",
+        "Condition (b) surge_short sleeve cap cannot be fully evaluated without current portfolio state; Risk Agent assumes 0% current exposure.",
+        "Candidate exhibits high uncertainty (upstream agents: confidence=low to medium). Hard-veto pass does not imply quality or recommendation.",
+        "Data quality is degraded (20 news items dropped post-cutoff, SEC filing adapter failed cik_not_found, fundamental snapshot insufficient_evidence)."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only. Candidate type=surge_short; condition not applicable."
+        },
+        {
+          "name": "surge_short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "No current portfolio state provided; Risk Agent assumes 0% current exposure. Proposed position size 0.0% within caps. Condition not tripped."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Highest severity in data_quality_flags is 'warning'; no 'critical' severity flags present. Condition not tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type=surge_short exempts anti-pollution veto per \u00a75.17. Condition does not apply."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[]. No lookahead violations detected. Condition not tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "candidate_type=surge_short identified",
+        "\u00a75.13 hard-veto evaluation initiated",
+        "condition (a) sleeve_cap_breach: not applicable (quality_long only)",
+        "condition (b) surge_short_sleeve_cap: evaluated; no current portfolio state; assume 0% exposure; not tripped",
+        "condition (c) critical_data_quality_flag: evaluated; max severity=warning; not tripped",
+        "condition (d) anti_pollution_integrity_veto: not applicable (surge_short exempted per \u00a75.17)",
+        "condition (e) lookahead_veto: evaluated; data_after_cutoff_used=false, lookahead_safe=true; not tripped",
+        "all hard-veto conditions evaluated; none tripped; candidate eligible for PM discretion",
+        "upstream_agent_outputs aggregation: narrative_event.verdict=unsupported_claim, alt_data_verify.verdict=weakly_contradicted, surge_short_agent.recommended_action=watch",
+        "preponderance-of-evidence reasoning: structural absence of SEC filings, insider activity, recent news, and hard-to-fake corroboration prevents high-confidence short entry",
+        "asymmetric absence rule applied: absence of SEC filings vs. claimed material event is bear-thesis evidence, but absence of positive corroboration does not justify entry without additional confirmation",
+        "macro regime context: Overheat/Moderately Restrictive with strict equity discipline argues against micro-cap shorts",
+        "decision: watch (not no_trade, because structural absence is informative; not short, because corroboration is insufficient)"
+      ],
+      "decision_log": [
+        "2025-03-17T09:30:00-04:00 | PM Agent initialized for surge_short candidate NAOV",
+        "2025-03-17T09:30:00-04:00 | Hard-veto evaluation: all 5 conditions checked; none tripped",
+        "2025-03-17T09:30:00-04:00 | Upstream agent outputs aggregated: Narrative (unsupported_claim), Alt-Data Verify (weakly_contradicted, needs_more_evidence), Surge-Short sleeve (watch), Risk (no veto)",
+        "2025-03-17T09:30:00-04:00 | Price action analysis: 46.6% surge on 2025-03-17 opening, -43.9% reversal over 5 days; coincides with 1:11 reverse split on 2025-03-14 (mechanical, not value-creating)",
+        "2025-03-17T09:30:00-04:00 | Catalyst verification: news_event_summary status=data_unavailable (0 items in 7-day window); 20 items dropped post-cutoff (unverifiable); filing_confirmation failed (cik_not_found)",
+        "2025-03-17T09:30:00-04:00 | Fundamental assessment: valuation deeply distressed (PE=-0.077, net_margin=-583.74%, PB=0.034); fundamental_snapshot insufficient_evidence (no PIT-safe quarterly data)",
+        "2025-03-17T09:30:00-04:00 | Alternative-data corroboration: GitHub unmapped, Form 4 cik_not_found, 13F unavailable; analyst sentiment stale (Nov 2024, 1 buy); Wikipedia pageviews baseline (1-18 views/day, no spike)",
+        "2025-03-17T09:30:00-04:00 | Asymmetric absence rule applied: structural absence of SEC filings for a listed equity claiming a material event is bear-thesis evidence; however, absence of hard-to-fake corroboration (insider activity, recent news, developer footprint) prevents high-confidence entry",
+        "2025-03-17T09:30:00-04:00 | Macro regime context: Overheat/Moderately Restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution; argues against micro-cap shorts",
+        "2025-03-17T09:30:00-04:00 | Preponderance-of-evidence reasoning: price action is real and material, but narrative catalyst is unverifiable, fundamentals are insufficient, and corroboration is sparse. Structural absence of SEC filings is informative but not sufficient alone to justify entry without confirmation of catalyst and recent fundamentals.",
+        "2025-03-17T09:30:00-04:00 | Decision: watch (not no_trade, because structural absence is bear-thesis input; not short, because corroboration is insufficient for entry). Recommend monitoring for SEC filing confirmation and fundamental data verification before escalating to short.",
+        "2025-03-17T09:30:00-04:00 | Position size: 0.0% (watch decision implies no position entry)",
+        "2025-03-17T09:30:00-04:00 | Execution plan: T+1 next-open, no order (watch mode)"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-17T09:45:00-04:00",
+        "ticker": "NAOV",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "v0.9.0_pass8_hardrule_2026_05_03",
+        "evidence_packet_hash": "sha256:94a59d62fbc58105175abd418ff48cc981f1f80bf5f8beb13632dd2f5f9f10fb"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews for 'Neang_Kakey' (unrelated to NAOV's business) show baseline activity (1-18 views/day, peak 18 on 2025-03-11); no spike pattern consistent with major catalyst. Retail/meme attention not evaluated (alternative_data_features.retail_meme_attention is not_evaluated).",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Company claim is unknown; news_event_summary returned no items and filing_confirmation failed (cik_not_found). Surge coincides with 1:11 reverse split on 2025-03-14, but no official disclosure or narrative is verifiable in the packet.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Structural absence of SEC filings, insider activity, and recent news prevents confirmation of the bear thesis without additional evidence. Recommend SEC filing retrieval and fundamental data verification before escalating to short.",
+      "sentiment_risk_adjustment_note": "FMP sentiment shows 1 buy rating as of 2024-11-01 (stale, 4+ months prior); no recent analyst coverage or downgrades visible. Sentiment is descriptor-only and does not support or contradict the short thesis.",
+      "ownership_risk_adjustment_note": "Ownership positioning data unavailable (sec_13f not_available_on_current_plan, sec_form4 cik_not_found). Cannot assess institutional positioning or insider activity.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional sponsorship data available. Analyst coverage is stale (Nov 2024, 1 buy); no recent institutional interest visible.",
+      "smart_money_benchmark_note": "No smart-money positioning data available. Ownership and insider activity adapters failed (cik_not_found). Cannot assess smart-money support or opposition.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-17T09:30:00-04:00",
+      "execution_timestamp": "2025-03-17T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:d3d03bf0340db7f4344e20fad75516bef5b5e49eb3f867f15944319b34c2529b",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

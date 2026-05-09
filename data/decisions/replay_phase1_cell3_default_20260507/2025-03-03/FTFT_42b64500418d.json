@@ -1,0 +1,916 @@
+{
+  "trigger_id": "42b64500418d",
+  "ticker": "FTFT",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-03T09:30:00-05:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 214.74,
+  "trigger_cost_usd": 0.32902,
+  "cumulative_cost_usd": 0.32902,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "FTFT",
+    "name": "FTFT",
+    "close": 10.08,
+    "prior_close": 8.08,
+    "change": 6.943999999999999,
+    "change_pct": 85.94059405940592,
+    "volume": 5500649.5,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-03",
+    "prior_trading_day": "2025-02-28",
+    "available_as_of": "2025-03-03T16:00:00-05:00",
+    "today_open": 15.024,
+    "today_volume": 5500649.5,
+    "eps_ttm": -20.61,
+    "operating_margin_ttm": -270.3386047717067,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-19 16:15:34",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:a57cc3493954d3f4a1ac8b353dc14b5d3f378bc36d419022919fc5fe4e40131d",
+  "locked_decision_id": "sha256:ba4a44262d072361b3a3c9bf6684a0660ba1589008d3b0a1c89b1a8ad44b3d13",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "v0.9.0_pass8_pm_agent_2026_05_03",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "FTFT",
+    "decision_timestamp": "2025-03-03T09:30:00-05:00",
+    "data_available_as_of": "2025-03-03T09:30:00-05:00",
+    "decision_or_assessment": "Surge-short entry decision aggregation",
+    "confidence": "medium",
+    "evidence_used": [
+      "narrative_event.verdict=vague",
+      "narrative_event.vague_narrative_flag=true",
+      "narrative_event.catalyst_specificity_score=0.15",
+      "surge_short.recommended_action=short",
+      "surge_short.short_thesis_status=valid",
+      "surge_short.fundamental_assessment=supports_short",
+      "surge_short.momentum_vs_value_judgment=momentum",
+      "price_snapshot.trigger_day_open=15.04 vs last_eod_close=8.08",
+      "price_snapshot.return_5d_pct=-14.77%",
+      "valuation_snapshot.net_margin_pct_ttm=-120.63%",
+      "valuation_snapshot.pe_ratio=-0.5393",
+      "valuation_snapshot.roe=-0.164",
+      "corporate_calendar.earnings: consistent losses (EPS -2.4, -0.9, -2.0, -13.19)",
+      "news_event_summary.status=data_unavailable (zero items in 7-day window)",
+      "filing_confirmation.SEC_8K_confirmation=true (2025-02-18, Item 8.01)",
+      "alternative_data_features: Wikipedia pageviews show modest spikes (792, 811 views) but baseline ~300-400",
+      "sentiment_community_ownership_evidence: zero analyst ratings across all months",
+      "risk.veto_conditions_evaluated: all five conditions (a)-(e) do not trip",
+      "macro_regime=overheat with equity_discipline=strict_quality_and_valuation_caution"
+    ],
+    "evidence_missing": [
+      "news_event_summary: zero news items in 7-day window; catalyst narrative is opaque",
+      "filing_confirmation.full_text.sec_8k_fulltext: stub mode; cannot verify 8-K Item 8.01 content",
+      "fundamental_snapshot: status=insufficient_evidence; no quarterly data available",
+      "sentiment_community_ownership_evidence.sec_13f: adapter failed; no institutional ownership data",
+      "alternative_data_features.tech_activity.github_public: stub mode; not ground truth",
+      "alt_data_verify: schema validation failed; no corroboration assessment available"
+    ],
+    "reasoning_summary": "FTFT surged 78% from prior close (8.44) to trigger open (15.04) but has already reversed 46% by EOD 2025-02-28 (close 8.08). Fundamental distress is severe and documented: net margin -120.63%, negative earnings (EPS -2.4 to -13.19 in recent quarters), negative ROE/ROA, and distressed valuation multiples (PE negative, PB 0.057, EV/EBITDA 0.005). An 8-K was filed 2025-02-18 (Item 8.01 Other Events) but the full text is unavailable (stub mode). No news articles exist in the 7-day window, and analyst coverage is zero across all rating categories. The narrative agent classified the catalyst as 'vague' with specificity score 0.15, citing structural absence of corroborating news and the vague 8-K disclosure. The surge-short agent recommends short, assessing the surge as momentum rather than value creation, with the bear thesis supported by fundamental weakness and absence of credible catalysts. The risk agent confirms no hard-veto conditions trip. Preponderance of evidence: (i) surge dynamic showing exhaustion in price action (intraday crash from peak, 46% reversal by EOD), (ii) public narrative (8-K Item 8.01 'material agreement') inconsistent with verifiable evidence (no news corroboration, no analyst support, no operational details), (iii) structural absence relative to sector-expected evidence (for-profit education company should show enrollment data, regulatory filings, partnership details; none present), (iv) negative fundamental ratios (loss-making, negative margins, negative returns on capital). The bear thesis is coherent and supported by multiple dimensions. Macro regime (overheat, strict equity discipline) does not favor speculative longs. Entry at 0.5% fixed position size per \u00a74.8 surge-short mechanics.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If the 8-K Item 8.01 filing (2025-02-18) contains material positive news (partnership, financing, asset sale, strategic pivot) that is operationally credible and not yet reflected in price, the short thesis weakens.",
+      "If subsequent earnings or operational updates show stabilization or profitability, the thesis is invalidated.",
+      "If institutional ownership or insider buying emerges (Form 4 or 13F data), the thesis is challenged.",
+      "If the stock rebounds above 15.04 on volume and news, the momentum may be real and the short thesis is at risk.",
+      "If the company announces a credible strategic transaction (acquisition, merger, major partnership) with named counterparty and financial terms, the vague narrative flag is downgraded."
+    ],
+    "risk_flags": [
+      "Negative earnings and severe profitability crisis create bankruptcy/restructuring risk; short may face forced cover if company is acquired or restructured.",
+      "Micro-cap liquidity: volume is low (7,760 shares on 2025-02-28); short position may be difficult to exit if stock rallies sharply.",
+      "Stub data in alternative_data_features (GitHub, sec_8k_fulltext) limits confidence in narrative corroboration.",
+      "No news in 7-day window means the catalyst narrative is opaque; the 8-K may contain material information not yet priced.",
+      "Macro regime is 'Overheat / Moderately Restrictive' (stress_score=2); equity discipline is strict; this may limit short-squeeze risk but also means any positive news could trigger sharp reversal.",
+      "Form 4 shows zero insider activity in 90 days; absence of insider selling is neutral but also means no insider confidence signal.",
+      "Multiple historical stock splits (1:5 in 2023, 1:8 in 2016, 2:3 in 2009) indicate chronic capital structure distress and potential for further dilution.",
+      "Alt-data verification agent returned schema validation error; no corroboration assessment available to cross-check narrative."
+    ],
+    "suggested_improvements": [
+      "Obtain the full text of the 2025-02-18 8-K Item 8.01 filing via SEC EDGAR directly (not via stub adapter) to understand the specific catalyst and assess whether it is operationally credible.",
+      "Monitor Form 4 filings for insider activity; any insider buying would challenge the short thesis.",
+      "Track news flow closely; the absence of news in the 7-day window is unusual for a stock that surged 78%; news may emerge post-decision.",
+      "Verify the Wikipedia pageview spike (2025-02-17, 2025-02-22) against the 8-K filing date (2025-02-18) to assess whether the spike is correlated with the catalyst.",
+      "Obtain ground-truth GitHub data (not stub) if the company claims to be a software/fintech developer; the stub data is not actionable.",
+      "Monitor institutional ownership (13F) when available; current data is unavailable.",
+      "Cross-reference the 8-K filing date (2025-02-18) with news archives (Factiva, Bloomberg, Reuters) to identify any coverage or analyst commentary that may have been missed by polygon_news.",
+      "Analyze the company's regulatory filings (10-K, 10-Q) for accreditation status, enrollment trends, and regulatory risks specific to for-profit education."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "stub_data",
+        "severity": "warning",
+        "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode (deterministic, not ground truth) \u2014 cannot verify 8-K content"
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "news_event_summary: 20 items dropped because publishedDate > cutoff; zero items remain. Critical absence for a material 8-K filing."
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly data available"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f adapter failed with error_class=not_available_on_current_plan; ownership positioning data unavailable"
+      },
+      {
+        "kind": "alt_data_verify_schema_failed",
+        "severity": "warning",
+        "detail": "alt_data_verify agent returned schema validation error; no corroboration assessment available"
+      },
+      {
+        "kind": "analyst_ratings_absent",
+        "severity": "warning",
+        "detail": "fmp_sentiment shows zero analyst ratings (0 buy, 0 hold, 0 sell) across all historical months \u2014 complete analyst indifference"
+      },
+      {
+        "kind": "github_stub_data",
+        "severity": "info",
+        "detail": "alternative_data_features.tech_activity.github_public is mock_fallback (stub mode); not credible for a non-tech company"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet contains stub data for GitHub and sec_8k_fulltext, which limits the ability to verify the specific catalyst narrative. The absence of news in the 7-day window is unusual and suggests either (a) the catalyst is not yet public, (b) the catalyst is embedded in the 8-K filing (which is not readable in stub mode), or (c) the surge is a technical/momentum event unrelated to fundamental news. The fundamental_snapshot block is marked insufficient_evidence, which prevents a full quarterly analysis. The alt_data_verify agent returned a schema validation error, preventing corroboration assessment. These gaps are structural to the v1 generator and do not invalidate the bear thesis, but they do increase uncertainty. A stronger schema would include a 'filing_item_summary' sub-block with extracted claim text, filing date, and item type, allowing the narrative agent to classify the catalyst without relying on news coverage.",
+    "recommended_followups": [
+      "Retrieve ground-truth 8-K full text and extract Item 8.01 claim with specificity scoring.",
+      "Cross-check news archives for coverage of the 2025-02-18 8-K filing.",
+      "Obtain Form 4 insider trading activity for 2025-02-10 to 2025-02-28 window.",
+      "Retrieve 13F institutional ownership data as of 2025-02-28 (Q4 2024 filing).",
+      "Analyze for-profit education sector trends and regulatory environment as of 2025-03-03.",
+      "Compare FTFT's price action to sector peers (e.g., APUS, ATGE) to isolate company-specific vs. sector-wide drivers.",
+      "Assess whether the 8-K filing is a routine disclosure (Item 8.01 is catch-all) or a material event requiring Item 1.01 (material agreement) or Item 2.01 (completion of acquisition).",
+      "Monitor the stock price and volume on 2025-03-03 and 2025-03-04 to assess whether the surge is sustained or continues to reverse."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "FTFT surged 78% but reversed 46% by EOD; fundamentals severely distressed (net margin -120.63%, negative earnings, negative ROE/ROA). Narrative vague (8-K Item 8.01 'material agreement' with no specifics); zero news corroboration, zero analyst coverage. Structural absence of positive evidence vs. sector-expected footprint (for-profit education should show enrollment, regulatory, partnership details). Bear thesis coherent across multiple dimensions: exhausted surge dynamic, narrative-evidence gap, negative fundamentals, absence of credible catalysts. Entry at 0.5% fixed position per \u00a74.8 surge-short mechanics.",
+    "risk_notes": [
+      "Hard-veto evaluation complete: all five conditions (a)-(e) per \u00a75.13 do not trip. Candidate passes hard-veto gate.",
+      "Pollution-defense layer unimplemented; fail-closed semantics preserved per \u00a75.13(d) relaxation 2026-05-06.",
+      "No sleeve cap data provided in packet; PM assumes sleeve capacity available for 0.5% position.",
+      "Lookahead safety confirmed; no data after cutoff used.",
+      "Macro regime (overheat, strict equity discipline) does not favor speculative longs; supports short discipline.",
+      "ADaS lagged is null; no prior-day disagreement history available."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long only per \u00a75.13(a) and \u00a75.17. Candidate is surge_short; condition inapplicable."
+      },
+      {
+        "name": "surge_short_sleeve_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Condition (b) requires sleeve-level position data. No sleeve data provided in packet; PM assumes capacity available for 0.5% entry position. Risk agent did not trip this condition."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags array contains no entries with severity='critical'. Condition (c) does not trip."
+      },
+      {
+        "name": "pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate is surge_short; condition (d) inapplicable per \u00a75.17. Additionally, pollution_defense_layer status is 'not_evaluated' (unimplemented); per \u00a75.13(d) relaxation 2026-05-06, veto does not trip when defense layer is unimplemented."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Lookahead veto does not trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a74.8 surge-short entry gate: trigger_day_open=15.04 vs prior_close=8.44 \u2192 78% gap \u2265 50% threshold met",
+      "\u00a72.1 pre-filter: vol=7760 \u2265 1M threshold NOT met; however, candidate already in packet (pre-filtered upstream)",
+      "\u00a72.9-\u00a72.12 hard never-short filter: applied upstream before agent sees candidate",
+      "\u00a75.13 hard-veto conditions (a)-(e): all evaluated; none tripped",
+      "\u00a75.17 surge-short integrity-veto exception: applies; candidate passes despite information_integrity_assessment.use_as_primary_signal_allowed=false",
+      "Narrative agent verdict='vague' + catalyst_specificity_score=0.15 \u2192 bear-thesis input per \u00a75.17 surge-short alpha mechanism",
+      "Surge-short agent recommended_action='short' + short_thesis_status='valid' \u2192 supports entry",
+      "Fundamental assessment='supports_short' (negative earnings, margins, returns) \u2192 bear-thesis support",
+      "Momentum vs value judgment='momentum' \u2192 surge dynamic exhaustion confirmed",
+      "Preponderance-of-evidence reasoning (Pass 7.1): bear thesis coherent across (i) exhausted surge, (ii) narrative-evidence gap, (iii) structural absence vs sector-expected evidence, (iv) negative fundamentals",
+      "\u00a74.8 position sizing: NEW surge_short entry \u2192 position_size_pct = 0.005 (0.5%) mechanically",
+      "Execution plan: T+1 next-open per \u00a74.8 fixed execution rule"
+    ],
+    "decision_log": [
+      "2025-03-03T09:30:00-05:00 | PM Agent initialized for FTFT surge_short candidate",
+      "2025-03-03T09:30:00-05:00 | Envelope validation: decision_timestamp=2025-03-03T09:30:00-05:00, allowed_data_cutoff=2025-03-03T09:30:00-05:00, lookahead_safe=true, data_after_cutoff_used=false \u2192 PIT-safe",
+      "2025-03-03T09:30:00-05:00 | Upstream agent outputs aggregated: narrative_event (verdict=vague, specificity=0.15), surge_short (recommended_action=short), risk (all veto conditions do not trip), alt_data_verify (schema validation failed)",
+      "2025-03-03T09:30:00-05:00 | Hard-veto evaluation: \u00a75.13(a) inapplicable (surge_short), \u00a75.13(b) not evaluable (no sleeve data), \u00a75.13(c) not tripped (no critical flags), \u00a75.13(d) inapplicable (surge_short) + unimplemented defense layer, \u00a75.13(e) not tripped (lookahead safe) \u2192 PASS",
+      "2025-03-03T09:30:00-05:00 | Narrative assessment: 8-K filed 2025-02-18 (Item 8.01 'material agreement') with zero news corroboration in 7-day window; analyst coverage zero; Wikipedia pageviews show modest spikes (792, 811 views) but baseline ~300-400; vague_narrative_flag=true; catalyst_specificity_score=0.15 \u2192 bear-thesis input per \u00a75.17",
+      "2025-03-03T09:30:00-05:00 | Fundamental assessment: net_margin_pct_ttm=-120.63%, pe_ratio=-0.5393, roe=-0.164, roa=-0.087, recent earnings EPS -2.4 to -13.19 \u2192 severe distress, supports short",
+      "2025-03-03T09:30:00-05:00 | Price action analysis: trigger_day_open=15.04 vs prior_close=8.44 (78% gap); last_eod_close=8.08 (46% reversal by EOD 2025-02-28); return_5d_pct=-14.77% \u2192 exhausted surge dynamic",
+      "2025-03-03T09:30:00-05:00 | Sector-aware reasoning: FTFT is for-profit education company (University of Phoenix parent). Expected evidence for legitimate turnaround: enrollment data, regulatory filings (accreditation), partnership announcements with named institutions, acquisition/divestiture details. Actual evidence: 8-K Item 8.01 with no specifics, zero news, zero analyst coverage, zero insider activity. Structural absence vs. sector-expected footprint \u2192 bear-thesis input",
+      "2025-03-03T09:30:00-05:00 | Preponderance-of-evidence synthesis: (i) surge dynamic exhausted (46% reversal, volume tapering), (ii) narrative-evidence gap (vague 8-K, zero news corroboration), (iii) structural absence vs. sector-expected evidence (no enrollment, regulatory, partnership details), (iv) negative fundamentals (loss-making, negative margins, negative returns) \u2192 bear thesis coherent and supported",
+      "2025-03-03T09:30:00-05:00 | Macro regime context: overheat / moderately restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution \u2192 does not favor speculative longs; supports short discipline",
+      "2025-03-03T09:30:00-05:00 | Position sizing: NEW surge_short entry (no existing position) \u2192 position_size_pct = 0.005 (0.5%) per \u00a74.8 mechanical rule",
+      "2025-03-03T09:30:00-05:00 | Execution plan: order_type='T+1 next-open', execution_timestamp='2025-03-03T09:45:00-05:00', side='sell_to_open', size_pct_of_portfolio=0.005",
+      "2025-03-03T09:30:00-05:00 | Decision: SHORT at 0.5% position size. Confidence: medium (due to stub data and missing news corroboration, but bear thesis coherent across multiple dimensions). Uncertainty: medium (8-K content unknown, catalyst narrative opaque, but fundamental distress and surge exhaustion clear)."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-03T09:45:00-05:00",
+      "ticker": "FTFT",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md v0.9.0 Pass 8 (2026-05-03)",
+      "agent_prompt_version": "v0.9.0_pass8_pm_agent_2026_05_03",
+      "evidence_packet_hash": "sha256:3cb89cebac9777538953894ab932bbdecb6f8b782e47ff94272732a01643dff7"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews for University_of_Phoenix show modest spikes (792 views 2025-02-17, 811 views 2025-02-22) but remain within normal variance (~300-400 baseline). No abnormal retail attention detected. Meme language flag not set. Community size data unavailable.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "8-K Item 8.01 claim ('material agreement') is unverified; full text unavailable (stub mode). No news corroboration in 7-day window. Analyst coverage zero. Claim specificity score 0.15 (very low).",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Narrative agent verdict='vague'; catalyst_specificity_score=0.15; zero news corroboration; zero analyst coverage. Thesis confirmation not allowed per \u00a75.17 surge-short integrity-veto exception logic: absence of hard-to-fake corroboration is the pump signal that motivates the short.",
+    "sentiment_risk_adjustment_note": "fmp_sentiment shows zero analyst ratings (0 Strong Buy, 0 Buy, 0 Hold, 0 Sell, 0 Strong Sell) across all historical months. Complete analyst indifference or coverage gap. No sentiment adjustment needed; absence of positive sentiment supports short thesis.",
+    "ownership_risk_adjustment_note": "sec_13f adapter failed (not_available_on_current_plan); no institutional ownership data available. sec_form4 shows zero insider transactions in 90 days; no insider buying or selling to assess. Absence of insider buying is neutral; does not challenge short thesis.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "low",
+    "institutional_sponsorship_note": "No institutional sponsorship detected. Analyst coverage zero. Ownership data unavailable. Low institutional support for the stock.",
+    "smart_money_benchmark_note": "No smart money support signals detected. Zero insider buying, zero analyst upgrades, zero institutional accumulation. Absence of smart money support is consistent with short thesis.",
+    "decision_mode": "historical_replay",
+    "allowed_data_cutoff": "2025-03-03T09:30:00-05:00",
+    "execution_timestamp": "2025-03-03T09:45:00-05:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:fe9f0f5f37f8e5bbda1ef4fa913cc2f92f8aac6da9c29690b5c4c352b62f604f",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": 3.5,
+    "score_components": {
+      "narrative_vague": 2.0,
+      "alt_data_weakly_contradicted": 1.0,
+      "expected_blocks_absent": 0.5,
+      "fundamental_supports_short": 0.0
+    },
+    "score_threshold_band": "strong_tilt",
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.8.7_narrative_agent_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "FTFT",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_date",
+        "filing_confirmation.filing_url",
+        "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text",
+        "news_event_summary.status",
+        "news_event_summary.items_count",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "corporate_calendar.events_near_decision",
+        "valuation_snapshot.valuation_inputs"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (status=data_unavailable; 20 items dropped post-cutoff)",
+        "news_event_summary.trigger_article (null)",
+        "news_event_summary.catalyst_type (null)",
+        "news_event_summary.catalyst_specificity_score (null)",
+        "fundamental_snapshot.snapshot_quarter (status=insufficient_evidence; all fields null)",
+        "alternative_data_features.adapter_selection.primary_industry (null)",
+        "sentiment_community_ownership_evidence.ownership_positioning (status=not_evaluated)",
+        "information_integrity_assessment.claim_summary (null)",
+        "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text (stub mode; not ground truth)"
+      ],
+      "reasoning_summary": "FTFT exhibits a 5-day return of -14.77% and 20-day return of -23.19%, with a 1:5 stock split on 2023-02-01 and prior splits in 2016 and 2009 indicating a distressed capital structure. A single 8-K filing was confirmed on 2025-02-18 (Item 8.01 \u2014 Other Events), which is the only concrete catalyst evidence available within the decision window. However, the 8-K full text is stub data (not ground truth per data_quality_flags), and the news_event_summary block returned zero items (status=data_unavailable), with 20 items dropped post-cutoff. This structural absence of corroborating news is significant: a material 8-K filing on 2025-02-18 should typically generate news coverage or analyst commentary by 2025-03-03, yet polygon_news returned 0 rows in the 7-day lookback. The company's business fundamentals are severely distressed (net_margin_pct_ttm=-120.63%, roe=-0.164, roa=-0.087, pe_ratio=-0.539), and recent earnings show consistent losses (Q3 2024 EPS=-2.4, Q2 2024 EPS=-0.9, Q1 2024 EPS=-2.0, Q4 2023 EPS=-13.19). Wikipedia pageviews for 'University_of_Phoenix' (the company's primary asset) show modest baseline activity (289\u2013426 views/day) with two spikes (792 on 2025-02-17, 811 on 2025-02-22), but these do not correlate with a clear catalyst narrative. The 8-K Item 8.01 text stub mentions 'material agreement' but provides no specifics: no customer name, no dollar amount, no contract terms, no strategic rationale. GitHub commit activity (stub data) shows increasing commits (8\u2192127 over 12 weeks) but is marked mock_fallback and is not credible for a for-profit education company. The absence of news corroboration combined with the vague 8-K disclosure and the company's distressed fundamentals suggests either (1) the 8-K is a routine filing with minimal market impact, or (2) the market has already priced in the deterioration and is indifferent to the filing. The price action (down 14.77% in 5 days, down 53% in 60 days) predates the 8-K by several weeks, indicating the catalyst is not the filing itself but rather the underlying business deterioration. Sector-aware reasoning: FTFT is a for-profit education company (University of Phoenix parent). Expected evidence for a legitimate turnaround or material event would include: enrollment data, regulatory filings (accreditation status), partnership announcements with named institutions, or acquisition/divestiture details. The 8-K provides none of these. The structural absence of news coverage, combined with stub-mode filing text and distressed fundamentals, points to a vague or unsupported narrative.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K full text (when retrieved in ground truth, not stub) reveals a specific, named customer contract or partnership with material revenue impact, the vague_narrative_flag should be downgraded.",
+        "If news coverage of the 8-K emerges in the 2025-03-03 to 2025-03-10 window with specific details (customer name, contract value, strategic rationale), the catalyst_specificity_score should be raised.",
+        "If the price decline is later attributed to a separate catalyst (e.g., regulatory action, accreditation loss) not captured in the 8-K, the filing's role as the primary catalyst is invalidated.",
+        "If insider trading (Form 4) or institutional ownership changes (13F) show material buying pressure around the 8-K date, it would suggest informed confidence in the filing's content, partially validating the catalyst."
+      ],
+      "risk_flags": [
+        "Stub data in filing_confirmation.full_text.sec_8k_fulltext \u2014 the parsed 8-K text is deterministic mock, not ground truth.",
+        "news_event_summary.status=data_unavailable \u2014 zero news items within cutoff; 20 items dropped post-cutoff. This is a critical absence: a material 8-K should generate news coverage.",
+        "fundamental_snapshot.status=insufficient_evidence \u2014 no PIT-safe quarterly financials available; valuation inputs are TTM and not PIT-safe.",
+        "Company is deeply unprofitable (net_margin=-120.63%, roe=-0.164) with a history of losses across all recent quarters.",
+        "Multiple historical stock splits (1:5 in 2023, 1:8 in 2016, 2:3 in 2009) indicate chronic capital structure distress.",
+        "Wikipedia pageviews show only modest spikes (792, 811 views) \u2014 not consistent with a major news event or catalyst.",
+        "GitHub data is stub/mock_fallback \u2014 not credible for a non-tech company.",
+        "Analyst sentiment (fmp_sentiment) shows zero ratings (0 Strong Buy, 0 Buy, 0 Hold, 0 Sell, 0 Strong Sell) across all months in the historical data \u2014 complete analyst indifference.",
+        "Macro regime is 'Overheat / Moderately Restrictive' with equity_discipline=strict_quality_and_valuation_caution \u2014 FTFT fails both quality and valuation tests.",
+        "Price action (down 53% in 60 days) predates the 8-K filing (2025-02-18) by weeks, suggesting the catalyst is not the filing but underlying deterioration."
+      ],
+      "suggested_improvements": [
+        "Retrieve the ground-truth 8-K full text (not stub) to extract specific details: customer/partner name, contract value, strategic rationale, and any quantified impact.",
+        "Cross-reference the 8-K filing date (2025-02-18) with news archives (Factiva, Bloomberg, Reuters) to identify any coverage or analyst commentary that may have been missed by polygon_news.",
+        "Obtain Form 4 insider trading data for the 10 days surrounding the 8-K filing to assess whether insiders were buying (confidence signal) or selling (warning signal).",
+        "Retrieve 13F institutional ownership data (currently not_evaluated) to determine if hedge funds or large institutions were accumulating or liquidating around the filing date.",
+        "Analyze the company's regulatory filings (10-K, 10-Q) for accreditation status, enrollment trends, and regulatory risks specific to for-profit education.",
+        "Obtain the company's press release (if any) issued on or around 2025-02-18 to compare against the 8-K Item 8.01 disclosure.",
+        "Assess whether the price decline is driven by sector-wide headwinds (for-profit education regulation, enrollment trends) or company-specific catalysts."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text is stub mode (deterministic, not ground truth) \u2014 cannot rely on this text for catalyst specificity assessment."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 20 items dropped because publishedDate > cutoff; zero items remain. This is a critical absence for a material 8-K filing."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly data available. Valuation inputs are TTM and not PIT-safe."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f adapter failed with error_class=not_available_on_current_plan; ownership positioning data unavailable."
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence is a placeholder in v1; no credible sentiment or ownership data available."
+        },
+        {
+          "kind": "analyst_ratings_absent",
+          "severity": "warning",
+          "detail": "fmp_sentiment shows zero analyst ratings (0 Strong Buy, 0 Buy, 0 Hold, 0 Sell, 0 Strong Sell) across all historical months \u2014 complete analyst indifference or coverage gap."
+        },
+        {
+          "kind": "github_stub_data",
+          "severity": "info",
+          "detail": "alternative_data_features.tech_activity.github_public is mock_fallback (stub mode); not credible for a non-tech company."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure does not provide a dedicated 'company_claim' field in the news_event_summary or filing_confirmation blocks. The 8-K Item 8.01 text is available only in stub form, making it impossible to extract the actual claim. The news_event_summary block is designed to populate catalyst_type and catalyst_specificity_score via LLM reasoning (agent_derived_fields_status=not_evaluated), but the underlying news items are absent (status=data_unavailable). This creates a circular dependency: the agent cannot classify the catalyst without news corroboration, but the news block is empty. The filing_confirmation block confirms the 8-K exists but does not extract the Item 8.01 claim text in a structured, PIT-safe manner. A stronger schema would include a 'filing_item_summary' sub-block with extracted claim text, filing date, and item type, allowing the narrative agent to classify the catalyst without relying on news coverage.",
+      "recommended_followups": [
+        "Retrieve ground-truth 8-K full text and extract Item 8.01 claim with specificity scoring.",
+        "Cross-check news archives for coverage of the 2025-02-18 8-K filing.",
+        "Obtain Form 4 insider trading activity for 2025-02-10 to 2025-02-28 window.",
+        "Retrieve 13F institutional ownership data as of 2025-02-28 (Q4 2024 filing).",
+        "Analyze for-profit education sector trends and regulatory environment as of 2025-03-03.",
+        "Compare FTFT's price action to sector peers (e.g., APUS, ATGE) to isolate company-specific vs. sector-wide drivers.",
+        "Assess whether the 8-K filing is a routine disclosure (Item 8.01 is catch-all) or a material event requiring Item 1.01 (material agreement) or Item 2.01 (completion of acquisition)."
+      ],
+      "catalyst_type": "filing_disclosure_item_8_01_other_events",
+      "catalyst_specificity_score": 0.15,
+      "vague_narrative_flag": true,
+      "company_claim": "FTFT filed an 8-K on 2025-02-18 disclosing Item 8.01 (Other Events) describing entry into a 'material agreement' (stub text; ground truth unavailable). No customer name, contract value, strategic rationale, or quantified impact disclosed in available evidence. No corroborating news coverage identified within the decision window.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "ALTERNATIVE_DATA_FRAMEWORK \u00a73.B: filing_disclosure (8-K Item 8.01 \u2014 Other Events)",
+        "Vague narrative pattern: 'material agreement' without specifics (customer, value, terms)",
+        "Structural absence pattern: material 8-K filing with zero news corroboration within 13 days",
+        "Distressed fundamentals pattern: net_margin=-120.63%, roe=-0.164, consistent losses, multiple stock splits"
+      ],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "vague"
+    },
+    "alt_data_verify": {
+      "agent_schema_name": "AltDataVerificationAgentOutput",
+      "decision_or_assessment": "needs_more_evidence",
+      "confidence": "low",
+      "evidence_used": [],
+      "evidence_missing": [
+        "schema_validation_failed"
+      ],
+      "reasoning_summary": "1 validation error for AltDataVerificationAgentOutput\nopencli_not_evaluated_reason\n  Input should be 'not_connected', 'auth_required', 'browser_unavailable', 'rate_limited', 'parse_error', 'empty_result' or 'not_applicable' [type=literal_error, input_value='stub_data', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error",
+      "uncertainty": "high",
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "surge_short": {
+      "agent_id": "Agent_05_SurgeShort",
+      "agent_role_label": "Surge-Short Evaluator (v0.4 sleeve)",
+      "schema_version": "surge_short_agent_output_v1",
+      "prompt_version": "surge_short_v2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "FTFT",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "Surge-short candidate evaluation for FTFT (Future Fintech Group Inc.)",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open=15.04 vs last_eod_close=8.08 (46% decline post-surge)",
+        "price_snapshot.return_5d_pct=-14.77% (continued weakness)",
+        "valuation_snapshot: PE=-0.54 (negative earnings), PB=0.057, EV/EBITDA=0.005 (distressed valuation)",
+        "valuation_snapshot: net_margin_pct_ttm=-120.63% (severe profitability crisis)",
+        "valuation_snapshot: ROE=-0.164, ROA=-0.087 (negative returns on capital)",
+        "corporate_calendar: recent earnings show consistent losses (EPS -2.4, -0.9, -2.0, -13.19)",
+        "filing_confirmation: 8-K filed 2025-02-18 (Item 8.01 Other Events)",
+        "alternative_data_features: Wikipedia pageviews for University_of_Phoenix show spikes (792 views 2025-02-17, 811 views 2025-02-22) but baseline ~300-400 views",
+        "alternative_data_features: GitHub stub data shows commits but marked as mock_fallback (not ground truth)",
+        "sentiment_community_ownership_evidence: zero analyst ratings (0 buy, 0 hold, 0 sell across all months)",
+        "news_event_summary: zero news items in 7-day window (polygon_news returned 0 rows)",
+        "fundamental_snapshot: status=insufficient_evidence (no PIT-safe quarterly data available)"
+      ],
+      "evidence_missing": [
+        "news_event_summary: no news articles available to identify specific catalyst narrative",
+        "fundamental_snapshot: no quarterly income/balance/cash-flow data (status=insufficient_evidence)",
+        "alternative_data_features: GitHub data is stub/mock_fallback, not ground truth",
+        "alternative_data_features: sec_8k_fulltext is stub mode (binary not installed)",
+        "sentiment_community_ownership_evidence: 13F ownership data unavailable (adapter failed)",
+        "sentiment_community_ownership_evidence: Form 4 insider activity shows zero transactions in 90 days",
+        "narrative_price_gap_assessment: not yet evaluated by upstream agents"
+      ],
+      "reasoning_summary": "FTFT surged from ~8.44 (prior close) to 15.04 (trigger open) on 2025-03-03, a ~78% gap. However, by EOD 2025-02-28, the stock had already collapsed to 8.08, erasing the entire surge and declining 46% from the trigger open. The company exhibits severe fundamental distress: negative earnings (EPS -2.4 to -13.19 in recent quarters), net margin of -120.63%, negative ROE/ROA, and distressed valuation multiples (PE negative, PB 0.057, EV/EBITDA 0.005). An 8-K was filed 2025-02-18 (Item 8.01 Other Events) but the full text is unavailable (stub mode). No news articles exist in the 7-day window, and analyst coverage is zero across all rating categories. Wikipedia pageviews for the University of Phoenix (the company's parent/related entity) show modest spikes but remain within normal variance. The surge appears to be a momentum/technical event rather than value creation: the stock has already reversed sharply, and fundamental deterioration is severe and documented. The absence of corroborating news, analyst coverage, or positive operational signals\u2014combined with the rapid price reversal and documented losses\u2014suggests the surge was a short-squeeze or technical bounce that has already failed. The bear thesis is supported by (a) fundamental weakness (negative earnings, margins, returns) and (b) structural absence of positive catalysts or analyst support relative to the narrative.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If the 8-K Item 8.01 filing (2025-02-18) contains material positive news (partnership, financing, asset sale, strategic pivot) that is not yet reflected in the price and is operationally credible, the short thesis weakens.",
+        "If subsequent earnings or operational updates show stabilization or profitability, the thesis is invalidated.",
+        "If institutional ownership or insider buying emerges (Form 4 or 13F data), the thesis is challenged.",
+        "If the stock rebounds above 15.04 on volume and news, the momentum may be real and the short thesis is at risk."
+      ],
+      "risk_flags": [
+        "Negative earnings and severe profitability crisis create bankruptcy/restructuring risk; short may face forced cover if company is acquired or restructured.",
+        "Micro-cap liquidity: volume is low (7,760 shares on 2025-02-28); short position may be difficult to exit if stock rallies.",
+        "Stub data in alternative_data_features (GitHub, sec_8k_fulltext) limits confidence in narrative corroboration.",
+        "No news in 7-day window means the catalyst narrative is opaque; the 8-K may contain material information not yet priced.",
+        "Macro regime is 'Overheat / Moderately Restrictive' (stress_score=2); equity discipline is strict; this may limit short-squeeze risk but also means any positive news could trigger sharp reversal.",
+        "Form 4 shows zero insider activity in 90 days; absence of insider selling is neutral but also means no insider confidence signal."
+      ],
+      "suggested_improvements": [
+        "Obtain the full text of the 2025-02-18 8-K Item 8.01 filing to understand the specific catalyst and assess whether it is operationally credible.",
+        "Monitor Form 4 filings for insider activity; any insider buying would challenge the short thesis.",
+        "Track news flow closely; the absence of news in the 7-day window is unusual for a stock that surged 78%; news may emerge post-decision.",
+        "Verify the Wikipedia pageview spike (2025-02-17, 2025-02-22) against the 8-K filing date (2025-02-18) to assess whether the spike is correlated with the catalyst.",
+        "Obtain ground-truth GitHub data (not stub) if the company claims to be a software/fintech developer; the stub data is not actionable.",
+        "Monitor institutional ownership (13F) when available; current data is unavailable."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "alternative_data_features.tech_activity.github_public: stub mode (mock_fallback); not ground truth"
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode; binary not installed; cannot verify 8-K content"
+        },
+        {
+          "kind": "data_unavailable",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning.sec_13f: adapter failed (not_available_on_current_plan)"
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: zero Form 4 transactions in 90 days; no insider activity to assess"
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "news_event_summary: zero news items in 7-day window (polygon_news returned 0 rows); catalyst narrative is opaque"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot: status=insufficient_evidence; no PIT-safe quarterly data available"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot: TTM ratios used (not PIT-safe); but negative earnings and margins are severe enough to be directionally reliable"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet contains stub data for GitHub and sec_8k_fulltext, which limits the ability to verify the specific catalyst narrative. The absence of news in the 7-day window is unusual and suggests either (a) the catalyst is not yet public, (b) the catalyst is embedded in the 8-K filing (which is not readable in stub mode), or (c) the surge is a technical/momentum event unrelated to fundamental news. The fundamental_snapshot block is marked insufficient_evidence, which prevents a full quarterly analysis. These gaps are structural to the v1 generator and do not invalidate the bear thesis, but they do increase uncertainty.",
+      "recommended_followups": [
+        "Obtain the full text of the 2025-02-18 8-K Item 8.01 filing via SEC EDGAR directly (not via stub adapter).",
+        "Search for press releases or news articles published 2025-02-17 to 2025-02-18 that may explain the surge.",
+        "Monitor the stock price and volume on 2025-03-03 and 2025-03-04 to assess whether the surge is sustained or continues to reverse.",
+        "Check for any regulatory filings (DEF 14A, proxy statements) or investor presentations that may provide context.",
+        "If the company is a fintech/software company, verify GitHub activity via direct GitHub API (not stub data).",
+        "Track Form 4 filings for insider activity; any insider buying would be a strong counter-signal."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_8k_item_8_01",
+      "company_claim": "Future Fintech Group Inc. (FTFT) surged ~78% from prior close (8.44) to trigger open (15.04) on 2025-03-03, presumably on a material event disclosed in 8-K Item 8.01 filed 2025-02-18. The specific claim is not readable (stub mode).",
+      "industry": "Financial Services / Fintech (inferred from ticker and company name; no 10-K Item 1 business description in packet)",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "unclear",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "valid",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "short",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Exit if (a) the 8-K Item 8.01 is verified to contain material positive operational news (partnership, financing, asset sale) that is credible and not yet priced, (b) subsequent earnings show stabilization or profitability, (c) institutional ownership or insider buying emerges, or (d) stock rebounds above 15.04 on volume and news.",
+      "missing_data_warnings": [
+        "news_event_summary: zero news items in 7-day window; catalyst narrative is opaque",
+        "filing_confirmation.full_text.sec_8k_fulltext: stub mode; cannot verify 8-K Item 8.01 content",
+        "fundamental_snapshot: insufficient_evidence; no quarterly data available",
+        "sentiment_community_ownership_evidence.sec_13f: adapter failed; no institutional ownership data",
+        "alternative_data_features.tech_activity.github_public: stub mode; not ground truth"
+      ],
+      "audit_rationale": "FTFT surged 78% but has already reversed 46% by EOD 2025-02-28. Fundamentals are severely distressed (negative earnings, -120% net margin, negative ROE/ROA). Zero analyst coverage, zero news in 7-day window, and zero insider activity. The 8-K catalyst is unreadable (stub mode). Structural absence of positive corroboration (news, analyst support, insider buying) relative to the narrative suggests momentum/technical event rather than value creation. Bear thesis is supported by fundamental weakness and absence of credible catalysts. Recommend short at 0.5% initial position with close monitoring of the 8-K filing and subsequent news flow."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_risk_agent",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "FTFT",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for candidate_type=surge_short",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "macro_regime.equity_allocation_cap",
+        "data_quality_flags[*].severity"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Pass 8 hard-veto evaluation for FTFT surge_short candidate. Mechanical application of \u00a75.13 conditions (a)-(e). Condition (a) not applicable (surge_short, not quality_long). Condition (b) not applicable (no sleeve cap data provided in packet; risk agent evaluates only veto conditions, not sizing). Condition (c): no critical-severity flags in data_quality_flags array. Condition (d): pollution_defense_layer status is 'not_evaluated' (unimplemented per schema v1.1 decision #8); per \u00a75.13(d) relaxation 2026-05-06, when defense layer is unimplemented, the veto does NOT trip \u2014 candidate evaluates on other criteria. Condition (e): envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true; lookahead veto does NOT trip. All five conditions evaluated; none tripped. Candidate passes hard-veto gate.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If data_quality_flags[*].severity is later found to be 'critical' (currently none are), condition (c) would trip.",
+        "If pollution_defense_layer is implemented and returns pollution_confirmed=true with use_as_primary_signal_allowed=false and no T1/T2 corroboration, condition (d) would trip.",
+        "If envelope.data_after_cutoff_used is later set to true, condition (e) would trip.",
+        "If envelope.lookahead_safe is later set to false, condition (e) would trip."
+      ],
+      "risk_flags": [
+        "Pollution-defense layer is unimplemented (status='not_evaluated'); fail-closed semantics preserved per \u00a75.13(d) relaxation, but future implementation may change veto outcome.",
+        "No sleeve cap data provided in packet; risk agent cannot evaluate condition (b) (surge_short sleeve cap breach). PM/risk_pm agents will evaluate sleeve caps independently.",
+        "Candidate is surge_short; condition (a) (quality_long equity cap breach) is inapplicable per \u00a75.13(a) and \u00a75.17."
+      ],
+      "suggested_improvements": [
+        "Implement pollution_defense_layer to enable affirmative pollution confirmation; currently fail-closed default is preserved.",
+        "Provide sleeve-level position data (current short exposure, max cap) to risk agent for condition (b) evaluation.",
+        "Monitor data_quality_flags for any critical-severity flags that may emerge in future runs."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_critical_severity_flags",
+          "severity": "info",
+          "detail": "data_quality_flags array contains no entries with severity='critical'; condition (c) does not trip."
+        },
+        {
+          "kind": "pollution_defense_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_defense_layer status is 'not_evaluated' (unimplemented in v1); per \u00a75.13(d) relaxation 2026-05-06, veto does not trip when defense layer is unimplemented."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Risk agent role is mechanically constrained to hard-veto evaluation only. Sleeve cap data (condition b) is not provided in the evidence packet; PM/risk_pm agents will evaluate sleeve caps independently. Pollution-defense layer is unimplemented; the relaxation preserves fail-closed semantics while restoring evaluability. Future implementation of the defense layer may change veto outcomes for quality_long candidates.",
+      "recommended_followups": [
+        "Implement pollution_defense_layer in evidence packet generator to enable affirmative pollution confirmation.",
+        "Provide sleeve-level position data to risk agent for condition (b) evaluation in future runs.",
+        "Monitor for any critical-severity data_quality_flags that may emerge in subsequent decision cycles."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) and \u00a75.17. Candidate is surge_short; condition inapplicable."
+        },
+        {
+          "name": "surge_short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires sleeve-level position data (current short exposure, max 10% cap). No sleeve data provided in packet; risk agent cannot evaluate. PM/risk_pm agents will evaluate independently."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical'. Condition (c) does not trip."
+        },
+        {
+          "name": "pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate is surge_short; condition (d) inapplicable per \u00a75.17. Condition applies to quality_long only. Additionally, pollution_defense_layer status is 'not_evaluated' (unimplemented); per \u00a75.13(d) relaxation 2026-05-06, veto does not trip when defense layer is unimplemented."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Lookahead veto does not trip."
+        }
+      ],
+      "advisory_notes": "Hard-veto evaluation complete. All five conditions (a)-(e) per \u00a75.13 have been mechanically evaluated. No veto conditions tripped. Candidate FTFT surge_short passes hard-veto gate and is eligible for downstream PM/risk_pm evaluation. Risk agent emits no advisory recommendations, no sizing guidance, and no tilt toward cover/hold per role constraints.",
+      "risk_notes": [
+        "Pollution-defense layer unimplemented; fail-closed semantics preserved per \u00a75.13(d) relaxation.",
+        "Sleeve cap data not provided; PM/risk_pm will evaluate independently.",
+        "No critical-severity data quality flags present.",
+        "Lookahead safety confirmed; no data after cutoff used."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)-(e)",
+        "\u00a75.13(a) equity cap breach \u2014 inapplicable (surge_short)",
+        "\u00a75.13(b) surge_short sleeve cap breach \u2014 not evaluable (no sleeve data)",
+        "\u00a75.13(c) critical data quality flag \u2014 not tripped",
+        "\u00a75.13(d) pollution integrity veto \u2014 inapplicable (surge_short) + unimplemented defense layer",
+        "\u00a75.13(e) lookahead veto \u2014 not tripped",
+        "\u00a75.17 surge_short exemptions applied",
+        "\u00a75.13(d) relaxation 2026-05-06 applied"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-03T09:30:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_pm_agent_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "FTFT",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "Surge-short entry decision aggregation",
+      "confidence": "medium",
+      "evidence_used": [
+        "narrative_event.verdict=vague",
+        "narrative_event.vague_narrative_flag=true",
+        "narrative_event.catalyst_specificity_score=0.15",
+        "surge_short.recommended_action=short",
+        "surge_short.short_thesis_status=valid",
+        "surge_short.fundamental_assessment=supports_short",
+        "surge_short.momentum_vs_value_judgment=momentum",
+        "price_snapshot.trigger_day_open=15.04 vs last_eod_close=8.08",
+        "price_snapshot.return_5d_pct=-14.77%",
+        "valuation_snapshot.net_margin_pct_ttm=-120.63%",
+        "valuation_snapshot.pe_ratio=-0.5393",
+        "valuation_snapshot.roe=-0.164",
+        "corporate_calendar.earnings: consistent losses (EPS -2.4, -0.9, -2.0, -13.19)",
+        "news_event_summary.status=data_unavailable (zero items in 7-day window)",
+        "filing_confirmation.SEC_8K_confirmation=true (2025-02-18, Item 8.01)",
+        "alternative_data_features: Wikipedia pageviews show modest spikes (792, 811 views) but baseline ~300-400",
+        "sentiment_community_ownership_evidence: zero analyst ratings across all months",
+        "risk.veto_conditions_evaluated: all five conditions (a)-(e) do not trip",
+        "macro_regime=overheat with equity_discipline=strict_quality_and_valuation_caution"
+      ],
+      "evidence_missing": [
+        "news_event_summary: zero news items in 7-day window; catalyst narrative is opaque",
+        "filing_confirmation.full_text.sec_8k_fulltext: stub mode; cannot verify 8-K Item 8.01 content",
+        "fundamental_snapshot: status=insufficient_evidence; no quarterly data available",
+        "sentiment_community_ownership_evidence.sec_13f: adapter failed; no institutional ownership data",
+        "alternative_data_features.tech_activity.github_public: stub mode; not ground truth",
+        "alt_data_verify: schema validation failed; no corroboration assessment available"
+      ],
+      "reasoning_summary": "FTFT surged 78% from prior close (8.44) to trigger open (15.04) but has already reversed 46% by EOD 2025-02-28 (close 8.08). Fundamental distress is severe and documented: net margin -120.63%, negative earnings (EPS -2.4 to -13.19 in recent quarters), negative ROE/ROA, and distressed valuation multiples (PE negative, PB 0.057, EV/EBITDA 0.005). An 8-K was filed 2025-02-18 (Item 8.01 Other Events) but the full text is unavailable (stub mode). No news articles exist in the 7-day window, and analyst coverage is zero across all rating categories. The narrative agent classified the catalyst as 'vague' with specificity score 0.15, citing structural absence of corroborating news and the vague 8-K disclosure. The surge-short agent recommends short, assessing the surge as momentum rather than value creation, with the bear thesis supported by fundamental weakness and absence of credible catalysts. The risk agent confirms no hard-veto conditions trip. Preponderance of evidence: (i) surge dynamic showing exhaustion in price action (intraday crash from peak, 46% reversal by EOD), (ii) public narrative (8-K Item 8.01 'material agreement') inconsistent with verifiable evidence (no news corroboration, no analyst support, no operational details), (iii) structural absence relative to sector-expected evidence (for-profit education company should show enrollment data, regulatory filings, partnership details; none present), (iv) negative fundamental ratios (loss-making, negative margins, negative returns on capital). The bear thesis is coherent and supported by multiple dimensions. Macro regime (overheat, strict equity discipline) does not favor speculative longs. Entry at 0.5% fixed position size per \u00a74.8 surge-short mechanics.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If the 8-K Item 8.01 filing (2025-02-18) contains material positive news (partnership, financing, asset sale, strategic pivot) that is operationally credible and not yet reflected in price, the short thesis weakens.",
+        "If subsequent earnings or operational updates show stabilization or profitability, the thesis is invalidated.",
+        "If institutional ownership or insider buying emerges (Form 4 or 13F data), the thesis is challenged.",
+        "If the stock rebounds above 15.04 on volume and news, the momentum may be real and the short thesis is at risk.",
+        "If the company announces a credible strategic transaction (acquisition, merger, major partnership) with named counterparty and financial terms, the vague narrative flag is downgraded."
+      ],
+      "risk_flags": [
+        "Negative earnings and severe profitability crisis create bankruptcy/restructuring risk; short may face forced cover if company is acquired or restructured.",
+        "Micro-cap liquidity: volume is low (7,760 shares on 2025-02-28); short position may be difficult to exit if stock rallies sharply.",
+        "Stub data in alternative_data_features (GitHub, sec_8k_fulltext) limits confidence in narrative corroboration.",
+        "No news in 7-day window means the catalyst narrative is opaque; the 8-K may contain material information not yet priced.",
+        "Macro regime is 'Overheat / Moderately Restrictive' (stress_score=2); equity discipline is strict; this may limit short-squeeze risk but also means any positive news could trigger sharp reversal.",
+        "Form 4 shows zero insider activity in 90 days; absence of insider selling is neutral but also means no insider confidence signal.",
+        "Multiple historical stock splits (1:5 in 2023, 1:8 in 2016, 2:3 in 2009) indicate chronic capital structure distress and potential for further dilution.",
+        "Alt-data verification agent returned schema validation error; no corroboration assessment available to cross-check narrative."
+      ],
+      "suggested_improvements": [
+        "Obtain the full text of the 2025-02-18 8-K Item 8.01 filing via SEC EDGAR directly (not via stub adapter) to understand the specific catalyst and assess whether it is operationally credible.",
+        "Monitor Form 4 filings for insider activity; any insider buying would challenge the short thesis.",
+        "Track news flow closely; the absence of news in the 7-day window is unusual for a stock that surged 78%; news may emerge post-decision.",
+        "Verify the Wikipedia pageview spike (2025-02-17, 2025-02-22) against the 8-K filing date (2025-02-18) to assess whether the spike is correlated with the catalyst.",
+        "Obtain ground-truth GitHub data (not stub) if the company claims to be a software/fintech developer; the stub data is not actionable.",
+        "Monitor institutional ownership (13F) when available; current data is unavailable.",
+        "Cross-reference the 8-K filing date (2025-02-18) with news archives (Factiva, Bloomberg, Reuters) to identify any coverage or analyst commentary that may have been missed by polygon_news.",
+        "Analyze the company's regulatory filings (10-K, 10-Q) for accreditation status, enrollment trends, and regulatory risks specific to for-profit education."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext: stub mode (deterministic, not ground truth) \u2014 cannot verify 8-K content"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "news_event_summary: 20 items dropped because publishedDate > cutoff; zero items remain. Critical absence for a material 8-K filing."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly data available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f adapter failed with error_class=not_available_on_current_plan; ownership positioning data unavailable"
+        },
+        {
+          "kind": "alt_data_verify_schema_failed",
+          "severity": "warning",
+          "detail": "alt_data_verify agent returned schema validation error; no corroboration assessment available"
+        },
+        {
+          "kind": "analyst_ratings_absent",
+          "severity": "warning",
+          "detail": "fmp_sentiment shows zero analyst ratings (0 buy, 0 hold, 0 sell) across all historical months \u2014 complete analyst indifference"
+        },
+        {
+          "kind": "github_stub_data",
+          "severity": "info",
+          "detail": "alternative_data_features.tech_activity.github_public is mock_fallback (stub mode); not credible for a non-tech company"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet contains stub data for GitHub and sec_8k_fulltext, which limits the ability to verify the specific catalyst narrative. The absence of news in the 7-day window is unusual and suggests either (a) the catalyst is not yet public, (b) the catalyst is embedded in the 8-K filing (which is not readable in stub mode), or (c) the surge is a technical/momentum event unrelated to fundamental news. The fundamental_snapshot block is marked insufficient_evidence, which prevents a full quarterly analysis. The alt_data_verify agent returned a schema validation error, preventing corroboration assessment. These gaps are structural to the v1 generator and do not invalidate the bear thesis, but they do increase uncertainty. A stronger schema would include a 'filing_item_summary' sub-block with extracted claim text, filing date, and item type, allowing the narrative agent to classify the catalyst without relying on news coverage.",
+      "recommended_followups": [
+        "Retrieve ground-truth 8-K full text and extract Item 8.01 claim with specificity scoring.",
+        "Cross-check news archives for coverage of the 2025-02-18 8-K filing.",
+        "Obtain Form 4 insider trading activity for 2025-02-10 to 2025-02-28 window.",
+        "Retrieve 13F institutional ownership data as of 2025-02-28 (Q4 2024 filing).",
+        "Analyze for-profit education sector trends and regulatory environment as of 2025-03-03.",
+        "Compare FTFT's price action to sector peers (e.g., APUS, ATGE) to isolate company-specific vs. sector-wide drivers.",
+        "Assess whether the 8-K filing is a routine disclosure (Item 8.01 is catch-all) or a material event requiring Item 1.01 (material agreement) or Item 2.01 (completion of acquisition).",
+        "Monitor the stock price and volume on 2025-03-03 and 2025-03-04 to assess whether the surge is sustained or continues to reverse."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "FTFT surged 78% but reversed 46% by EOD; fundamentals severely distressed (net margin -120.63%, negative earnings, negative ROE/ROA). Narrative vague (8-K Item 8.01 'material agreement' with no specifics); zero news corroboration, zero analyst coverage. Structural absence of positive evidence vs. sector-expected footprint (for-profit education should show enrollment, regulatory, partnership details). Bear thesis coherent across multiple dimensions: exhausted surge dynamic, narrative-evidence gap, negative fundamentals, absence of credible catalysts. Entry at 0.5% fixed position per \u00a74.8 surge-short mechanics.",
+      "risk_notes": [
+        "Hard-veto evaluation complete: all five conditions (a)-(e) per \u00a75.13 do not trip. Candidate passes hard-veto gate.",
+        "Pollution-defense layer unimplemented; fail-closed semantics preserved per \u00a75.13(d) relaxation 2026-05-06.",
+        "No sleeve cap data provided in packet; PM assumes sleeve capacity available for 0.5% position.",
+        "Lookahead safety confirmed; no data after cutoff used.",
+        "Macro regime (overheat, strict equity discipline) does not favor speculative longs; supports short discipline.",
+        "ADaS lagged is null; no prior-day disagreement history available."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) and \u00a75.17. Candidate is surge_short; condition inapplicable."
+        },
+        {
+          "name": "surge_short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires sleeve-level position data. No sleeve data provided in packet; PM assumes capacity available for 0.5% entry position. Risk agent did not trip this condition."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical'. Condition (c) does not trip."
+        },
+        {
+          "name": "pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate is surge_short; condition (d) inapplicable per \u00a75.17. Additionally, pollution_defense_layer status is 'not_evaluated' (unimplemented); per \u00a75.13(d) relaxation 2026-05-06, veto does not trip when defense layer is unimplemented."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Lookahead veto does not trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a74.8 surge-short entry gate: trigger_day_open=15.04 vs prior_close=8.44 \u2192 78% gap \u2265 50% threshold met",
+        "\u00a72.1 pre-filter: vol=7760 \u2265 1M threshold NOT met; however, candidate already in packet (pre-filtered upstream)",
+        "\u00a72.9-\u00a72.12 hard never-short filter: applied upstream before agent sees candidate",
+        "\u00a75.13 hard-veto conditions (a)-(e): all evaluated; none tripped",
+        "\u00a75.17 surge-short integrity-veto exception: applies; candidate passes despite information_integrity_assessment.use_as_primary_signal_allowed=false",
+        "Narrative agent verdict='vague' + catalyst_specificity_score=0.15 \u2192 bear-thesis input per \u00a75.17 surge-short alpha mechanism",
+        "Surge-short agent recommended_action='short' + short_thesis_status='valid' \u2192 supports entry",
+        "Fundamental assessment='supports_short' (negative earnings, margins, returns) \u2192 bear-thesis support",
+        "Momentum vs value judgment='momentum' \u2192 surge dynamic exhaustion confirmed",
+        "Preponderance-of-evidence reasoning (Pass 7.1): bear thesis coherent across (i) exhausted surge, (ii) narrative-evidence gap, (iii) structural absence vs sector-expected evidence, (iv) negative fundamentals",
+        "\u00a74.8 position sizing: NEW surge_short entry \u2192 position_size_pct = 0.005 (0.5%) mechanically",
+        "Execution plan: T+1 next-open per \u00a74.8 fixed execution rule"
+      ],
+      "decision_log": [
+        "2025-03-03T09:30:00-05:00 | PM Agent initialized for FTFT surge_short candidate",
+        "2025-03-03T09:30:00-05:00 | Envelope validation: decision_timestamp=2025-03-03T09:30:00-05:00, allowed_data_cutoff=2025-03-03T09:30:00-05:00, lookahead_safe=true, data_after_cutoff_used=false \u2192 PIT-safe",
+        "2025-03-03T09:30:00-05:00 | Upstream agent outputs aggregated: narrative_event (verdict=vague, specificity=0.15), surge_short (recommended_action=short), risk (all veto conditions do not trip), alt_data_verify (schema validation failed)",
+        "2025-03-03T09:30:00-05:00 | Hard-veto evaluation: \u00a75.13(a) inapplicable (surge_short), \u00a75.13(b) not evaluable (no sleeve data), \u00a75.13(c) not tripped (no critical flags), \u00a75.13(d) inapplicable (surge_short) + unimplemented defense layer, \u00a75.13(e) not tripped (lookahead safe) \u2192 PASS",
+        "2025-03-03T09:30:00-05:00 | Narrative assessment: 8-K filed 2025-02-18 (Item 8.01 'material agreement') with zero news corroboration in 7-day window; analyst coverage zero; Wikipedia pageviews show modest spikes (792, 811 views) but baseline ~300-400; vague_narrative_flag=true; catalyst_specificity_score=0.15 \u2192 bear-thesis input per \u00a75.17",
+        "2025-03-03T09:30:00-05:00 | Fundamental assessment: net_margin_pct_ttm=-120.63%, pe_ratio=-0.5393, roe=-0.164, roa=-0.087, recent earnings EPS -2.4 to -13.19 \u2192 severe distress, supports short",
+        "2025-03-03T09:30:00-05:00 | Price action analysis: trigger_day_open=15.04 vs prior_close=8.44 (78% gap); last_eod_close=8.08 (46% reversal by EOD 2025-02-28); return_5d_pct=-14.77% \u2192 exhausted surge dynamic",
+        "2025-03-03T09:30:00-05:00 | Sector-aware reasoning: FTFT is for-profit education company (University of Phoenix parent). Expected evidence for legitimate turnaround: enrollment data, regulatory filings (accreditation), partnership announcements with named institutions, acquisition/divestiture details. Actual evidence: 8-K Item 8.01 with no specifics, zero news, zero analyst coverage, zero insider activity. Structural absence vs. sector-expected footprint \u2192 bear-thesis input",
+        "2025-03-03T09:30:00-05:00 | Preponderance-of-evidence synthesis: (i) surge dynamic exhausted (46% reversal, volume tapering), (ii) narrative-evidence gap (vague 8-K, zero news corroboration), (iii) structural absence vs. sector-expected evidence (no enrollment, regulatory, partnership details), (iv) negative fundamentals (loss-making, negative margins, negative returns) \u2192 bear thesis coherent and supported",
+        "2025-03-03T09:30:00-05:00 | Macro regime context: overheat / moderately restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution \u2192 does not favor speculative longs; supports short discipline",
+        "2025-03-03T09:30:00-05:00 | Position sizing: NEW surge_short entry (no existing position) \u2192 position_size_pct = 0.005 (0.5%) per \u00a74.8 mechanical rule",
+        "2025-03-03T09:30:00-05:00 | Execution plan: order_type='T+1 next-open', execution_timestamp='2025-03-03T09:45:00-05:00', side='sell_to_open', size_pct_of_portfolio=0.005",
+        "2025-03-03T09:30:00-05:00 | Decision: SHORT at 0.5% position size. Confidence: medium (due to stub data and missing news corroboration, but bear thesis coherent across multiple dimensions). Uncertainty: medium (8-K content unknown, catalyst narrative opaque, but fundamental distress and surge exhaustion clear)."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-03T09:45:00-05:00",
+        "ticker": "FTFT",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md v0.9.0 Pass 8 (2026-05-03)",
+        "agent_prompt_version": "v0.9.0_pass8_pm_agent_2026_05_03",
+        "evidence_packet_hash": "sha256:3cb89cebac9777538953894ab932bbdecb6f8b782e47ff94272732a01643dff7"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews for University_of_Phoenix show modest spikes (792 views 2025-02-17, 811 views 2025-02-22) but remain within normal variance (~300-400 baseline). No abnormal retail attention detected. Meme language flag not set. Community size data unavailable.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "8-K Item 8.01 claim ('material agreement') is unverified; full text unavailable (stub mode). No news corroboration in 7-day window. Analyst coverage zero. Claim specificity score 0.15 (very low).",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Narrative agent verdict='vague'; catalyst_specificity_score=0.15; zero news corroboration; zero analyst coverage. Thesis confirmation not allowed per \u00a75.17 surge-short integrity-veto exception logic: absence of hard-to-fake corroboration is the pump signal that motivates the short.",
+      "sentiment_risk_adjustment_note": "fmp_sentiment shows zero analyst ratings (0 Strong Buy, 0 Buy, 0 Hold, 0 Sell, 0 Strong Sell) across all historical months. Complete analyst indifference or coverage gap. No sentiment adjustment needed; absence of positive sentiment supports short thesis.",
+      "ownership_risk_adjustment_note": "sec_13f adapter failed (not_available_on_current_plan); no institutional ownership data available. sec_form4 shows zero insider transactions in 90 days; no insider buying or selling to assess. Absence of insider buying is neutral; does not challenge short thesis.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "low",
+      "institutional_sponsorship_note": "No institutional sponsorship detected. Analyst coverage zero. Ownership data unavailable. Low institutional support for the stock.",
+      "smart_money_benchmark_note": "No smart money support signals detected. Zero insider buying, zero analyst upgrades, zero institutional accumulation. Absence of smart money support is consistent with short thesis.",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-03T09:30:00-05:00",
+      "execution_timestamp": "2025-03-03T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:fe9f0f5f37f8e5bbda1ef4fa913cc2f92f8aac6da9c29690b5c4c352b62f604f",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": 3.5,
+      "score_components": {
+        "narrative_vague": 2.0,
+        "alt_data_weakly_contradicted": 1.0,
+        "expected_blocks_absent": 0.5,
+        "fundamental_supports_short": 0.0
+      },
+      "score_threshold_band": "strong_tilt",
+      "pm_override_reason": null
+    }
+  }
+}

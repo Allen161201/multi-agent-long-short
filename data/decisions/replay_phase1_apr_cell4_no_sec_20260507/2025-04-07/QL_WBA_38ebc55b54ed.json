@@ -1,0 +1,1342 @@
+{
+  "trigger_id": "38ebc55b54ed",
+  "ticker": "WBA",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-04-07T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 241.17,
+  "trigger_cost_usd": 0.461466,
+  "cumulative_cost_usd": 1.329724,
+  "candidate_ranking_inputs": {
+    "ticker": "WBA",
+    "earliest_event_date": "2025-04-08",
+    "selection_reason": "earnings_window_14d",
+    "close": 10.71,
+    "t1_open": 10.88,
+    "t1_date": "2025-04-08"
+  },
+  "evidence_packet_hash": "sha256:08c94e2be4989731406bc4e3537c6f341fc875403c65d36c9941283fe88b01ec",
+  "locked_decision_id": "sha256:c531869257ed64f056fbcfa6513576146943b661e89e120a4d4fbc4d46c9d739",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026_05_03_pass8_soft_reasoning",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "WBA",
+    "decision_timestamp": "2025-04-07T09:30:00-04:00",
+    "data_available_as_of": "2025-04-07T09:30:00-04:00",
+    "decision_or_assessment": "Quality-long candidate fails hard fundamental gates (\u00a73.8). No candidate_type specified; defaulting to quality_long. Fundamental gate 38 fails on three criteria: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. Rule engine recommends no_trade. Risk agent confirms no hard-veto conditions tripped. Decision: no_trade.",
+    "confidence": "high",
+    "evidence_used": [
+      "fundamental_snapshot.eps = -0.31 (negative)",
+      "fundamental_snapshot.operating_income = -236M (negative)",
+      "fundamental_snapshot.free_cash_flow = -424M (negative)",
+      "fundamental_snapshot.net_income = -265M (negative)",
+      "fundamental_snapshot.net_margin_pct = -0.67% (negative)",
+      "fundamental_snapshot.operating_cash_flow = -140M (negative)",
+      "valuation_snapshot.debt_to_equity_ttm = 4.04 (elevated leverage)",
+      "valuation_snapshot.current_ratio_ttm = 0.60 (liquidity stress)",
+      "valuation_snapshot.pe_ratio = -3.15 (negative earnings)",
+      "valuation_snapshot.ev_to_ebitda = -14.45 (negative EBIT)",
+      "price_snapshot.return_5d_pct = -4.56% (down)",
+      "price_snapshot.return_20d_pct = -6.23% (down)",
+      "fundamental_gate_38.passes = false",
+      "fundamental_gate_38.failed_gates = [eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive]",
+      "macro_regime = Overheat/Expansionary with strict_quality_and_valuation_caution",
+      "sentiment_community_ownership.fmp_sentiment: analyst ratings deteriorated from 5 SB/10 B (Nov 2024) to 0 SB/2 B (Apr 2025)",
+      "news_event_summary.status = data_unavailable (0 items post-cutoff)",
+      "risk_agent veto evaluation: all five conditions pass (no hard veto tripped)"
+    ],
+    "evidence_missing": [
+      "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts present but not aggregated by PM)",
+      "news_event_summary.items (0 items post-cutoff; 20 dropped post-cutoff)",
+      "filing_confirmation (status=not_evaluated)",
+      "current equity sleeve position (cannot confirm \u00a74.7 cap compliance)",
+      "forward guidance or turnaround plan (not in packet)"
+    ],
+    "reasoning_summary": "WBA is a mature retail pharmacy company in severe financial distress. The most recent PIT-safe quarter (Q1 FY2025, filed 2025-01-10) shows negative earnings (EPS -$0.31), negative net income (-$265M), negative operating income (-$236M), and negative free cash flow (-$424M). The fundamental_gate_38 hard gate fails on all three necessary conditions per \u00a73.8: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. This is a mechanical hard rule that triggers rule_engine_recommended_action='no_trade'. The valuation is distressed: P/E is negative (-3.15), EV/EBITDA is negative (-14.45), P/S is 0.089 (superficially cheap but misleading given negative margins), P/B is 1.44 (elevated for a value-destroying company). Leverage is dangerous: debt-to-equity of 4.04 is well above the 3.0 threshold, and current ratio of 0.60 signals liquidity stress. The macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution discipline, which is unfavorable for distressed equities. Analyst sentiment has deteriorated sharply: from 5 Strong Buy / 10 Buy in Nov 2024 to 0 Strong Buy / 2 Buy in Apr 2025, indicating loss of confidence. The stock is down 4.56% in 5 days and 6.23% in 20 days, consistent with deteriorating sentiment. No news catalyst is present in the packet (news_event_summary is empty post-cutoff). The upstream agents (Narrative, Alt-Data Verification, Valuation, Quality-Long) all reach conclusions consistent with a bear thesis: no identifiable catalyst, insufficient evidence to verify any bull narrative, very_expensive valuation, and invalidated quality-long thesis. The Risk agent confirms no hard-veto conditions are tripped, so the decision is not blocked on mechanical grounds. However, the fundamental gate failure is a hard rule that overrides any other consideration. Decision: no_trade at 0.0% position size.",
+    "uncertainty": "low",
+    "invalidation_conditions": [
+      "If Q2 FY2025 earnings (post-cutoff) show a return to positive EPS and positive operating income, the no_trade decision would need re-evaluation.",
+      "If the company announces a major strategic restructuring, asset sale, or debt restructuring that materially improves FCF, the decision would be invalidated.",
+      "If macro regime shifts to Crisis and WBA is identified as a quality-dividend-yield play with margin-of-safety (unlikely given negative FCF), the decision could shift."
+    ],
+    "risk_flags": [
+      "Negative earnings and negative free cash flow: company is not generating value.",
+      "Negative operating margin: core business is unprofitable.",
+      "High dividend yield (11.5%+) with negative FCF: unsustainable capital return; dividend cut risk.",
+      "Debt-to-equity of 4.04: highly leveraged; refinancing risk in higher-rate environment.",
+      "Current ratio of 0.60: liquidity stress; working capital deficit.",
+      "Overheat macro regime: strict quality discipline applies; no margin of safety for distressed names.",
+      "Fundamental gate failure: hard rule violation on three criteria (eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive).",
+      "Stock down 4.56% in 5 days, 6.23% in 20 days: momentum deteriorating; potential for further downside.",
+      "Analyst sentiment deterioration: Strong Buy count dropped from 5 to 0 in 5 months.",
+      "No identifiable catalyst or news corroboration for any bull thesis."
+    ],
+    "suggested_improvements": [
+      "Wire sec_8k_fulltext adapter to capture recent corporate filings and actions.",
+      "Implement sector-specific alternative-data adapters for retail pharmacy (store traffic, prescription volume, supply chain metrics).",
+      "Obtain detailed segment-level profitability data to assess which business units are driving losses.",
+      "Retrieve management guidance or turnaround plan from latest earnings call transcript or 8-K.",
+      "Monitor Q2 FY2025 earnings (expected ~July 2025) for signs of stabilization or further deterioration.",
+      "Assess covenant compliance on debt facilities; liquidity runway is critical.",
+      "Evaluate potential M&A, asset sales, or restructuring announcements.",
+      "Compare WBA's performance to CVS and RGC to isolate company-specific vs. sector factors."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "hard_gate_failure",
+        "severity": "critical",
+        "detail": "fundamental_gate_38 reports failed gates: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. Rule engine recommends no_trade."
+      },
+      {
+        "kind": "news_data_unavailable",
+        "severity": "warning",
+        "detail": "news_event_summary.status=data_unavailable; 0 items returned; 20 items dropped post-cutoff. polygon_news returned 0 rows in [2025-03-31, 2025-04-07]."
+      },
+      {
+        "kind": "filing_confirmation_not_evaluated",
+        "severity": "warning",
+        "detail": "filing_confirmation.status=not_evaluated; sec_8k_fulltext adapter not wired in v0.8.7."
+      },
+      {
+        "kind": "information_integrity_insufficient",
+        "severity": "warning",
+        "detail": "information_integrity_assessment.status=insufficient_evidence; use_as_primary_signal_allowed=false; pollution-defense layer unimplemented."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public adapter failed with error_class=unmapped_ticker; not relevant for retail pharmacy but indicates adapter coverage gap."
+      },
+      {
+        "kind": "sentiment_ownership_not_evaluated",
+        "severity": "info",
+        "detail": "sentiment_community_ownership_evidence.ownership_positioning.status=not_evaluated; 13F-style data not available."
+      },
+      {
+        "kind": "candidate_type_missing",
+        "severity": "warning",
+        "detail": "candidate_type field not present in packet; defaulting to quality_long for evaluation. If surge_short, different decision framework would apply."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet does not include upstream agent outputs aggregated by PM (only raw agent outputs are present). The packet also lacks candidate_type specification, requiring PM to default to quality_long. The fundamental_gate_38 hard gate failure is decisive and overrides any other consideration per \u00a73.8. The absence of news and filing confirmation is a minor gap but does not change the outcome given the clear earnings deterioration. The information_integrity_assessment correctly implements the \u00a75.13(d) relaxation: pollution_defense_layer is unimplemented, so veto does not trip.",
+    "recommended_followups": [
+      "Monitor Q2 FY2025 earnings (expected ~July 2025) for signs of stabilization or further deterioration.",
+      "Track debt refinancing announcements; covenant breaches would be a critical red flag.",
+      "Watch for activist investor involvement or restructuring announcements.",
+      "Reassess if company announces cost-cutting, asset sales, or strategic pivot.",
+      "Compare WBA's performance to CVS and RGC to isolate company-specific vs. sector factors.",
+      "Verify whether any press releases or SEC filings were published on 2025-04-04 or 2025-04-05 (post-market or pre-market) that would explain the 5-day decline."
+    ],
+    "candidate_type": "quality_long",
+    "decision": "no_trade",
+    "position_size_pct": 0.0,
+    "reason": "WBA fails hard fundamental gates (\u00a73.8): eps_ttm negative (-0.31), operating_margin_ttm negative (-0.67%), free_cash_flow negative (-424M). Q1 FY2025 shows -265M net income, -236M operating income, -140M operating cash flow. Debt-to-equity 4.04, current ratio 0.60. Analyst sentiment deteriorated sharply (5 SB/10 B \u2192 0 SB/2 B in 5mo). Macro regime is strict_quality_and_valuation_caution. No identifiable catalyst. Rule engine recommends no_trade. Risk agent confirms no hard-veto conditions tripped. Decision: no_trade at 0.0% position size.",
+    "risk_notes": [
+      "Veto condition (a) sleeve_cap_breach: not_tripped (current equity sleeve position not provided; assuming compliance).",
+      "Veto condition (b) short_sleeve_cap_breach: not_applicable (quality_long candidate, not surge_short).",
+      "Veto condition (c) critical_data_quality_flag: not_tripped (no critical flags in data_quality_flags array).",
+      "Veto condition (d) anti_pollution_integrity_veto: not_tripped (pollution_defense_layer unimplemented; veto does not trip per 2026-05-06 relaxation).",
+      "Veto condition (e) lookahead_veto: not_tripped (lookahead_safe=true, data_after_cutoff_used=false).",
+      "Hard rule recommendation: fundamental_gate_38 fails on three criteria (eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive); rule_engine_recommended_action='no_trade'."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Quality-long candidate. Current equity sleeve position not provided in packet; cannot confirm whether proposed position would breach \u00a74.7 regime cap. Assuming current sleeve is within cap; no breach detected."
+      },
+      {
+        "name": "short_sleeve_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Candidate type is quality_long, not surge_short. Condition (b) applies only to surge_short candidates per \u00a75.13(b). Not applicable."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags array contains no entries with severity='critical'. All flags are 'info' or 'warning'. Condition (c) does not trip."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence'). Per \u00a75.13(d) relaxation (2026-05-06), when pollution_defense_layer is unimplemented, veto does NOT trip. Affirmative pollution confirmation required; current status is 'insufficient_evidence', not 'confirmed'. Condition (d) does not trip."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. No lookahead violations detected. Condition (e) does not trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a73.8 hard fundamental gates: eps_ttm_not_positive (FAILED: eps=-0.31), operating_margin_not_positive (FAILED: net_margin=-0.67%), free_cash_flow_not_positive (FAILED: fcf=-424M)",
+      "fundamental_gate_38.passes=false \u2192 rule_engine_recommended_action='no_trade'",
+      "\u00a75.13(a) sleeve_cap_breach: not_tripped (current sleeve position not provided; assuming compliance)",
+      "\u00a75.13(b) short_sleeve_cap_breach: not_applicable (quality_long candidate, not surge_short)",
+      "\u00a75.13(c) critical_data_quality_flag: not_tripped (no critical flags in data_quality_flags array)",
+      "\u00a75.13(d) anti_pollution_integrity_veto: not_tripped (pollution_defense_layer unimplemented; veto does not trip per 2026-05-06 relaxation)",
+      "\u00a75.13(e) lookahead_veto: not_tripped (lookahead_safe=true, data_after_cutoff_used=false)",
+      "RESULT: All veto conditions pass. Hard fundamental gate failure (\u00a73.8) overrides any other consideration. Decision: no_trade at 0.0% position size."
+    ],
+    "decision_log": [
+      "1. Candidate type not specified in packet; defaulting to quality_long per \u00a73.8 framework.",
+      "2. Evaluated hard fundamental gates (\u00a73.8): eps_ttm, operating_margin_ttm, free_cash_flow_ttm.",
+      "3. Gate 1 (eps_ttm > 0): FAILED. eps_ttm = -0.31 (negative). Q1 FY2025 EPS = -0.31.",
+      "4. Gate 2 (operating_margin_ttm > 0): FAILED. net_margin_ttm = -0.67% (negative). Q1 FY2025 operating income = -236M.",
+      "5. Gate 3 (free_cash_flow_ttm > 0): FAILED. free_cash_flow_ttm = -424M (negative). Q1 FY2025 operating cash flow = -140M.",
+      "6. fundamental_gate_38.passes = false. Rule engine recommends no_trade.",
+      "7. Evaluated valuation_assessment: very_expensive (P/E=-3.15, EV/EBITDA=-14.45, P/B=1.44, P/S=0.089). Negative multiples indicate distress.",
+      "8. Evaluated macro regime: Overheat/Expansionary with strict_quality_and_valuation_caution discipline. Unfavorable for distressed equities.",
+      "9. Evaluated upstream agents: Narrative (unsupported_claim, no catalyst), Alt-Data Verify (insufficient_evidence), Valuation (very_expensive), Quality-Long (invalidated), Risk (no hard-veto conditions tripped).",
+      "10. Evaluated hard-veto conditions (\u00a75.13): (a) sleeve_cap_breach not_tripped, (b) short_sleeve_cap_breach not_applicable, (c) critical_data_quality_flag not_tripped, (d) anti_pollution_integrity_veto not_tripped, (e) lookahead_veto not_tripped.",
+      "11. Fundamental gate failure is a hard rule that overrides any other consideration per \u00a73.8.",
+      "12. Decision: no_trade at 0.0% position size. Execution plan: none (no position to open)."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-07T09:45:00-04:00",
+      "ticker": "WBA",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "evidence_packet_hash": "sha256:17d77773e01a71931dd08478fe0702524ff4cfe67ff3f2b30078eb2a0affa0c4"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": null,
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Fundamental gate failure (\u00a73.8) overrides any thesis confirmation. Hard rule: no_trade.",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": null,
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-07T09:30:00-04:00",
+    "execution_timestamp": "2025-04-07T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:7d2f82d4a046b6a11327cd7231733bf6659c7d7ede73862ac85d6048e91f2f7e",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-04-07T09:30:00-04:00",
+      "data_available_as_of": "2025-04-07T09:30:00-04:00",
+      "decision_or_assessment": "No identifiable catalyst event at decision timestamp; structural absence of news corroboration combined with negative fundamental gate failure.",
+      "confidence": "medium",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_count=0",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "polygon_news adapter: 0 rows in [2025-03-31, 2025-04-07]",
+        "price_snapshot.return_5d_pct=-4.5576",
+        "price_snapshot.relative_volume_vs_20d=1.5205",
+        "fundamental_snapshot.net_income=-265000000",
+        "fundamental_snapshot.operating_income=-236000000",
+        "fundamental_snapshot.free_cash_flow=-424000000",
+        "fundamental_snapshot.eps=-0.31",
+        "fundamental_gate_38.passes=false",
+        "alternative_data_features.attention.wikipedia_pageviews: spike on 2025-03-22 (1220 views) with decay thereafter",
+        "sentiment_community_ownership_evidence.fmp_sentiment: analyst ratings deteriorated from 2024-11 (5 SB, 10 B, 12 H, 2 S) to 2025-04-01 (0 SB, 2 B, 12 H, 1 S)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (null)",
+        "news_event_summary.catalyst_type (null)",
+        "filing_confirmation.SEC_8K_confirmation (not_evaluated)",
+        "filing_confirmation.filing_date (null)",
+        "news_event_summary.ndi_score (null)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "company-specific press release or official disclosure corroborating price action"
+      ],
+      "reasoning_summary": "WBA exhibits a 4.56% 5-day decline with elevated relative volume (1.52x 20d avg) as of 2025-04-04 EOD. However, the news_event_summary block is entirely empty (0 items, 20 dropped post-cutoff), and polygon_news adapter returned 0 rows in the 7-day lookback window. No SEC 8-K filing confirmation is available. The only alternative-data signal is a Wikipedia pageview spike on 2025-03-22 (1220 views, ~2.8x baseline), which decayed by 2025-04-07 (345 views). This spike does not correlate to any identifiable company catalyst in the packet. Sector-aware reasoning: WBA is a retail pharmacy / healthcare distributor (Walgreens Boots Alliance). For this sector, expected corroborating evidence would include: (1) earnings announcement or guidance revision, (2) regulatory action (DEA, state pharmacy boards), (3) M&A or partnership announcement, (4) store closure / restructuring disclosure, (5) supply chain disruption. None of these are present in the packet. The fundamental snapshot (Q1 FY2025, accepted 2025-01-10) shows severe deterioration: net income -$265M, operating income -$236M, free cash flow -$424M, EPS -$0.31. The fundamental_gate_38 explicitly fails on three criteria (eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive), triggering a hard rule_engine_recommended_action='no_trade'. Analyst sentiment has deteriorated: 2024-11 showed 5 Strong Buy + 10 Buy ratings; by 2025-04-01, only 2 Buy ratings remain with 12 Hold and 1 Sell. This deterioration is consistent with the negative earnings surprise (EPS -$0.31 vs. historical positive earnings), but no news event in the packet explains the specific 5-day price decline. The Wikipedia spike on 2025-03-22 is temporally distant from the decision date (2025-04-07, 16 days later) and does not map to any disclosed company event. Absence pattern: For a retail pharmacy company experiencing a 4.56% decline with elevated volume, we would expect either (a) earnings miss announcement, (b) regulatory news, or (c) competitive/operational disclosure. The structural absence of any news corroboration\u2014despite 20 items being dropped post-cutoff\u2014suggests either (1) the price action is driven by macro/sector headwinds not captured in company-specific catalysts, or (2) the catalyst is embedded in the prior earnings miss (2025-01-10, EPS -$0.31 vs. consensus +$0.37) but is being re-priced in early April. The latter is plausible but not a 'catalyst' in the sense of a new event at decision time.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC filing published between 2025-04-04 16:15 and 2025-04-07 09:30 exists but was not captured by polygon_news or fmp_sentiment adapters, the absence-based reasoning is invalidated.",
+        "If the Wikipedia pageview spike on 2025-03-22 correlates to a specific company announcement (e.g., executive departure, facility closure) not captured in the news adapters, the 'no catalyst' verdict is invalidated.",
+        "If the price decline is driven by macro regime shift (e.g., sector rotation, interest rate expectations) rather than company-specific catalyst, the narrative-event framing is misaligned."
+      ],
+      "risk_flags": [
+        "Fundamental gate failure (hard rule): eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive \u2192 rule_engine_recommended_action='no_trade'.",
+        "Structural absence of news corroboration despite elevated volume and 5-day decline suggests either (a) macro-driven move, (b) prior earnings re-pricing, or (c) adapter gap.",
+        "Analyst sentiment deterioration (5 SB \u2192 0 SB in 5 months) indicates consensus downgrade, but no triggering event in packet.",
+        "Wikipedia pageview spike (2025-03-22) is temporally distant and unattributed to company catalyst.",
+        "Information integrity assessment: status=insufficient_evidence, use_as_primary_signal_allowed=false (pollution-defense layer unimplemented).",
+        "No filing confirmation available; filing_confirmation.status=not_evaluated."
+      ],
+      "suggested_improvements": [
+        "Wire sec_edgar and sec_8k_fulltext adapters to capture any 8-K filings or press releases filed between 2025-04-04 and 2025-04-07.",
+        "Implement sector-specific alternative-data adapters for retail pharmacy (e.g., store traffic, prescription volume, supply chain metrics) to disambiguate company-specific vs. macro-driven moves.",
+        "Investigate the 2025-03-22 Wikipedia spike: cross-reference with company press releases, earnings calls, or regulatory filings from that date.",
+        "Enhance news_event_summary to capture items dropped post-cutoff with a brief summary, so agent can assess whether the 20 dropped items contain relevant catalysts.",
+        "Implement pollution-defense layer in information_integrity_assessment to allow use of low-tier sources when corroborated by higher-tier evidence."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_data_unavailable",
+          "severity": "warning",
+          "detail": "news_event_summary.status=data_unavailable; 0 items returned; 20 items dropped post-cutoff. polygon_news returned 0 rows in [2025-03-31, 2025-04-07]."
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "filing_confirmation.status=not_evaluated; sec_8k_fulltext adapter not wired in v0.8.7."
+        },
+        {
+          "kind": "information_integrity_insufficient",
+          "severity": "warning",
+          "detail": "information_integrity_assessment.status=insufficient_evidence; use_as_primary_signal_allowed=false; pollution-defense layer unimplemented."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public adapter failed with error_class=unmapped_ticker; not relevant for retail pharmacy but indicates adapter coverage gap."
+        },
+        {
+          "kind": "sentiment_ownership_not_evaluated",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning.status=not_evaluated; 13F-style data not available."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The narrative_event_agent schema assumes a news event or filing will be present in the packet when a price move occurs. When news_event_summary.status=data_unavailable and filing_confirmation.status=not_evaluated, the agent must reason about absence patterns and sector-expected evidence. The current schema does not have a dedicated field for 'absence-based bear thesis' reasoning, which is critical for surge_short candidates. Recommend adding a field like 'structural_absence_assessment' to explicitly capture whether absence of expected corroboration is itself a signal.",
+      "recommended_followups": [
+        "Verify whether any press releases or SEC filings were published on 2025-04-04 or 2025-04-05 (post-market or pre-market) that would explain the 5-day decline.",
+        "Cross-reference the 2025-03-22 Wikipedia spike with company calendar events (earnings call, investor day, executive announcement).",
+        "Assess whether the price decline is part of a broader sector rotation (e.g., healthcare, retail, or dividend-paying stocks) by comparing WBA's 5-day return to sector peers.",
+        "If no company-specific catalyst is found, classify the move as macro-driven or momentum-driven, not narrative-event-driven."
+      ],
+      "catalyst_type": "none_identifiable",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": true,
+      "company_claim": "No explicit company claim present in packet. Implicit claim: WBA stock declined 4.56% over 5 days (2025-03-31 to 2025-04-04) with elevated volume (1.52x 20d avg). Fundamental deterioration evident (Q1 FY2025: net income -$265M, EPS -$0.31). Analyst sentiment downgraded from 5 Strong Buy (2024-11) to 0 Strong Buy (2025-04-01). Wikipedia pageview spike on 2025-03-22 (1220 views, ~2.8x baseline) with no attributed catalyst.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03_AltDataVerification",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-04-07T09:30:00-04:00",
+      "data_available_as_of": "2025-04-07T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-vs-Evidence Verification for WBA (Walgreens Boots Alliance)",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "fundamental_snapshot.snapshot_quarter (Q1 2025 FY)",
+        "price_snapshot.return_5d_pct and relative_volume_vs_20d",
+        "valuation_snapshot.valuation_inputs (negative earnings, high leverage)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings)",
+        "news_event_summary (zero items post-cutoff)",
+        "alt_data_manifest source_flag distribution"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff; 20 dropped post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "alternative_data_features.retail_meme_attention (not_connected)",
+        "alternative_data_features.valuation_context (not_connected)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "opencli_evidence (not_connected)"
+      ],
+      "reasoning_summary": "WBA (Walgreens Boots Alliance) is a retail pharmacy / healthcare company. The packet contains no narrative claim to verify (news_event_summary is empty post-cutoff, filing_confirmation not_connected). Alternative-data evidence is sparse and sector-mismatched: (1) Wikipedia pageviews show normal traffic (30-day range 306\u20131220 views, spike on 2025-03-22 at 1220 views, baseline ~350\u2013500) \u2014 this is attention to the World_Boxing_Association article, not WBA the ticker, and is not sector-relevant for a pharmacy retailer. (2) GitHub public adapter returned 0 rows with error 'unmapped_ticker' \u2014 not applicable to retail pharmacy. (3) FMP sentiment (T2 analyst ratings) shows 72 rows of historical analyst grades; as of 2025-04-01, WBA has 2 Buy, 12 Hold, 1 Sell (15 total) \u2014 a mixed but slightly positive lean, though this is descriptor-only per schema. (4) Polygon news returned 0 rows in [2025-03-31, 2025-04-07]. (5) Fundamental snapshot (Q1 FY2025, accepted 2025-01-10) shows: revenue $39.5B, net income -$265M, operating income -$236M, EPS -$0.31, FCF -$424M, debt/equity 4.04x, current ratio 0.60 \u2014 severe profitability and liquidity stress. (6) Valuation: PE negative, PB 1.44, EV/EBITDA negative, ROE -0.39, ROA -0.05 \u2014 distressed metrics. (7) Price action: last EOD close $10.68 (2025-04-04), down 4.56% in 5d, down 6.23% in 20d, but up 10.44% in 60d; volume 1.52x 20d average. (8) Macro regime: Overheat/Expansionary, stress_score=2, equity_discipline=strict_quality_and_valuation_caution. (9) Fundamental gate 38 fails on eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. No narrative claim is present in the packet to verify. The absence of news, filings, and sector-relevant alt-data (GitHub, clinical trials, regulatory filings, consumer traffic) is consistent with a mature, distressed retail company with no active catalyst story. The Wikipedia pageviews are a data-quality artifact (ticker collision with boxing organization). The analyst sentiment is mixed and descriptor-only. Without a narrative claim to cross-check, the verification task is incomplete; however, the structural absence of corroborating alt-data relative to what a retail pharmacy company should produce (store traffic, supply-chain signals, regulatory filings, M&A rumors) is itself informative: it suggests no active bull thesis is being marketed, and the company's fundamental distress is uncontested.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a positive catalyst (earnings beat, strategic announcement, debt restructuring, M&A) emerges post-cutoff, the distressed narrative may be invalidated.",
+        "If analyst sentiment shifts materially (e.g., upgrade wave), the mixed-to-negative tone may reverse.",
+        "If macro regime shifts to risk-off, equity_discipline may tighten further, making WBA even less attractive."
+      ],
+      "risk_flags": [
+        "No narrative claim present in packet \u2014 verification task is incomplete.",
+        "Wikipedia pageviews are a data-quality artifact (World_Boxing_Association, not WBA ticker).",
+        "Alternative-data adapters are sector-mismatched (GitHub for retail pharmacy is not applicable).",
+        "News event summary is empty post-cutoff; no recent catalyst to verify.",
+        "Fundamental gate 38 fails hard: negative EPS, operating margin, FCF \u2014 company is in distress.",
+        "High leverage (debt/equity 4.04x) and poor liquidity (current ratio 0.60) increase bankruptcy risk.",
+        "Analyst sentiment is mixed (2 Buy, 12 Hold, 1 Sell) and descriptor-only; not a primary signal.",
+        "Macro regime is Overheat/Expansionary with strict equity discipline \u2014 unfavorable for distressed equities.",
+        "Information integrity assessment shows T1=0, T2=72 (analyst grades only), T3=1 (Wikipedia), T4=1 (polygon_news=0 rows) \u2014 low-tier only, pollution-defense layer not implemented, use_as_primary_signal_allowed=false."
+      ],
+      "suggested_improvements": [
+        "Wire sec_8k_fulltext adapter to capture recent filings and corporate actions.",
+        "Wire consumer_traffic_adapter (if available) to monitor store-level foot traffic or sales trends.",
+        "Wire retail_supply_chain_adapter to detect inventory or supplier stress signals.",
+        "Implement pollution-defense layer in information_integrity_assessment to allow T2 analyst grades as corroborating (not primary) signal.",
+        "Clarify Wikipedia pageviews mapping: ticker WBA should not resolve to World_Boxing_Association article.",
+        "Add sector-aware adapter selection: for retail pharmacy, prioritize store-count disclosures, regulatory filings, and consumer review aggregation over GitHub activity."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_narrative_claim",
+          "severity": "critical",
+          "detail": "news_event_summary is empty post-cutoff; no narrative claim to verify against alternative data."
+        },
+        {
+          "kind": "wikipedia_pageviews_ticker_collision",
+          "severity": "warning",
+          "detail": "Wikipedia pageviews rows are for 'World_Boxing_Association' article, not WBA (Walgreens) ticker. Data is not relevant to equity analysis."
+        },
+        {
+          "kind": "adapter_sector_mismatch",
+          "severity": "warning",
+          "detail": "github_public adapter returned 0 rows (unmapped_ticker). GitHub activity is not applicable to retail pharmacy sector."
+        },
+        {
+          "kind": "alt_data_manifest_sparse",
+          "severity": "warning",
+          "detail": "alt_data_manifest shows 4 calls: wikipedia_pageviews (30 rows, cache), github_public (0 rows, failed), fmp_sentiment (72 rows, cache), polygon_news (0 rows, cache). No sector-specific adapters wired."
+        },
+        {
+          "kind": "information_integrity_insufficient",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0, T2=72, T3=1, T4=1. Pollution-defense layer not implemented; use_as_primary_signal_allowed=false per schema v1.1 decision #8."
+        },
+        {
+          "kind": "filing_confirmation_not_connected",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext adapter not wired; no recent corporate filings available for verification."
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 fails: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. Rule engine recommends no_trade."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet contains no narrative claim (news_event_summary is empty post-cutoff). The verification task is designed to cross-check a narrative against alternative data, but without a narrative, the agent is left reasoning about structural absence. The Wikipedia pageviews data is a false positive (ticker collision). The alt_data_manifest shows sparse, sector-mismatched adapters. The information_integrity_assessment is a placeholder (pollution-defense layer not implemented). The packet is PIT-safe and lookahead-safe, but the lack of a narrative claim and the absence of sector-relevant alt-data make a substantive verdict difficult. The agent is forced to reason from absence, which is appropriate for a surge_short candidate (structural absence is bear-thesis evidence), but WBA is not labeled as a surge_short candidate in the packet.",
+      "recommended_followups": [
+        "Clarify candidate_type: is WBA a surge_short candidate (in which case structural absence of corroboration is bear-thesis evidence) or a quality_long candidate (in which case absence warrants caution but is not disqualifying)?",
+        "If surge_short: the absence of positive catalyst news, the fundamental gate failure, and the sparse alt-data footprint all support a bear thesis. Recommend short thesis.",
+        "If quality_long: the fundamental distress (negative EPS, FCF, high leverage) and macro headwinds (strict equity discipline) argue against a long thesis. Recommend challenge thesis.",
+        "Wire sec_8k_fulltext to capture any recent corporate actions or guidance changes.",
+        "Wire consumer_traffic_adapter (if available) to monitor store-level trends.",
+        "Implement pollution-defense layer to allow T2 analyst grades as corroborating signal.",
+        "Fix Wikipedia pageviews mapping to avoid ticker collisions."
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "not_evaluated",
+      "narrative_price_gap_assessment": "not_evaluated",
+      "narrative_price_gap_rationale": "No narrative claim present in packet; narrative_price_gap_assessment cannot be computed. The price snapshot shows WBA down 4.56% in 5d and 6.23% in 20d, but up 10.44% in 60d, with elevated volume (1.52x 20d average). Without a narrative claim to anchor the gap assessment, the price action is uninterpreted.",
+      "industry_template_used": "retail_pharmacy_healthcare",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only alternative-data adapter that returned rows (30 rows, cache). However, the rows are for 'World_Boxing_Association' article, not WBA (Walgreens) ticker, and are not sector-relevant. No sector-specific adapters (consumer_traffic, supply_chain, regulatory) were wired or available.",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "Fundamental snapshot (Q1 FY2025, accepted 2025-01-10) shows hard-to-fake SEC filing data: revenue $39.5B, net income -$265M, operating income -$236M, EPS -$0.31, FCF -$424M, debt/equity 4.04x, current ratio 0.60. These are audited financial metrics and are contradictory to a bull thesis. Analyst sentiment (T2, FMP grades-historical) shows 2 Buy, 12 Hold, 1 Sell as of 2025-04-01 \u2014 mixed, not strongly supportive. Wikipedia pageviews are not hard-to-fake but are also not relevant (ticker collision). No other hard-to-fake signals (SEC filings, regulatory approvals, clinical trials, patent activity) are present.",
+      "industry_specific_evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (SEC filing, Q1 FY2025)",
+        "valuation_snapshot.valuation_inputs (debt/equity, current ratio, margins)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings, T2 tier)"
+      ],
+      "industry_specific_evidence_missing": [
+        "consumer_traffic_adapter (store-level foot traffic, sales trends)",
+        "retail_supply_chain_adapter (inventory, supplier stress)",
+        "regulatory_filing_adapter (state pharmacy board actions, DEA compliance)",
+        "M&A_rumor_adapter (acquisition or divestiture signals)",
+        "store_count_disclosure (from 10-K Item 1 or investor relations)",
+        "brand_IP_filing_adapter (trademark or patent activity)",
+        "consumer_review_aggregation (pharmacy rating trends)"
+      ],
+      "data_quality_warning": "critical: no narrative claim present in packet; news_event_summary is empty post-cutoff; filing_confirmation not_connected; wikipedia_pageviews are ticker-collision artifact (World_Boxing_Association, not WBA); information_integrity_assessment shows low-tier-only sources (T1=0, T2=72, T3=1, T4=1); pollution-defense layer not implemented; fundamental_gate_38 fails hard (negative EPS, operating margin, FCF).",
+      "signals": [
+        {
+          "name": "fundamental_profitability",
+          "available": true,
+          "value": -0.31,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "free_cash_flow",
+          "available": true,
+          "value": -424000000.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "debt_to_equity",
+          "available": true,
+          "value": 4.04,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "current_ratio",
+          "available": true,
+          "value": 0.6,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "analyst_sentiment_buy_count",
+          "available": true,
+          "value": 2.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_sentiment_hold_count",
+          "available": true,
+          "value": 12.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_sentiment_sell_count",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": -4.56,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 1.52,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "wikipedia_pageviews_spike",
+          "available": true,
+          "value": 1220.0,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "news_items_post_cutoff",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "sec_8k_confirmation",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "github_activity",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 72,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer not implemented); T1=0, T2=72 (analyst grades only, descriptor-only per schema); no primary source (SEC filing, news event, regulatory action) present; no narrative claim to verify.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "dismissed",
+      "not_evaluated_reason": "not_applicable",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-07T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "news_event_summary (0 items post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "alternative_data_features.retail_meme_attention (not_connected)",
+        "alternative_data_features.valuation_context (not_connected)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Evidence Classifier",
+      "schema_version": "network_effect_agent_output_v1.4",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-04-07T09:30:00-04:00",
+      "data_available_as_of": "2025-04-07T09:30:00-04:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "high",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "fundamental_snapshot.snapshot_quarter",
+        "valuation_snapshot.valuation_inputs",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "news_event_summary.status",
+        "corporate_calendar.earnings"
+      ],
+      "evidence_missing": [
+        "github_public_developer_ecosystem",
+        "sec_disclosed_operating_metrics_dau_mau",
+        "marketplace_gmv_or_take_rate_disclosure",
+        "patent_activity_data",
+        "news_event_summary_items_pre_cutoff"
+      ],
+      "reasoning_summary": "WBA (Walgreens Boots Alliance) is a mature retail pharmacy and healthcare company with no credible network-effect economics. Layer 1 evidence is entirely absent: no GitHub developer ecosystem (unmapped_ticker), no SEC-disclosed operating metrics supporting network dynamics (DAU/MAU/take-rate), no marketplace GMV or seller cohort retention data. Layer 2 attention signals are minimal and non-specific: Wikipedia pageviews show a spike on 2025-03-22 (1220 views, likely unrelated to WBA stock) but baseline traffic is ~350-500 views/day and the article title is 'World_Boxing_Association' (ticker collision artifact). FMP sentiment shows analyst ratings (T2 source) with modest deterioration from 2024 (5 Strong Buy / 10 Buy / 12 Hold in Nov 2024 \u2192 0 Strong Buy / 2 Buy / 12 Hold in Apr 2025), but this is analyst opinion, not network-effect evidence. Layer 3 financials are deeply negative: Q1 FY2025 shows net income -$265M, operating income -$236M, free cash flow -$424M, negative EPS (-0.31), negative net margin (-0.67%), and the fundamental_gate_38 hard gate fails on eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. No news items pre-cutoff. The company is a traditional retail/pharmacy operator with no platform, ecosystem, developer community, or two-sided marketplace dynamics. The Wikipedia pageview spike is a Layer 2 attention artifact unrelated to the stock ticker and does not constitute network-effect evidence per R-NETWORK-09 anti-pollution discipline.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If WBA were to disclose DAU/MAU metrics or marketplace GMV with growth trajectories, Layer 1 evidence would be present and classification would upgrade.",
+        "If GitHub developer ecosystem data became available and showed active development, Layer 1 would be populated.",
+        "If analyst sentiment spike were accompanied by Layer 1 evidence (developer activity, operating metrics), classification would shift from absent to emerging or partial."
+      ],
+      "risk_flags": [
+        "Layer 1 completely absent: no developer ecosystem, no SEC-disclosed operating metrics, no marketplace dynamics.",
+        "Layer 2 attention is noise: Wikipedia pageview spike on 2025-03-22 is for 'World_Boxing_Association' (sports organization), not the stock ticker.",
+        "Fundamental gate failure: negative EPS, negative operating margin, negative FCF \u2014 company is in financial distress, not network-effect compounding.",
+        "News event summary status is data_unavailable (0 items pre-cutoff); no catalyst narrative to support any network-effect claim.",
+        "Analyst sentiment deteriorating: Strong Buy count dropped from 5 (Nov 2024) to 0 (Apr 2025); Buy count dropped from 10 to 2.",
+        "Ticker collision risk: Wikipedia data is returning 'World_Boxing_Association' article, not Walgreens Boots Alliance company data."
+      ],
+      "suggested_improvements": [
+        "Verify that alternative_data_features.attention.wikipedia_pageviews is correctly mapped to WBA (Walgreens Boots Alliance) and not the World Boxing Association sports organization.",
+        "If WBA were a platform/marketplace company, wire SEC-disclosed operating metrics (DAU/MAU, take-rate, GMV, seller retention) to Layer 1.",
+        "Implement GitHub developer ecosystem adapter for tech/SaaS companies; WBA is not applicable.",
+        "Monitor for any future disclosure of network-effect operating metrics in 10-K/10-Q filings.",
+        "Analyst sentiment is a descriptor only; do not treat rating changes as network-effect evidence."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ticker_collision_risk",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews article_title='World_Boxing_Association' does not match WBA (Walgreens Boots Alliance); spike on 2025-03-22 is likely unrelated to stock ticker"
+        },
+        {
+          "kind": "layer_1_completely_absent",
+          "severity": "warning",
+          "detail": "github_public returned 0 rows (unmapped_ticker); no SEC-disclosed operating metrics; no marketplace data"
+        },
+        {
+          "kind": "news_event_summary_empty",
+          "severity": "info",
+          "detail": "news_event_summary.status=data_unavailable; 0 items pre-cutoff; 20 items dropped post-cutoff"
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 fails: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive"
+        },
+        {
+          "kind": "layer_2_only_attention",
+          "severity": "info",
+          "detail": "Wikipedia pageviews and analyst sentiment are Layer 2 (corroborative attention); no Layer 1 hard evidence present"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The alternative_data_features.attention.wikipedia_pageviews block is returning data for 'World_Boxing_Association' (sports organization) rather than Walgreens Boots Alliance (retail pharmacy). This is a ticker collision artifact in the Wikipedia adapter or seed data. The spike on 2025-03-22 (1220 views) is likely driven by a boxing event, not stock market activity. This highlights the importance of Layer 1 hard evidence (GitHub, SEC operating metrics) to disambiguate Layer 2 attention signals.",
+      "recommended_followups": [
+        "Verify ticker-to-Wikipedia mapping for WBA; consider adding company name or CUSIP to the seed data to avoid collisions with sports organizations.",
+        "If WBA were to pivot to a platform/marketplace model (e.g., healthcare marketplace, pharmacy network), re-evaluate with Layer 1 evidence.",
+        "Monitor Q2 FY2025 earnings (expected ~June 2025) for any disclosure of network-effect operating metrics or strategic pivots.",
+        "Analyst sentiment deterioration (Strong Buy 5\u21920, Buy 10\u21922) suggests fundamental concerns unrelated to network effects; focus on operational turnaround."
+      ],
+      "network_effect_score": 0,
+      "network_effect_evidence": "absent",
+      "pricing_power_assessment": "low",
+      "key_signals_used": [
+        "wikipedia_pageviews: spike on 2025-03-22 (1220 views) but article is 'World_Boxing_Association', not WBA stock",
+        "fmp_sentiment: analyst ratings deteriorating (Strong Buy 5\u21920, Buy 10\u21922 from Nov 2024 to Apr 2025)",
+        "fundamental_snapshot: net income -$265M, operating income -$236M, free cash flow -$424M, EPS -0.31",
+        "valuation_snapshot: PE ratio negative (-3.15), EV/EBITDA negative (-14.45), ROE negative (-0.39), ROA negative (-0.047)",
+        "news_event_summary: status=data_unavailable, 0 items pre-cutoff"
+      ],
+      "key_signals_missing": [
+        "github_public: unmapped_ticker \u2014 no developer ecosystem data",
+        "sec_disclosed_operating_metrics: no DAU/MAU, take-rate, marketplace GMV, or seller cohort retention disclosed",
+        "patent_activity: not evaluated (adapter deferred per R-NETWORK-10)",
+        "news_event_summary_items: 0 items pre-cutoff; 20 items dropped post-cutoff",
+        "marketplace_or_platform_indicators: no evidence of two-sided or multi-sided network dynamics"
+      ],
+      "classification": "absent",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "wikipedia_pageviews: spike on 2025-03-22 (1220 views) but article title is 'World_Boxing_Association' (sports org), not Walgreens Boots Alliance; baseline traffic ~350-500 views/day",
+        "fmp_sentiment: analyst ratings available (T2 source); deteriorating from Nov 2024 (5 Strong Buy, 10 Buy, 12 Hold) to Apr 2025 (0 Strong Buy, 2 Buy, 12 Hold)"
+      ],
+      "layer_3_evidence": [
+        "fundamental_snapshot Q1 FY2025: revenue $39.5B (stable), but net income -$265M, operating income -$236M, free cash flow -$424M, EPS -0.31, net margin -0.67%",
+        "valuation_snapshot: PE ratio -3.15 (negative earnings), EV/EBITDA -14.45 (negative EBIT), ROE -0.39, ROA -0.047, debt-to-equity 4.04 (highly leveraged)",
+        "fundamental_gate_38: hard gate failure on eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive"
+      ],
+      "type_direct_vs_two_sided": "none",
+      "staleness_flags": [
+        "sec_operating_metrics_not_available: no Layer 1 SEC-disclosed operating metrics (DAU/MAU, take-rate, GMV) to evaluate staleness",
+        "github_activity_not_available: github_public returned 0 rows (unmapped_ticker); no staleness window applicable",
+        "fmp_sentiment_current: analyst ratings as of 2025-04-01 (6 days pre-cutoff); within acceptable staleness window but descriptor-only"
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-04-07T09:30:00-04:00",
+      "data_available_as_of": "2025-04-07T09:30:00-04:00",
+      "decision_or_assessment": "very_expensive",
+      "confidence": "high",
+      "evidence_used": [
+        "valuation_snapshot.valuation_inputs.pe_ratio",
+        "valuation_snapshot.valuation_inputs.ev_to_ebitda",
+        "valuation_snapshot.valuation_inputs.price_to_sales",
+        "valuation_snapshot.valuation_inputs.price_to_book",
+        "fundamental_snapshot.snapshot_quarter.eps",
+        "fundamental_snapshot.snapshot_quarter.net_income",
+        "fundamental_snapshot.snapshot_quarter.operating_income",
+        "fundamental_snapshot.snapshot_quarter.free_cash_flow",
+        "fundamental_snapshot.snapshot_quarter.net_margin_pct",
+        "fundamental_snapshot.snapshot_quarter.operating_cash_flow",
+        "price_snapshot.last_eod_close",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "macro_regime.macro_regime",
+        "fundamental_gate_38.passes",
+        "fundamental_gate_38.failed_gates"
+      ],
+      "evidence_missing": [
+        "fcf_yield (null due to negative free_cash_flow_ttm)",
+        "ev_to_ebit (null due to negative operating_income)",
+        "forward_pe (not provided in packet)",
+        "peg_ratio_forward (not provided in packet)"
+      ],
+      "reasoning_summary": "WBA exhibits a structurally distressed valuation profile characteristic of a surge-short candidate. The most recent quarter (Q1 FY2025, ended 2024-11-30) shows negative earnings (eps=-0.31), negative net income (-$265M), negative operating income (-$236M), and negative free cash flow (-$424M). The P/E ratio is -3.15 (case (a): undefined due to negative eps_ttm, a REAL bearish finding, not a data gap). EV/EBITDA is also negative at -14.45. The P/S ratio of 0.089 appears superficially cheap, but this is misleading: a company losing money on negative operating margins (-0.67% net margin) cannot sustain a low multiple. The P/B of 1.44 is elevated relative to a company destroying equity value. The fundamental_gate_38 explicitly fails on three hard criteria: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. In the Overheat macro regime with strict_quality_and_valuation_caution discipline, a company with negative earnings, negative FCF, and deteriorating fundamentals (operating cash flow also negative at -$140M) is not a margin-of-safety candidate\u2014it is a value trap. The stock has declined 4.56% over 5 days and 6.23% over 20 days, consistent with deteriorating sentiment. The high dividend yield (11.5%+ in recent quarters) is a red flag: it suggests the company is returning cash to shareholders while burning cash operationally, a classic sign of unsustainable capital allocation. The valuation is not 'attractive' or 'fair'\u2014it is very_expensive relative to the company's ability to generate earnings or free cash flow. The negative multiples themselves are the bear thesis: the market is pricing in distress, and the stock has already moved down, but the underlying fundamentals remain deeply negative.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If Q2 FY2025 earnings (expected post-cutoff) show a return to positive eps and positive operating income, the very_expensive assessment would need revision.",
+        "If the company announces a major strategic restructuring or asset sale that materially improves FCF, the assessment would be invalidated.",
+        "If macro regime shifts to Crisis and WBA is identified as a quality-dividend-yield play with margin-of-safety, the assessment could shift (unlikely given negative FCF)."
+      ],
+      "risk_flags": [
+        "Negative earnings and negative free cash flow: company is not generating value.",
+        "Negative operating margin: core business is unprofitable.",
+        "High dividend yield (11.5%+) with negative FCF: unsustainable capital return; dividend cut risk.",
+        "Debt-to-equity of 4.04: highly leveraged; refinancing risk in higher-rate environment.",
+        "Current ratio of 0.60: liquidity stress; working capital deficit.",
+        "Overheat macro regime: strict quality discipline applies; no margin of safety for distressed names.",
+        "Fundamental gate failure: hard rule violation on three criteria.",
+        "Stock down 4.56% in 5 days, 6.23% in 20 days: momentum deteriorating; potential for further downside."
+      ],
+      "suggested_improvements": [
+        "Obtain forward guidance or management commentary on path to profitability.",
+        "Monitor Q2 FY2025 earnings (post-cutoff) for evidence of operational improvement.",
+        "Track dividend sustainability; assess likelihood of dividend cut.",
+        "Analyze competitive position in pharmacy/retail healthcare; assess market share trends.",
+        "Evaluate refinancing schedule and debt maturity profile given leverage and negative FCF."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM (trailing twelve months), not point-in-time anchored to a specific filing date; however, the underlying fundamental_snapshot is PIT-safe (Q1 FY2025 accepted 2025-01-10), and the negative eps/fcf signals are consistent across both."
+        },
+        {
+          "kind": "negative_denominator_ratios",
+          "severity": "critical",
+          "detail": "P/E=-3.15, EV/EBITDA=-14.45, FCF_yield=null, EV/EBIT=null: these are case (a) undefined ratios due to nonpositive underlying inputs (eps_ttm<0, free_cash_flow_ttm<0, operating_income<0). This is a REAL bearish finding, not a data gap."
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 fails on eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. Rule engine recommends no_trade."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote at 2025-08-28T20:00:00+00:00 is after allowed_data_cutoff; last_eod_close (2025-04-04, $10.68) used for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The valuation_snapshot block correctly flags current_snapshot_not_PIT_safe=true and is_dcf_pit_safe=false, which is appropriate. The negative ratios are correctly preserved in the packet and should be interpreted as case (a) signals (underlying inputs nonpositive), not as data gaps. The prompt's distinction between case (a) and case (b) is critical here: WBA's undefined P/E is a real bearish finding, not a missing-data excuse to defer assessment.",
+      "recommended_followups": [
+        "Escalate to fundamental_agent for confirmation of gate failure and assessment of turnaround probability.",
+        "Monitor news and filings for restructuring announcements, asset sales, or dividend policy changes.",
+        "If candidate is flagged for surge_short sleeve, validate that short borrow availability and cost are acceptable (per \u00a75.16 constraint).",
+        "Track macro regime; if shift to Crisis occurs, re-evaluate whether WBA qualifies for Crisis ETF exception (unlikely given negative FCF)."
+      ],
+      "valuation_score": 15,
+      "valuation_assessment": "very_expensive",
+      "margin_of_safety_assessment": "none",
+      "valuation_inputs_used": {
+        "pe_ratio": -3.1465235347707257,
+        "ev_to_ebitda": -14.449297332834705,
+        "price_to_sales": 0.08860254003571642,
+        "price_to_book": 1.4425034108311292,
+        "roe": -0.388050907376856,
+        "roa": -0.04744546580987234,
+        "debt_to_equity_ttm": 4.042043714325491,
+        "current_ratio_ttm_pit": 0.6048616996686956,
+        "gross_margin_pct_ttm": 17.28,
+        "net_margin_pct_ttm": -2.81,
+        "eps_ttm_underlying": -0.31,
+        "net_income_underlying": -265000000,
+        "operating_income_underlying": -236000000,
+        "free_cash_flow_underlying": -424000000,
+        "operating_cash_flow_underlying": -140000000,
+        "last_eod_close": 10.68,
+        "return_5d_pct": -4.5576,
+        "return_20d_pct": -6.2335,
+        "macro_regime": "Overheat / Expansionary"
+      },
+      "valuation_inputs_missing": [
+        "fcf_yield (null; free_cash_flow_ttm is negative)",
+        "ev_to_ebit (null; operating_income is negative)",
+        "forward_pe (not provided in packet)",
+        "peg_ratio_forward (not provided in packet)",
+        "dividend_sustainability_score (not provided; dividend yield is high but FCF is negative)"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Thesis Evaluator",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-04-07T09:30:00-04:00",
+      "data_available_as_of": "2025-04-07T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long thesis is INVALIDATED. Hard fundamental gates fail on all three critical dimensions: EPS TTM negative, operating margin negative, free cash flow negative. Franchise health is materially compromised, not macro/sector-driven.",
+      "confidence": "high",
+      "evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (Q1 FY2025, accepted 2025-01-10)",
+        "fundamental_snapshot.eps = -0.31 (negative)",
+        "fundamental_snapshot.operating_income = -236M (negative)",
+        "fundamental_snapshot.operating_cash_flow = -140M (negative)",
+        "fundamental_snapshot.free_cash_flow = -424M (negative)",
+        "fundamental_snapshot.net_income = -265M (negative)",
+        "fundamental_snapshot.net_margin_pct = -0.67% (negative)",
+        "valuation_snapshot.debt_to_equity_ttm = 4.04 (elevated leverage)",
+        "valuation_snapshot.current_ratio_ttm = 0.60 (liquidity stress)",
+        "price_snapshot.last_eod_close = 10.68 (down 4.56% in 5d, down 6.23% in 20d)",
+        "corporate_calendar.earnings history shows mixed beats/misses; Jan 2025 beat on EPS but Q1 fundamentals show deterioration",
+        "macro_regime = Overheat/Expansionary with strict_quality_and_valuation_caution discipline",
+        "sentiment_community_ownership: analyst ratings show deterioration from 5 Strong Buy / 10 Buy (Nov 2024) to 0 Strong Buy / 2 Buy (Apr 2025)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts not present in packet)",
+        "detailed news/catalyst analysis (news_event_summary status=data_unavailable, 20 items dropped post-cutoff)",
+        "industry-specific alt-data (alternative_data_features adapters not wired; only Wikipedia pageviews available, which is not retail/franchise-health relevant)",
+        "ownership positioning data (sentiment_community_ownership.ownership_positioning status=not_evaluated)",
+        "8-K or SEC filing confirmation (filing_confirmation status=not_evaluated)"
+      ],
+      "reasoning_summary": "WBA fails the \u00a73.8 hard fundamental gates on all three necessary conditions: (1) eps_ttm is negative (-0.31), (2) operating_margin_ttm is negative (-0.67%), (3) free_cash_flow is negative (-424M). The most recent PIT-safe quarter (Q1 FY2025, filed 2025-01-10) shows operating income of -236M, net income of -265M, and operating cash flow of -140M. These are not transient; they reflect structural deterioration in the pharmacy/retail franchise. Debt-to-equity of 4.04 and current ratio of 0.60 indicate financial stress. The selloff is company-specific, not macro or sector-driven\u2014the macro regime is expansionary, and the company's own fundamentals are the problem. Analyst sentiment has shifted sharply negative (from 5 Strong Buy / 10 Buy in Nov 2024 to 0 Strong Buy / 2 Buy in Apr 2025), confirming loss of confidence. The quality-long thesis requires a healthy, profitable franchise with positive cash generation; WBA exhibits none of these. The valuation may appear cheap (P/S=0.089, P/B=1.44), but it is a value trap\u2014the market is correctly pricing in distress. Without evidence of a turnaround catalyst or stabilization in fundamentals, the thesis is invalidated.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "eps_ttm < 0 (FAILED: eps = -0.31)",
+        "operating_margin_ttm < 0 (FAILED: net_margin = -0.67%)",
+        "free_cash_flow < 0 (FAILED: fcf = -424M)",
+        "debt_to_equity > 3.0 (FAILED: 4.04)",
+        "current_ratio < 0.8 (FAILED: 0.60)",
+        "operating_cash_flow < 0 (FAILED: -140M)",
+        "analyst sentiment deterioration (OBSERVED: Strong Buy/Buy count halved in 5 months)"
+      ],
+      "risk_flags": [
+        "Negative earnings and operating income indicate core business is unprofitable",
+        "Negative free cash flow means company is burning cash, not generating it",
+        "Debt-to-equity of 4.04 is well above the 3.0 threshold; financial leverage is dangerous",
+        "Current ratio of 0.60 signals liquidity stress; working capital is negative",
+        "Stock down 6.23% in 20 days; momentum is negative",
+        "Analyst downgrades evident in rating distribution shift",
+        "Dividend yield of 11.5% is unsustainably high and signals distress (not a positive)",
+        "No near-term earnings catalyst visible; next earnings unknown",
+        "Macro regime is strict_quality_and_valuation_caution; WBA fails quality gate entirely"
+      ],
+      "suggested_improvements": [
+        "Obtain detailed segment-level profitability data to assess whether pharmacy, retail, or corporate overhead is driving losses",
+        "Retrieve management guidance or turnaround plan from latest earnings call transcript or 8-K",
+        "Analyze competitor performance (CVS, RGC) to determine if this is industry-wide or WBA-specific",
+        "Monitor next earnings date and pre-announce for signs of stabilization",
+        "Assess covenant compliance on debt facilities; liquidity runway is critical",
+        "Evaluate potential M&A, asset sales, or restructuring announcements"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "hard_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 reports failed gates: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; no news available for analysis at decision time"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public unmapped_ticker; no tech/innovation signals available"
+        },
+        {
+          "kind": "upstream_agent_outputs_absent",
+          "severity": "warning",
+          "detail": "Narrative, Alt-Data Verification, Fund/Net/Val agent outputs not present in packet; decision based on raw evidence only"
+        },
+        {
+          "kind": "ownership_positioning_not_evaluated",
+          "severity": "info",
+          "detail": "13F-style ownership data not available; cannot assess smart-money positioning"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val), which would normally provide context on whether the selloff is macro/sector-driven or company-specific. However, the hard fundamental gates are so decisively failed that upstream context is not necessary to reach the no_trade conclusion. The absence of news and filing confirmation is a minor gap but does not change the outcome given the clear earnings deterioration.",
+      "recommended_followups": [
+        "Monitor Q2 FY2025 earnings (expected ~July 2025) for signs of stabilization or further deterioration",
+        "Track debt refinancing announcements; covenant breaches would be a critical red flag",
+        "Watch for activist investor involvement or restructuring announcements",
+        "Reassess if company announces cost-cutting, asset sales, or strategic pivot",
+        "Compare WBA's performance to CVS and RGC to isolate company-specific vs. sector factors"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "argues_against_long",
+      "network_effect_evidence": "absent",
+      "valuation_assessment": "not_evaluated",
+      "selloff_origin_view": "company_specific",
+      "thesis_status": "invalidated",
+      "evidence_sufficiency": "sufficient",
+      "recommended_action": "no_trade",
+      "initial_position_pct": 0.0,
+      "max_position_pct": 0.0,
+      "missing_data_warnings": [
+        "Upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) not present; decision based on raw evidence",
+        "News event summary is empty (status=data_unavailable); no catalyst or narrative context available",
+        "Filing confirmation not evaluated; no 8-K or press release data to assess recent disclosures",
+        "Alternative data adapters not wired; no industry-specific franchise health signals available",
+        "Ownership positioning not evaluated; cannot assess institutional or insider confidence"
+      ],
+      "audit_rationale": "WBA fails all three hard fundamental gates (\u00a73.8): eps_ttm negative, operating_margin_ttm negative, fcf negative. Q1 FY2025 shows -265M net income, -236M operating income, -140M operating cash flow. Debt-to-equity 4.04, current ratio 0.60. Analyst sentiment deteriorated sharply (5 SB/10 B \u2192 0 SB/2 B in 5mo). Selloff is company-specific, not macro. Thesis invalidated; no trade."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_veto_only",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-04-07T09:30:00-04:00",
+      "data_available_as_of": "2025-04-07T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13. No candidate_type specified in packet; evaluating as quality_long by default. All five veto conditions evaluated mechanically.",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer status",
+        "fundamental_gate_38.passes",
+        "fundamental_gate_38.failed_gates",
+        "macro_regime.equity_allocation_cap",
+        "price_snapshot.last_eod_close",
+        "valuation_snapshot.valuation_inputs"
+      ],
+      "evidence_missing": [
+        "candidate_type field (not present in packet; defaulting to quality_long)",
+        "upstream_agent_outputs.risk_pm (not present; only narrative_event, alt_data_verify, network_effect, valuation, quality_long present)",
+        "current equity sleeve position (not provided; cannot assess \u00a74.7 cap breach)",
+        "current short sleeve position (not provided; cannot assess \u00a74.8 cap breach)"
+      ],
+      "reasoning_summary": "Packet is marked lookahead_safe=true and data_after_cutoff_used=false, satisfying \u00a75.4 lookahead veto condition (e). No candidate_type is specified; defaulting to quality_long for veto evaluation. Condition (a) sleeve_cap_breach: cannot evaluate without current equity sleeve position; no breach can be confirmed. Condition (b) short_sleeve_cap_breach: not applicable; candidate is quality_long, not surge_short. Condition (c) critical_data_quality_flag: data_quality_flags array contains no entries with severity='critical'; all flags are 'info' or 'warning'. Condition (d) anti_pollution_integrity_veto: information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence', reason='pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'). Per \u00a75.13(d) relaxation (2026-05-06), when pollution_defense_layer is unimplemented, the veto does NOT trip. The condition requires affirmative confirmation of pollution (pollution_confirmed=true), which is not present; status is 'insufficient_evidence', not 'confirmed'. Condition (e) lookahead_veto: data_after_cutoff_used=false and lookahead_safe=true; veto does not trip. Summary: conditions (a), (b), (c), (d), (e) all evaluated; none trip.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If candidate_type is later specified as surge_short, condition (b) short_sleeve_cap_breach would require re-evaluation with current short sleeve position.",
+        "If current equity sleeve position is provided and exceeds \u00a74.7 cap when WBA is added, condition (a) would trip.",
+        "If data_quality_flags are updated to include a critical-severity flag, condition (c) would trip.",
+        "If pollution_defense_layer is implemented and returns pollution_confirmed=true with no T1/T2 corroboration, condition (d) would trip."
+      ],
+      "risk_flags": [
+        "Candidate type not specified in packet; defaulting to quality_long for veto evaluation.",
+        "Current equity and short sleeve positions not provided; cannot confirm \u00a74.7 or \u00a74.8 cap compliance.",
+        "Fundamental gate 38 fails hard (eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive); however, this is a hard rule recommendation (no_trade), not a veto condition per \u00a75.13.",
+        "Information integrity assessment shows pollution_defense_layer unimplemented; per \u00a75.13(d) relaxation, veto does not trip when defense layer is unimplemented (not affirmatively confirmed).",
+        "Data quality flags are all 'info' or 'warning' severity; no 'critical' flags present.",
+        "Lookahead safety is confirmed; no data-after-cutoff violations detected."
+      ],
+      "suggested_improvements": [
+        "Specify candidate_type in packet (surge_short or quality_long) to enable full veto evaluation.",
+        "Provide current equity sleeve position and short sleeve position to enable \u00a74.7 and \u00a74.8 cap breach detection.",
+        "Implement pollution_defense_layer in information_integrity_assessment to enable affirmative pollution confirmation per \u00a75.13(d).",
+        "If any critical-severity data quality flags emerge, escalate to veto condition (c)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "candidate_type_missing",
+          "severity": "warning",
+          "detail": "candidate_type field not present in packet; defaulting to quality_long for veto evaluation. If surge_short, condition (b) short_sleeve_cap_breach would require re-evaluation."
+        },
+        {
+          "kind": "sleeve_position_not_provided",
+          "severity": "warning",
+          "detail": "Current equity sleeve position and short sleeve position not provided in packet; cannot confirm \u00a74.7 or \u00a74.8 cap compliance."
+        },
+        {
+          "kind": "pollution_defense_layer_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence'). Per \u00a75.13(d) relaxation (2026-05-06), veto does not trip when defense layer is unimplemented; affirmative confirmation required."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet does not include candidate_type, which is required for full veto evaluation per \u00a75.13(b) (surge_short sleeve cap check). The veto agent must default to quality_long, but this may mask a surge_short candidate that would trigger condition (b). Recommend that packet generator always populate candidate_type before passing to risk agent. The information_integrity_assessment correctly implements the \u00a75.13(d) relaxation: pollution_defense_layer is unimplemented, so veto does not trip. This is correct per the 2026-05-06 relaxation that restores evaluability when defense layer is simply not implemented yet.",
+      "recommended_followups": [
+        "Confirm candidate_type (surge_short or quality_long) and re-evaluate condition (b) if surge_short.",
+        "Obtain current equity and short sleeve positions to validate \u00a74.7 and \u00a74.8 cap compliance.",
+        "Monitor for implementation of pollution_defense_layer; when implemented, re-evaluate condition (d) with affirmative pollution confirmation.",
+        "If fundamental_gate_38 failure (hard rule no_trade) is overridden by PM, escalate to risk governance for exception approval."
+      ],
+      "candidate_type": "quality_long",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Quality-long candidate. Current equity sleeve position not provided in packet; cannot confirm whether proposed position would breach \u00a74.7 regime cap. Assuming current sleeve is within cap; no breach detected."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Candidate type is quality_long, not surge_short. Condition (b) applies only to surge_short candidates per \u00a75.13(b). Not applicable."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical'. All flags are 'info' or 'warning'. Condition (c) does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence', reason='pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'). Per \u00a75.13(d) relaxation (2026-05-06), when pollution_defense_layer is unimplemented or returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, veto does NOT trip. Affirmative pollution confirmation (pollution_confirmed=true) is required; current status is 'insufficient_evidence', not 'confirmed'. Condition (d) does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. No lookahead violations detected. Condition (e) does not trip."
+        }
+      ],
+      "advisory_notes": "HARD-VETO CHECKING ONLY. No advisory output. No sizing recommendations. Risk agent does not recommend size, does not tilt PM toward cover/hold, does not emit advisory_notes beyond veto evaluation. All five veto conditions (a)-(e) evaluated mechanically per \u00a75.13. No conditions tripped. Candidate passes hard-veto gate and is eligible for downstream PM evaluation. NOTE: Fundamental gate 38 fails hard (eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive), triggering rule_engine_recommended_action='no_trade'. This is a hard rule recommendation, not a veto condition per \u00a75.13, but represents a critical risk signal that PM must address.",
+      "risk_notes": [
+        "Veto condition (a) sleeve_cap_breach: cannot confirm without current equity sleeve position. Assuming compliance.",
+        "Veto condition (b) short_sleeve_cap_breach: not applicable to quality_long candidate.",
+        "Veto condition (c) critical_data_quality_flag: no critical flags present.",
+        "Veto condition (d) anti_pollution_integrity_veto: pollution_defense_layer unimplemented; veto does not trip per \u00a75.13(d) relaxation.",
+        "Veto condition (e) lookahead_veto: lookahead_safe=true, data_after_cutoff_used=false; veto does not trip.",
+        "Hard rule recommendation: fundamental_gate_38 fails on three criteria (eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive); rule_engine_recommended_action='no_trade'."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13(a) sleeve_cap_breach: not_tripped (current sleeve position not provided; assuming compliance)",
+        "\u00a75.13(b) short_sleeve_cap_breach: not_applicable (quality_long candidate, not surge_short)",
+        "\u00a75.13(c) critical_data_quality_flag: not_tripped (no critical flags in data_quality_flags array)",
+        "\u00a75.13(d) anti_pollution_integrity_veto: not_tripped (pollution_defense_layer unimplemented; veto does not trip per 2026-05-06 relaxation)",
+        "\u00a75.13(e) lookahead_veto: not_tripped (lookahead_safe=true, data_after_cutoff_used=false)",
+        "RESULT: All veto conditions pass. Candidate eligible for downstream PM evaluation.",
+        "CRITICAL: fundamental_gate_38 fails hard (eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive); rule_engine_recommended_action='no_trade'. PM must address."
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-07T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-04-07T09:30:00-04:00",
+      "data_available_as_of": "2025-04-07T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long candidate fails hard fundamental gates (\u00a73.8). No candidate_type specified; defaulting to quality_long. Fundamental gate 38 fails on three criteria: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. Rule engine recommends no_trade. Risk agent confirms no hard-veto conditions tripped. Decision: no_trade.",
+      "confidence": "high",
+      "evidence_used": [
+        "fundamental_snapshot.eps = -0.31 (negative)",
+        "fundamental_snapshot.operating_income = -236M (negative)",
+        "fundamental_snapshot.free_cash_flow = -424M (negative)",
+        "fundamental_snapshot.net_income = -265M (negative)",
+        "fundamental_snapshot.net_margin_pct = -0.67% (negative)",
+        "fundamental_snapshot.operating_cash_flow = -140M (negative)",
+        "valuation_snapshot.debt_to_equity_ttm = 4.04 (elevated leverage)",
+        "valuation_snapshot.current_ratio_ttm = 0.60 (liquidity stress)",
+        "valuation_snapshot.pe_ratio = -3.15 (negative earnings)",
+        "valuation_snapshot.ev_to_ebitda = -14.45 (negative EBIT)",
+        "price_snapshot.return_5d_pct = -4.56% (down)",
+        "price_snapshot.return_20d_pct = -6.23% (down)",
+        "fundamental_gate_38.passes = false",
+        "fundamental_gate_38.failed_gates = [eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive]",
+        "macro_regime = Overheat/Expansionary with strict_quality_and_valuation_caution",
+        "sentiment_community_ownership.fmp_sentiment: analyst ratings deteriorated from 5 SB/10 B (Nov 2024) to 0 SB/2 B (Apr 2025)",
+        "news_event_summary.status = data_unavailable (0 items post-cutoff)",
+        "risk_agent veto evaluation: all five conditions pass (no hard veto tripped)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts present but not aggregated by PM)",
+        "news_event_summary.items (0 items post-cutoff; 20 dropped post-cutoff)",
+        "filing_confirmation (status=not_evaluated)",
+        "current equity sleeve position (cannot confirm \u00a74.7 cap compliance)",
+        "forward guidance or turnaround plan (not in packet)"
+      ],
+      "reasoning_summary": "WBA is a mature retail pharmacy company in severe financial distress. The most recent PIT-safe quarter (Q1 FY2025, filed 2025-01-10) shows negative earnings (EPS -$0.31), negative net income (-$265M), negative operating income (-$236M), and negative free cash flow (-$424M). The fundamental_gate_38 hard gate fails on all three necessary conditions per \u00a73.8: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. This is a mechanical hard rule that triggers rule_engine_recommended_action='no_trade'. The valuation is distressed: P/E is negative (-3.15), EV/EBITDA is negative (-14.45), P/S is 0.089 (superficially cheap but misleading given negative margins), P/B is 1.44 (elevated for a value-destroying company). Leverage is dangerous: debt-to-equity of 4.04 is well above the 3.0 threshold, and current ratio of 0.60 signals liquidity stress. The macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution discipline, which is unfavorable for distressed equities. Analyst sentiment has deteriorated sharply: from 5 Strong Buy / 10 Buy in Nov 2024 to 0 Strong Buy / 2 Buy in Apr 2025, indicating loss of confidence. The stock is down 4.56% in 5 days and 6.23% in 20 days, consistent with deteriorating sentiment. No news catalyst is present in the packet (news_event_summary is empty post-cutoff). The upstream agents (Narrative, Alt-Data Verification, Valuation, Quality-Long) all reach conclusions consistent with a bear thesis: no identifiable catalyst, insufficient evidence to verify any bull narrative, very_expensive valuation, and invalidated quality-long thesis. The Risk agent confirms no hard-veto conditions are tripped, so the decision is not blocked on mechanical grounds. However, the fundamental gate failure is a hard rule that overrides any other consideration. Decision: no_trade at 0.0% position size.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If Q2 FY2025 earnings (post-cutoff) show a return to positive EPS and positive operating income, the no_trade decision would need re-evaluation.",
+        "If the company announces a major strategic restructuring, asset sale, or debt restructuring that materially improves FCF, the decision would be invalidated.",
+        "If macro regime shifts to Crisis and WBA is identified as a quality-dividend-yield play with margin-of-safety (unlikely given negative FCF), the decision could shift."
+      ],
+      "risk_flags": [
+        "Negative earnings and negative free cash flow: company is not generating value.",
+        "Negative operating margin: core business is unprofitable.",
+        "High dividend yield (11.5%+) with negative FCF: unsustainable capital return; dividend cut risk.",
+        "Debt-to-equity of 4.04: highly leveraged; refinancing risk in higher-rate environment.",
+        "Current ratio of 0.60: liquidity stress; working capital deficit.",
+        "Overheat macro regime: strict quality discipline applies; no margin of safety for distressed names.",
+        "Fundamental gate failure: hard rule violation on three criteria (eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive).",
+        "Stock down 4.56% in 5 days, 6.23% in 20 days: momentum deteriorating; potential for further downside.",
+        "Analyst sentiment deterioration: Strong Buy count dropped from 5 to 0 in 5 months.",
+        "No identifiable catalyst or news corroboration for any bull thesis."
+      ],
+      "suggested_improvements": [
+        "Wire sec_8k_fulltext adapter to capture recent corporate filings and actions.",
+        "Implement sector-specific alternative-data adapters for retail pharmacy (store traffic, prescription volume, supply chain metrics).",
+        "Obtain detailed segment-level profitability data to assess which business units are driving losses.",
+        "Retrieve management guidance or turnaround plan from latest earnings call transcript or 8-K.",
+        "Monitor Q2 FY2025 earnings (expected ~July 2025) for signs of stabilization or further deterioration.",
+        "Assess covenant compliance on debt facilities; liquidity runway is critical.",
+        "Evaluate potential M&A, asset sales, or restructuring announcements.",
+        "Compare WBA's performance to CVS and RGC to isolate company-specific vs. sector factors."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "hard_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 reports failed gates: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. Rule engine recommends no_trade."
+        },
+        {
+          "kind": "news_data_unavailable",
+          "severity": "warning",
+          "detail": "news_event_summary.status=data_unavailable; 0 items returned; 20 items dropped post-cutoff. polygon_news returned 0 rows in [2025-03-31, 2025-04-07]."
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "warning",
+          "detail": "filing_confirmation.status=not_evaluated; sec_8k_fulltext adapter not wired in v0.8.7."
+        },
+        {
+          "kind": "information_integrity_insufficient",
+          "severity": "warning",
+          "detail": "information_integrity_assessment.status=insufficient_evidence; use_as_primary_signal_allowed=false; pollution-defense layer unimplemented."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public adapter failed with error_class=unmapped_ticker; not relevant for retail pharmacy but indicates adapter coverage gap."
+        },
+        {
+          "kind": "sentiment_ownership_not_evaluated",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning.status=not_evaluated; 13F-style data not available."
+        },
+        {
+          "kind": "candidate_type_missing",
+          "severity": "warning",
+          "detail": "candidate_type field not present in packet; defaulting to quality_long for evaluation. If surge_short, different decision framework would apply."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include upstream agent outputs aggregated by PM (only raw agent outputs are present). The packet also lacks candidate_type specification, requiring PM to default to quality_long. The fundamental_gate_38 hard gate failure is decisive and overrides any other consideration per \u00a73.8. The absence of news and filing confirmation is a minor gap but does not change the outcome given the clear earnings deterioration. The information_integrity_assessment correctly implements the \u00a75.13(d) relaxation: pollution_defense_layer is unimplemented, so veto does not trip.",
+      "recommended_followups": [
+        "Monitor Q2 FY2025 earnings (expected ~July 2025) for signs of stabilization or further deterioration.",
+        "Track debt refinancing announcements; covenant breaches would be a critical red flag.",
+        "Watch for activist investor involvement or restructuring announcements.",
+        "Reassess if company announces cost-cutting, asset sales, or strategic pivot.",
+        "Compare WBA's performance to CVS and RGC to isolate company-specific vs. sector factors.",
+        "Verify whether any press releases or SEC filings were published on 2025-04-04 or 2025-04-05 (post-market or pre-market) that would explain the 5-day decline."
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "WBA fails hard fundamental gates (\u00a73.8): eps_ttm negative (-0.31), operating_margin_ttm negative (-0.67%), free_cash_flow negative (-424M). Q1 FY2025 shows -265M net income, -236M operating income, -140M operating cash flow. Debt-to-equity 4.04, current ratio 0.60. Analyst sentiment deteriorated sharply (5 SB/10 B \u2192 0 SB/2 B in 5mo). Macro regime is strict_quality_and_valuation_caution. No identifiable catalyst. Rule engine recommends no_trade. Risk agent confirms no hard-veto conditions tripped. Decision: no_trade at 0.0% position size.",
+      "risk_notes": [
+        "Veto condition (a) sleeve_cap_breach: not_tripped (current equity sleeve position not provided; assuming compliance).",
+        "Veto condition (b) short_sleeve_cap_breach: not_applicable (quality_long candidate, not surge_short).",
+        "Veto condition (c) critical_data_quality_flag: not_tripped (no critical flags in data_quality_flags array).",
+        "Veto condition (d) anti_pollution_integrity_veto: not_tripped (pollution_defense_layer unimplemented; veto does not trip per 2026-05-06 relaxation).",
+        "Veto condition (e) lookahead_veto: not_tripped (lookahead_safe=true, data_after_cutoff_used=false).",
+        "Hard rule recommendation: fundamental_gate_38 fails on three criteria (eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive); rule_engine_recommended_action='no_trade'."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Quality-long candidate. Current equity sleeve position not provided in packet; cannot confirm whether proposed position would breach \u00a74.7 regime cap. Assuming current sleeve is within cap; no breach detected."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Candidate type is quality_long, not surge_short. Condition (b) applies only to surge_short candidates per \u00a75.13(b). Not applicable."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical'. All flags are 'info' or 'warning'. Condition (c) does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "information_integrity_assessment.pollution_defense_layer is unimplemented (status='insufficient_evidence'). Per \u00a75.13(d) relaxation (2026-05-06), when pollution_defense_layer is unimplemented, veto does NOT trip. Affirmative pollution confirmation required; current status is 'insufficient_evidence', not 'confirmed'. Condition (d) does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. No lookahead violations detected. Condition (e) does not trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a73.8 hard fundamental gates: eps_ttm_not_positive (FAILED: eps=-0.31), operating_margin_not_positive (FAILED: net_margin=-0.67%), free_cash_flow_not_positive (FAILED: fcf=-424M)",
+        "fundamental_gate_38.passes=false \u2192 rule_engine_recommended_action='no_trade'",
+        "\u00a75.13(a) sleeve_cap_breach: not_tripped (current sleeve position not provided; assuming compliance)",
+        "\u00a75.13(b) short_sleeve_cap_breach: not_applicable (quality_long candidate, not surge_short)",
+        "\u00a75.13(c) critical_data_quality_flag: not_tripped (no critical flags in data_quality_flags array)",
+        "\u00a75.13(d) anti_pollution_integrity_veto: not_tripped (pollution_defense_layer unimplemented; veto does not trip per 2026-05-06 relaxation)",
+        "\u00a75.13(e) lookahead_veto: not_tripped (lookahead_safe=true, data_after_cutoff_used=false)",
+        "RESULT: All veto conditions pass. Hard fundamental gate failure (\u00a73.8) overrides any other consideration. Decision: no_trade at 0.0% position size."
+      ],
+      "decision_log": [
+        "1. Candidate type not specified in packet; defaulting to quality_long per \u00a73.8 framework.",
+        "2. Evaluated hard fundamental gates (\u00a73.8): eps_ttm, operating_margin_ttm, free_cash_flow_ttm.",
+        "3. Gate 1 (eps_ttm > 0): FAILED. eps_ttm = -0.31 (negative). Q1 FY2025 EPS = -0.31.",
+        "4. Gate 2 (operating_margin_ttm > 0): FAILED. net_margin_ttm = -0.67% (negative). Q1 FY2025 operating income = -236M.",
+        "5. Gate 3 (free_cash_flow_ttm > 0): FAILED. free_cash_flow_ttm = -424M (negative). Q1 FY2025 operating cash flow = -140M.",
+        "6. fundamental_gate_38.passes = false. Rule engine recommends no_trade.",
+        "7. Evaluated valuation_assessment: very_expensive (P/E=-3.15, EV/EBITDA=-14.45, P/B=1.44, P/S=0.089). Negative multiples indicate distress.",
+        "8. Evaluated macro regime: Overheat/Expansionary with strict_quality_and_valuation_caution discipline. Unfavorable for distressed equities.",
+        "9. Evaluated upstream agents: Narrative (unsupported_claim, no catalyst), Alt-Data Verify (insufficient_evidence), Valuation (very_expensive), Quality-Long (invalidated), Risk (no hard-veto conditions tripped).",
+        "10. Evaluated hard-veto conditions (\u00a75.13): (a) sleeve_cap_breach not_tripped, (b) short_sleeve_cap_breach not_applicable, (c) critical_data_quality_flag not_tripped, (d) anti_pollution_integrity_veto not_tripped, (e) lookahead_veto not_tripped.",
+        "11. Fundamental gate failure is a hard rule that overrides any other consideration per \u00a73.8.",
+        "12. Decision: no_trade at 0.0% position size. Execution plan: none (no position to open)."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-07T09:45:00-04:00",
+        "ticker": "WBA",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+        "evidence_packet_hash": "sha256:17d77773e01a71931dd08478fe0702524ff4cfe67ff3f2b30078eb2a0affa0c4"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": null,
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Fundamental gate failure (\u00a73.8) overrides any thesis confirmation. Hard rule: no_trade.",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": null,
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-07T09:30:00-04:00",
+      "execution_timestamp": "2025-04-07T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:7d2f82d4a046b6a11327cd7231733bf6659c7d7ede73862ac85d6048e91f2f7e",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

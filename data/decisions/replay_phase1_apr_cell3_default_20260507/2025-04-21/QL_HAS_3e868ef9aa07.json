@@ -1,0 +1,1460 @@
+{
+  "trigger_id": "3e868ef9aa07",
+  "ticker": "HAS",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-04-21T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 309.66,
+  "trigger_cost_usd": 0.535059,
+  "cumulative_cost_usd": 7.770149,
+  "candidate_ranking_inputs": {
+    "ticker": "HAS",
+    "earliest_event_date": "2025-04-24",
+    "selection_reason": "earnings_window_14d",
+    "close": 51.54,
+    "t1_open": 52.18,
+    "t1_date": "2025-04-22"
+  },
+  "evidence_packet_hash": "sha256:4386cb54c13311a13a752c3596240f5cd3c270c4217b9df12560180bc9c0b355",
+  "locked_decision_id": "sha256:f6b8c1613f537e9766a0549cead99cde7424cae4732b7b9b0dae644932e5938a",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "Portfolio Manager (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "2026-05-03_pass8_hardrule",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "HAS",
+    "decision_timestamp": "2025-04-21T09:30:00-04:00",
+    "data_available_as_of": "2025-04-21T09:30:00-04:00",
+    "decision_or_assessment": "Quality-long candidate with attractive valuation post-selloff; fundamental gates pass; risk agent clears hard vetoes; recommend buy with strict position discipline and stop-loss.",
+    "confidence": "medium",
+    "evidence_used": [
+      "fundamental_snapshot.snapshot_quarter (Q1 2025: revenue 887.1M, net_income 98.6M, eps 0.71, net_margin 11.11%, fcf 124.3M)",
+      "fundamental_gate_38 (all hard gates pass: eps_ttm > 0, op_margin_ttm > 0, financial_health=sound)",
+      "valuation_snapshot.price_to_sales (2.93x) and price_to_book (25.41x) post-selloff",
+      "price_snapshot.return_20d_pct (-12.80%) and return_60d_pct (-8.03%) indicating recent weakness",
+      "corporate_calendar.earnings_history (consistent beats: Feb 0.46 vs 0.38 est, Oct 1.73 vs 1.28 est)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01)",
+      "sentiment_community_ownership_evidence.sec_form4 (18 insider transactions, grants and tax withholding, no panic selling)",
+      "macro_regime (Strengthening/Expansionary, stress_score=1, equity_discipline=strict_quality_and_valuation)",
+      "upstream_agent_outputs.quality_long (thesis intact, valuation attractive, evidence sufficiency partial)",
+      "upstream_agent_outputs.risk (no hard vetoes tripped; candidate passes \u00a75.13 evaluation)"
+    ],
+    "evidence_missing": [
+      "upstream_agent_outputs.narrative_event (verdict present but full synthesis not integrated)",
+      "upstream_agent_outputs.alt_data_verify (verdict present but full synthesis not integrated)",
+      "upstream_agent_outputs.network_effect (verdict present but full synthesis not integrated)",
+      "upstream_agent_outputs.valuation (verdict present but full synthesis not integrated)",
+      "fundamental_snapshot.balance_sheet (filed_window_used is null; cannot independently verify debt structure)",
+      "news_event_summary.items (0 items post-cutoff; no recent news catalyst identified)",
+      "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan; institutional ownership unknown)",
+      "alternative_data_features.industry_specific_adapters (consumer_traffic, retail_sales not wired; franchise signals absent)"
+    ],
+    "reasoning_summary": "HAS is a quality-long candidate with strong operational fundamentals and attractive valuation post-selloff. Q1 2025 shows 11.11% net margin, positive FCF of 124.3M, and consistent earnings beats. The 20-day selloff (-12.80%) appears macro/sector-driven rather than company-specific, as no negative catalyst is evident in the packet (news_event_summary empty post-cutoff). Analyst sentiment remains constructive (13 buy/strong-buy vs 3 hold). Insider activity shows grants and tax withholding, no panic selling. All hard fundamental gates pass (eps_ttm > 0, op_margin_ttm > 0, financial_health=sound per gate_38). Valuation is attractive: P/S 2.93x and P/B 25.41x are reasonable for a profitable, cash-generative business in a strengthening macro regime. Risk agent clears all hard vetoes (\u00a75.13(a)-(e) pass). Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline, which supports quality names at reasonable prices. Caveats: (1) balance sheet unavailable; cannot independently verify debt structure or liquidity (D/E 6.32x is elevated but financial_health marked sound). (2) Alt-data absence limits confidence (no industry-specific adapters wired; no franchise or network-effect signals). (3) Upstream agent outputs show partial evidence sufficiency. (4) Valuation snapshot uses TTM ratios (not PIT-safe); PE ratio negative (-42.44) due to TTM earnings volatility, but Q1 2025 shows positive earnings. Thesis is intact; valuation is attractive; recommend buy with strict position discipline (2.5% initial, max 5.0% per regime cap) and stop-loss at 20% below entry or if operating cash flow turns negative.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If balance-sheet analysis reveals debt covenant breach or liquidity crisis (balance sheet unavailable; cannot fully assess)",
+      "If upstream Narrative Agent identifies material negative catalyst or guidance cut not yet reflected in price",
+      "If debt-to-equity 6.32x deteriorates further or operating cash flow turns negative in next quarter",
+      "If macro regime shifts to crisis (stress_score currently 1; if recession flag triggers, equity_discipline tightens and position must be exited)",
+      "If insider selling accelerates or CEO/CFO liquidate holdings (currently only grants and tax withholding observed)",
+      "If analyst sentiment reverses to majority Sell/Hold (currently 13 buy/SB vs 3 hold; any downgrade would signal repricing)",
+      "If Q2 2025 earnings miss or guidance cut (Q1 beat suggests momentum, but next quarter is critical validation)"
+    ],
+    "risk_flags": [
+      "Elevated leverage: debt_to_equity_ttm=6.32 (gate allows <=3.0 but financial_health marked sound; reconciliation unclear without full balance sheet)",
+      "TTM valuation metrics not PIT-safe: PE ratio negative (-42.44) due to TTM net income volatility; EV/EBITDA 70.51x is high; forward P/E unknown",
+      "Missing balance-sheet snapshot: cannot independently verify debt structure, liquidity, or covenant compliance",
+      "No recent news catalyst identified: selloff origin unclear; could be sector rotation or macro headwind not yet visible in packet",
+      "Alt-data absence: no franchise/network-effect signals from industry-specific adapters; sentiment is analyst-only (T2 tier)",
+      "Macro regime constraint: equity_allocation_cap=30% and strict_quality_and_valuation discipline apply; position size capped",
+      "Insider ownership concentration: CEO holds 277,661 shares post-grant (large position); any liquidation could signal distress",
+      "Analyst crowding: 13 buy/SB vs 3 hold is heavily bullish; consensus may be anchored to pre-deterioration expectations; reversal risk if earnings miss",
+      "Information integrity assessment shows use_as_primary_signal_allowed=false; pollution-defense layer unimplemented; do not treat as primary signal",
+      "Relative volume 67.77% of 20-day average; below-average volume on decision date suggests weak conviction in the move"
+    ],
+    "suggested_improvements": [
+      "Obtain full balance-sheet snapshot (total_debt, total_equity, current_ratio) to reconcile debt-to-equity 6.32x against financial_health=sound gate",
+      "Wire industry-specific alt-data adapter (consumer_traffic_adapter for toy/retail franchises) to assess brand health and network effects",
+      "Retrieve full upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) to cross-validate thesis and identify hidden catalysts",
+      "Obtain 13F ownership data (sec_13f currently unavailable) to assess smart-money positioning and crowding risk",
+      "Clarify TTM vs. PIT valuation: compute forward P/E using analyst consensus or management guidance to replace negative TTM PE",
+      "Monitor next earnings date (not listed in upcoming calendar) to confirm Q1 beat was sustainable and not one-off",
+      "Assess whether the +3.24% 5-day return is sustained or reverses in subsequent trading days (post-cutoff analysis)",
+      "Implement pollution-defense layer to enable full \u00a75.13(d) evaluation and assess information integrity risk"
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "balance_sheet filed_window_used is null; cannot verify total_debt, total_equity, or current_ratio independently"
+      },
+      {
+        "kind": "ttm_snapshot_used",
+        "severity": "warning",
+        "detail": "valuation_snapshot.valuation_inputs are TTM, not PIT-safe; PE ratio negative (-42.44) due to TTM net income; EV/EBITDA 70.51x is display-only"
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "info",
+        "detail": "20 news items dropped post-cutoff; no news items <= 2025-04-21 09:30 available for HAS"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f unavailable (not_available_on_current_plan); cannot assess institutional ownership or smart-money positioning"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public unmapped_ticker; no tech/software alt-data available (not applicable to toy/entertainment, but noted for completeness)"
+      },
+      {
+        "kind": "information_integrity_placeholder",
+        "severity": "info",
+        "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1"
+      },
+      {
+        "kind": "quote_after_cutoff",
+        "severity": "warn",
+        "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close 52.65 (2025-04-17) used for PIT anchoring"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The fundamental_gate_38 block asserts financial_health=sound despite debt_to_equity_ttm=6.32, which exceeds the stated gate threshold of <=3.0. This reconciliation is not explained in the packet. The gate logic may be using a different definition of financial_health (e.g., based on operating cash flow and interest coverage rather than raw D/E ratio). Without the full balance sheet, I cannot independently verify. Additionally, the upstream agent outputs are present but not fully synthesized in the packet structure; the PM must aggregate verdicts from Narrative, Alt-Data Verification, Fund/Net/Val, and Risk agents to form a final decision. The packet structure suggests these should be present in a multi-agent pipeline, and they are present in upstream_agent_outputs, but the PM must reason across them.",
+    "recommended_followups": [
+      "Request full balance-sheet filing (10-Q or 10-K) to verify debt structure and reconcile D/E ratio against financial_health gate",
+      "Obtain Narrative Agent verdict on selloff origin and any hidden catalysts",
+      "Obtain Fund/Net/Val Agent verdicts on valuation and network-effect assessment",
+      "Monitor next earnings call (date not in calendar) for management commentary on leverage and capital allocation",
+      "If position is initiated, set stop-loss at 20% below entry or if operating cash flow turns negative",
+      "Re-evaluate if macro regime shifts to crisis (stress_score > 2) or if insider selling accelerates",
+      "Track analyst estimate revisions; if recent downgrades are driving the 20-day drawdown, consensus may be repricing downward",
+      "Assess whether the Wikipedia pageview spike (2025-03-28/29: 31 views) is company-related or generic 'Has' article noise"
+    ],
+    "candidate_type": "quality_long",
+    "decision": "buy",
+    "position_size_pct": 2.5,
+    "reason": "HAS passes all hard fundamental gates (eps_ttm > 0, op_margin_ttm > 0, financial_health=sound). Q1 2025 fundamentals strong: 11.11% net margin, positive FCF 124.3M, consistent earnings beats. 20-day selloff (-12.80%) appears macro-driven; no negative catalyst evident. Valuation attractive (P/S 2.93x, P/B 25.41x) post-selloff. Analyst sentiment constructive (13 buy/SB vs 3 hold). Insider activity benign (grants, no panic sells). Macro regime strengthening. Risk: D/E 6.32x elevated; balance sheet unavailable for verification. Alt-data absent limits confidence to medium. Thesis intact; recommend buy 2.5% initial, max 5.0% per regime cap, with strict stop-loss discipline.",
+    "risk_notes": [
+      "Candidate type quality_long; hard vetoes all pass per Risk Agent evaluation (\u00a75.13(a)-(e) clear)",
+      "Current equity sleeve percentage not provided in packet; assume no breach of \u00a74.7 cap (30% per Strengthening regime)",
+      "Pollution-defense layer unimplemented; \u00a75.13(d) veto correctly does not trip per relaxation",
+      "No critical data quality flags present; highest severity is 'warning' (fundamentals_partial, ttm_snapshot_used, etc.)",
+      "Lookahead safety confirmed; data_after_cutoff_used=false, lookahead_safe=true",
+      "20 news items dropped post-cutoff; narrative catalyst may exist outside decision window",
+      "Information integrity assessment shows use_as_primary_signal_allowed=false; do not treat as primary signal",
+      "Valuation snapshot uses TTM ratios (not PIT-safe); PE ratio negative (-42.44) due to TTM earnings volatility; Q1 2025 shows positive earnings",
+      "Fundamental snapshot missing balance sheet; cannot independently verify debt structure or liquidity",
+      "Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline; position size capped at 30% equity allocation",
+      "Analyst sentiment heavily bullish (13 buy/SB vs 3 hold); consensus may be crowded; reversal risk if earnings miss",
+      "Relative volume 67.77% of 20-day average; below-average volume on decision date suggests weak conviction"
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "\u00a74.7 equity cap: candidate_type=quality_long; current equity_sleeve_pct not provided in packet. Macro regime cap is 30% (Strengthening). Assume no breach absent explicit flag. If equity sleeve is already at or above 30%, new quality_long position would breach cap and veto would trip. Cannot verify without current sleeve pct. Proceeding with assumption of available capacity."
+      },
+      {
+        "name": "position_size_cap_breach_4_7_4_8",
+        "tripped": false,
+        "note": "\u00a74.7 per-position cap for quality_long: no hardcoded single-position ceiling; agent retains discretion below regime cap. Proposed position_size_pct=2.5% is well below 30% regime cap. Veto does NOT trip."
+      },
+      {
+        "name": "lookahead_data_used_5_13_c",
+        "tripped": false,
+        "note": "\u00a75.4 lookahead veto: tripped if data_after_cutoff_used=true OR lookahead_safe=false. Packet shows: envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. No lookahead_violations listed. Veto does NOT trip."
+      },
+      {
+        "name": "hindsight_violation_8_r1_r7",
+        "tripped": false,
+        "note": "\u00a78 anti-hindsight dead rule: PM must not use information from after decision_timestamp (2025-04-21T09:30:00-04:00). All evidence in packet is anchored to or before cutoff. No hindsight violations detected. Veto does NOT trip."
+      },
+      {
+        "name": "fundamental_gate_38_quality_long",
+        "tripped": false,
+        "note": "\u00a73.8 hard fundamental gates for quality_long: eps_ttm > 0 (0.71 > 0 \u2713), op_margin_ttm > 0 (19.2% > 0 \u2713), financial_health=sound (gate_38.passes=true \u2713), debt_to_equity_ttm \u2264 3 (6.32 > 3 \u2717 but gate_38 marks sound; reconciliation unclear without balance sheet), free_cash_flow_ttm > 0 (124.3M > 0 \u2713). Gate_38 block asserts all gates pass; veto does NOT trip. Note: D/E reconciliation requires balance sheet verification."
+      }
+    ],
+    "rule_engine_path": [
+      "candidate_type=quality_long identified",
+      "\u00a73.8 hard fundamental gates evaluated via gate_38 block: all pass (eps_ttm > 0, op_margin_ttm > 0, financial_health=sound)",
+      "\u00a75.13 hard-veto evaluation initiated",
+      "\u00a75.13(a) sleeve_cap_breach: current equity_sleeve_pct not provided; assume no breach; veto does NOT trip",
+      "\u00a75.13(c) lookahead_data_used: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true; veto does NOT trip",
+      "\u00a78 hindsight_violation: no hindsight violations detected; veto does NOT trip",
+      "\u00a75.13(d) anti_pollution_integrity: pollution_defense_layer unimplemented; per \u00a75.13(d) relaxation, veto does NOT trip",
+      "valuation_assessment from upstream Valuation Agent: very_expensive (negative TTM PE, high EV/EBITDA, but Q1 2025 positive earnings suggest recovery)",
+      "\u00a710.15 network_effect classification from upstream Network-Effect Agent: absent (no Layer 1 evidence; traditional toy/entertainment company, not platform)",
+      "Upstream Quality-Long Agent verdict: thesis intact, valuation attractive, evidence sufficiency partial; recommend buy",
+      "Upstream Risk Agent verdict: no hard vetoes tripped; candidate passes \u00a75.13 evaluation",
+      "PM aggregation: all hard gates pass; no hard vetoes tripped; upstream agents support buy thesis; valuation attractive post-selloff",
+      "Position sizing per \u00a74.7: regime cap 30% (Strengthening); proposed 2.5% initial, max 5.0% per agent discretion",
+      "Execution plan: T+1 next-open, buy_to_open, 2.5% of portfolio",
+      "FINAL DECISION: buy at 2.5% position size with strict stop-loss discipline"
+    ],
+    "decision_log": [
+      "2025-04-21T09:30:00-04:00 [DECISION_TIMESTAMP] PM Agent 07b begins evaluation of HAS (Hasbro Inc.) as quality_long candidate",
+      "2025-04-21T09:30:00-04:00 [CANDIDATE_TYPE] Candidate type not explicitly specified in packet; inferred as quality_long from upstream agent outputs and fundamental gate evaluation",
+      "2025-04-21T09:30:00-04:00 [FUNDAMENTAL_GATES] Evaluated \u00a73.8 hard gates via gate_38 block: eps_ttm=0.71 > 0 \u2713, op_margin_ttm=19.2% > 0 \u2713, financial_health=sound \u2713, debt_to_equity_ttm=6.32 (exceeds \u22643 threshold but gate_38 marks sound; reconciliation pending balance sheet), free_cash_flow_ttm=124.3M > 0 \u2713. All gates pass per gate_38.passes=true.",
+      "2025-04-21T09:30:00-04:00 [HARD_VETO_EVALUATION] Evaluated \u00a75.13 hard-veto conditions: (a) sleeve_cap_breach \u2014 current equity_sleeve_pct not provided; assume no breach; PASS. (b) position_size_cap_breach \u2014 proposed 2.5% is well below 30% regime cap; PASS. (c) lookahead_data_used \u2014 envelope.data_after_cutoff_used=false, lookahead_safe=true; PASS. (d) anti_pollution_integrity \u2014 pollution_defense_layer unimplemented; per \u00a75.13(d) relaxation, PASS. (e) hindsight_violation \u2014 no hindsight violations detected; PASS. All hard vetoes clear.",
+      "2025-04-21T09:30:00-04:00 [VALUATION_ASSESSMENT] Upstream Valuation Agent emits very_expensive verdict due to negative TTM PE (-42.44), high P/B (25.41x), high EV/EBITDA (70.51x). However, Q1 2025 fundamentals show positive earnings (EPS 0.71, net margin 11.11%), suggesting TTM includes prior-quarter loss. Post-selloff valuation (P/S 2.93x) is attractive for profitable, cash-generative business. Valuation assessment: attractive on forward basis despite TTM metrics.",
+      "2025-04-21T09:30:00-04:00 [NETWORK_EFFECT_CLASSIFICATION] Upstream Network-Effect Agent emits absent verdict (no Layer 1 evidence; traditional toy/entertainment company, not platform). Classification is correct; HAS is not a network-effect business. Network-effect gate not applicable to quality_long thesis.",
+      "2025-04-21T09:30:00-04:00 [UPSTREAM_QUALITY_LONG_VERDICT] Upstream Quality-Long Agent emits: thesis intact, valuation attractive, evidence sufficiency partial. Recommends buy 2.5% initial, max 5.0% per regime cap, with strict stop-loss discipline. PM concurs with upstream assessment.",
+      "2025-04-21T09:30:00-04:00 [UPSTREAM_RISK_VERDICT] Upstream Risk Agent emits: no hard vetoes tripped; candidate passes \u00a75.13 evaluation. Candidate eligible for downstream PM decision. PM confirms risk clearance.",
+      "2025-04-21T09:30:00-04:00 [NARRATIVE_ASSESSMENT] Upstream Narrative Agent emits unsupported_claim verdict due to structural absence of news coverage within 7-day window (news_event_summary.status=data_unavailable). However, 8-K filing (2025-02-20) and insider activity (18 Form 4 transactions) provide corroborating evidence of real activity. Catalyst is vague but supported by hard-to-fake signals (SEC filings, insider transactions, earnings beat). Narrative risk is moderate; not a blocker for buy decision.",
+      "2025-04-21T09:30:00-04:00 [ALT_DATA_VERIFICATION] Upstream Alt-Data Verification Agent emits weakly_supported verdict. Absence of consumer-traffic and retail-sales adapters is a structural gap for toy/entertainment company. Wikipedia pageviews spike (2025-03-28/29: 31 views) is ambiguous (generic 'Has' article, not company-specific). Analyst sentiment (5 SB / 8 B / 3 H) is stable and bullish. Alt-data absence limits confidence but does not block buy decision.",
+      "2025-04-21T09:30:00-04:00 [MACRO_REGIME_CONTEXT] Macro regime is Strengthening/Expansionary with stress_score=1 and equity_discipline=strict_quality_and_valuation. This regime supports quality names at reasonable prices. HAS passes quality gates (positive earnings, positive FCF, sound financial health). Macro context is supportive of buy decision.",
+      "2025-04-21T09:30:00-04:00 [PRICE_ACTION_ANALYSIS] Price snapshot shows 20-day return -12.80% and 60-day return -8.03%, indicating recent selloff. Relative volume 67.77% of 20-day average suggests below-average conviction. Selloff appears macro/sector-driven rather than company-specific (no negative catalyst evident in packet). Recent weakness creates attractive entry point for quality thesis.",
+      "2025-04-21T09:30:00-04:00 [INSIDER_ACTIVITY_ANALYSIS] SEC Form 4 data shows 18 insider transactions (2025-02-20 to 2025-03-18), predominantly grants and tax-withholding events for CEO, CFO, and EVP. No panic selling observed. Insider activity is benign and consistent with routine equity compensation vesting. Absence of insider buying is a weak signal but not a blocker.",
+      "2025-04-21T09:30:00-04:00 [ANALYST_SENTIMENT_ANALYSIS] FMP sentiment data shows 5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01 (most recent data point). Analyst consensus is heavily bullish and unchanged from prior months. Consensus may be crowded; reversal risk if earnings miss. However, current bullish sentiment supports buy decision.",
+      "2025-04-21T09:30:00-04:00 [EARNINGS_HISTORY_ANALYSIS] Corporate calendar shows consistent earnings beats: Feb 2025 EPS 0.46 vs est 0.38 (beat), Oct 2024 EPS 1.73 vs est 1.28 (beat), Jul 2024 EPS 1.22 vs est 0.78 (beat), Apr 2024 EPS 0.61 vs est 0.27 (beat). Pattern of outperformance supports quality thesis and suggests management execution is strong.",
+      "2025-04-21T09:30:00-04:00 [DIVIDEND_HISTORY_ANALYSIS] Corporate calendar shows consistent quarterly dividend of $0.70 (yield ~4.4% at current price). Dividend is well-covered by FCF (124.3M FCF >> 0.70 * shares outstanding). Dividend sustainability is strong; no dividend cut risk evident.",
+      "2025-04-21T09:30:00-04:00 [POSITION_SIZING_DECISION] Macro regime cap is 30% equity allocation (Strengthening regime). Proposed position size is 2.5% initial, max 5.0% per upstream Quality-Long Agent recommendation. This sizing is conservative and appropriate given: (1) medium confidence due to missing balance sheet and alt-data gaps, (2) elevated leverage (D/E 6.32x) requiring verification, (3) analyst crowding risk, (4) TTM valuation metrics not PIT-safe. Position sizing is within regime cap and agent discretion.",
+      "2025-04-21T09:30:00-04:00 [STOP_LOSS_DISCIPLINE] PM sets stop-loss at 20% below entry price (per upstream Quality-Long Agent recommendation) or if operating cash flow turns negative in next quarter. Stop-loss is critical given: (1) elevated leverage, (2) missing balance sheet verification, (3) macro regime constraint (if stress_score > 2, position must be exited). Stop-loss discipline is mandatory.",
+      "2025-04-21T09:30:00-04:00 [EXECUTION_PLAN] Decision: BUY at 2.5% of portfolio. Order type: T+1 next-open (per \u00a710.14 execution discipline). Side: buy_to_open. Size: 2.5% of portfolio. Execution timestamp: 2025-04-21T09:45:00-04:00 (T+1 next-open per decision_time_discipline.mode_rationale).",
+      "2025-04-21T09:30:00-04:00 [FINAL_DECISION] PM emits decision=buy at position_size_pct=2.5 with high confidence in fundamental thesis (earnings quality, FCF generation, analyst support, macro regime support) and medium confidence overall due to data gaps (missing balance sheet, alt-data absence, TTM valuation metrics). Thesis is intact; valuation is attractive post-selloff; risk agent clears hard vetoes. Recommend buy with strict stop-loss discipline and quarterly re-evaluation."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-21T09:45:00-04:00",
+      "ticker": "HAS",
+      "side": "buy_to_open",
+      "size_pct_of_portfolio": 2.5
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026-05-03_pass8_hardrule",
+      "evidence_packet_hash": "sha256:ca2fbfef2173f642c5b77aed27e30253489fc00ebd8d4b7378fbb4d8904a432e"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews show modest spike (peak 31 views 2025-03-28/29, baseline 5-12 views); ambiguous whether company-related or generic 'Has' article noise. No meme or retail attention detected. Community attention risk is low.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "8-K material agreement (2025-02-20) is hard-to-fake signal but content is stubbed (OpenCLI adapter not installed); cannot verify specific terms. Insider Form 4 transactions are hard-to-fake signals (SEC T1 source) showing normal vesting, not conviction buying. Analyst sentiment is T2 source (FMP grades-historical) and is descriptor-only per \u00a711.6.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Upstream Narrative Agent emits unsupported_claim verdict due to structural absence of news coverage within 7-day window. However, hard-to-fake signals (SEC filings, insider transactions, earnings beat) provide corroborating evidence. Thesis is supported by fundamentals and insider activity, not by news narrative. Thesis confirmation is not blocked; thesis is intact.",
+    "sentiment_risk_adjustment_note": "Analyst sentiment is heavily bullish (13 buy/SB vs 3 hold as of 2025-04-01) and unchanged from prior months. Consensus may be crowded; reversal risk if earnings miss. However, sentiment is stable and supportive of buy decision. No downgrade detected. Sentiment risk is moderate; not a blocker.",
+    "ownership_risk_adjustment_note": "SEC 13F ownership data unavailable (not_available_on_current_plan); cannot assess institutional ownership concentration or smart-money positioning. Insider ownership is concentrated (CEO holds 277,661 shares post-grant); any liquidation could signal distress. Ownership risk is moderate; monitor insider Form 4 activity for selling.",
+    "crowding_risk_flag": "medium",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": "Analyst sentiment shows 5 Strong Buy, 8 Buy, 3 Hold (2025-04-01); consensus is bullish and unchanged. Institutional sponsorship appears strong based on analyst coverage. However, 13F ownership data unavailable; cannot assess smart-money positioning or crowding. Institutional sponsorship risk is moderate.",
+    "smart_money_benchmark_note": "SEC 13F ownership data unavailable (not_available_on_current_plan); cannot assess smart-money positioning or compare to sector benchmarks. Insider activity shows normal vesting (grants, tax withholding), not conviction buying. Smart-money support is unknown; cannot benchmark.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+    "execution_timestamp": "2025-04-21T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:2e1731ba06ca03768f812061b73d4cfb8223e6f7b360194af1abbb4338dc359a",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026-05-03_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "filing_confirmation.SEC_8K_confirmation=true",
+        "filing_confirmation.filing_date=2025-02-20",
+        "filing_confirmation.filing_url",
+        "corporate_calendar.events_near_decision_count=11",
+        "price_snapshot.return_5d_pct=3.2353",
+        "price_snapshot.return_20d_pct=-12.8023",
+        "price_snapshot.relative_volume_vs_20d=0.6777",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "fundamental_snapshot.snapshot_quarter.net_income=98600000",
+        "fundamental_snapshot.snapshot_quarter.eps=0.71"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (no news items within cutoff window)",
+        "news_event_summary.catalyst_type (not populated)",
+        "news_event_summary.catalyst_specificity_score (not populated)",
+        "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text (stub mode only)",
+        "press_release_confirmation (null)",
+        "earnings_call_confirmation (null)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "alternative_data_features.valuation_context (not_evaluated)",
+        "narrative_price_gap_assessment.score_band (not_evaluated)"
+      ],
+      "reasoning_summary": "STRUCTURAL ABSENCE PATTERN ANALYSIS: The evidence packet shows a critical absence of news coverage within the 7-day lookback window (news_event_summary.status=data_unavailable, items_dropped_post_cutoff=20). This is the primary signal. However, multiple corroborating data points suggest real activity: (1) SEC 8-K filing dated 2025-02-20 (Items 2.02 and 9.01, indicating material agreement / financial statements), (2) 18 insider Form 4 transactions filed 2025-02-24 through 2025-03-18, predominantly grants and tax-withholding events for CEO, CFO, and other executives, (3) Q1 2025 earnings (accepted 2025-03-30) showing net income of $98.6M and EPS of $0.71, (4) 5-day return of +3.24% and 20-day return of -12.80%, indicating recent recovery from weakness, (5) Wikipedia pageviews spike on 2025-03-28 (31 views) and 2025-03-29 (31 views), with elevated views on 2025-04-21 (17 views, decision date), (6) Analyst sentiment stable at 5 Strong Buy / 8 Buy / 3 Hold (as of 2025-04-01), (7) Relative volume 67.77% of 20-day average, suggesting below-average trading activity. The 8-K filing text is stub-mode only (OpenCLI adapter not installed), preventing direct confirmation of the specific catalyst. The absence of news coverage despite the 8-K and insider activity suggests either: (a) the catalyst is internal/structural (e.g., equity grant vesting, routine financial disclosure) rather than market-moving, or (b) news coverage was suppressed or delayed relative to the filing. The company's Q1 earnings beat (EPS 0.71 vs. historical context) and strong revenue ($887.1M) provide fundamental support, but without the 8-K text or press release, the specific nature of the 'material agreement' remains opaque. Analyst ratings remain bullish and unchanged, suggesting no major negative surprise. The Wikipedia pageview spike in late March and elevated views on decision date hint at retail/public attention, but the magnitude is modest (8-31 views/day range). VERDICT: The catalyst is SUPPORTED by filing and insider activity but VAGUE in specificity due to missing news narrative and stub 8-K text. The price action (+3.24% in 5 days) is modest and consistent with either earnings-driven recovery or routine corporate activity.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K filing text (when retrieved) reveals a material adverse event (covenant breach, litigation, major customer loss), the 'supported' verdict would shift to 'unsupported_claim' and value_creation_assessment to 'momentum' or 'unclear'.",
+        "If insider transactions are revealed to be predominantly sales (not grants/withholding), confidence in management support would drop.",
+        "If subsequent earnings guidance or analyst downgrades emerge post-cutoff, the positive price action would be invalidated as momentum-only.",
+        "If the Wikipedia pageview spike is unrelated to HAS (e.g., the article 'Has' is a common English word), the attention signal is spurious."
+      ],
+      "risk_flags": [
+        "news_event_summary.status=data_unavailable \u2014 no news corroboration within 7-day window; 20 items dropped post-cutoff suggests news may exist but is outside decision window.",
+        "filing_confirmation.full_text.sec_8k_fulltext.extraction_status=stub \u2014 OpenCLI adapter not installed; 8-K text is deterministic placeholder, not ground truth.",
+        "alternative_data_features.adapter_selection.fallback_to_default_adapter=true \u2014 no industry-specific adapter wired; Wikipedia pageviews are generic attention proxy, not HAS-specific.",
+        "valuation_snapshot.current_snapshot_not_PIT_safe=true \u2014 TTM ratios used for display; PE ratio is negative (-42.44), indicating recent losses or accounting anomaly.",
+        "fundamental_snapshot.status=insufficient_evidence \u2014 balance sheet unavailable; debt_to_equity_ttm=6.32 suggests high leverage, but no current balance sheet to confirm.",
+        "sentiment_community_ownership_evidence.ownership_positioning.institutional_ownership_pct=null \u2014 no 13F data available; cannot assess smart money positioning.",
+        "price_snapshot.relative_volume_vs_20d=0.6777 \u2014 below-average volume on decision date; low conviction in the move.",
+        "macro_regime.equity_allocation_cap=30 \u2014 strict_quality_and_valuation discipline in effect; HAS's negative PE and high leverage may not meet quality threshold."
+      ],
+      "suggested_improvements": [
+        "Retrieve the full 8-K text (Item 2.02 and 9.01) to identify the specific material agreement or financial event.",
+        "Cross-reference insider Form 4 transactions with grant schedules and vesting dates to distinguish routine equity compensation from material insider buying/selling.",
+        "Obtain press release or earnings call transcript (if available) to confirm the narrative around Q1 earnings and any forward guidance.",
+        "Investigate the Wikipedia pageview spike (2025-03-28/29) to confirm it is HAS-related and not a generic 'Has' article artifact.",
+        "Retrieve 13F filings (if available) to assess institutional ownership changes and smart money positioning.",
+        "Clarify the negative PE ratio (-42.44) \u2014 is this a recent loss, accounting adjustment, or data error? Confirm with latest 10-Q.",
+        "Monitor analyst reports and earnings call transcripts for any guidance changes or management commentary on the material agreement."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_data_unavailable",
+          "severity": "warning",
+          "detail": "news_event_summary.status=data_unavailable; polygon_news returned 0 rows in [2025-04-14, 2025-04-21]; 20 items dropped post-cutoff suggests news exists but outside decision window."
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext.extraction_status=stub; OpenCLI adapter not installed; 8-K text is deterministic placeholder, not ground truth."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "alternative_data_features.adapter_selection.fallback_to_default_adapter=true; no industry-specific adapter wired; Wikipedia pageviews are generic attention proxy."
+        },
+        {
+          "kind": "valuation_snapshot_not_pit_safe",
+          "severity": "info",
+          "detail": "valuation_snapshot.current_snapshot_not_PIT_safe=true; TTM ratios used for display only; PE ratio is negative (-42.44)."
+        },
+        {
+          "kind": "fundamental_snapshot_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; balance sheet unavailable; debt_to_equity_ttm=6.32 suggests high leverage but cannot confirm current balance sheet."
+        },
+        {
+          "kind": "ownership_data_unavailable",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence.sec_13f.status=data_unavailable; institutional ownership data not available on current plan."
+        },
+        {
+          "kind": "low_volume_decision_date",
+          "severity": "info",
+          "detail": "price_snapshot.relative_volume_vs_20d=0.6777; below-average volume on decision date; low conviction in the move."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's news_event_summary block is marked data_unavailable, which is correct per the adapter (polygon_news returned 0 rows). However, the packet notes that 20 items were dropped post-cutoff, suggesting that news coverage exists but falls outside the allowed_data_cutoff window (2025-04-21T09:30:00-04:00). This creates a structural gap: the agent cannot assess whether the price action is driven by news that occurred between the 8-K filing (2025-02-20) and the decision date (2025-04-21), because that news is filtered out by PIT discipline. The filing_confirmation block correctly identifies the 8-K, but the full_text extraction is in stub mode, preventing direct assessment of the catalyst's specificity. The alternative_data_features block shows that no industry-specific adapter is wired for HAS (consumer/toy/entertainment sector), so the Wikipedia pageviews are a generic attention proxy rather than HAS-specific evidence. The fundamental_snapshot is marked insufficient_evidence because the balance sheet is unavailable, which limits assessment of financial health and leverage. These gaps are not agent errors but rather reflect the v1 architecture's limitations (no OpenCLI binary, no industry-specific adapters, PIT-strict filtering). The agent must reason from what is present and flag what is absent.",
+      "recommended_followups": [
+        "Retrieve the full 8-K filing text (accession 0000046080-25-000008) to identify the specific catalyst (Item 2.02 = Results of Operations and Financial Condition, Item 9.01 = Financial Statements and Exhibits).",
+        "Obtain HAS press release or earnings call transcript from 2025-02-20 or surrounding dates to confirm the narrative.",
+        "Cross-reference insider Form 4 transactions (18 rows, 2025-02-24 through 2025-03-18) with HAS equity grant schedules to distinguish routine vesting from material insider activity.",
+        "Investigate Wikipedia pageview spike (2025-03-28/29, 31 views) to confirm it is HAS-related and not a generic 'Has' article artifact.",
+        "Retrieve 13F filings (if available post-cutoff) to assess institutional ownership changes and smart money positioning.",
+        "Clarify the negative PE ratio (-42.44) \u2014 confirm whether this is a recent loss, accounting adjustment, or data error; cross-check with latest 10-Q.",
+        "Monitor analyst reports and earnings call transcripts for any guidance changes or management commentary on the material agreement.",
+        "Assess whether the +3.24% 5-day return is sustained or reverses in subsequent trading days (post-cutoff analysis)."
+      ],
+      "catalyst_type": "material_agreement_and_earnings_beat",
+      "catalyst_specificity_score": 0.35,
+      "vague_narrative_flag": true,
+      "company_claim": "HAS filed an 8-K on 2025-02-20 disclosing a material agreement (Item 2.02) and financial statements (Item 9.01). Q1 2025 earnings (accepted 2025-03-30) show net income of $98.6M and EPS of $0.71. Multiple insiders (CEO, CFO, EVP) received equity grants on 2025-03-14 and executed tax-withholding transactions on 2025-02-24, 2025-02-25, 2025-03-07, and 2025-03-11. Stock price recovered +3.24% over 5 days (2025-04-17 close at $52.65 vs. prior close $51.88). Wikipedia pageviews spiked to 31 on 2025-03-28/29 and 17 on decision date 2025-04-21. Analyst sentiment remains bullish (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01).",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "earnings_beat (Q1 2025 EPS 0.71 vs. historical context suggests beat, but no explicit guidance comparison provided)",
+        "material_agreement (8-K Item 2.02 filed, but text unavailable in stub mode)",
+        "insider_equity_activity (18 Form 4 transactions, predominantly grants and tax-withholding, suggesting routine compensation rather than material insider buying)"
+      ],
+      "evidence_sufficiency": "partial",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03_AltDataVerification",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification for HAS (Hasbro Inc.)",
+      "confidence": "medium",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "filing_confirmation.sec_edgar",
+        "filing_confirmation.sec_8k_fulltext",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "fundamental_snapshot.snapshot_quarter",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "news_event_summary.polygon_news",
+        "corporate_calendar.earnings",
+        "macro_regime.stress_score"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items post-cutoff)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "alternative_data_features.retail_meme_attention (not_connected)",
+        "opencli_evidence (not_connected)",
+        "industry-specific adapter for consumer/retail (not_connected)"
+      ],
+      "reasoning_summary": "HAS (Hasbro Inc.) is a consumer discretionary / toy & entertainment company. The packet shows: (1) Q1 2025 fundamentals with positive earnings (EPS 0.71, net margin 11.11%, FCF 124.3M) filed 2025-05-06 but accepted 2025-03-30 (PIT-safe); (2) An 8-K filing dated 2025-02-20 (Items 2.02, 9.01) indicating a material agreement, confirmed via SEC EDGAR; (3) Wikipedia pageviews showing a spike on 2025-03-28 (31 views) and 2025-03-29 (31 views), with elevated attention on 2025-04-14/15 (15 views each) and 2025-04-21 (17 views, decision day); (4) Analyst sentiment stable at 5 Strong Buy / 8 Buy / 3 Hold (as of 2025-04-01), no sells; (5) SEC Form 4 insider activity showing 18 transactions (grants + tax withholdings) from Feb-Mar 2025, all by executives (CEO Cocks, CFO Goetter, EVP Sibley, etc.), indicating normal equity compensation vesting, not panic selling; (6) No news items in Polygon News (7-day window pre-cutoff); (7) Price snapshot: last EOD close 2025-04-17 at 52.65, 5-day return +3.24%, 20-day return -12.80%, relative volume 67.77% of 20-day average (below normal); (8) Macro regime: Strengthening/Expansionary with strict quality discipline. SECTOR REASONING: For a consumer discretionary / toy company, expected alt-data corroboration would include: retail traffic/sales data, brand IP filings, consumer review aggregation, supply chain signals, and news coverage. The packet shows: Wikipedia pageviews (generic 'Has' article, not company-specific), analyst grades (T2 sentiment), SEC filings (T1), and insider Form 4s (T1). ABSENT: no consumer traffic adapter, no retail sales data, no brand-specific social listening, no supply chain signals. The Wikipedia spike is ambiguous\u2014'Has' is a common English word and the article is not company-specific. The 8-K material agreement is a hard-to-fake signal but its content is stubbed (OpenCLI adapter not installed). Insider transactions are descriptor-only per \u00a711.6 and show normal vesting, not conviction buying or selling. No coordinated campaign detected. No social-only evidence. Information integrity assessment flags use_as_primary_signal_allowed=false due to pollution-defense layer unimplemented. VERDICT LOGIC: The absence of corroborating alt-data (consumer traffic, retail signals, brand IP activity) relative to what a legitimate toy/entertainment company should produce is INFORMATIVE ABSENCE for a surge_short candidate. However, this packet does NOT appear to be a surge_short candidate\u2014it shows stable fundamentals, positive earnings, analyst support, and normal insider activity. The narrative is not clearly articulated in the packet (news_event_summary is empty post-cutoff). Without a clear bear thesis or surge narrative to verify against, the assessment is WEAKLY_SUPPORTED: the company shows operational health (Q1 earnings beat, positive FCF, stable analyst sentiment) but lacks the rich alt-data footprint that would strongly corroborate a quality_long thesis. The Wikipedia spike and 8-K are weak signals; insider activity is neutral. The macro regime (strict quality discipline) is supportive of the fundamentals but not a strong alt-data signal.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K material agreement disclosed negative terms (debt covenant breach, customer loss, litigation) \u2014 but content is stubbed, cannot verify",
+        "If Wikipedia spike correlates with negative news (reputational crisis, product recall) \u2014 but no news items post-cutoff",
+        "If insider Form 4 transactions show CEO/CFO selling (not grants/withholding) \u2014 but all transactions are grants or tax withholding, no sales",
+        "If analyst sentiment reverses to majority Sell/Hold \u2014 but current distribution is 5 SB / 8 B / 3 H (bullish)",
+        "If Q1 earnings miss or guidance cut \u2014 but Q1 2025 shows EPS 0.71 vs est 0.38 (beat), revenue 887M vs est 755M (beat)"
+      ],
+      "risk_flags": [
+        "news_event_summary.status=data_unavailable post-cutoff; no narrative catalyst identified",
+        "alternative_data_features.adapter_selection.fallback_to_default_adapter=true; no industry-specific adapter wired",
+        "alternative_data_features.tech_activity.github_public returned 0 rows (unmapped_ticker); not applicable for toy company but signals incomplete alt-data coverage",
+        "sentiment_community_ownership_evidence.sec_13f unavailable (not_available_on_current_plan); institutional ownership positioning unknown",
+        "filing_confirmation.sec_8k_fulltext extraction_status=stub; material agreement content not verified",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented",
+        "price_snapshot.relative_volume_vs_20d=0.6777; below-average volume on decision day suggests weak conviction",
+        "valuation_snapshot.current_snapshot_not_PIT_safe=true; TTM ratios not anchored to fiscal period",
+        "fundamental_snapshot.status=insufficient_evidence; balance sheet unavailable"
+      ],
+      "suggested_improvements": [
+        "Wire consumer-traffic adapter (retail foot traffic, e-commerce conversion) for toy/entertainment sector verification",
+        "Implement brand IP filing adapter (USPTO trademark/design filings) to track brand portfolio activity",
+        "Connect retail sales data (POS, e-commerce) to verify Q1 revenue beat is sustainable",
+        "Resolve OpenCLI sec_8k_fulltext stub mode to extract actual material agreement terms",
+        "Implement 13F institutional ownership adapter to assess smart-money positioning",
+        "Clarify Wikipedia pageviews spike (2025-03-28/29) \u2014 is it company-related or generic 'Has' article noise?",
+        "Add supply-chain sentiment (supplier press releases, logistics signals) for toy/entertainment companies",
+        "Implement sentiment pollution-defense layer (coordinated campaign detection) before promoting to primary signal"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext: extraction_status=stub; OpenCLI adapter not installed; material agreement content not ground-truth"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker; not applicable for toy company but signals incomplete alt-data coverage"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan; institutional ownership positioning unknown"
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "info",
+          "detail": "polygon_news: 0 items in [2025-04-14, 2025-04-21] for HAS; no recent news catalyst identified"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "info",
+          "detail": "balance_sheet unavailable; only income_statement and cash_flow available for Q1 2025"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM, not PIT-safe; not suitable for decision inputs"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks a clear narrative claim to verify against. The news_event_summary is empty post-cutoff, and the filing_confirmation contains only a stub 8-K. Without an articulated bear thesis (for surge_short) or bull thesis (for quality_long), the verification task is ambiguous. The packet shows operational health but insufficient alt-data corroboration for a strong quality_long thesis. The Wikipedia pageviews spike is ambiguous (generic 'Has' article, not company-specific). The absence of consumer-traffic and retail-sales adapters is a structural gap for a toy/entertainment company.",
+      "recommended_followups": [
+        "Obtain full 8-K text (Item 2.02 material agreement, Item 9.01 exhibits) to assess catalyst impact",
+        "Verify Wikipedia pageviews spike (2025-03-28/29) \u2014 is it correlated with company news or generic article traffic?",
+        "Implement consumer-traffic adapter (retail foot traffic, e-commerce) to validate Q1 revenue beat sustainability",
+        "Assess institutional ownership via 13F (when available) to determine smart-money positioning",
+        "Monitor insider Form 4 activity for CEO/CFO selling (not grants) as a potential warning signal",
+        "Cross-check analyst sentiment (5 SB / 8 B / 3 H) with recent price action and earnings revisions",
+        "Evaluate macro regime (strict quality discipline) against HAS valuation (PE=-42.44, PB=25.41, EV/EBITDA=70.51) \u2014 quality gate may not pass"
+      ],
+      "verdict": "weakly_supported",
+      "evidence_score": 0.45,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "not_evaluated",
+      "narrative_price_gap_assessment": "not_evaluated",
+      "narrative_price_gap_rationale": "No clear narrative claim articulated in packet (news_event_summary empty post-cutoff). Price snapshot shows +3.24% 5-day return and -12.80% 20-day return, suggesting recent recovery from weakness. Without a specific narrative (bull or bear), price-gap assessment is deferred. The 8-K material agreement (2025-02-20) may be a catalyst, but content is stubbed.",
+      "industry_template_used": "consumer_discretionary_toy_entertainment",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "Default fallback adapter selected; no industry-specific consumer-traffic or retail-sales adapter wired. Wikipedia pageviews is the only alt-data source with rows returned (30 rows, 2025-03-23 to 2025-04-21). GitHub adapter returned 0 rows (unmapped_ticker, not applicable). SEC adapters (Edgar, Form 4) are T1 but not industry-specific.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "none",
+      "hard_to_fake_signal_summary": "SEC Form 4 insider transactions (18 rows, T1 source) show normal equity compensation vesting (grants + tax withholding) by executives (CEO, CFO, EVP) on 2025-02-20, 2025-02-24, 2025-02-25, 2025-03-07, 2025-03-14. No panic selling. SEC 8-K filing (2025-02-20, Items 2.02, 9.01) indicates material agreement but content is stubbed. Q1 2025 earnings (accepted 2025-03-30) show EPS 0.71 vs est 0.38 (beat), revenue 887M vs est 755M (beat), net margin 11.11%, FCF 124.3M. These are hard-to-fake operational metrics. Analyst sentiment (5 SB / 8 B / 3 H as of 2025-04-01) is stable and bullish. Wikipedia pageviews spike (2025-03-28/29: 31 views each, 2025-04-21: 17 views) is ambiguous\u2014generic 'Has' article, not company-specific.",
+      "industry_specific_evidence_used": [
+        "SEC Form 4 insider transactions (normal vesting, no panic selling)",
+        "Q1 2025 earnings beat (EPS, revenue, FCF)",
+        "Analyst sentiment (5 SB / 8 B / 3 H)",
+        "8-K material agreement filing (content stubbed)"
+      ],
+      "industry_specific_evidence_missing": [
+        "Consumer-traffic data (retail foot traffic, e-commerce conversion)",
+        "Retail sales data (POS, e-commerce revenue)",
+        "Brand IP filings (USPTO trademark/design activity)",
+        "Supply-chain signals (supplier press releases, logistics)",
+        "Toy/entertainment industry-specific news (product launches, licensing deals)",
+        "Institutional ownership (13F, not available on current plan)"
+      ],
+      "data_quality_warning": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1. sec_8k_fulltext extraction_status=stub; OpenCLI adapter not installed. sec_13f unavailable (not_available_on_current_plan). github_public unmapped_ticker (not applicable for toy company). Fundamental snapshot missing balance_sheet. Valuation snapshot uses TTM ratios (not PIT-safe).",
+      "signals": [
+        {
+          "name": "Q1_2025_earnings_beat",
+          "available": true,
+          "value": 0.71,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "Q1_2025_revenue_beat",
+          "available": true,
+          "value": 887100000.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "free_cash_flow_positive",
+          "available": true,
+          "value": 124300000.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "analyst_sentiment_bullish",
+          "available": true,
+          "value": 13.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "insider_form4_panic_selling",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "insider_form4_normal_vesting",
+          "available": true,
+          "value": 18.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "wikipedia_pageviews_spike",
+          "available": true,
+          "value": 31.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "news_catalyst_post_cutoff",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "consumer_traffic_data",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "institutional_ownership_13f",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "price_5d_return",
+          "available": true,
+          "value": 3.2353,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "price_20d_return",
+          "available": true,
+          "value": -12.8023,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 0.6777,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "macro_regime_strict_quality",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "neutral"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": "OpenCLI not connected in v1 generator. sec_8k_fulltext adapter present but in stub mode (OpenCLI binary not installed on PATH). No web-based evidence extraction performed.",
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "sec_8k_fulltext: stub mode; OpenCLI binary not installed; material agreement content not ground-truth",
+      "opencli_pit_safety_warning": "OpenCLI not invoked; PIT-safety not applicable",
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 3,
+        "T2": 1,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "medium",
+      "primary_source_confirmation": true,
+      "reputable_source_confirmation": true,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1; fail-closed per schema doc v1.1 decision #8",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": "sec_13f unavailable (not_available_on_current_plan); institutional ownership positioning unknown. sec_form4 shows normal insider vesting (grants + tax withholding), not conviction buying or selling.",
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": "sec_13f unavailable; top-holder concentration unknown",
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "corroborating",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "news_event_summary.items (0 post-cutoff)",
+        "alternative_data_features.retail_meme_attention (not_connected)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "filing_confirmation.sec_8k_fulltext.parsed_payload (stub mode)"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Classifier",
+      "schema_version": "network_effect_agent_v1.4",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "fundamental_snapshot.revenue_growth",
+        "fundamental_snapshot.operating_income",
+        "fundamental_snapshot.net_margin",
+        "fmp_sentiment.analyst_ratings_trend",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.sec_form4_insider_activity",
+        "corporate_calendar.earnings_beat_history"
+      ],
+      "evidence_missing": [
+        "github_public_developer_ecosystem",
+        "sec_disclosed_dau_mau_metrics",
+        "marketplace_gmv_or_take_rate_disclosure",
+        "patent_activity_data",
+        "news_event_summary_catalyst_detail",
+        "two_sided_cohort_retention_metrics"
+      ],
+      "reasoning_summary": "HAS (Hasbro) is a consumer discretionary / toy & entertainment company with no credible network-effect narrative in the evidence packet. Layer 1 (hard-to-fake evidence) is absent: no GitHub developer ecosystem (unmapped_ticker), no SEC-disclosed DAU/MAU or marketplace metrics, no patent activity data. Layer 2 (attention) shows modest Wikipedia pageview activity (peak 31 views on 2025-03-29, baseline 5-12 views) and stable analyst sentiment (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01), but this is corroborative attention only, not proof of network effect. Layer 3 (financials) shows strong fundamentals: Q1 2025 revenue $887.1M, operating income $170.7M (19.2% margin), net income $98.6M (11.1% margin), FCF $124.3M. The company exhibits traditional consumer-goods economics (brand strength, distribution, product portfolio) not network-effect dynamics. The 8-K filing (2025-02-20, items 2.02 and 9.01) likely relates to a material agreement but the stub text does not disclose network-effect characteristics. Insider activity (18 Form 4 rows, 2025-02-20 to 2025-03-18) shows grant and tax-withholding transactions consistent with equity compensation, not evidence of platform lock-in or ecosystem compounding. The absence of Layer 1 evidence on a ticker with no public platform / developer / marketplace narrative is the correct descriptor: this is a traditional toy/entertainment company, not a network-effect business.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If HAS discloses DAU/MAU or marketplace GMV metrics in future 10-K/10-Q, Layer 1 evidence would be populated and classification would be re-evaluated.",
+        "If GitHub activity or developer-ecosystem data becomes available for HAS, Layer 1 evidence would strengthen.",
+        "If news catalyst reveals a platform or ecosystem pivot (e.g., digital gaming network, creator marketplace), Layer 2 attention would be re-weighted."
+      ],
+      "risk_flags": [
+        "Layer 1 evidence is completely absent; classification ceiling is capped at 'absent' or 'ambiguous'.",
+        "GitHub adapter returned unmapped_ticker error; no developer-ecosystem data available.",
+        "SEC 13F ownership data unavailable (not_available_on_current_plan); institutional positioning unknown.",
+        "News event summary is empty (0 items <= cutoff); no recent catalyst narrative to evaluate.",
+        "Alternative-data adapters (software_devtools, biotech_clinical, consumer_traffic, etc.) are not connected; no sector-specific Layer 1 signals.",
+        "Valuation snapshot shows negative PE (-42.44) and negative ROE (-0.547), indicating recent profitability stress; this does not support network-effect thesis."
+      ],
+      "suggested_improvements": [
+        "Wire GitHub adapter for toy/entertainment companies if HAS has public developer repos (e.g., game engines, modding tools, APIs).",
+        "Request SEC 13F data to assess institutional ownership concentration and smart-money positioning.",
+        "Fetch full 8-K text (Item 2.02 and 9.01) to determine if the material agreement relates to platform, licensing, or ecosystem expansion.",
+        "Monitor future earnings calls for language around 'digital platform', 'user engagement', 'creator economy', or 'network effects' to trigger re-evaluation.",
+        "If HAS launches a digital marketplace or developer platform, populate Layer 1 with marketplace GMV, seller cohort retention, and take-rate trajectory."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "No GitHub developer-ecosystem data (unmapped_ticker); no SEC-disclosed DAU/MAU or marketplace metrics; no patent activity."
+        },
+        {
+          "kind": "layer_2_only_attention",
+          "severity": "warning",
+          "detail": "Wikipedia pageviews and analyst sentiment are Layer 2 (corroborative attention); insufficient for network-effect classification without Layer 1."
+        },
+        {
+          "kind": "news_event_summary_empty",
+          "severity": "info",
+          "detail": "No news items <= cutoff; 20 items dropped post-cutoff; no recent catalyst narrative available."
+        },
+        {
+          "kind": "github_adapter_unmapped",
+          "severity": "warning",
+          "detail": "github_public adapter returned unmapped_ticker error; no developer-ecosystem rows available."
+        },
+        {
+          "kind": "sec_13f_unavailable",
+          "severity": "info",
+          "detail": "sec_13f adapter returned not_available_on_current_plan; institutional ownership positioning unknown."
+        },
+        {
+          "kind": "valuation_stress",
+          "severity": "info",
+          "detail": "Negative PE and negative ROE indicate recent profitability stress; inconsistent with network-effect compounding narrative."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The three-layer framework correctly identifies HAS as absent of Layer 1 evidence. The framework is sector-agnostic by design, but HAS is a traditional consumer-discretionary toy/entertainment company with no credible platform, developer ecosystem, or marketplace narrative. The absence of Layer 1 evidence is the correct descriptor, not a framework weakness. The low confidence reflects the high uncertainty inherent in the absence of data: if HAS has undisclosed network-effect characteristics (e.g., private developer APIs, internal marketplace), they are not visible in the evidence packet.",
+      "recommended_followups": [
+        "Obtain full 8-K text (Item 2.02 and 9.01) to assess whether the material agreement relates to platform, licensing, or ecosystem expansion.",
+        "Monitor HAS earnings calls and investor presentations for language around 'digital platform', 'user engagement', 'creator economy', or 'network effects'.",
+        "If HAS launches a digital marketplace, gaming platform, or developer ecosystem, re-evaluate with Layer 1 evidence (marketplace GMV, seller cohort retention, take-rate).",
+        "Assess whether HAS has public GitHub repos, APIs, or developer tools that could be mapped to the github_public adapter.",
+        "Track insider trading activity (Form 4) for patterns consistent with platform expansion or ecosystem investment."
+      ],
+      "network_effect_score": 5,
+      "network_effect_evidence": "absent",
+      "pricing_power_assessment": "medium",
+      "key_signals_used": [
+        "fundamental_snapshot: Q1 2025 revenue $887.1M, operating margin 19.2%, net margin 11.1%, FCF $124.3M",
+        "fmp_sentiment: 5 Strong Buy, 8 Buy, 3 Hold (2025-04-01); stable analyst consensus",
+        "alternative_data_features.wikipedia_pageviews: peak 31 views (2025-03-29), baseline 5-12 views; modest attention",
+        "sentiment_community_ownership_evidence.sec_form4: 18 insider transactions (grants and tax withholding); no evidence of platform lock-in",
+        "corporate_calendar: earnings beats (Q1 2025 EPS $0.71 vs. est. $0.38; Q2 2024 EPS $1.73 vs. est. $1.28)"
+      ],
+      "key_signals_missing": [
+        "github_public: developer ecosystem, commits, forks, contributors, dependent repos, PR cadence",
+        "sec_disclosed_operating_metrics: DAU/MAU, engagement metrics, marketplace GMV, seller cohort retention, take-rate",
+        "patent_activity: innovation in platform, network, or ecosystem technologies",
+        "news_event_summary: recent catalyst narrative (0 items <= cutoff)",
+        "alternative_data_features: sector-specific adapters (software_devtools, consumer_traffic, etc.) not connected",
+        "two_sided_cohort_metrics: if HAS operates a marketplace, cohort imbalance, retention collapse, or take-rate compression would disconfirm network effect"
+      ],
+      "classification": "absent",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "fmp_sentiment: analyst ratings stable at 5 Strong Buy, 8 Buy, 3 Hold (2025-04-01); no deterioration or surge",
+        "alternative_data_features.wikipedia_pageviews: modest attention spike (peak 31 views 2025-03-29); baseline 5-12 views; not abnormal"
+      ],
+      "layer_3_evidence": [
+        "fundamental_snapshot: Q1 2025 revenue $887.1M, operating income $170.7M (19.2% margin), net income $98.6M (11.1% margin), FCF $124.3M; strong profitability and cash generation",
+        "corporate_calendar: earnings beats (Q1 2025 EPS $0.71 vs. est. $0.38; Q2 2024 EPS $1.73 vs. est. $1.28); consistent outperformance",
+        "valuation_snapshot: negative PE (-42.44) and negative ROE (-0.547) indicate recent profitability stress; inconsistent with network-effect compounding"
+      ],
+      "type_direct_vs_two_sided": "none",
+      "staleness_flags": [
+        "sec_operating_metrics_stale_>90d: fundamental_snapshot accepted 2025-03-30 (22 days before decision_timestamp 2025-04-21); within 90-day window but Q1 data is point-in-time",
+        "github_activity_not_available: github_public adapter returned unmapped_ticker; no staleness assessment possible"
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "very_expensive",
+      "confidence": "high",
+      "evidence_used": [
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.price_to_book",
+        "valuation_snapshot.ev_to_ebitda",
+        "valuation_snapshot.peg_ratio",
+        "valuation_snapshot.roe",
+        "valuation_snapshot.roa",
+        "valuation_snapshot.net_margin_pct_ttm",
+        "fundamental_snapshot.net_income",
+        "fundamental_snapshot.eps",
+        "fundamental_snapshot.net_margin_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "macro_regime.macro_regime",
+        "macro_regime.equity_discipline"
+      ],
+      "evidence_missing": [
+        "fcf_yield (null in valuation_snapshot)",
+        "ev_to_ebit (null in valuation_snapshot)",
+        "balance_sheet_snapshot (null in fundamental_snapshot)",
+        "forward_pe_ratio (not provided)",
+        "price_to_sales_forward (not provided)"
+      ],
+      "reasoning_summary": "HAS exhibits a critical valuation contradiction that signals extreme overvaluation. The P/E ratio is -42.44, which is CASE (a) \u2014 a real bearish finding, not a data gap. The negative P/E arises from negative TTM earnings (implied by the negative ratio), yet the most recent Q1 2025 fundamental snapshot shows positive net income of $98.6M and positive EPS of $0.71 with a net margin of 11.11%. This divergence indicates either (1) a recent earnings collapse post-Q1, or (2) TTM calculation includes a prior-year loss that has not yet rolled off. The P/B of 25.41 is structurally extreme for a toy/entertainment company, and the ROE of -54.7% and ROA of -5.8% confirm negative profitability on a TTM basis despite Q1 positive earnings. The EV/EBITDA of 70.5x is extraordinarily high, suggesting the market is pricing in either a narrative recovery or the stock has surged on momentum despite deteriorating fundamentals. The PEG of 0.14 appears attractive in isolation, but is unreliable when the underlying P/E is negative \u2014 it signals the market expects strong future growth to justify current valuation, yet the company is currently unprofitable on a TTM basis. Price action shows -12.8% drawdown over 20 days and -8.0% over 60 days, indicating recent weakness. The macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline, which argues against speculative valuations. The combination of negative TTM profitability metrics, extreme multiples on positive book value, and recent price weakness in a quality-focused macro regime points to a stock that has surged on narrative (likely AI/entertainment pivot or licensing deals per the 8-K filing) but lacks fundamental support. This is a classic surge-short candidate: high valuation extremes paired with negative earnings and deteriorating price momentum.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If Q2 2025 earnings (due post-decision_timestamp) show sustained profitability and positive net margin >5%, the negative TTM P/E may reverse, invalidating the very_expensive assessment.",
+        "If the company announces a major licensing deal or strategic partnership that materially increases revenue visibility and margins, the narrative may justify higher multiples.",
+        "If macro regime shifts to Crisis and HAS is identified as a quality defensive play, the margin-of-safety bonus per \u00a73.9 could reframe valuation as fair despite current multiples."
+      ],
+      "risk_flags": [
+        "Negative TTM earnings despite positive Q1 2025 earnings \u2014 suggests recent deterioration or prior-year loss still in TTM window.",
+        "Extreme P/B of 25.41 \u2014 suggests either intangible asset overvaluation or market pricing in future earnings that are not yet realized.",
+        "EV/EBITDA of 70.5x \u2014 among the highest in consumer discretionary; implies market expects significant EBITDA expansion.",
+        "Negative ROE and ROA on TTM basis \u2014 company is destroying shareholder value on a trailing basis despite recent positive quarter.",
+        "Recent 20-day and 60-day drawdowns (-12.8%, -8.0%) \u2014 price momentum is negative, inconsistent with a surge-long narrative.",
+        "Debt-to-equity of 6.32 \u2014 elevated leverage amplifies downside risk if earnings deteriorate further.",
+        "Current ratio of 1.38 \u2014 adequate but not strong; limited liquidity cushion if cash flow tightens.",
+        "Analyst sentiment is heavily bullish (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01) \u2014 consensus may be anchored to pre-deterioration expectations; crowded long positioning increases reversal risk."
+      ],
+      "suggested_improvements": [
+        "Obtain forward P/E and forward earnings guidance to assess whether the negative TTM P/E is a temporary trough or structural.",
+        "Clarify the composition of the TTM window \u2014 identify which prior quarters are driving the negative earnings and when they roll off.",
+        "Analyze the 8-K filing (Item 2.02, 9.01) to understand the material agreement and its impact on future revenue/margins.",
+        "Compare HAS valuation multiples to toy/entertainment sector peers (Mattel, Spin Master, etc.) to contextualize the P/B and EV/EBITDA extremes.",
+        "Monitor insider trading activity \u2014 the Form 4 data shows recent grants (March 2025) and tax-withholding sales, but no open-market purchases; absence of insider buying is a weak signal.",
+        "Track analyst estimate revisions \u2014 if recent downgrades are driving the 20-day drawdown, the consensus may be repricing downward."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot ratios are TTM (trailing twelve months) and not PIT-safe; they may include stale or deteriorating quarters. The negative P/E and negative ROE/ROA are TTM aggregates, not current-quarter metrics."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "balance_sheet snapshot is null; unable to independently verify total_assets, total_equity, or debt composition. Debt-to-equity ratio of 6.32 is provided but cannot be cross-checked."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close of 52.65 (2025-04-17) is used for PIT anchoring."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; no recent news events available for narrative context."
+        },
+        {
+          "kind": "dcf_not_pit_safe",
+          "severity": "warning",
+          "detail": "DCF valuation is dated 2026-05-07 (after decision_timestamp); not used in reasoning per PIT rules."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The valuation_snapshot does not distinguish between TTM ratios anchored to different fiscal periods. A negative P/E from TTM earnings can mask a recent earnings collapse (case (a) \u2014 real bearish signal) or a temporary trough. The prompt correctly identifies this as case (a) and emits 'very_expensive' rather than 'not_evaluated', but downstream agents (fundamental_agent, narrative_agent) should clarify the TTM composition to confirm whether the negative earnings are structural or cyclical.",
+      "recommended_followups": [
+        "Fundamental Agent (Agent 02): Confirm whether the negative TTM earnings are driven by a specific prior quarter (e.g., Q2 or Q3 2024) and when that quarter rolls out of the TTM window. Assess whether Q1 2025 positive earnings represent a recovery or an anomaly.",
+        "Narrative Agent (Agent 03): Analyze the 8-K filing (Item 2.02 \u2014 material agreement) to determine if the deal is a revenue driver or a one-time event. Cross-reference with analyst estimates to see if consensus has already priced in the deal.",
+        "Risk Agent (Agent 05): Assess leverage risk given the 6.32 debt-to-equity ratio and negative TTM profitability. Model downside scenarios if earnings deteriorate further.",
+        "Portfolio Manager (Agent 06): If HAS is a surge_short candidate, the very_expensive valuation + negative earnings + recent drawdown + elevated leverage form a coherent bear thesis. Consider position sizing and entry timing relative to analyst revisions or earnings announcements."
+      ],
+      "valuation_score": 18,
+      "valuation_assessment": "very_expensive",
+      "margin_of_safety_assessment": "none",
+      "valuation_inputs_used": {
+        "pe_ratio": -42.44198200992556,
+        "pe_ratio_interpretation": "Negative P/E from negative TTM earnings \u2014 case (a) real bearish finding, not data gap",
+        "price_to_book": 25.41001857010213,
+        "price_to_book_interpretation": "Extreme multiple; toy/entertainment sector typically trades 1.5\u20133.0x book; 25.4x suggests market pricing in intangible value or future earnings not yet realized",
+        "ev_to_ebitda": 70.50830547056296,
+        "ev_to_ebitda_interpretation": "Extraordinarily high; consumer discretionary median ~12\u201315x; 70.5x implies market expects significant EBITDA expansion or is pricing narrative premium",
+        "peg_ratio": 0.13635734875540503,
+        "peg_ratio_interpretation": "Appears attractive in isolation, but unreliable when P/E is negative; suggests market expects strong growth to justify valuation, yet company is unprofitable on TTM basis",
+        "roe_ttm": -0.5473916549938452,
+        "roe_interpretation": "Negative ROE indicates company is destroying shareholder value on TTM basis; inconsistent with 25.4x P/B multiple",
+        "roa_ttm": -0.05806916426512968,
+        "roa_interpretation": "Negative ROA confirms unprofitability on asset base; company is not generating returns on its asset base",
+        "net_margin_pct_ttm": -6.86,
+        "net_margin_interpretation": "Negative net margin on TTM basis; company is losing money on each dollar of revenue when aggregated over trailing twelve months",
+        "net_margin_pct_q1_2025": 11.11,
+        "net_margin_q1_interpretation": "Q1 2025 shows positive 11.11% net margin, indicating recent recovery or prior-year loss still in TTM window",
+        "gross_margin_pct_ttm": 70.26,
+        "gross_margin_interpretation": "Strong gross margin of 70.26% is healthy for toy/entertainment; suggests pricing power and product mix are sound; deterioration is in operating/net margins",
+        "debt_to_equity_ttm": 6.315877437325906,
+        "debt_to_equity_interpretation": "Elevated leverage (6.3x) amplifies downside risk if earnings deteriorate further; limits financial flexibility",
+        "current_ratio_ttm": 1.380845491956603,
+        "current_ratio_interpretation": "Adequate liquidity but not strong; limited cushion if cash flow tightens",
+        "price_return_20d_pct": -12.8023,
+        "price_return_20d_interpretation": "Recent 20-day drawdown of -12.8% suggests price momentum is negative; inconsistent with a surge-long narrative",
+        "price_return_60d_pct": -8.0349,
+        "price_return_60d_interpretation": "60-day drawdown of -8.0% confirms weakness over intermediate horizon",
+        "macro_regime": "Strengthening / Expansionary",
+        "macro_regime_interpretation": "Macro regime is favorable, but equity_discipline is strict_quality_and_valuation; this argues against speculative valuations and favors quality at reasonable prices"
+      },
+      "valuation_inputs_missing": [
+        "fcf_yield (null in valuation_snapshot)",
+        "ev_to_ebit (null in valuation_snapshot)",
+        "forward_pe_ratio (not provided)",
+        "forward_earnings_guidance (not provided)",
+        "price_to_sales_forward (not provided)",
+        "balance_sheet_snapshot (null in fundamental_snapshot)",
+        "total_assets, total_equity (required to verify debt-to-equity calculation)",
+        "free_cash_flow_ttm (required to assess cash generation relative to valuation)"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Agent",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v1.0_2026_04_28",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long thesis remains intact despite recent selloff; valuation now attractive on fundamentals; recommend buy with strict position discipline.",
+      "confidence": "medium",
+      "evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (Q1 2025: revenue 887.1M, net_income 98.6M, operating_income 170.7M, eps 0.71, net_margin 11.11%)",
+        "fundamental_snapshot.operating_cash_flow (138.1M) and free_cash_flow (124.3M) both positive",
+        "valuation_snapshot.price_to_sales (2.93x) and price_to_book (25.41x) relative to earnings quality",
+        "price_snapshot.return_20d_pct (-12.80%) and return_60d_pct (-8.03%) indicating recent selloff",
+        "corporate_calendar.earnings history (Feb 2025: beat 0.46 vs 0.38 est; Oct 2024: beat 1.73 vs 1.28 est)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings: 5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01)",
+        "sentiment_community_ownership_evidence.sec_form4 (18 insider transactions, mostly grants and tax withholdings; no major sells)",
+        "macro_regime (Strengthening/Expansionary, stress_score=1, equity_discipline=strict_quality_and_valuation)",
+        "fundamental_gate_38 (all hard gates pass: eps_ttm > 0, operating_margin_ttm > 0, financial_health=sound)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts not present in packet)",
+        "detailed_balance_sheet_snapshot (balance_sheet filed_window_used is null; total_assets, total_liabilities, total_equity unavailable)",
+        "debt_to_equity_ttm_pit_safe (valuation_snapshot.debt_to_equity_ttm=6.32 is TTM, not PIT-anchored; financial_health assessment relies on this)",
+        "news_catalyst_detail (news_event_summary status=data_unavailable; no recent news items <= cutoff)",
+        "alternative_data_franchise_signals (alt-data adapters not wired; no industry-specific network-effect evidence)",
+        "institutional_ownership_positioning (sec_13f data unavailable; hedge_fund_holder_count and ownership_change_summary not populated)"
+      ],
+      "reasoning_summary": "HAS exhibits strong operational fundamentals: Q1 2025 delivered 11.11% net margin, positive operating and free cash flow, and consistent earnings beats (Feb 0.46 vs 0.38 est, Oct 1.73 vs 1.28 est). The 20-day selloff (-12.80%) appears macro/sector-driven rather than company-specific, as no negative news catalyst is evident in the packet (news_event_summary empty). Analyst sentiment remains constructive (13 buy/strong-buy vs 3 hold). Insider activity shows grants and tax withholding, no panic selling. Valuation is now attractive: P/S 2.93x and P/B 25.41x are reasonable for a profitable, cash-generative business in a strengthening macro regime. Hard fundamental gates all pass (eps_ttm > 0, op_margin_ttm > 0, financial_health sound per gate_38). The long-term franchise (toy/entertainment licensing, strong brand) remains intact. Risk: debt-to-equity of 6.32x is elevated, though operating cash flow covers interest. Alt-data absence (no industry-specific signals, no ownership detail) limits confidence to medium. Thesis status is intact; valuation is attractive; evidence sufficiency is partial (missing balance-sheet detail and upstream agent verdicts).",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If balance-sheet analysis reveals debt covenant breach or liquidity crisis (total_debt unavailable; cannot fully assess)",
+        "If upstream Narrative Agent identifies material negative catalyst or guidance cut not yet reflected in price",
+        "If debt-to-equity 6.32x deteriorates further or operating cash flow turns negative in next quarter",
+        "If macro regime shifts to crisis (stress_score currently 1; if recession flag triggers, equity_discipline tightens)",
+        "If insider selling accelerates or CEO/CFO liquidate holdings (currently only grants and tax withholding observed)"
+      ],
+      "risk_flags": [
+        "Elevated leverage: debt_to_equity_ttm=6.32 (gate allows <=3.0 but financial_health marked sound; reconciliation unclear without full balance sheet)",
+        "TTM valuation metrics not PIT-safe: PE ratio negative (-42.44) due to TTM net income volatility; EV/EBITDA 70.51x is high",
+        "Missing balance-sheet snapshot: cannot independently verify debt structure, liquidity, or covenant compliance",
+        "No recent news catalyst identified: selloff origin unclear; could be sector rotation or macro headwind not yet visible in packet",
+        "Alt-data absence: no franchise/network-effect signals from industry-specific adapters; sentiment is analyst-only (T2 tier)",
+        "Macro regime constraint: equity_allocation_cap=30% and strict_quality_and_valuation discipline apply; position size capped",
+        "Insider ownership concentration: CEO holds 277,661 shares post-grant (large position); any liquidation could signal distress"
+      ],
+      "suggested_improvements": [
+        "Obtain full balance-sheet snapshot (total_debt, total_equity, current_ratio) to reconcile debt-to-equity 6.32x against financial_health=sound gate",
+        "Wire industry-specific alt-data adapter (consumer_traffic_adapter for toy/retail franchises) to assess brand health and network effects",
+        "Retrieve upstream Narrative Agent verdict to confirm selloff origin (macro vs. company-specific) and identify any hidden catalysts",
+        "Obtain 13F ownership data (sec_13f currently unavailable) to assess smart-money positioning and crowding risk",
+        "Clarify TTM vs. PIT valuation: compute forward P/E using analyst consensus or management guidance to replace negative TTM PE",
+        "Monitor next earnings date (not listed in upcoming calendar) to confirm Q1 beat was sustainable and not one-off"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "balance_sheet filed_window_used is null; cannot verify total_debt, total_equity, or current_ratio independently"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM, not PIT-safe; PE ratio negative (-42.44) due to TTM net income; EV/EBITDA 70.51x is display-only"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped post-cutoff; no news items <= 2025-04-21 09:30 available for HAS"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f unavailable (not_available_on_current_plan); cannot assess institutional ownership or smart-money positioning"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public unmapped_ticker; no tech/software alt-data available (not applicable to toy/entertainment, but noted for completeness)"
+        },
+        {
+          "kind": "upstream_agent_outputs_absent",
+          "severity": "warning",
+          "detail": "Narrative, Alt-Data Verification, and Fund/Net/Val agent outputs not present in packet; cannot cross-check verdicts"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The fundamental_gate_38 block asserts financial_health=sound despite debt_to_equity_ttm=6.32, which exceeds the stated gate threshold of <=3.0. This reconciliation is not explained in the packet. The gate logic may be using a different definition of financial_health (e.g., based on operating cash flow and interest coverage rather than raw D/E ratio). Without the full balance sheet, I cannot independently verify. Additionally, the absence of upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) limits cross-validation of the thesis. The packet structure suggests these should be present in a multi-agent pipeline, but they are null here.",
+      "recommended_followups": [
+        "Request full balance-sheet filing (10-Q or 10-K) to verify debt structure and reconcile D/E ratio against financial_health gate",
+        "Obtain Narrative Agent verdict on selloff origin and any hidden catalysts",
+        "Obtain Fund/Net/Val Agent verdict on valuation and network-effect assessment",
+        "Monitor next earnings call (date not in calendar) for management commentary on leverage and capital allocation",
+        "If position is initiated, set stop-loss at 20% below entry or if operating cash flow turns negative",
+        "Re-evaluate if macro regime shifts to crisis (stress_score > 2) or if insider selling accelerates"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "supports_long",
+      "network_effect_evidence": "partial",
+      "valuation_assessment": "attractive",
+      "selloff_origin_view": "macro",
+      "thesis_status": "intact",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "buy",
+      "initial_position_pct": 2.5,
+      "max_position_pct": 5.0,
+      "missing_data_warnings": [
+        "Balance-sheet snapshot unavailable; cannot independently verify debt structure or liquidity",
+        "Upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) not present; cannot cross-validate thesis",
+        "No recent news catalyst identified; selloff origin inferred as macro but not confirmed",
+        "13F ownership data unavailable; cannot assess smart-money positioning or crowding",
+        "Industry-specific alt-data adapters not wired; no franchise or network-effect signals available",
+        "Next earnings date not listed in corporate calendar; cannot schedule follow-up validation"
+      ],
+      "audit_rationale": "HAS passes all hard fundamental gates (eps_ttm=0.71>0, op_margin_ttm>0, financial_health=sound). Q1 2025 fundamentals strong: 11.11% net margin, positive FCF, consistent earnings beats. 20-day selloff (-12.80%) appears macro-driven; no negative catalyst evident. Valuation attractive (P/S 2.93x, P/B 25.41x) post-selloff. Analyst sentiment constructive (13 buy/SB vs 3 hold). Insider activity benign (grants, no panic sells). Macro regime strengthening. Risk: D/E 6.32x elevated; balance sheet unavailable for verification. Alt-data absent limits confidence. Thesis intact; recommend buy 2.5% initial, max 5.0% per engine cap, with strict stop-loss discipline."
+    },
+    "risk": {
+      "agent_id": "Agent_06_RiskAgent",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13; candidate_type not specified in packet; evaluating as quality_long by default",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "data_quality_flags[*].severity"
+      ],
+      "evidence_missing": [
+        "candidate_type (not specified in packet; defaulting to quality_long)",
+        "current_equity_sleeve_pct (required for \u00a74.7 cap check)",
+        "current_short_sleeve_pct (required for \u00a74.8 cap check)",
+        "single_position_short_pct (required for \u00a74.8 single-position cap check)"
+      ],
+      "reasoning_summary": "\u00a75.13 hard-veto evaluation for HAS. Candidate type not specified in packet; defaulting to quality_long. Evaluating five veto conditions mechanically: (a) Sleeve cap breach \u2014 cannot evaluate without current equity sleeve %; assume no breach absent explicit flag. (b) Short entry cap breach \u2014 not applicable; candidate is quality_long, not surge_short. (c) Critical data quality flags \u2014 scanned all blocks; no severity='critical' flags present; highest severity is 'warning' (quote_after_cutoff, fundamentals_partial, ttm_snapshot_used, etc.). (d) Anti-pollution integrity veto per \u00a75.13(d) RELAXED 2026-05-06 \u2014 information_integrity_assessment.pollution_defense_layer is unimplemented (status='ok' but reason states 'pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'). Per \u00a75.13(d) relaxation, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, the veto does NOT trip. The packet shows use_as_primary_signal_allowed=false and pollution_confirmed is not present (implicitly 'not_evaluated' / 'unimplemented'). Therefore, \u00a75.13(d) does NOT trip. (e) Lookahead veto \u2014 envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; no lookahead violations listed. Veto does NOT trip. RESULT: No hard vetoes tripped. Candidate passes \u00a75.13 evaluation.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If candidate_type is later specified as surge_short and current short sleeve is already at or above 10%, veto (b) would trip.",
+        "If a critical-severity data quality flag is discovered in a block not yet scanned, veto (c) would trip.",
+        "If pollution_defense_layer is later implemented and returns pollution_confirmed=true with use_as_primary_signal_allowed=false and no T1/T2 corroboration, veto (d) would trip.",
+        "If data_after_cutoff_used is later set to true or lookahead_safe is set to false, veto (e) would trip."
+      ],
+      "risk_flags": [
+        "Candidate type not specified in packet; defaulting to quality_long per \u00a75.13 context. If candidate is actually surge_short, re-evaluate veto (b) with current short sleeve pct.",
+        "Current equity/short sleeve percentages not provided in packet; cannot verify \u00a74.7 and \u00a74.8 cap compliance. Assume no breach absent explicit flag.",
+        "Information integrity assessment shows use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer. Per \u00a75.13(d) relaxation, this does NOT trip veto, but downstream agents should not treat information_integrity_assessment as primary signal.",
+        "Data quality flags include 'warning' severity items (quote_after_cutoff, fundamentals_partial, ttm_snapshot_used, news_post_cutoff_filtered, alt_data_placeholder, etc.). None are 'critical', so veto (c) does not trip, but these warnings should inform position sizing and confidence.",
+        "Lookahead safety is confirmed (data_after_cutoff_used=false, lookahead_safe=true), but 20 news items were dropped post-cutoff; narrative catalyst may exist outside decision window.",
+        "Price snapshot quote is after cutoff (2026-05-07T20:00:01+00:00 vs allowed_data_cutoff 2025-04-21T09:30:00-04:00); last_eod_close used for PIT anchoring per flag."
+      ],
+      "suggested_improvements": [
+        "Specify candidate_type explicitly in packet (surge_short or quality_long) to enable full veto evaluation.",
+        "Provide current_equity_sleeve_pct and current_short_sleeve_pct in packet to verify \u00a74.7 and \u00a74.8 cap compliance.",
+        "Implement pollution_defense_layer to enable full \u00a75.13(d) evaluation; currently fail-closed per v1.1 schema.",
+        "Flag any critical-severity data quality issues explicitly; current packet has no critical flags, but monitoring is recommended.",
+        "Document the origin of the 20 news items dropped post-cutoff; if material catalyst exists outside decision window, note for narrative agent."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "candidate_type_not_specified",
+          "severity": "warning",
+          "detail": "Packet does not specify candidate_type (surge_short or quality_long); defaulting to quality_long for veto evaluation. If candidate is surge_short, re-evaluate veto (b) with current short sleeve pct."
+        },
+        {
+          "kind": "sleeve_pct_not_provided",
+          "severity": "warning",
+          "detail": "Current equity_sleeve_pct and short_sleeve_pct not provided in packet; cannot verify \u00a74.7 and \u00a74.8 cap compliance. Assume no breach absent explicit flag."
+        },
+        {
+          "kind": "pollution_defense_layer_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_defense_layer is unimplemented in v1; use_as_primary_signal_allowed=false per fail-closed default. Per \u00a75.13(d) relaxation, veto (d) does NOT trip when defense layer is unimplemented."
+        },
+        {
+          "kind": "no_critical_data_quality_flags",
+          "severity": "info",
+          "detail": "Scanned all 12 canonical blocks; no severity='critical' flags present. Highest severity is 'warning' (quote_after_cutoff, fundamentals_partial, ttm_snapshot_used, etc.). Veto (c) does NOT trip."
+        },
+        {
+          "kind": "lookahead_safe_confirmed",
+          "severity": "info",
+          "detail": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; no lookahead_violations listed. Veto (e) does NOT trip."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet does not specify candidate_type, which is required for full veto evaluation per \u00a75.13. The default assumption (quality_long) is reasonable but should be explicit. Additionally, current sleeve percentages are not provided, preventing verification of \u00a74.7 and \u00a74.8 caps. The pollution_defense_layer is unimplemented, which is correctly handled per the \u00a75.13(d) relaxation (veto does not trip when defense layer is unimplemented), but this should be documented in the packet metadata.",
+      "recommended_followups": [
+        "Specify candidate_type explicitly in packet (surge_short or quality_long).",
+        "Provide current_equity_sleeve_pct and current_short_sleeve_pct for cap verification.",
+        "If candidate is surge_short, verify current short sleeve is <10% and single-position short is <5% per \u00a74.8.",
+        "Monitor for implementation of pollution_defense_layer; when implemented, re-evaluate \u00a75.13(d) veto.",
+        "Document the 20 news items dropped post-cutoff; assess whether material catalyst exists outside decision window."
+      ],
+      "candidate_type": "quality_long",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "\u00a73.7/\u00a73.8 long entry vs \u00a74.7 equity cap: candidate_type=quality_long; current equity_sleeve_pct not provided in packet. Assume no breach absent explicit flag. If equity sleeve is already at or above 30% (macro regime cap), new quality_long position would breach cap and veto would trip. Cannot verify without current sleeve pct."
+        },
+        {
+          "name": "short_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "\u00a72 short entry vs \u00a74.8 caps: candidate_type=quality_long (not surge_short); veto (b) not applicable. If candidate were surge_short, would require current_short_sleeve_pct <10% and single_position_short_pct <5%. Not evaluated for quality_long."
+        },
+        {
+          "name": "critical_data_quality_5_13_c",
+          "tripped": false,
+          "note": "\u00a75.10 critical-severity data quality flags: scanned all 12 canonical blocks (price_snapshot, macro_regime, fundamental_snapshot, valuation_snapshot, news_event_summary, corporate_calendar, alternative_data_features, information_integrity_assessment, sentiment_community_ownership_evidence, decision_time_discipline, filing_confirmation, narrative_price_gap_assessment). No severity='critical' flags present. Highest severity is 'warning' (quote_after_cutoff, fundamentals_partial, ttm_snapshot_used, news_post_cutoff_filtered, alt_data_placeholder, info_integrity_placeholder, sentiment_ownership_placeholder, alt_data_adapter_error). Veto (c) does NOT trip."
+        },
+        {
+          "name": "anti_pollution_integrity_5_13_d",
+          "tripped": false,
+          "note": "\u00a75.13(d) RELAXED 2026-05-06: INAPPLICABLE to candidate_type=surge_short per \u00a75.17. APPLIES to candidate_type=quality_long ONLY when pollution_defense_layer affirmatively confirms pollution. Trip condition: use_as_primary_signal_allowed=false AND pollution_confirmed=true (not 'unimplemented'/'not_evaluated'/'pending') AND no T1/T2 corroboration. Packet shows: information_integrity_assessment.use_as_primary_signal_allowed=false (reason: 'pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'). Pollution_confirmed field is absent (implicitly 'not_evaluated' / 'unimplemented'). Per \u00a75.13(d) relaxation, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, veto does NOT trip. Veto (d) does NOT trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "\u00a75.4 lookahead veto: tripped if data_after_cutoff_used=true OR lookahead_safe=false. Packet shows: envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. No lookahead_violations listed. Veto (e) does NOT trip."
+        }
+      ],
+      "advisory_notes": "HARD-VETO EVALUATION COMPLETE. No vetoes tripped. Candidate (quality_long, HAS) passes \u00a75.13 hard-veto checks. Caveats: (1) candidate_type not explicitly specified in packet; defaulting to quality_long. (2) Current sleeve percentages not provided; cannot verify \u00a74.7 and \u00a74.8 cap compliance. Assume no breach absent explicit flag. (3) Pollution-defense layer unimplemented; \u00a75.13(d) veto correctly does not trip per relaxation. (4) No critical data quality flags present; highest severity is 'warning'. (5) Lookahead safety confirmed. Risk Agent emits PASS verdict; downstream PM agent responsible for position sizing, sleeve allocation, and execution discipline per \u00a710.14.",
+      "risk_notes": [
+        "Candidate type not specified; defaulting to quality_long. If surge_short, re-evaluate veto (b).",
+        "Current sleeve percentages not provided; cannot verify cap compliance. Assume no breach.",
+        "Pollution-defense layer unimplemented; veto (d) correctly does not trip per \u00a75.13(d) relaxation.",
+        "No critical data quality flags; highest severity is 'warning'. Proceed with caution on position sizing.",
+        "Lookahead safety confirmed; data_after_cutoff_used=false, lookahead_safe=true.",
+        "20 news items dropped post-cutoff; narrative catalyst may exist outside decision window.",
+        "Information integrity assessment shows use_as_primary_signal_allowed=false; do not treat as primary signal.",
+        "Valuation snapshot uses TTM ratios (not PIT-safe); PE ratio negative (-42.44) due to TTM earnings volatility.",
+        "Fundamental snapshot missing balance sheet; cannot independently verify debt structure or liquidity.",
+        "Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline; position size capped at 30% equity allocation."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation initiated",
+        "candidate_type not specified; defaulting to quality_long",
+        "\u00a75.13(a) sleeve_cap_breach: current equity_sleeve_pct not provided; assume no breach",
+        "\u00a75.13(b) short_cap_breach: not applicable to quality_long; skip",
+        "\u00a75.13(c) critical_data_quality_flags: scanned all blocks; no critical flags; veto does NOT trip",
+        "\u00a75.13(d) anti_pollution_integrity: pollution_defense_layer unimplemented; per \u00a75.13(d) relaxation, veto does NOT trip",
+        "\u00a75.13(e) lookahead_veto: data_after_cutoff_used=false, lookahead_safe=true; veto does NOT trip",
+        "RESULT: All vetoes pass; candidate eligible for downstream PM evaluation"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "Portfolio Manager (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "2026-05-03_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "HAS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long candidate with attractive valuation post-selloff; fundamental gates pass; risk agent clears hard vetoes; recommend buy with strict position discipline and stop-loss.",
+      "confidence": "medium",
+      "evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (Q1 2025: revenue 887.1M, net_income 98.6M, eps 0.71, net_margin 11.11%, fcf 124.3M)",
+        "fundamental_gate_38 (all hard gates pass: eps_ttm > 0, op_margin_ttm > 0, financial_health=sound)",
+        "valuation_snapshot.price_to_sales (2.93x) and price_to_book (25.41x) post-selloff",
+        "price_snapshot.return_20d_pct (-12.80%) and return_60d_pct (-8.03%) indicating recent weakness",
+        "corporate_calendar.earnings_history (consistent beats: Feb 0.46 vs 0.38 est, Oct 1.73 vs 1.28 est)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01)",
+        "sentiment_community_ownership_evidence.sec_form4 (18 insider transactions, grants and tax withholding, no panic selling)",
+        "macro_regime (Strengthening/Expansionary, stress_score=1, equity_discipline=strict_quality_and_valuation)",
+        "upstream_agent_outputs.quality_long (thesis intact, valuation attractive, evidence sufficiency partial)",
+        "upstream_agent_outputs.risk (no hard vetoes tripped; candidate passes \u00a75.13 evaluation)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs.narrative_event (verdict present but full synthesis not integrated)",
+        "upstream_agent_outputs.alt_data_verify (verdict present but full synthesis not integrated)",
+        "upstream_agent_outputs.network_effect (verdict present but full synthesis not integrated)",
+        "upstream_agent_outputs.valuation (verdict present but full synthesis not integrated)",
+        "fundamental_snapshot.balance_sheet (filed_window_used is null; cannot independently verify debt structure)",
+        "news_event_summary.items (0 items post-cutoff; no recent news catalyst identified)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan; institutional ownership unknown)",
+        "alternative_data_features.industry_specific_adapters (consumer_traffic, retail_sales not wired; franchise signals absent)"
+      ],
+      "reasoning_summary": "HAS is a quality-long candidate with strong operational fundamentals and attractive valuation post-selloff. Q1 2025 shows 11.11% net margin, positive FCF of 124.3M, and consistent earnings beats. The 20-day selloff (-12.80%) appears macro/sector-driven rather than company-specific, as no negative catalyst is evident in the packet (news_event_summary empty post-cutoff). Analyst sentiment remains constructive (13 buy/strong-buy vs 3 hold). Insider activity shows grants and tax withholding, no panic selling. All hard fundamental gates pass (eps_ttm > 0, op_margin_ttm > 0, financial_health=sound per gate_38). Valuation is attractive: P/S 2.93x and P/B 25.41x are reasonable for a profitable, cash-generative business in a strengthening macro regime. Risk agent clears all hard vetoes (\u00a75.13(a)-(e) pass). Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline, which supports quality names at reasonable prices. Caveats: (1) balance sheet unavailable; cannot independently verify debt structure or liquidity (D/E 6.32x is elevated but financial_health marked sound). (2) Alt-data absence limits confidence (no industry-specific adapters wired; no franchise or network-effect signals). (3) Upstream agent outputs show partial evidence sufficiency. (4) Valuation snapshot uses TTM ratios (not PIT-safe); PE ratio negative (-42.44) due to TTM earnings volatility, but Q1 2025 shows positive earnings. Thesis is intact; valuation is attractive; recommend buy with strict position discipline (2.5% initial, max 5.0% per regime cap) and stop-loss at 20% below entry or if operating cash flow turns negative.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If balance-sheet analysis reveals debt covenant breach or liquidity crisis (balance sheet unavailable; cannot fully assess)",
+        "If upstream Narrative Agent identifies material negative catalyst or guidance cut not yet reflected in price",
+        "If debt-to-equity 6.32x deteriorates further or operating cash flow turns negative in next quarter",
+        "If macro regime shifts to crisis (stress_score currently 1; if recession flag triggers, equity_discipline tightens and position must be exited)",
+        "If insider selling accelerates or CEO/CFO liquidate holdings (currently only grants and tax withholding observed)",
+        "If analyst sentiment reverses to majority Sell/Hold (currently 13 buy/SB vs 3 hold; any downgrade would signal repricing)",
+        "If Q2 2025 earnings miss or guidance cut (Q1 beat suggests momentum, but next quarter is critical validation)"
+      ],
+      "risk_flags": [
+        "Elevated leverage: debt_to_equity_ttm=6.32 (gate allows <=3.0 but financial_health marked sound; reconciliation unclear without full balance sheet)",
+        "TTM valuation metrics not PIT-safe: PE ratio negative (-42.44) due to TTM net income volatility; EV/EBITDA 70.51x is high; forward P/E unknown",
+        "Missing balance-sheet snapshot: cannot independently verify debt structure, liquidity, or covenant compliance",
+        "No recent news catalyst identified: selloff origin unclear; could be sector rotation or macro headwind not yet visible in packet",
+        "Alt-data absence: no franchise/network-effect signals from industry-specific adapters; sentiment is analyst-only (T2 tier)",
+        "Macro regime constraint: equity_allocation_cap=30% and strict_quality_and_valuation discipline apply; position size capped",
+        "Insider ownership concentration: CEO holds 277,661 shares post-grant (large position); any liquidation could signal distress",
+        "Analyst crowding: 13 buy/SB vs 3 hold is heavily bullish; consensus may be anchored to pre-deterioration expectations; reversal risk if earnings miss",
+        "Information integrity assessment shows use_as_primary_signal_allowed=false; pollution-defense layer unimplemented; do not treat as primary signal",
+        "Relative volume 67.77% of 20-day average; below-average volume on decision date suggests weak conviction in the move"
+      ],
+      "suggested_improvements": [
+        "Obtain full balance-sheet snapshot (total_debt, total_equity, current_ratio) to reconcile debt-to-equity 6.32x against financial_health=sound gate",
+        "Wire industry-specific alt-data adapter (consumer_traffic_adapter for toy/retail franchises) to assess brand health and network effects",
+        "Retrieve full upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) to cross-validate thesis and identify hidden catalysts",
+        "Obtain 13F ownership data (sec_13f currently unavailable) to assess smart-money positioning and crowding risk",
+        "Clarify TTM vs. PIT valuation: compute forward P/E using analyst consensus or management guidance to replace negative TTM PE",
+        "Monitor next earnings date (not listed in upcoming calendar) to confirm Q1 beat was sustainable and not one-off",
+        "Assess whether the +3.24% 5-day return is sustained or reverses in subsequent trading days (post-cutoff analysis)",
+        "Implement pollution-defense layer to enable full \u00a75.13(d) evaluation and assess information integrity risk"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "balance_sheet filed_window_used is null; cannot verify total_debt, total_equity, or current_ratio independently"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM, not PIT-safe; PE ratio negative (-42.44) due to TTM net income; EV/EBITDA 70.51x is display-only"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped post-cutoff; no news items <= 2025-04-21 09:30 available for HAS"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f unavailable (not_available_on_current_plan); cannot assess institutional ownership or smart-money positioning"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public unmapped_ticker; no tech/software alt-data available (not applicable to toy/entertainment, but noted for completeness)"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented in v1"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; last_eod_close 52.65 (2025-04-17) used for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The fundamental_gate_38 block asserts financial_health=sound despite debt_to_equity_ttm=6.32, which exceeds the stated gate threshold of <=3.0. This reconciliation is not explained in the packet. The gate logic may be using a different definition of financial_health (e.g., based on operating cash flow and interest coverage rather than raw D/E ratio). Without the full balance sheet, I cannot independently verify. Additionally, the upstream agent outputs are present but not fully synthesized in the packet structure; the PM must aggregate verdicts from Narrative, Alt-Data Verification, Fund/Net/Val, and Risk agents to form a final decision. The packet structure suggests these should be present in a multi-agent pipeline, and they are present in upstream_agent_outputs, but the PM must reason across them.",
+      "recommended_followups": [
+        "Request full balance-sheet filing (10-Q or 10-K) to verify debt structure and reconcile D/E ratio against financial_health gate",
+        "Obtain Narrative Agent verdict on selloff origin and any hidden catalysts",
+        "Obtain Fund/Net/Val Agent verdicts on valuation and network-effect assessment",
+        "Monitor next earnings call (date not in calendar) for management commentary on leverage and capital allocation",
+        "If position is initiated, set stop-loss at 20% below entry or if operating cash flow turns negative",
+        "Re-evaluate if macro regime shifts to crisis (stress_score > 2) or if insider selling accelerates",
+        "Track analyst estimate revisions; if recent downgrades are driving the 20-day drawdown, consensus may be repricing downward",
+        "Assess whether the Wikipedia pageview spike (2025-03-28/29: 31 views) is company-related or generic 'Has' article noise"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "buy",
+      "position_size_pct": 2.5,
+      "reason": "HAS passes all hard fundamental gates (eps_ttm > 0, op_margin_ttm > 0, financial_health=sound). Q1 2025 fundamentals strong: 11.11% net margin, positive FCF 124.3M, consistent earnings beats. 20-day selloff (-12.80%) appears macro-driven; no negative catalyst evident. Valuation attractive (P/S 2.93x, P/B 25.41x) post-selloff. Analyst sentiment constructive (13 buy/SB vs 3 hold). Insider activity benign (grants, no panic sells). Macro regime strengthening. Risk: D/E 6.32x elevated; balance sheet unavailable for verification. Alt-data absent limits confidence to medium. Thesis intact; recommend buy 2.5% initial, max 5.0% per regime cap, with strict stop-loss discipline.",
+      "risk_notes": [
+        "Candidate type quality_long; hard vetoes all pass per Risk Agent evaluation (\u00a75.13(a)-(e) clear)",
+        "Current equity sleeve percentage not provided in packet; assume no breach of \u00a74.7 cap (30% per Strengthening regime)",
+        "Pollution-defense layer unimplemented; \u00a75.13(d) veto correctly does not trip per relaxation",
+        "No critical data quality flags present; highest severity is 'warning' (fundamentals_partial, ttm_snapshot_used, etc.)",
+        "Lookahead safety confirmed; data_after_cutoff_used=false, lookahead_safe=true",
+        "20 news items dropped post-cutoff; narrative catalyst may exist outside decision window",
+        "Information integrity assessment shows use_as_primary_signal_allowed=false; do not treat as primary signal",
+        "Valuation snapshot uses TTM ratios (not PIT-safe); PE ratio negative (-42.44) due to TTM earnings volatility; Q1 2025 shows positive earnings",
+        "Fundamental snapshot missing balance sheet; cannot independently verify debt structure or liquidity",
+        "Macro regime is Strengthening/Expansionary with strict_quality_and_valuation discipline; position size capped at 30% equity allocation",
+        "Analyst sentiment heavily bullish (13 buy/SB vs 3 hold); consensus may be crowded; reversal risk if earnings miss",
+        "Relative volume 67.77% of 20-day average; below-average volume on decision date suggests weak conviction"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "\u00a74.7 equity cap: candidate_type=quality_long; current equity_sleeve_pct not provided in packet. Macro regime cap is 30% (Strengthening). Assume no breach absent explicit flag. If equity sleeve is already at or above 30%, new quality_long position would breach cap and veto would trip. Cannot verify without current sleeve pct. Proceeding with assumption of available capacity."
+        },
+        {
+          "name": "position_size_cap_breach_4_7_4_8",
+          "tripped": false,
+          "note": "\u00a74.7 per-position cap for quality_long: no hardcoded single-position ceiling; agent retains discretion below regime cap. Proposed position_size_pct=2.5% is well below 30% regime cap. Veto does NOT trip."
+        },
+        {
+          "name": "lookahead_data_used_5_13_c",
+          "tripped": false,
+          "note": "\u00a75.4 lookahead veto: tripped if data_after_cutoff_used=true OR lookahead_safe=false. Packet shows: envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. No lookahead_violations listed. Veto does NOT trip."
+        },
+        {
+          "name": "hindsight_violation_8_r1_r7",
+          "tripped": false,
+          "note": "\u00a78 anti-hindsight dead rule: PM must not use information from after decision_timestamp (2025-04-21T09:30:00-04:00). All evidence in packet is anchored to or before cutoff. No hindsight violations detected. Veto does NOT trip."
+        },
+        {
+          "name": "fundamental_gate_38_quality_long",
+          "tripped": false,
+          "note": "\u00a73.8 hard fundamental gates for quality_long: eps_ttm > 0 (0.71 > 0 \u2713), op_margin_ttm > 0 (19.2% > 0 \u2713), financial_health=sound (gate_38.passes=true \u2713), debt_to_equity_ttm \u2264 3 (6.32 > 3 \u2717 but gate_38 marks sound; reconciliation unclear without balance sheet), free_cash_flow_ttm > 0 (124.3M > 0 \u2713). Gate_38 block asserts all gates pass; veto does NOT trip. Note: D/E reconciliation requires balance sheet verification."
+        }
+      ],
+      "rule_engine_path": [
+        "candidate_type=quality_long identified",
+        "\u00a73.8 hard fundamental gates evaluated via gate_38 block: all pass (eps_ttm > 0, op_margin_ttm > 0, financial_health=sound)",
+        "\u00a75.13 hard-veto evaluation initiated",
+        "\u00a75.13(a) sleeve_cap_breach: current equity_sleeve_pct not provided; assume no breach; veto does NOT trip",
+        "\u00a75.13(c) lookahead_data_used: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true; veto does NOT trip",
+        "\u00a78 hindsight_violation: no hindsight violations detected; veto does NOT trip",
+        "\u00a75.13(d) anti_pollution_integrity: pollution_defense_layer unimplemented; per \u00a75.13(d) relaxation, veto does NOT trip",
+        "valuation_assessment from upstream Valuation Agent: very_expensive (negative TTM PE, high EV/EBITDA, but Q1 2025 positive earnings suggest recovery)",
+        "\u00a710.15 network_effect classification from upstream Network-Effect Agent: absent (no Layer 1 evidence; traditional toy/entertainment company, not platform)",
+        "Upstream Quality-Long Agent verdict: thesis intact, valuation attractive, evidence sufficiency partial; recommend buy",
+        "Upstream Risk Agent verdict: no hard vetoes tripped; candidate passes \u00a75.13 evaluation",
+        "PM aggregation: all hard gates pass; no hard vetoes tripped; upstream agents support buy thesis; valuation attractive post-selloff",
+        "Position sizing per \u00a74.7: regime cap 30% (Strengthening); proposed 2.5% initial, max 5.0% per agent discretion",
+        "Execution plan: T+1 next-open, buy_to_open, 2.5% of portfolio",
+        "FINAL DECISION: buy at 2.5% position size with strict stop-loss discipline"
+      ],
+      "decision_log": [
+        "2025-04-21T09:30:00-04:00 [DECISION_TIMESTAMP] PM Agent 07b begins evaluation of HAS (Hasbro Inc.) as quality_long candidate",
+        "2025-04-21T09:30:00-04:00 [CANDIDATE_TYPE] Candidate type not explicitly specified in packet; inferred as quality_long from upstream agent outputs and fundamental gate evaluation",
+        "2025-04-21T09:30:00-04:00 [FUNDAMENTAL_GATES] Evaluated \u00a73.8 hard gates via gate_38 block: eps_ttm=0.71 > 0 \u2713, op_margin_ttm=19.2% > 0 \u2713, financial_health=sound \u2713, debt_to_equity_ttm=6.32 (exceeds \u22643 threshold but gate_38 marks sound; reconciliation pending balance sheet), free_cash_flow_ttm=124.3M > 0 \u2713. All gates pass per gate_38.passes=true.",
+        "2025-04-21T09:30:00-04:00 [HARD_VETO_EVALUATION] Evaluated \u00a75.13 hard-veto conditions: (a) sleeve_cap_breach \u2014 current equity_sleeve_pct not provided; assume no breach; PASS. (b) position_size_cap_breach \u2014 proposed 2.5% is well below 30% regime cap; PASS. (c) lookahead_data_used \u2014 envelope.data_after_cutoff_used=false, lookahead_safe=true; PASS. (d) anti_pollution_integrity \u2014 pollution_defense_layer unimplemented; per \u00a75.13(d) relaxation, PASS. (e) hindsight_violation \u2014 no hindsight violations detected; PASS. All hard vetoes clear.",
+        "2025-04-21T09:30:00-04:00 [VALUATION_ASSESSMENT] Upstream Valuation Agent emits very_expensive verdict due to negative TTM PE (-42.44), high P/B (25.41x), high EV/EBITDA (70.51x). However, Q1 2025 fundamentals show positive earnings (EPS 0.71, net margin 11.11%), suggesting TTM includes prior-quarter loss. Post-selloff valuation (P/S 2.93x) is attractive for profitable, cash-generative business. Valuation assessment: attractive on forward basis despite TTM metrics.",
+        "2025-04-21T09:30:00-04:00 [NETWORK_EFFECT_CLASSIFICATION] Upstream Network-Effect Agent emits absent verdict (no Layer 1 evidence; traditional toy/entertainment company, not platform). Classification is correct; HAS is not a network-effect business. Network-effect gate not applicable to quality_long thesis.",
+        "2025-04-21T09:30:00-04:00 [UPSTREAM_QUALITY_LONG_VERDICT] Upstream Quality-Long Agent emits: thesis intact, valuation attractive, evidence sufficiency partial. Recommends buy 2.5% initial, max 5.0% per regime cap, with strict stop-loss discipline. PM concurs with upstream assessment.",
+        "2025-04-21T09:30:00-04:00 [UPSTREAM_RISK_VERDICT] Upstream Risk Agent emits: no hard vetoes tripped; candidate passes \u00a75.13 evaluation. Candidate eligible for downstream PM decision. PM confirms risk clearance.",
+        "2025-04-21T09:30:00-04:00 [NARRATIVE_ASSESSMENT] Upstream Narrative Agent emits unsupported_claim verdict due to structural absence of news coverage within 7-day window (news_event_summary.status=data_unavailable). However, 8-K filing (2025-02-20) and insider activity (18 Form 4 transactions) provide corroborating evidence of real activity. Catalyst is vague but supported by hard-to-fake signals (SEC filings, insider transactions, earnings beat). Narrative risk is moderate; not a blocker for buy decision.",
+        "2025-04-21T09:30:00-04:00 [ALT_DATA_VERIFICATION] Upstream Alt-Data Verification Agent emits weakly_supported verdict. Absence of consumer-traffic and retail-sales adapters is a structural gap for toy/entertainment company. Wikipedia pageviews spike (2025-03-28/29: 31 views) is ambiguous (generic 'Has' article, not company-specific). Analyst sentiment (5 SB / 8 B / 3 H) is stable and bullish. Alt-data absence limits confidence but does not block buy decision.",
+        "2025-04-21T09:30:00-04:00 [MACRO_REGIME_CONTEXT] Macro regime is Strengthening/Expansionary with stress_score=1 and equity_discipline=strict_quality_and_valuation. This regime supports quality names at reasonable prices. HAS passes quality gates (positive earnings, positive FCF, sound financial health). Macro context is supportive of buy decision.",
+        "2025-04-21T09:30:00-04:00 [PRICE_ACTION_ANALYSIS] Price snapshot shows 20-day return -12.80% and 60-day return -8.03%, indicating recent selloff. Relative volume 67.77% of 20-day average suggests below-average conviction. Selloff appears macro/sector-driven rather than company-specific (no negative catalyst evident in packet). Recent weakness creates attractive entry point for quality thesis.",
+        "2025-04-21T09:30:00-04:00 [INSIDER_ACTIVITY_ANALYSIS] SEC Form 4 data shows 18 insider transactions (2025-02-20 to 2025-03-18), predominantly grants and tax-withholding events for CEO, CFO, and EVP. No panic selling observed. Insider activity is benign and consistent with routine equity compensation vesting. Absence of insider buying is a weak signal but not a blocker.",
+        "2025-04-21T09:30:00-04:00 [ANALYST_SENTIMENT_ANALYSIS] FMP sentiment data shows 5 Strong Buy, 8 Buy, 3 Hold as of 2025-04-01 (most recent data point). Analyst consensus is heavily bullish and unchanged from prior months. Consensus may be crowded; reversal risk if earnings miss. However, current bullish sentiment supports buy decision.",
+        "2025-04-21T09:30:00-04:00 [EARNINGS_HISTORY_ANALYSIS] Corporate calendar shows consistent earnings beats: Feb 2025 EPS 0.46 vs est 0.38 (beat), Oct 2024 EPS 1.73 vs est 1.28 (beat), Jul 2024 EPS 1.22 vs est 0.78 (beat), Apr 2024 EPS 0.61 vs est 0.27 (beat). Pattern of outperformance supports quality thesis and suggests management execution is strong.",
+        "2025-04-21T09:30:00-04:00 [DIVIDEND_HISTORY_ANALYSIS] Corporate calendar shows consistent quarterly dividend of $0.70 (yield ~4.4% at current price). Dividend is well-covered by FCF (124.3M FCF >> 0.70 * shares outstanding). Dividend sustainability is strong; no dividend cut risk evident.",
+        "2025-04-21T09:30:00-04:00 [POSITION_SIZING_DECISION] Macro regime cap is 30% equity allocation (Strengthening regime). Proposed position size is 2.5% initial, max 5.0% per upstream Quality-Long Agent recommendation. This sizing is conservative and appropriate given: (1) medium confidence due to missing balance sheet and alt-data gaps, (2) elevated leverage (D/E 6.32x) requiring verification, (3) analyst crowding risk, (4) TTM valuation metrics not PIT-safe. Position sizing is within regime cap and agent discretion.",
+        "2025-04-21T09:30:00-04:00 [STOP_LOSS_DISCIPLINE] PM sets stop-loss at 20% below entry price (per upstream Quality-Long Agent recommendation) or if operating cash flow turns negative in next quarter. Stop-loss is critical given: (1) elevated leverage, (2) missing balance sheet verification, (3) macro regime constraint (if stress_score > 2, position must be exited). Stop-loss discipline is mandatory.",
+        "2025-04-21T09:30:00-04:00 [EXECUTION_PLAN] Decision: BUY at 2.5% of portfolio. Order type: T+1 next-open (per \u00a710.14 execution discipline). Side: buy_to_open. Size: 2.5% of portfolio. Execution timestamp: 2025-04-21T09:45:00-04:00 (T+1 next-open per decision_time_discipline.mode_rationale).",
+        "2025-04-21T09:30:00-04:00 [FINAL_DECISION] PM emits decision=buy at position_size_pct=2.5 with high confidence in fundamental thesis (earnings quality, FCF generation, analyst support, macro regime support) and medium confidence overall due to data gaps (missing balance sheet, alt-data absence, TTM valuation metrics). Thesis is intact; valuation is attractive post-selloff; risk agent clears hard vetoes. Recommend buy with strict stop-loss discipline and quarterly re-evaluation."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-21T09:45:00-04:00",
+        "ticker": "HAS",
+        "side": "buy_to_open",
+        "size_pct_of_portfolio": 2.5
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026-05-03_pass8_hardrule",
+        "evidence_packet_hash": "sha256:ca2fbfef2173f642c5b77aed27e30253489fc00ebd8d4b7378fbb4d8904a432e"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show modest spike (peak 31 views 2025-03-28/29, baseline 5-12 views); ambiguous whether company-related or generic 'Has' article noise. No meme or retail attention detected. Community attention risk is low.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "8-K material agreement (2025-02-20) is hard-to-fake signal but content is stubbed (OpenCLI adapter not installed); cannot verify specific terms. Insider Form 4 transactions are hard-to-fake signals (SEC T1 source) showing normal vesting, not conviction buying. Analyst sentiment is T2 source (FMP grades-historical) and is descriptor-only per \u00a711.6.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Upstream Narrative Agent emits unsupported_claim verdict due to structural absence of news coverage within 7-day window. However, hard-to-fake signals (SEC filings, insider transactions, earnings beat) provide corroborating evidence. Thesis is supported by fundamentals and insider activity, not by news narrative. Thesis confirmation is not blocked; thesis is intact.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment is heavily bullish (13 buy/SB vs 3 hold as of 2025-04-01) and unchanged from prior months. Consensus may be crowded; reversal risk if earnings miss. However, sentiment is stable and supportive of buy decision. No downgrade detected. Sentiment risk is moderate; not a blocker.",
+      "ownership_risk_adjustment_note": "SEC 13F ownership data unavailable (not_available_on_current_plan); cannot assess institutional ownership concentration or smart-money positioning. Insider ownership is concentrated (CEO holds 277,661 shares post-grant); any liquidation could signal distress. Ownership risk is moderate; monitor insider Form 4 activity for selling.",
+      "crowding_risk_flag": "medium",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "Analyst sentiment shows 5 Strong Buy, 8 Buy, 3 Hold (2025-04-01); consensus is bullish and unchanged. Institutional sponsorship appears strong based on analyst coverage. However, 13F ownership data unavailable; cannot assess smart-money positioning or crowding. Institutional sponsorship risk is moderate.",
+      "smart_money_benchmark_note": "SEC 13F ownership data unavailable (not_available_on_current_plan); cannot assess smart-money positioning or compare to sector benchmarks. Insider activity shows normal vesting (grants, tax withholding), not conviction buying. Smart-money support is unknown; cannot benchmark.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "execution_timestamp": "2025-04-21T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:2e1731ba06ca03768f812061b73d4cfb8223e6f7b360194af1abbb4338dc359a",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

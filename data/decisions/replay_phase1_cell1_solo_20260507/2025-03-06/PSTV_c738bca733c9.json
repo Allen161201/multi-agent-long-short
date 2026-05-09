@@ -1,0 +1,251 @@
+{
+  "trigger_id": "c738bca733c9",
+  "ticker": "PSTV",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-06T09:30:00-05:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 46.25,
+  "trigger_cost_usd": 0.063707,
+  "cumulative_cost_usd": 0.628065,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "PSTV",
+    "name": "PSTV",
+    "close": 36,
+    "prior_close": 8.75,
+    "change": 5.5,
+    "change_pct": 62.857142857142854,
+    "volume": 14383401.24,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-06",
+    "prior_trading_day": "2025-03-05",
+    "available_as_of": "2025-03-06T16:00:00-05:00",
+    "today_open": 14.25,
+    "today_volume": 14383401.24,
+    "eps_ttm": -60500,
+    "operating_margin_ttm": -255.9825327510917,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-14 16:01:35",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:e90d262584faeb9a2624a0ef41c364d710f18736b2bde806980ebdd39a2e7946",
+  "locked_decision_id": "sha256:d040b8ad4523e8c7d36e6428131c373dd296a1cd7a65089c0ecab6b90a4961c8",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation control)",
+      "schema_version": "RiskPMAgentOutput_v1",
+      "prompt_version": "baseline_solo_v1.0_2026_04_28",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "PSTV",
+      "decision_timestamp": "2025-03-06T09:30:00-05:00",
+      "data_available_as_of": "2025-03-06T09:30:00-05:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (-53.9%)",
+        "price_snapshot.relative_volume_vs_20d (2.529x)",
+        "news_event_summary: private placement $15M (2025-03-04)",
+        "filing_confirmation: 8-K filed 2025-03-04",
+        "alternative_data_features.attention.wikipedia_pageviews (spike to 150 views 2025-03-06)",
+        "valuation_snapshot: PE=-0.83, PB=4.63, negative net margin -429%",
+        "macro_regime: Overheat / Moderately Restrictive (stress_score=2)",
+        "fundamental_snapshot: status=insufficient_evidence",
+        "sentiment_community_ownership_evidence: analyst ratings 2 Strong Buy / 3 Buy (as of 2025-03-01)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot: no PIT-safe income/balance/cashflow data",
+        "narrative_price_gap_assessment: not_evaluated (requires Agent 03 LLM reasoning)",
+        "alternative_data_features: most adapters not_connected (github_public, biotech_clinical, etc.)",
+        "sentiment_community_ownership_evidence: ownership_positioning not_evaluated, community_size not_evaluated",
+        "information_integrity_assessment: pollution-defense layer not implemented in v1",
+        "sec_13f: not_available_on_current_plan",
+        "sec_8k_fulltext: stub mode (binary not installed)"
+      ],
+      "reasoning_summary": "PSTV exhibits a sharp 5-day drawdown (-53.9%) following a private placement announcement (2025-03-04, $15M gross proceeds). Wikipedia pageviews spike to 150 on decision day, and relative volume is 2.5x normal. However, fundamental data is insufficient (no PIT-safe quarterly filings), valuation metrics are distorted (negative PE, negative net margin -429%), and the macro regime is restrictive (equity_discipline=strict_quality_and_valuation_caution). Alternative data is sparse (adapters not wired), ownership data unavailable, and narrative gap assessment is pending. The private placement itself is a positive catalyst for a clinical-stage biotech, but the magnitude of the drawdown, combined with missing fundamentals and insufficient external corroboration, prevents a confident buy or short decision. Macro regime caps equity allocation at 20% and mandates strict quality/valuation caution. Fail-closed per anti-hindsight and missing-data policy.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "fundamental_snapshot.status = insufficient_evidence",
+        "alternative_data_features: most adapters not_connected",
+        "sentiment_community_ownership_evidence: ownership_positioning not_evaluated",
+        "narrative_price_gap_assessment: not_evaluated",
+        "information_integrity_assessment: pollution-defense layer not implemented"
+      ],
+      "risk_flags": [
+        "Macro regime restrictive: equity_discipline=strict_quality_and_valuation_caution",
+        "Valuation distorted: PE=-0.83, net_margin=-429%, ROA=-1.37%",
+        "Fundamental data absent: no PIT-safe quarterly filings",
+        "Price action extreme: -53.9% in 5 days post-announcement",
+        "Clinical-stage biotech: high execution risk, no revenue scale",
+        "Alternative data sparse: adapters not wired, GitHub unmapped, 13F unavailable",
+        "Ownership data missing: no institutional positioning, no insider activity in 90d",
+        "Narrative gap assessment pending: cannot confirm catalyst-price alignment"
+      ],
+      "suggested_improvements": [
+        "Wire alternative-data adapters (biotech_clinical, sec_13f) to capture clinical trial progress and institutional positioning",
+        "Implement pollution-defense layer in information_integrity_assessment to validate private placement narrative",
+        "Obtain PIT-safe quarterly fundamentals (Q4 2024 or Q1 2025 filing) to assess burn rate and runway",
+        "Evaluate insider trading (Form 4) around private placement pricing to assess management confidence",
+        "Cross-check Wikipedia pageview spike against Reddit/social sentiment to rule out meme-stock dynamics",
+        "Assess private placement terms (dilution, warrant coverage, investor identity) via 8-K full text extraction"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe income/balance/cashflow rows"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 PSTV not in ticker_to_github.csv"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 FMP HTTP 404"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs flagged not_PIT_safe; TTM ratios have no fiscal anchor"
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext: stub mode (opencli binary not installed); filing text not ground truth"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "price_snapshot.live_quote at 2026-05-07T20:00:00+00:00 is after allowed_data_cutoff; using last_eod_close=8.75"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 evidence packet lacks LLM-driven narrative_price_gap_assessment and information_integrity_assessment pollution-defense layer. Alternative-data adapters are mostly not_connected, limiting external corroboration. Fundamental snapshot is insufficient_evidence, blocking quality_long sleeve eligibility. Without these blocks, a single-agent baseline cannot confidently assess whether the private placement catalyst justifies the 53.9% drawdown or whether the stock is a short candidate. Fail-closed per rule \u00a713.4 and \u00a713.6.",
+      "recommended_followups": [
+        "Await Q1 2025 earnings (expected ~May 2025) to obtain PIT-safe fundamentals and assess cash burn",
+        "Monitor insider Form 4 filings for 30 days post-private-placement to gauge management confidence",
+        "Re-evaluate when alternative-data adapters (biotech_clinical, sec_13f) are wired and return data",
+        "Reassess if macro regime shifts from Overheat/Restrictive to Risk-On (would relax equity_discipline)",
+        "If price stabilizes above $8.00 and volume normalizes, revisit as potential quality_long candidate"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence to support buy or short. Fundamentals unavailable (status=insufficient_evidence), alternative data sparse (adapters not_connected), ownership data missing, narrative gap assessment pending. Macro regime restrictive (equity_discipline=strict_quality_and_valuation_caution). Private placement is positive catalyst but 53.9% drawdown magnitude and distorted valuation metrics (PE=-0.83, net_margin=-429%) prevent confident decision. Fail-closed per missing-data policy.",
+      "risk_notes": [
+        "Macro regime caps equity allocation at 20% and mandates strict quality/valuation caution; PSTV fails quality bar due to negative profitability and missing fundamentals",
+        "Clinical-stage biotech with no revenue scale; private placement ($15M) extends runway but burn rate unknown",
+        "Valuation metrics distorted: negative PE, negative ROA, negative net margin (-429%); TTM ratios not PIT-safe",
+        "Price action extreme: -53.9% in 5 days; relative volume 2.5x normal; Wikipedia pageviews spike to 150 \u2014 suggests retail attention but no institutional corroboration",
+        "Alternative data sparse: GitHub unmapped, 13F unavailable, biotech_clinical adapter not wired; cannot assess clinical trial progress or institutional positioning",
+        "Ownership data absent: no Form 4 insider activity in 90 days, no 13F institutional holdings, no community size metrics",
+        "Narrative gap assessment pending: cannot confirm whether private placement announcement justifies drawdown or signals distress",
+        "Information integrity assessment incomplete: pollution-defense layer not implemented in v1; cannot rule out meme-stock or coordinated campaign dynamics"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "fundamental_snapshot.status=insufficient_evidence; alternative_data_features mostly not_connected; narrative_price_gap_assessment not_evaluated; ownership_positioning not_evaluated"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "No hard limit breached; macro regime restrictive but not a veto by itself"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Fundamentals missing (no PIT-safe quarterly filings), alternative data sparse (adapters not_connected), ownership data absent, narrative assessment pending \u2014 exceeds tolerance for quality_long or surge_short decision"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": false,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false per v1 schema, but this is a descriptor-only layer; no hard veto triggered"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; all evidence within allowed_data_cutoff (2025-03-06T09:30:00-05:00)"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Check envelope.lookahead_safe=true, data_after_cutoff_used=false \u2192 PASS",
+        "2. Check fundamental_snapshot.status \u2192 insufficient_evidence \u2192 VETO candidate",
+        "3. Check alternative_data_features.adapter_selection \u2192 most adapters not_connected \u2192 VETO candidate",
+        "4. Check sentiment_community_ownership_evidence.ownership_positioning.status \u2192 not_evaluated \u2192 VETO candidate",
+        "5. Check narrative_price_gap_assessment.status \u2192 not_evaluated \u2192 VETO candidate",
+        "6. Evaluate macro_regime: Overheat/Moderately Restrictive (stress_score=2) \u2192 equity_discipline=strict_quality_and_valuation_caution \u2192 RESTRICT equity positions",
+        "7. Evaluate candidate_type: quality_long (private placement positive catalyst) vs surge_short (53.9% drawdown) \u2192 insufficient evidence for either sleeve",
+        "8. Collapse decision to no_trade per fail-closed policy"
+      ],
+      "decision_log": [
+        "T+0: Read envelope \u2192 lookahead_safe=true, data_after_cutoff_used=false \u2192 proceed",
+        "T+1: Assess catalyst (news_event_summary) \u2192 private placement $15M (2025-03-04), positive for clinical-stage biotech, but narrative_price_gap_assessment not_evaluated \u2192 cannot confirm alignment with 53.9% drawdown",
+        "T+2: Assess external corroboration (alternative_data_features) \u2192 Wikipedia pageviews spike to 150 (2025-03-06), but most adapters not_connected (github_public, biotech_clinical, sec_13f) \u2192 insufficient alt-data verification",
+        "T+3: Assess fundamentals (fundamental_snapshot) \u2192 status=insufficient_evidence; no PIT-safe quarterly filings \u2192 cannot assess burn rate, runway, or profitability",
+        "T+4: Assess valuation (valuation_snapshot) \u2192 PE=-0.83, PB=4.63, net_margin=-429%, ROA=-1.37% \u2192 distorted metrics, TTM not PIT-safe \u2192 fails quality bar",
+        "T+5: Assess ownership (sentiment_community_ownership_evidence) \u2192 ownership_positioning not_evaluated, community_size not_evaluated, no Form 4 insider activity in 90d \u2192 no institutional or insider signal",
+        "T+6: Assess macro regime (macro_regime) \u2192 Overheat/Moderately Restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution, equity_allocation_cap=20% \u2192 RESTRICT equity positions, mandate strict quality/valuation caution",
+        "T+7: Evaluate sleeve eligibility \u2192 quality_long: fails (fundamentals insufficient, valuation distorted, macro restrictive) \u2192 surge_short: fails (insufficient evidence of distress, private placement is positive catalyst, no short thesis corroborated)",
+        "T+8: Evaluate veto conditions \u2192 insufficient_evidence=true, missing_data_persists_beyond_tolerance=true \u2192 VETO",
+        "T+9: Collapse decision to no_trade per fail-closed policy; position_size_pct=0.0"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-06T09:45:00-05:00",
+        "ticker": "PSTV",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0_2026_04_28",
+        "evidence_packet_hash": "sha256:432abc83c1dfa829432da4bd3d018f22063ded88e7280711e80a495cff0b3ca4"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews spike to 150 on 2025-03-06 (vs. baseline ~100-120); relative volume 2.5x normal. Suggests retail attention but no institutional corroboration (13F unavailable, ownership_positioning not_evaluated). Meme-stock risk cannot be ruled out without sentiment/social data.",
+      "meme_or_retail_attention_warning": "elevated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Private placement announcement (2025-03-04) is T1 source (GlobeNewswire/SEC 8-K), but narrative_price_gap_assessment not_evaluated; cannot confirm whether announcement justifies 53.9% drawdown or signals distress.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "fundamental_snapshot.status=insufficient_evidence; alternative_data_features mostly not_connected; narrative_price_gap_assessment not_evaluated; information_integrity_assessment pollution-defense layer not implemented in v1. Per rule \u00a713.6 (null-block-handling), when essential blocks are absent, fail-closed to no_trade.",
+      "sentiment_risk_adjustment_note": "sentiment_community_ownership_evidence.market_sentiment: analyst ratings 2 Strong Buy / 3 Buy (as of 2025-03-01), but sentiment_score null, sentiment_change_* null, credibility_adjusted_sentiment null. Insufficient sentiment data to adjust decision.",
+      "ownership_risk_adjustment_note": "ownership_positioning not_evaluated; no 13F data (not_available_on_current_plan), no Form 4 insider activity in 90 days, no community_size metrics. Cannot assess institutional sponsorship or insider confidence.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional ownership data available (13F not_available_on_current_plan). Cannot assess sponsorship or crowding risk.",
+      "smart_money_benchmark_note": "No smart-money positioning data available. Analyst ratings (2 Strong Buy / 3 Buy as of 2025-03-01) are descriptors only and do not override missing fundamentals or macro restrictions.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-06T09:30:00-05:00",
+      "execution_timestamp": "2025-03-06T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:1b1f42778aca7599b2eb4a0897883cc95267991038297835bd255278573745c7",
+      "immutable_decision_flag": true
+    }
+  }
+}

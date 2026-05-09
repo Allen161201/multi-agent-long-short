@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alt-Data Agentic Long-Short System</title>
+    <meta name="description" content="Alternative-data-centered agentic long-short investment decision system">
+    <link rel="stylesheet" href="/static/styles.css">
+    <!-- Plotly bundled offline (added 2026-05-08 for Backtest Lab rebuild) -->
+    <script src="/static/plotly.min.js"></script>
+</head>
+<body>
+    <!-- ══════════ HEADER ══════════ -->
+    <header id="main-header">
+        <div class="header-left">
+            <div class="system-title">ALT-DATA AGENTIC</div>
+            <div class="system-subtitle">LONG-SHORT SYSTEM v2.15</div>
+        </div>
+        <div class="header-center">
+            <div class="header-chip" id="chip-date">
+                <span class="chip-label">DASHBOARD DATE</span>
+                <span class="chip-value" id="date-value">—</span>
+            </div>
+            <div class="header-chip" id="chip-mode">
+                <span class="chip-label">DATA MODE</span>
+                <span class="chip-value" id="mode-value">—</span>
+            </div>
+            <div class="header-chip" id="chip-regime">
+                <span class="chip-label">REGIME</span>
+                <span class="chip-value" id="regime-value">—</span>
+            </div>
+            <div class="header-chip" id="chip-altdata"
+                 title="8+ live adapters wired (SEC EDGAR / Form 4 / 13F / DEF 14A, GitHub public, Wikipedia pageviews, FMP news + analyst grades + corporate calendar, Polygon news) plus OpenCLI GitHub commit-messages adapter. See 'Alternative Data' tab for per-adapter status.">
+                <span class="chip-label">ALT-DATA</span>
+                <span class="chip-value" id="altdata-status">FRAMEWORK</span>
+                <span class="chip-sub" id="altdata-sub">8+ live adapters (SEC, GitHub, Wikipedia, FMP, Polygon)</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <span class="header-hint" title="Pipeline does NOT auto-run on page load.">manual run only</span>
+            <button id="btn-run" class="btn-primary" onclick="runPipeline()" title="Pipeline does NOT auto-run on page load.">RUN PIPELINE</button>
+        </div>
+    </header>
+
+    <!-- ══════════ TAB NAV ══════════ -->
+    <nav id="tab-nav" class="tab-nav" role="tablist" aria-label="Workflow tabs">
+        <button type="button" class="tab-link" data-tab="decision" role="tab">Decision Center</button>
+        <button type="button" class="tab-link" data-tab="candidates" role="tab">Candidates</button>
+        <button type="button" class="tab-link" data-tab="current-portfolio" role="tab">Current Portfolio</button>
+        <button type="button" class="tab-link" data-tab="alternative-data" role="tab">Alternative Data</button>
+        <a class="tab-link tab-link-external" href="/macro" title="Open the Macro Regime &amp; Pipeline page">Macro Regime &#8599;</a>
+        <button type="button" class="tab-link" data-tab="backtest" role="tab">Backtest Lab</button>
+        <button type="button" class="tab-link" data-tab="system" role="tab">System State</button>
+    </nav>
+
+    <!-- ══════════ MAIN GRID ══════════ -->
+    <main id="dashboard-grid">
+
+        <!-- ───────── TAB: DECISION CENTER (default) ───────── -->
+        <div class="tab-panel" id="tab-decision" data-tab-panel="decision">
+
+            <!-- Agentic AI Decision Center -->
+            <section id="panel-agentic-ai" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">AGENTIC AI DECISION CENTER</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Production state · friction-adjusted backtest artifacts available</span>
+                </div>
+                <div class="panel-body">
+                    <div class="agentic-ai-placeholder">
+                        <div class="ai-title">Agentic AI Decision Center</div>
+                        <div class="ai-status-line">
+                            <div class="ai-row"><span class="ai-row-label">Status</span><span class="ai-row-value">Connected · Anthropic Haiku 4.5</span></div>
+                            <div class="ai-row"><span class="ai-row-label">Mode</span><span class="ai-row-value">Production · 5-cell ablation completed (Phase 1 March 2025 + Phase 2 April 2025)</span></div>
+                            <div class="ai-row"><span class="ai-row-label">Schema</span><span class="ai-row-value">22-field <code class="ai-code">agent_decision_schema</code> validated</span></div>
+                        </div>
+                        <div class="ai-note">
+                            Guardrails per RULES.md v2.15: 4 canonical decision modes (<code class="ai-code">pre_market</code> / <code class="ai-code">opening_window</code> / <code class="ai-code">end_of_day_surge</code> / <code class="ai-code">historical_replay</code>), T+1 execution, PIT discipline via 7-anchor framework (V1–V7), Surge Short v0.4 with §4.8 pyramid sizing, §31 SPY-drawdown equity floor, §32 mandatory-short hard rule. Cost model per §5.16: 15 bps single-side per-trade transaction cost (= 30 bps round-trip per Menos AI sponsored track) plus 100% annualized borrow on shorts charged daily.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Regime + Allocation -->
+            <section id="panel-allocation" class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">REGIME &amp; ALLOCATION</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Phase 2 April Cell A end-state (2025-04-22)</span>
+                </div>
+                <div class="panel-body" id="allocation-body">
+                    <div class="alloc-regime">
+                        <div class="alloc-regime-label" id="alloc-regime-label">Overheat</div>
+                    </div>
+                    <div class="alloc-bars">
+                        <div class="alloc-bar-group">
+                            <span class="alloc-bar-label">FIXED INCOME</span>
+                            <div class="alloc-bar-track"><div class="alloc-bar-fill fi-bar" id="fi-bar" style="width:75.2%"></div></div>
+                            <span class="alloc-bar-value" id="fi-pct">75.2%</span>
+                        </div>
+                        <div class="alloc-bar-group">
+                            <span class="alloc-bar-label">EQUITY</span>
+                            <div class="alloc-bar-track"><div class="alloc-bar-fill eq-bar" id="eq-bar" style="width:20.2%"></div></div>
+                            <span class="alloc-bar-value" id="eq-pct">20.2%</span>
+                        </div>
+                    </div>
+                    <div class="alloc-constraints" id="alloc-constraints">UST face $850K (1m / 3m / 6m / 2y ladder, HTM) · QL long $151.8K · surge-short $76.8K (gross) · Cash $205.2K</div>
+                    <div class="alloc-discipline-note" id="alloc-discipline-note">Macro classifier rule_version <code class="ai-code">v0.9.0_pass8_hardrule</code> · regime computed against PIT FRED snapshot (DFF=4.33%, 10Y-3M=−0.25%) · §27 fixed-income discipline enforced</div>
+                </div>
+            </section>
+
+            <!-- Decision Summary -->
+            <section id="panel-summary" class="panel">
+                <div class="panel-header">
+                    <span class="panel-title">DECISION SUMMARY</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Aggregate across 59 PM decisions · default cells (Phase 1 Mar Cell 3 + Phase 2 Apr Cell A)</span>
+                </div>
+                <div class="panel-body" id="summary-body">
+                    <div class="summary-grid">
+                        <div class="summary-card" id="summary-short"><div class="summary-count">38</div><div class="summary-label">SHORT</div></div>
+                        <div class="summary-card" id="summary-buy"><div class="summary-count">4</div><div class="summary-label">BUY</div></div>
+                        <div class="summary-card" id="summary-watch"><div class="summary-count">8</div><div class="summary-label">WATCH</div></div>
+                        <div class="summary-card" id="summary-notrade"><div class="summary-count">9</div><div class="summary-label">NO TRADE</div></div>
+                        <div class="summary-card" id="summary-veto"><div class="summary-count">0</div><div class="summary-label">VETO</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agent Pipeline (Pass 8 §16.7 topology) -->
+            <section id="panel-agents" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">AGENT DECISION PIPELINE</span>
+                    <span class="panel-subtitle">Pipeline by Candidate Type (per §16.7) · Anthropic Haiku 4.5</span>
+                </div>
+                <div class="panel-body" id="agent-flow-body">
+
+                    <div class="agent-pipeline-row">
+                        <div class="agent-pipeline-label" style="color:#d62728;">SURGE-SHORT<br><span style="font-size:0.7rem;font-weight:400;color:var(--on-surface-dim);">4 LLM agents</span></div>
+                        <div class="agent-flow">
+                            <div class="agent-node"><div class="agent-id">01</div><div class="agent-name">Narrative Event</div><div class="agent-status">v0.6_pass8</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node core-agent"><div class="agent-id">02</div><div class="agent-name">Alt-Data Verify</div><div class="agent-status">v0.5_pass8</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node"><div class="agent-id">03</div><div class="agent-name">Risk</div><div class="agent-status">v0.5_5_13_d</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node"><div class="agent-id">04</div><div class="agent-name">Portfolio Manager</div><div class="agent-status">v0.7_pass8_scoring</div></div>
+                        </div>
+                    </div>
+
+                    <div class="agent-pipeline-row" style="margin-top:var(--sp-3);">
+                        <div class="agent-pipeline-label" style="color:#2ca02c;">QUALITY-LONG<br><span style="font-size:0.7rem;font-weight:400;color:var(--on-surface-dim);">1 rule + 5 LLM agents</span></div>
+                        <div class="agent-flow">
+                            <div class="agent-node" style="border-style:dashed;"><div class="agent-id">R</div><div class="agent-name">Macro Regime</div><div class="agent-status">rule v0.9.0</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node"><div class="agent-id">01</div><div class="agent-name">Narrative Event</div><div class="agent-status">v0.6_pass8</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node core-agent"><div class="agent-id">02</div><div class="agent-name">Alt-Data Verify</div><div class="agent-status">v0.5_pass8</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node"><div class="agent-id">03</div><div class="agent-name">Network Effect</div><div class="agent-status">v0.6_pass7_2</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node"><div class="agent-id">04</div><div class="agent-name">Valuation</div><div class="agent-status">v0.5_pass7_2</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node"><div class="agent-id">05</div><div class="agent-name">Risk</div><div class="agent-status">v0.5_5_13_d</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node"><div class="agent-id">06</div><div class="agent-name">Portfolio Manager</div><div class="agent-status">v0.7_pass8_scoring</div></div>
+                        </div>
+                    </div>
+
+                    <div class="agent-pipeline-row" style="margin-top:var(--sp-3);">
+                        <div class="agent-pipeline-label" style="color:#666;">COVER-EVAL<br><span style="font-size:0.7rem;font-weight:400;color:var(--on-surface-dim);">2 LLM agents</span></div>
+                        <div class="agent-flow">
+                            <div class="agent-node"><div class="agent-id">01</div><div class="agent-name">Risk</div><div class="agent-status">v0.5_5_13_d</div></div>
+                            <div class="agent-arrow">-&gt;</div>
+                            <div class="agent-node"><div class="agent-id">02</div><div class="agent-name">Portfolio Manager</div><div class="agent-status">v0.7_pass8_scoring</div></div>
+                        </div>
+                    </div>
+
+                    <div class="agent-pipeline-footnote" style="margin-top:var(--sp-3);font-size:0.75rem;color:var(--on-surface-dim);font-family:var(--font-data);">
+                        Fundamental agent removed in Pass 8 — fundamental gates enforced mechanically (not by LLM). PROMPT_VERSION values read from <code>src/agents/prompts/*.py</code>.
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ───────── TAB: CANDIDATES ───────── -->
+        <div class="tab-panel" id="tab-candidates" data-tab-panel="candidates">
+
+            <section id="panel-surge" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">SURGE-SHORT CANDIDATES</span>
+                    <span class="panel-badge" id="surge-count">0</span>
+                    <span class="panel-subtitle" style="margin-left:auto" id="surge-scan-label">Top 3 to 5 gainers scanned</span>
+                </div>
+                <div class="panel-body">
+                    <div id="surge-empty" style="display:none;padding:var(--sp-4);font-family:var(--font-data);font-size:0.75rem;color:var(--on-surface-dim);">
+                        No valid surge-short candidate today. High-conviction strategy: wait for the right setup.
+                    </div>
+                    <table class="data-table" id="surge-table">
+                        <thead>
+                            <tr>
+                                <th>TICKER</th><th>NAME</th><th>CHANGE</th><th>VOLUME</th>
+                                <th>EVENT</th><th>ALT-DATA</th><th>FUND</th><th>DECISION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="surge-tbody">
+                            <tr id="surge-empty-row" class="empty-state-row">
+                                <td colspan="8" style="padding:var(--sp-4);font-family:var(--font-data);font-size:0.75rem;color:var(--on-surface-dim);text-align:left;line-height:1.5;">
+                                    No surge-short candidates today (no §31 mandatory-short trigger and no §32/§33 60–90% pool entries).
+                                    Last live candidate set: <code class="ai-code">2025-04-22T09:30:00-04:00</code> (Phase 2 April Cell A).
+                                    Inspect via <strong>Backtest Lab</strong> tab.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="panel-quality" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">QUALITY LONG: VALUATION-AWARE SCORING</span>
+                    <span class="panel-badge" id="quality-count">0</span>
+                </div>
+                <div class="panel-body">
+                    <table class="data-table" id="quality-table">
+                        <thead>
+                            <tr>
+                                <th>TICKER</th><th>NAME</th><th>FUND</th>
+                                <th>NETWORK</th><th>ALT-DATA</th><th>VALUATION</th>
+                                <th>ASSESSMENT</th><th>COMBINED</th><th>DECISION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quality-tbody">
+                            <tr id="quality-empty-row" class="empty-state-row">
+                                <td colspan="9" style="padding:var(--sp-4);font-family:var(--font-data);font-size:0.75rem;color:var(--on-surface-dim);text-align:left;line-height:1.5;">
+                                    No quality-long candidates today (no §3.7+§3.8 hard-fundamental-gate passes triggered).
+                                    Last live evaluations available in <strong>Backtest Lab</strong> tab.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="panel-altdata" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">ALTERNATIVE DATA EVIDENCE</span>
+                    <span class="panel-subtitle">Role 1: Narrative Verification</span>
+                </div>
+                <div class="panel-body" id="altdata-body">
+                    <div class="altdata-cards" id="altdata-cards"></div>
+                    <div id="altdata-empty" class="empty-state-block" style="padding:var(--sp-4);font-family:var(--font-data);font-size:0.75rem;color:var(--on-surface-dim);line-height:1.6;">
+                        No active narrative-verification evidence today. Adapter status: SEC EDGAR ✓, GitHub ✓, Wikipedia ✓, FMP news ✓, Polygon news ✓, FMP analyst grades ✓ (8 live tier-1 through tier-4 sources per §10.13 four-tier credibility taxonomy).
+                    </div>
+                </div>
+            </section>
+
+            <section id="panel-thematic" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">MARKET NEED / THEMATIC RESEARCH</span>
+                    <span class="panel-subtitle">Role 2: Market Structure Intelligence</span>
+                </div>
+                <div class="panel-body" id="thematic-body">
+                    <div id="thematic-empty" class="empty-state-block" style="padding:var(--sp-4);font-family:var(--font-data);font-size:0.75rem;color:var(--on-surface-dim);line-height:1.6;">
+                        No active thematic candidates today. This section surfaces §10.15 three-layer network-effect classifications and macro-regime-conditional thematic tilts when candidates are active.
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ───────── TAB: CURRENT PORTFOLIO ───────── -->
+        <!-- Replaces the legacy "Market Data" tab. The /api/fmp/* backend
+             routes remain available for future reuse but are no longer
+             surfaced here. Three read-only endpoints feed this tab:
+               GET /api/portfolio/current   → today's EOD state
+               GET /api/portfolio/history   → NAV time series (?from=&to=)
+               GET /api/portfolio/metrics   → Sharpe / Sortino / DD / vol / total return
+        -->
+        <div class="tab-panel" id="tab-current-portfolio" data-tab-panel="current-portfolio">
+
+            <!-- (a) HEADER STRIP -->
+            <section id="panel-pf-header" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">CURRENT PORTFOLIO</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Read-only · sourced from EOD state files in <code>data/portfolio/</code></span>
+                    <span class="panel-subtitle" id="pf-load-status" style="margin-left:auto;font-size:0.6rem;">—</span>
+                    <button id="btn-pf-refresh" class="btn-secondary" style="margin-left:var(--sp-3);font-size:0.6rem;padding:4px 10px;" onclick="refreshPortfolio()">REFRESH</button>
+                </div>
+                <div class="panel-body">
+                    <div id="pf-header-strip" class="pf-header-strip">
+                        <div class="pf-chip"><span class="pf-chip-label">AS OF</span><span class="pf-chip-value" id="pf-as-of">—</span></div>
+                        <div class="pf-chip"><span class="pf-chip-label">RULE VERSION</span><span class="pf-chip-value" id="pf-rule-version">—</span></div>
+                        <div class="pf-chip"><span class="pf-chip-label">DECISIONS PROCESSED TODAY</span><span class="pf-chip-value" id="pf-decisions-count">—</span></div>
+                        <div class="pf-chip"><span class="pf-chip-label">AVAILABLE EOD DATES</span><span class="pf-chip-value" id="pf-available-dates">—</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- (b) NAV / RETURN PANEL -->
+            <section id="panel-pf-nav" class="panel panel-full">
+                <div class="panel-header"><span class="panel-title">NAV &amp; RETURN</span></div>
+                <div class="panel-body">
+                    <div class="pf-bignum-row">
+                        <div class="pf-bignum-card">
+                            <div class="pf-bignum-label">TOTAL NAV</div>
+                            <div class="pf-bignum" id="pf-total-nav">—</div>
+                        </div>
+                        <div class="pf-bignum-card">
+                            <div class="pf-bignum-label">CUMULATIVE RETURN</div>
+                            <div class="pf-bignum" id="pf-cum-return">—</div>
+                        </div>
+                        <div class="pf-bignum-card">
+                            <div class="pf-bignum-label">TOTAL RETURN SINCE INCEPTION</div>
+                            <div class="pf-bignum" id="pf-total-return">—</div>
+                        </div>
+                    </div>
+                    <div class="pf-subline" id="pf-subline">—</div>
+                </div>
+            </section>
+
+            <!-- (c) NAV TIME SERIES CHART -->
+            <section id="panel-pf-chart" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">NAV TIME SERIES</span>
+                    <span class="panel-subtitle" id="pf-chart-meta" style="margin-left:auto;font-size:0.6rem;">—</span>
+                </div>
+                <div class="panel-body">
+                    <div id="pf-chart-empty" class="pf-chart-empty" style="display:none;">Live tracking begins after second EOD; current state shown above.</div>
+                    <div id="pf-chart-wrap" class="pf-chart-wrap">
+                        <canvas id="pf-nav-canvas"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- (d) FINANCIAL RATIOS -->
+            <section id="panel-pf-ratios" class="panel panel-full">
+                <div class="panel-header"><span class="panel-title">FINANCIAL RATIOS</span><span class="panel-subtitle" id="pf-ratios-status" style="margin-left:auto;font-size:0.6rem;">—</span></div>
+                <div class="panel-body">
+                    <div class="pf-ratio-row">
+                        <div class="pf-ratio-card"><div class="pf-ratio-label">SHARPE RATIO</div><div class="pf-ratio-value" id="pf-sharpe">—</div><div class="pf-ratio-sub" id="pf-sharpe-sub"></div></div>
+                        <div class="pf-ratio-card"><div class="pf-ratio-label">SORTINO RATIO</div><div class="pf-ratio-value" id="pf-sortino">—</div><div class="pf-ratio-sub" id="pf-sortino-sub"></div></div>
+                        <div class="pf-ratio-card"><div class="pf-ratio-label">MAX DRAWDOWN</div><div class="pf-ratio-value" id="pf-maxdd">—</div><div class="pf-ratio-sub" id="pf-maxdd-sub"></div></div>
+                        <div class="pf-ratio-card"><div class="pf-ratio-label">RETURN VOLATILITY (ann.)</div><div class="pf-ratio-value" id="pf-vol">—</div><div class="pf-ratio-sub" id="pf-vol-sub"></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- (e) POSITIONS TABLE -->
+            <section id="panel-pf-positions" class="panel panel-full">
+                <div class="panel-header"><span class="panel-title">OPEN POSITIONS</span><span class="panel-subtitle" id="pf-positions-count" style="margin-left:auto;font-size:0.6rem;">—</span></div>
+                <div class="panel-body">
+                    <div id="pf-positions-empty" class="pf-empty" style="display:none;">No open positions.</div>
+                    <table class="data-table pf-positions-table" id="pf-positions-table">
+                        <thead>
+                            <tr>
+                                <th data-pf-sort="ticker">TICKER</th>
+                                <th data-pf-sort="side">SIDE</th>
+                                <th data-pf-sort="sleeve">SLEEVE</th>
+                                <th data-pf-sort="size_pct" class="num">SIZE %</th>
+                                <th data-pf-sort="entry_price" class="num">ENTRY PRICE</th>
+                                <th data-pf-sort="current_price" class="num">CURRENT PRICE</th>
+                                <th data-pf-sort="current_value" class="num">CURRENT VALUE</th>
+                                <th data-pf-sort="unrealized_pnl" class="num">UNREALIZED P&amp;L</th>
+                                <th data-pf-sort="unrealized_pnl_pct" class="num">P&amp;L %</th>
+                                <th data-pf-sort="entry_date">ENTRY DATE</th>
+                                <th data-pf-sort="decision_id">DECISION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pf-positions-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- (f) SLEEVE EXPOSURE -->
+            <section id="panel-pf-sleeves" class="panel panel-full">
+                <div class="panel-header"><span class="panel-title">SLEEVE EXPOSURE</span></div>
+                <div class="panel-body">
+                    <div class="pf-sleeve-row" id="pf-sleeve-row">
+                        <div class="pf-sleeve-card"><div class="pf-sleeve-label">QUALITY LONG</div><div class="pf-sleeve-value" id="pf-sleeve-quality">—</div><div class="pf-sleeve-pct" id="pf-sleeve-quality-pct">—</div></div>
+                        <div class="pf-sleeve-card"><div class="pf-sleeve-label">SURGE SHORT</div><div class="pf-sleeve-value" id="pf-sleeve-surge">—</div><div class="pf-sleeve-pct" id="pf-sleeve-surge-pct">—</div></div>
+                        <div class="pf-sleeve-card"><div class="pf-sleeve-label">FIXED INCOME</div><div class="pf-sleeve-value" id="pf-sleeve-fi">—</div><div class="pf-sleeve-pct" id="pf-sleeve-fi-pct">—</div></div>
+                        <div class="pf-sleeve-card"><div class="pf-sleeve-label">CASH</div><div class="pf-sleeve-value" id="pf-sleeve-cash">—</div><div class="pf-sleeve-pct" id="pf-sleeve-cash-pct">—</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- (f.5) MARKET LOOKUP — restored ticker inspector (FMP Premium, 2026-05-08) -->
+            <section id="panel-pf-lookup" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">MARKET LOOKUP</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Live FMP Premium quote · multi-timeframe chart · fundamentals · DCF</span>
+                    <span class="panel-subtitle" id="ti-meta" style="margin-left:auto;font-family:var(--font-data);font-size:0.7rem;">enter a ticker</span>
+                </div>
+                <div class="panel-body">
+                    <!-- Search bar (FMP company search; min 2 chars; debounced 450ms) -->
+                    <div class="ti-search-row">
+                        <label class="ti-search-label" for="ti-search-input">SEARCH</label>
+                        <div class="ti-search-wrap">
+                            <input id="ti-search-input" type="text" placeholder="symbol or company name (min 2 chars)" autocomplete="off" spellcheck="false" />
+                            <span class="ti-search-status" id="ti-search-status"></span>
+                            <ul class="ti-search-results" id="ti-search-results" role="listbox" hidden></ul>
+                        </div>
+                        <input id="ti-ticker-input" type="hidden" value="AAPL" />
+                        <select id="ti-interval" style="display:none;" aria-hidden="true">
+                            <option value="5min" selected>5min</option>
+                        </select>
+                    </div>
+
+                    <!-- Warning banner (only visible if backend warns) -->
+                    <div id="ti-warning" class="ti-warn-banner" style="display:none;"></div>
+
+                    <!-- Status strip (rate-limit, cache, source flags) -->
+                    <div id="ti-status-strip" class="ti-status-strip"></div>
+
+                    <!-- Quote (left, narrow) + Chart (right, wide) -->
+                    <div class="ti-grid-quote-chart">
+                        <div class="ti-card">
+                            <div class="ti-card-title">QUOTE</div>
+                            <div class="ti-card-body" id="ti-quote-body"><div class="ti-empty">enter a ticker above to load.</div></div>
+                        </div>
+                        <div class="ti-card">
+                            <div class="ti-card-title">CHART <span class="panel-subtitle" id="ti-intraday-sub" style="margin-left:var(--sp-2);font-family:var(--font-data);font-size:0.65rem;"></span></div>
+                            <div class="ti-card-body" id="ti-intraday-body"><div class="ti-empty">enter a ticker above to load.</div></div>
+                        </div>
+                    </div>
+
+                    <!-- 4-card bottom row: technicals / fundamentals / calendar / dcf -->
+                    <div class="ti-grid-bottom">
+                        <div class="ti-card">
+                            <div class="ti-card-title">TECHNICALS</div>
+                            <div class="ti-card-body" id="ti-technicals-body"><div class="ti-empty">—</div></div>
+                        </div>
+                        <div class="ti-card">
+                            <div class="ti-card-title">FUNDAMENTALS</div>
+                            <div class="ti-card-body" id="ti-fundamentals-body"><div class="ti-empty">—</div></div>
+                        </div>
+                        <div class="ti-card">
+                            <div class="ti-card-title">CALENDAR</div>
+                            <div class="ti-card-body" id="ti-calendar-body"><div class="ti-empty">—</div></div>
+                        </div>
+                        <div class="ti-card">
+                            <div class="ti-card-title">DCF / VALUATION</div>
+                            <div class="ti-card-body" id="ti-dcf-body"><div class="ti-empty">—</div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- (g) AUDIT TRAIL (collapsible, default collapsed) -->
+            <section id="panel-pf-audit" class="panel panel-full">
+                <div class="panel-header pf-audit-header" onclick="togglePortfolioAudit()" style="cursor:pointer;">
+                    <span class="panel-title">AUDIT TRAIL</span>
+                    <span class="panel-subtitle" id="pf-audit-count" style="margin-left:var(--sp-3);">—</span>
+                    <span class="panel-subtitle" id="pf-audit-toggle" style="margin-left:auto;font-size:0.7rem;">[+] expand</span>
+                </div>
+                <div class="panel-body" id="pf-audit-body" style="display:none;">
+                    <div id="pf-audit-empty" class="pf-empty" style="display:none;">No audit events.</div>
+                    <table class="data-table pf-audit-table" id="pf-audit-table">
+                        <thead>
+                            <tr>
+                                <th>TIMESTAMP</th>
+                                <th>KIND</th>
+                                <th>TICKER</th>
+                                <th>SIDE</th>
+                                <th class="num">SIZE Δ</th>
+                                <th>DECISION</th>
+                                <th>NOTE</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pf-audit-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ───────── TAB: ALTERNATIVE DATA (Phase 3B placeholder) ───────── -->
+        <!-- NOTE: This tab is documentation/framework/status only.
+             It does NOT call any external alt-data API. It does not
+             render live evidence packets. Live alt-data sources are
+             pending; see docs/ALTERNATIVE_DATA_FRAMEWORK.md §9. -->
+        <div class="tab-panel" id="tab-alternative-data" data-tab-panel="alternative-data">
+
+            <!-- A. Status -->
+            <section id="panel-altdata-status" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">ALTERNATIVE DATA STATUS</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Production · v2.15 · 10 live adapters + 1 OpenCLI use-case live</span>
+                </div>
+                <div class="panel-body">
+                    <div class="altdata-status-grid">
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Framework status</span>
+                            <span class="altdata-status-value altdata-status-ok">Production · v2.15</span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Live alt-data sources connected</span>
+                            <span class="altdata-status-value">10 (SEC EDGAR, SEC Form 4, SEC 13F, SEC DEF 14A, GitHub public, Wikipedia pageviews, FMP news, FMP analyst grades, Polygon news, FMP corporate calendar)</span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">External APIs connected</span>
+                            <span class="altdata-status-value">FMP · FRED · Polygon · GitHub API · SEC EDGAR · Wikipedia REST · Anthropic</span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Current mode</span>
+                            <span class="altdata-status-value">Production · 5-cell ablation completed (Phase 1 March 2025 + Phase 2 April 2025 friction-adjusted)</span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Pending integrations</span>
+                            <span class="altdata-status-value">SEC 8-K full-text via OpenCLI (upstream sec.gov adapter pending in v1.7.8) · USPTO PatentsView</span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Future specialised sources</span>
+                            <span class="altdata-status-value">npm / PyPI download counts · ClinicalTrials.gov · PubMed (biotech) · FDIC call reports (banks)</span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Authoritative refs</span>
+                            <span class="altdata-status-value">
+                                <code class="ai-code">docs/RULES.md v2.15</code> (canonical)
+                                · §10.13 four-tier source taxonomy
+                                · §10.15 three-layer network-effect framework
+                                · §11 alt-data source rules
+                                · §12 evidence packet schema
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- C. Industry Adapter Registry Preview -->
+            <section id="panel-altdata-registry" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">INDUSTRY ADAPTER REGISTRY</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Hard-to-fake evidence sources by industry — design contract only</span>
+                </div>
+                <div class="panel-body">
+                    <table class="data-table altdata-registry-table">
+                        <thead>
+                            <tr>
+                                <th>INDUSTRY</th>
+                                <th>EVIDENCE ADAPTER</th>
+                                <th>INTENDED USE</th>
+                                <th>STATUS</th>
+                                <th>FREE FEASIBILITY</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Software / SaaS / DevTools</td>
+                                <td>GitHub · npm · PyPI</td>
+                                <td>verify developer adoption, engineering velocity, ecosystem</td>
+                                <td><span class="altdata-tag altdata-tag-live">PARTIAL LIVE</span></td>
+                                <td>GitHub LIVE · npm / PyPI deferred</td>
+                            </tr>
+                            <tr>
+                                <td>Semiconductor / AI Hardware</td>
+                                <td>USPTO patents · technical publications · GitHub HW ecosystem</td>
+                                <td>verify technical depth, R&amp;D direction, AI / HW capability</td>
+                                <td><span class="altdata-tag altdata-tag-planned">DEFERRED</span></td>
+                                <td>USPTO PatentsView not wired</td>
+                            </tr>
+                            <tr>
+                                <td>Biotech / Pharma</td>
+                                <td>ClinicalTrials.gov · PubMed · FDA / SEC filings</td>
+                                <td>verify trial progress, scientific credibility, regulatory milestones</td>
+                                <td><span class="altdata-tag altdata-tag-live">PARTIAL</span></td>
+                                <td>SEC LIVE · ClinicalTrials / PubMed / FDA deferred</td>
+                            </tr>
+                            <tr>
+                                <td>Retail / Consumer</td>
+                                <td>app rankings · reviews · public traffic proxies (licensed)</td>
+                                <td>verify demand trend, store traffic, consumer attention</td>
+                                <td><span class="altdata-tag altdata-tag-not-connected">NOT CONNECTED</span></td>
+                                <td>partial · some paid</td>
+                            </tr>
+                            <tr>
+                                <td>Banks / Financials</td>
+                                <td>FDIC call reports · FFIEC · OCC · SEC 10-Q/K</td>
+                                <td>verify balance-sheet stress, deposits, operating footprint</td>
+                                <td><span class="altdata-tag altdata-tag-live">PARTIAL</span></td>
+                                <td>SEC LIVE · FDIC / FFIEC / OCC deferred</td>
+                            </tr>
+                            <tr>
+                                <td>Airlines / Travel</td>
+                                <td>BTS · TSA · DOT · ADS-B (licensed)</td>
+                                <td>verify utilization, capacity, demand recovery</td>
+                                <td><span class="altdata-tag altdata-tag-not-connected">NOT CONNECTED</span></td>
+                                <td>BTS / TSA free</td>
+                            </tr>
+                            <tr>
+                                <td>Energy / Commodities</td>
+                                <td>EIA · USGS · public price feeds · satellite (licensed)</td>
+                                <td>verify commodity exposure and supply / demand cycle</td>
+                                <td><span class="altdata-tag altdata-tag-not-connected">NOT CONNECTED</span></td>
+                                <td>EIA free; satellite paid</td>
+                            </tr>
+                            <tr>
+                                <td>Auto / EV / Mobility</td>
+                                <td>NHTSA recalls · dealer inventory · DMV registrations · charging</td>
+                                <td>verify demand, quality issues, production stress</td>
+                                <td><span class="altdata-tag altdata-tag-not-connected">NOT CONNECTED</span></td>
+                                <td>NHTSA free; mixed otherwise</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Default (fallback)</strong></td>
+                                <td>SEC EDGAR · FMP news · Polygon news · FMP context</td>
+                                <td>default narrative / event validation when no specialised adapter applies</td>
+                                <td><span class="altdata-tag altdata-tag-live">LIVE</span></td>
+                                <td>SEC EDGAR + FMP news + Polygon news LIVE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="altdata-registry-footnote">
+                        Status legend: <span class="altdata-tag altdata-tag-live">LIVE</span> = production-wired, called in Phase 1+2 backtests ·
+                        <span class="altdata-tag altdata-tag-planned">DEFERRED</span> = scheduled for future phase ·
+                        <span class="altdata-tag altdata-tag-not-connected">NOT CONNECTED</span> = no live API call today.
+                    </div>
+                </div>
+            </section>
+
+            <!-- D. Candidate Evidence Packet Preview -->
+            <section id="panel-altdata-evidence-preview" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">CANDIDATE ALT-DATA EVIDENCE PACKET</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">No active candidate today · cached evidence packets in Backtest Lab</span>
+                </div>
+                <div class="panel-body">
+                    <div class="altdata-evidence-preview">
+                        <div class="altdata-evidence-empty">
+                            No active candidate today. Live evidence packets cached at
+                            <code class="ai-code">data/decisions/replay_phase1_apr_cell3_default_20260507/</code> for inspection in <strong>Backtest Lab</strong>.
+                        </div>
+                        <div class="altdata-evidence-fields">
+                            <div class="altdata-evidence-row"><span class="altdata-ev-label">ticker</span><span class="altdata-ev-value" title="populates when pipeline runs against an active candidate">—</span></div>
+                            <div class="altdata-evidence-row"><span class="altdata-ev-label">primary_industry</span><span class="altdata-ev-value" title="populates when pipeline runs against an active candidate">—</span></div>
+                            <div class="altdata-evidence-row"><span class="altdata-ev-label">selected_adapter_id</span><span class="altdata-ev-value" title="populates when pipeline runs against an active candidate">—</span></div>
+                            <div class="altdata-evidence-row"><span class="altdata-ev-label">evidence available</span><span class="altdata-ev-value" title="populates when pipeline runs against an active candidate">—</span></div>
+                            <div class="altdata-evidence-row"><span class="altdata-ev-label">evidence missing</span><span class="altdata-ev-value" title="populates when pipeline runs against an active candidate">—</span></div>
+                            <div class="altdata-evidence-row"><span class="altdata-ev-label">narrative support</span><span class="altdata-ev-value" title="populates when pipeline runs against an active candidate">—</span></div>
+                            <div class="altdata-evidence-row"><span class="altdata-ev-label">contradiction flags</span><span class="altdata-ev-value" title="populates when pipeline runs against an active candidate">—</span></div>
+                            <div class="altdata-evidence-row"><span class="altdata-ev-label">narrative-price gap</span><span class="altdata-ev-value" title="populates when pipeline runs against an active candidate">—</span></div>
+                            <div class="altdata-evidence-row"><span class="altdata-ev-label">PM note</span><span class="altdata-ev-value" title="populates when pipeline runs against an active candidate">—</span></div>
+                        </div>
+                        <div class="altdata-evidence-footnote">
+                            When a live pipeline runs against an active candidate, the agent populates these fields and the audit log captures the source list, PIT-safety notes, and adapter selection reason. Per RULES.md §11 + §12.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- E. Research Reference / Learning Guardrails -->
+            <section id="panel-altdata-guardrails" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">RESEARCH REFERENCE &amp; LEARNING GUARDRAILS</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">What "agent learning" does and does NOT mean here</span>
+                </div>
+                <div class="panel-body">
+                    <ul class="altdata-guardrails-list">
+                        <li>Course PDFs and research notes are used as <strong>design references only</strong> — never as hard-coded trading rules.</li>
+                        <li>"Agent learning" means <strong>curated reference retrieval</strong> and improvement suggestions stored as research notes.</li>
+                        <li>Agent <strong>cannot</strong> silently change rules, risk limits, prompts, schemas, or code.</li>
+                        <li>Agent <strong>cannot</strong> trade, place orders, rotate API keys, mutate cache state, or override guardrails.</li>
+                        <li>Any production change requires a versioned doc → schema → prototype → human-reviewed PR → frozen-rules version bump.</li>
+                        <li>External alt-data APIs (SEC / GDELT / GitHub / patents / clinical / Reddit / etc.) require <strong>explicit per-source authorization</strong> before any call is made.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- F. OpenCLI Adapter Status (added 2026-04-26 — OpenCLI-Prep;
+                 binary installed + 1 of 2 use cases LIVE 2026-04-29 PM, Task 4) -->
+            <section id="panel-altdata-opencli" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">OPENCLI ADAPTER STATUS</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Binary installed (v1.7.8) · gh-passthrough live · sec_8k STUB pending plugin</span>
+                </div>
+                <div class="panel-body">
+
+                    <div class="altdata-status-grid">
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">OpenCLI repo</span>
+                            <span class="altdata-status-value"><a href="https://github.com/jackwener/opencli" target="_blank" rel="noopener">github.com/jackwener/opencli</a></span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Binary installed</span>
+                            <span class="altdata-status-value"><span class="altdata-tag-live">v1.7.8 · npm global · on PATH</span></span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Skills reviewed</span>
+                            <span class="altdata-status-value"><span class="altdata-tag-docs-only">yes (5/5)</span></span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Skills installed</span>
+                            <span class="altdata-status-value"><span class="altdata-tag-planned">yes — to ~/.agents/skills/</span></span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Live commands</span>
+                            <span class="altdata-status-value"><span class="altdata-tag-live">enabled (gh-passthrough)</span></span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Browser automation</span>
+                            <span class="altdata-status-value"><span class="altdata-tag-not-connected">disabled (PUBLIC strategy only · §17.B.9)</span></span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Logged-in sessions</span>
+                            <span class="altdata-status-value"><span class="altdata-tag-not-connected">disabled (gh CLI's own auth ≠ logged_in_session)</span></span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Production integration</span>
+                            <span class="altdata-status-value"><span class="altdata-tag-planned">partial (1 / 2 use cases LIVE)</span></span>
+                        </div>
+                        <div class="altdata-status-row">
+                            <span class="altdata-status-label">Evidence-packet use</span>
+                            <span class="altdata-status-value"><span class="altdata-tag-live">opt-in · auxiliary-only per §17.B.11</span></span>
+                        </div>
+                    </div>
+
+                    <div class="panel-subtitle" style="margin-top:var(--sp-4);">Use-case status (2 wired)</div>
+                    <table class="data-table" style="margin-top:var(--sp-2);">
+                        <thead>
+                            <tr><th>Use case</th><th>Source</th><th>Block target</th><th>Tier</th><th>Live status</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>github_commit_messages</code></td>
+                                <td><code>opencli gh api repos/&lt;owner&gt;/&lt;repo&gt;/commits</code></td>
+                                <td>alternative_data_features.tech_activity.narrative</td>
+                                <td>T2</td>
+                                <td><span class="altdata-tag-live">LIVE · gh passthrough · 15 s timeout</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>sec_8k_fulltext</code></td>
+                                <td><code>opencli get sec.gov/8k …</code> (planned)</td>
+                                <td>filing_confirmation.full_text</td>
+                                <td>T1</td>
+                                <td><span class="altdata-tag-planned">STUB · upstream v1.7.8 lacks sec.gov adapter · 30 s timeout</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="panel-subtitle" style="margin-top:var(--sp-4);">Skill status</div>
+                    <table class="data-table" style="margin-top:var(--sp-2);">
+                        <thead>
+                            <tr><th>Skill</th><th>Purpose</th><th>Status</th><th>Use today</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>opencli-adapter-author</code></td>
+                                <td>Write a new adapter for a site (recon → API discovery → field decode → verify)</td>
+                                <td><span class="altdata-tag-planned">installed</span></td>
+                                <td><span class="altdata-tag-not-connected">no</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>opencli-browser</code></td>
+                                <td>Drive a live Chrome window — open / state / click / type / extract / network</td>
+                                <td><span class="altdata-tag-planned">installed</span></td>
+                                <td><span class="altdata-tag-not-connected">no — disabled</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>opencli-usage</code></td>
+                                <td>Top-level orientation — surface, flags, output formats, env vars</td>
+                                <td><span class="altdata-tag-planned">installed</span></td>
+                                <td><span class="altdata-tag-docs-only">reference only</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>smart-search</code></td>
+                                <td>Routing layer — pick the right OpenCLI source for a free-form query</td>
+                                <td><span class="altdata-tag-planned">installed</span></td>
+                                <td><span class="altdata-tag-not-connected">no</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>opencli-autofix</code></td>
+                                <td>Auto-repair broken adapters when DOM/API drifts</td>
+                                <td><span class="altdata-tag-planned">installed</span></td>
+                                <td><span class="altdata-tag-not-connected">no</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="panel-subtitle" style="margin-top:var(--sp-4);">Potential future evidence (none collected today)</div>
+                    <ul class="altdata-guardrails-list">
+                        <li><strong>Market sentiment</strong> — public AI-source summaries as auxiliary corroboration.</li>
+                        <li><strong>Community size</strong> — public subreddit subscribers, public dev-community headcount.</li>
+                        <li><strong>Reddit / HackerNews / Twitter/X attention</strong> — only via clearly public anonymous endpoints, only when ToS and rate limits allow.</li>
+                        <li><strong>Developer community attention</strong> — corroboration of GitHub-API signals via HN / dev-Reddit search.</li>
+                        <li><strong>Public web corroboration</strong> — read-only extraction against a public press-release URL the system already cites.</li>
+                    </ul>
+
+                    <div class="altdata-evidence-empty" style="margin-top:var(--sp-3);">
+                        <strong>OpenCLI is not connected to production decisions. No live community data is collected yet.</strong>
+                        OpenCLI output is evidence-only, must be timestamped, hashed, and schema-bound, and is interpreted by the Alt-Data Verification Agent. It does not directly trigger BUY / SHORT / WATCH / NO_TRADE.
+                        <span class="altdata-footnote">See <code>docs/OPENCLI_INTEGRATION_PLAN.md</code>, <code>docs/OPENCLI_SKILLS_NOTES.md</code>, <code>docs/ALTERNATIVE_DATA_FRAMEWORK.md §9.7</code>, <code>docs/EVIDENCE_PACKET_V1_DRAFT.md §8c</code>.</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- G. Information Integrity / Pollution Defense (added 2026-04-26) -->
+            <section id="panel-altdata-integrity" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">INFORMATION INTEGRITY / POLLUTION DEFENSE</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Claim-first verification · live in production via tier-1/2 corroboration logic · §10.13 + §10.15</span>
+                </div>
+                <div class="panel-body">
+
+                    <ul class="altdata-guardrails-list">
+                        <li><strong>Social/community data may indicate attention</strong> — it cannot, by itself, confirm a thesis.</li>
+                        <li><strong>Primary/reputable-source corroboration is required</strong> before any claim is allowed to support a trade thesis (Tier 1 = SEC/regulator/issuer; Tier 2 = WSJ/Reuters/Bloomberg/FT).</li>
+                        <li><strong>High attention + low credibility = pollution risk, not alpha.</strong> A spike in mentions without a primary-source anchor is a risk flag.</li>
+                        <li><strong>Bot / coordinated-campaign / rumor risk must be flagged</strong> — `coordinated_campaign_warning`, `bot_like_pattern_risk`, `rumor_without_evidence_flag` are agent-emitted descriptors.</li>
+                        <li><strong>Sentiment is a descriptor, not a rule.</strong> No "negative sentiment ⇒ short" or "positive sentiment ⇒ buy" rule exists in this system, today or in any frozen-rules version.</li>
+                        <li><strong>If only T4/T5 evidence exists, `use_as_primary_signal_allowed = false`.</strong> Agent collapses to `needs_more_evidence` or `pollution_risk_high`.</li>
+                    </ul>
+
+                    <div class="panel-subtitle" style="margin-top:var(--sp-4);">Source hierarchy (5 tiers)</div>
+                    <table class="data-table" style="margin-top:var(--sp-2);">
+                        <thead>
+                            <tr><th>Tier</th><th>Examples</th><th>Confirmation weight</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>T1</strong> · Primary / official</td>
+                                <td>SEC filings · regulator data (FDA/FAA/FTC/FERC/CFPB) · issuer official disclosures · exchange notices</td>
+                                <td><span class="altdata-tag-live">High — can confirm</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>T2</strong> · High-reputation news</td>
+                                <td>WSJ · Reuters · Bloomberg · FT · audited earnings call transcripts · verified press releases</td>
+                                <td><span class="altdata-tag-planned">High — can corroborate</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>T3</strong> · Aggregated news/event</td>
+                                <td>GDELT · news aggregators · industry trade publications</td>
+                                <td><span class="altdata-tag-docs-only">Medium — corroborates only</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>T4</strong> · Community / social</td>
+                                <td>Reddit · X/Twitter · Facebook · forums · HackerNews · public discussion boards</td>
+                                <td><span class="altdata-tag-not-connected">Low — attention flag only</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>T5</strong> · Anonymous / unverified</td>
+                                <td>anonymous screenshots · copy-paste claims · rumor bursts · coordinated narratives · untraceable forwards</td>
+                                <td><span class="altdata-tag-not-connected">None — risk flag only</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="panel-subtitle" style="margin-top:var(--sp-4);">Pollution-risk descriptors (schema only — no formula, no threshold)</div>
+                    <ul class="altdata-guardrails-list">
+                        <li><code>source_tier_distribution</code> · <code>primary_source_found</code> · <code>reputable_source_confirmation</code> · <code>official_disclosure_confirmation</code></li>
+                        <li><code>claim_without_primary_source_ratio</code> · <code>near_duplicate_text_ratio</code> · <code>post_burstiness</code> · <code>abnormal_post_velocity</code></li>
+                        <li><code>low_reputation_source_share</code> · <code>account_age_distribution</code> · <code>cross_platform_copy_paste_similarity</code> · <code>single_source_amplification</code></li>
+                        <li><code>coordinated_campaign_risk</code> · <code>bot_like_pattern_risk</code> · <code>rumor_without_evidence_flag</code> · <code>evidence_credibility_score</code></li>
+                        <li><code>pollution_risk_level</code>: low / medium / high / unknown</li>
+                    </ul>
+
+                    <div class="altdata-evidence-empty" style="margin-top:var(--sp-3);">
+                        <strong>Status: Production · §10.13 four-tier classification active across 10 live adapters.</strong>
+                        T4/T5 sources (Reddit / X / Facebook) deliberately excluded. The affirmative pollution-confirmation verdict layer is the one remaining gap (documented limitation in paper §12) — current behavior: pollution flag fail-closed only on T1/T2 absence, not on positive pollution detection. Schema in RULES.md v2.15 §10.13 + §11.13.
+                    </div>
+                </div>
+            </section>
+
+            <!-- H. Sentiment / Community / Ownership Evidence (added 2026-04-26) -->
+            <section id="panel-altdata-sentiment-community-ownership" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">SENTIMENT / COMMUNITY / OWNERSHIP EVIDENCE</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Four professor-requested project dimensions · descriptor only · no trading rules</span>
+                </div>
+                <div class="panel-body">
+
+                    <div class="altdata-status-grid" style="grid-template-columns:1fr 1fr;">
+                        <!-- Card 1: Market Sentiment -->
+                        <div class="altdata-status-row" style="flex-direction:column;align-items:flex-start;gap:var(--sp-1);">
+                            <span class="altdata-status-label" style="font-weight:700;">1. Market Sentiment</span>
+                            <span><strong>Status:</strong> <span class="altdata-tag-live">LIVE · descriptor only</span></span>
+                            <span><strong>Wired sources:</strong> FMP news sentiment + FMP analyst grades historical + Polygon news + Narrative Divergence Index (NDI per §23, computed by LLM aggregator over event clusters).</span>
+                            <span><strong>Use:</strong> attention and sentiment <em>descriptor</em> per §11.13, never a trading rule.</span>
+                            <span><strong>Hard rule:</strong> never "negative sentiment ⇒ short" or "positive sentiment ⇒ buy" — in any frozen-rules version.</span>
+                        </div>
+
+                        <!-- Card 2: Community Size -->
+                        <div class="altdata-status-row" style="flex-direction:column;align-items:flex-start;gap:var(--sp-1);">
+                            <span class="altdata-status-label" style="font-weight:700;">2. Community Size</span>
+                            <span><strong>Status:</strong> <span class="altdata-tag-live">LIVE · descriptor only</span></span>
+                            <span><strong>Wired sources:</strong> Wikipedia pageview trajectories (public attention proxy), GitHub repository statistics (developer community size, contributor counts, fork counts) for software tickers.</span>
+                            <span><strong>Excluded:</strong> Reddit / HackerNews / X — DELIBERATELY EXCLUDED per §10.13 anti-pollution.</span>
+                            <span><strong>Use:</strong> attention / adoption <em>descriptor</em>.</span>
+                            <span><strong>Hard rule:</strong> community attention indicates attention, not thesis validity. Cannot confirm a buy/short alone.</span>
+                        </div>
+
+                        <!-- Card 3: Top Owners -->
+                        <div class="altdata-status-row" style="flex-direction:column;align-items:flex-start;gap:var(--sp-1);">
+                            <span class="altdata-status-label" style="font-weight:700;">3. Top Owners</span>
+                            <span><strong>Status:</strong> <span class="altdata-tag-live">LIVE · partial (FMP plan-limited)</span></span>
+                            <span><strong>Wired sources:</strong> SEC 13F via FMP (plan-limited, returns 404 for some queries — known limitation), Form 4 insider filings, DEF 14A proxy filings.</span>
+                            <span><strong>Quantified metrics:</strong> <code>top_10_holder_concentration</code>, <code>top_25_holder_concentration</code>, <code>largest_single_holder_pct</code>, <code>qoq_holder_count_change</code>.</span>
+                            <span><strong>PIT warning:</strong> 13F is delayed (45 days post-quarter-end per §11.14.1); <code>accepted_datetime ≤ allowed_data_cutoff</code> enforced.</span>
+                            <span><strong>Hard rule:</strong> per §11.13 — NONE of "hedge fund owns it = buy" / "hedge fund sold it = short" / "high institutional ownership = safe" / "low ownership = bad" is allowed.</span>
+                        </div>
+
+                        <!-- Card 4: Large Holders / equity-safe translation -->
+                        <div class="altdata-status-row" style="flex-direction:column;align-items:flex-start;gap:var(--sp-1);">
+                            <span class="altdata-status-label" style="font-weight:700;">4. Large Holders / equity-safe translation</span>
+                            <span><strong>Status:</strong> <span class="altdata-tag-live">LIVE · enforced across system per §10.12</span></span>
+                            <span><strong>Translation:</strong> the crypto-style term "whale holders" is replaced — across docs, schema, agent prompts, dashboard, and audit log — with these equity-safe terms:</span>
+                            <ul style="margin:0;padding-left:var(--sp-4);">
+                                <li><code>large institutional holders</code> · <code>concentrated 13F holders</code></li>
+                                <li><code>large insider holders</code> · <code>hedge fund holders</code></li>
+                                <li><code>ownership concentration</code> (<code>top_10_holder_concentration</code>, <code>top_25_holder_concentration</code>)</li>
+                                <li><code>ETF / MF concentration</code> · <code>smart-money / positioning evidence</code></li>
+                            </ul>
+                            <span><strong>Note:</strong> the literal token <code>whale</code> is forbidden anywhere in code, schema, prompt, audit log per §10.12 — verified clean across the 9 src/ rule_version emit sites.</span>
+                            <span><strong>Use:</strong> crowding, sponsorship, squeeze-risk context for surge_short / quality_long sleeves.</span>
+                            <span><strong>Hard rule:</strong> token <code>whale</code> does not appear as a feature name, schema field, rule key, or audit-record term anywhere in the system.</span>
+                        </div>
+                    </div>
+
+                    <div class="altdata-evidence-empty" style="margin-top:var(--sp-3);">
+                        <strong>Sentiment, community, and ownership evidence are descriptors for agent / PM review. They do not create automatic buy/short decisions.</strong>
+                        rule_version: <code>v0.9.0_pass8_hardrule</code> (binding) · doc version <code>v2.15</code> · canonical packet hash <code>sha256:626266c7…</code>. Single source of truth: <code>docs/RULES.md v2.15</code> §10.13 + §10.15 + §11.
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ───────── TAB: BACKTEST LAB (rebuilt 2026-05-08) ───────── -->
+        <!-- Friction-adjusted 5-cell view backed by /api/backtest_lab/cells.
+             Reads from data/decisions/<cell>_tx30bps_borrow100/ retrofit
+             artifacts. Cost model = 15 bps single-side tx + 100% APY borrow
+             on shorts (RULES.md v2.15 §5.16). Replaces legacy run-browser
+             that sourced from data/backtest/<run_id>/. -->
+        <div class="tab-panel" id="tab-backtest" data-tab-panel="backtest">
+
+            <!-- (a) Phase selector — segmented control -->
+            <section id="panel-bl-phase-selector" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">BACKTEST LAB</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);" id="bl-overall-status">Loading…</span>
+                </div>
+                <div class="panel-body">
+                    <div class="bl-segmented" role="tablist" aria-label="Phase selector">
+                        <button type="button" class="bl-seg-btn bl-seg-active" data-phase="phase1" onclick="blSelectPhase('phase1')" role="tab">
+                            Phase 1 — March 2025
+                        </button>
+                        <button type="button" class="bl-seg-btn" data-phase="phase2" onclick="blSelectPhase('phase2')" role="tab">
+                            Phase 2 — April 2025
+                        </button>
+                        <span class="bl-seg-underline" id="bl-seg-underline"></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- (b) PHASE 1 VIEW -->
+            <div id="bl-phase1-view" class="bl-phase-view">
+
+                <section class="panel panel-full">
+                    <div class="panel-header">
+                        <span class="panel-title">MARCH 2025 · 21 TRADING DAYS · 3-CELL COORDINATION ABLATION</span>
+                        <span class="panel-subtitle" style="margin-left:var(--sp-3);">rule_version <code class="ai-code">v0.9.0_pass8_hardrule</code> · friction-adjusted (15 bps single-side, 100% APY borrow)</span>
+                    </div>
+                </section>
+
+                <section class="panel panel-full">
+                    <div class="panel-header"><span class="panel-title">CELL METRICS</span></div>
+                    <div class="panel-body">
+                        <div class="bl-cell-metrics-row" id="bl-p1-metrics-row">
+                            <div class="bl-loading">Loading cell metrics…</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel panel-full">
+                    <div class="panel-header"><span class="panel-title">NAV OVERLAY</span><span class="panel-subtitle" style="margin-left:var(--sp-3);">All 3 cells · friction-adjusted combined NAV</span></div>
+                    <div class="panel-body">
+                        <div id="bl-p1-chart" class="bl-plot-wrap"></div>
+                    </div>
+                </section>
+
+                <section class="panel panel-full">
+                    <div class="panel-header"><span class="panel-title">ATTRIBUTION BUCKETS</span></div>
+                    <div class="panel-body">
+                        <div class="bl-attribution-row">
+                            <div class="bl-attr-card bl-attr-coordination">
+                                <div class="bl-attr-label">BUCKET A · Coordination Value</div>
+                                <div class="bl-attr-headline" id="bl-bucket-a">—</div>
+                                <div class="bl-attr-sub">Multi-agent without ADaS minus single-agent baseline</div>
+                                <div class="bl-attr-foot">Holds ADaS constant (absent in both arms)</div>
+                            </div>
+                            <div class="bl-attr-card bl-attr-adas">
+                                <div class="bl-attr-label">BUCKET B · ADaS Marginal Value</div>
+                                <div class="bl-attr-headline" id="bl-bucket-b">—</div>
+                                <div class="bl-attr-sub">Multi-agent with ADaS minus multi-agent without ADaS</div>
+                                <div class="bl-attr-foot">Holds multi-agent topology constant; small-sample directional finding</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel panel-full">
+                    <div class="panel-header">
+                        <span class="panel-title">MANDATORY-SHORT PARITY VERIFICATION</span>
+                        <span class="panel-subtitle" style="margin-left:var(--sp-3);">Rule-engine hard floor invariant across ablation axes</span>
+                    </div>
+                    <div class="panel-body">
+                        <div class="bl-parity-box">
+                            <div class="bl-parity-tickers">BTOG · ACON · SUNE</div>
+                            <div class="bl-parity-detail">Identical decision_timestamp, position_size_pct, surge_pct, agent_id, score_threshold_band across all 3 cells (§32 mandatory-short bypass — pre-LLM mechanical)</div>
+                            <div class="bl-parity-status">✓ Byte-equivalent verified</div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- (c) PHASE 2 VIEW -->
+            <div id="bl-phase2-view" class="bl-phase-view" style="display:none;">
+
+                <section class="panel panel-full">
+                    <div class="panel-header">
+                        <span class="panel-title">APRIL 2025 · 15 TRADING DAYS · 2-CELL SEC ALT-DATA ABLATION</span>
+                        <span class="panel-subtitle" style="margin-left:var(--sp-3);">rule_version <code class="ai-code">v0.9.0_pass8_hardrule</code> · friction-adjusted</span>
+                    </div>
+                </section>
+
+                <section class="panel panel-full">
+                    <div class="panel-header"><span class="panel-title">CELL METRICS</span></div>
+                    <div class="panel-body">
+                        <div class="bl-cell-metrics-row bl-cell-metrics-row-2col" id="bl-p2-metrics-row">
+                            <div class="bl-loading">Loading cell metrics…</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel panel-full">
+                    <div class="panel-header"><span class="panel-title">NAV OVERLAY · IN-WINDOW</span><span class="panel-subtitle" style="margin-left:var(--sp-3);">2025-04-01 → 2025-04-22 · §31 SPY drawdown trigger fires annotated</span></div>
+                    <div class="panel-body">
+                        <div id="bl-p2-chart" class="bl-plot-wrap"></div>
+                    </div>
+                </section>
+
+                <section class="panel panel-full">
+                    <div class="panel-header"><span class="panel-title">IN-WINDOW GAP &amp; FORENSIC CAVEAT</span></div>
+                    <div class="panel-body">
+                        <div class="bl-attribution-row">
+                            <div class="bl-attr-card bl-attr-gap">
+                                <div class="bl-attr-label">IN-WINDOW SPREAD</div>
+                                <div class="bl-attr-headline" id="bl-p2-gap">—</div>
+                                <div class="bl-attr-sub">Cell B (no SEC) − Cell A (default+SEC) at 2025-04-22</div>
+                                <div class="bl-attr-foot">Direction surprises naive interpretation; see caveat →</div>
+                            </div>
+                            <div class="bl-attr-card bl-attr-caveat">
+                                <div class="bl-attr-label">⚠ CAVEAT · Apparent gap is LLM stochasticity, not SEC information value</div>
+                                <div class="bl-attr-body">Forensic inspection: SEC EDGAR returned <code class="ai-code">cik_not_found</code>, SEC 13F returned 404 (FMP plan limit), SEC 8-K full-text returned stub for ALL 5 quality-long candidate tickers in Cell A. Both cells operated on substantively identical alternative-data corpora. The gap reflects LLM signal-selection variance on nearly identical inputs.</div>
+                                <div class="bl-attr-foot">Reference: paper Section 10 forensic finding</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel panel-full">
+                    <div class="panel-header"><span class="panel-title">QL ENTRIES — Cell A vs Cell B</span></div>
+                    <div class="panel-body">
+                        <table class="data-table bl-ql-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Event</th>
+                                    <th>Cell A · Default+SEC</th>
+                                    <th>Cell B · no SEC</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>2025-04-14</td><td>DFS entry</td><td>✓ taken</td><td>✓ taken</td></tr>
+                                <tr><td>2025-04-21</td><td>DFS scale-up</td><td>✓ taken</td><td>✓ taken</td></tr>
+                                <tr class="bl-ql-row-highlight"><td>2025-04-22</td><td>HAS entry · contrarian buy at tariff trough</td><td>✓ taken</td><td>— skipped</td></tr>
+                                <tr class="bl-ql-row-highlight"><td>2025-04-22</td><td>ANSS entry · contrarian buy at tariff trough</td><td>✓ taken</td><td>— skipped</td></tr>
+                            </tbody>
+                        </table>
+                        <div class="bl-ql-foot">Cell A took 2 extra contrarian QL buys at the 2025-04-22 tariff-war trough that Cell B passed on. These are the contrarian positions whose forward returns drive the +1.93pp → +0.71pp narrowing observed in the forward MtM extension below.</div>
+                    </div>
+                </section>
+
+                <section class="panel panel-full">
+                    <div class="panel-header bl-fwd-header" onclick="blToggleForward()" style="cursor:pointer;">
+                        <span class="panel-title"><span id="bl-fwd-toggle-arrow">▶</span> FORWARD MARK-TO-MARKET TO 2025-05-30</span>
+                        <span class="panel-subtitle" style="margin-left:var(--sp-3);">38 calendar days post-cut · click to expand</span>
+                    </div>
+                    <div class="panel-body" id="bl-fwd-body" style="display:none;">
+                        <div id="bl-p2-fwd-chart" class="bl-plot-wrap"></div>
+                        <div class="bl-fwd-kpi-row">
+                            <div class="bl-attr-card bl-attr-gap">
+                                <div class="bl-attr-label">FORWARD GAP at 2025-05-30</div>
+                                <div class="bl-attr-headline" id="bl-fwd-gap">—</div>
+                                <div class="bl-attr-sub" id="bl-fwd-reversal">—</div>
+                                <div class="bl-attr-foot">Forward NAV = combined-friction; UST face accrued at 4.32% APY proxy; cash held flat 0%; DFS→COF synthesized as 2 legs each 15 bps on 2025-05-19</div>
+                            </div>
+                        </div>
+                        <div class="bl-fwd-note">
+                            <strong>Note:</strong> ANSS conversion (2025-07-17, $199.91 cash + 0.3399 SNPS per ANSS) postdates the 2025-05-30 Polygon cache cutoff; ANSS held flat at last available close in forward extension.
+                        </div>
+                        <div class="bl-fwd-note bl-fwd-note-finding">
+                            <strong>Findings note:</strong> Direction is consistent with H3 (one-month attribution undercounts contrarian-timing alt-data value), but cannot establish SEC information value because the underlying SEC content was empty (see in-window caveat above). The forward narrowing therefore reflects the same stochasticity-driven variance, with the underlying contrarian buys (HAS, ANSS) being unrelated to SEC inputs in this experiment.
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- (d) Footer -->
+            <section class="panel panel-full bl-footer-panel">
+                <div class="panel-body">
+                    <div class="bl-footer">
+                        <span><strong>Data sources:</strong> <code id="bl-footer-dirs">data/decisions/&lt;cell&gt;_tx30bps_borrow100/</code></span>
+                        <span><strong>rule_version:</strong> <code id="bl-footer-rule-version">v0.9.0_pass8_hardrule</code></span>
+                        <span><strong>doc:</strong> <code id="bl-footer-doc-version">v2.15</code></span>
+                        <span><strong>regression hash:</strong> <code id="bl-footer-hash">sha256:626266c7…</code></span>
+                        <span><strong>cost model:</strong> <code>15 bps single-side · 100% APY borrow daily</code></span>
+                        <span><strong>as_of:</strong> <code id="bl-footer-asof">—</code></span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- AUDIT LOG tab removed 2026-05-08 — content was stale (5-agent legacy,
+             OpenAI reference, MOCK DATA MODE banner, Reddit/H-1B sources contradicting
+             §10.13 anti-pollution taxonomy). Decision Center + Backtest Lab cover
+             the same forensic surface. -->
+
+        <!-- ───────── TAB: SYSTEM STATE (replaces RULES & SETTINGS, 2026-05-08) ─────────
+             Old "Rules & Settings" tab removed because content was stale (rule_version
+             v0.5, hardcoded 2025-03-15 replay date, "framework only" badges on now-wired
+             modes, "Failed to load rules" runtime error from the /api/rules call).
+             Replaced with read-only system identity / PIT framework / rule taxonomy view.
+        -->
+        <div class="tab-panel" id="tab-system" data-tab-panel="system">
+
+            <!-- SECTION 1 — System Identity hero card -->
+            <section id="panel-sys-identity" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">SYSTEM IDENTITY</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Frozen rule version, regression hash, and test status</span>
+                </div>
+                <div class="panel-body">
+                    <div class="sys-identity-grid">
+                        <div class="sys-identity-col">
+                            <div class="sys-identity-row">
+                                <span class="sys-id-label">rule_version (runtime literal)</span>
+                                <span class="sys-id-value sys-id-mono"><strong>v0.9.0_pass8_hardrule</strong></span>
+                            </div>
+                            <div class="sys-identity-row">
+                                <span class="sys-id-label">RULES.md doc version</span>
+                                <span class="sys-id-value sys-id-mono">v2.15</span>
+                            </div>
+                            <div class="sys-identity-row">
+                                <span class="sys-id-label">Frozen YAML config</span>
+                                <span class="sys-id-value sys-id-mono">config/frozen_rules_v0.6_agentic_allocation_5regime.yaml</span>
+                            </div>
+                            <div class="sys-identity-row">
+                                <span class="sys-id-label">Regression test status</span>
+                                <span class="sys-id-value"><span class="sys-id-pass">138 / 138 pytest pass</span></span>
+                            </div>
+                        </div>
+                        <div class="sys-identity-col">
+                            <div class="sys-identity-row">
+                                <span class="sys-id-label">Regression hash (canonical AAPL packet)</span>
+                                <span class="sys-id-value sys-id-mono sys-id-hash" title="locked in tests/test_regression_matrix.py::EXPECTED_AAPL_PACKET_HASH">sha256:626266c71956d0baec9252d6c9845388a3c324b193d707d2e0e0d75ae2d979bb</span>
+                            </div>
+                            <div class="sys-identity-row">
+                                <span class="sys-id-label">Hash reproducibility</span>
+                                <span class="sys-id-value">5 / 5 fresh-process byte-identical (deterministic stub provider)</span>
+                            </div>
+                            <div class="sys-identity-row">
+                                <span class="sys-id-label">LLM model</span>
+                                <span class="sys-id-value sys-id-mono">claude-haiku-4-5-20251001 (Anthropic Haiku 4.5)</span>
+                            </div>
+                            <div class="sys-identity-row">
+                                <span class="sys-id-label">Last hash relock</span>
+                                <span class="sys-id-value">2026-05-07 (post-V7 FRED PIT fix)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sys-identity-foot">
+                        Hash transitively binds <code>rule_version</code> literal at <code>src/evidence_packet/generator.py</code> and the canonical AAPL evidence packet for the 2026-04-27 cutoff. Locked in <code>tests/test_regression_matrix.py::EXPECTED_AAPL_PACKET_HASH</code>.
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2 — PIT Anchor Framework V1-V7 -->
+            <section id="panel-sys-pit" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">POINT-IN-TIME ANCHOR FRAMEWORK</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">Look-ahead and hindsight defense — paper §4 / §11</span>
+                </div>
+                <div class="panel-body">
+                    <table class="data-table sys-pit-table">
+                        <thead>
+                            <tr><th class="sys-pit-anchor-col">Anchor</th><th>Rule</th><th class="sys-pit-status-col">Status</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>V1</strong></td><td>Every leaf data point in every evidence block carries an <code>as_of</code> timestamp</td><td><span class="sys-id-pass">✓ enforced</span></td></tr>
+                            <tr><td><strong>V2</strong></td><td>Any record with <code>as_of &gt; allowed_data_cutoff</code> is REMOVED before reaching any agent</td><td><span class="sys-id-pass">✓ enforced</span></td></tr>
+                            <tr><td><strong>V3</strong></td><td>Forbidden current-state fields in replay mode (<code>live_quote</code>, <code>isActivelyTrading</code>, <code>DCF_*</code>, <code>current_*</code>)</td><td><span class="sys-id-pass">✓ enforced</span></td></tr>
+                            <tr><td><strong>V4</strong></td><td>Universe is reconstructed point-in-time via FMP historical-constituent change-log reverse replay</td><td><span class="sys-id-pass">✓ enforced</span></td></tr>
+                            <tr><td><strong>V5</strong></td><td>The cutoff wall is enforced at universe filter, fundamental snapshot, and macro indicator entry points</td><td><span class="sys-id-pass">✓ enforced</span></td></tr>
+                            <tr><td><strong>V6</strong></td><td>Every R2 row removal is logged in <code>envelope.records_removed_by_pit_filter</code> for audit</td><td><span class="sys-id-pass">✓ enforced</span></td></tr>
+                            <tr class="sys-pit-row-v7"><td><strong>V7</strong></td><td>Macro evidence block reads date-parameterized FRED data, NOT the today-keyed dashboard variant</td><td><span class="sys-id-pass">✓ enforced</span> <span class="sys-id-tag-new">added 2026-05-07</span></td></tr>
+                        </tbody>
+                    </table>
+
+                    <div class="sys-pit-callout">
+                        <div class="sys-pit-callout-title">V7 — added 2026-05-07 after audit detected silent FRED leak</div>
+                        <div class="sys-pit-callout-body">
+                            During pre-launch verification on 2026-05-07, a routine PIT audit revealed that the macro evidence builder had been calling a today-keyed FRED helper in replay mode. For a March 2025 decision, this returned today's mock Federal Funds Rate of 5.33% in place of the historical March 2025 vintage of 4.33% — a silent 100-basis-point leak. The fix swapped <code>src/evidence_packet/blocks/macro.py</code> to call the date-parameterized helper <code>get_macro_indicators(cutoff_date_str)</code> instead of <code>get_macro_indicators_for_dashboard()</code>. Regression hash was relocked to <code>sha256:626266c7…</code> post-fix. Test <code>tests/test_pit_replay_mode.py::test_v7_macro_regime_fred_pit_anchor</code> guards against recurrence.
+                        </div>
+                        <div class="sys-pit-callout-foot">Reference: paper §4 + §11</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 — Rule Taxonomy -->
+            <section id="panel-sys-taxonomy" class="panel panel-full">
+                <div class="panel-header">
+                    <span class="panel-title">RULE TAXONOMY</span>
+                    <span class="panel-subtitle" style="margin-left:var(--sp-3);">RULES.md v2.15 section index — taxonomy only; numeric thresholds withheld as proprietary IP</span>
+                </div>
+                <div class="panel-body">
+                    <div class="sys-taxonomy-grid">
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§0</span><span class="sys-tax-title">Operative Quick Reference</span><span class="sys-tax-count">index</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§1</span><span class="sys-tax-title">Investment Universe</span><span class="sys-tax-count">8 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§2</span><span class="sys-tax-title">Surge-Short Sleeve</span><span class="sys-tax-count">15 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§3</span><span class="sys-tax-title">Quality-Long Sleeve</span><span class="sys-tax-count">9 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§4</span><span class="sys-tax-title">Position Sizing &amp; Allocation</span><span class="sys-tax-count">11 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§5</span><span class="sys-tax-title">Risk Management &amp; Veto Conditions</span><span class="sys-tax-count">17 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§6</span><span class="sys-tax-title">Execution</span><span class="sys-tax-count">7 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§7</span><span class="sys-tax-title">Borrow Cost</span><span class="sys-tax-count">1 rule</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§8</span><span class="sys-tax-title">Hindsight Bias (R1–R7)</span><span class="sys-tax-count">9 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§9</span><span class="sys-tax-title">Look-Ahead</span><span class="sys-tax-count">7 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§10</span><span class="sys-tax-title">Information Integrity &amp; Pollution Defense</span><span class="sys-tax-count">15 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§11</span><span class="sys-tax-title">Alt-Data Source Rules</span><span class="sys-tax-count">15 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§12</span><span class="sys-tax-title">Evidence Packet</span><span class="sys-tax-count">14 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§13</span><span class="sys-tax-title">Agent Prompt Mandatory Clauses</span><span class="sys-tax-count">10 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§14</span><span class="sys-tax-title">Prompt Versioning</span><span class="sys-tax-count">7 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§15</span><span class="sys-tax-title">Cache Key</span><span class="sys-tax-count">7 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§16</span><span class="sys-tax-title">Coordination Topology</span><span class="sys-tax-count">7 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§17</span><span class="sys-tax-title">OpenCLI Subsystem</span><span class="sys-tax-count">27 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§18</span><span class="sys-tax-title">Backtest</span><span class="sys-tax-count">4 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§19</span><span class="sys-tax-title">Meta-Governance &amp; Promotion Path</span><span class="sys-tax-count">18 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§20</span><span class="sys-tax-title">Open / Deferred Rules</span><span class="sys-tax-count">9 entries</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§21</span><span class="sys-tax-title">Anti-Rules (meta-guidance)</span><span class="sys-tax-count">7 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§22</span><span class="sys-tax-title">Document Versioning</span><span class="sys-tax-count">meta</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§23</span><span class="sys-tax-title">NDI (Narrative Divergence Index)</span><span class="sys-tax-count">6 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§24</span><span class="sys-tax-title">ADaS (Agent Disagreement as Signal)</span><span class="sys-tax-count">7 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§25</span><span class="sys-tax-title">Agent Isolation</span><span class="sys-tax-count">4 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§26</span><span class="sys-tax-title">Attribution Bucketing</span><span class="sys-tax-count">4 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§27</span><span class="sys-tax-title">Fixed Income Sleeve Framework</span><span class="sys-tax-count">9 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§28</span><span class="sys-tax-title">v0.6 5-Regime Allocation Promotion</span><span class="sys-tax-count">3 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§29</span><span class="sys-tax-title">Trading Calendar</span><span class="sys-tax-count">5 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§30</span><span class="sys-tax-title">Quality-Long Exit &amp; Rebalance</span><span class="sys-tax-count">6 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§31</span><span class="sys-tax-title">SPY-Drawdown Equity Floor</span><span class="sys-tax-count">6 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§32</span><span class="sys-tax-title">Mandatory-Short Hard Rule</span><span class="sys-tax-count">5 rules</span></div>
+                        <div class="sys-tax-badge"><span class="sys-tax-num">§33</span><span class="sys-tax-title">Surge-Short 60–90% Pool Scoring</span><span class="sys-tax-count">6 rules</span></div>
+                    </div>
+                    <div class="sys-tax-foot">
+                        Specific numeric thresholds (surge percentage gates, position size ladders, drawdown trigger levels, regime allocation caps) are withheld as proprietary intellectual property. The published RULES.md in the repository preserves the rule taxonomy and decision logic with numeric thresholds redacted. See paper §4 universe section for the same disclosure.
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- ══════════ LOADING OVERLAY ══════════ -->
+    <div id="loading-overlay" style="display:none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Running Agent Pipeline...</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="/static/app.js"></script>
+</body>
+</html>

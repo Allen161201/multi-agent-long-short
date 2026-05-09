@@ -1,0 +1,284 @@
+{
+  "trigger_id": "4e253c149ccf",
+  "ticker": "SPGC",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-13T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 53.5,
+  "trigger_cost_usd": 0.055346,
+  "cumulative_cost_usd": 1.352807,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "SPGC",
+    "name": "SPGC",
+    "close": 4.2,
+    "prior_close": 3.24,
+    "change": 2.487,
+    "change_pct": 76.75925925925927,
+    "volume": 12193133.066667,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-13",
+    "prior_trading_day": "2025-03-12",
+    "available_as_of": "2025-03-13T16:00:00-05:00",
+    "today_open": 5.727,
+    "today_volume": 12193133.066667,
+    "eps_ttm": -1.7317,
+    "operating_margin_ttm": -219.26936973103173,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-14 09:00:31",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:c8bc4af015f4100037e217456f6ed06b70aa4b93f55d42db1796def1f49cd198",
+  "locked_decision_id": "sha256:88fbebc1efc13c6d2d85694673d7bfafe771843ac529c45b0f318e68cbea3bfc",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-shot evidence ingestion, no decomposition)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "SPGC",
+      "decision_timestamp": "2025-03-13T09:30:00-04:00",
+      "data_available_as_of": "2025-03-13T09:30:00-04:00",
+      "decision_or_assessment": "veto",
+      "confidence": "high",
+      "evidence_used": [
+        "macro_regime.overheat_stress_score_2",
+        "valuation_snapshot.negative_pe_peg_ev_ebitda",
+        "valuation_snapshot.negative_roe_roa",
+        "valuation_snapshot.net_margin_pct_ttm_-74.0",
+        "fundamental_snapshot.status_insufficient_evidence",
+        "news_event_summary.status_data_unavailable",
+        "alternative_data_features.adapter_selection_fallback_to_default",
+        "information_integrity_assessment.use_as_primary_signal_allowed_false",
+        "sentiment_community_ownership_evidence.ownership_positioning_not_evaluated",
+        "price_snapshot.return_5d_pct_-38.29",
+        "price_snapshot.return_20d_pct_-72.91",
+        "price_snapshot.return_60d_pct_-92.29",
+        "corporate_calendar.past_earnings_all_negative_eps",
+        "filing_confirmation.status_not_evaluated"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.income_statement_pit_safe",
+        "fundamental_snapshot.balance_sheet_pit_safe",
+        "fundamental_snapshot.cash_flow_pit_safe",
+        "news_event_summary.catalyst_narrative",
+        "filing_confirmation.sec_8k_confirmation",
+        "sentiment_community_ownership_evidence.institutional_ownership_pct",
+        "sentiment_community_ownership_evidence.hedge_fund_positioning",
+        "alternative_data_features.industry_specific_adapter_data",
+        "information_integrity_assessment.primary_source_corroboration"
+      ],
+      "reasoning_summary": "SPGC exhibits severe fundamental distress (negative PE, PB=0.058, net margin=-74%, all past earnings negative) combined with catastrophic price collapse (-92% in 60d). Macro regime is overheat/restrictive. Critical data blocks are absent or insufficient: fundamentals lack PIT-safe filings, news is empty, filing confirmation unavailable, ownership data not evaluated, alt-data adapters failed (sec_edgar cik_not_found, github unmapped). Information integrity assessment explicitly forbids use as primary signal. No corroborating evidence for any thesis. Insufficient evidence to support either surge_short or quality_long sleeve eligibility. Multiple veto conditions tripped.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "insufficient_evidence: fundamental_snapshot status=insufficient_evidence",
+        "insufficient_evidence: news_event_summary status=data_unavailable",
+        "insufficient_evidence: filing_confirmation status=not_evaluated",
+        "insufficient_evidence: sentiment_community_ownership_evidence.ownership_positioning status=not_evaluated",
+        "hard_risk_limit_breached: net_margin_pct_ttm=-74.0 indicates severe operational distress",
+        "hard_risk_limit_breached: return_60d_pct=-92.29 indicates extreme drawdown",
+        "missing_data_persists_beyond_tolerance: fundamental_snapshot.snapshot_quarter all null",
+        "missing_data_persists_beyond_tolerance: news_event_summary.items empty post-cutoff filter",
+        "information_integrity_veto: information_integrity_assessment.use_as_primary_signal_allowed=false",
+        "information_integrity_veto: information_integrity_assessment.corroboration_status=uncorroborated"
+      ],
+      "risk_flags": [
+        "extreme_price_drawdown: -92.29% over 60d",
+        "negative_profitability: net_margin=-74%, roe=-1.654, roa=-1.825",
+        "negative_valuation_metrics: pe=-0.009, peg=-0.0004, ev_ebitda=-0.769",
+        "no_analyst_coverage: fmp_sentiment shows 0 buy/hold/sell ratings across all months",
+        "no_news_catalyst: polygon_news returned 0 items in 7d window",
+        "sec_filing_unavailable: sec_edgar cik_not_found, sec_form4 cik_not_found",
+        "alt_data_adapters_failed: github_public unmapped, sec_13f not_available_on_current_plan",
+        "current_ratio_below_1: current_ratio_ttm=0.939 indicates liquidity stress",
+        "macro_headwind: overheat regime with strict_quality_and_valuation_caution discipline"
+      ],
+      "suggested_improvements": [
+        "Obtain PIT-safe fundamental filings (10-Q or 10-K) with accepted_datetime <= cutoff to populate fundamental_snapshot",
+        "Verify ticker SPGC CIK mapping in SEC Edgar to enable filing_confirmation and ownership_positioning",
+        "Collect news catalyst from alternative sources (press releases, investor relations) to populate news_event_summary",
+        "Map SPGC to GitHub repository (if applicable) to enable tech_activity alt-data",
+        "Obtain 13F institutional ownership data (if available) to assess crowding and smart-money positioning",
+        "Clarify business model and revenue sustainability given -74% net margin and negative earnings across all recent quarters"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter all null; no PIT-safe income/balance/cashflow rows"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "news_event_summary: 20 items dropped because publishedDate > cutoff; 0 items remain"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker SPGC"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 SPGC not in ticker_to_github.csv"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 no CIK for SPGC"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios_ttm flagged not_PIT_safe \u2014 for display only, not for decision inputs"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "price_snapshot live quote 2025-03-14T20:00:01+00:00 is after allowed_data_cutoff"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Information integrity assessment explicitly forbids use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer in v1. This is a fail-closed design choice that prevents any thesis confirmation without primary-source corroboration. Combined with missing fundamental filings and zero news, the packet provides insufficient evidence for any directional decision.",
+      "recommended_followups": [
+        "Obtain SEC CIK for SPGC to unlock filing_confirmation and ownership_positioning blocks",
+        "Collect PIT-safe quarterly filings (10-Q/10-K) with accepted_datetime <= decision_timestamp",
+        "Verify whether SPGC is an active, reporting company or shell/delisted entity",
+        "If active: obtain recent press releases, earnings call transcripts, and investor relations materials",
+        "If shell/delisted: escalate to compliance for universe exclusion",
+        "Rerun analysis once fundamental_snapshot and news_event_summary blocks are populated"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "veto",
+      "position_size_pct": 0.0,
+      "reason": "Multiple veto conditions tripped: (1) insufficient_evidence across fundamental_snapshot, news_event_summary, filing_confirmation, ownership_positioning; (2) hard_risk_limit_breached: net_margin=-74%, return_60d=-92.29%; (3) information_integrity_veto: use_as_primary_signal_allowed=false, corroboration_status=uncorroborated; (4) missing_data_persists_beyond_tolerance: no PIT-safe filings, no news catalyst, no SEC filings. Surge-short sleeve cannot be satisfied without corroborating evidence of catalyst and fundamental deterioration. Quality-long sleeve impossible given negative profitability and extreme drawdown. Decision locked as veto.",
+      "risk_notes": [
+        "Extreme price collapse (-92% in 60d) without corresponding news catalyst or fundamental disclosure suggests potential delisting, bankruptcy, or data error.",
+        "Net margin of -74% and all past earnings negative (EPS: -1.4, -0.8, -0.79, -0.73) indicate severe operational distress.",
+        "Current ratio 0.939 < 1.0 signals liquidity stress; debt_to_equity 0.091 is low but insufficient to offset profitability crisis.",
+        "Zero analyst coverage (0 buy/hold/sell ratings) and zero news in 7d window suggest either micro-cap neglect or delisting imminent.",
+        "SEC filing unavailable (cik_not_found) prevents verification of business status, going-concern warnings, or restructuring plans.",
+        "Wikipedia pageviews show modest attention (peak 216 views on 2025-02-19, baseline ~70-100) but no corroborating news or catalyst.",
+        "Macro regime (overheat/restrictive) enforces strict_quality_and_valuation_caution discipline; SPGC fails all quality thresholds.",
+        "Information integrity assessment forbids primary-signal use; no alternative-data corroboration available.",
+        "Insufficient evidence to distinguish between (a) genuine short opportunity, (b) distressed equity, (c) delisted/shell entity, or (d) data error."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "fundamental_snapshot.status=insufficient_evidence; news_event_summary.status=data_unavailable; filing_confirmation.status=not_evaluated; sentiment_community_ownership_evidence.ownership_positioning.status=not_evaluated"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": true,
+          "note": "net_margin_pct_ttm=-74.0 (threshold: > -50% for quality_long); return_60d_pct=-92.29 (extreme drawdown); roe=-1.654, roa=-1.825 (both deeply negative)"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "fundamental_snapshot.snapshot_quarter all null; news_event_summary.items empty; filing_confirmation unavailable; ownership_positioning not_evaluated; no PIT-safe filings available"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false; corroboration_status=uncorroborated; source_tier_distribution T1=0 T2=0 T3=1 T4=1; pollution-defense layer unimplemented in v1"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true; no lookahead violations detected"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: lookahead_safe=true, data_after_cutoff_used=false \u2192 proceed",
+        "2. Evaluate macro_regime: overheat/moderately_restrictive, stress_score=2 \u2192 equity_discipline=strict_quality_and_valuation_caution",
+        "3. Evaluate valuation_snapshot: pe=-0.009, pb=0.058, ev_ebitda=-0.769, net_margin=-74% \u2192 fails quality_long thresholds",
+        "4. Evaluate fundamental_snapshot: status=insufficient_evidence, snapshot_quarter all null \u2192 cannot populate income/balance/cashflow",
+        "5. Evaluate news_event_summary: status=data_unavailable, items=[], ndi_score=null \u2192 no catalyst narrative",
+        "6. Evaluate alternative_data_features: adapter_selection fallback_to_default=true, all industry adapters not_connected \u2192 no corroborating alt-data",
+        "7. Evaluate information_integrity_assessment: use_as_primary_signal_allowed=false, corroboration_status=uncorroborated \u2192 veto on integrity grounds",
+        "8. Evaluate sentiment_community_ownership_evidence: ownership_positioning.status=not_evaluated, institutional_ownership_pct=null \u2192 no ownership corroboration",
+        "9. Evaluate filing_confirmation: status=not_evaluated, sec_edgar cik_not_found \u2192 cannot verify business status",
+        "10. Evaluate price_snapshot: return_60d=-92.29%, return_20d=-72.91%, return_5d=-38.29% \u2192 extreme drawdown without news catalyst",
+        "11. Candidate_type surge_short: requires (a) catalyst + (b) corroborating alt-data + (c) fundamental deterioration + (d) no veto. Conditions (a), (b), (d) fail.",
+        "12. Candidate_type quality_long: requires (a) positive profitability + (b) reasonable valuation + (c) no veto. Conditions (a), (b), (c) fail.",
+        "13. Decision: veto. Position_size_pct=0.0. Immutable."
+      ],
+      "decision_log": [
+        "T+0: Ingest evidence packet. Envelope: lookahead_safe=true, data_after_cutoff_used=false. Proceed.",
+        "T+1: Macro regime analysis. Overheat/moderately_restrictive (stress_score=2). Equity allocation cap 20%. Discipline: strict_quality_and_valuation_caution. SPGC must meet high quality bar.",
+        "T+2: Valuation analysis. PE=-0.009 (negative earnings), PB=0.058 (distressed), EV/EBITDA=-0.769 (negative EBITDA), net_margin=-74% (severe loss). Fails quality_long thresholds.",
+        "T+3: Fundamental analysis. fundamental_snapshot.status=insufficient_evidence. snapshot_quarter all null. No PIT-safe income/balance/cashflow rows. Cannot assess profitability, leverage, or cash generation.",
+        "T+4: Catalyst analysis. news_event_summary.status=data_unavailable. items=[]. ndi_score=null. polygon_news returned 0 items in 7d window. No narrative catalyst identified.",
+        "T+5: Alternative-data analysis. alternative_data_features.adapter_selection fallback_to_default=true. All industry-specific adapters not_connected. github_public unmapped_ticker. sec_edgar cik_not_found. No corroborating alt-data.",
+        "T+6: Information integrity analysis. information_integrity_assessment.use_as_primary_signal_allowed=false. corroboration_status=uncorroborated. source_tier_distribution T1=0 T2=0 T3=1 T4=1. Pollution-defense layer unimplemented. Veto on integrity grounds.",
+        "T+7: Ownership/sentiment analysis. sentiment_community_ownership_evidence.ownership_positioning.status=not_evaluated. institutional_ownership_pct=null. hedge_fund_holder_count=null. No ownership corroboration.",
+        "T+8: Filing analysis. filing_confirmation.status=not_evaluated. sec_edgar cik_not_found. sec_form4 cik_not_found. Cannot verify business status, going-concern, or restructuring.",
+        "T+9: Price action analysis. return_60d=-92.29%, return_20d=-72.91%, return_5d=-38.29%. Extreme drawdown. But no news catalyst, no fundamental disclosure, no filing. Suggests delisting, bankruptcy, or data error.",
+        "T+10: Surge-short sleeve evaluation. Requires: (a) catalyst (missing), (b) corroborating alt-data (missing), (c) fundamental deterioration (present but unverified), (d) no veto (veto tripped). Sleeve ineligible.",
+        "T+11: Quality-long sleeve evaluation. Requires: (a) positive profitability (net_margin=-74%, fails), (b) reasonable valuation (pb=0.058, pe=-0.009, fails), (c) no veto (veto tripped). Sleeve ineligible.",
+        "T+12: Veto decision. Multiple veto conditions tripped: insufficient_evidence, hard_risk_limit_breached, missing_data_persists_beyond_tolerance, information_integrity_veto. Decision=veto. Position_size_pct=0.0. Immutable."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-13T09:45:00-04:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:8eecd6205f0a9ef0ee0316134c64435419cefa7add6bbde81e820ec81bc1c1ba"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show modest attention (peak 216 views 2025-02-19, baseline 70-100) but no corroborating news, analyst coverage, or social media spike. Attention is not a trading signal without fundamental or catalyst corroboration.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No primary-source corroboration available. Information integrity assessment forbids use_as_primary_signal_allowed=false. All alternative-data adapters either failed (sec_edgar, github_public, sec_13f, sec_form4) or returned no actionable data (wikipedia_pageviews, fmp_sentiment).",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Essential blocks absent or insufficient: (1) fundamental_snapshot.status=insufficient_evidence (no PIT-safe filings); (2) news_event_summary.status=data_unavailable (no catalyst narrative); (3) filing_confirmation.status=not_evaluated (SEC CIK not found); (4) information_integrity_assessment.use_as_primary_signal_allowed=false (pollution-defense unimplemented, corroboration_status=uncorroborated). Cannot confirm any thesis without primary-source corroboration and PIT-safe fundamentals.",
+      "sentiment_risk_adjustment_note": "fmp_sentiment shows 0 analyst buy/hold/sell ratings across all months (Jan 2024 \u2013 Mar 2025). Zero coverage suggests either micro-cap neglect or delisting imminent. Sentiment data is descriptor-only and cannot override veto.",
+      "ownership_risk_adjustment_note": "ownership_positioning.status=not_evaluated. sec_13f not_available_on_current_plan. sec_form4 cik_not_found. No institutional ownership, hedge fund positioning, or insider trading data available. Cannot assess crowding or smart-money support.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional ownership data available. Zero analyst coverage. No evidence of institutional sponsorship or support.",
+      "smart_money_benchmark_note": "No 13F, Form 4, or insider trading data available. Cannot benchmark against smart-money positioning.",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-13T09:30:00-04:00",
+      "execution_timestamp": "2025-03-13T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:96d512f3749a4a4978bf1c6d2263cfc20bb630ce3f68185a11323ee180c1c4d2",
+      "immutable_decision_flag": true
+    }
+  }
+}

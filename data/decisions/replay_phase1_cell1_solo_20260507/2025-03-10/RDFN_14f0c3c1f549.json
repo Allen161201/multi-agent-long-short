@@ -1,0 +1,259 @@
+{
+  "trigger_id": "14f0c3c1f549",
+  "ticker": "RDFN",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-10T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 56.41,
+  "trigger_cost_usd": 0.070264,
+  "cumulative_cost_usd": 0.868355,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "RDFN",
+    "name": "RDFN",
+    "close": 9.77,
+    "prior_close": 5.82,
+    "change": 4.209999999999999,
+    "change_pct": 72.33676975945015,
+    "volume": 94381872.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-10",
+    "prior_trading_day": "2025-03-07",
+    "available_as_of": "2025-03-10T16:00:00-05:00",
+    "today_open": 10.03,
+    "today_volume": 94381872.0,
+    "eps_ttm": -1.35,
+    "operating_margin_ttm": -14.672586888134854,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2025-02-27 16:10:52",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:6836a84a7232669136127011698f96e09c32c9ea0ca2308b109f7955a3829491",
+  "locked_decision_id": "sha256:31a5f6267a7097bb339dfccb43d835fcd23ee90641cbaba14bffc8cd465afec6",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation control)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "RDFN",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "Acquisition announcement with material positive catalyst; however, insufficient alternative-data corroboration and missing critical blocks prevent high-confidence buy decision under overheat macro regime.",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary: Rocket Companies $1.75B acquisition of Redfin (63% premium to 30-day VWAP)",
+        "price_snapshot: last_eod_close $5.82 (2025-03-07), return_5d_pct -12.74%, return_20d_pct -31.29%",
+        "macro_regime: Overheat / Moderately Restrictive (stress_score=2, equity_allocation_cap=20%)",
+        "fundamental_snapshot: Q4 2024 revenue $244.3M, net_income -$36.4M, FCF +$61.5M",
+        "valuation_snapshot: PE -11.04, PB -9.01, EV/EBITDA -23.63 (negative earnings distort ratios)",
+        "sentiment_community_ownership_evidence: analyst ratings mixed (2 Buy, 13 Hold, 1 Sell, 3 Strong Sell as of 2025-03-01)",
+        "alternative_data_features: Wikipedia pageviews 27 views on 2025-03-10 (low, baseline ~40-50 range)",
+        "information_integrity_assessment: low_tier_only sources (T3=1, T4=2), no T1/T2 primary sources"
+      ],
+      "evidence_missing": [
+        "Alternative-data corroboration of acquisition catalyst (no SEC 8-K filing confirmation available; sec_edgar failed with cik_not_found)",
+        "Institutional ownership positioning (sec_13f, sec_form4 not available)",
+        "Detailed narrative analysis of price-gap (narrative_price_gap_assessment marked not_evaluated, pending Agent 03 LLM reasoning)",
+        "Filing confirmation block (filing_confirmation status=not_evaluated; no 8-K rows delivered)",
+        "Community/retail attention metrics (community_size status=not_evaluated, ownership_positioning status=not_evaluated)",
+        "Detailed sentiment credibility assessment (sentiment_community_ownership_evidence marked placeholder in v1)"
+      ],
+      "reasoning_summary": "RDFN announced acquisition by Rocket Companies at $1.75B (63% premium). This is a material positive catalyst that would normally support a buy decision. However, the macro regime is Overheat/Moderately Restrictive with strict_quality_and_valuation_caution discipline, capping equity allocation at 20%. The company is unprofitable (net_margin -27.7%, EV/EBITDA -23.63), making valuation ratios unreliable. Alternative-data sources are sparse: Wikipedia pageviews show no abnormal attention spike (27 views on decision day, within baseline range). Information integrity assessment flags low-tier-only sources (T3=1, T4=2) with no T1/T2 primary corroboration. Critical blocks are missing: no SEC filing confirmation (8-K adapter failed), no ownership data, no detailed narrative analysis. The acquisition news itself is credible (Benzinga/Polygon source), but without upstream multi-agent decomposition (Agent 02 narrative, Agent 03 alt-data verification, Agent 04 fundamentals), I cannot confidently assess whether the market has already priced in the premium or whether execution risk is material. Under fail-closed policy with insufficient evidence and missing essential blocks, decision defaults to watch/no_trade rather than buy.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Acquisition deal fails to close or terms materially change",
+        "Macro regime shifts to crisis; equity cap drops below 5%",
+        "Negative earnings surprise in next quarter",
+        "Institutional selling pressure post-announcement"
+      ],
+      "risk_flags": [
+        "Unprofitable company (net_margin -27.7%, EV/EBITDA -23.63); valuation ratios unreliable",
+        "Macro regime Overheat/Moderately Restrictive; equity_allocation_cap=20% limits position size",
+        "Missing SEC filing confirmation (8-K adapter failed cik_not_found); deal announcement not yet officially filed",
+        "Low alternative-data corroboration; Wikipedia pageviews show no abnormal attention spike",
+        "Information integrity assessment: low_tier_only sources, no T1/T2 primary sources",
+        "Analyst sentiment mixed (2 Buy, 13 Hold, 1 Sell, 3 Strong Sell); no consensus support",
+        "Price down 12.7% in 5d, 31.3% in 20d; acquisition premium may not offset broader weakness",
+        "Missing upstream agent reasoning (Agent 02 narrative analysis, Agent 03 alt-data verification, Agent 04 fundamentals deep-dive)"
+      ],
+      "suggested_improvements": [
+        "Wire SEC 8-K filing confirmation adapter to validate acquisition announcement as official disclosure",
+        "Implement Agent 02 narrative analysis to assess deal structure, execution risk, and integration complexity",
+        "Implement Agent 03 alt-data verification to cross-check acquisition catalyst against news sentiment, social attention, and institutional positioning",
+        "Implement Agent 04 fundamentals analyst to model post-acquisition synergies and revised valuation",
+        "Collect institutional ownership data (13F, Form 4) to assess smart-money positioning on deal",
+        "Expand alternative-data sources: GitHub activity (if Redfin has public repos), patent filings, regulatory filings beyond 8-K"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2025-07-02T20:00:00+00:00 is after allowed_data_cutoff; quote retained for display only"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_edgar error_class=cik_not_found extraction_status=failed \u2014 no 8-K filing confirmation available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan extraction_status=failed \u2014 no institutional ownership data"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_form4 error_class=cik_not_found extraction_status=failed \u2014 no insider trading data"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker extraction_status=failed \u2014 no tech activity data"
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment is a placeholder in v1; pollution-defense layer not implemented"
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence is a placeholder in v1; community_size and ownership_positioning not_evaluated"
+        },
+        {
+          "kind": "narrative_price_gap_placeholder",
+          "severity": "info",
+          "detail": "narrative_price_gap_assessment marked not_evaluated; Agent 03 LLM reasoning pending"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 evidence packet lacks upstream agent outputs (Agent 02 narrative, Agent 03 alt-data verification, Agent 04 fundamentals). Baseline solo agent must infer all reasoning from raw blocks, which is inherently less robust than multi-agent decomposition. Missing blocks (filing_confirmation, narrative_price_gap_assessment) are marked not_evaluated or placeholder, forcing conservative decision. Information integrity assessment is fail-closed (use_as_primary_signal_allowed=false) due to low-tier-only sources and unimplemented pollution-defense layer.",
+      "recommended_followups": [
+        "Await SEC 8-K filing confirmation of Rocket-Redfin acquisition deal",
+        "Monitor analyst upgrades/downgrades post-announcement",
+        "Track institutional ownership changes in next 13F filing",
+        "Assess deal closing probability and timeline",
+        "Re-evaluate position size under macro regime shift if equity cap increases",
+        "Implement multi-agent pipeline to decompose catalyst, corroboration, fundamentals, and risk in parallel"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "watch",
+      "position_size_pct": 0.0,
+      "reason": "Acquisition catalyst (Rocket $1.75B deal, 63% premium) is material and positive, but insufficient alternative-data corroboration, missing SEC filing confirmation, low information integrity (low-tier-only sources), and overheat macro regime (equity_cap=20%, strict_quality_caution) prevent buy decision. Unprofitable fundamentals (net_margin -27.7%) and mixed analyst sentiment (2 Buy, 13 Hold, 4 Sell/Strong Sell) add uncertainty. Watch for SEC 8-K filing, institutional positioning, and deal execution risk before committing capital.",
+      "risk_notes": [
+        "Macro regime Overheat/Moderately Restrictive limits equity allocation to 20%; position size capped even if decision were buy",
+        "Company unprofitable; valuation ratios (PE -11.04, PB -9.01, EV/EBITDA -23.63) unreliable for fundamental analysis",
+        "SEC filing confirmation missing; acquisition announcement not yet officially filed as 8-K",
+        "Alternative-data sources sparse and low-tier; Wikipedia pageviews show no abnormal attention spike (27 views on 2025-03-10, baseline ~40-50)",
+        "Information integrity assessment flags low-tier-only sources (T3=1, T4=2); no T1/T2 primary sources for corroboration",
+        "Analyst sentiment mixed; no consensus support (2 Buy vs. 13 Hold + 4 Sell/Strong Sell)",
+        "Price down 12.7% in 5d, 31.3% in 20d; acquisition premium may not offset broader market weakness",
+        "Missing upstream agent reasoning (Agent 02 narrative, Agent 03 alt-data verification, Agent 04 fundamentals); baseline solo agent cannot decompose catalyst as robustly as multi-agent pipeline"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "Alternative-data corroboration absent (no SEC 8-K filing confirmation, no institutional ownership data, no detailed narrative analysis). Information integrity assessment flags low-tier-only sources with no T1/T2 primary sources. Narrative_price_gap_assessment marked not_evaluated. Missing essential blocks prevent high-confidence decision."
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "Macro regime Overheat/Moderately Restrictive caps equity allocation at 20%, but this is a soft constraint on position size, not a hard veto. No margin, derivatives, or crypto involved. No hard risk limit breached."
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "SEC filing confirmation (8-K adapter failed cik_not_found), institutional ownership data (13F/Form 4 not available), detailed narrative analysis (Agent 03 pending), and community attention metrics (not_evaluated) are all missing. These are material for acquisition catalyst verification."
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "Information integrity assessment status=insufficient_evidence; source_tier_distribution T1=0 T2=0 T3=1 T4=2; use_as_primary_signal_allowed=false. Pollution-defense layer not implemented in v1. Fail-closed per schema doc v1.1 decision #8."
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false, lookahead_safe=true, hindsight_safe=true. No lookahead violations. Decision timestamp 2025-03-10T09:30:00-04:00 is locked; all data used is <= cutoff."
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read evidence packet end-to-end (all 12 canonical blocks + envelope)",
+        "2. Assess macro regime: Overheat/Moderately Restrictive (stress_score=2, equity_cap=20%, strict_quality_caution)",
+        "3. Identify catalyst: Rocket Companies $1.75B acquisition of Redfin (63% premium to 30-day VWAP), announced 2025-03-10",
+        "4. Check alternative-data corroboration: Wikipedia pageviews 27 (low, no spike); no SEC 8-K filing confirmation; no institutional ownership data; information_integrity_assessment flags low-tier-only sources (T3=1, T4=2)",
+        "5. Assess fundamentals: unprofitable (net_margin -27.7%, EV/EBITDA -23.63); valuation ratios unreliable; FCF positive ($61.5M) but offset by negative net income (-$36.4M)",
+        "6. Evaluate sleeve fit: candidate_type=quality_long (acquisition is positive catalyst), but macro regime strict_quality_caution and missing corroboration prevent buy",
+        "7. Check veto conditions: insufficient_evidence (tripped), missing_data_persists_beyond_tolerance (tripped), information_integrity_veto (tripped), lookahead_data_used (not tripped)",
+        "8. Collapse decision: veto conditions tripped \u2192 decision must be watch/no_trade/veto; position_size_pct=0.0",
+        "9. Final decision: watch (not veto, because catalyst is credible and macro regime allows equity allocation; but not buy, because evidence insufficient and corroboration missing)"
+      ],
+      "decision_log": [
+        "2025-03-10T09:30:00-04:00 [CATALYST] Rocket Companies announced $1.75B all-stock acquisition of Redfin at 63% premium to 30-day VWAP (Benzinga/Polygon source, published 2025-03-10 13:16:27 UTC)",
+        "2025-03-10T09:30:00-04:00 [MACRO] Macro regime Overheat/Moderately Restrictive (stress_score=2); equity_allocation_cap=20%; equity_discipline=strict_quality_and_valuation_caution",
+        "2025-03-10T09:30:00-04:00 [ALT_DATA] Alternative-data corroboration sparse: Wikipedia pageviews 27 on 2025-03-10 (baseline ~40-50, no abnormal spike); no SEC 8-K filing confirmation (sec_edgar adapter failed cik_not_found); no institutional ownership data (sec_13f, sec_form4 not available)",
+        "2025-03-10T09:30:00-04:00 [INTEGRITY] Information integrity assessment status=insufficient_evidence; source_tier_distribution T1=0 T2=0 T3=1 T4=2; use_as_primary_signal_allowed=false; pollution-defense layer not implemented in v1",
+        "2025-03-10T09:30:00-04:00 [FUNDAMENTALS] Company unprofitable: net_margin -27.7%, EV/EBITDA -23.63, PE -11.04, PB -9.01; valuation ratios unreliable; FCF positive ($61.5M) but net income negative (-$36.4M)",
+        "2025-03-10T09:30:00-04:00 [SENTIMENT] Analyst ratings mixed: 2 Buy, 13 Hold, 1 Sell, 3 Strong Sell (as of 2025-03-01); no consensus support",
+        "2025-03-10T09:30:00-04:00 [PRICE] Last EOD close $5.82 (2025-03-07); return_5d -12.74%, return_20d -31.29%; acquisition premium may not offset broader weakness",
+        "2025-03-10T09:30:00-04:00 [VETO_CHECK] insufficient_evidence (tripped: missing SEC 8-K, institutional ownership, narrative analysis); missing_data_persists_beyond_tolerance (tripped: multiple critical blocks not_evaluated or failed); information_integrity_veto (tripped: low-tier-only sources, fail-closed); lookahead_data_used (not tripped: data_after_cutoff_used=false)",
+        "2025-03-10T09:30:00-04:00 [DECISION] Veto conditions tripped \u2192 position_size_pct=0.0; decision=watch (not veto, because catalyst credible and macro allows equity; not buy, because evidence insufficient and corroboration missing)"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-10T09:45:00-04:00",
+        "ticker": "RDFN",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:110e4509f34a7fe6627ceb88b7b06635750473302ac46741fe765130271c3e81"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show 27 views on 2025-03-10 (baseline ~40-50 range); no abnormal retail attention spike detected. Community_size and ownership_positioning blocks marked not_evaluated in v1.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Acquisition announcement sourced from Benzinga/Polygon (T3/T4 sources); no T1/T2 primary source (SEC 8-K filing) available for confirmation. Information integrity assessment flags low-tier-only sources and marks use_as_primary_signal_allowed=false.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Essential blocks missing or marked not_evaluated: filing_confirmation (status=not_evaluated, sec_edgar adapter failed), narrative_price_gap_assessment (status=not_evaluated, pending Agent 03 LLM reasoning), information_integrity_assessment (status=insufficient_evidence, low-tier-only sources, fail-closed). Upstream agent outputs (Agent 02 narrative, Agent 03 alt-data verification, Agent 04 fundamentals) not available in baseline solo mode. Cannot confirm thesis without multi-agent decomposition.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment mixed (2 Buy, 13 Hold, 1 Sell, 3 Strong Sell as of 2025-03-01); no consensus support for acquisition. Sentiment data marked descriptor-only per \u00a711.13; cannot be used as primary signal.",
+      "ownership_risk_adjustment_note": "Ownership positioning data not available (sec_13f, sec_form4 adapters failed). Cannot assess institutional sponsorship or smart-money positioning on deal.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "Institutional ownership data not available; cannot assess smart-money support for acquisition.",
+      "smart_money_benchmark_note": "No institutional ownership or 13F data available; cannot benchmark against smart-money positioning.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+      "execution_timestamp": "2025-03-10T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:892be319bb238311f288d1dfef95155155134059748849e96d928a39ea1af4ca",
+      "immutable_decision_flag": true
+    }
+  }
+}

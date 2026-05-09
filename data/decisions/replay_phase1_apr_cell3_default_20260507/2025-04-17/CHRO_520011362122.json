@@ -1,0 +1,833 @@
+{
+  "trigger_id": "520011362122",
+  "ticker": "CHRO",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-04-17T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 191.0,
+  "trigger_cost_usd": 0.234842,
+  "cumulative_cost_usd": 6.335721,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "CHRO",
+    "name": "CHRO",
+    "close": 18.4,
+    "prior_close": 12.55,
+    "change": 10.349999999999998,
+    "change_pct": 82.47011952191234,
+    "volume": 3960439.9,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-04-17",
+    "prior_trading_day": "2025-04-16",
+    "available_as_of": "2025-04-17T16:00:00-05:00",
+    "today_open": 22.9,
+    "today_volume": 3960439.9,
+    "eps_ttm": -1.38,
+    "operating_margin_ttm": -811.3102030888188,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2025-03-27 17:08:42",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:aee897fda42c7ada208a54fd0d2a76b1cd0a19f906ccdfd7235f2989ff1f3fb1",
+  "locked_decision_id": "sha256:b2882626eacf35ec5cafa9e68d87376bb12e35d3b4f0237720a759e6b9204973",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_v1",
+    "prompt_version": "2026-05-03_universal_soft_veto",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "CHRO",
+    "decision_timestamp": "2025-04-17T09:30:00-04:00",
+    "data_available_as_of": "2025-04-17T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short candidate evaluation: VETO due to unresolved SEC registration status and insufficient evidence coherence",
+    "confidence": "high",
+    "evidence_used": [
+      "narrative_event.verdict=supported (merger catalyst is real and specific)",
+      "narrative_event.risk_flags: SEC registration status unclear (cik_not_found)",
+      "surge_short.recommended_action=needs_more_evidence",
+      "surge_short.short_thesis_status=uncertain",
+      "surge_short.evidence_sufficiency=insufficient",
+      "information_integrity_assessment.use_as_primary_signal_allowed=false",
+      "information_integrity_assessment.evidence_credibility_assessment=low_tier_only",
+      "filing_confirmation.SEC_8K_confirmation=null (adapter failed: cik_not_found)",
+      "fundamental_snapshot.status=insufficient_evidence",
+      "valuation_snapshot: negative PE (-0.586), negative EV/EBITDA (-0.559), net margin -257.93%",
+      "price_snapshot.trigger_day_open=22.9 vs prior_close=13.0 (+76.2% gap)",
+      "corporate_calendar: recent earnings miss (2025-03-27: -0.32 EPS vs -0.21 est)",
+      "risk.veto_conditions_evaluated: all five conditions evaluated; none tripped mechanically",
+      "adas_lagged: prior-day framework showed high confidence_dispersion (std_proxy=0.7454) on unrelated ticker (HAS), indicating system uncertainty on similar candidates"
+    ],
+    "evidence_missing": [
+      "SEC 8-K filing confirmation (adapter failed: cik_not_found)",
+      "SEC Form 4 insider trading (adapter failed: cik_not_found)",
+      "SEC 13F institutional ownership (adapter failed: not_available_on_current_plan)",
+      "Fundamental quarterly data (status=insufficient_evidence)",
+      "Clinical trial registry confirmation for ZELSUVMI (biotech sector-expected evidence)",
+      "FDA approval documentation (biotech sector-expected evidence)",
+      "Official company press release (only GlobeNewswire reprint available)",
+      "Ligand Pharmaceuticals (LGND) SEC filing corroboration",
+      "Deal structure, consideration, and regulatory approval timeline"
+    ],
+    "reasoning_summary": "CHRO surged +76.2% on merger announcement (Ligand subsidiary Pelthos combining with Channel Therapeutics). Narrative agent confirms catalyst is real and specific (high confidence). However, surge_short agent recommends 'needs_more_evidence' due to critical structural absence: SEC Edgar adapter returned cik_not_found, indicating CHRO may not be a valid SEC filer. This is a disqualifying condition for a surge-short entry. The merger narrative is uncorroborated (low-tier sources only, T3/T4, use_as_primary_signal_allowed=false per information_integrity_assessment). Fundamentals are deeply negative (negative PE, -257.93% net margin, recent earnings miss). The absence of SEC registration status prevents a defensible short thesis: either CHRO is not legitimately listed, or the ticker mapping is incorrect. Under \u00a713.6 SOFT_REASONING and \u00a76 SECTOR-AWARE REASONING, a biotech company claiming an FDA-approved product and material M&A should have verifiable SEC filings and clinical evidence. The structural absence of SEC registration is a critical red flag that must be resolved before entry. Risk agent passed all hard-veto conditions mechanically (no sleeve cap breach, no lookahead violation, no critical data quality flags, no anti-pollution veto per \u00a75.17 surge-short carve-out). However, the PM agent retains discretion to emit 'no_trade' when evidence does not cohere into a defensible thesis. The preponderance of evidence points to: (1) real catalyst (merger announcement), (2) deeply negative fundamentals, (3) unverified SEC registration status, (4) low-tier sourcing, (5) no institutional support. The bear thesis cannot be cleanly supported without resolving the SEC registration question. Emitting 'no_trade' is appropriate when present evidence does not cohere into either direction; this is not a defensive deferral but a reasoned assessment that the candidate lacks sufficient coherence for entry.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If SEC CIK is confirmed and CHRO is a valid registered filer with 8-K disclosure of the merger, the structural absence concern is resolved and the short thesis becomes evaluable",
+      "If Ligand Pharmaceuticals (LGND) SEC filings corroborate the merger and show binding terms with regulatory approval timeline, the catalyst gains credibility",
+      "If clinical trial registry or FDA approval documentation is confirmed for ZELSUVMI, the biotech sector-expected evidence gap is closed",
+      "If institutional ownership data becomes available and shows significant smart-money support, the thesis gains credibility"
+    ],
+    "risk_flags": [
+      "CRITICAL: SEC registration status unconfirmed (cik_not_found). CHRO may not be a valid SEC filer, which is highly anomalous for a listed equity on AMEX.",
+      "Merger narrative uncorroborated: low-tier sources only (T3/T4), no T1/T2 primary disclosure, use_as_primary_signal_allowed=false",
+      "No SEC 8-K filing confirmation despite public announcement of material M&A event",
+      "Deeply negative fundamentals: negative PE, negative EV/EBITDA, -257.93% net margin, recent earnings miss",
+      "Biotech sector claim (FDA-approved product) lacks clinical trial registry or FDA filing confirmation",
+      "No institutional ownership data available; cannot assess smart-money positioning",
+      "Merger announcement lacks detail on deal structure, consideration, or regulatory approval timeline",
+      "Information integrity assessment explicitly flags narrative as uncorroborated and low-tier-only",
+      "Stock in sustained decline (60-day return -53.01%) well before announcement, suggesting distressed transaction"
+    ],
+    "suggested_improvements": [
+      "Manual verification: confirm CHRO's SEC CIK and registration status independently; if cik_not_found is correct, escalate as potential delisting or ticker-mapping error",
+      "Retrieve SEC EDGAR 8-K filing directly to confirm merger announcement and terms",
+      "Cross-reference merger claim with Ligand Pharmaceuticals (LGND) SEC filings and press releases",
+      "Retrieve clinical trial registry (ClinicalTrials.gov) data for ZELSUVMI to verify FDA approval claim",
+      "Obtain institutional ownership data (13F) to assess whether smart money is supporting the thesis",
+      "Verify GlobeNewswire press release authenticity and check for official company confirmation",
+      "Assess deal structure, consideration, and regulatory approval timeline from merger agreement"
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "sec_filing_adapter_error",
+        "severity": "critical",
+        "detail": "sec_edgar adapter returned cik_not_found for CHRO \u2014 no CIK match in SEC Edgar. Suggests CHRO may not be a registered public company or may be delisted."
+      },
+      {
+        "kind": "information_integrity_low_tier",
+        "severity": "warning",
+        "detail": "information_integrity_assessment.evidence_credibility_assessment=low_tier_only (T3=1, T4=2, T1=0, T2=0). use_as_primary_signal_allowed=false per schema v1.1 decision #8."
+      },
+      {
+        "kind": "filing_confirmation_unavailable",
+        "severity": "warning",
+        "detail": "filing_confirmation.SEC_8K_confirmation=null. No SEC 8-K filing found to corroborate merger announcement."
+      },
+      {
+        "kind": "fundamental_snapshot_insufficient",
+        "severity": "warning",
+        "detail": "fundamental_snapshot.status=insufficient_evidence. No income statement, balance sheet, or cash flow data available for CHRO."
+      },
+      {
+        "kind": "news_single_source",
+        "severity": "warning",
+        "detail": "news_event_summary contains only 1 item from 1 source (polygon_news). ndi_metadata shows insufficient_sources (n_sources=1, requires \u22652)."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet correctly flags the structural absence of SEC filings (cik_not_found) and the low-tier sourcing of the merger narrative. However, the packet does not explicitly state whether CHRO is a valid US-listed equity or whether the ticker mapping is incorrect. The absence of a CIK is a critical red flag that should be escalated to manual verification before any short position is initiated. A future version should add a 'regulatory_status_unknown' or 'cik_not_found_risk' field to the information_integrity_assessment block to flag entities without SEC registration.",
+    "recommended_followups": [
+      "Manual verification: confirm CHRO's SEC registration status and CIK; if cik_not_found is correct, escalate as potential delisting or ticker-mapping error",
+      "Retrieve Ligand Pharmaceuticals (LGND) SEC filings to cross-reference the Pelthos-Channel merger claim",
+      "Obtain official press release from Ligand or Channel Therapeutics (not GlobeNewswire reprint) to verify deal authenticity",
+      "Search ClinicalTrials.gov for ZELSUVMI and Molluscum contagiosum trials to verify FDA approval claim",
+      "Monitor for SEC 8-K filing within 4 business days of announcement (if CHRO is a valid filer)",
+      "Assess whether the surge is driven by retail momentum (meme stock) or legitimate M&A thesis"
+    ],
+    "candidate_type": "surge_short",
+    "decision": "no_trade",
+    "position_size_pct": 0.0,
+    "reason": "Surge-short candidate CHRO lacks coherent bear thesis due to unresolved SEC registration status (cik_not_found). Merger catalyst is real and specific, but uncorroborated (low-tier sources, no SEC 8-K). Fundamentals deeply negative but cannot support short without resolving regulatory status. Preponderance of evidence does not cohere into defensible entry. No_trade is appropriate when present evidence does not support either direction.",
+    "risk_notes": [
+      "SEC registration status unconfirmed (cik_not_found) \u2014 critical structural red flag",
+      "Merger narrative uncorroborated (low-tier sources only, use_as_primary_signal_allowed=false)",
+      "No SEC 8-K filing confirmation despite material M&A announcement",
+      "Deeply negative fundamentals (negative PE, -257.93% net margin, recent earnings miss)",
+      "Biotech sector-expected evidence absent (clinical trial registry, FDA filing confirmation)",
+      "No institutional ownership data available",
+      "Stock in sustained decline (60-day return -53.01%) before announcement"
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long entries only. Candidate type is surge_short; condition not applicable."
+      },
+      {
+        "name": "short_sleeve_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "No position size proposed; cannot evaluate. Assume no breach pending PM sizing decision."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "Scanned data_quality_flags[*].severity for 'critical'. Found: 'warning' and 'info' only. No 'critical' severity flags present."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate type is surge_short; \u00a75.13(d) INAPPLICABLE per \u00a75.17 surge-short carve-out. Condition does not apply."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition does not trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto conditions evaluated",
+      "\u00a75.13(a) equity cap breach \u2014 not applicable (surge_short)",
+      "\u00a75.13(b) short sleeve cap breach \u2014 no position size data; cannot evaluate",
+      "\u00a75.13(c) critical data quality flag \u2014 none found",
+      "\u00a75.13(d) anti-pollution integrity veto \u2014 not applicable (surge_short per \u00a75.17)",
+      "\u00a75.13(e) lookahead veto \u2014 data_after_cutoff_used=false, lookahead_safe=true; does not trip",
+      "Result: NO HARD VETO. Candidate passes hard-veto gate.",
+      "\u00a713.6 SOFT_REASONING: Preponderance of evidence assessment",
+      "Narrative agent: catalyst is real and specific (supported), but SEC registration status unconfirmed (critical risk flag)",
+      "Surge-short agent: recommended_action=needs_more_evidence, short_thesis_status=uncertain, evidence_sufficiency=insufficient",
+      "Information integrity: use_as_primary_signal_allowed=false, evidence_credibility_assessment=low_tier_only",
+      "Fundamental assessment: deeply negative (negative PE, -257.93% net margin, recent earnings miss)",
+      "Sector-aware reasoning: biotech company claiming FDA-approved product and material M&A should have verifiable SEC filings and clinical evidence; structural absence of SEC registration is bear-thesis signal but disqualifies entry without resolution",
+      "PM synthesis: bear thesis cannot be cleanly supported without resolving SEC registration status; preponderance does not cohere into defensible entry",
+      "Decision: no_trade (not a defensive deferral, but a reasoned assessment that candidate lacks sufficient coherence for entry)"
+    ],
+    "decision_log": [
+      "2025-04-17T09:30:00-04:00 \u2014 Received surge_short candidate CHRO with +76.2% gap (trigger_day_open 22.9 vs prior_close 13.0)",
+      "2025-04-17T09:30:00-04:00 \u2014 Narrative agent: catalyst identified as M&A (Ligand/Pelthos-Channel merger), verdict=supported, confidence=high, but risk_flags include 'CRITICAL: SEC filing adapter returned cik_not_found'",
+      "2025-04-17T09:30:00-04:00 \u2014 Alt-data verify agent: schema validation failed, returned needs_more_evidence",
+      "2025-04-17T09:30:00-04:00 \u2014 Surge-short agent: recommended_action=needs_more_evidence, short_thesis_status=uncertain, evidence_sufficiency=insufficient, hold_review_exit_reason='Structural absence of SEC registration (cik_not_found) and SEC 8-K filing confirmation prevents defensible short thesis'",
+      "2025-04-17T09:30:00-04:00 \u2014 Risk agent: hard-veto evaluation passed; no veto conditions (a)-(e) tripped; candidate eligible for downstream PM evaluation",
+      "2025-04-17T09:30:00-04:00 \u2014 PM synthesis: narrative catalyst is real and specific, but uncorroborated (low-tier sources, use_as_primary_signal_allowed=false); fundamentals deeply negative; SEC registration status unconfirmed (cik_not_found); biotech sector-expected evidence absent (clinical trial registry, FDA filing); no institutional ownership data",
+      "2025-04-17T09:30:00-04:00 \u2014 PM sector-aware reasoning: biotech company claiming FDA-approved product (ZELSUVMI) and material M&A should have verifiable SEC filings, clinical trial registry entries, and institutional positioning; structural absence of SEC registration is bear-thesis signal but disqualifies entry without resolution",
+      "2025-04-17T09:30:00-04:00 \u2014 PM preponderance assessment: bear thesis cannot be cleanly supported without resolving SEC registration status; evidence does not cohere into defensible entry; no_trade is appropriate when present evidence does not support either direction",
+      "2025-04-17T09:30:00-04:00 \u2014 DECISION: no_trade, position_size_pct=0.0"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-17T09:45:00-04:00",
+      "ticker": "CHRO",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026-05-03_universal_soft_veto",
+      "evidence_packet_hash": "sha256:484448283f474c8096f35537613df3bcf27fdba4ed79e5b2a863b4b0fbbb64e2"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews show modest attention (peak 10 views on 2025-04-01, 3 views on decision date 2025-04-17), consistent with micro-cap biotech. No meme-stock or retail-attention indicators detected.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "dismiss",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "Merger announcement sourced from GlobeNewswire (T3 source) with no T1/T2 primary disclosure confirmation. No SEC 8-K filing available to corroborate. Narrative is real and specific but uncorroborated.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "SEC registration status unconfirmed (cik_not_found); cannot confirm thesis without resolving regulatory status",
+    "sentiment_risk_adjustment_note": "Analyst coverage minimal (1 Buy rating as of 2024-11-01, no recent updates). No institutional ownership data available. Sentiment data is stale and insufficient to support thesis.",
+    "ownership_risk_adjustment_note": "No institutional ownership data available (sec_13f adapter failed: not_available_on_current_plan). Cannot assess smart-money positioning or crowding risk.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": "No institutional ownership data available. Cannot assess whether smart money is supporting the merger thesis.",
+    "smart_money_benchmark_note": "No institutional positioning data available. Cannot benchmark against smart-money activity.",
+    "decision_mode": "historical_replay",
+    "allowed_data_cutoff": "2025-04-17T09:30:00-04:00",
+    "execution_timestamp": "2025-04-17T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:3165deff27fb9aba5d5c6c5ec42b24ca931a49108ad287efbef7f8739b7b20a3",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CHRO",
+      "decision_timestamp": "2025-04-17T09:30:00-04:00",
+      "data_available_as_of": "2025-04-17T09:30:00-04:00",
+      "decision_or_assessment": "Catalyst Classification: M&A / Corporate Action",
+      "confidence": "high",
+      "evidence_used": [
+        "news_event_summary.items[0].title",
+        "news_event_summary.items[0].text_excerpt",
+        "news_event_summary.items[0].published_at",
+        "news_event_summary.items[0].publisher",
+        "news_event_summary.items[0].keywords",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "corporate_calendar.events_near_decision",
+        "alternative_data_features.attention.wikipedia_pageviews"
+      ],
+      "evidence_missing": [
+        "filing_confirmation.SEC_8K_confirmation (adapter returned cik_not_found)",
+        "fundamental_snapshot.snapshot_quarter (status=insufficient_evidence)",
+        "information_integrity_assessment.primary_source_found (T1/T2 sources absent)",
+        "sentiment_community_ownership_evidence.ownership_positioning (no 13F data)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)"
+      ],
+      "reasoning_summary": "CATALYST IDENTIFICATION: The single news item in the packet (published 2025-04-17 10:00 UTC, after decision_timestamp 09:30 ET) reports a merger agreement between Ligand Pharmaceuticals' Pelthos Therapeutics subsidiary and Channel Therapeutics (ticker CHRO). The announcement is concrete and specific: named parties (Ligand, Pelthos, Channel), named product (ZELSUVMI, FDA-approved), named indication (Molluscum contagiosum infections), and explicit transaction type (combination/merger). Publisher is GlobeNewswire Inc., a T3 source (reputable but not T1/T2 primary disclosure). SPECIFICITY ASSESSMENT: The claim is highly specific \u2014 it names the acquirer, the target, the product, regulatory status, and therapeutic use. This is NOT buzzword bingo or vague narrative. The catalyst maps to ALTERNATIVE_DATA_FRAMEWORK \u00a73.B taxonomy entry: 'M&A / Corporate Action / Merger or Acquisition'. PRICE ACTION CONTEXT: Stock closed 2025-04-16 at $12.50 (prior close $13.00, -3.8% intraday). 5-day return is -10.07%, 20-day is -21.38%, 60-day is -53.01%. The stock has been in sustained decline well before the announcement. Wikipedia pageviews show modest attention (peak 10 views on 2025-04-01, 3 views on decision date 2025-04-17), consistent with a micro-cap biotech. STRUCTURAL ABSENCE ANALYSIS: Filing confirmation adapter returned cik_not_found \u2014 CHRO does not have a CIK in SEC Edgar, suggesting it may be a shell, delisted, or non-reporting entity. This is a CRITICAL structural absence. The company_claim (merger with Ligand subsidiary) is concrete and verifiable, but the absence of SEC filing infrastructure for CHRO itself raises questions about the entity's regulatory status and whether it is a legitimate public company. INFORMATION INTEGRITY: The news source is singular (polygon_news returned 1 row; ndi_metadata shows insufficient_sources with n_sources=1). No T1 or T2 primary disclosure found. The information_integrity_assessment block explicitly flags use_as_primary_signal_allowed=false due to pollution-defense layer not implemented. This is a DESCRIPTOR-ONLY signal per \u00a711.6. SECTOR REASONING: CHRO appears to be a biotech/pharma entity (keywords include Pelthos, ZELSUVMI, Molluscum contagiosum, FDA-approved). For a legitimate biotech company, we would expect SEC filings (10-K, 8-K, proxy), clinical trial registry entries, and regulatory correspondence. The absence of a CIK is highly anomalous for a publicly traded biotech. This structural absence relative to sector-expected evidence is a BEAR-THESIS-LEANING signal per \u00a76 SECTOR-AWARE REASONING SEQUENCE. VERDICT REASONING: The catalyst itself (merger announcement) is SUPPORTED by the news article \u2014 it is concrete, specific, and published by a reputable source. However, the underlying entity (CHRO) appears to lack basic SEC registration infrastructure, which is inconsistent with a legitimate U.S. public company. The catalyst is real and specific, but the company's regulatory status is opaque. For a surge_short candidate, this structural absence would be highly relevant. For a quality_long candidate, the absence of corroboration via SEC filings is a material gap. Given the concrete nature of the announcement but the structural absence of SEC infrastructure, the verdict is SUPPORTED (the catalyst is real and specific) but with HIGH UNCERTAINTY about the entity's legitimacy.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If CHRO is a shell company or non-reporting entity, the merger announcement may not be binding or may not result in shareholder value transfer.",
+        "If the SEC filing adapter failure (cik_not_found) indicates CHRO is delisted or suspended, the announcement may be stale or the company may be in distress.",
+        "If Ligand Pharmaceuticals (LGND) issues a contradictory statement or withdraws the merger agreement, the catalyst is invalidated.",
+        "If the merger is contingent on regulatory approval and FDA denies approval for ZELSUVMI, the transaction may fail."
+      ],
+      "risk_flags": [
+        "CRITICAL: SEC filing adapter returned cik_not_found \u2014 CHRO does not appear to have a CIK in SEC Edgar. This is highly anomalous for a publicly traded company and suggests potential delisting, shell status, or regulatory suspension.",
+        "Single news source (polygon_news) with no T1/T2 primary disclosure confirmation. Information integrity assessment flags use_as_primary_signal_allowed=false.",
+        "Stock in sustained decline (60-day return -53.01%) well before announcement. Merger may be distressed transaction.",
+        "No SEC 8-K filing confirmation available (filing_confirmation.SEC_8K_confirmation=null). Announcement not yet corroborated by official SEC disclosure.",
+        "Analyst coverage minimal: FMP sentiment shows only 1 Buy rating (as of 2024-11-01), no recent updates. No institutional ownership data available.",
+        "Micro-cap liquidity: average 20-day volume 513 shares, relative volume 0.224x. Announcement may not move price due to illiquidity."
+      ],
+      "suggested_improvements": [
+        "Obtain SEC Edgar CIK for CHRO or confirm delisting status. If CHRO is not a registered public company, the merger announcement may not be material to equity holders.",
+        "Cross-reference Ligand Pharmaceuticals (LGND) press releases and SEC filings to corroborate the merger announcement and obtain deal terms (consideration, timing, conditions).",
+        "Verify ZELSUVMI FDA approval status via FDA Orange Book or clinical trial registry (clinicaltrials.gov) to confirm regulatory claim.",
+        "Monitor for SEC 8-K filing by Ligand (LGND) disclosing the merger agreement. If CHRO is a subsidiary or shell, the 8-K may be filed by LGND instead.",
+        "Assess whether CHRO shareholders have voting rights or economic interest in the merger. If CHRO is a shell or wholly-owned subsidiary, the announcement may not affect public equity holders."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "sec_filing_adapter_error",
+          "severity": "critical",
+          "detail": "sec_edgar adapter returned cik_not_found for CHRO \u2014 no CIK match in SEC Edgar. Suggests CHRO may not be a registered public company or may be delisted."
+        },
+        {
+          "kind": "news_single_source",
+          "severity": "warning",
+          "detail": "news_event_summary contains only 1 item from 1 source (polygon_news). ndi_metadata shows insufficient_sources (n_sources=1, requires \u22652 for NDI calculation)."
+        },
+        {
+          "kind": "information_integrity_low_tier",
+          "severity": "warning",
+          "detail": "information_integrity_assessment.evidence_credibility_assessment=low_tier_only (T3=1, T4=2, T1=0, T2=0). use_as_primary_signal_allowed=false per schema v1.1 decision #8."
+        },
+        {
+          "kind": "filing_confirmation_unavailable",
+          "severity": "warning",
+          "detail": "filing_confirmation.SEC_8K_confirmation=null. No SEC 8-K filing found to corroborate merger announcement."
+        },
+        {
+          "kind": "fundamental_snapshot_insufficient",
+          "severity": "info",
+          "detail": "fundamental_snapshot.status=insufficient_evidence. No income statement, balance sheet, or cash flow data available for CHRO."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure does not distinguish between 'adapter wired but returned 0 rows' (informative absence) and 'adapter not wired / endpoint 404' (genuinely silent). The sec_edgar adapter returned cik_not_found, which is a specific error class indicating CHRO is not in the SEC database \u2014 this is a MATERIAL finding that should elevate risk assessment, but the current schema treats it as a generic data_unavailable flag. A future version should add a 'regulatory_status_unknown' or 'cik_not_found_risk' field to the information_integrity_assessment block to flag entities without SEC registration.",
+      "recommended_followups": [
+        "Verify CHRO's regulatory status: Is it a registered public company? Is it delisted? Is it a shell or subsidiary?",
+        "Obtain Ligand Pharmaceuticals (LGND) SEC filings (8-K, press release) to corroborate the merger announcement and extract deal terms.",
+        "Confirm ZELSUVMI FDA approval status and commercial stage.",
+        "Assess shareholder structure: Does CHRO have public equity holders, or is it wholly-owned by Ligand or another entity?",
+        "Monitor price action and volume post-announcement to assess market reaction and liquidity."
+      ],
+      "catalyst_type": "M&A / Corporate Action / Merger or Acquisition",
+      "catalyst_specificity_score": 0.85,
+      "vague_narrative_flag": false,
+      "company_claim": "Ligand Pharmaceuticals and Channel Therapeutics announced a merger agreement, where Ligand's Pelthos Therapeutics subsidiary will be combined with Channel. The combined company will focus on commercializing Pelthos' FDA-approved ZELSUVMI for the treatment of Molluscum contagiosum infections.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "M&A / Corporate Action / Merger or Acquisition (ALTERNATIVE_DATA_FRAMEWORK \u00a73.B)",
+        "Regulatory / FDA Event (ZELSUVMI FDA-approved status mentioned)",
+        "Product Commercialization (focus on commercializing ZELSUVMI)"
+      ],
+      "evidence_sufficiency": "partial",
+      "verdict": "supported"
+    },
+    "alt_data_verify": {
+      "agent_schema_name": "AltDataVerificationAgentOutput",
+      "decision_or_assessment": "needs_more_evidence",
+      "confidence": "low",
+      "evidence_used": [],
+      "evidence_missing": [
+        "schema_validation_failed"
+      ],
+      "reasoning_summary": "1 validation error for AltDataVerificationAgentOutput\nadapter_selection_reason_detail\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Biotech sector should pr...-data source with rows.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden",
+      "uncertainty": "high",
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Agent",
+      "schema_version": "surge_short_agent_v0.4",
+      "prompt_version": "v0.4_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CHRO",
+      "decision_timestamp": "2025-04-17T09:30:00-04:00",
+      "data_available_as_of": "2025-04-17T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short evaluation for CHRO on merger announcement catalyst",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open (22.9) vs prior_close (13.0) = +76.2% gap",
+        "news_event_summary: Ligand/Pelthos-Channel merger announced 2025-04-17 10:00 UTC",
+        "valuation_snapshot: negative PE (-0.586), negative EV/EBITDA (-0.559), negative net margin (-257.93%)",
+        "fundamental_snapshot: status=insufficient_evidence, no PIT-safe quarterly data available",
+        "corporate_calendar: recent earnings 2025-03-27 showed EPS miss (-0.32 vs -0.21 est)",
+        "filing_confirmation: SEC Edgar adapter failed (cik_not_found) \u2014 no 8-K confirmation available",
+        "information_integrity_assessment: low_tier_only sources (T3=1, T4=2), uncorroborated, use_as_primary_signal_allowed=false",
+        "alternative_data_features: Wikipedia pageviews show modest spike (10 views 2025-04-01, 3 views 2025-04-17), no GitHub/tech activity",
+        "sentiment_community_ownership_evidence: analyst rating 1 Buy (stale, from 2024-11), no institutional ownership data"
+      ],
+      "evidence_missing": [
+        "SEC 8-K filing confirmation (adapter failed: cik_not_found)",
+        "SEC Form 4 insider trading (adapter failed: cik_not_found)",
+        "SEC 13F institutional ownership positioning (adapter failed: not_available_on_current_plan)",
+        "Fundamental snapshot quarterly data (status=insufficient_evidence, no PIT-safe rows)",
+        "GitHub/developer activity (unmapped_ticker)",
+        "Clinical trial registry or FDA filing confirmation (biotech sector-expected evidence absent)",
+        "Press release from official company source (only GlobeNewswire article, T3 source)",
+        "Detailed merger terms, deal structure, or regulatory approval timeline",
+        "Current institutional ownership concentration or smart-money positioning"
+      ],
+      "reasoning_summary": "CHRO surged +76.2% on announcement of Ligand subsidiary Pelthos combining with Channel Therapeutics. The catalyst is a merger claim published by GlobeNewswire (T3 source) with no corroborating SEC 8-K filing, no insider Form 4 activity, and no institutional 13F positioning data. The company's fundamentals are deeply negative: PE ratio is negative (unprofitable), net margin is -257.93%, and the most recent earnings (2025-03-27) missed estimates. Critically, the SEC Edgar adapter failed with 'cik_not_found' \u2014 CHRO does not appear to have a valid CIK in the SEC system, which is highly unusual for a listed equity on AMEX. This structural absence is a major red flag: a legitimate US-listed company announcing a material M&A transaction should have SEC filings and a CIK. The absence of SEC confirmation, combined with negative fundamentals, low-tier news sourcing, and the inability to verify the company's SEC registration status, suggests either (1) the merger narrative is unverified/speculative, (2) CHRO is not a properly registered SEC filer, or (3) the ticker mapping is incorrect. The alternative-data footprint is minimal (Wikipedia pageviews only, no GitHub, no clinical data). The information_integrity_assessment explicitly flags the narrative as 'uncorroborated' and 'low_tier_only' with use_as_primary_signal_allowed=false. Under \u00a713.6 SOFT_REASONING and the SECTOR-AWARE REASONING SEQUENCE, a biotech/pharma company claiming an FDA-approved product (ZELSUVMI) and a material M&A transaction SHOULD have verifiable SEC filings, clinical trial registry entries, and institutional positioning. The structural absence of SEC registration (cik_not_found) is itself a bear-thesis signal: either the company is not legitimately listed, or the narrative is not supported by official disclosure.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If SEC 8-K filing is subsequently confirmed and shows legitimate merger agreement with binding terms and regulatory approval timeline",
+        "If institutional ownership data becomes available and shows significant smart-money support for the merger thesis",
+        "If clinical trial registry or FDA approval documentation is confirmed for ZELSUVMI",
+        "If CIK is corrected and SEC filings become accessible, showing proper registration and recent 8-K disclosure"
+      ],
+      "risk_flags": [
+        "SEC registration status unclear: cik_not_found error suggests CHRO may not be a properly registered SEC filer",
+        "No SEC 8-K confirmation of material M&A event despite public announcement",
+        "Narrative sourced from low-tier (T3/T4) sources only; no primary source confirmation",
+        "Deeply negative fundamentals: negative PE, negative EV/EBITDA, -257.93% net margin",
+        "Recent earnings miss (2025-03-27: -0.32 EPS vs -0.21 est) suggests operational weakness",
+        "No institutional ownership data available; cannot assess smart-money positioning",
+        "Biotech sector claim (FDA-approved product) lacks clinical trial registry or FDA filing confirmation",
+        "Merger announcement lacks detail on deal structure, consideration, or regulatory approval timeline",
+        "Information integrity assessment explicitly flags narrative as uncorroborated and low-tier-only"
+      ],
+      "suggested_improvements": [
+        "Verify CHRO's SEC CIK and registration status independently; if cik_not_found is correct, this is a critical disqualifier",
+        "Obtain SEC EDGAR 8-K filing directly to confirm merger announcement and terms",
+        "Cross-reference merger claim with Ligand Pharmaceuticals (LGND) SEC filings and press releases",
+        "Retrieve clinical trial registry (ClinicalTrials.gov) data for ZELSUVMI to verify FDA approval claim",
+        "Obtain institutional ownership data (13F) to assess whether smart money is supporting the thesis",
+        "Verify GlobeNewswire press release authenticity and check for official company confirmation",
+        "Assess deal structure, consideration, and regulatory approval timeline from merger agreement"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "adapter_failure",
+          "severity": "critical",
+          "detail": "sec_edgar: cik_not_found \u2014 CHRO does not have a valid CIK in SEC system; cannot retrieve 8-K or other filings"
+        },
+        {
+          "kind": "adapter_failure",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 no insider trading data available"
+        },
+        {
+          "kind": "adapter_failure",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable"
+        },
+        {
+          "kind": "adapter_failure",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no developer activity data (not applicable for biotech, but indicates sparse alt-data footprint)"
+        },
+        {
+          "kind": "information_integrity",
+          "severity": "critical",
+          "detail": "information_integrity_assessment: low_tier_only sources (T3=1, T4=2), uncorroborated, use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "fundamental_data_missing",
+          "severity": "warning",
+          "detail": "fundamental_snapshot: status=insufficient_evidence; no PIT-safe quarterly data available for analysis"
+        },
+        {
+          "kind": "valuation_data_not_pit_safe",
+          "severity": "warning",
+          "detail": "valuation_snapshot: TTM ratios used; current_snapshot_not_PIT_safe=true; DCF is display-only"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; only 1 item (the merger announcement) retained"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet correctly flags the structural absence of SEC filings (cik_not_found) and the low-tier sourcing of the merger narrative. However, the packet does not explicitly state whether CHRO is a valid US-listed equity or whether the ticker mapping is incorrect. The absence of a CIK is a critical red flag that should be escalated to the PM agent for manual verification before any short position is initiated.",
+      "recommended_followups": [
+        "Manual verification: confirm CHRO's SEC registration status and CIK; if cik_not_found is correct, escalate as potential delisting or ticker-mapping error",
+        "Retrieve Ligand Pharmaceuticals (LGND) SEC filings to cross-reference the Pelthos-Channel merger claim",
+        "Obtain official press release from Ligand or Channel Therapeutics (not GlobeNewswire reprint) to verify deal authenticity",
+        "Search ClinicalTrials.gov for ZELSUVMI and Molluscum contagiosum trials to verify FDA approval claim",
+        "Monitor for SEC 8-K filing within 4 business days of announcement (if CHRO is a valid filer)",
+        "Assess whether the surge is driven by retail momentum (meme stock) or legitimate M&A thesis"
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "merger_announcement",
+      "company_claim": "Ligand subsidiary Pelthos Therapeutics to combine with Channel Therapeutics; combined entity to commercialize FDA-approved ZELSUVMI for Molluscum contagiosum",
+      "industry": "biotech_pharma",
+      "value_creation_assessment": "unclear",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "unclear",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "uncertain",
+      "evidence_sufficiency": "insufficient",
+      "recommended_action": "needs_more_evidence",
+      "initial_position_pct": 0.0,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Structural absence of SEC registration (cik_not_found) and SEC 8-K filing confirmation prevents defensible short thesis. Merger narrative is uncorroborated (low-tier sources only). Fundamentals are deeply negative, but without SEC confirmation of the company's registration status, the short thesis cannot be cleanly supported. Recommend manual verification of CHRO's SEC status before proceeding.",
+      "missing_data_warnings": [
+        "SEC 8-K filing confirmation absent (adapter failed: cik_not_found)",
+        "SEC Form 4 insider trading data absent (adapter failed: cik_not_found)",
+        "SEC 13F institutional ownership data absent (adapter failed: not_available_on_current_plan)",
+        "Fundamental quarterly data absent (status=insufficient_evidence)",
+        "Clinical trial registry data absent (biotech sector-expected evidence)",
+        "FDA approval documentation absent (biotech sector-expected evidence)",
+        "Official company press release absent (only GlobeNewswire reprint available)"
+      ],
+      "audit_rationale": "CHRO surged +76.2% on merger announcement, but the catalyst is uncorroborated (low-tier sources only, use_as_primary_signal_allowed=false) and lacks SEC 8-K confirmation. Critically, SEC Edgar adapter failed with cik_not_found, suggesting CHRO may not be a valid SEC filer \u2014 a structural red flag for a listed equity. Fundamentals are deeply negative (negative PE, -257.93% net margin, recent earnings miss). However, the absence of SEC registration status prevents a defensible short thesis: either the company is not legitimately listed, or the ticker mapping is incorrect. Recommend manual verification before initiating short position. Under \u00a713.6 SOFT_REASONING, structural absence of SEC filings for a claimed material M&A event is bear-thesis evidence, but the absence of SEC registration itself is a disqualifying condition that must be resolved first."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent",
+      "schema_version": "risk_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_veto_only",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CHRO",
+      "decision_timestamp": "2025-04-17T09:30:00-04:00",
+      "data_available_as_of": "2025-04-17T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation for surge_short candidate CHRO",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "data_quality_flags[*].severity"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Pass 8 hard-veto evaluation per \u00a75.13. Candidate type is surge_short. Evaluated five veto conditions mechanically: (a) equity cap breach \u2014 not applicable to surge_short; (b) short sleeve cap breach \u2014 no position size data provided, cannot evaluate; (c) critical data quality flags \u2014 none present; (d) anti-pollution integrity veto \u2014 pollution_defense_layer status is 'unimplemented' per information_integrity_assessment.reason_use_as_primary_signal_disallowed, therefore \u00a75.13(d) does NOT trip per \u00a75.13(d) relaxation 2026-05-06; (e) lookahead veto \u2014 data_after_cutoff_used=false and lookahead_safe=true, therefore does NOT trip.",
+      "uncertainty": "low",
+      "invalidation_conditions": [],
+      "risk_flags": [
+        "information_integrity_assessment.use_as_primary_signal_allowed=false due to unimplemented pollution-defense layer; however, per \u00a75.13(d) relaxation, this does not trip the hard veto when pollution_defense_layer status is 'unimplemented'",
+        "SEC filing adapter failed (cik_not_found); structural absence of SEC registration is a material risk flag but does not trigger hard-veto conditions (a)-(e)"
+      ],
+      "suggested_improvements": [],
+      "data_quality_flags": [],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "equity_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long entries only (\u00a73.7/\u00a73.8 long entry violates \u00a74.7 equity caps). Candidate type is surge_short; condition not applicable."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires proposed position size data to evaluate against \u00a74.8 caps (single-position 5% max, sleeve 10% max). No position size provided in candidate packet; cannot evaluate. Assume no breach pending PM sizing decision."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Scanned data_quality_flags[*].severity for 'critical'. Found: 'warning' (quote_after_cutoff, fundamentals_partial, ttm_snapshot_used, news_post_cutoff_filtered, alt_data_placeholder, info_integrity_placeholder, sentiment_ownership_placeholder, alt_data_adapter_error x4). No 'critical' severity flags present."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short; \u00a75.13(d) INAPPLICABLE per \u00a75.17. Condition does not apply."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition (e) requires data_after_cutoff_used=true OR lookahead_safe=false to trip. Neither condition met; veto does NOT trip."
+        }
+      ],
+      "advisory_notes": "Hard-veto pass. No veto conditions (a)-(e) tripped. Candidate is eligible for downstream PM evaluation. Risk agent does not recommend position size, does not advise cover/hold, does not emit advisory output beyond veto determination.",
+      "risk_notes": [
+        "SEC registration status unconfirmed (cik_not_found); material structural risk but not a hard-veto condition per \u00a75.13",
+        "Information integrity assessment flags narrative as uncorroborated and low-tier-only; use_as_primary_signal_allowed=false; however, pollution_defense_layer is unimplemented, so \u00a75.13(d) does not trip"
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions evaluated",
+        "\u00a75.13(a) equity cap breach \u2014 not applicable (surge_short)",
+        "\u00a75.13(b) short sleeve cap breach \u2014 no position size data; cannot evaluate",
+        "\u00a75.13(c) critical data quality flag \u2014 none found",
+        "\u00a75.13(d) anti-pollution integrity veto \u2014 not applicable (surge_short per \u00a75.17)",
+        "\u00a75.13(e) lookahead veto \u2014 data_after_cutoff_used=false, lookahead_safe=true; does not trip",
+        "Result: NO VETO. Candidate passes hard-veto gate."
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-04-17T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CHRO",
+      "decision_timestamp": "2025-04-17T09:30:00-04:00",
+      "data_available_as_of": "2025-04-17T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate evaluation: VETO due to unresolved SEC registration status and insufficient evidence coherence",
+      "confidence": "high",
+      "evidence_used": [
+        "narrative_event.verdict=supported (merger catalyst is real and specific)",
+        "narrative_event.risk_flags: SEC registration status unclear (cik_not_found)",
+        "surge_short.recommended_action=needs_more_evidence",
+        "surge_short.short_thesis_status=uncertain",
+        "surge_short.evidence_sufficiency=insufficient",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false",
+        "information_integrity_assessment.evidence_credibility_assessment=low_tier_only",
+        "filing_confirmation.SEC_8K_confirmation=null (adapter failed: cik_not_found)",
+        "fundamental_snapshot.status=insufficient_evidence",
+        "valuation_snapshot: negative PE (-0.586), negative EV/EBITDA (-0.559), net margin -257.93%",
+        "price_snapshot.trigger_day_open=22.9 vs prior_close=13.0 (+76.2% gap)",
+        "corporate_calendar: recent earnings miss (2025-03-27: -0.32 EPS vs -0.21 est)",
+        "risk.veto_conditions_evaluated: all five conditions evaluated; none tripped mechanically",
+        "adas_lagged: prior-day framework showed high confidence_dispersion (std_proxy=0.7454) on unrelated ticker (HAS), indicating system uncertainty on similar candidates"
+      ],
+      "evidence_missing": [
+        "SEC 8-K filing confirmation (adapter failed: cik_not_found)",
+        "SEC Form 4 insider trading (adapter failed: cik_not_found)",
+        "SEC 13F institutional ownership (adapter failed: not_available_on_current_plan)",
+        "Fundamental quarterly data (status=insufficient_evidence)",
+        "Clinical trial registry confirmation for ZELSUVMI (biotech sector-expected evidence)",
+        "FDA approval documentation (biotech sector-expected evidence)",
+        "Official company press release (only GlobeNewswire reprint available)",
+        "Ligand Pharmaceuticals (LGND) SEC filing corroboration",
+        "Deal structure, consideration, and regulatory approval timeline"
+      ],
+      "reasoning_summary": "CHRO surged +76.2% on merger announcement (Ligand subsidiary Pelthos combining with Channel Therapeutics). Narrative agent confirms catalyst is real and specific (high confidence). However, surge_short agent recommends 'needs_more_evidence' due to critical structural absence: SEC Edgar adapter returned cik_not_found, indicating CHRO may not be a valid SEC filer. This is a disqualifying condition for a surge-short entry. The merger narrative is uncorroborated (low-tier sources only, T3/T4, use_as_primary_signal_allowed=false per information_integrity_assessment). Fundamentals are deeply negative (negative PE, -257.93% net margin, recent earnings miss). The absence of SEC registration status prevents a defensible short thesis: either CHRO is not legitimately listed, or the ticker mapping is incorrect. Under \u00a713.6 SOFT_REASONING and \u00a76 SECTOR-AWARE REASONING, a biotech company claiming an FDA-approved product and material M&A should have verifiable SEC filings and clinical evidence. The structural absence of SEC registration is a critical red flag that must be resolved before entry. Risk agent passed all hard-veto conditions mechanically (no sleeve cap breach, no lookahead violation, no critical data quality flags, no anti-pollution veto per \u00a75.17 surge-short carve-out). However, the PM agent retains discretion to emit 'no_trade' when evidence does not cohere into a defensible thesis. The preponderance of evidence points to: (1) real catalyst (merger announcement), (2) deeply negative fundamentals, (3) unverified SEC registration status, (4) low-tier sourcing, (5) no institutional support. The bear thesis cannot be cleanly supported without resolving the SEC registration question. Emitting 'no_trade' is appropriate when present evidence does not cohere into either direction; this is not a defensive deferral but a reasoned assessment that the candidate lacks sufficient coherence for entry.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If SEC CIK is confirmed and CHRO is a valid registered filer with 8-K disclosure of the merger, the structural absence concern is resolved and the short thesis becomes evaluable",
+        "If Ligand Pharmaceuticals (LGND) SEC filings corroborate the merger and show binding terms with regulatory approval timeline, the catalyst gains credibility",
+        "If clinical trial registry or FDA approval documentation is confirmed for ZELSUVMI, the biotech sector-expected evidence gap is closed",
+        "If institutional ownership data becomes available and shows significant smart-money support, the thesis gains credibility"
+      ],
+      "risk_flags": [
+        "CRITICAL: SEC registration status unconfirmed (cik_not_found). CHRO may not be a valid SEC filer, which is highly anomalous for a listed equity on AMEX.",
+        "Merger narrative uncorroborated: low-tier sources only (T3/T4), no T1/T2 primary disclosure, use_as_primary_signal_allowed=false",
+        "No SEC 8-K filing confirmation despite public announcement of material M&A event",
+        "Deeply negative fundamentals: negative PE, negative EV/EBITDA, -257.93% net margin, recent earnings miss",
+        "Biotech sector claim (FDA-approved product) lacks clinical trial registry or FDA filing confirmation",
+        "No institutional ownership data available; cannot assess smart-money positioning",
+        "Merger announcement lacks detail on deal structure, consideration, or regulatory approval timeline",
+        "Information integrity assessment explicitly flags narrative as uncorroborated and low-tier-only",
+        "Stock in sustained decline (60-day return -53.01%) well before announcement, suggesting distressed transaction"
+      ],
+      "suggested_improvements": [
+        "Manual verification: confirm CHRO's SEC CIK and registration status independently; if cik_not_found is correct, escalate as potential delisting or ticker-mapping error",
+        "Retrieve SEC EDGAR 8-K filing directly to confirm merger announcement and terms",
+        "Cross-reference merger claim with Ligand Pharmaceuticals (LGND) SEC filings and press releases",
+        "Retrieve clinical trial registry (ClinicalTrials.gov) data for ZELSUVMI to verify FDA approval claim",
+        "Obtain institutional ownership data (13F) to assess whether smart money is supporting the thesis",
+        "Verify GlobeNewswire press release authenticity and check for official company confirmation",
+        "Assess deal structure, consideration, and regulatory approval timeline from merger agreement"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "sec_filing_adapter_error",
+          "severity": "critical",
+          "detail": "sec_edgar adapter returned cik_not_found for CHRO \u2014 no CIK match in SEC Edgar. Suggests CHRO may not be a registered public company or may be delisted."
+        },
+        {
+          "kind": "information_integrity_low_tier",
+          "severity": "warning",
+          "detail": "information_integrity_assessment.evidence_credibility_assessment=low_tier_only (T3=1, T4=2, T1=0, T2=0). use_as_primary_signal_allowed=false per schema v1.1 decision #8."
+        },
+        {
+          "kind": "filing_confirmation_unavailable",
+          "severity": "warning",
+          "detail": "filing_confirmation.SEC_8K_confirmation=null. No SEC 8-K filing found to corroborate merger announcement."
+        },
+        {
+          "kind": "fundamental_snapshot_insufficient",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence. No income statement, balance sheet, or cash flow data available for CHRO."
+        },
+        {
+          "kind": "news_single_source",
+          "severity": "warning",
+          "detail": "news_event_summary contains only 1 item from 1 source (polygon_news). ndi_metadata shows insufficient_sources (n_sources=1, requires \u22652)."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet correctly flags the structural absence of SEC filings (cik_not_found) and the low-tier sourcing of the merger narrative. However, the packet does not explicitly state whether CHRO is a valid US-listed equity or whether the ticker mapping is incorrect. The absence of a CIK is a critical red flag that should be escalated to manual verification before any short position is initiated. A future version should add a 'regulatory_status_unknown' or 'cik_not_found_risk' field to the information_integrity_assessment block to flag entities without SEC registration.",
+      "recommended_followups": [
+        "Manual verification: confirm CHRO's SEC registration status and CIK; if cik_not_found is correct, escalate as potential delisting or ticker-mapping error",
+        "Retrieve Ligand Pharmaceuticals (LGND) SEC filings to cross-reference the Pelthos-Channel merger claim",
+        "Obtain official press release from Ligand or Channel Therapeutics (not GlobeNewswire reprint) to verify deal authenticity",
+        "Search ClinicalTrials.gov for ZELSUVMI and Molluscum contagiosum trials to verify FDA approval claim",
+        "Monitor for SEC 8-K filing within 4 business days of announcement (if CHRO is a valid filer)",
+        "Assess whether the surge is driven by retail momentum (meme stock) or legitimate M&A thesis"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Surge-short candidate CHRO lacks coherent bear thesis due to unresolved SEC registration status (cik_not_found). Merger catalyst is real and specific, but uncorroborated (low-tier sources, no SEC 8-K). Fundamentals deeply negative but cannot support short without resolving regulatory status. Preponderance of evidence does not cohere into defensible entry. No_trade is appropriate when present evidence does not support either direction.",
+      "risk_notes": [
+        "SEC registration status unconfirmed (cik_not_found) \u2014 critical structural red flag",
+        "Merger narrative uncorroborated (low-tier sources only, use_as_primary_signal_allowed=false)",
+        "No SEC 8-K filing confirmation despite material M&A announcement",
+        "Deeply negative fundamentals (negative PE, -257.93% net margin, recent earnings miss)",
+        "Biotech sector-expected evidence absent (clinical trial registry, FDA filing confirmation)",
+        "No institutional ownership data available",
+        "Stock in sustained decline (60-day return -53.01%) before announcement"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long entries only. Candidate type is surge_short; condition not applicable."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "No position size proposed; cannot evaluate. Assume no breach pending PM sizing decision."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Scanned data_quality_flags[*].severity for 'critical'. Found: 'warning' and 'info' only. No 'critical' severity flags present."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short; \u00a75.13(d) INAPPLICABLE per \u00a75.17 surge-short carve-out. Condition does not apply."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition does not trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions evaluated",
+        "\u00a75.13(a) equity cap breach \u2014 not applicable (surge_short)",
+        "\u00a75.13(b) short sleeve cap breach \u2014 no position size data; cannot evaluate",
+        "\u00a75.13(c) critical data quality flag \u2014 none found",
+        "\u00a75.13(d) anti-pollution integrity veto \u2014 not applicable (surge_short per \u00a75.17)",
+        "\u00a75.13(e) lookahead veto \u2014 data_after_cutoff_used=false, lookahead_safe=true; does not trip",
+        "Result: NO HARD VETO. Candidate passes hard-veto gate.",
+        "\u00a713.6 SOFT_REASONING: Preponderance of evidence assessment",
+        "Narrative agent: catalyst is real and specific (supported), but SEC registration status unconfirmed (critical risk flag)",
+        "Surge-short agent: recommended_action=needs_more_evidence, short_thesis_status=uncertain, evidence_sufficiency=insufficient",
+        "Information integrity: use_as_primary_signal_allowed=false, evidence_credibility_assessment=low_tier_only",
+        "Fundamental assessment: deeply negative (negative PE, -257.93% net margin, recent earnings miss)",
+        "Sector-aware reasoning: biotech company claiming FDA-approved product and material M&A should have verifiable SEC filings and clinical evidence; structural absence of SEC registration is bear-thesis signal but disqualifies entry without resolution",
+        "PM synthesis: bear thesis cannot be cleanly supported without resolving SEC registration status; preponderance does not cohere into defensible entry",
+        "Decision: no_trade (not a defensive deferral, but a reasoned assessment that candidate lacks sufficient coherence for entry)"
+      ],
+      "decision_log": [
+        "2025-04-17T09:30:00-04:00 \u2014 Received surge_short candidate CHRO with +76.2% gap (trigger_day_open 22.9 vs prior_close 13.0)",
+        "2025-04-17T09:30:00-04:00 \u2014 Narrative agent: catalyst identified as M&A (Ligand/Pelthos-Channel merger), verdict=supported, confidence=high, but risk_flags include 'CRITICAL: SEC filing adapter returned cik_not_found'",
+        "2025-04-17T09:30:00-04:00 \u2014 Alt-data verify agent: schema validation failed, returned needs_more_evidence",
+        "2025-04-17T09:30:00-04:00 \u2014 Surge-short agent: recommended_action=needs_more_evidence, short_thesis_status=uncertain, evidence_sufficiency=insufficient, hold_review_exit_reason='Structural absence of SEC registration (cik_not_found) and SEC 8-K filing confirmation prevents defensible short thesis'",
+        "2025-04-17T09:30:00-04:00 \u2014 Risk agent: hard-veto evaluation passed; no veto conditions (a)-(e) tripped; candidate eligible for downstream PM evaluation",
+        "2025-04-17T09:30:00-04:00 \u2014 PM synthesis: narrative catalyst is real and specific, but uncorroborated (low-tier sources, use_as_primary_signal_allowed=false); fundamentals deeply negative; SEC registration status unconfirmed (cik_not_found); biotech sector-expected evidence absent (clinical trial registry, FDA filing); no institutional ownership data",
+        "2025-04-17T09:30:00-04:00 \u2014 PM sector-aware reasoning: biotech company claiming FDA-approved product (ZELSUVMI) and material M&A should have verifiable SEC filings, clinical trial registry entries, and institutional positioning; structural absence of SEC registration is bear-thesis signal but disqualifies entry without resolution",
+        "2025-04-17T09:30:00-04:00 \u2014 PM preponderance assessment: bear thesis cannot be cleanly supported without resolving SEC registration status; evidence does not cohere into defensible entry; no_trade is appropriate when present evidence does not support either direction",
+        "2025-04-17T09:30:00-04:00 \u2014 DECISION: no_trade, position_size_pct=0.0"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-17T09:45:00-04:00",
+        "ticker": "CHRO",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026-05-03_universal_soft_veto",
+        "evidence_packet_hash": "sha256:484448283f474c8096f35537613df3bcf27fdba4ed79e5b2a863b4b0fbbb64e2"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show modest attention (peak 10 views on 2025-04-01, 3 views on decision date 2025-04-17), consistent with micro-cap biotech. No meme-stock or retail-attention indicators detected.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "dismiss",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Merger announcement sourced from GlobeNewswire (T3 source) with no T1/T2 primary disclosure confirmation. No SEC 8-K filing available to corroborate. Narrative is real and specific but uncorroborated.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "SEC registration status unconfirmed (cik_not_found); cannot confirm thesis without resolving regulatory status",
+      "sentiment_risk_adjustment_note": "Analyst coverage minimal (1 Buy rating as of 2024-11-01, no recent updates). No institutional ownership data available. Sentiment data is stale and insufficient to support thesis.",
+      "ownership_risk_adjustment_note": "No institutional ownership data available (sec_13f adapter failed: not_available_on_current_plan). Cannot assess smart-money positioning or crowding risk.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional ownership data available. Cannot assess whether smart money is supporting the merger thesis.",
+      "smart_money_benchmark_note": "No institutional positioning data available. Cannot benchmark against smart-money activity.",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-04-17T09:30:00-04:00",
+      "execution_timestamp": "2025-04-17T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:3165deff27fb9aba5d5c6c5ec42b24ca931a49108ad287efbef7f8739b7b20a3",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

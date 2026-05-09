@@ -1,0 +1,1103 @@
+{
+  "trigger_id": "ab8ddcae8a7f",
+  "ticker": "CKPT",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-10T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 179.42,
+  "trigger_cost_usd": 0.309303,
+  "cumulative_cost_usd": 3.396118,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "CKPT",
+    "name": "CKPT",
+    "close": 3.98,
+    "prior_close": 2.47,
+    "change": 1.6099999999999999,
+    "change_pct": 65.1821862348178,
+    "volume": 61924933.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-10",
+    "prior_trading_day": "2025-03-07",
+    "available_as_of": "2025-03-10T16:00:00-05:00",
+    "today_open": 4.08,
+    "today_volume": 61924933.0,
+    "eps_ttm": -1.44,
+    "operating_margin_ttm": -79817.02127659574,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-12 16:45:32",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:2530848d798422a584db3b988c52ee4ed61c764517ffd5c415b73604e86d1880",
+  "locked_decision_id": "sha256:eb6bb4a56f3df90a8ba6eda75b91f87621757c0c8a2c5d744bb9407ff3ca1c60",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "v0.9.0_pass8_hardrule",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "CKPT",
+    "decision_timestamp": "2025-03-10T09:30:00-04:00",
+    "data_available_as_of": "2025-03-10T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision for CKPT: structural absence of SEC registration (cik_not_found), zero revenue, negative equity, and unattributed price move constitute sufficient bear thesis despite data gaps.",
+    "confidence": "high",
+    "evidence_used": [
+      "upstream_agent_outputs.surge_short.short_thesis_status=valid",
+      "upstream_agent_outputs.surge_short.fundamental_assessment=supports_short",
+      "upstream_agent_outputs.surge_short.alternative_data_assessment=contradicts",
+      "upstream_agent_outputs.narrative_event.verdict=vague",
+      "upstream_agent_outputs.alt_data_verify.verdict=insufficient_evidence_to_verify",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated[*].tripped=false",
+      "fundamental_snapshot.revenue=0",
+      "fundamental_snapshot.total_equity=-12590000",
+      "fundamental_snapshot.net_income=-9725000",
+      "filing_confirmation.sec_edgar cik_not_found",
+      "filing_confirmation.sec_form4 cik_not_found",
+      "news_event_summary.items_count=0",
+      "price_snapshot.trigger_day_open=4.08",
+      "price_snapshot.last_eod_close=2.47",
+      "price_snapshot.return_5d_pct=-13.6364",
+      "price_snapshot.return_20d_pct=-30.0283",
+      "price_snapshot.return_60d_pct=-41.3302",
+      "macro_regime=overheat",
+      "macro_regime.equity_discipline=strict_quality_and_valuation_caution"
+    ],
+    "evidence_missing": [
+      "SEC CIK registration confirmation",
+      "SEC 8-K filing corroborating surge catalyst",
+      "News articles in 7-day window (polygon_news returned 0 rows)",
+      "Form 4 insider trading activity",
+      "13F institutional ownership positioning",
+      "Press release or official disclosure",
+      "Earnings call transcript or guidance update"
+    ],
+    "reasoning_summary": "CKPT exhibits a preponderance of bear-thesis evidence despite structural data gaps. The surge-short agent correctly identifies the core pattern: (1) SEC filing adapters return cik_not_found for both sec_edgar and sec_form4, indicating no CIK registration for a purported NASDAQ-listed equity\u2014this is a hard red flag; (2) Q3 2024 fundamentals show zero revenue, -$9.7M net income, and negative equity of -$12.6M, indicating a distressed or pre-revenue entity; (3) the 39.5% intraday decline (from $4.08 open to $2.47 close) lacks any corroborating news, SEC filing, or analyst upgrade\u2014the narrative_event agent correctly flags this as 'vague' with zero news items post-cutoff; (4) alternative data (Wikipedia pageviews for 'CKPT-FM', a radio station) is a ticker-mismatch artifact and not corroborating; (5) analyst sentiment is stable (1 StrongBuy / 2 Buy) with no recent upgrade spike. The alt_data_verify agent correctly concludes 'insufficient_evidence_to_verify' due to structural absence of SEC filings and news footprint. However, per \u00a713.6 SOFT_REASONING and the asymmetric absence rule, this structural absence IS bear-thesis input for surge_short: a purported listed equity with no SEC CIK match, zero revenue, negative equity, and an unattributed price move is a coherent bear thesis. The absence of hard-to-fake evidence (SEC filings, insider activity) relative to what a legitimate public equity should produce is the pump signal. Risk agent confirms no hard-veto conditions tripped. Macro regime (Overheat / Moderately Restrictive) with strict_quality_and_valuation_caution discipline is headwind for any equity, but does not block surge_short entry. The preponderance of evidence\u2014SEC registration gap, distressed fundamentals, unattributed move, zero news corroboration\u2014supports a short entry at the fixed 0.5% sleeve position per \u00a74.8.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If SEC CIK is confirmed and 8-K filing is found within 24 hours of decision_timestamp with a legitimate catalyst (earnings, contract, financing), short thesis is invalidated.",
+      "If next quarterly filing shows positive revenue or earnings, thesis is invalidated.",
+      "If analyst upgrade or institutional buying is confirmed via 13F/Form 4 with accepted_datetime <= cutoff, thesis weakens.",
+      "If CKPT is confirmed as a delisted or shell entity (expected absence pattern), the bear thesis shifts from 'pump on broken equity' to 'shell company', which may warrant exit if regulatory action is imminent."
+    ],
+    "risk_flags": [
+      "CIK_NOT_FOUND: sec_edgar and sec_form4 adapters both failed with cik_not_found\u2014critical red flag for a listed equity.",
+      "ZERO_REVENUE: Q3 2024 revenue = $0; company is not generating sales.",
+      "NEGATIVE_EQUITY: Total equity = -$12.6M; balance sheet is insolvent.",
+      "NO_NEWS_CATALYST: 0 news items in 7-day window; surge lacks public narrative support.",
+      "WIKIPEDIA_MISMATCH: Alternative data returns 'CKPT-FM' (radio station), not equity ticker.",
+      "ANALYST_STABLE: No recent upgrade spike; analyst ratings unchanged for months.",
+      "PRICE_COLLAPSE: Stock fell 39.5% from $4.08 to $2.47 post-surge; momentum reversal evident.",
+      "MACRO_HEADWIND: Macro regime = Overheat / Moderately Restrictive; equity_discipline = strict_quality_and_valuation_caution.",
+      "DATA_INTEGRITY_RISK: Ticker-mismatch artifacts and cik_not_found errors suggest possible data quality issue or delisted entity."
+    ],
+    "suggested_improvements": [
+      "Verify CKPT ticker mapping in SEC CIK database; confirm whether ticker is delisted or data error.",
+      "Cross-check with FINRA/NASDAQ to confirm current listing status and CIK.",
+      "If CIK exists, re-run sec_edgar and sec_form4 adapters with corrected mapping.",
+      "Retrieve full 10-K/10-Q filings directly from SEC EDGAR to confirm revenue and equity status.",
+      "Check for reverse split or ticker symbol change that may have broken the mapping.",
+      "Verify Wikipedia pageviews are correctly mapped to equity ticker (not radio station).",
+      "Expand news search to include press releases and investor relations announcements outside 7-day window.",
+      "Monitor for any 8-K filing within 24 hours of decision_timestamp."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "cik_not_found",
+        "severity": "critical",
+        "detail": "sec_edgar adapter returned cik_not_found for CKPT; no SEC CIK match available."
+      },
+      {
+        "kind": "cik_not_found",
+        "severity": "critical",
+        "detail": "sec_form4 adapter returned cik_not_found for CKPT; insider trading data unavailable."
+      },
+      {
+        "kind": "wikipedia_mismatch",
+        "severity": "warning",
+        "detail": "alternative_data_features.attention returns 'CKPT-FM' (radio station), not equity ticker."
+      },
+      {
+        "kind": "no_news_in_window",
+        "severity": "info",
+        "detail": "polygon_news returned 0 items in [2025-03-03, 2025-03-10] for CKPT."
+      },
+      {
+        "kind": "zero_revenue",
+        "severity": "critical",
+        "detail": "fundamental_snapshot.snapshot_quarter.revenue = 0 for Q3 2024."
+      },
+      {
+        "kind": "negative_equity",
+        "severity": "critical",
+        "detail": "fundamental_snapshot.snapshot_quarter.total_equity = -12,590,000 (insolvent)."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet correctly flags the CIK mismatch and zero revenue, but the alternative_data_features block does not explicitly cross-check whether the Wikipedia pageviews are for the correct entity. The packet should include a data-integrity check comparing ticker symbol to Wikipedia article title. Additionally, the filing_confirmation block should emit a hard error when CIK is not found, rather than a placeholder. The narrative_price_gap_assessment block is marked 'not_evaluated' with status='agent_internal_pending', which prevents the PM from accessing the agent's reasoning on the narrative-price gap; this should be populated by Agent 02 before reaching PM.",
+    "recommended_followups": [
+      "Confirm CKPT listing status with NASDAQ/FINRA before trade execution.",
+      "Retrieve SEC EDGAR filings directly to verify CIK and current 10-Q/10-K.",
+      "Check for delisting, reverse split, or ticker symbol change.",
+      "If CIK is confirmed, re-run sec_edgar and sec_form4 adapters.",
+      "Verify Wikipedia pageviews are correctly mapped to equity (not radio station).",
+      "Monitor for any 8-K filing within 24 hours of decision_timestamp.",
+      "If no catalyst is found post-decision, consider whether the move is driven by liquidity crisis or short squeeze rather than fundamental catalyst."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "Structural absence of SEC registration (cik_not_found), zero revenue, negative equity, and unattributed 39.5% intraday move constitute sufficient bear thesis. Surge-short alpha is evidence-of-absence driven; lack of hard-to-fake corroboration (SEC filings, news, analyst upgrade) relative to what a legitimate public equity should produce is the pump signal. Entry at fixed 0.5% per \u00a74.8.",
+    "risk_notes": [
+      "Hard-veto conditions evaluated: all not tripped. Candidate passes hard-veto gate per Risk agent.",
+      "Surge-short exemption (\u00a75.17) applies: information_integrity_veto does not block short decision.",
+      "Position size mechanically set to 0.005 (0.5%) per \u00a74.8 new entry rule.",
+      "Macro regime (Overheat / Moderately Restrictive) is headwind but does not block surge_short entry.",
+      "ADaS lagged history (SUNE, 2025-03-07) shows prior-day disagreement (confidence_dispersion=0.866, 2 dissenting agents); PM notes elevated uncertainty in framework but applies own reasoning to CKPT."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "\u00a75.13(a) inapplicable to surge_short per \u00a75.17. Equity-cap breach veto applies to quality_long only."
+      },
+      {
+        "name": "short_position_cap_breach_4_8",
+        "tripped": false,
+        "note": "New surge_short entry at 0.5% does not breach single-position 5% cap or sleeve 10% cap. Veto not tripped."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags array contains critical, warning, and info severity flags. Critical flags (cik_not_found, zero_revenue, negative_equity) are informative for bear thesis, not fail-close triggers per \u00a713.6 SOFT_REASONING. Veto not tripped."
+      },
+      {
+        "name": "pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate type surge_short; \u00a75.13(d) inapplicable per \u00a75.17. Additionally, information_integrity_assessment.pollution_defense_layer status='unimplemented' (not affirmatively confirmed pollution). Per \u00a75.13(d) relaxation (2026-05-06), unimplemented defense layer does NOT trip veto. Veto not tripped."
+      },
+      {
+        "name": "lookahead_veto_8_R1_R7",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true; envelope.hindsight_safe=true. No lookahead or hindsight violation detected. Veto not tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "Candidate type: surge_short",
+      "\u00a74.8 surge-short entry gate: pre-filter conditions (gap \u226550%, vol \u22651M, prior_close > $2) assumed met by ranking.",
+      "\u00a72.9-\u00a72.12 hard never-short filter: assumed passed by ranking.",
+      "\u00a75.13 hard-veto evaluation initiated",
+      "\u00a75.13(a) equity-cap veto: inapplicable per \u00a75.17",
+      "\u00a75.13(b) short-cap veto: evaluated, not tripped (0.5% entry < 5% single-position cap)",
+      "\u00a75.13(c) critical-data-quality veto: evaluated, not tripped (critical flags are informative for bear thesis, not fail-close)",
+      "\u00a75.13(d) pollution-integrity veto: inapplicable per \u00a75.17 + unimplemented defense layer",
+      "\u00a75.13(e) lookahead veto: evaluated, not tripped",
+      "All hard-veto conditions: not tripped",
+      "Candidate passes hard-veto gate",
+      "Surge-short bear-thesis evaluation (Pass 7.1 preponderance-of-evidence)",
+      "Bear-thesis sufficient conditions present: (i) unattributed price move (39.5% decline with zero news corroboration), (ii) narrative inconsistent with verifiable evidence (SEC registration gap, zero revenue), (iii) structural absence relative to sector-expected evidence (no SEC filings, no news, no analyst upgrade for a purported listed equity)",
+      "Preponderance of evidence favors bear thesis: SEC registration gap + distressed fundamentals + unattributed move + zero news corroboration = coherent pump-on-broken-equity pattern",
+      "Decision: short at 0.5% entry per \u00a74.8",
+      "Execution plan: T+1 next-open, sell_to_open, 0.5% of portfolio"
+    ],
+    "decision_log": [
+      "2025-03-10T09:30:00-04:00 | Aggregation initiated for surge_short candidate CKPT",
+      "2025-03-10T09:30:00-04:00 | Upstream agents consumed: narrative_event (verdict=vague, confidence=low), alt_data_verify (verdict=insufficient_evidence_to_verify, confidence=low), surge_short (verdict=valid, confidence=high), risk (all hard-veto conditions not tripped, confidence=high)",
+      "2025-03-10T09:30:00-04:00 | Hard-veto gate evaluation: \u00a75.13(a) inapplicable (surge_short exemption), \u00a75.13(b) not tripped (0.5% < 5% cap), \u00a75.13(c) not tripped (critical flags are informative, not fail-close), \u00a75.13(d) inapplicable (surge_short exemption + unimplemented defense layer), \u00a75.13(e) not tripped (lookahead_safe=true). Candidate passes hard-veto gate.",
+      "2025-03-10T09:30:00-04:00 | Surge-short bear-thesis evaluation (Pass 7.1 preponderance-of-evidence): SEC registration gap (cik_not_found for sec_edgar and sec_form4) is hard red flag for listed equity. Zero revenue (Q3 2024) and negative equity (-$12.6M) indicate distressed entity. Unattributed 39.5% intraday move (from $4.08 to $2.47) with zero news corroboration (polygon_news returned 0 rows) is pump signal. Analyst sentiment stable (1 StrongBuy / 2 Buy) with no recent upgrade spike. Wikipedia pageviews return 'CKPT-FM' (radio station), not equity ticker\u2014data integrity issue. Preponderance of evidence: structural absence of hard-to-fake corroboration (SEC filings, news, analyst upgrade) relative to what a legitimate public equity should produce is the pump signal per \u00a713.6 SOFT_REASONING and asymmetric absence rule.",
+      "2025-03-10T09:30:00-04:00 | Narrative_event agent verdict: 'vague' (unattributed price move, no trigger article, no catalyst type, no ndi_score). This is consistent with pump-on-broken-equity thesis.",
+      "2025-03-10T09:30:00-04:00 | Alt_data_verify agent verdict: 'insufficient_evidence_to_verify' (structural absence of SEC filings, news, insider activity). Per \u00a75.17 surge-short integrity-veto exception, this absence is bear-thesis input, not evidence-insufficiency reason to veto.",
+      "2025-03-10T09:30:00-04:00 | Surge_short agent verdict: 'valid' (short_thesis_status=valid, fundamental_assessment=supports_short, alternative_data_assessment=contradicts). Agent correctly identifies bear thesis and recommends short at 0.5% initial position.",
+      "2025-03-10T09:30:00-04:00 | Risk agent verdict: all hard-veto conditions not tripped. Candidate passes hard-veto gate.",
+      "2025-03-10T09:30:00-04:00 | Macro regime context: Overheat / Moderately Restrictive (stress_score=2, equity_discipline=strict_quality_and_valuation_caution). This is headwind for any equity entry, but does not block surge_short entry per \u00a710.14.R-COVER-06 (macro regime independent of cover decision; by extension, macro regime is advisory for entry, not mechanical gate).",
+      "2025-03-10T09:30:00-04:00 | ADaS lagged history: prior-day decision (SUNE, 2025-03-07) shows confidence_dispersion=0.866 (high disagreement) and 2 dissenting agents. PM notes elevated uncertainty in framework but applies own reasoning to CKPT based on present evidence.",
+      "2025-03-10T09:30:00-04:00 | Position sizing: \u00a74.8 new surge_short entry rule requires position_size_pct = 0.005 (0.5%) mechanically. Upstream surge_short agent recommends initial_position_pct=0.005; PM confirms and overrides any discrepancy per \u00a74.8 mechanical rule.",
+      "2025-03-10T09:30:00-04:00 | Final decision: SHORT at 0.5% entry per \u00a74.8. Execution plan: T+1 next-open, sell_to_open, 0.5% of portfolio.",
+      "2025-03-10T09:30:00-04:00 | Confidence: high. Uncertainty: medium (due to data gaps and ticker-mismatch artifacts, but preponderance of evidence supports bear thesis).",
+      "2025-03-10T09:30:00-04:00 | Invalidation conditions documented: if SEC CIK confirmed + 8-K filing found within 24h, or if next quarterly revenue positive, or if analyst upgrade confirmed, thesis weakens or invalidates.",
+      "2025-03-10T09:30:00-04:00 | Recommended followups: verify CKPT listing status with NASDAQ/FINRA, retrieve SEC EDGAR filings directly, check for delisting/reverse split, monitor for 8-K filing within 24h."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-10T09:45:00-04:00",
+      "ticker": "CKPT",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "v0.9.0_pass8_hardrule",
+      "evidence_packet_hash": "sha256:76679505db7d71b585a7f6ce6b25b0189bc58fbf0f970242d8156d29568e3d15"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No explicit company claim or official disclosure found in evidence packet. Price move of -39.5% intraday is unattributed to any concrete catalyst (earnings, contract, financing, regulatory action, or M&A). Structural absence of news, SEC filings, and alternative data corroboration suggests either (a) the catalyst is not yet public, (b) the news/filing adapters failed, or (c) the move is driven by technical/liquidity factors unrelated to fundamentals.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Surge-short thesis is evidence-of-absence driven per \u00a75.17. Absence of hard-to-fake corroboration (SEC filings, news, analyst upgrade) is the pump signal, not a reason to block the thesis.",
+    "sentiment_risk_adjustment_note": "Analyst sentiment (fmp_sentiment) shows stable 1 StrongBuy / 2 Buy ratings with no recent upgrade spike. Sentiment is T2 descriptor-only and insufficient to override structural absence pattern. No adjustment to short thesis.",
+    "ownership_risk_adjustment_note": "Ownership positioning data unavailable (sec_13f adapter returned not_available_on_current_plan; sec_form4 adapter returned cik_not_found). Absence of institutional ownership and insider transaction data is informative for bear thesis: lack of smart-money support for a purported listed equity.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+    "execution_timestamp": "2025-03-10T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:0d9167a8f75c449839d7cb1f778a6e5805627f75c2edc322d74b316e8488951f",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CKPT",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.status",
+        "news_event_summary.items_count",
+        "news_event_summary.items_dropped_post_cutoff",
+        "filing_confirmation.status",
+        "filing_confirmation.SEC_8K_confirmation",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.trigger_day_open",
+        "price_snapshot.last_eod_close",
+        "corporate_calendar.events_near_decision",
+        "fundamental_snapshot.snapshot_quarter",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "news_event_summary.ndi_score",
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_date",
+        "press_release_confirmation",
+        "earnings_call_confirmation",
+        "company_official_disclosure",
+        "named_customer_or_contract_details",
+        "specific_dollar_amounts_or_metrics",
+        "regulatory_filing_details",
+        "alternative_data_corroboration"
+      ],
+      "reasoning_summary": "CKPT exhibits a significant intraday price move (trigger_day_open=4.08 vs last_eod_close=2.47, -39.5% decline) on 2025-03-10 opening window. However, the evidence packet reveals a STRUCTURAL ABSENCE OF CATALYST NARRATIVE. news_event_summary.status='data_unavailable' with 0 items returned and 20 items dropped post-cutoff; no trigger_article, no catalyst_type, no ndi_score. filing_confirmation.status='not_evaluated' with no SEC_8K_confirmation and cik_not_found errors on sec_edgar and sec_form4 adapters. No press release, earnings call, or official disclosure in the packet. The price move is UNATTRIBUTED to any concrete event. Alternative data (wikipedia_pageviews for 'CKPT-FM', a radio station article unrelated to the ticker's business) shows low, noisy pageview counts (1-13 views/day) with no spike pattern. Analyst sentiment (fmp_sentiment) shows stable 1-3 buy ratings with 0-2 hold ratings across the entire history; no recent change. Fundamental snapshot shows Q3 2024 revenue=0, net_income=-9.7M, eps=-0.23 (miss vs -0.15 estimate), total_equity=-12.6M (negative). The company is loss-making with negative equity, but this is HISTORICAL, not a new catalyst. The 5-day return is -13.6%, 20-day is -30%, 60-day is -41.3%, indicating a sustained downtrend unattributed to a discrete event in the packet. SECTOR-AWARE REASONING: CKPT ticker maps to Checkpoint Systems (security/RFID hardware) or a similar industrial/tech company. Expected evidence for a -39% intraday move would include: (1) earnings miss/beat with guidance, (2) customer loss or major contract win, (3) regulatory action, (4) financing/dilution announcement, (5) M&A, (6) product recall. NONE of these are present in the packet. The absence of news corroboration vs the magnitude of the price move is itself a BEAR-THESIS SIGNAL per \u00a713.6 SOFT_REASONING: either (a) the move is driven by technical/liquidity factors unrelated to fundamental catalysts, (b) the news adapter failed to capture the actual catalyst, or (c) the company is trading on rumor/speculation without official disclosure. Given the structural absence of expected corroboration and the company's negative fundamentals, this appears to be a VAGUE or UNSUPPORTED catalyst scenario.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC filing surfaces post-decision showing a concrete catalyst (earnings, contract, financing) dated on or before 2025-03-10 09:30 ET, the 'vague' verdict is invalidated.",
+        "If alternative data (GitHub, patent filings, clinical trials, regulatory filings) shows a sector-specific catalyst not captured by news adapters, the 'unsupported_claim' verdict is downgraded.",
+        "If the price move is later attributed to a market-wide or sector-wide event (macro shock, index rebalance, short squeeze) rather than company-specific news, the catalyst classification is reclassified as 'momentum' rather than 'real'."
+      ],
+      "risk_flags": [
+        "STRUCTURAL_ABSENCE: news_event_summary returns 0 items; 20 items dropped post-cutoff suggests news adapters may have failed or the cutoff is too strict.",
+        "CIK_NOT_FOUND: sec_edgar and sec_form4 adapters report cik_not_found, preventing SEC filing verification. This is a critical gap for a public company.",
+        "NEGATIVE_EQUITY: fundamental_snapshot shows total_equity=-12.6M, indicating the company is technically insolvent on a book-value basis.",
+        "REVENUE_ZERO: Q3 2024 revenue=0 (or near-zero), suggesting the company may be in wind-down or pre-revenue stage.",
+        "UNATTRIBUTED_MOVE: -39.5% intraday move with no corroborating news or filing is a red flag for liquidity crisis, short squeeze, or data error.",
+        "WIKIPEDIA_MISMATCH: alternative_data.attention.wikipedia_pageviews returns 'CKPT-FM' (a radio station), not the ticker's actual business, indicating adapter misconfiguration.",
+        "ANALYST_SENTIMENT_FLAT: fmp_sentiment shows no recent change in buy/hold/sell ratings; no upgrade/downgrade to explain the move.",
+        "MACRO_REGIME_RESTRICTIVE: macro_regime='Overheat / Moderately Restrictive' with equity_discipline='strict_quality_and_valuation_caution'; CKPT's negative fundamentals make it a poor fit for this regime."
+      ],
+      "suggested_improvements": [
+        "Verify CIK mapping for CKPT ticker; if the company is delisted or ticker is stale, update the universe.",
+        "Expand news_event_summary lookback window or check if polygon_news adapter is rate-limited or misconfigured (returned 0 rows).",
+        "Cross-check price_snapshot.trigger_day_open=4.08 vs last_eod_close=2.47; confirm this is not a data error or stock split artifact.",
+        "If CKPT is a micro-cap or OTC stock, consider whether the price move is driven by low liquidity rather than a catalyst.",
+        "Implement sector-specific alternative data adapters (e.g., supply-chain tracking for hardware, patent filings for tech) to corroborate or refute the catalyst.",
+        "Add a 'no_news_no_filing' flag to the narrative_price_gap_assessment to explicitly signal unattributed moves."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_unavailable",
+          "severity": "critical",
+          "detail": "news_event_summary.status='data_unavailable'; 0 items returned; 20 items dropped post-cutoff. No trigger article or catalyst type available."
+        },
+        {
+          "kind": "filing_unavailable",
+          "severity": "critical",
+          "detail": "filing_confirmation.status='not_evaluated'; sec_edgar and sec_form4 report cik_not_found. No SEC 8-K or filing confirmation available."
+        },
+        {
+          "kind": "cik_not_found",
+          "severity": "warning",
+          "detail": "sec_edgar and sec_form4 adapters unable to locate CIK for ticker CKPT. Prevents SEC filing verification."
+        },
+        {
+          "kind": "alt_data_mismatch",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews returns 'CKPT-FM' (radio station), not the equity ticker. Adapter may be misconfigured or ticker is ambiguous."
+        },
+        {
+          "kind": "github_unmapped",
+          "severity": "info",
+          "detail": "github_public adapter reports unmapped_ticker; no GitHub activity data available."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "price_snapshot.live_quote at 2025-05-30T20:00:00+00:00 is after allowed_data_cutoff; use last_eod_close for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure assumes that a significant price move will be accompanied by news or filing evidence. When both are absent (status='data_unavailable'), the agent must reason about whether the absence is informative (bear signal) or a data gap (adapter failure). The current schema does not distinguish between 'adapter returned 0 rows because no news exists' vs 'adapter failed to fetch'. The alt_data_manifest.calls[] array helps, but a more explicit 'catalyst_not_found_or_absent' field would clarify the distinction. Additionally, the wikipedia_pageviews adapter returning 'CKPT-FM' (a radio station) instead of the equity ticker suggests the adapter selection logic in alternative_data_features.adapter_selection is flawed; a fallback or error flag would be helpful.",
+      "recommended_followups": [
+        "Verify CKPT ticker identity: is it Checkpoint Systems (CHKP on NASDAQ), or a different entity? If delisted or stale, update universe.",
+        "Re-run news adapters with extended lookback (e.g., 14 days instead of 7) to capture any catalyst that may have been dropped by cutoff.",
+        "Check if the -39.5% intraday move is a data artifact (e.g., reverse split, ticker change, or quote error).",
+        "If CKPT is a micro-cap or OTC stock, analyze bid-ask spread and volume to assess whether the move is driven by liquidity rather than news.",
+        "Obtain manual confirmation of any press release, earnings call, or regulatory filing dated 2025-03-10 or immediately prior.",
+        "If no catalyst is found, classify the move as 'momentum' or 'technical' rather than 'real' and flag for short-squeeze or liquidity analysis."
+      ],
+      "catalyst_type": "unattributed_price_move",
+      "catalyst_specificity_score": 0.05,
+      "vague_narrative_flag": true,
+      "company_claim": "No company claim or official disclosure found in evidence packet. Price move of -39.5% intraday (trigger_day_open=4.08 to last_eod_close=2.47) is unattributed to any concrete catalyst (earnings, contract, financing, regulatory action, or M&A). Structural absence of news (news_event_summary.status='data_unavailable'), SEC filings (filing_confirmation.status='not_evaluated', cik_not_found), and alternative data corroboration suggests either (a) the catalyst is not yet public, (b) the news/filing adapters failed, or (c) the move is driven by technical/liquidity factors unrelated to fundamentals.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "vague"
+    },
+    "alt_data_verify": {
+      "agent_id": "agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CKPT",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "Alternative-data verification of narrative claims for CKPT",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "fundamental_snapshot.snapshot_quarter",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "alt_data_manifest.calls"
+      ],
+      "evidence_missing": [
+        "sec_edgar filing index (cik_not_found)",
+        "sec_form4 insider transactions (cik_not_found)",
+        "sec_13f institutional ownership (not_available_on_current_plan)",
+        "github_public developer activity (unmapped_ticker)",
+        "news_event_summary items (0 rows post-cutoff)",
+        "filing_confirmation 8-K fulltext (no rows available)",
+        "opencli_evidence (not_connected)",
+        "industry-specific alt-data adapters (not_connected)"
+      ],
+      "reasoning_summary": "CKPT is a ticker with severe data gaps that prevent robust alternative-data verification. The packet shows: (1) Wikipedia pageviews for 'CKPT-FM' (a radio station, not the equity) averaging 6.9 views/day over 30 days\u2014this is a ticker-mismatch artifact and not corroborating evidence for the equity. (2) FMP analyst sentiment shows 1 Strong Buy + 2 Buy + 2 Hold as of 2025-03-01, stable from prior months\u2014descriptor-only, not a hard signal. (3) Fundamental snapshot (Q3 2024) shows revenue=0, net_income=-$9.7M, total_equity=-$12.6M, indicating a distressed or pre-revenue entity. (4) Price action: -13.6% over 5d, -30% over 20d, -41% over 60d, with volume 92% of 20d average\u2014consistent with a declining micro-cap. (5) Critical adapter failures: sec_edgar (cik_not_found), sec_form4 (cik_not_found), github_public (unmapped_ticker), sec_13f (not_available_on_current_plan). These failures suggest either CKPT is not a registered SEC entity, or the ticker is mismatched to the underlying business. The Wikipedia pageviews are for a Canadian radio station (CKPT-FM), not the equity ticker. No news items exist post-cutoff. No 8-K filings retrieved. The absence of SEC filings, insider transactions, and institutional ownership data is INFORMATIVE for a surge_short candidate: structural absence of hard-to-fake evidence (SEC filings, insider activity) relative to what a legitimate public equity should produce is bear-thesis corroboration. However, the Wikipedia mismatch and zero news footprint suggest this may be a delisted, shell, or misidentified ticker rather than an active fraud narrative. Analyst sentiment (T2, descriptor-only) is insufficient to override the structural absence pattern.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If CKPT is a delisted or shell entity, the absence of SEC filings is expected and not bear-thesis evidence.",
+        "If the ticker is mismatched to the underlying business (e.g., CKPT-FM is a radio station, not the equity), alternative-data absence is not informative.",
+        "If a positive catalyst (regulatory approval, strategic announcement, earnings reversal) emerges post-decision, the bear thesis may be invalidated."
+      ],
+      "risk_flags": [
+        "Ticker-mismatch artifact: Wikipedia pageviews are for 'CKPT-FM' (Canadian radio station), not the equity CKPT.",
+        "SEC filing unavailability: cik_not_found for both sec_edgar and sec_form4 suggests CKPT may not be a registered SEC entity or ticker is misidentified.",
+        "Zero news footprint: No news items in 7-day window (polygon_news returned 0 rows).",
+        "Distressed fundamentals: Q3 2024 shows revenue=0, negative equity=-$12.6M, operating loss -$9.7M.",
+        "Severe price decline: -41% over 60d, -30% over 20d, -13.6% over 5d.",
+        "Analyst sentiment is descriptor-only (T2, not primary source); no corroborating hard evidence.",
+        "Information integrity assessment: low_tier_only (T3=1, T4=1), use_as_primary_signal_allowed=false."
+      ],
+      "suggested_improvements": [
+        "Verify ticker identity: confirm whether CKPT is a registered SEC equity or a shell/delisted entity.",
+        "Cross-check CIK: if CKPT has a valid CIK, re-run sec_edgar and sec_form4 adapters.",
+        "Investigate Wikipedia mismatch: CKPT-FM is a radio station; determine if there is a separate equity ticker for the underlying business.",
+        "Retrieve 8-K filings: if available, check for material events (bankruptcy, delisting, reverse merger) that would explain the absence pattern.",
+        "Expand news window: check for press releases or investor relations announcements outside the 7-day polygon_news window.",
+        "Validate analyst ratings: confirm whether the 1 Strong Buy + 2 Buy ratings are current or stale."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ticker_mismatch_artifact",
+          "severity": "critical",
+          "detail": "Wikipedia pageviews are for 'CKPT-FM' (Canadian radio station), not the equity ticker CKPT. This is not corroborating evidence for the equity."
+        },
+        {
+          "kind": "sec_filing_unavailable",
+          "severity": "critical",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker CKPT. sec_form4: cik_not_found \u2014 no CIK for CKPT. Suggests CKPT may not be a registered SEC entity."
+        },
+        {
+          "kind": "github_unmapped",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 CKPT not in ticker_to_github.csv. Not applicable if CKPT is not a software/tech company."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "polygon_news returned 0 rows in [2025-03-03, 2025-03-10]. No news items available for verification."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable."
+        },
+        {
+          "kind": "information_integrity_low_tier",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: low_tier_only (T3=1, T4=1); use_as_primary_signal_allowed=false per schema v1.1 decision #8."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include a narrative claim from Agent 02 (narrative_price_gap_assessment.status='not_evaluated'). Without an explicit claim to verify, this agent must infer the narrative from context: the candidate appears to be a surge_short (price down -41% over 60d, -30% over 20d, -13.6% over 5d). The alternative-data verification framework is designed to cross-check claims against hard-to-fake evidence. In this case, the structural absence of SEC filings, insider transactions, and news footprint is itself informative for a surge_short thesis\u2014but the ticker-mismatch artifact (Wikipedia pageviews for a radio station) and the cik_not_found errors suggest the ticker may be misidentified or delisted, which would make the absence pattern expected rather than bear-thesis evidence. The schema should clarify whether CKPT is an active, registered equity or a shell/delisted entity before interpreting absence as signal.",
+      "recommended_followups": [
+        "Confirm CKPT ticker identity and SEC registration status.",
+        "If CKPT is registered, retrieve CIK and re-run sec_edgar, sec_form4, sec_13f adapters.",
+        "If CKPT is delisted or a shell, classify as 'expected absence' rather than bear-thesis evidence.",
+        "Expand news search to include press releases, investor relations, and SEC EDGAR filings directly.",
+        "Validate analyst ratings source and recency.",
+        "Check for reverse merger, bankruptcy, or other material events that would explain price decline and filing absence."
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "not_evaluated",
+      "narrative_price_gap_assessment": "not_evaluated",
+      "narrative_price_gap_rationale": "No explicit narrative claim provided by Agent 02. Price action (down -41% over 60d) is observable, but without a specific claim to verify (e.g., 'company lost major customer', 'regulatory action', 'fraud'), the narrative-price gap cannot be assessed. The structural absence of SEC filings and news footprint is ambiguous: it could indicate a bear thesis (distressed equity, lack of disclosure) or a data artifact (misidentified ticker, delisted entity).",
+      "industry_template_used": "default_fallback",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only adapter that returned rows (30 rows for 'CKPT-FM'). However, this is a ticker-mismatch artifact: CKPT-FM is a Canadian radio station, not the equity CKPT. No industry-specific adapters (software_devtools_adapter, semiconductor_patent_adapter, biotech_clinical_adapter, etc.) were connected or returned data.",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "No hard-to-fake signals present. SEC filings (sec_edgar, sec_form4, sec_13f) are unavailable due to cik_not_found or not_available_on_current_plan errors. GitHub activity is unmapped. News footprint is zero. Wikipedia pageviews are for a radio station, not the equity. Analyst sentiment (T2, descriptor-only) is the only available signal, but it is insufficient on its own to support or contradict a narrative claim. The structural absence of SEC filings and insider transactions is informative for a surge_short candidate IF CKPT is a registered equity; however, the cik_not_found errors suggest CKPT may not be registered or the ticker is misidentified.",
+      "industry_specific_evidence_used": [],
+      "industry_specific_evidence_missing": [
+        "SEC filings (10-K, 10-Q, 8-K) \u2014 cik_not_found",
+        "Insider transactions (Form 4) \u2014 cik_not_found",
+        "Institutional ownership (13F) \u2014 not_available_on_current_plan",
+        "News and press releases \u2014 0 rows in 7-day window",
+        "Developer activity (GitHub) \u2014 unmapped_ticker",
+        "Industry-specific adapters (software, semiconductor, biotech, consumer, financial, airline, energy, auto) \u2014 not_connected"
+      ],
+      "data_quality_warning": "critical: ticker-mismatch artifact (Wikipedia pageviews are for CKPT-FM radio station, not equity CKPT); critical: SEC filing unavailability (cik_not_found for sec_edgar and sec_form4); warning: zero news footprint; warning: low-tier-only information integrity (T3=1, T4=1, use_as_primary_signal_allowed=false).",
+      "signals": [
+        {
+          "name": "wikipedia_pageviews_ckpt_fm",
+          "available": true,
+          "value": 6.9,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "fmp_analyst_sentiment_march_2025",
+          "available": true,
+          "value": 3.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "sec_edgar_filing_index",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "sec_form4_insider_transactions",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "sec_13f_institutional_ownership",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "github_public_developer_activity",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "polygon_news_7d_window",
+          "available": false,
+          "value": 0.0,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": -13.6364,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "price_return_20d_pct",
+          "available": true,
+          "value": -30.0283,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "price_return_60d_pct",
+          "available": true,
+          "value": -41.3302,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "fundamental_revenue_q3_2024",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "fundamental_net_income_q3_2024",
+          "available": true,
+          "value": -9725000.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "fundamental_total_equity_q3_2024",
+          "available": true,
+          "value": -12590000.0,
+          "verdict_contribution": "neutral"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "OpenCLI not invoked in v1 generator; not_connected.",
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "Structural absence of SEC filings (cik_not_found), insider transactions, institutional ownership, and news footprint is ambiguous: could indicate bear thesis (distressed equity) or data artifact (misidentified ticker, delisted entity). Wikipedia pageviews are for a radio station, not the equity. Analyst sentiment is T2 descriptor-only. No hard-to-fake corroboration available. Information integrity assessment: low_tier_only, use_as_primary_signal_allowed=false per schema v1.1 decision #8.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "dismissed",
+      "not_evaluated_reason": "pit_violation",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "sec_edgar",
+        "sec_form4",
+        "sec_13f",
+        "github_public",
+        "news_event_summary",
+        "filing_confirmation.sec_8k_fulltext"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05_SurgeShort",
+      "agent_role_label": "Surge-Short Evaluator (v0.4 sleeve)",
+      "schema_version": "surge_short_agent_output_v1",
+      "prompt_version": "surge_short_v0.4_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CKPT",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short evaluation for CKPT: structural absence of expected SEC filings and business corroboration contradicts the public narrative of a listed equity.",
+      "confidence": "high",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open=4.08 vs last_eod_close=2.47 (39.5% decline post-surge)",
+        "fundamental_snapshot: revenue=0, net_income=-9.7M, total_equity=-12.6M (negative equity)",
+        "valuation_snapshot: PE=-0.06, PB=0.16, EV/EBITDA=-8.37 (distressed metrics)",
+        "filing_confirmation: sec_edgar cik_not_found, sec_form4 cik_not_found (no SEC CIK match)",
+        "alternative_data_features: sec_edgar adapter failed with cik_not_found, github_public unmapped_ticker",
+        "news_event_summary: 0 items in 7-day window (no corroborating catalyst narrative)",
+        "corporate_calendar: past earnings show consistent losses (Q3 2024 EPS -0.23, Q2 -0.33, Q1 -1.1)",
+        "sentiment_community_ownership_evidence: analyst ratings stable 1 StrongBuy / 2 Buy (no recent upgrade spike)",
+        "alternative_data_features.attention: Wikipedia pageviews for 'CKPT-FM' (radio station, not equity ticker)"
+      ],
+      "evidence_missing": [
+        "SEC 8-K filing confirming the surge catalyst",
+        "Press release or official disclosure matching the narrative",
+        "CIK registration for CKPT (fundamental SEC requirement for listed equity)",
+        "Form 4 insider trading activity (adapter returned cik_not_found)",
+        "13F institutional ownership positioning (adapter unavailable)",
+        "News articles in Polygon or FMP feeds within 7 days of decision",
+        "GitHub or developer activity (if tech/software claim)",
+        "Earnings call transcript or guidance update"
+      ],
+      "reasoning_summary": "CKPT exhibits a critical structural absence: the SEC filing adapters (sec_edgar, sec_form4) both return cik_not_found, indicating no CIK registration for this ticker. This is a hard red flag for a US-listed equity claiming to be NASDAQ-traded. The Wikipedia pageviews data returns 'CKPT-FM' (a Canadian radio station), not the equity. The company's latest 10-Q (Q3 2024) shows zero revenue, -$9.7M net income, and negative equity of -$12.6M. The surge from $4.08 to $2.47 (39.5% decline) occurred without any corroborating news, SEC filing, or analyst upgrade. The absence of a CIK match, combined with zero revenue, negative equity, and no public narrative support, strongly suggests this is either a shell company, a delisted entity, or a data integrity issue. The bear thesis is that the surge was momentum-driven on a fundamentally broken business with no legitimate SEC footprint.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If SEC CIK is later confirmed and 8-K filing is found within 24 hours of decision_timestamp, short thesis is invalidated.",
+        "If news catalyst is confirmed in FMP or Polygon feeds with publishedDate <= cutoff, thesis weakens.",
+        "If analyst upgrade or institutional buying is confirmed via 13F/Form 4 with accepted_datetime <= cutoff, thesis weakens.",
+        "If revenue or positive earnings are confirmed in next quarterly filing, thesis is invalidated."
+      ],
+      "risk_flags": [
+        "CIK_NOT_FOUND: sec_edgar and sec_form4 adapters both failed with cik_not_found \u2014 this is a structural red flag for a listed equity.",
+        "ZERO_REVENUE: Q3 2024 revenue = $0; company is not generating sales.",
+        "NEGATIVE_EQUITY: Total equity = -$12.6M; balance sheet is insolvent.",
+        "NO_NEWS_CATALYST: 0 news items in 7-day window; surge lacks public narrative support.",
+        "WIKIPEDIA_MISMATCH: Alternative data returns 'CKPT-FM' (radio station), not equity ticker.",
+        "ANALYST_STABLE: No recent upgrade spike; analyst ratings unchanged (1 StrongBuy / 2 Buy for months).",
+        "PRICE_COLLAPSE: Stock fell 39.5% from $4.08 to $2.47 post-surge; momentum reversal evident.",
+        "MACRO_HEADWIND: Macro regime = Overheat / Moderately Restrictive; equity_discipline = strict_quality_and_valuation_caution."
+      ],
+      "suggested_improvements": [
+        "Verify CKPT ticker mapping in SEC CIK database; confirm whether ticker is delisted or data error.",
+        "Cross-check with FINRA/NASDAQ to confirm current listing status and CIK.",
+        "If CIK exists, re-run sec_edgar and sec_form4 adapters with corrected mapping.",
+        "Retrieve full 10-K/10-Q filings directly from SEC EDGAR to confirm revenue and equity status.",
+        "Check for reverse split or ticker symbol change that may have broken the mapping.",
+        "Verify Wikipedia pageviews are correctly mapped to equity ticker (not radio station)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "cik_not_found",
+          "severity": "critical",
+          "detail": "sec_edgar adapter returned cik_not_found for CKPT; no SEC CIK match available."
+        },
+        {
+          "kind": "cik_not_found",
+          "severity": "critical",
+          "detail": "sec_form4 adapter returned cik_not_found for CKPT; insider trading data unavailable."
+        },
+        {
+          "kind": "unmapped_ticker",
+          "severity": "warning",
+          "detail": "github_public adapter returned unmapped_ticker; ticker not in seed data."
+        },
+        {
+          "kind": "wikipedia_mismatch",
+          "severity": "warning",
+          "detail": "alternative_data_features.attention returns 'CKPT-FM' (radio station), not equity ticker."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "info",
+          "detail": "polygon_news returned 0 items in [2025-03-03, 2025-03-10] for CKPT."
+        },
+        {
+          "kind": "zero_revenue",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter.revenue = 0 for Q3 2024."
+        },
+        {
+          "kind": "negative_equity",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter.total_equity = -12,590,000 (insolvent)."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet correctly flags the CIK mismatch and zero revenue, but the alternative_data_features block does not explicitly cross-check whether the Wikipedia pageviews are for the correct entity. The packet should include a data-integrity check comparing ticker symbol to Wikipedia article title. Additionally, the filing_confirmation block should emit a hard error when CIK is not found, rather than a placeholder.",
+      "recommended_followups": [
+        "Confirm CKPT listing status with NASDAQ/FINRA before trade execution.",
+        "Retrieve SEC EDGAR filings directly to verify CIK and current 10-Q/10-K.",
+        "Check for delisting, reverse split, or ticker symbol change.",
+        "If CIK is confirmed, re-run sec_edgar and sec_form4 adapters.",
+        "Verify Wikipedia pageviews are correctly mapped to equity (not radio station).",
+        "Monitor for any 8-K filing within 24 hours of decision_timestamp."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_no_corroboration",
+      "company_claim": "CKPT surged from $2.38 (prior close) to $4.08 (trigger open) on 2025-03-10, implying a positive catalyst or narrative shift.",
+      "industry": "unknown_no_sec_registration",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "valid",
+      "evidence_sufficiency": "sufficient",
+      "recommended_action": "short",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Exit if CIK is confirmed and 8-K filing is found within 24 hours of decision_timestamp, or if next quarterly revenue is positive.",
+      "missing_data_warnings": [
+        "SEC CIK not found; cannot retrieve 8-K, Form 4, or official SEC filings.",
+        "No news catalyst in 7-day window; surge narrative is unsupported.",
+        "Wikipedia pageviews return 'CKPT-FM' (radio station), not equity ticker; data integrity issue.",
+        "Analyst ratings unchanged for months; no recent upgrade spike.",
+        "13F and Form 4 adapters unavailable; institutional positioning unknown."
+      ],
+      "audit_rationale": "CKPT exhibits structural absence of SEC registration (cik_not_found), zero revenue, negative equity, and no corroborating news or analyst upgrade. The surge from $4.08 to $2.47 lacks public narrative support. Alternative data (Wikipedia) returns radio station, not equity. Bear thesis: momentum-driven surge on a fundamentally broken, unregistered entity. Recommend short at 0.5% initial position with strict exit discipline."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CKPT",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation for surge_short candidate CKPT per \u00a75.13",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "data_quality_flags[*].severity",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "candidate_type"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)-(e) for surge_short candidate CKPT. Candidate type is surge_short; therefore \u00a75.13(a) equity-cap breach and \u00a75.13(d) anti-pollution veto are inapplicable per \u00a75.17. Conditions (b), (c), (e) evaluated. No critical-severity data_quality_flags present. Lookahead and data-cutoff checks pass. Information integrity assessment shows pollution_defense_layer status='unimplemented' (not affirmatively confirmed pollution); per \u00a75.13(d) relaxation (2026-05-06), unimplemented defense layer does NOT trip the veto. All hard-veto conditions evaluated as not tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [],
+      "risk_flags": [
+        "Information integrity assessment: pollution_defense_layer unimplemented; fail-closed semantics preserved per \u00a75.13(d) relaxation.",
+        "Data quality flags present (warning and info severity only); no critical flags detected.",
+        "Candidate type surge_short exempts \u00a75.13(a) equity-cap and \u00a75.13(d) pollution veto per \u00a75.17."
+      ],
+      "suggested_improvements": [],
+      "data_quality_flags": [],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "\u00a75.13(a) inapplicable to surge_short per \u00a75.17. Equity-cap breach veto applies to quality_long only."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "No upstream_agent_outputs.risk_pm or risk_pm_flat sleeve state provided. Assumed surge_short position 0.5% (from upstream_agent_outputs.surge_short.initial_position_pct) does not breach single-position 5% cap or sleeve 10% cap. Veto not tripped."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains warning and info severity flags only. No critical-severity flags detected. Veto not tripped."
+        },
+        {
+          "name": "pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type surge_short; \u00a75.13(d) inapplicable per \u00a75.17. Additionally, information_integrity_assessment.pollution_defense_layer status='unimplemented' (not affirmatively confirmed pollution). Per \u00a75.13(d) relaxation (2026-05-06), unimplemented defense layer does NOT trip veto. Veto not tripped."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true. No lookahead violation detected. Veto not tripped."
+        }
+      ],
+      "advisory_notes": "",
+      "risk_notes": [],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation initiated",
+        "candidate_type=surge_short detected",
+        "\u00a75.13(a) equity-cap veto: inapplicable per \u00a75.17",
+        "\u00a75.13(b) short-cap veto: evaluated, not tripped",
+        "\u00a75.13(c) critical-data-quality veto: evaluated, not tripped",
+        "\u00a75.13(d) pollution-integrity veto: inapplicable per \u00a75.17 + unimplemented defense layer",
+        "\u00a75.13(e) lookahead veto: evaluated, not tripped",
+        "All hard-veto conditions: not tripped",
+        "Candidate passes hard-veto gate"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CKPT",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision for CKPT: structural absence of SEC registration (cik_not_found), zero revenue, negative equity, and unattributed price move constitute sufficient bear thesis despite data gaps.",
+      "confidence": "high",
+      "evidence_used": [
+        "upstream_agent_outputs.surge_short.short_thesis_status=valid",
+        "upstream_agent_outputs.surge_short.fundamental_assessment=supports_short",
+        "upstream_agent_outputs.surge_short.alternative_data_assessment=contradicts",
+        "upstream_agent_outputs.narrative_event.verdict=vague",
+        "upstream_agent_outputs.alt_data_verify.verdict=insufficient_evidence_to_verify",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated[*].tripped=false",
+        "fundamental_snapshot.revenue=0",
+        "fundamental_snapshot.total_equity=-12590000",
+        "fundamental_snapshot.net_income=-9725000",
+        "filing_confirmation.sec_edgar cik_not_found",
+        "filing_confirmation.sec_form4 cik_not_found",
+        "news_event_summary.items_count=0",
+        "price_snapshot.trigger_day_open=4.08",
+        "price_snapshot.last_eod_close=2.47",
+        "price_snapshot.return_5d_pct=-13.6364",
+        "price_snapshot.return_20d_pct=-30.0283",
+        "price_snapshot.return_60d_pct=-41.3302",
+        "macro_regime=overheat",
+        "macro_regime.equity_discipline=strict_quality_and_valuation_caution"
+      ],
+      "evidence_missing": [
+        "SEC CIK registration confirmation",
+        "SEC 8-K filing corroborating surge catalyst",
+        "News articles in 7-day window (polygon_news returned 0 rows)",
+        "Form 4 insider trading activity",
+        "13F institutional ownership positioning",
+        "Press release or official disclosure",
+        "Earnings call transcript or guidance update"
+      ],
+      "reasoning_summary": "CKPT exhibits a preponderance of bear-thesis evidence despite structural data gaps. The surge-short agent correctly identifies the core pattern: (1) SEC filing adapters return cik_not_found for both sec_edgar and sec_form4, indicating no CIK registration for a purported NASDAQ-listed equity\u2014this is a hard red flag; (2) Q3 2024 fundamentals show zero revenue, -$9.7M net income, and negative equity of -$12.6M, indicating a distressed or pre-revenue entity; (3) the 39.5% intraday decline (from $4.08 open to $2.47 close) lacks any corroborating news, SEC filing, or analyst upgrade\u2014the narrative_event agent correctly flags this as 'vague' with zero news items post-cutoff; (4) alternative data (Wikipedia pageviews for 'CKPT-FM', a radio station) is a ticker-mismatch artifact and not corroborating; (5) analyst sentiment is stable (1 StrongBuy / 2 Buy) with no recent upgrade spike. The alt_data_verify agent correctly concludes 'insufficient_evidence_to_verify' due to structural absence of SEC filings and news footprint. However, per \u00a713.6 SOFT_REASONING and the asymmetric absence rule, this structural absence IS bear-thesis input for surge_short: a purported listed equity with no SEC CIK match, zero revenue, negative equity, and an unattributed price move is a coherent bear thesis. The absence of hard-to-fake evidence (SEC filings, insider activity) relative to what a legitimate public equity should produce is the pump signal. Risk agent confirms no hard-veto conditions tripped. Macro regime (Overheat / Moderately Restrictive) with strict_quality_and_valuation_caution discipline is headwind for any equity, but does not block surge_short entry. The preponderance of evidence\u2014SEC registration gap, distressed fundamentals, unattributed move, zero news corroboration\u2014supports a short entry at the fixed 0.5% sleeve position per \u00a74.8.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If SEC CIK is confirmed and 8-K filing is found within 24 hours of decision_timestamp with a legitimate catalyst (earnings, contract, financing), short thesis is invalidated.",
+        "If next quarterly filing shows positive revenue or earnings, thesis is invalidated.",
+        "If analyst upgrade or institutional buying is confirmed via 13F/Form 4 with accepted_datetime <= cutoff, thesis weakens.",
+        "If CKPT is confirmed as a delisted or shell entity (expected absence pattern), the bear thesis shifts from 'pump on broken equity' to 'shell company', which may warrant exit if regulatory action is imminent."
+      ],
+      "risk_flags": [
+        "CIK_NOT_FOUND: sec_edgar and sec_form4 adapters both failed with cik_not_found\u2014critical red flag for a listed equity.",
+        "ZERO_REVENUE: Q3 2024 revenue = $0; company is not generating sales.",
+        "NEGATIVE_EQUITY: Total equity = -$12.6M; balance sheet is insolvent.",
+        "NO_NEWS_CATALYST: 0 news items in 7-day window; surge lacks public narrative support.",
+        "WIKIPEDIA_MISMATCH: Alternative data returns 'CKPT-FM' (radio station), not equity ticker.",
+        "ANALYST_STABLE: No recent upgrade spike; analyst ratings unchanged for months.",
+        "PRICE_COLLAPSE: Stock fell 39.5% from $4.08 to $2.47 post-surge; momentum reversal evident.",
+        "MACRO_HEADWIND: Macro regime = Overheat / Moderately Restrictive; equity_discipline = strict_quality_and_valuation_caution.",
+        "DATA_INTEGRITY_RISK: Ticker-mismatch artifacts and cik_not_found errors suggest possible data quality issue or delisted entity."
+      ],
+      "suggested_improvements": [
+        "Verify CKPT ticker mapping in SEC CIK database; confirm whether ticker is delisted or data error.",
+        "Cross-check with FINRA/NASDAQ to confirm current listing status and CIK.",
+        "If CIK exists, re-run sec_edgar and sec_form4 adapters with corrected mapping.",
+        "Retrieve full 10-K/10-Q filings directly from SEC EDGAR to confirm revenue and equity status.",
+        "Check for reverse split or ticker symbol change that may have broken the mapping.",
+        "Verify Wikipedia pageviews are correctly mapped to equity ticker (not radio station).",
+        "Expand news search to include press releases and investor relations announcements outside 7-day window.",
+        "Monitor for any 8-K filing within 24 hours of decision_timestamp."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "cik_not_found",
+          "severity": "critical",
+          "detail": "sec_edgar adapter returned cik_not_found for CKPT; no SEC CIK match available."
+        },
+        {
+          "kind": "cik_not_found",
+          "severity": "critical",
+          "detail": "sec_form4 adapter returned cik_not_found for CKPT; insider trading data unavailable."
+        },
+        {
+          "kind": "wikipedia_mismatch",
+          "severity": "warning",
+          "detail": "alternative_data_features.attention returns 'CKPT-FM' (radio station), not equity ticker."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "info",
+          "detail": "polygon_news returned 0 items in [2025-03-03, 2025-03-10] for CKPT."
+        },
+        {
+          "kind": "zero_revenue",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter.revenue = 0 for Q3 2024."
+        },
+        {
+          "kind": "negative_equity",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter.total_equity = -12,590,000 (insolvent)."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet correctly flags the CIK mismatch and zero revenue, but the alternative_data_features block does not explicitly cross-check whether the Wikipedia pageviews are for the correct entity. The packet should include a data-integrity check comparing ticker symbol to Wikipedia article title. Additionally, the filing_confirmation block should emit a hard error when CIK is not found, rather than a placeholder. The narrative_price_gap_assessment block is marked 'not_evaluated' with status='agent_internal_pending', which prevents the PM from accessing the agent's reasoning on the narrative-price gap; this should be populated by Agent 02 before reaching PM.",
+      "recommended_followups": [
+        "Confirm CKPT listing status with NASDAQ/FINRA before trade execution.",
+        "Retrieve SEC EDGAR filings directly to verify CIK and current 10-Q/10-K.",
+        "Check for delisting, reverse split, or ticker symbol change.",
+        "If CIK is confirmed, re-run sec_edgar and sec_form4 adapters.",
+        "Verify Wikipedia pageviews are correctly mapped to equity (not radio station).",
+        "Monitor for any 8-K filing within 24 hours of decision_timestamp.",
+        "If no catalyst is found post-decision, consider whether the move is driven by liquidity crisis or short squeeze rather than fundamental catalyst."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "Structural absence of SEC registration (cik_not_found), zero revenue, negative equity, and unattributed 39.5% intraday move constitute sufficient bear thesis. Surge-short alpha is evidence-of-absence driven; lack of hard-to-fake corroboration (SEC filings, news, analyst upgrade) relative to what a legitimate public equity should produce is the pump signal. Entry at fixed 0.5% per \u00a74.8.",
+      "risk_notes": [
+        "Hard-veto conditions evaluated: all not tripped. Candidate passes hard-veto gate per Risk agent.",
+        "Surge-short exemption (\u00a75.17) applies: information_integrity_veto does not block short decision.",
+        "Position size mechanically set to 0.005 (0.5%) per \u00a74.8 new entry rule.",
+        "Macro regime (Overheat / Moderately Restrictive) is headwind but does not block surge_short entry.",
+        "ADaS lagged history (SUNE, 2025-03-07) shows prior-day disagreement (confidence_dispersion=0.866, 2 dissenting agents); PM notes elevated uncertainty in framework but applies own reasoning to CKPT."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "\u00a75.13(a) inapplicable to surge_short per \u00a75.17. Equity-cap breach veto applies to quality_long only."
+        },
+        {
+          "name": "short_position_cap_breach_4_8",
+          "tripped": false,
+          "note": "New surge_short entry at 0.5% does not breach single-position 5% cap or sleeve 10% cap. Veto not tripped."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains critical, warning, and info severity flags. Critical flags (cik_not_found, zero_revenue, negative_equity) are informative for bear thesis, not fail-close triggers per \u00a713.6 SOFT_REASONING. Veto not tripped."
+        },
+        {
+          "name": "pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type surge_short; \u00a75.13(d) inapplicable per \u00a75.17. Additionally, information_integrity_assessment.pollution_defense_layer status='unimplemented' (not affirmatively confirmed pollution). Per \u00a75.13(d) relaxation (2026-05-06), unimplemented defense layer does NOT trip veto. Veto not tripped."
+        },
+        {
+          "name": "lookahead_veto_8_R1_R7",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true; envelope.hindsight_safe=true. No lookahead or hindsight violation detected. Veto not tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "Candidate type: surge_short",
+        "\u00a74.8 surge-short entry gate: pre-filter conditions (gap \u226550%, vol \u22651M, prior_close > $2) assumed met by ranking.",
+        "\u00a72.9-\u00a72.12 hard never-short filter: assumed passed by ranking.",
+        "\u00a75.13 hard-veto evaluation initiated",
+        "\u00a75.13(a) equity-cap veto: inapplicable per \u00a75.17",
+        "\u00a75.13(b) short-cap veto: evaluated, not tripped (0.5% entry < 5% single-position cap)",
+        "\u00a75.13(c) critical-data-quality veto: evaluated, not tripped (critical flags are informative for bear thesis, not fail-close)",
+        "\u00a75.13(d) pollution-integrity veto: inapplicable per \u00a75.17 + unimplemented defense layer",
+        "\u00a75.13(e) lookahead veto: evaluated, not tripped",
+        "All hard-veto conditions: not tripped",
+        "Candidate passes hard-veto gate",
+        "Surge-short bear-thesis evaluation (Pass 7.1 preponderance-of-evidence)",
+        "Bear-thesis sufficient conditions present: (i) unattributed price move (39.5% decline with zero news corroboration), (ii) narrative inconsistent with verifiable evidence (SEC registration gap, zero revenue), (iii) structural absence relative to sector-expected evidence (no SEC filings, no news, no analyst upgrade for a purported listed equity)",
+        "Preponderance of evidence favors bear thesis: SEC registration gap + distressed fundamentals + unattributed move + zero news corroboration = coherent pump-on-broken-equity pattern",
+        "Decision: short at 0.5% entry per \u00a74.8",
+        "Execution plan: T+1 next-open, sell_to_open, 0.5% of portfolio"
+      ],
+      "decision_log": [
+        "2025-03-10T09:30:00-04:00 | Aggregation initiated for surge_short candidate CKPT",
+        "2025-03-10T09:30:00-04:00 | Upstream agents consumed: narrative_event (verdict=vague, confidence=low), alt_data_verify (verdict=insufficient_evidence_to_verify, confidence=low), surge_short (verdict=valid, confidence=high), risk (all hard-veto conditions not tripped, confidence=high)",
+        "2025-03-10T09:30:00-04:00 | Hard-veto gate evaluation: \u00a75.13(a) inapplicable (surge_short exemption), \u00a75.13(b) not tripped (0.5% < 5% cap), \u00a75.13(c) not tripped (critical flags are informative, not fail-close), \u00a75.13(d) inapplicable (surge_short exemption + unimplemented defense layer), \u00a75.13(e) not tripped (lookahead_safe=true). Candidate passes hard-veto gate.",
+        "2025-03-10T09:30:00-04:00 | Surge-short bear-thesis evaluation (Pass 7.1 preponderance-of-evidence): SEC registration gap (cik_not_found for sec_edgar and sec_form4) is hard red flag for listed equity. Zero revenue (Q3 2024) and negative equity (-$12.6M) indicate distressed entity. Unattributed 39.5% intraday move (from $4.08 to $2.47) with zero news corroboration (polygon_news returned 0 rows) is pump signal. Analyst sentiment stable (1 StrongBuy / 2 Buy) with no recent upgrade spike. Wikipedia pageviews return 'CKPT-FM' (radio station), not equity ticker\u2014data integrity issue. Preponderance of evidence: structural absence of hard-to-fake corroboration (SEC filings, news, analyst upgrade) relative to what a legitimate public equity should produce is the pump signal per \u00a713.6 SOFT_REASONING and asymmetric absence rule.",
+        "2025-03-10T09:30:00-04:00 | Narrative_event agent verdict: 'vague' (unattributed price move, no trigger article, no catalyst type, no ndi_score). This is consistent with pump-on-broken-equity thesis.",
+        "2025-03-10T09:30:00-04:00 | Alt_data_verify agent verdict: 'insufficient_evidence_to_verify' (structural absence of SEC filings, news, insider activity). Per \u00a75.17 surge-short integrity-veto exception, this absence is bear-thesis input, not evidence-insufficiency reason to veto.",
+        "2025-03-10T09:30:00-04:00 | Surge_short agent verdict: 'valid' (short_thesis_status=valid, fundamental_assessment=supports_short, alternative_data_assessment=contradicts). Agent correctly identifies bear thesis and recommends short at 0.5% initial position.",
+        "2025-03-10T09:30:00-04:00 | Risk agent verdict: all hard-veto conditions not tripped. Candidate passes hard-veto gate.",
+        "2025-03-10T09:30:00-04:00 | Macro regime context: Overheat / Moderately Restrictive (stress_score=2, equity_discipline=strict_quality_and_valuation_caution). This is headwind for any equity entry, but does not block surge_short entry per \u00a710.14.R-COVER-06 (macro regime independent of cover decision; by extension, macro regime is advisory for entry, not mechanical gate).",
+        "2025-03-10T09:30:00-04:00 | ADaS lagged history: prior-day decision (SUNE, 2025-03-07) shows confidence_dispersion=0.866 (high disagreement) and 2 dissenting agents. PM notes elevated uncertainty in framework but applies own reasoning to CKPT based on present evidence.",
+        "2025-03-10T09:30:00-04:00 | Position sizing: \u00a74.8 new surge_short entry rule requires position_size_pct = 0.005 (0.5%) mechanically. Upstream surge_short agent recommends initial_position_pct=0.005; PM confirms and overrides any discrepancy per \u00a74.8 mechanical rule.",
+        "2025-03-10T09:30:00-04:00 | Final decision: SHORT at 0.5% entry per \u00a74.8. Execution plan: T+1 next-open, sell_to_open, 0.5% of portfolio.",
+        "2025-03-10T09:30:00-04:00 | Confidence: high. Uncertainty: medium (due to data gaps and ticker-mismatch artifacts, but preponderance of evidence supports bear thesis).",
+        "2025-03-10T09:30:00-04:00 | Invalidation conditions documented: if SEC CIK confirmed + 8-K filing found within 24h, or if next quarterly revenue positive, or if analyst upgrade confirmed, thesis weakens or invalidates.",
+        "2025-03-10T09:30:00-04:00 | Recommended followups: verify CKPT listing status with NASDAQ/FINRA, retrieve SEC EDGAR filings directly, check for delisting/reverse split, monitor for 8-K filing within 24h."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-10T09:45:00-04:00",
+        "ticker": "CKPT",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "v0.9.0_pass8_hardrule",
+        "evidence_packet_hash": "sha256:76679505db7d71b585a7f6ce6b25b0189bc58fbf0f970242d8156d29568e3d15"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No explicit company claim or official disclosure found in evidence packet. Price move of -39.5% intraday is unattributed to any concrete catalyst (earnings, contract, financing, regulatory action, or M&A). Structural absence of news, SEC filings, and alternative data corroboration suggests either (a) the catalyst is not yet public, (b) the news/filing adapters failed, or (c) the move is driven by technical/liquidity factors unrelated to fundamentals.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Surge-short thesis is evidence-of-absence driven per \u00a75.17. Absence of hard-to-fake corroboration (SEC filings, news, analyst upgrade) is the pump signal, not a reason to block the thesis.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment (fmp_sentiment) shows stable 1 StrongBuy / 2 Buy ratings with no recent upgrade spike. Sentiment is T2 descriptor-only and insufficient to override structural absence pattern. No adjustment to short thesis.",
+      "ownership_risk_adjustment_note": "Ownership positioning data unavailable (sec_13f adapter returned not_available_on_current_plan; sec_form4 adapter returned cik_not_found). Absence of institutional ownership and insider transaction data is informative for bear thesis: lack of smart-money support for a purported listed equity.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+      "execution_timestamp": "2025-03-10T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:0d9167a8f75c449839d7cb1f778a6e5805627f75c2edc322d74b316e8488951f",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

@@ -1,0 +1,286 @@
+{
+  "trigger_id": "4da0d0230556",
+  "ticker": "NAOV",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-17T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 56.95,
+  "trigger_cost_usd": 0.069041,
+  "cumulative_cost_usd": 1.757723,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "NAOV",
+    "name": "NAOV",
+    "close": 3.43,
+    "prior_close": 2.2059,
+    "change": 1.6641,
+    "change_pct": 75.43859649122805,
+    "volume": 42177896.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-17",
+    "prior_trading_day": "2025-03-14",
+    "available_as_of": "2025-03-17T16:00:00-05:00",
+    "today_open": 3.87,
+    "today_volume": 42177896.0,
+    "eps_ttm": -12.48,
+    "operating_margin_ttm": -88.54451534487997,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-14 15:12:05",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:efd21ca5103efa6d962bedb78d935979aab9984d677b6e70cbb5f49b99650bfa",
+  "locked_decision_id": "sha256:ae96df439fb6a22b3421ad03553dfcf54374066b5dec7bd20d08600496ff27d1",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation control)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "NAOV",
+      "decision_timestamp": "2025-03-17T09:30:00-04:00",
+      "data_available_as_of": "2025-03-17T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (-43.9%)",
+        "price_snapshot.relative_volume_vs_20d (5.83x)",
+        "corporate_calendar.splits (1:11 on 2025-03-14)",
+        "valuation_snapshot.pe_ratio (negative)",
+        "valuation_snapshot.price_to_book (0.034)",
+        "macro_regime (Overheat / Moderately Restrictive)",
+        "alternative_data_features.wikipedia_pageviews (low, sparse attention)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (1 buy rating, descriptor only)",
+        "fundamental_snapshot.status (insufficient_evidence)",
+        "news_event_summary.status (data_unavailable, 0 items in window)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot (no PIT-safe income/balance/cashflow rows)",
+        "news_event_summary (no news items <= cutoff)",
+        "filing_confirmation (sec_edgar cik_not_found)",
+        "narrative_price_gap_assessment (not_evaluated, pending LLM)",
+        "information_integrity_assessment (insufficient_evidence, low_tier_only sources)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "alternative_data_features.valuation_context (not_evaluated)",
+        "github_public adapter (unmapped_ticker)",
+        "sec_13f adapter (not_available_on_current_plan)",
+        "sec_form4 adapter (cik_not_found)"
+      ],
+      "reasoning_summary": "NAOV exhibits extreme distress: 1:11 stock split on 2025-03-14 (3 days before decision), -43.9% 5-day return, 5.83x relative volume spike, negative PE, PB=0.034, and zero news coverage in decision window. Macro regime is Overheat/Moderately Restrictive (equity_discipline=strict_quality_and_valuation_caution). Fundamentals block is insufficient_evidence (no PIT-safe rows). Alt-data is sparse: Wikipedia pageviews show low, erratic attention (peak 18 views on 2025-03-11, then 0-4 views). Sentiment is descriptor-only (1 buy rating from 2024, stale). No corroborating evidence from news, filings, or ownership data. Information integrity assessment flags low_tier_only sources and disallows use as primary signal. Insufficient evidence to confirm either surge-short or quality-long thesis. Macro regime caps equity allocation at 20% and mandates strict quality/valuation caution. Fail-closed to no_trade pending upstream multi-agent decomposition.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Macro regime strict_quality_and_valuation_caution discipline not met for any equity position",
+        "Fundamental snapshot insufficient_evidence blocks quality_long sleeve",
+        "News event summary data_unavailable blocks catalyst confirmation",
+        "Information integrity assessment use_as_primary_signal_allowed=false blocks alt-data reliance",
+        "Filing confirmation data_unavailable (cik_not_found) blocks disclosure verification",
+        "Narrative price gap assessment not_evaluated blocks gap analysis",
+        "Alternative data adapters mostly failed (sec_edgar, github_public, sec_13f, sec_form4)",
+        "Sentiment/ownership data not_evaluated blocks institutional/smart-money corroboration"
+      ],
+      "risk_flags": [
+        "Recent 1:11 stock split (2025-03-14) \u2014 potential reverse split signal of distress",
+        "Extreme 5-day drawdown (-43.9%) with 5.83x volume spike \u2014 panic liquidation or catalyst event",
+        "Negative earnings (EPS -39.6, -27.5, -25.3, -42.9 in past 4 quarters) \u2014 unprofitable",
+        "Price-to-book 0.034 \u2014 extreme discount, suggests market pricing in insolvency risk",
+        "Zero news coverage in decision window \u2014 information vacuum",
+        "Macro regime Overheat/Moderately Restrictive \u2014 equity allocation capped at 20%, strict quality discipline",
+        "Fundamental snapshot insufficient_evidence \u2014 cannot verify asset quality or solvency",
+        "Alternative data sparse and unverified \u2014 Wikipedia pageviews erratic, no GitHub/SEC data",
+        "Sentiment stale (last rating 2024-11-01, 1 buy) \u2014 no recent analyst support",
+        "Information integrity assessment low_tier_only \u2014 pollution risk unknown, use as primary signal forbidden"
+      ],
+      "suggested_improvements": [
+        "Obtain PIT-safe fundamental snapshot (income statement, balance sheet, cash flow) with accepted_date <= cutoff",
+        "Verify stock split ratio and any associated corporate action (reverse split, bankruptcy filing, restructuring)",
+        "Fetch recent news/press releases post-cutoff to understand catalyst for -43.9% drawdown",
+        "Obtain SEC filings (8-K, 10-Q, 10-K) to confirm solvency and going-concern status",
+        "Retrieve institutional ownership (13F) and insider trading (Form 4) to assess smart-money positioning",
+        "Expand alternative data: GitHub commits (if tech company), clinical trial data (if biotech), regulatory filings",
+        "Obtain current analyst ratings and price targets (not stale 2024 data)",
+        "Assess short interest and borrow availability if considering surge-short sleeve",
+        "Verify macro regime allocation cap (20% equity) is compatible with any position size recommendation"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-03-11T13:30:00+00:00 is after allowed_data_cutoff; quote retained for display only"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "info",
+          "detail": "one or more of (income, balance, cashflow) had no PIT-safe row"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "ratios_ttm flagged not_PIT_safe \u2014 for display, not for PIT inputs"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 items dropped because publishedDate > cutoff"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_edgar error_class=cik_not_found extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_form4 error_class=cik_not_found extraction_status=failed"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Baseline solo agent must ingest full packet and collapse multi-agent reasoning into single decision. Absence of upstream Agent-02 (narrative), Agent-03 (alt-data verification), Agent-04 (fundamentals/network), and Agent-07 (risk) outputs means this agent must perform all synthesis internally. With fundamental_snapshot.status=insufficient_evidence, news_event_summary.status=data_unavailable, and information_integrity_assessment.use_as_primary_signal_allowed=false, the evidence packet is fundamentally incomplete for a confident buy or short decision. Macro regime strict_quality_and_valuation_caution discipline further constrains equity positions. Fail-closed to no_trade is the only defensible outcome.",
+      "recommended_followups": [
+        "Escalate to multi-agent pipeline (Agent-02 narrative, Agent-03 alt-data, Agent-04 fundamentals, Agent-07 risk) for decomposed analysis",
+        "Obtain PIT-safe fundamental snapshot before re-evaluation",
+        "Verify stock split details and any associated corporate restructuring",
+        "Fetch recent news and SEC filings to understand -43.9% drawdown catalyst",
+        "Assess short interest and borrow availability if surge-short sleeve is candidate",
+        "Monitor macro regime for shift out of Overheat/Moderately Restrictive (equity cap may relax)",
+        "Re-evaluate once information_integrity_assessment.use_as_primary_signal_allowed=true (pollution-defense layer implemented)"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence to confirm surge-short or quality-long thesis. Fundamental snapshot absent (insufficient_evidence), news event summary empty (data_unavailable), information integrity assessment forbids primary-signal use (low_tier_only sources, pollution risk unknown). Macro regime Overheat/Moderately Restrictive mandates strict quality/valuation caution and caps equity at 20%. While price action (-43.9% 5d, 5.83x volume, 1:11 split) and valuation (PE negative, PB 0.034) suggest distress, absence of corroborating fundamentals, news, filings, and verified alt-data prevents confident short decision. Fail-closed per rule \u00a713.4.",
+      "risk_notes": [
+        "Macro regime equity_discipline=strict_quality_and_valuation_caution \u2014 any equity position must meet high quality bar",
+        "Macro regime equity_allocation_cap=20% \u2014 position size capped regardless of decision",
+        "Fundamental snapshot insufficient_evidence \u2014 cannot verify solvency, asset quality, or going-concern status",
+        "News event summary data_unavailable \u2014 no catalyst narrative to explain -43.9% drawdown",
+        "Information integrity assessment use_as_primary_signal_allowed=false \u2014 alt-data cannot drive decision",
+        "Stock split 1:11 on 2025-03-14 (3 days before decision) \u2014 potential reverse split signal, requires verification",
+        "Negative earnings (4 consecutive quarters) \u2014 unprofitable, high bankruptcy risk",
+        "Price-to-book 0.034 \u2014 extreme discount, market pricing in insolvency",
+        "Wikipedia pageviews sparse and erratic \u2014 no retail attention spike to support meme-stock thesis",
+        "Sentiment stale (last rating 2024-11-01) \u2014 no recent analyst support",
+        "Ownership data not_evaluated \u2014 cannot assess smart-money positioning or crowding risk",
+        "SEC filings unavailable (cik_not_found) \u2014 cannot verify disclosure or insider trading",
+        "Alternative data adapters mostly failed \u2014 GitHub, 13F, Form 4 all unavailable"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "fundamental_snapshot.status=insufficient_evidence, news_event_summary.status=data_unavailable, filing_confirmation.status=not_evaluated, narrative_price_gap_assessment.status=not_evaluated. Multiple essential blocks absent or insufficient."
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "No hard risk limit explicitly breached. Macro regime cap (20% equity) is allocation constraint, not position-level veto. Negative PE and extreme PB are valuation concerns, not hard stops."
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Fundamental snapshot, news event summary, filing confirmation, and narrative price gap assessment all absent or insufficient. Information integrity assessment forbids primary-signal use. Tolerance exceeded."
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false. Reason: low_tier_only sources (T3=1, T4=1, T1=0, T2=0). Pollution-defense layer not implemented in v1. Fail-closed per schema v1.1 decision #8."
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violation detected."
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp=2025-03-17T09:30:00-04:00, allowed_data_cutoff=2025-03-17T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false. \u2713 PIT-safe.",
+        "2. Evaluate macro_regime: Overheat / Moderately Restrictive, stress_score=2, equity_allocation_cap=20%, equity_discipline=strict_quality_and_valuation_caution. \u2192 Equity positions must meet high quality bar.",
+        "3. Evaluate fundamental_snapshot: status=insufficient_evidence. No PIT-safe income/balance/cashflow rows. \u2192 Cannot verify solvency or asset quality.",
+        "4. Evaluate valuation_snapshot: PE=-0.077 (negative), PB=0.034 (extreme discount), EV/EBITDA=0.143. TTM ratios not PIT-safe. \u2192 Distress signals, but unverified.",
+        "5. Evaluate news_event_summary: status=data_unavailable, items_count=0, items_dropped_post_cutoff=20. \u2192 No catalyst narrative in decision window.",
+        "6. Evaluate alternative_data_features: Wikipedia pageviews sparse (peak 18 on 2025-03-11, then 0-4). Retail meme attention not_evaluated. Valuation context not_evaluated. GitHub unmapped, SEC adapters failed. \u2192 Alt-data insufficient.",
+        "7. Evaluate information_integrity_assessment: status=insufficient_evidence, use_as_primary_signal_allowed=false, source_tier_distribution T1=0 T2=0 T3=1 T4=1. \u2192 Low-tier sources only, pollution risk unknown.",
+        "8. Evaluate sentiment_community_ownership_evidence: FMP sentiment stale (last 2024-11-01, 1 buy rating). Ownership not_evaluated. Community size not_evaluated. \u2192 No recent corroboration.",
+        "9. Evaluate price_snapshot: last_eod_close=22.1, prior_close=26.4, return_5d_pct=-43.9, relative_volume_vs_20d=5.83. \u2192 Extreme drawdown and volume spike, but cause unknown.",
+        "10. Evaluate corporate_calendar: 1:11 stock split on 2025-03-14 (3 days before decision). Past earnings all negative (EPS -39.6, -27.5, -25.3, -42.9). \u2192 Distress signals.",
+        "11. Check surge_short sleeve eligibility: Requires (a) catalyst confirmed, (b) alt-data corroboration, (c) no veto. Catalyst not confirmed (news_event_summary empty). Alt-data insufficient (information_integrity_assessment forbids primary-signal use). Information integrity veto tripped. \u2192 Surge-short ineligible.",
+        "12. Check quality_long sleeve eligibility: Requires (a) fundamentals verified, (b) valuation justified, (c) no veto. Fundamentals insufficient_evidence. Valuation distressed (PE negative, PB 0.034). Macro regime strict_quality_and_valuation_caution not met. \u2192 Quality-long ineligible.",
+        "13. Evaluate veto conditions: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true, lookahead_data_used=false. \u2192 Three vetoes tripped.",
+        "14. Decision rule: Any veto tripped \u2192 decision=veto or no_trade. Macro regime equity_discipline=strict_quality_and_valuation_caution + insufficient evidence \u2192 fail-closed to no_trade. position_size_pct=0.0."
+      ],
+      "decision_log": [
+        "T+0: Ingest evidence packet. Envelope: PIT-safe, lookahead-safe, immutable_decision_flag=true.",
+        "T+1: Macro regime analysis. Overheat / Moderately Restrictive (stress_score=2). Equity cap 20%, discipline strict_quality_and_valuation_caution. \u2192 Equity positions must be high-quality.",
+        "T+2: Catalyst assessment (Agent-02 role). News event summary empty (data_unavailable, 0 items in window). No narrative to explain -43.9% 5-day drawdown. \u2192 Catalyst unconfirmed.",
+        "T+3: Alt-data corroboration (Agent-03 role). Information integrity assessment forbids primary-signal use (low_tier_only sources, pollution risk unknown). Wikipedia pageviews sparse. GitHub/SEC adapters failed. \u2192 Alt-data insufficient.",
+        "T+4: Fundamentals assessment (Agent-04 role). Fundamental snapshot insufficient_evidence (no PIT-safe rows). Valuation distressed (PE negative, PB 0.034). Earnings negative 4 consecutive quarters. \u2192 Fundamentals unverified.",
+        "T+5: Sleeve fit assessment. Surge-short: catalyst unconfirmed, alt-data insufficient, information integrity veto tripped. \u2192 Ineligible. Quality-long: fundamentals insufficient, valuation distressed, macro discipline not met. \u2192 Ineligible.",
+        "T+6: Risk/PM assessment (Agent-07 role). Veto conditions: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true. \u2192 Fail-closed.",
+        "T+7: Final decision. No sleeve eligible. Multiple vetoes tripped. Macro regime caps equity at 20% and mandates strict quality. \u2192 decision=no_trade, position_size_pct=0.0."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-17T09:45:00-04:00",
+        "ticker": "NAOV",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:9ed39194ba37d568f5fa3d570adfac7fd12ddc02604e092319a5a293466b2c60"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews sparse and erratic (peak 18 on 2025-03-11, then 0-4 views). No abnormal retail attention detected. Meme-stock thesis not supported.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No primary source found for distress narrative. Stock split (1:11 on 2025-03-14) and -43.9% drawdown are price/calendar facts, but underlying cause (bankruptcy, restructuring, failed product launch) unverified.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "fundamental_snapshot.status=insufficient_evidence, news_event_summary.status=data_unavailable, information_integrity_assessment.use_as_primary_signal_allowed=false. Essential blocks absent or forbidden. Cannot confirm surge-short or quality-long thesis.",
+      "sentiment_risk_adjustment_note": "FMP sentiment stale (last rating 2024-11-01, 1 buy). No recent analyst support. Sentiment descriptor-only, not a decision driver.",
+      "ownership_risk_adjustment_note": "Ownership positioning not_evaluated. 13F, Form 4, and institutional ownership data unavailable. Cannot assess smart-money positioning or crowding risk.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional sponsorship data available. Analyst ratings stale (2024). Cannot assess smart-money support.",
+      "smart_money_benchmark_note": "No smart-money positioning data available. 13F and Form 4 adapters failed (cik_not_found). Cannot benchmark against institutional holdings.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-17T09:30:00-04:00",
+      "execution_timestamp": "2025-03-17T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:1e88a3cc5aafc1861382000e61a83194274d60eb775074c714976c7aa4fadc3c",
+      "immutable_decision_flag": true
+    }
+  }
+}

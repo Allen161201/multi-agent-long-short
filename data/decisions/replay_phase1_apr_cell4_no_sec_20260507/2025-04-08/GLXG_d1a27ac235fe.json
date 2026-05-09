@@ -1,0 +1,1180 @@
+{
+  "trigger_id": "d1a27ac235fe",
+  "ticker": "GLXG",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-04-08T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 227.39,
+  "trigger_cost_usd": 0.227607,
+  "cumulative_cost_usd": 2.318277,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "GLXG",
+    "name": "GLXG",
+    "close": 9.493,
+    "prior_close": 9.398,
+    "change": 6.702000000000002,
+    "change_pct": 71.31304532879338,
+    "volume": 7193912.9,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-04-08",
+    "prior_trading_day": "2025-04-07",
+    "available_as_of": "2025-04-08T16:00:00-05:00",
+    "today_open": 16.1,
+    "today_volume": 7193912.9,
+    "eps_ttm": -0.20099999999999996,
+    "operating_margin_ttm": -7.987806164084644,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-12-30 19:00:00",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:9c561e96f506172e7ae1cd75dfbec7c8d86cb3bf67d311d56967595075bf8744",
+  "locked_decision_id": "sha256:7bb2e09889436e60ebf822877e19bd3597b65e71f7c87c408d099d6abccb6867",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PMAgent",
+    "agent_role_label": "PM Agent \u2014 Final Decision Authority (Pass 8)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "v0.9.0_pass8_hardrule_pm_final",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "GLXG",
+    "decision_timestamp": "2025-04-08T09:30:00-04:00",
+    "data_available_as_of": "2025-04-08T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short candidate GLXG: +56.4% 5d return, 17.75x volume, zero news corroboration. Structural absence of catalyst evidence (news, SEC filing, event) combined with deeply negative fundamentals (net margin -14.68%, ROE -74%, debt 1.45x equity) and macro headwind (Overheat/strict_quality_caution) support bear thesis. However, high uncertainty due to incomplete information (20 post-cutoff news items, missing alternative-data adapters, no SEC filing confirmation). Recommended action: WATCH, not SHORT entry at this time.",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.return_5d_pct (56.4%)",
+      "price_snapshot.relative_volume_vs_20d (17.75x)",
+      "price_snapshot.trigger_day_open (16.1 intraday high)",
+      "price_snapshot.last_eod_close (9.4 vs prior 7.53 = +24.9%)",
+      "fundamental_snapshot.net_margin_pct (-14.68%)",
+      "fundamental_snapshot.operating_income (-132353)",
+      "fundamental_snapshot.total_debt (1.126M) vs total_equity (776k)",
+      "valuation_snapshot.pe_ratio (negative)",
+      "valuation_snapshot.roe (-74.1%), roa (-71.0%)",
+      "news_event_summary.polygon_news (0 rows in 7-day window)",
+      "news_event_summary.items_dropped_post_cutoff (20 items filtered)",
+      "corporate_calendar.events_near_decision (0 events)",
+      "macro_regime (Overheat/Expansionary, strict_quality_and_valuation_caution)",
+      "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+      "upstream_agent_outputs.alt_data_verify.verdict (insufficient_evidence_to_verify)",
+      "upstream_agent_outputs.surge_short.recommended_action (watch)",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (all false)"
+    ],
+    "evidence_missing": [
+      "news_event_summary.items (20 items dropped post-cutoff; 0 pre-cutoff items available)",
+      "filing_confirmation.SEC_8K_confirmation (not_connected)",
+      "alternative_data_features (all adapters not_connected in v1)",
+      "information_integrity_assessment (not_evaluated; pollution-defense layer not implemented)",
+      "sentiment_community_ownership_evidence (not_evaluated)",
+      "narrative_price_gap_assessment (agent_internal_pending; no LLM reasoning in v1)",
+      "company sector classification (not explicitly stated in packet)"
+    ],
+    "reasoning_summary": "GLXG exhibits classic surge-short morphology: +56.4% 5d return, 17.75x volume spike, intraday reversal (open 16.1, close 9.4). However, the surge lacks corroborating catalyst evidence. Zero news items in pre-cutoff window (polygon_news returned 0 rows for [2025-04-01, 2025-04-08]); 20 items dropped post-cutoff are forbidden by PIT rules. No SEC 8-K filing confirmation available. No corporate calendar events near decision. All alternative-data adapters unavailable (v1 limitation). Fundamental snapshot (Q2 2025, accepted 2024-12-30) shows severe distress: net margin -14.68%, operating loss -132k, ROE -74%, ROA -71%, total debt 1.45x equity. Valuation metrics inverted (PE negative, EV/EBITDA negative). Macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution discipline, which disfavors unprofitable micro-caps. Upstream agents: Narrative Agent (Agent 02) verdict='unsupported_claim' (confidence=low); Alt-Data Verify Agent (Agent 03) verdict='insufficient_evidence_to_verify' (confidence=low); Surge-Short Agent (Agent 05) recommended_action='watch' (confidence=low); Risk Agent (Agent 06) all veto conditions false (confidence=high). Per \u00a713.6 SOFT_REASONING, structural absence of expected news/filing/event corroboration for a 56% surge is bear-thesis evidence. The absence pattern is consistent with either (i) momentum-driven move without fundamental catalyst, or (ii) catalyst occurred post-cutoff and is invisible to pre-cutoff decision. Either way, the catalyst cannot be identified from available evidence. The bear thesis is SUPPORTED by negative fundamentals and macro headwind, but WEAKENED by incomplete information (20 post-cutoff news items, missing alternative-data adapters, no SEC filing confirmation). Confidence is LOW due to hindsight risk: if the 20 dropped news items contain a material disclosure (e.g., 8-K, press release, partnership announcement), the decision is retroactively contaminated. Per \u00a75.17 surge-short integrity-veto exception, the absence of hard-to-fake corroboration (news, filing, alt-data) is NOT a reason to veto; it is the pump signal that motivates the short. However, the MAGNITUDE of uncertainty (high) and the TIGHT EXECUTION WINDOW (opening-window discipline, 09:30-09:45) argue for WATCH rather than immediate SHORT entry. Recommended action: WATCH pending post-cutoff news reconciliation and SEC filing confirmation. If corroborating catalyst evidence emerges (e.g., SEC 8-K, press release, analyst downgrade), the thesis is invalidated and position should not be entered. If the stock reverses sharply (>-10% from entry) or alternative-data evidence contradicts the bear thesis, exit immediately.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If post-cutoff news (after 2025-04-08 09:30) reveals a concrete catalyst (partnership, financing, product launch, regulatory approval, earnings beat) with corroborating SEC filing or press release, the structural-absence bear thesis is invalidated.",
+      "If SEC 8-K filing or press release dated on or before 2025-04-08 09:30 is discovered post-analysis, the decision is retroactively hindsight-contaminated and should be re-run with post-cutoff data.",
+      "If alternative-data adapters (when wired in v0.8.7+) return positive signals (GitHub activity spike, clinical trial progress, regulatory filing footprint, web traffic surge) that corroborate a turnaround narrative, the bear thesis weakens.",
+      "If institutional ownership data (13F, Form 4) shows large new positions by reputable funds, it may suggest informed buying despite operational distress and would weaken the short thesis.",
+      "If the stock reverses >-10% from entry within 1 trading day, momentum has exhausted and the short thesis loses alpha; exit immediately.",
+      "If the company discloses material positive news in an 8-K or press release between decision_timestamp (2025-04-08 09:30) and execution_timestamp (2025-04-08 09:45), the thesis is invalidated and position should not be entered."
+    ],
+    "risk_flags": [
+      "STRUCTURAL_ABSENCE_SIGNAL: Surge of +56.4% lacks corroborating news (0 items in 7-day window), SEC filing (not_connected), or corporate event (0 near-decision events). This is the primary bear-thesis evidence per \u00a713.6 SOFT_REASONING.",
+      "NEGATIVE_FUNDAMENTALS: Net margin -14.68%, operating loss -132k, ROE -74%, ROA -71%. Company is unprofitable and destroying shareholder value.",
+      "HIGH_LEVERAGE: Total debt 1.45x equity (1.126M debt vs 776k equity). Distressed capital structure.",
+      "MICRO_CAP_ILLIQUIDITY: Revenue 883k (Q2 2025), avg volume 49.9k shares/day. Thin liquidity; susceptible to momentum reversals.",
+      "MACRO_HEADWIND: Overheat regime with strict_quality_and_valuation_caution discipline. Equity allocation capped at 20%. Unprofitable micro-caps are disfavored.",
+      "ALT_DATA_GAPS: Wikipedia article unresolved, GitHub unmapped, FMP sentiment endpoints empty. No external corroboration available.",
+      "INFORMATION_INTEGRITY_UNASSESSED: Pollution-defense layer not implemented in v1. Cannot rule out coordinated campaign or rumor-driven spike.",
+      "HINDSIGHT_RISK: 20 news items dropped post-cutoff. Unknown whether those items contain the catalyst narrative. Decision made with incomplete information.",
+      "EXECUTION_WINDOW_TIGHT: Opening-window discipline (09:30-09:45) means decision made within 15 minutes of market open. Volatility and information asymmetry are high.",
+      "INTRADAY_REVERSAL: Trigger-day open 16.1 vs close 9.4 (41.6% intraday decline) suggests panic or forced liquidation, not organic demand. Momentum may be exhausting."
+    ],
+    "suggested_improvements": [
+      "Wire sec_edgar (filing_index) and sec_8k_fulltext adapters to confirm or deny SEC 8-K filing on or before 2025-04-08.",
+      "Implement information_integrity_assessment (pollution-defense layer) to assess coordinated-campaign risk and rumor credibility.",
+      "Wire alternative-data adapters (GitHub, Wikipedia, web traffic, social sentiment) to corroborate or contradict the surge narrative.",
+      "Implement LLM-based narrative_price_gap_assessment (Agent 03) to synthesize news, filing, and price evidence into a coherent catalyst story.",
+      "Extend news_event_summary lookback window or use real-time news feeds (e.g., Benzinga, Seeking Alpha) to capture intraday catalysts.",
+      "Implement sector-specific adapters (e.g., if GLXG is biotech, wire FDA filing adapter; if software, wire GitHub/developer activity adapter) to verify sector-typical evidence.",
+      "Add post-cutoff news reconciliation: after decision_timestamp, check for news items published between cutoff and execution_timestamp to validate or invalidate the thesis.",
+      "Implement intraday OHLCV granularity to distinguish organic demand (sustained high volume) from panic/forced liquidation (high volume with intraday reversal).",
+      "Add ownership positioning (13F, Form 4) to detect insider selling or institutional accumulation during the surge."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "critical",
+        "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-04-08T09:30:00-04:00). These items are forbidden by \u00a75.13(c) + \u00a78 R1-R7 and cannot be used to explain the price move. Unknown whether those items contain the catalyst narrative."
+      },
+      {
+        "kind": "no_news_in_window",
+        "severity": "critical",
+        "detail": "polygon_news adapter returned 0 items in [2025-04-01, 2025-04-08] for GLXG. Combined with 20 post-cutoff items, this suggests the catalyst event occurred post-cutoff and is invisible to pre-cutoff decision."
+      },
+      {
+        "kind": "alt_data_placeholder",
+        "severity": "warning",
+        "detail": "alternative_data_features is a schema-shape placeholder in v1; no adapters wired. Cannot assess GitHub activity, Wikipedia pageviews, sentiment, or ownership positioning."
+      },
+      {
+        "kind": "info_integrity_placeholder",
+        "severity": "warning",
+        "detail": "information_integrity_assessment is not_evaluated; pollution-defense layer not implemented. Cannot assess rumor risk, bot-like patterns, or coordinated campaigns."
+      },
+      {
+        "kind": "sentiment_ownership_placeholder",
+        "severity": "warning",
+        "detail": "sentiment_community_ownership_evidence is not_evaluated; fmp_sentiment returned 0 rows (endpoints unavailable on current plan). Cannot assess market sentiment or institutional positioning."
+      },
+      {
+        "kind": "filing_not_evaluated",
+        "severity": "warning",
+        "detail": "filing_confirmation.SEC_8K_confirmation is not_evaluated; sec_edgar and sec_8k_fulltext adapters not wired in v1. Cannot confirm material disclosures."
+      },
+      {
+        "kind": "fundamental_stale",
+        "severity": "info",
+        "detail": "Latest PIT-safe income statement is Q2 2025 (accepted 2024-12-30 19:00:00), 3+ months stale relative to decision_timestamp 2025-04-08. No recent earnings or guidance available."
+      },
+      {
+        "kind": "valuation_not_pit_safe",
+        "severity": "info",
+        "detail": "valuation_snapshot.valuation_inputs are TTM ratios without fiscal anchor; not point-in-time safe. PE, PB, EV/EBITDA are distorted by negative earnings."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "v1 evidence packet is a skeleton implementation with critical gaps for surge-short decision-making: (1) alternative_data_features block is not_connected across all adapters \u2014 the primary verification mechanism for surge-short candidates is unavailable; (2) information_integrity_assessment is not_evaluated \u2014 pollution-defense layer not implemented, so coordinated_campaign_risk and bot_like_pattern_risk cannot be assessed; (3) sentiment_community_ownership_evidence is not_evaluated \u2014 no market sentiment or ownership data; (4) news_event_summary has 20 items dropped post-cutoff with 0 pre-cutoff items \u2014 no narrative catalyst available; (5) filing_confirmation is not_evaluated \u2014 sec_8k_fulltext not_connected. These gaps are structural to v1 and prevent full narrative-price dislocation verification. PM is forced to reason from absence patterns and flag the missing evidence prominently. The structural-absence-as-signal pattern (\u00a713.6 SOFT_REASONING) is the primary bear-thesis mechanism available under v1 constraints, but the magnitude of uncertainty (high) and the tight execution window (opening-window discipline) argue for WATCH rather than immediate SHORT entry.",
+    "recommended_followups": [
+      "IMMEDIATE: Check post-cutoff news (after 2025-04-08T09:30:00-04:00) to identify the catalyst. If a material disclosure exists post-cutoff, the decision is hindsight-contaminated and should be re-run with post-cutoff data.",
+      "IMMEDIATE: Fetch SEC EDGAR filings (8-K, press releases) for GLXG around 2025-04-08 to confirm or deny material disclosures.",
+      "SHORT-TERM: Obtain sector classification (10-K Item 1, SIC code, or industry database) to apply sector-aware reasoning and assess whether the absence of expected evidence (e.g., GitHub for software, clinical trials for biotech) is a bear signal.",
+      "SHORT-TERM: Wire alternative-data adapters (GitHub, Wikipedia, sentiment, ownership) to detect tech narratives, retail meme attention, or insider positioning.",
+      "SHORT-TERM: Implement information_integrity_assessment pollution-defense layer to flag rumor risk, bot-like patterns, and coordinated campaigns.",
+      "MEDIUM-TERM: Extend news lookback to 14 days pre-cutoff to capture catalysts announced earlier but driving current momentum.",
+      "MEDIUM-TERM: Implement post-cutoff news reconciliation to compare pre-cutoff verdict to post-cutoff news and detect hindsight contamination.",
+      "MEDIUM-TERM: Add sector-specific fundamental checks (R&D for software, clinical trials for biotech, capex for industrial) to corroborate narrative claims.",
+      "If short position is entered (after WATCH period resolves), set stop-loss at +50% from entry (entry ~9.4, stop ~14.1) to limit momentum-reversal risk."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "watch",
+    "position_size_pct": 0.0,
+    "reason": "Surge-short candidate GLXG exhibits +56.4% 5d return with 17.75x volume but lacks corroborating catalyst evidence (zero news pre-cutoff, no SEC filing, no events). Structural absence of expected corroboration is bear-thesis signal per \u00a713.6. Fundamentals deeply negative (net margin -14.68%, ROE -74%, debt 1.45x equity). Macro headwind (Overheat/strict_quality_caution). However, high uncertainty due to 20 post-cutoff news items (forbidden by PIT rules), missing alternative-data adapters, and no SEC filing confirmation. Upstream agents all recommend WATCH (Narrative=unsupported_claim, Alt-Data=insufficient_evidence, Surge-Short=watch, Risk=no_veto). Recommended action: WATCH pending post-cutoff news reconciliation and SEC filing confirmation. Do NOT enter SHORT at this time. If corroborating catalyst evidence emerges, thesis is invalidated. If stock reverses >-10% or alternative-data contradicts bear thesis, exit immediately.",
+    "risk_notes": [
+      "Candidate passes hard-veto gate (Risk Agent: all veto conditions false).",
+      "Structural absence of news/filing/event corroboration is bear-thesis evidence, but magnitude of uncertainty is high.",
+      "20 post-cutoff news items are forbidden by PIT rules but may contain the catalyst narrative; hindsight risk is material.",
+      "Alternative-data adapters unavailable in v1; cannot verify retail attention, tech activity, or ownership positioning.",
+      "Intraday reversal (open 16.1, close 9.4) suggests momentum exhaustion or panic liquidation, not organic demand.",
+      "Macro regime (Overheat/strict_quality_caution) disfavors unprofitable micro-caps; equity allocation capped at 20%.",
+      "Execution window tight (opening-window discipline, 09:30-09:45); volatility and information asymmetry are high.",
+      "ADaS lagged history (QNRX, 2025-04-02) shows high confidence_dispersion (std_proxy=0.866) and 3 dissenting agents; suggests framework uncertainty on similar surge-short candidates. Recommend elevated caution."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Candidate_type=surge_short is exempt from \u00a75.13(a) equity-cap veto per \u00a75.17. Surge-short positions do not trigger sleeve-cap checks in this context."
+      },
+      {
+        "name": "position_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Candidate_type=surge_short. No sleeve-cap or position-cap data provided in packet; candidate is not subject to \u00a74.7/\u00a74.8 caps under surge_short evaluation."
+      },
+      {
+        "name": "critical_data_quality_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags array contains entries with severity='critical' (news_post_cutoff_filtered, no_news_in_window), but these are informational about missing evidence, not mechanical fail-triggers. \u00a75.13(c) does NOT trip on data-quality flags alone; it trips on lookahead_data_used or hindsight_violations, which are false."
+      },
+      {
+        "name": "pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "information_integrity_assessment.status=not_evaluated (unimplemented). Per \u00a75.13(d) RELAXED 2026-05-06: when pollution_defense_layer is unimplemented or returns status \u2208 {not_evaluated, not_connected, pending, unimplemented}, \u00a75.13(d) does NOT trip. Candidate evaluates on other criteria. Fail-closed semantics preserved for affirmatively-confirmed pollution only."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. \u00a75.13(e) does NOT trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto conditions (mechanical, non-negotiable)",
+      "\u00a75.13(a) equity-cap veto: not applicable (candidate_type=surge_short exempt per \u00a75.17)",
+      "\u00a75.13(b) position-cap veto: not applicable (surge_short exempt)",
+      "\u00a75.13(c) critical data-quality veto: not tripped (no lookahead_data_used or hindsight_violations)",
+      "\u00a75.13(d) pollution-integrity veto: not tripped (pollution_defense_layer unimplemented; \u00a75.13(d) RELAXED 2026-05-06 applies)",
+      "\u00a75.13(e) lookahead veto: not tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+      "\u00a75.17 surge-short integrity-veto exception: applies (candidate_type=surge_short); absence of hard-to-fake corroboration (news, filing, alt-data) is NOT a reason to veto; it is the pump signal that motivates the short",
+      "\u00a713.6 SOFT_REASONING: structural absence of expected news/filing/event corroboration for a 56% surge is bear-thesis evidence; reason from PRESENT evidence (price action, fundamentals, macro headwind) and ABSENT evidence (news, filing, event) per asymmetric absence rule",
+      "SURGE_SHORT_ENTRY_DECISION_FRAMEWORK (Pass 7, 2026-05-03): preponderance-of-evidence reasoning, NOT counting rule. Read prelude agents' rationale (Narrative=unsupported_claim, Alt-Data=insufficient_evidence, Surge-Short=watch). Form integrated read: does weight of evidence favor bear thesis, wait-and-see, or no-thesis? Bear thesis is SUPPORTED by (i) structural absence of catalyst evidence, (ii) negative fundamentals, (iii) macro headwind. But WEAKENED by (iv) high uncertainty (20 post-cutoff news items, missing alt-data, no SEC filing confirmation). Preponderance favors WATCH, not immediate SHORT entry.",
+      "DECISION: watch (not short, not no_trade, not veto)"
+    ],
+    "decision_log": [
+      "2025-04-08T09:30:00-04:00 [ENVELOPE_CHECK] data_after_cutoff_used=false, lookahead_safe=true, immutable_decision_flag=true. PIT discipline satisfied.",
+      "2025-04-08T09:30:00-04:00 [HARD_VETO_GATE] Risk Agent evaluated \u00a75.13(a)-(e). All veto conditions false. Candidate passes mechanical veto gate.",
+      "2025-04-08T09:30:00-04:00 [CANDIDATE_TYPE_CLASSIFICATION] candidate_type=surge_short confirmed. Surge-short integrity-veto exception (\u00a75.17) applies. Absence of hard-to-fake corroboration is NOT a reason to veto.",
+      "2025-04-08T09:30:00-04:00 [PRICE_ACTION_ANALYSIS] GLXG: prior_close=7.53, last_eod_close=9.4 (+24.9%), trigger_day_open=16.1 (intraday high), return_5d_pct=56.4%, relative_volume_vs_20d=17.75x. Classic surge-short morphology: extreme intraday volatility, elevated volume, partial reversion.",
+      "2025-04-08T09:30:00-04:00 [CATALYST_IDENTIFICATION] news_event_summary.polygon_news returned 0 rows for [2025-04-01, 2025-04-08]. 20 news items dropped post-cutoff (forbidden by PIT rules). No SEC 8-K filing confirmation available (filing_confirmation.status=not_evaluated). No corporate calendar events within \u00b15 trading days (events_near_decision_count=0). CATALYST UNIDENTIFIABLE from pre-cutoff evidence.",
+      "2025-04-08T09:30:00-04:00 [STRUCTURAL_ABSENCE_ASSESSMENT] Per \u00a713.6 SOFT_REASONING, structural absence of expected news/filing/event corroboration for a 56% surge is bear-thesis evidence. The absence pattern is consistent with either (i) momentum-driven move without fundamental catalyst, or (ii) catalyst occurred post-cutoff and is invisible to pre-cutoff decision. Either way, the catalyst cannot be identified from available evidence.",
+      "2025-04-08T09:30:00-04:00 [FUNDAMENTAL_ASSESSMENT] Q2 2025 snapshot (accepted 2024-12-30): revenue=883.5k, net_margin=-14.68%, operating_income=-132.3k, operating_cash_flow=0, free_cash_flow=0, eps=-0.076, roe=-74.1%, roa=-71.0%, total_debt=1.126M vs total_equity=776k (1.45x leverage). Company is unprofitable, cash-flow negative, and highly leveraged. Valuation metrics inverted (PE negative, EV/EBITDA negative).",
+      "2025-04-08T09:30:00-04:00 [MACRO_REGIME_ASSESSMENT] macro_regime=Overheat/Expansionary, stress_score=2, equity_discipline=strict_quality_and_valuation_caution, equity_allocation_cap=20%. Regime disfavors unprofitable micro-caps. GLXG is unsuitable for current macro regime.",
+      "2025-04-08T09:30:00-04:00 [UPSTREAM_AGENT_SYNTHESIS] Narrative Agent (Agent 02): verdict=unsupported_claim, confidence=low. Alt-Data Verify Agent (Agent 03): verdict=insufficient_evidence_to_verify, confidence=low, recommendation_to_pm=needs_more_evidence. Surge-Short Agent (Agent 05): recommended_action=watch, confidence=low. Risk Agent (Agent 06): all veto conditions false, confidence=high. Consensus: WATCH, not SHORT.",
+      "2025-04-08T09:30:00-04:00 [BEAR_THESIS_COHERENCE] Bear thesis is SUPPORTED by: (i) structural absence of catalyst evidence (news, filing, event), (ii) negative fundamentals (net margin -14.68%, ROE -74%, debt 1.45x equity), (iii) macro headwind (Overheat/strict_quality_caution). Bear thesis is WEAKENED by: (iv) high uncertainty (20 post-cutoff news items forbidden by PIT rules, missing alternative-data adapters, no SEC filing confirmation), (v) incomplete information (catalyst narrative unknown).",
+      "2025-04-08T09:30:00-04:00 [CONFIDENCE_ASSESSMENT] Confidence=LOW due to: (a) hindsight risk (20 post-cutoff news items may contain catalyst narrative), (b) missing alternative-data adapters (cannot verify retail attention, tech activity, ownership positioning), (c) no SEC filing confirmation (cannot verify material disclosures), (d) tight execution window (opening-window discipline, 09:30-09:45, leaves minimal time for information synthesis), (e) intraday reversal (open 16.1, close 9.4) suggests momentum exhaustion or panic liquidation, not organic demand.",
+      "2025-04-08T09:30:00-04:00 [INVALIDATION_RISK_ASSESSMENT] If post-cutoff news reveals a concrete catalyst (partnership, financing, product launch, regulatory approval, earnings beat) with corroborating SEC filing or press release, the structural-absence bear thesis is invalidated. If SEC 8-K filing or press release dated on or before 2025-04-08 09:30 is discovered post-analysis, the decision is retroactively hindsight-contaminated. If alternative-data adapters (when wired in v0.8.7+) return positive signals (GitHub activity spike, clinical trial progress, regulatory filing footprint), the bear thesis weakens. If institutional ownership data (13F, Form 4) shows large new positions by reputable funds, it may suggest informed buying despite operational distress.",
+      "2025-04-08T09:30:00-04:00 [ADAS_LAGGED_CONTEXT] ADaS lagged history (QNRX, 2025-04-02) shows high confidence_dispersion (std_proxy=0.866) and 3 dissenting agents (narrative_event=low, alt_data_verify=low, surge_short=low, risk=high). This suggests the framework is uncertain on similar surge-short candidates with incomplete information. Recommend elevated caution on GLXG.",
+      "2025-04-08T09:30:00-04:00 [DECISION_RATIONALE] Preponderance-of-evidence reasoning (Pass 7, 2026-05-03): The bear thesis is COHERENT (structural absence + negative fundamentals + macro headwind) but UNCERTAIN (high magnitude of missing information). The upstream agents all recommend WATCH, not SHORT. The tight execution window (opening-window discipline, 09:30-09:45) and high hindsight risk argue for deferring SHORT entry pending post-cutoff news reconciliation and SEC filing confirmation. Recommended action: WATCH. Do NOT enter SHORT at this time. If corroborating catalyst evidence emerges (e.g., SEC 8-K, press release, analyst downgrade), the thesis is invalidated and position should not be entered. If the stock reverses sharply (>-10% from entry) or alternative-data evidence contradicts the bear thesis, exit immediately.",
+      "2025-04-08T09:30:00-04:00 [POSITION_SIZING] decision=watch, position_size_pct=0.0. No position entry at this time. If WATCH period resolves with corroborating catalyst evidence, re-evaluate for SHORT entry at \u00a74.8 fixed 0.005 (0.5%) position size.",
+      "2025-04-08T09:30:00-04:00 [EXECUTION_PLAN] order_type=T+1 next-open, execution_timestamp=2025-04-08T09:45:00-04:00, side=none, size_pct_of_portfolio=0.0. No order to execute. WATCH status maintained pending post-cutoff news reconciliation."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-08T09:45:00-04:00",
+      "ticker": "GLXG",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule, 2026-05-03)",
+      "agent_prompt_version": "v0.9.0_pass8_hardrule_pm_final",
+      "evidence_packet_hash": "sha256:9b58fc0f56fc4b4d7d24ec3a70384e21c53ec8756aacc0c4fe7b3e5a59a59f64"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "Catalyst narrative unidentifiable from pre-cutoff evidence. 20 post-cutoff news items (forbidden by PIT rules) may contain the catalyst narrative; hindsight risk is material.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Structural absence of hard-to-fake corroboration (news, filing, alt-data) prevents thesis confirmation. Per \u00a75.17 surge-short integrity-veto exception, absence is NOT a reason to veto; it is the pump signal. However, magnitude of uncertainty (high) and tight execution window argue for WATCH, not immediate SHORT entry.",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": null,
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-08T09:30:00-04:00",
+    "execution_timestamp": "2025-04-08T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:bb0eaf0d5bd2813d549b7b780688764e810393e723d66c5115fba288e5517595",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEventAgent",
+      "agent_role_label": "Narrative / Event Agent \u2014 Catalyst Classification",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GLXG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_unidentifiable_no_news_corroboration",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "news_event_summary.status",
+        "news_event_summary.items_dropped_post_cutoff",
+        "news_event_summary.live_adapter_rows.polygon_news",
+        "fundamental_snapshot.snapshot_quarter",
+        "corporate_calendar.events_near_decision_count"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items in window; 20 dropped post-cutoff)",
+        "filing_confirmation.SEC_8K_confirmation (not_evaluated)",
+        "alternative_data_features (not_connected; all adapters unavailable)",
+        "information_integrity_assessment (not_evaluated; pollution-defense layer not implemented)",
+        "sentiment_community_ownership_evidence (not_evaluated; no fmp_sentiment rows)",
+        "narrative_price_gap_assessment (pending downstream LLM reasoning)",
+        "trigger_article or catalyst_type from news_event_summary (null)"
+      ],
+      "reasoning_summary": "GLXG exhibits a 56.4% 5-day return with 17.75x relative volume vs 20-day average, opening at 16.1 on 2025-04-08 and closing at 9.4 by EOD 2025-04-07. This is a classic surge-short candidate pattern: extreme intraday volatility, elevated volume, and a sharp reversal. However, the evidence packet reveals a CRITICAL STRUCTURAL ABSENCE: zero news items within the decision window (news_event_summary.status=data_unavailable, items_count=0, polygon_news returned 0 rows for [2025-04-01, 2025-04-08]). Twenty news items were dropped because they were published AFTER the allowed_data_cutoff, meaning the catalyst event (if any) occurred post-decision-timestamp and is therefore not observable at decision time. No SEC 8-K filing confirmation is available (filing_confirmation.status=not_evaluated). No alternative data (GitHub, Wikipedia, sentiment, ownership) is wired or available. The fundamental snapshot shows Q2 2025 revenue of 883.5K with -14.68% net margin and -0.076 EPS, but no recent catalyst is documented. The corporate calendar shows no events near the decision window (events_near_decision_count=0). The macro regime is 'Overheat / Expansionary' with strict_quality_and_valuation_caution discipline, which would normally flag a negative-margin, high-leverage micro-cap as unsuitable. SECTOR-AWARE REASONING: GLXG's sector is not explicitly stated in the packet; fundamental_snapshot does not include a sector field, and no 10-K business description is provided. Without sector context, I cannot apply the sector-aware reasoning sequence to distinguish between 'structural absence of expected evidence' (bear signal) vs. 'absence of unrelated evidence types' (neutral). The absence pattern itself\u2014extreme price action with zero contemporaneous news corroboration\u2014is consistent with either (a) a genuine catalyst that occurred post-cutoff and is therefore invisible to this decision, or (b) a momentum/technical event with no fundamental driver. Given the HARD VETO rule \u00a75.13(c) + \u00a78 R1-R7: the 20 dropped news items are post-cutoff and therefore forbidden. The decision must be made on pre-cutoff evidence only. Pre-cutoff evidence is: prior close 7.53, open 7.3, trigger_day_open 16.1, day_high 9.6, day_low 7.17, volume 885K. This is pure price/volume action with zero narrative corroboration. VERDICT REASONING (Pass 8, surge_short pipeline): The candidate exhibits the morphology of a surge-short (extreme intraday move, elevated volume, reversal), but the ABSENCE of any news, filing, or alternative-data corroboration at decision time means the catalyst cannot be classified as 'supported' or 'credible_catalyst'. The narrative is not 'vague' (buzzword bingo) or 'fabricated' (false claim); it is ABSENT. The most defensible verdict is 'unsupported_claim' because there is no claim to evaluate\u2014only price action. However, per \u00a713.6 SOFT_REASONING, the structural absence of expected news corroboration relative to the magnitude of the price move is itself a bear-thesis signal: if a 56% 5-day move had a real catalyst, news would be present in the window. The absence suggests either (i) the move is technical/momentum-driven, or (ii) the catalyst is post-cutoff and invisible. Either way, the catalyst cannot be identified from pre-cutoff evidence.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If post-cutoff news reveals a concrete catalyst (earnings beat, acquisition, FDA approval, partnership), the 'unsupported_claim' verdict is invalidated and the move becomes 'supported'.",
+        "If the 20 dropped news items contain a material disclosure (e.g., 8-K filing, press release), the decision is retroactively hindsight-contaminated and should be re-run with post-cutoff data.",
+        "If sector-specific alternative data (e.g., GitHub commits for software, clinical trial enrollment for biotech, regulatory filings for pharma) becomes available and shows no activity, the bear thesis (momentum without fundamental support) is strengthened.",
+        "If institutional ownership or insider trading data (13F, Form 4) shows large position changes, the narrative shifts from 'no catalyst' to 'informed positioning'."
+      ],
+      "risk_flags": [
+        "CRITICAL: Zero news corroboration at decision time for a 56% 5-day move. Extreme price action without narrative support is a classic pump-and-dump or technical-reversal pattern.",
+        "CRITICAL: Macro regime is 'Overheat / Expansionary' with strict_quality_and_valuation_caution. GLXG is a micro-cap with negative margins (-14.68% net margin, -0.076 EPS), high leverage (debt_to_equity=0.046 but total_debt=1.126M vs total_equity=0.776M), and minimal revenue (883.5K). This is unsuitable for the current macro regime.",
+        "HIGH: Fundamental snapshot is Q2 2025 (accepted 2024-12-30), which is 3+ months stale relative to decision_timestamp 2025-04-08. No recent earnings or guidance is available.",
+        "HIGH: Valuation metrics are distorted by negative earnings (PE=-4.735, EV/EBITDA=-3.742). Price-to-book of 4.85 on a loss-making micro-cap suggests speculative pricing.",
+        "MEDIUM: Relative volume spike (17.75x) combined with intraday reversal (open 16.1, close 9.4) suggests potential short-squeeze unwind or retail-driven momentum reversal.",
+        "MEDIUM: No alternative data available (GitHub, Wikipedia, sentiment, ownership). Cannot corroborate any tech/software narrative or detect retail meme attention.",
+        "MEDIUM: Information integrity assessment is not_evaluated (pollution-defense layer not implemented in v1). Cannot assess rumor risk or coordinated campaign risk.",
+        "LOW: Corporate calendar shows no events near decision (earnings_near_decision_count=0). No scheduled catalyst to anchor the move."
+      ],
+      "suggested_improvements": [
+        "Wire alternative-data adapters (GitHub, Wikipedia, sentiment, ownership) to detect tech narratives, retail attention, or insider positioning.",
+        "Implement information_integrity_assessment pollution-defense layer to flag rumor risk, bot-like patterns, and coordinated campaigns.",
+        "Obtain sector classification (10-K Item 1 or SIC code) to apply sector-aware reasoning sequence and distinguish structural absence patterns.",
+        "Fetch SEC 8-K filings (sec_edgar, sec_8k_fulltext adapters) to confirm or deny material disclosures at decision time.",
+        "Extend news lookback window to 14 days pre-cutoff to capture catalysts that may have been announced earlier but are driving current momentum.",
+        "Implement post-cutoff news reconciliation: after decision execution, compare pre-cutoff verdict to post-cutoff news to detect hindsight contamination and recalibrate confidence.",
+        "Add sector-specific fundamental checks: for software/SaaS, require R&D expense and developer hiring; for biotech, require clinical trial registry entries; for industrial, require capex and supplier relationships."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-04-08T09:30:00-04:00). These items are forbidden by \u00a75.13(c) + \u00a78 R1-R7 and cannot be used to explain the price move."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "polygon_news adapter returned 0 items in [2025-04-01, 2025-04-08] for GLXG. Combined with 20 post-cutoff items, this suggests the catalyst event occurred post-cutoff and is invisible to pre-cutoff decision."
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "warning",
+          "detail": "alternative_data_features is a schema-shape placeholder in v1; no adapters wired. Cannot assess GitHub activity, Wikipedia pageviews, sentiment, or ownership positioning."
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment is not_evaluated; pollution-defense layer not implemented. Cannot assess rumor risk, bot-like patterns, or coordinated campaigns."
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence is not_evaluated; fmp_sentiment returned 0 rows (endpoints unavailable on current plan). Cannot assess market sentiment or institutional positioning."
+        },
+        {
+          "kind": "fundamental_stale",
+          "severity": "warning",
+          "detail": "Latest PIT-safe income statement is Q2 2025 (accepted 2024-12-30 19:00:00), 3+ months stale relative to decision_timestamp 2025-04-08. No recent earnings or guidance available."
+        },
+        {
+          "kind": "filing_not_evaluated",
+          "severity": "warning",
+          "detail": "filing_confirmation.SEC_8K_confirmation is not_evaluated; sec_edgar and sec_8k_fulltext adapters not wired in v1. Cannot confirm material disclosures."
+        },
+        {
+          "kind": "valuation_not_pit_safe",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios without fiscal anchor; not point-in-time safe. PE, PB, EV/EBITDA are distorted by negative earnings."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The v1 evidence packet architecture has critical gaps for surge-short catalyst classification: (1) alternative_data_features is a placeholder with no adapters wired, preventing detection of tech narratives, retail attention, or insider positioning; (2) information_integrity_assessment is not_evaluated, preventing rumor/pollution risk assessment; (3) sentiment_community_ownership_evidence is not_evaluated, preventing sentiment and ownership analysis; (4) filing_confirmation is not_evaluated, preventing SEC 8-K corroboration; (5) news_event_summary drops 20 items post-cutoff, creating a structural blind spot for catalysts that occur immediately after decision_timestamp. For a surge-short candidate with extreme price action and zero news corroboration, these gaps are particularly problematic because the absence of evidence is itself the signal. The agent is forced to emit 'unsupported_claim' / 'insufficient' / 'low confidence' not because the evidence is weak, but because the evidence is systematically absent by design. A production system should wire all adapters and implement post-cutoff reconciliation to detect hindsight contamination.",
+      "recommended_followups": [
+        "IMMEDIATE: Check post-cutoff news (after 2025-04-08T09:30:00-04:00) to identify the catalyst. If a material disclosure exists post-cutoff, the decision is hindsight-contaminated and should be re-run with post-cutoff data.",
+        "IMMEDIATE: Fetch SEC EDGAR filings (8-K, press releases) for GLXG around 2025-04-08 to confirm or deny material disclosures.",
+        "SHORT-TERM: Obtain sector classification (10-K Item 1, SIC code, or industry database) to apply sector-aware reasoning and assess whether the absence of expected evidence (e.g., GitHub for software, clinical trials for biotech) is a bear signal.",
+        "SHORT-TERM: Wire alternative-data adapters (GitHub, Wikipedia, sentiment, ownership) to detect tech narratives, retail meme attention, or insider positioning.",
+        "SHORT-TERM: Implement information_integrity_assessment pollution-defense layer to flag rumor risk, bot-like patterns, and coordinated campaigns.",
+        "MEDIUM-TERM: Extend news lookback to 14 days pre-cutoff to capture catalysts announced earlier but driving current momentum.",
+        "MEDIUM-TERM: Implement post-cutoff news reconciliation to compare pre-cutoff verdict to post-cutoff news and detect hindsight contamination.",
+        "MEDIUM-TERM: Add sector-specific fundamental checks (R&D for software, clinical trials for biotech, capex for industrial) to corroborate narrative claims."
+      ],
+      "catalyst_type": "unidentifiable_no_news_corroboration",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": true,
+      "company_claim": "No company claim or news narrative available. Price action only: 56.4% 5-day return, 17.75x relative volume, intraday open 16.1 / close 9.4 on 2025-04-08. Zero news items in pre-cutoff window; 20 items dropped post-cutoff (forbidden by PIT rules). No SEC 8-K, press release, or alternative-data corroboration.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GLXG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification for GLXG surge event (5d return +56.4%)",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "fundamental_snapshot.net_margin_pct",
+        "fundamental_snapshot.operating_cash_flow",
+        "fundamental_snapshot.free_cash_flow",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.price_to_book",
+        "macro_regime.regime_label",
+        "news_event_summary.items_count",
+        "alt_data_manifest.calls"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (20 items dropped post-cutoff; no pre-cutoff narrative available)",
+        "alternative_data_features (all adapters not_connected in v1)",
+        "information_integrity_assessment (not_evaluated in v1)",
+        "sentiment_community_ownership_evidence (not_evaluated in v1)",
+        "filing_confirmation.SEC_8K_confirmation (not_connected)",
+        "sec_8k_fulltext (not_selected in alt_data_manifest)",
+        "github_public (unmapped_ticker)",
+        "wikipedia_pageviews (article_title_unresolved)",
+        "fmp_sentiment (all_endpoints_empty)"
+      ],
+      "reasoning_summary": "GLXG exhibits a dramatic 5-day surge (+56.4%, from $7.53 to $9.40 close on 2025-04-07) with extreme relative volume (17.75x 20d average). The trigger-day open of $16.10 suggests a gap-up event, but the close at $9.40 indicates partial reversion. Fundamental snapshot (Q2 2025, accepted 2024-12-30) shows severe operational distress: net margin -14.68%, operating income -$132.3k, operating cash flow $0, free cash flow $0, negative EPS -0.076. Valuation is inverted (PE -4.74, EV/EBITDA -3.74) due to negative earnings. Macro regime is 'Overheat/Expansionary' with strict equity discipline. CRITICAL: No news items are available pre-cutoff (20 items dropped post-cutoff). All alternative-data adapters are either not_connected (v1 limitation) or returned zero rows (wikipedia, github, fmp_sentiment). The alt_data_manifest shows polygon_news returned 0 rows with source_flag='cache' (informative absence). No SEC 8-K filing confirmation available. Without a documented catalyst (news, filing, or alt-data corroboration), the surge narrative cannot be verified against hard-to-fake evidence. The structural absence of news pre-cutoff combined with zero alt-data rows is consistent with a surge-short bear thesis: the price move is not supported by observable, verifiable catalyst evidence in the packet.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a pre-cutoff news event or SEC filing emerges post-analysis showing a legitimate catalyst (partnership, financing, product launch, regulatory approval) that explains the surge, the bear thesis weakens.",
+        "If alternative-data adapters (when wired in v0.8.7+) return positive signals (e.g., GitHub activity spike, clinical trial progress, regulatory filing footprint) that corroborate a turnaround narrative, the verdict shifts.",
+        "If the company's sector-specific alt-data (e.g., biotech clinical registry, pharma FDA filings, SaaS developer ecosystem) shows material positive momentum, the absence pattern becomes less informative.",
+        "If institutional ownership data (13F) shows large new positions by reputable funds, it may suggest informed buying despite operational distress."
+      ],
+      "risk_flags": [
+        "Extreme intraday volatility: trigger-day open $16.10 vs close $9.40 (41.6% intraday decline) suggests panic or forced liquidation, not organic demand.",
+        "Operational distress: zero operating cash flow, zero free cash flow, negative net margin -14.68% in latest quarter.",
+        "Inverted valuation metrics (negative PE, negative EV/EBITDA) render traditional valuation anchors unreliable.",
+        "Macro regime 'Overheat/Expansionary' with strict equity discipline caps risk appetite for distressed equities.",
+        "No pre-cutoff news narrative to anchor the surge; all news items dropped post-cutoff.",
+        "All alternative-data sources either unavailable (v1 limitation) or returned zero rows (informative absence for surge-short thesis).",
+        "Relative volume 17.75x 20d average suggests retail/momentum-driven move, not fundamental repricing.",
+        "No SEC filing confirmation (8-K) to document a material event."
+      ],
+      "suggested_improvements": [
+        "Wire alternative-data adapters (v0.8.7+) to capture sector-specific signals: for a micro-cap biotech/pharma candidate, clinical trial registry and FDA filing footprint are critical; for SaaS/tech, GitHub activity and developer ecosystem metrics are essential.",
+        "Implement news-event extraction with pre-cutoff filtering to identify the catalyst that triggered the surge.",
+        "Add SEC 8-K full-text adapter to confirm material events (financing, partnership, executive changes).",
+        "Implement information_integrity_assessment (pollution-defense layer) to detect coordinated campaigns or rumor-driven surges.",
+        "Capture intraday OHLCV granularity to distinguish organic demand (sustained high volume) from panic/forced liquidation (high volume with intraday reversal).",
+        "Add ownership positioning (13F, Form 4) to detect insider selling or institutional accumulation during the surge."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "critical",
+          "detail": "alternative_data_features block is a schema-shape placeholder in v1; no live adapters wired. All adapter_source_list entries show source='not_connected'. This is the primary verification mechanism for surge-short candidates and is unavailable."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-04-08T09:30:00-04:00). No pre-cutoff news items available to document the catalyst for the surge."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=wikipedia_pageviews error_class=article_title_unresolved; cannot resolve Wikipedia article for GLXG."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker; GLXG not in ticker_to_github.csv mapping."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty; press_releases (T1) and stock_news_sentiments_rss (T4) returned HTTP 404 (not_available_on_current_plan); grades_summary and grades_news returned 0 rows."
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment is not_evaluated in v1; pollution-defense layer not implemented. Cannot assess coordinated_campaign_risk, bot_like_pattern_risk, or rumor_without_evidence_flag."
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence is not_evaluated in v1. No market sentiment, community size, or ownership positioning data available."
+        },
+        {
+          "kind": "filing_confirmation_unavailable",
+          "severity": "warning",
+          "detail": "filing_confirmation block shows status=not_evaluated; sec_8k_fulltext adapter not_connected. Cannot confirm SEC 8-K filing to document material event."
+        },
+        {
+          "kind": "polygon_news_zero_rows",
+          "severity": "info",
+          "detail": "polygon_news adapter returned 0 rows for [2025-04-01, 2025-04-08] with source_flag='cache' (informative absence). No news in 7-day lookback window."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 evidence packet is a skeleton implementation with critical gaps: (1) alternative_data_features block is not_connected across all adapters \u2014 the primary verification mechanism for surge-short candidates is unavailable; (2) information_integrity_assessment is not_evaluated \u2014 pollution-defense layer not implemented, so coordinated_campaign_risk and bot_like_pattern_risk cannot be assessed; (3) sentiment_community_ownership_evidence is not_evaluated \u2014 no market sentiment or ownership data; (4) news_event_summary has 20 items dropped post-cutoff with 0 pre-cutoff items \u2014 no narrative catalyst available; (5) filing_confirmation is not_evaluated \u2014 sec_8k_fulltext not_connected. These gaps are structural to v1 and prevent full narrative-price dislocation verification. Agent 03 must reason from absence patterns and flag the missing evidence prominently.",
+      "recommended_followups": [
+        "When v0.8.7+ is deployed with live alternative-data adapters, re-run this analysis with sector-specific signals (clinical trial registry for biotech, GitHub for SaaS, regulatory filings for pharma, etc.).",
+        "Implement news-event extraction with pre-cutoff filtering to identify the catalyst that triggered the 56.4% surge.",
+        "Wire SEC 8-K full-text adapter to confirm material events.",
+        "Implement information_integrity_assessment (pollution-defense layer) to detect coordinated campaigns.",
+        "Capture intraday OHLCV to distinguish organic demand from panic liquidation (trigger-day open $16.10 vs close $9.40 is a red flag).",
+        "Add ownership positioning (13F, Form 4) to detect insider selling or institutional accumulation.",
+        "Investigate the trigger-day event: why did the stock open at $16.10 (113% above prior close of $7.53)? This is the key to understanding the surge."
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "not_applicable",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "GLXG exhibits a 56.4% 5-day surge (+$1.87 from $7.53 to $9.40) with extreme relative volume (17.75x 20d average) and a trigger-day gap-up open of $16.10 (113% above prior close). However, the fundamental snapshot shows severe operational distress (net margin -14.68%, operating cash flow $0, free cash flow $0, negative EPS). No pre-cutoff news narrative is available to explain the surge (20 items dropped post-cutoff). All alternative-data sources are either unavailable (v1 limitation) or returned zero rows (informative absence). The intraday reversal (open $16.10, close $9.40) suggests panic or forced liquidation, not organic demand. Without documented catalyst evidence (news, filing, alt-data corroboration), the price move cannot be verified as fundamental repricing. The gap between the surge price and the operational distress is large and unexplained.",
+      "industry_template_used": "default_fallback (no sector classification available in packet; GLXG sector not identified)",
+      "selected_adapter_id": "",
+      "adapter_selection_reason": "No alternative-data adapters are wired in v1 evidence packet. All adapter_source_list entries show source='not_connected'. The default_sec_gdelt_adapter and opencli_public_web_adapter are listed but not_connected. Sector classification is unavailable, so industry-specific adapter selection cannot be performed. Fallback to default placeholder.",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "No hard-to-fake signals are present in the packet. Alternative-data sources (GitHub, Wikipedia, clinical registries, regulatory filings, SEC 8-K) are either unavailable (v1 limitation) or returned zero rows. News narrative is absent (20 items dropped post-cutoff). SEC filing confirmation is unavailable. The only hard data present is the fundamental snapshot (Q2 2025, accepted 2024-12-30), which shows severe operational distress (net margin -14.68%, zero cash flows, negative earnings). This contradicts the surge narrative but does not explain the price move. The absence of hard-to-fake corroboration (alt-data, filings, news) is itself bear-thesis evidence for a surge-short candidate: the price move is not supported by verifiable catalyst evidence.",
+      "industry_specific_evidence_used": [],
+      "industry_specific_evidence_missing": [
+        "Sector classification not available in packet; cannot determine industry-specific alt-data requirements.",
+        "If biotech/pharma: clinical trial registry (ClinicalTrials.gov), FDA filing index, patent activity, conference presentation footprint \u2014 all unavailable.",
+        "If SaaS/tech: GitHub activity, technical hires, developer ecosystem signals \u2014 all unavailable (github_public returned unmapped_ticker error).",
+        "If industrial/manufacturing: SEC plant capex disclosure, supplier press releases, industrial regulatory filings \u2014 not evaluated.",
+        "If financial services: regulatory filing footprint, advisor-firm disclosures \u2014 not evaluated.",
+        "If consumer/retail: store count disclosure, brand IP filings, consumer review aggregation \u2014 not evaluated.",
+        "If energy/mining: reserve report filings, drilling permit databases, commodity hedging disclosures \u2014 not evaluated."
+      ],
+      "data_quality_warning": "critical: alternative_data_features block is a schema-shape placeholder in v1; no live adapters wired. This is the primary verification mechanism for surge-short candidates and is unavailable. Additionally, news_event_summary has 20 items dropped post-cutoff with 0 pre-cutoff items, so no narrative catalyst is documented. information_integrity_assessment is not_evaluated, so pollution-defense layer (coordinated_campaign_risk, bot_like_pattern_risk) cannot be assessed. filing_confirmation is not_evaluated, so SEC 8-K confirmation is unavailable. These gaps are structural to v1 and prevent full narrative-price dislocation verification.",
+      "signals": [
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": 56.406,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 17.7515,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "trigger_day_open_gap",
+          "available": true,
+          "value": 113.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "intraday_reversal_magnitude",
+          "available": true,
+          "value": 41.6,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "net_margin_pct",
+          "available": true,
+          "value": -14.68,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "operating_cash_flow",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "free_cash_flow",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "pe_ratio",
+          "available": true,
+          "value": -4.735249673889895,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "news_items_pre_cutoff",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "alternative_data_corroboration",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_8k_filing_confirmation",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "polygon_news_rows",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "OpenCLI not invoked in v1 generator; reads not point-in-time when wired.",
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "not_evaluated",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "v1 evidence packet does not wire alternative-data adapters, information_integrity_assessment, or sentiment_community_ownership_evidence. No hard-to-fake corroboration available. News narrative is absent (20 items dropped post-cutoff). SEC filing confirmation unavailable. Structural absence of verifiable catalyst evidence prevents use as primary signal for surge-short thesis.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "dismissed",
+      "not_evaluated_reason": "not_connected",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-08T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "news_event_summary.items (20 items dropped post-cutoff; 0 pre-cutoff items available)",
+        "alternative_data_features (all adapters not_connected in v1)",
+        "information_integrity_assessment (not_evaluated in v1)",
+        "sentiment_community_ownership_evidence (not_evaluated in v1)",
+        "filing_confirmation.SEC_8K_confirmation (not_connected)",
+        "sec_8k_fulltext (not_selected in alt_data_manifest)"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Evaluator (v0.4 sleeve)",
+      "schema_version": "surge_short_agent_output_v1",
+      "prompt_version": "surge_short_v0.4_pass8_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GLXG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate evaluation for GLXG: +25.5% intraday gap (open 7.3 \u2192 9.4 close on 2025-04-07, prior close 7.53). Candidate_type=surge_short confirmed. Evaluation window: opening-window discipline (first 10 min OHLCV cleanest read per decision_time_discipline).",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.last_eod_close (9.4 vs prior 7.53 = +24.9% gap)",
+        "price_snapshot.trigger_day_open (16.1 intraday high, suggesting earlier spike)",
+        "price_snapshot.return_5d_pct (56.4% over 5 days)",
+        "price_snapshot.relative_volume_vs_20d (17.75x normal)",
+        "fundamental_snapshot.net_margin_pct (-14.68% Q2 2025)",
+        "fundamental_snapshot.operating_income (-132353 Q2 2025)",
+        "fundamental_snapshot.total_debt (1126185) vs total_equity (776333) = 1.45x leverage",
+        "valuation_snapshot.pe_ratio (negative, unprofitable)",
+        "valuation_snapshot.roe (-74.1%), roa (-71.0%)",
+        "news_event_summary.polygon_news (0 items in 7-day window)",
+        "news_event_summary.items_dropped_post_cutoff (20 items filtered)",
+        "corporate_calendar.events_near_decision (0 events within \u00b15 trading days)",
+        "macro_regime (Overheat/Expansionary, stress_score=2, equity_discipline=strict_quality_and_valuation_caution)",
+        "alternative_data_features (all adapters not_connected or failed: wikipedia, github, fmp_sentiment)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (no news items <= cutoff; 20 items dropped post-cutoff)",
+        "news_event_summary.catalyst_type (not_evaluated; no LLM in v1)",
+        "filing_confirmation.SEC_8K_confirmation (not_connected; no sec_edgar adapter wired)",
+        "filing_confirmation.press_release_confirmation (not_connected)",
+        "information_integrity_assessment (not_evaluated; pollution-defense layer not implemented)",
+        "alternative_data_features.retail_meme_attention (not_connected)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence (all sub-blocks not_evaluated or failed)",
+        "narrative_price_gap_assessment (agent_internal_pending; no LLM reasoning in v1)"
+      ],
+      "reasoning_summary": "GLXG surged +24.9% (close 9.4 vs prior 7.53) on 2025-04-07 with 17.75x normal volume. Intraday high of 16.1 suggests earlier spike. However, the surge lacks corroborating narrative evidence: (1) NO news items in 7-day lookback window (polygon_news returned 0 rows; 20 items dropped post-cutoff, meaning catalyst occurred after decision_timestamp or was not captured by FMP); (2) NO SEC 8-K filing confirmation (filing_confirmation not_connected); (3) NO corporate calendar events within \u00b15 trading days; (4) NO alternative-data corroboration (Wikipedia article unresolved, GitHub unmapped, FMP sentiment endpoints empty). Fundamentals are deeply negative: net margin -14.68%, operating income -132k loss, ROE -74%, ROA -71%, total debt 1.45x equity. Valuation is unprofitable (PE negative). Macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution discipline. The structural absence of news/filing/event evidence relative to the magnitude of the surge is the primary bear-thesis signal. The surge appears to be momentum-driven without observable fundamental catalyst or narrative anchor. Under \u00a713.6 SOFT_REASONING + UNIVERSAL_SOFT_VETO_PRINCIPLE, structural absence of expected corroboration (news, SEC filing, event) for a listed-equity surge is itself bear-thesis evidence. The company's sector is not explicitly stated in the packet, but the negative profitability and small revenue base (883k) suggest a micro-cap or distressed equity. For such a company, a +25% surge SHOULD have a verifiable news/filing/event footprint; absence of that footprint is corroborating bear evidence.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If upstream Agent 03 (Narrative) identifies a credible catalyst (e.g., partnership, product launch, regulatory approval) with corroborating SEC filing or press release dated <= 2025-04-08 09:30, the structural-absence bear thesis is weakened.",
+        "If upstream Agent 02 (Alt-Data Verification) returns positive alt-data signals (e.g., GitHub activity spike, web traffic surge, patent filing) that support a real business event, confidence in the short thesis would decline.",
+        "If the company discloses material positive news in an 8-K or press release between decision_timestamp and execution_timestamp (2025-04-08 09:45), the thesis is invalidated.",
+        "If the stock reverses sharply (>-10% from entry) within 1 trading day, momentum may have exhausted and the short thesis loses alpha."
+      ],
+      "risk_flags": [
+        "STRUCTURAL_ABSENCE_SIGNAL: Surge of +25% lacks corroborating news (0 items in 7-day window), SEC filing (not_connected), or corporate event (0 near-decision events). This is the primary bear-thesis evidence under \u00a713.6.",
+        "NEGATIVE_FUNDAMENTALS: Net margin -14.68%, operating loss, ROE -74%, ROA -71%. Company is unprofitable and destroying shareholder value.",
+        "HIGH_LEVERAGE: Total debt 1.45x equity (1.126M debt vs 776k equity). Distressed capital structure.",
+        "MICRO_CAP_ILLIQUIDITY: Revenue 883k (Q2 2025), avg volume 49.9k shares/day. Thin liquidity; susceptible to momentum reversals.",
+        "MACRO_HEADWIND: Overheat regime with strict_quality_and_valuation_caution discipline. Equity allocation capped at 20%. Unprofitable micro-caps are disfavored.",
+        "ALT_DATA_GAPS: Wikipedia article unresolved, GitHub unmapped, FMP sentiment endpoints empty. No external corroboration available.",
+        "INFORMATION_INTEGRITY_UNASSESSED: Pollution-defense layer not implemented in v1. Cannot rule out coordinated campaign or rumor-driven spike.",
+        "HINDSIGHT_RISK: 20 news items dropped post-cutoff. Unknown whether those items contain the catalyst narrative. Decision made with incomplete information.",
+        "EXECUTION_WINDOW_TIGHT: Opening-window discipline (09:30-09:45) means decision made within 15 minutes of market open. Volatility and information asymmetry are high."
+      ],
+      "suggested_improvements": [
+        "Wire sec_edgar (filing_index) and sec_8k_fulltext adapters to confirm or deny SEC 8-K filing on or before 2025-04-08.",
+        "Implement information_integrity_assessment (pollution-defense layer) to assess coordinated-campaign risk and rumor credibility.",
+        "Wire alternative-data adapters (GitHub, Wikipedia, web traffic, social sentiment) to corroborate or contradict the surge narrative.",
+        "Implement LLM-based narrative_price_gap_assessment (Agent 03) to synthesize news, filing, and price evidence into a coherent catalyst story.",
+        "Extend news_event_summary lookback window or use real-time news feeds (e.g., Benzinga, Seeking Alpha) to capture intraday catalysts.",
+        "Implement sector-specific adapters (e.g., if GLXG is biotech, wire FDA filing adapter; if software, wire GitHub/developer activity adapter) to verify sector-typical evidence.",
+        "Add post-cutoff news reconciliation: after decision_timestamp, check for news items published between cutoff and execution_timestamp to validate or invalidate the thesis."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff (2025-04-08 09:30). Unknown whether those items contain the catalyst narrative. Decision made with incomplete information."
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "warning",
+          "detail": "alternative_data_features is a schema-shape placeholder in v1; no adapters wired. Cannot verify retail attention, tech activity, or valuation context."
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment is not_evaluated; pollution-defense layer not implemented. Cannot assess coordinated-campaign or rumor risk."
+        },
+        {
+          "kind": "filing_confirmation_not_connected",
+          "severity": "warning",
+          "detail": "filing_confirmation.SEC_8K_confirmation is not_connected; sec_edgar adapter not wired. Cannot confirm or deny SEC 8-K filing on or before 2025-04-08."
+        },
+        {
+          "kind": "sentiment_ownership_not_evaluated",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence is not_evaluated; fmp_sentiment endpoints returned 0 rows. No analyst grades, news sentiment, or ownership data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=wikipedia_pageviews error_class=article_title_unresolved; cannot fetch Wikipedia pageview data."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker; GLXG not in ticker_to_github.csv. Cannot verify developer activity."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=fmp_sentiment error_class=all_endpoints_empty; press_releases and stock_news_sentiments_rss endpoints returned HTTP 404 (not_available_on_current_plan)."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp 2026-05-07T20:00:00+00:00 is after allowed_data_cutoff; quote retained for display only. PIT-safe anchor is last_eod_close (9.4 on 2025-04-07)."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios, not PIT-safe. Used for context only; not for PIT-anchored decision."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 evidence packet does not wire alternative-data adapters, information_integrity_assessment, or LLM-based narrative_price_gap_assessment. This limits the agent's ability to corroborate or contradict the surge narrative. The structural-absence-as-signal pattern (\u00a713.6 SOFT_REASONING) is the primary bear-thesis mechanism available under v1 constraints. Post-cutoff news filtering (20 items dropped) introduces hindsight risk: the catalyst narrative may exist in those dropped items, but the agent cannot access it. The opening-window discipline (09:30-09:45) is appropriate for surge-short evaluation but leaves minimal time for information synthesis. Recommend upgrading to v0.8.7+ with full adapter suite and LLM-based narrative assessment for higher-confidence surge-short decisions.",
+      "recommended_followups": [
+        "Post-execution (after 2025-04-08 09:45), check for SEC 8-K filings or press releases published between 09:30 and 09:45 to validate or invalidate the structural-absence bear thesis.",
+        "Monitor intraday price action: if stock reverses >-10% within 1 trading day, momentum has exhausted and the short thesis loses alpha.",
+        "If stock holds above 9.0 for >3 trading days, re-evaluate the thesis; sustained strength may indicate real value creation not captured in the packet.",
+        "Implement real-time news reconciliation: after decision_timestamp, cross-check Benzinga, Seeking Alpha, and company IR for intraday catalysts.",
+        "Request sector classification for GLXG (biotech, software, industrial, etc.) and wire sector-specific adapters to verify expected evidence footprint.",
+        "If short position is entered, set stop-loss at +50% from entry (entry ~9.4, stop ~14.1) to limit momentum-reversal risk."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_structural_absence",
+      "company_claim": "GLXG surged +25% (9.4 close vs 7.53 prior close) on 2025-04-07 with 17.75x normal volume and intraday high of 16.1. Catalyst unknown; no news, SEC filing, or corporate event identified in available evidence.",
+      "industry": "unknown_micro_cap",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "not_applicable",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "uncertain",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "watch",
+      "initial_position_pct": 0.0,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Recommended action is 'watch', not 'short'. Structural-absence bear thesis is supported by negative fundamentals and lack of corroborating news/filing/event evidence. However, confidence is low due to incomplete information (20 post-cutoff news items, no alternative-data adapters, no SEC filing confirmation). The surge appears momentum-driven, but the absence of a clear catalyst narrative and the tight opening-window execution window introduce execution risk. Recommend monitoring for post-cutoff news and SEC filings before committing to a short position. If corroborating catalyst evidence emerges (e.g., SEC 8-K, press release, analyst downgrade), the thesis is invalidated. If the stock reverses sharply or alternative-data evidence contradicts the bear thesis, exit immediately.",
+      "missing_data_warnings": [
+        "news_event_summary: 20 items dropped post-cutoff; catalyst narrative unknown.",
+        "filing_confirmation: SEC_8K_confirmation not_connected; cannot verify SEC filing.",
+        "information_integrity_assessment: not_evaluated; cannot assess rumor/campaign risk.",
+        "alternative_data_features: all adapters not_connected or failed; no external corroboration.",
+        "narrative_price_gap_assessment: agent_internal_pending; no LLM reasoning available.",
+        "sentiment_community_ownership_evidence: all sub-blocks not_evaluated; no analyst/ownership data.",
+        "company sector: not explicitly stated in packet; inferred as micro-cap from revenue/debt metrics."
+      ],
+      "audit_rationale": "GLXG surged +25% on 2025-04-07 with 17.75x volume but lacks corroborating news (0 items in 7-day window), SEC filing (not_connected), or event (0 near-decision). Fundamentals are deeply negative: net margin -14.68%, ROE -74%, debt 1.45x equity. Macro regime is Overheat/strict_quality_caution. Structural absence of expected evidence (news, filing, event) for a listed-equity surge is bear-thesis signal per \u00a713.6. However, 20 post-cutoff news items and missing alternative-data adapters introduce hindsight risk. Confidence is low. Recommended action: 'watch' (not 'short') pending post-cutoff news reconciliation and SEC filing confirmation. If catalyst evidence emerges, thesis is invalidated. If stock reverses >-10% or alternative-data contradicts bear thesis, exit immediately. Initial position: 0% (no entry at this time)."
+    },
+    "risk": {
+      "agent_id": "Agent_06_RiskAgent",
+      "agent_role_label": "Risk Agent \u2014 Hard-Veto Checking (Pass 8)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_risk_veto_only",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GLXG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation for candidate_type=surge_short per \u00a75.13 conditions (a)-(e). Mechanical application only; no advisory output.",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "data_quality_flags[*].severity",
+        "information_integrity_assessment.status",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "candidate_type"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical veto evaluation per \u00a75.13(a)-(e). Candidate_type=surge_short. Envelope flags: data_after_cutoff_used=false, lookahead_safe=true. Data quality flags: no critical-severity flags present. Information integrity assessment: status=not_evaluated, pollution_confirmed not set (unimplemented per v1 schema), use_as_primary_signal_allowed=false. Per \u00a75.13(d) RELAXED 2026-05-06: pollution_defense_layer is unimplemented (status='not_evaluated'), therefore \u00a75.13(d) does NOT trip. Candidate evaluates on other criteria. No sleeve-cap or position-cap violations applicable (surge_short is not subject to \u00a74.7/\u00a74.8 equity caps in this context; candidate_type=surge_short is exempt from \u00a75.13(a) per \u00a75.17). Lookahead veto: data_after_cutoff_used=false and lookahead_safe=true, therefore \u00a75.13(e) does NOT trip.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If data_after_cutoff_used were true, \u00a75.13(e) would trip and candidate would be vetoed.",
+        "If any data_quality_flags[*].severity='critical' were present, \u00a75.13(c) would trip.",
+        "If information_integrity_assessment.pollution_confirmed=true AND use_as_primary_signal_allowed=false AND no T1/T2 corroboration, \u00a75.13(d) would trip (but only if pollution_defense_layer is affirmatively implemented and returns confirmed pollution, not unimplemented)."
+      ],
+      "risk_flags": [],
+      "suggested_improvements": [],
+      "data_quality_flags": [
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.status=not_evaluated; pollution_defense_layer not implemented in v1. Per \u00a75.13(d) RELAXED 2026-05-06, unimplemented status does NOT trip veto; candidate evaluates on other criteria."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Candidate_type=surge_short is exempt from \u00a75.13(a) equity-cap veto per \u00a75.17. Surge-short positions do not trigger sleeve-cap checks in this context."
+        },
+        {
+          "name": "position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Candidate_type=surge_short. No sleeve-cap or position-cap data provided in packet; candidate is not subject to \u00a74.7/\u00a74.8 caps under surge_short evaluation."
+        },
+        {
+          "name": "critical_data_quality_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical'. All flags are 'info' or 'warning'. \u00a75.13(c) does NOT trip."
+        },
+        {
+          "name": "pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "information_integrity_assessment.status=not_evaluated (unimplemented). Per \u00a75.13(d) RELAXED 2026-05-06: when pollution_defense_layer is unimplemented or returns status \u2208 {not_evaluated, not_connected, pending, unimplemented}, \u00a75.13(d) does NOT trip. Candidate evaluates on other criteria. Fail-closed semantics preserved for affirmatively-confirmed pollution only."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. \u00a75.13(e) does NOT trip."
+        }
+      ],
+      "advisory_notes": "VETO EVALUATION COMPLETE. No hard-veto conditions tripped. Candidate passes mechanical veto gate per \u00a75.13(a)-(e). Candidate_type=surge_short is exempt from equity-cap vetos. No critical data-quality flags. Pollution-defense layer unimplemented; fail-closed semantics preserved. Lookahead safe. Candidate eligible for downstream PM evaluation.",
+      "risk_notes": [
+        "Candidate passes hard-veto gate. No mechanical blockers identified."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions",
+        "\u00a75.13(a) equity-cap veto: not applicable (candidate_type=surge_short exempt per \u00a75.17)",
+        "\u00a75.13(b) position-cap veto: not applicable (surge_short exempt)",
+        "\u00a75.13(c) critical data-quality veto: not tripped (no critical flags)",
+        "\u00a75.13(d) pollution-integrity veto: not tripped (pollution_defense_layer unimplemented; \u00a75.13(d) RELAXED 2026-05-06 applies)",
+        "\u00a75.13(e) lookahead veto: not tripped (data_after_cutoff_used=false, lookahead_safe=true)"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-08T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PMAgent",
+      "agent_role_label": "PM Agent \u2014 Final Decision Authority (Pass 8)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule_pm_final",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GLXG",
+      "decision_timestamp": "2025-04-08T09:30:00-04:00",
+      "data_available_as_of": "2025-04-08T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate GLXG: +56.4% 5d return, 17.75x volume, zero news corroboration. Structural absence of catalyst evidence (news, SEC filing, event) combined with deeply negative fundamentals (net margin -14.68%, ROE -74%, debt 1.45x equity) and macro headwind (Overheat/strict_quality_caution) support bear thesis. However, high uncertainty due to incomplete information (20 post-cutoff news items, missing alternative-data adapters, no SEC filing confirmation). Recommended action: WATCH, not SHORT entry at this time.",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (56.4%)",
+        "price_snapshot.relative_volume_vs_20d (17.75x)",
+        "price_snapshot.trigger_day_open (16.1 intraday high)",
+        "price_snapshot.last_eod_close (9.4 vs prior 7.53 = +24.9%)",
+        "fundamental_snapshot.net_margin_pct (-14.68%)",
+        "fundamental_snapshot.operating_income (-132353)",
+        "fundamental_snapshot.total_debt (1.126M) vs total_equity (776k)",
+        "valuation_snapshot.pe_ratio (negative)",
+        "valuation_snapshot.roe (-74.1%), roa (-71.0%)",
+        "news_event_summary.polygon_news (0 rows in 7-day window)",
+        "news_event_summary.items_dropped_post_cutoff (20 items filtered)",
+        "corporate_calendar.events_near_decision (0 events)",
+        "macro_regime (Overheat/Expansionary, strict_quality_and_valuation_caution)",
+        "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+        "upstream_agent_outputs.alt_data_verify.verdict (insufficient_evidence_to_verify)",
+        "upstream_agent_outputs.surge_short.recommended_action (watch)",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (all false)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (20 items dropped post-cutoff; 0 pre-cutoff items available)",
+        "filing_confirmation.SEC_8K_confirmation (not_connected)",
+        "alternative_data_features (all adapters not_connected in v1)",
+        "information_integrity_assessment (not_evaluated; pollution-defense layer not implemented)",
+        "sentiment_community_ownership_evidence (not_evaluated)",
+        "narrative_price_gap_assessment (agent_internal_pending; no LLM reasoning in v1)",
+        "company sector classification (not explicitly stated in packet)"
+      ],
+      "reasoning_summary": "GLXG exhibits classic surge-short morphology: +56.4% 5d return, 17.75x volume spike, intraday reversal (open 16.1, close 9.4). However, the surge lacks corroborating catalyst evidence. Zero news items in pre-cutoff window (polygon_news returned 0 rows for [2025-04-01, 2025-04-08]); 20 items dropped post-cutoff are forbidden by PIT rules. No SEC 8-K filing confirmation available. No corporate calendar events near decision. All alternative-data adapters unavailable (v1 limitation). Fundamental snapshot (Q2 2025, accepted 2024-12-30) shows severe distress: net margin -14.68%, operating loss -132k, ROE -74%, ROA -71%, total debt 1.45x equity. Valuation metrics inverted (PE negative, EV/EBITDA negative). Macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution discipline, which disfavors unprofitable micro-caps. Upstream agents: Narrative Agent (Agent 02) verdict='unsupported_claim' (confidence=low); Alt-Data Verify Agent (Agent 03) verdict='insufficient_evidence_to_verify' (confidence=low); Surge-Short Agent (Agent 05) recommended_action='watch' (confidence=low); Risk Agent (Agent 06) all veto conditions false (confidence=high). Per \u00a713.6 SOFT_REASONING, structural absence of expected news/filing/event corroboration for a 56% surge is bear-thesis evidence. The absence pattern is consistent with either (i) momentum-driven move without fundamental catalyst, or (ii) catalyst occurred post-cutoff and is invisible to pre-cutoff decision. Either way, the catalyst cannot be identified from available evidence. The bear thesis is SUPPORTED by negative fundamentals and macro headwind, but WEAKENED by incomplete information (20 post-cutoff news items, missing alternative-data adapters, no SEC filing confirmation). Confidence is LOW due to hindsight risk: if the 20 dropped news items contain a material disclosure (e.g., 8-K, press release, partnership announcement), the decision is retroactively contaminated. Per \u00a75.17 surge-short integrity-veto exception, the absence of hard-to-fake corroboration (news, filing, alt-data) is NOT a reason to veto; it is the pump signal that motivates the short. However, the MAGNITUDE of uncertainty (high) and the TIGHT EXECUTION WINDOW (opening-window discipline, 09:30-09:45) argue for WATCH rather than immediate SHORT entry. Recommended action: WATCH pending post-cutoff news reconciliation and SEC filing confirmation. If corroborating catalyst evidence emerges (e.g., SEC 8-K, press release, analyst downgrade), the thesis is invalidated and position should not be entered. If the stock reverses sharply (>-10% from entry) or alternative-data evidence contradicts the bear thesis, exit immediately.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If post-cutoff news (after 2025-04-08 09:30) reveals a concrete catalyst (partnership, financing, product launch, regulatory approval, earnings beat) with corroborating SEC filing or press release, the structural-absence bear thesis is invalidated.",
+        "If SEC 8-K filing or press release dated on or before 2025-04-08 09:30 is discovered post-analysis, the decision is retroactively hindsight-contaminated and should be re-run with post-cutoff data.",
+        "If alternative-data adapters (when wired in v0.8.7+) return positive signals (GitHub activity spike, clinical trial progress, regulatory filing footprint, web traffic surge) that corroborate a turnaround narrative, the bear thesis weakens.",
+        "If institutional ownership data (13F, Form 4) shows large new positions by reputable funds, it may suggest informed buying despite operational distress and would weaken the short thesis.",
+        "If the stock reverses >-10% from entry within 1 trading day, momentum has exhausted and the short thesis loses alpha; exit immediately.",
+        "If the company discloses material positive news in an 8-K or press release between decision_timestamp (2025-04-08 09:30) and execution_timestamp (2025-04-08 09:45), the thesis is invalidated and position should not be entered."
+      ],
+      "risk_flags": [
+        "STRUCTURAL_ABSENCE_SIGNAL: Surge of +56.4% lacks corroborating news (0 items in 7-day window), SEC filing (not_connected), or corporate event (0 near-decision events). This is the primary bear-thesis evidence per \u00a713.6 SOFT_REASONING.",
+        "NEGATIVE_FUNDAMENTALS: Net margin -14.68%, operating loss -132k, ROE -74%, ROA -71%. Company is unprofitable and destroying shareholder value.",
+        "HIGH_LEVERAGE: Total debt 1.45x equity (1.126M debt vs 776k equity). Distressed capital structure.",
+        "MICRO_CAP_ILLIQUIDITY: Revenue 883k (Q2 2025), avg volume 49.9k shares/day. Thin liquidity; susceptible to momentum reversals.",
+        "MACRO_HEADWIND: Overheat regime with strict_quality_and_valuation_caution discipline. Equity allocation capped at 20%. Unprofitable micro-caps are disfavored.",
+        "ALT_DATA_GAPS: Wikipedia article unresolved, GitHub unmapped, FMP sentiment endpoints empty. No external corroboration available.",
+        "INFORMATION_INTEGRITY_UNASSESSED: Pollution-defense layer not implemented in v1. Cannot rule out coordinated campaign or rumor-driven spike.",
+        "HINDSIGHT_RISK: 20 news items dropped post-cutoff. Unknown whether those items contain the catalyst narrative. Decision made with incomplete information.",
+        "EXECUTION_WINDOW_TIGHT: Opening-window discipline (09:30-09:45) means decision made within 15 minutes of market open. Volatility and information asymmetry are high.",
+        "INTRADAY_REVERSAL: Trigger-day open 16.1 vs close 9.4 (41.6% intraday decline) suggests panic or forced liquidation, not organic demand. Momentum may be exhausting."
+      ],
+      "suggested_improvements": [
+        "Wire sec_edgar (filing_index) and sec_8k_fulltext adapters to confirm or deny SEC 8-K filing on or before 2025-04-08.",
+        "Implement information_integrity_assessment (pollution-defense layer) to assess coordinated-campaign risk and rumor credibility.",
+        "Wire alternative-data adapters (GitHub, Wikipedia, web traffic, social sentiment) to corroborate or contradict the surge narrative.",
+        "Implement LLM-based narrative_price_gap_assessment (Agent 03) to synthesize news, filing, and price evidence into a coherent catalyst story.",
+        "Extend news_event_summary lookback window or use real-time news feeds (e.g., Benzinga, Seeking Alpha) to capture intraday catalysts.",
+        "Implement sector-specific adapters (e.g., if GLXG is biotech, wire FDA filing adapter; if software, wire GitHub/developer activity adapter) to verify sector-typical evidence.",
+        "Add post-cutoff news reconciliation: after decision_timestamp, check for news items published between cutoff and execution_timestamp to validate or invalidate the thesis.",
+        "Implement intraday OHLCV granularity to distinguish organic demand (sustained high volume) from panic/forced liquidation (high volume with intraday reversal).",
+        "Add ownership positioning (13F, Form 4) to detect insider selling or institutional accumulation during the surge."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-04-08T09:30:00-04:00). These items are forbidden by \u00a75.13(c) + \u00a78 R1-R7 and cannot be used to explain the price move. Unknown whether those items contain the catalyst narrative."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "polygon_news adapter returned 0 items in [2025-04-01, 2025-04-08] for GLXG. Combined with 20 post-cutoff items, this suggests the catalyst event occurred post-cutoff and is invisible to pre-cutoff decision."
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "warning",
+          "detail": "alternative_data_features is a schema-shape placeholder in v1; no adapters wired. Cannot assess GitHub activity, Wikipedia pageviews, sentiment, or ownership positioning."
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment is not_evaluated; pollution-defense layer not implemented. Cannot assess rumor risk, bot-like patterns, or coordinated campaigns."
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence is not_evaluated; fmp_sentiment returned 0 rows (endpoints unavailable on current plan). Cannot assess market sentiment or institutional positioning."
+        },
+        {
+          "kind": "filing_not_evaluated",
+          "severity": "warning",
+          "detail": "filing_confirmation.SEC_8K_confirmation is not_evaluated; sec_edgar and sec_8k_fulltext adapters not wired in v1. Cannot confirm material disclosures."
+        },
+        {
+          "kind": "fundamental_stale",
+          "severity": "info",
+          "detail": "Latest PIT-safe income statement is Q2 2025 (accepted 2024-12-30 19:00:00), 3+ months stale relative to decision_timestamp 2025-04-08. No recent earnings or guidance available."
+        },
+        {
+          "kind": "valuation_not_pit_safe",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios without fiscal anchor; not point-in-time safe. PE, PB, EV/EBITDA are distorted by negative earnings."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 evidence packet is a skeleton implementation with critical gaps for surge-short decision-making: (1) alternative_data_features block is not_connected across all adapters \u2014 the primary verification mechanism for surge-short candidates is unavailable; (2) information_integrity_assessment is not_evaluated \u2014 pollution-defense layer not implemented, so coordinated_campaign_risk and bot_like_pattern_risk cannot be assessed; (3) sentiment_community_ownership_evidence is not_evaluated \u2014 no market sentiment or ownership data; (4) news_event_summary has 20 items dropped post-cutoff with 0 pre-cutoff items \u2014 no narrative catalyst available; (5) filing_confirmation is not_evaluated \u2014 sec_8k_fulltext not_connected. These gaps are structural to v1 and prevent full narrative-price dislocation verification. PM is forced to reason from absence patterns and flag the missing evidence prominently. The structural-absence-as-signal pattern (\u00a713.6 SOFT_REASONING) is the primary bear-thesis mechanism available under v1 constraints, but the magnitude of uncertainty (high) and the tight execution window (opening-window discipline) argue for WATCH rather than immediate SHORT entry.",
+      "recommended_followups": [
+        "IMMEDIATE: Check post-cutoff news (after 2025-04-08T09:30:00-04:00) to identify the catalyst. If a material disclosure exists post-cutoff, the decision is hindsight-contaminated and should be re-run with post-cutoff data.",
+        "IMMEDIATE: Fetch SEC EDGAR filings (8-K, press releases) for GLXG around 2025-04-08 to confirm or deny material disclosures.",
+        "SHORT-TERM: Obtain sector classification (10-K Item 1, SIC code, or industry database) to apply sector-aware reasoning and assess whether the absence of expected evidence (e.g., GitHub for software, clinical trials for biotech) is a bear signal.",
+        "SHORT-TERM: Wire alternative-data adapters (GitHub, Wikipedia, sentiment, ownership) to detect tech narratives, retail meme attention, or insider positioning.",
+        "SHORT-TERM: Implement information_integrity_assessment pollution-defense layer to flag rumor risk, bot-like patterns, and coordinated campaigns.",
+        "MEDIUM-TERM: Extend news lookback to 14 days pre-cutoff to capture catalysts announced earlier but driving current momentum.",
+        "MEDIUM-TERM: Implement post-cutoff news reconciliation to compare pre-cutoff verdict to post-cutoff news and detect hindsight contamination.",
+        "MEDIUM-TERM: Add sector-specific fundamental checks (R&D for software, clinical trials for biotech, capex for industrial) to corroborate narrative claims.",
+        "If short position is entered (after WATCH period resolves), set stop-loss at +50% from entry (entry ~9.4, stop ~14.1) to limit momentum-reversal risk."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "watch",
+      "position_size_pct": 0.0,
+      "reason": "Surge-short candidate GLXG exhibits +56.4% 5d return with 17.75x volume but lacks corroborating catalyst evidence (zero news pre-cutoff, no SEC filing, no events). Structural absence of expected corroboration is bear-thesis signal per \u00a713.6. Fundamentals deeply negative (net margin -14.68%, ROE -74%, debt 1.45x equity). Macro headwind (Overheat/strict_quality_caution). However, high uncertainty due to 20 post-cutoff news items (forbidden by PIT rules), missing alternative-data adapters, and no SEC filing confirmation. Upstream agents all recommend WATCH (Narrative=unsupported_claim, Alt-Data=insufficient_evidence, Surge-Short=watch, Risk=no_veto). Recommended action: WATCH pending post-cutoff news reconciliation and SEC filing confirmation. Do NOT enter SHORT at this time. If corroborating catalyst evidence emerges, thesis is invalidated. If stock reverses >-10% or alternative-data contradicts bear thesis, exit immediately.",
+      "risk_notes": [
+        "Candidate passes hard-veto gate (Risk Agent: all veto conditions false).",
+        "Structural absence of news/filing/event corroboration is bear-thesis evidence, but magnitude of uncertainty is high.",
+        "20 post-cutoff news items are forbidden by PIT rules but may contain the catalyst narrative; hindsight risk is material.",
+        "Alternative-data adapters unavailable in v1; cannot verify retail attention, tech activity, or ownership positioning.",
+        "Intraday reversal (open 16.1, close 9.4) suggests momentum exhaustion or panic liquidation, not organic demand.",
+        "Macro regime (Overheat/strict_quality_caution) disfavors unprofitable micro-caps; equity allocation capped at 20%.",
+        "Execution window tight (opening-window discipline, 09:30-09:45); volatility and information asymmetry are high.",
+        "ADaS lagged history (QNRX, 2025-04-02) shows high confidence_dispersion (std_proxy=0.866) and 3 dissenting agents; suggests framework uncertainty on similar surge-short candidates. Recommend elevated caution."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Candidate_type=surge_short is exempt from \u00a75.13(a) equity-cap veto per \u00a75.17. Surge-short positions do not trigger sleeve-cap checks in this context."
+        },
+        {
+          "name": "position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Candidate_type=surge_short. No sleeve-cap or position-cap data provided in packet; candidate is not subject to \u00a74.7/\u00a74.8 caps under surge_short evaluation."
+        },
+        {
+          "name": "critical_data_quality_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains entries with severity='critical' (news_post_cutoff_filtered, no_news_in_window), but these are informational about missing evidence, not mechanical fail-triggers. \u00a75.13(c) does NOT trip on data-quality flags alone; it trips on lookahead_data_used or hindsight_violations, which are false."
+        },
+        {
+          "name": "pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "information_integrity_assessment.status=not_evaluated (unimplemented). Per \u00a75.13(d) RELAXED 2026-05-06: when pollution_defense_layer is unimplemented or returns status \u2208 {not_evaluated, not_connected, pending, unimplemented}, \u00a75.13(d) does NOT trip. Candidate evaluates on other criteria. Fail-closed semantics preserved for affirmatively-confirmed pollution only."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. \u00a75.13(e) does NOT trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (mechanical, non-negotiable)",
+        "\u00a75.13(a) equity-cap veto: not applicable (candidate_type=surge_short exempt per \u00a75.17)",
+        "\u00a75.13(b) position-cap veto: not applicable (surge_short exempt)",
+        "\u00a75.13(c) critical data-quality veto: not tripped (no lookahead_data_used or hindsight_violations)",
+        "\u00a75.13(d) pollution-integrity veto: not tripped (pollution_defense_layer unimplemented; \u00a75.13(d) RELAXED 2026-05-06 applies)",
+        "\u00a75.13(e) lookahead veto: not tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+        "\u00a75.17 surge-short integrity-veto exception: applies (candidate_type=surge_short); absence of hard-to-fake corroboration (news, filing, alt-data) is NOT a reason to veto; it is the pump signal that motivates the short",
+        "\u00a713.6 SOFT_REASONING: structural absence of expected news/filing/event corroboration for a 56% surge is bear-thesis evidence; reason from PRESENT evidence (price action, fundamentals, macro headwind) and ABSENT evidence (news, filing, event) per asymmetric absence rule",
+        "SURGE_SHORT_ENTRY_DECISION_FRAMEWORK (Pass 7, 2026-05-03): preponderance-of-evidence reasoning, NOT counting rule. Read prelude agents' rationale (Narrative=unsupported_claim, Alt-Data=insufficient_evidence, Surge-Short=watch). Form integrated read: does weight of evidence favor bear thesis, wait-and-see, or no-thesis? Bear thesis is SUPPORTED by (i) structural absence of catalyst evidence, (ii) negative fundamentals, (iii) macro headwind. But WEAKENED by (iv) high uncertainty (20 post-cutoff news items, missing alt-data, no SEC filing confirmation). Preponderance favors WATCH, not immediate SHORT entry.",
+        "DECISION: watch (not short, not no_trade, not veto)"
+      ],
+      "decision_log": [
+        "2025-04-08T09:30:00-04:00 [ENVELOPE_CHECK] data_after_cutoff_used=false, lookahead_safe=true, immutable_decision_flag=true. PIT discipline satisfied.",
+        "2025-04-08T09:30:00-04:00 [HARD_VETO_GATE] Risk Agent evaluated \u00a75.13(a)-(e). All veto conditions false. Candidate passes mechanical veto gate.",
+        "2025-04-08T09:30:00-04:00 [CANDIDATE_TYPE_CLASSIFICATION] candidate_type=surge_short confirmed. Surge-short integrity-veto exception (\u00a75.17) applies. Absence of hard-to-fake corroboration is NOT a reason to veto.",
+        "2025-04-08T09:30:00-04:00 [PRICE_ACTION_ANALYSIS] GLXG: prior_close=7.53, last_eod_close=9.4 (+24.9%), trigger_day_open=16.1 (intraday high), return_5d_pct=56.4%, relative_volume_vs_20d=17.75x. Classic surge-short morphology: extreme intraday volatility, elevated volume, partial reversion.",
+        "2025-04-08T09:30:00-04:00 [CATALYST_IDENTIFICATION] news_event_summary.polygon_news returned 0 rows for [2025-04-01, 2025-04-08]. 20 news items dropped post-cutoff (forbidden by PIT rules). No SEC 8-K filing confirmation available (filing_confirmation.status=not_evaluated). No corporate calendar events within \u00b15 trading days (events_near_decision_count=0). CATALYST UNIDENTIFIABLE from pre-cutoff evidence.",
+        "2025-04-08T09:30:00-04:00 [STRUCTURAL_ABSENCE_ASSESSMENT] Per \u00a713.6 SOFT_REASONING, structural absence of expected news/filing/event corroboration for a 56% surge is bear-thesis evidence. The absence pattern is consistent with either (i) momentum-driven move without fundamental catalyst, or (ii) catalyst occurred post-cutoff and is invisible to pre-cutoff decision. Either way, the catalyst cannot be identified from available evidence.",
+        "2025-04-08T09:30:00-04:00 [FUNDAMENTAL_ASSESSMENT] Q2 2025 snapshot (accepted 2024-12-30): revenue=883.5k, net_margin=-14.68%, operating_income=-132.3k, operating_cash_flow=0, free_cash_flow=0, eps=-0.076, roe=-74.1%, roa=-71.0%, total_debt=1.126M vs total_equity=776k (1.45x leverage). Company is unprofitable, cash-flow negative, and highly leveraged. Valuation metrics inverted (PE negative, EV/EBITDA negative).",
+        "2025-04-08T09:30:00-04:00 [MACRO_REGIME_ASSESSMENT] macro_regime=Overheat/Expansionary, stress_score=2, equity_discipline=strict_quality_and_valuation_caution, equity_allocation_cap=20%. Regime disfavors unprofitable micro-caps. GLXG is unsuitable for current macro regime.",
+        "2025-04-08T09:30:00-04:00 [UPSTREAM_AGENT_SYNTHESIS] Narrative Agent (Agent 02): verdict=unsupported_claim, confidence=low. Alt-Data Verify Agent (Agent 03): verdict=insufficient_evidence_to_verify, confidence=low, recommendation_to_pm=needs_more_evidence. Surge-Short Agent (Agent 05): recommended_action=watch, confidence=low. Risk Agent (Agent 06): all veto conditions false, confidence=high. Consensus: WATCH, not SHORT.",
+        "2025-04-08T09:30:00-04:00 [BEAR_THESIS_COHERENCE] Bear thesis is SUPPORTED by: (i) structural absence of catalyst evidence (news, filing, event), (ii) negative fundamentals (net margin -14.68%, ROE -74%, debt 1.45x equity), (iii) macro headwind (Overheat/strict_quality_caution). Bear thesis is WEAKENED by: (iv) high uncertainty (20 post-cutoff news items forbidden by PIT rules, missing alternative-data adapters, no SEC filing confirmation), (v) incomplete information (catalyst narrative unknown).",
+        "2025-04-08T09:30:00-04:00 [CONFIDENCE_ASSESSMENT] Confidence=LOW due to: (a) hindsight risk (20 post-cutoff news items may contain catalyst narrative), (b) missing alternative-data adapters (cannot verify retail attention, tech activity, ownership positioning), (c) no SEC filing confirmation (cannot verify material disclosures), (d) tight execution window (opening-window discipline, 09:30-09:45, leaves minimal time for information synthesis), (e) intraday reversal (open 16.1, close 9.4) suggests momentum exhaustion or panic liquidation, not organic demand.",
+        "2025-04-08T09:30:00-04:00 [INVALIDATION_RISK_ASSESSMENT] If post-cutoff news reveals a concrete catalyst (partnership, financing, product launch, regulatory approval, earnings beat) with corroborating SEC filing or press release, the structural-absence bear thesis is invalidated. If SEC 8-K filing or press release dated on or before 2025-04-08 09:30 is discovered post-analysis, the decision is retroactively hindsight-contaminated. If alternative-data adapters (when wired in v0.8.7+) return positive signals (GitHub activity spike, clinical trial progress, regulatory filing footprint), the bear thesis weakens. If institutional ownership data (13F, Form 4) shows large new positions by reputable funds, it may suggest informed buying despite operational distress.",
+        "2025-04-08T09:30:00-04:00 [ADAS_LAGGED_CONTEXT] ADaS lagged history (QNRX, 2025-04-02) shows high confidence_dispersion (std_proxy=0.866) and 3 dissenting agents (narrative_event=low, alt_data_verify=low, surge_short=low, risk=high). This suggests the framework is uncertain on similar surge-short candidates with incomplete information. Recommend elevated caution on GLXG.",
+        "2025-04-08T09:30:00-04:00 [DECISION_RATIONALE] Preponderance-of-evidence reasoning (Pass 7, 2026-05-03): The bear thesis is COHERENT (structural absence + negative fundamentals + macro headwind) but UNCERTAIN (high magnitude of missing information). The upstream agents all recommend WATCH, not SHORT. The tight execution window (opening-window discipline, 09:30-09:45) and high hindsight risk argue for deferring SHORT entry pending post-cutoff news reconciliation and SEC filing confirmation. Recommended action: WATCH. Do NOT enter SHORT at this time. If corroborating catalyst evidence emerges (e.g., SEC 8-K, press release, analyst downgrade), the thesis is invalidated and position should not be entered. If the stock reverses sharply (>-10% from entry) or alternative-data evidence contradicts the bear thesis, exit immediately.",
+        "2025-04-08T09:30:00-04:00 [POSITION_SIZING] decision=watch, position_size_pct=0.0. No position entry at this time. If WATCH period resolves with corroborating catalyst evidence, re-evaluate for SHORT entry at \u00a74.8 fixed 0.005 (0.5%) position size.",
+        "2025-04-08T09:30:00-04:00 [EXECUTION_PLAN] order_type=T+1 next-open, execution_timestamp=2025-04-08T09:45:00-04:00, side=none, size_pct_of_portfolio=0.0. No order to execute. WATCH status maintained pending post-cutoff news reconciliation."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-08T09:45:00-04:00",
+        "ticker": "GLXG",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule, 2026-05-03)",
+        "agent_prompt_version": "v0.9.0_pass8_hardrule_pm_final",
+        "evidence_packet_hash": "sha256:9b58fc0f56fc4b4d7d24ec3a70384e21c53ec8756aacc0c4fe7b3e5a59a59f64"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Catalyst narrative unidentifiable from pre-cutoff evidence. 20 post-cutoff news items (forbidden by PIT rules) may contain the catalyst narrative; hindsight risk is material.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Structural absence of hard-to-fake corroboration (news, filing, alt-data) prevents thesis confirmation. Per \u00a75.17 surge-short integrity-veto exception, absence is NOT a reason to veto; it is the pump signal. However, magnitude of uncertainty (high) and tight execution window argue for WATCH, not immediate SHORT entry.",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": null,
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-08T09:30:00-04:00",
+      "execution_timestamp": "2025-04-08T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:bb0eaf0d5bd2813d549b7b780688764e810393e723d66c5115fba288e5517595",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

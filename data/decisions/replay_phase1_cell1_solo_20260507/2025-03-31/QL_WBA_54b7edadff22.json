@@ -1,0 +1,247 @@
+{
+  "trigger_id": "54b7edadff22",
+  "ticker": "WBA",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-03-31T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 49.35,
+  "trigger_cost_usd": 0.067403,
+  "cumulative_cost_usd": 2.748202,
+  "candidate_ranking_inputs": {
+    "ticker": "WBA",
+    "earliest_event_date": "2025-04-08",
+    "selection_reason": "earnings_window_14d",
+    "close": 11.17,
+    "t1_open": 11.17,
+    "t1_date": "2025-04-01"
+  },
+  "evidence_packet_hash": "sha256:fe7e223e96ea527880445996627f23da89fb7ab967813ed567309bfda2376447",
+  "locked_decision_id": "sha256:88d6a0504b8363ea67bed776df8316bcd4e002c46e61186f1d37061284504c82",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-03-31T09:30:00-04:00",
+      "data_available_as_of": "2025-03-31T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "high",
+      "evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (net_income=-265M, operating_income=-236M, fcf=-424M)",
+        "valuation_snapshot.valuation_inputs (pe_ratio=-3.15, ev_to_ebitda=-14.45, roe=-0.39, roa=-0.05)",
+        "fundamental_gate_38 (failed: eps_ttm_not_positive, operating_margin_not_positive, fcf_not_positive)",
+        "macro_regime (overheat, stress_score=2, equity_allocation_cap=20%)",
+        "news_event_summary (class action lawsuit re: opioid/CSA violations, negative sentiment)",
+        "price_snapshot (last_eod_close=11.19, return_5d=0.81%, return_60d=20.84%)",
+        "alternative_data_features.attention (wikipedia pageviews 30-day window, no spike pattern)",
+        "sentiment_community_ownership_evidence (analyst ratings mixed: 2 strong buy, 2 buy, 12 hold, 3 sell, 1 strong sell as of 2025-03-01)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs (not present in baseline solo mode)",
+        "filing_confirmation (sec_edgar cik_not_found, sec_8k not_evaluated)",
+        "narrative_price_gap_assessment (agent_internal_pending, not_evaluated)",
+        "information_integrity_assessment (insufficient_evidence, pollution-defense layer unimplemented)",
+        "ownership_positioning (not_evaluated, 13F/Form4/Def14A adapters not connected)",
+        "detailed_catalyst_analysis (news_event_summary.agent_derived_fields_status=not_evaluated)"
+      ],
+      "reasoning_summary": "WBA fails hard fundamental gate on three counts: negative EPS TTM, negative operating margin, negative free cash flow. Latest quarter (Q1 FY2025, accepted 2025-01-10) shows net loss of -265M on revenue of 39.5B, operating loss of -236M, and FCF of -424M. Valuation metrics are distorted (negative PE, negative EV/EBITDA). Macro regime is overheat with strict equity discipline. Single news item (2025-03-26) reports class action lawsuit alleging opioid/CSA violations, negative sentiment. Alternative data (Wikipedia pageviews) shows no abnormal attention spike. Analyst sentiment is mixed but skewed toward hold/sell. No corroborating alt-data evidence of turnaround catalyst. Information integrity assessment is insufficient (low-tier sources only, pollution-defense unimplemented). Under fail-closed policy, fundamental gate failure + insufficient evidence + macro headwinds + negative catalyst = no_trade.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Fundamental gate failure (hard rule): eps_ttm_not_positive, operating_margin_not_positive, fcf_not_positive",
+        "Macro regime constraint: overheat regime with equity_allocation_cap=20% and strict_quality_and_valuation_caution discipline",
+        "Negative catalyst: class action lawsuit alleging regulatory violations (opioid/CSA)",
+        "Information integrity insufficient: no primary source corroboration, pollution-defense layer unimplemented",
+        "Valuation distortion: negative PE and EV/EBITDA ratios indicate unprofitable state"
+      ],
+      "risk_flags": [
+        "hard_fundamental_gate_failure",
+        "negative_free_cash_flow",
+        "negative_operating_margin",
+        "negative_earnings",
+        "regulatory_litigation_risk",
+        "high_debt_to_equity (4.04x)",
+        "low_current_ratio (0.60x, below 1.0)",
+        "negative_roe_and_roa",
+        "macro_overheat_regime",
+        "insufficient_alt_data_corroboration",
+        "information_integrity_unverified"
+      ],
+      "suggested_improvements": [
+        "Await resolution of class action lawsuit or regulatory settlement announcement",
+        "Monitor next earnings release (Q2 FY2025) for evidence of operational turnaround",
+        "Obtain primary-source confirmation of any strategic restructuring or cost-reduction initiatives",
+        "Implement pollution-defense layer in information_integrity_assessment to validate news claims",
+        "Connect ownership_positioning adapters (13F, Form4) to assess insider/institutional positioning",
+        "Evaluate alternative data on pharmacy traffic, prescription volumes, or supply-chain metrics"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2025-08-28T20:00:00+00:00 is after allowed_data_cutoff; quote retained for display only"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "ratios_ttm flagged not_PIT_safe \u2014 for display, not for PIT inputs"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 items dropped because publishedDate > cutoff; 1 item retained (2025-03-26)"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_edgar error_class=cik_not_found extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_form4 error_class=cik_not_found extraction_status=failed"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment status=insufficient_evidence; pollution-defense layer unimplemented in v1"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "Baseline solo agent lacks upstream specialist outputs (Agent 02 narrative, Agent 03 alt-data verification, Agent 04 fundamentals, Agent 07 risk). Single-agent reasoning must infer all four perspectives from raw packet. Information integrity assessment is a placeholder (insufficient_evidence status); pollution-defense layer not yet implemented. Filing confirmation and narrative_price_gap_assessment are not_evaluated. Ownership positioning adapters not connected. These gaps reduce confidence in corroboration but do not override hard fundamental gate failure.",
+      "recommended_followups": [
+        "Escalate to multi-agent pipeline (Agent 02 narrative analyst, Agent 03 alt-data verifier) for deeper catalyst and corroboration analysis",
+        "Obtain SEC 8-K filings directly (CIK lookup issue suggests data quality problem)",
+        "Request insider trading data (Form 4) and institutional ownership (13F) via alternative source",
+        "Monitor pharmacy traffic and prescription volume metrics via consumer alt-data adapters",
+        "Schedule earnings call transcript review for Q2 FY2025 guidance and management commentary on litigation"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Hard fundamental gate failure (negative EPS, operating margin, FCF) + macro overheat regime + negative catalyst (class action lawsuit) + insufficient alt-data corroboration = fail-closed no_trade. Baseline solo agent cannot confirm turnaround thesis without upstream specialist verification.",
+      "risk_notes": [
+        "Fundamental gate failure is a hard veto: eps_ttm_not_positive, operating_margin_not_positive, fcf_not_positive",
+        "Latest quarter shows net loss of -265M and FCF of -424M; no path to profitability evident in packet",
+        "Class action lawsuit (2025-03-26) alleges opioid/CSA violations; regulatory risk is material and unresolved",
+        "Debt-to-equity ratio of 4.04x and current ratio of 0.60x indicate financial stress",
+        "Macro regime is overheat with strict equity discipline; WBA does not meet quality threshold",
+        "Alternative data (Wikipedia pageviews) shows no abnormal attention spike; no retail/meme catalyst detected",
+        "Analyst sentiment is mixed (2 strong buy, 2 buy, 12 hold, 3 sell, 1 strong sell); consensus is neutral-to-negative",
+        "Information integrity assessment is insufficient (low-tier sources only); no primary-source corroboration of turnaround narrative",
+        "Valuation metrics are distorted by negative earnings; PE and EV/EBITDA ratios are not meaningful",
+        "No upstream specialist verification available in baseline solo mode; single-agent reasoning is inherently limited"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "Information integrity assessment status=insufficient_evidence; pollution-defense layer unimplemented; no primary-source corroboration of turnaround catalyst; filing_confirmation and narrative_price_gap_assessment not_evaluated"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": true,
+          "note": "Fundamental gate 38 failed on three counts: eps_ttm_not_positive, operating_margin_not_positive, fcf_not_positive. Rule engine recommends no_trade."
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Filing confirmation (sec_edgar cik_not_found), ownership positioning (not_evaluated), narrative_price_gap_assessment (agent_internal_pending), information_integrity_assessment (insufficient_evidence). Essential blocks absent or unresolved."
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "Information integrity assessment: status=insufficient_evidence, use_as_primary_signal_allowed=false, reason=pollution-defense layer not implemented in v1. News claim (class action lawsuit) is not corroborated by primary source or alt-data."
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "Envelope confirms data_after_cutoff_used=false, lookahead_safe=true, hindsight_safe=true. No lookahead violation detected."
+        }
+      ],
+      "rule_engine_path": [
+        "1. Check fundamental_gate_38: FAILED (eps_ttm_not_positive, operating_margin_not_positive, fcf_not_positive)",
+        "2. Rule engine recommends: no_trade",
+        "3. Evaluate candidate_type: surge_short (candidate for short sleeve)",
+        "4. Check surge_short v0.4 sleeve conditions: CANNOT PROCEED (fundamental gate failure is hard veto)",
+        "5. Check quality_long sleeve conditions: CANNOT PROCEED (negative earnings, negative FCF, negative margins)",
+        "6. Evaluate macro regime: overheat, equity_allocation_cap=20%, strict_quality_and_valuation_caution",
+        "7. Evaluate catalyst: class action lawsuit (negative), no corroboration, information_integrity=insufficient_evidence",
+        "8. Evaluate alternative data: Wikipedia pageviews show no abnormal spike, no retail attention flag",
+        "9. Evaluate sentiment: analyst ratings mixed (2 SB, 2 B, 12 H, 3 S, 1 SS); consensus neutral-to-negative",
+        "10. Evaluate veto conditions: insufficient_evidence=true, hard_risk_limit_breached=true, missing_data_persists=true, information_integrity_veto=true",
+        "11. DECISION: veto_conditions_evaluated contains 4 tripped vetoes \u2192 decision=no_trade, position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T+0: Read evidence packet end-to-end; identify ticker=WBA, decision_timestamp=2025-03-31T09:30:00-04:00",
+        "T+1: Assess fundamental_snapshot: net_income=-265M, operating_income=-236M, fcf=-424M (Q1 FY2025, accepted 2025-01-10)",
+        "T+2: Check fundamental_gate_38: FAILED on eps_ttm_not_positive, operating_margin_not_positive, fcf_not_positive",
+        "T+3: Assess valuation_snapshot: pe_ratio=-3.15, ev_to_ebitda=-14.45, roe=-0.39, roa=-0.05 (distorted by negative earnings)",
+        "T+4: Assess macro_regime: overheat, stress_score=2, equity_allocation_cap=20%, equity_discipline=strict_quality_and_valuation_caution",
+        "T+5: Assess news_event_summary: 1 item (2025-03-26) class action lawsuit re: opioid/CSA violations, sentiment=negative",
+        "T+6: Assess alternative_data_features: Wikipedia pageviews 30-day window, no abnormal spike, no retail attention flag",
+        "T+7: Assess sentiment_community_ownership_evidence: analyst ratings 2 SB, 2 B, 12 H, 3 S, 1 SS (as of 2025-03-01); consensus neutral-to-negative",
+        "T+8: Assess information_integrity_assessment: status=insufficient_evidence, use_as_primary_signal_allowed=false, corroboration_status=uncorroborated",
+        "T+9: Assess filing_confirmation: status=not_evaluated, sec_edgar cik_not_found, sec_8k not_evaluated",
+        "T+10: Assess narrative_price_gap_assessment: status=not_evaluated, agent_internal_pending, uncertainty=high",
+        "T+11: Evaluate candidate_type: surge_short (candidate for short sleeve)",
+        "T+12: Check surge_short v0.4 sleeve conditions: CANNOT PROCEED (fundamental gate failure is hard veto per rule_engine_recommended_action=no_trade)",
+        "T+13: Check quality_long sleeve conditions: CANNOT PROCEED (negative earnings, negative FCF, negative margins, macro overheat)",
+        "T+14: Evaluate veto conditions: insufficient_evidence=true, hard_risk_limit_breached=true, missing_data_persists=true, information_integrity_veto=true, lookahead_data_used=false",
+        "T+15: DECISION: 4 veto conditions tripped \u2192 decision=no_trade, position_size_pct=0.0, immutable_decision_flag=true"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-31T09:45:00-04:00",
+        "ticker": "WBA",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:f6ed4d92525e8821a25bc11754bdc996b0cba9591a964166000803dddd6ad509"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show no abnormal spike; no retail/meme attention detected. Analyst sentiment is mixed but skewed toward hold/sell. No community crowding risk identified.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Class action lawsuit claim (2025-03-26) is not corroborated by primary source (SEC filing) or alt-data. Information integrity assessment status=insufficient_evidence; pollution-defense layer unimplemented in v1.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Fundamental gate failure (hard veto) + information_integrity_assessment=insufficient_evidence + filing_confirmation=not_evaluated + narrative_price_gap_assessment=not_evaluated. Essential blocks absent or unresolved. Fail-closed per \u00a713.6 null-block-handling clause.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment is mixed (2 strong buy, 2 buy, 12 hold, 3 sell, 1 strong sell as of 2025-03-01). Consensus is neutral-to-negative. Sentiment does not override hard fundamental gate failure.",
+      "ownership_risk_adjustment_note": "Ownership positioning data not available (13F, Form4, Def14A adapters not connected). Cannot assess insider/institutional positioning. This gap does not override hard fundamental gate failure.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "Analyst ratings show mixed support (2 strong buy, 2 buy, 12 hold, 3 sell, 1 strong sell). No evidence of strong institutional sponsorship. Sentiment does not override hard fundamental gate failure.",
+      "smart_money_benchmark_note": "No smart money positioning data available (ownership_positioning not_evaluated). Cannot assess alignment with smart money. This gap does not override hard fundamental gate failure.",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-31T09:30:00-04:00",
+      "execution_timestamp": "2025-03-31T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:f3102dfd8a166f666eb934ef28cb0892505d0b413a34a4aaa3d8b98f3916bcaa",
+      "immutable_decision_flag": true
+    }
+  }
+}

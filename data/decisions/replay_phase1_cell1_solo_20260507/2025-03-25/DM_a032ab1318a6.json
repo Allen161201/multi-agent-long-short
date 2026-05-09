@@ -1,0 +1,285 @@
+{
+  "trigger_id": "a032ab1318a6",
+  "ticker": "DM",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-25T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 62.86,
+  "trigger_cost_usd": 0.063775,
+  "cumulative_cost_usd": 2.44752,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "DM",
+    "name": "DM",
+    "close": 4.52,
+    "prior_close": 2.27,
+    "change": 1.5899999999999999,
+    "change_pct": 70.04405286343611,
+    "volume": 53773657.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-25",
+    "prior_trading_day": "2025-03-24",
+    "available_as_of": "2025-03-25T16:00:00-05:00",
+    "today_open": 3.86,
+    "today_volume": 53773657.0,
+    "eps_ttm": -11.17,
+    "operating_margin_ttm": -127.01461229001147,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-10-31 07:00:49",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:aa31be94dd14854fc7e1a26cee8a5784eeee11595c1be9a8632fa8cefc6262b3",
+  "locked_decision_id": "sha256:af2012fca7648c71f43e2c1d35c91fd40ed0ad93afd013b1cb6c0e254b49a919",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation)",
+      "schema_version": "RiskPMAgentOutput_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DM",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.last_eod_close=2.27",
+        "price_snapshot.return_5d_pct=-17.45",
+        "fundamental_snapshot.net_income=-35448000 (Q3 2024)",
+        "fundamental_snapshot.net_margin_pct=-97.37",
+        "valuation_snapshot.pe_ratio=-0.494 (negative earnings)",
+        "valuation_snapshot.price_to_book=0.661",
+        "macro_regime=Strengthening/Moderately Restrictive (equity_discipline=strict_quality_and_valuation)",
+        "alternative_data_features.wikipedia_pageviews (30 days, peak 197 views on 2025-03-21)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings: 1 Hold as of 2025-03-01)",
+        "news_event_summary.polygon_news (0 items in 7-day window)",
+        "corporate_calendar.earnings (most recent: 2025-03-21, eps_actual=-0.28)",
+        "information_integrity_assessment.corroboration_status=uncorroborated (low_tier_only sources)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items post-cutoff; 20 dropped post-cutoff)",
+        "filing_confirmation (sec_edgar failed: cik_not_found)",
+        "narrative_price_gap_assessment (not_evaluated; agent_LLM_reasoning absent)",
+        "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable; 13F/Form4 adapters failed)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "alternative_data_features.retail_meme_attention (not_evaluated; reddit/wallstreetbets not connected)",
+        "alternative_data_features.valuation_context (not_evaluated)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "primary_source_corroboration for any catalyst claim"
+      ],
+      "reasoning_summary": "DM exhibits severe fundamental distress (negative earnings, -97% net margin, -$35.4M net loss in Q3 2024) in a macro regime requiring strict quality discipline. Price has declined 17.5% in 5 days. Wikipedia pageviews show modest attention (peak 197 on 2025-03-21, baseline ~40-50) but no corroborating news catalyst. Analyst sentiment is neutral (1 Hold rating as of 2025-03-01). Alternative data sources are either unavailable (SEC filings, GitHub, 13F ownership) or low-tier only (Wikipedia, FMP sentiment). Information integrity assessment flags uncorroborated status due to low-tier-only sources and absence of primary source confirmation. No surge-short sleeve conditions are met (no catalyst, no corroboration, no news event). No quality-long conditions are met (negative profitability, negative ROE/ROA, macro discipline forbids). Insufficient evidence and missing critical corroboration blocks (news, filing confirmation, narrative assessment) prevent confident directional decision. Fail-closed to no_trade pending upstream multi-agent analysis.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Macro regime strict_quality_and_valuation discipline forbids equity positions in unprofitable names",
+        "Negative earnings (PE=-0.494) disqualifies from quality_long sleeve",
+        "No news catalyst identified (polygon_news returned 0 items in 7-day window)",
+        "Information integrity assessment: uncorroborated (low_tier_only sources, no primary source)",
+        "Missing narrative_price_gap_assessment (agent_LLM_reasoning not available in v1)",
+        "Missing filing_confirmation (sec_edgar adapter failed: cik_not_found)",
+        "Missing ownership_positioning data (13F/Form4 adapters failed)",
+        "Alternative data corroboration absent (GitHub unmapped, retail attention not_evaluated)"
+      ],
+      "risk_flags": [
+        "Severe profitability distress: net_margin_pct=-97.37, net_income=-$35.4M (Q3 2024)",
+        "Negative ROE=-84.06%, negative ROA=-70.58%",
+        "High leverage: debt_to_equity=0.626, total_debt=$147.8M vs equity=$72.3M",
+        "Price momentum negative: return_5d_pct=-17.45, return_60d_pct=-5.02",
+        "Analyst sentiment deterioration: 13 analysts in Nov 2024 (3 SB, 4 B, 5 H, 1 S) \u2192 1 Hold in Mar 2025",
+        "Macro headwind: Moderately Restrictive policy (DFF=4.33%), equity_allocation_cap=30%",
+        "Information integrity risk: low-tier sources only, no primary source confirmation",
+        "Missing critical corroboration: no news catalyst, no filing confirmation, no narrative assessment",
+        "Wikipedia pageviews spike (197 on 2025-03-21) not corroborated by news or filing activity"
+      ],
+      "suggested_improvements": [
+        "Await multi-agent pipeline output to cross-check narrative catalyst (Agent 02) and alt-data corroboration (Agent 03)",
+        "Resolve sec_edgar CIK mapping for DM to enable filing_confirmation block",
+        "Wire GitHub adapter or confirm ticker unmapped status in alt-data manifest",
+        "Populate narrative_price_gap_assessment with LLM reasoning once Agent 02 completes",
+        "Obtain 13F/Form4 ownership data if available on higher-tier FMP plan",
+        "Investigate Wikipedia pageviews spike on 2025-03-21 (197 views) for underlying catalyst"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2025-04-02T20:00:00+00:00 is after allowed_data_cutoff; quote retained for display only"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios_ttm flagged not_PIT_safe \u2014 for display, not for PIT inputs"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 items dropped because publishedDate > cutoff; 0 items remain in news_event_summary"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_edgar error_class=cik_not_found extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_form4 error_class=cik_not_found extraction_status=failed"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment status=insufficient_evidence; use_as_primary_signal_allowed=false (pollution-defense layer not implemented in v1)"
+        },
+        {
+          "kind": "narrative_price_gap_assessment_not_evaluated",
+          "severity": "warning",
+          "detail": "narrative_price_gap_assessment status=not_evaluated; agent_LLM_reasoning missing; uncertainty=high"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not populate narrative_price_gap_assessment or agent_derived_fields in news_event_summary; these are marked not_evaluated pending downstream Agent 02/03 LLM reasoning. Information integrity assessment is a fail-closed placeholder (use_as_primary_signal_allowed=false) because pollution-defense layer is unimplemented. Baseline solo agent must reason from incomplete evidence packet; multi-agent pipeline will decompose and cross-check via specialist agents.",
+      "recommended_followups": [
+        "Run multi-agent pipeline (Agent 02 Narrative, Agent 03 Alt-Data, Agent 04 Fundamentals, Agent 07 Risk/PM) to decompose decision and cross-validate",
+        "Obtain Agent 02 narrative_price_gap_assessment to confirm whether Wikipedia pageviews spike reflects real catalyst or noise",
+        "Obtain Agent 03 alt-data corroboration verdict on fundamental distress vs. market sentiment mismatch",
+        "Resolve CIK mapping for DM to enable SEC filing confirmation",
+        "Monitor for earnings announcement or strategic update that might explain recent price action and attention spike"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence and missing critical corroboration blocks prevent confident short or long decision. Fundamental distress (negative earnings, -97% net margin) and macro discipline (strict_quality_and_valuation) rule out quality_long. No news catalyst, no filing confirmation, no narrative assessment, and uncorroborated alt-data (low-tier sources only) rule out surge_short. Fail-closed to no_trade pending multi-agent decomposition.",
+      "risk_notes": [
+        "Macro regime forbids equity positions in unprofitable names; DM is deeply unprofitable",
+        "Information integrity veto: low-tier sources only, no primary source confirmation, uncorroborated status",
+        "Missing narrative_price_gap_assessment prevents catalyst confirmation",
+        "Missing filing_confirmation prevents verification of recent events",
+        "Wikipedia pageviews spike (197 on 2025-03-21) is unexplained and unverified",
+        "Analyst sentiment has deteriorated sharply (13 analysts in Nov 2024 \u2192 1 Hold in Mar 2025)",
+        "Price momentum is negative (-17.45% in 5 days) but lacks corroborating news",
+        "Alternative data sources largely unavailable (SEC filings, GitHub, 13F ownership)",
+        "Baseline solo agent reasoning is limited; multi-agent pipeline will provide richer cross-validation"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "narrative_price_gap_assessment not_evaluated; filing_confirmation data_unavailable; news_event_summary empty post-cutoff; ownership_positioning data_unavailable; community_size not_evaluated"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "No hard limit breach detected; macro regime is Moderately Restrictive (not crisis), stress_score=1"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Critical blocks missing: narrative_price_gap_assessment (not_evaluated), filing_confirmation (data_unavailable), ownership_positioning (data_unavailable), community_size (not_evaluated), retail_meme_attention (not_evaluated)"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false; corroboration_status=uncorroborated; source_tier_distribution T1=0 T2=0 T3=1 T4=1; no primary source found"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; no lookahead violations detected"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Check macro_regime: Strengthening/Moderately Restrictive \u2192 equity_discipline=strict_quality_and_valuation",
+        "2. Check fundamental_snapshot: net_income=-$35.4M, net_margin=-97.37%, ROE=-84.06%, ROA=-70.58% \u2192 DISQUALIFIES quality_long",
+        "3. Check news_event_summary: 0 items post-cutoff (20 dropped) \u2192 NO CATALYST IDENTIFIED",
+        "4. Check narrative_price_gap_assessment: status=not_evaluated \u2192 MISSING CRITICAL BLOCK",
+        "5. Check information_integrity_assessment: uncorroborated, low_tier_only, use_as_primary_signal_allowed=false \u2192 INFORMATION INTEGRITY VETO TRIPPED",
+        "6. Check filing_confirmation: data_unavailable (sec_edgar cik_not_found) \u2192 MISSING VERIFICATION",
+        "7. Check alternative_data_features: Wikipedia pageviews spike (197 on 2025-03-21) but NO CORROBORATING NEWS or FILING \u2192 UNVERIFIED",
+        "8. Check sentiment_community_ownership_evidence: analyst ratings deteriorated (13 analysts Nov 2024 \u2192 1 Hold Mar 2025), ownership_positioning data_unavailable \u2192 INSUFFICIENT CORROBORATION",
+        "9. Evaluate surge_short sleeve: requires catalyst + corroboration + news event \u2192 ALL MISSING",
+        "10. Evaluate quality_long sleeve: requires profitability + quality metrics + macro discipline \u2192 ALL FAILED",
+        "11. Veto conditions: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true \u2192 DECISION=no_trade, position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T0: Ingest evidence packet for DM at decision_timestamp 2025-03-25T09:30:00-04:00",
+        "T1: Assess macro regime: Strengthening/Moderately Restrictive (stress_score=1, DFF=4.33%) \u2192 strict_quality_and_valuation discipline applies",
+        "T2: Assess fundamental snapshot (Q3 2024, accepted 2024-10-31): revenue=$36.4M, net_income=-$35.4M, net_margin=-97.37%, ROE=-84.06%, ROA=-70.58% \u2192 SEVERE DISTRESS",
+        "T3: Assess valuation snapshot (TTM): PE=-0.494 (negative earnings), PB=0.661, EV/EBITDA=-0.867 \u2192 UNPROFITABLE, DISQUALIFIES quality_long",
+        "T4: Assess price snapshot (last_eod 2025-03-24): close=$2.27, return_5d=-17.45%, return_60d=-5.02%, volume=168k (below 20d avg 266.7k) \u2192 NEGATIVE MOMENTUM",
+        "T5: Assess news_event_summary: 0 items post-cutoff (20 dropped), polygon_news returned 0 items in 7-day window \u2192 NO CATALYST IDENTIFIED",
+        "T6: Assess narrative_price_gap_assessment: status=not_evaluated, agent_LLM_reasoning missing \u2192 CRITICAL BLOCK ABSENT",
+        "T7: Assess alternative_data_features: Wikipedia pageviews show spike (197 views on 2025-03-21, baseline 40-50) but NO CORROBORATING NEWS or FILING \u2192 UNVERIFIED ATTENTION",
+        "T8: Assess information_integrity_assessment: uncorroborated, low_tier_only sources (T3=1, T4=1), use_as_primary_signal_allowed=false \u2192 INFORMATION INTEGRITY VETO TRIPPED",
+        "T9: Assess filing_confirmation: data_unavailable (sec_edgar failed: cik_not_found) \u2192 CANNOT VERIFY RECENT EVENTS",
+        "T10: Assess sentiment_community_ownership_evidence: analyst ratings deteriorated sharply (13 analysts Nov 2024 \u2192 1 Hold Mar 2025), ownership_positioning data_unavailable \u2192 INSUFFICIENT CORROBORATION",
+        "T11: Evaluate surge_short sleeve conditions: requires (1) catalyst, (2) corroboration, (3) news event \u2192 ALL MISSING",
+        "T12: Evaluate quality_long sleeve conditions: requires (1) profitability, (2) quality metrics, (3) macro discipline \u2192 ALL FAILED (negative earnings, negative ROE/ROA, macro forbids)",
+        "T13: Evaluate veto conditions: insufficient_evidence=true (missing narrative, filing, ownership), missing_data_persists_beyond_tolerance=true (5+ critical blocks), information_integrity_veto=true (uncorroborated, low-tier only), lookahead_safe=true (no lookahead violation)",
+        "T14: DECISION: no_trade (fail-closed due to insufficient evidence and information integrity veto); position_size_pct=0.0",
+        "T15: Rationale: Baseline solo agent cannot confidently recommend short or long without multi-agent decomposition and cross-validation. Recommend running multi-agent pipeline (Agent 02 Narrative, Agent 03 Alt-Data, Agent 04 Fundamentals, Agent 07 Risk/PM) to resolve missing blocks and confirm decision."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-25T09:45:00-04:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:993ad237f094a94a13aedb08a745eb77d675110a565ffd53c67886f114e219bc"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show modest spike (197 views on 2025-03-21, baseline 40-50) but no corroborating news, filing, or social media activity detected. Spike is unexplained and unverified.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "dismiss",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Wikipedia pageviews spike (197 on 2025-03-21) is unverified; no corroborating news, filing, or narrative catalyst identified. Alternative data sources are low-tier only (T3=1, T4=1); no primary source confirmation available.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "narrative_price_gap_assessment not_evaluated (agent_LLM_reasoning missing); filing_confirmation data_unavailable (sec_edgar cik_not_found); information_integrity_assessment uncorroborated (low_tier_only sources, no primary source); ownership_positioning data_unavailable; community_size not_evaluated. Critical blocks required for thesis confirmation are absent or failed.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment has deteriorated sharply: 13 analysts in Nov 2024 (3 SB, 4 B, 5 H, 1 S) \u2192 1 Hold in Mar 2025. Downgrade from Cantor Fitzgerald (Overweight \u2192 Neutral) on 2024-07-08. Sentiment is descriptive only and does not override fundamental distress or information integrity veto.",
+      "ownership_risk_adjustment_note": "Ownership positioning data unavailable (13F/Form4 adapters failed: cik_not_found, not_available_on_current_plan). Cannot assess institutional sponsorship, smart money support, or crowding risk. Ownership data is required for quality_long sleeve but is missing.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "Ownership positioning data unavailable; cannot assess institutional sponsorship. Analyst sentiment shows deterioration (13 analysts Nov 2024 \u2192 1 Hold Mar 2025), suggesting reduced institutional support.",
+      "smart_money_benchmark_note": "Ownership positioning data unavailable; cannot assess smart money positioning. Analyst downgrade from Cantor Fitzgerald (Overweight \u2192 Neutral on 2024-07-08) suggests smart money is reducing exposure.",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+      "execution_timestamp": "2025-03-25T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:c68e305115bf4bfaea8ec76b8e8ca9e0f5c716937302684a6171300251e3b246",
+      "immutable_decision_flag": true
+    }
+  }
+}

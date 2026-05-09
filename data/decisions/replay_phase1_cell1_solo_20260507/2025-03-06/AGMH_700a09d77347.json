@@ -1,0 +1,257 @@
+{
+  "trigger_id": "700a09d77347",
+  "ticker": "AGMH",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-06T09:30:00-05:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 44.27,
+  "trigger_cost_usd": 0.048352,
+  "cumulative_cost_usd": 0.513443,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "AGMH",
+    "name": "AGMH",
+    "close": 10.75,
+    "prior_close": 5.115,
+    "change": 4.5600000000000005,
+    "change_pct": 89.14956011730206,
+    "volume": 13894106.96,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-06",
+    "prior_trading_day": "2025-03-05",
+    "available_as_of": "2025-03-06T16:00:00-05:00",
+    "today_open": 9.675,
+    "today_volume": 13894106.96,
+    "eps_ttm": -31.9,
+    "operating_margin_ttm": -42.31481042575631,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-19 16:30:22",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:385a999ce94f1d62f559842f2d422b6217e4a47bf7df48c3523e69945ab6e6fc",
+  "locked_decision_id": "sha256:254bd4bcc31dc10701dbc9ebee0adfa241f14ddc8e814c70039e7f8794868e64",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "baseline_solo_08",
+      "agent_role_label": "Baseline Solo Agent (Single-Agent Ablation)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "AGMH",
+      "decision_timestamp": "2025-03-06T09:30:00-05:00",
+      "data_available_as_of": "2025-03-06T09:30:00-05:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "macro_regime.overheat_restrictive_discipline",
+        "valuation_snapshot.extreme_compression_pe_pb_ev",
+        "price_snapshot.severe_drawdown_5d_20d_60d",
+        "news_event_summary.financing_catalyst_2025_03_03_05",
+        "alternative_data_features.wikipedia_pageviews_modest_attention",
+        "fundamental_snapshot.q3_2024_profitability",
+        "information_integrity_assessment.low_tier_only_sources"
+      ],
+      "evidence_missing": [
+        "sentiment_community_ownership_evidence (not_evaluated)",
+        "filing_confirmation.sec_8k (no_recent_8k)",
+        "narrative_price_gap_assessment (agent_llm_reasoning_pending)",
+        "fmp_sentiment (all_endpoints_empty)",
+        "sec_13f_ownership_positioning (not_available_on_current_plan)",
+        "github_public_tech_activity (unmapped_ticker)",
+        "primary_source_corroboration_for_catalyst"
+      ],
+      "reasoning_summary": "AGMH exhibits extreme valuation compression (PE=0.109, PB=0.019, EV/EBITDA=0.371) and severe price deterioration (-79.7% 5d, -87.9% 20d, -94.0% 60d). Macro regime is Overheat/Moderately Restrictive, mandating strict quality discipline. Recent financing catalyst (2025-03-03/05 $5.4M offering) is corroborated by polygon_news but lacks primary-source confirmation and sentiment/ownership verification. Wikipedia pageviews show modest attention (307-460 views/day, no spike). Information integrity assessment flags low-tier-only sources with no T1/T2 corroboration. Alternative-data adapters largely failed (github unmapped, fmp_sentiment empty, sec_13f unavailable). Fundamental snapshot (Q3 2024) shows profitability but is 5+ months stale. Insufficient evidence to confirm either surge-short or quality-long thesis; macro discipline + missing corroboration + low information integrity + unverified catalyst narrative mandate fail-closed posture.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "macro_regime_strict_quality_discipline_active",
+        "information_integrity_low_tier_only_no_primary_source",
+        "alternative_data_corroboration_absent",
+        "sentiment_ownership_evidence_not_evaluated",
+        "catalyst_narrative_unverified_by_sec_filing"
+      ],
+      "risk_flags": [
+        "extreme_valuation_compression_may_signal_distress_or_mispricing",
+        "severe_price_drawdown_suggests_negative_catalyst_or_fundamental_deterioration",
+        "financing_activity_may_indicate_capital_need_or_dilution_risk",
+        "low_information_integrity_prevents_confident_thesis_confirmation",
+        "alternative_data_adapters_failed_reduce_external_corroboration",
+        "macro_overheat_regime_restricts_equity_allocation_to_quality_only",
+        "stale_fundamental_data_q3_2024_vs_decision_march_2025",
+        "no_insider_form4_activity_in_90d_window",
+        "no_recent_8k_filing_limits_catalyst_verification"
+      ],
+      "suggested_improvements": [
+        "Obtain SEC 8-K filing confirmation for financing event to verify official disclosure",
+        "Reconnect fmp_sentiment and sec_13f adapters to assess analyst grades and institutional positioning",
+        "Resolve github_public mapping to evaluate tech/development activity if applicable",
+        "Await Agent-03 narrative_price_gap_assessment to quantify catalyst-price alignment",
+        "Collect insider Form 4 activity post-decision to assess management confidence",
+        "Monitor macro regime transition; if equity_discipline relaxes, re-evaluate quality_long candidacy"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "information_integrity_low_tier_only",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0 T2=0 T3=1 T4=1; use_as_primary_signal_allowed=false per schema v1.1 decision #8"
+        },
+        {
+          "kind": "alt_data_adapter_failures",
+          "severity": "warning",
+          "detail": "github_public (unmapped_ticker), fmp_sentiment (all_endpoints_empty), sec_13f (not_available_on_current_plan)"
+        },
+        {
+          "kind": "sentiment_ownership_not_evaluated",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence: status=not_evaluated; no fmp_sentiment, sec_13f, or community metrics available"
+        },
+        {
+          "kind": "fundamental_data_staleness",
+          "severity": "info",
+          "detail": "fundamental_snapshot anchored to 2024-09-30 (Q3 2024); decision_timestamp 2025-03-06 is 5+ months post-filing"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; 2 items retained (2025-03-03, 2025-03-05)"
+        },
+        {
+          "kind": "valuation_ttm_not_pit_safe",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios; no fiscal anchor; for display only"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "narrative_price_gap_assessment is pending Agent-03 LLM reasoning; information_integrity_assessment pollution-defense layer unimplemented in v1; sentiment_community_ownership_evidence is skeleton placeholder. These gaps prevent full thesis confirmation and increase reliance on macro discipline as veto mechanism.",
+      "recommended_followups": [
+        "Re-evaluate when macro regime transitions from Overheat/Restrictive to Risk-On",
+        "Await SEC 8-K filing confirmation for 2025-03-03/05 financing event",
+        "Monitor Q4 2024 or Q1 2025 earnings release for updated fundamentals",
+        "Reconnect alternative-data adapters (fmp_sentiment, sec_13f, github) to restore corroboration",
+        "Assess insider Form 4 activity post-decision to gauge management confidence in valuation"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Macro regime (Overheat/Moderately Restrictive) mandates strict quality discipline; information integrity assessment flags low-tier-only sources with no primary-source corroboration; alternative-data adapters failed (github unmapped, fmp_sentiment empty, sec_13f unavailable); sentiment/ownership evidence not evaluated; catalyst narrative (financing) unverified by SEC filing. Extreme valuation compression and severe price drawdown suggest distress, but insufficient corroboration prevents confident surge-short thesis. Fail-closed per missing-evidence protocol.",
+      "risk_notes": [
+        "Macro regime equity_discipline=strict_quality_and_valuation_caution; surge_short candidate must clear high bar",
+        "Information integrity assessment: use_as_primary_signal_allowed=false; low-tier sources only (T3=1, T4=1)",
+        "Financing catalyst (2025-03-03/05 $5.4M offering) corroborated by polygon_news but lacks SEC 8-K confirmation",
+        "Alternative-data corroboration absent: github_public unmapped, fmp_sentiment all_endpoints_empty, sec_13f not_available_on_current_plan",
+        "Sentiment/community/ownership evidence not_evaluated; no institutional positioning or insider activity data",
+        "Valuation inputs (PE=0.109, PB=0.019, EV/EBITDA=0.371) are TTM ratios, not PIT-safe; extreme compression may signal distress or data error",
+        "Price drawdown (-79.7% 5d, -87.9% 20d, -94.0% 60d) is severe but lacks catalyst confirmation; may reflect broader market stress or company-specific deterioration",
+        "Fundamental snapshot (Q3 2024) is 5+ months stale; no recent earnings or guidance to confirm profitability trajectory",
+        "Wikipedia pageviews (307-460 views/day) show modest attention; no abnormal retail or meme-stock signal",
+        "No recent Form 4 insider activity (90d lookback); no 8-K filing in 90d window limits catalyst verification",
+        "Macro regime stress_score=2 (yield curve inverted, policy rate elevated); equity allocation capped at 20%; quality_long discipline applies"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "Alternative-data adapters failed (github, fmp_sentiment, sec_13f); sentiment/ownership not_evaluated; catalyst unverified by SEC filing; information_integrity low-tier-only with no primary source"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "No hard limit breached; macro regime restricts equity allocation but does not veto individual positions outright"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Sentiment/community/ownership evidence not_evaluated; filing_confirmation.sec_8k absent; narrative_price_gap_assessment pending; fmp_sentiment and sec_13f adapters failed; github_public unmapped"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment: use_as_primary_signal_allowed=false; low-tier-only sources (T1=0, T2=0, T3=1, T4=1); no primary-source corroboration; pollution-defense layer unimplemented in v1"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; all data anchored to 2025-03-06T09:30:00-05:00 or earlier"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Macro regime check: Overheat/Moderately Restrictive (stress_score=2) \u2192 equity_discipline=strict_quality_and_valuation_caution",
+        "2. Candidate type evaluation: surge_short candidate requires high-confidence catalyst + corroboration",
+        "3. Catalyst assessment: financing event (2025-03-03/05 $5.4M offering) corroborated by polygon_news but unverified by SEC 8-K",
+        "4. Information integrity check: low-tier-only sources (T1=0, T2=0); use_as_primary_signal_allowed=false",
+        "5. Alternative-data corroboration: github_public unmapped, fmp_sentiment empty, sec_13f unavailable \u2192 insufficient external verification",
+        "6. Sentiment/ownership evidence: not_evaluated; no institutional positioning or insider activity data",
+        "7. Valuation analysis: extreme compression (PE=0.109, PB=0.019, EV/EBITDA=0.371) suggests distress but TTM ratios not PIT-safe",
+        "8. Price action: severe drawdown (-79.7% 5d, -87.9% 20d, -94.0% 60d) lacks catalyst confirmation",
+        "9. Fundamental staleness: Q3 2024 data is 5+ months old; no recent earnings to confirm trajectory",
+        "10. Veto evaluation: insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true",
+        "11. Decision: fail-closed to no_trade; position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T+0: Read macro_regime block \u2192 Overheat/Moderately Restrictive (stress_score=2); equity_discipline=strict_quality_and_valuation_caution",
+        "T+1: Evaluate candidate_type=surge_short \u2192 requires high-confidence catalyst + corroboration under restrictive macro",
+        "T+2: Assess catalyst (financing event 2025-03-03/05) \u2192 corroborated by polygon_news (2 items) but unverified by SEC 8-K filing",
+        "T+3: Check information_integrity_assessment \u2192 low-tier-only sources (T3=1, T4=1); use_as_primary_signal_allowed=false",
+        "T+4: Evaluate alternative_data_features \u2192 github_public unmapped (error), fmp_sentiment all_endpoints_empty, sec_13f not_available_on_current_plan",
+        "T+5: Check sentiment_community_ownership_evidence \u2192 status=not_evaluated; no fmp_sentiment, sec_13f, or community metrics",
+        "T+6: Analyze valuation_snapshot \u2192 extreme compression (PE=0.109, PB=0.019, EV/EBITDA=0.371) but TTM ratios not PIT-safe",
+        "T+7: Review price_snapshot \u2192 severe drawdown (-79.7% 5d, -87.9% 20d, -94.0% 60d) but lacks catalyst confirmation",
+        "T+8: Assess fundamental_snapshot \u2192 Q3 2024 profitability (net_margin=63.93%) but 5+ months stale",
+        "T+9: Evaluate veto conditions \u2192 insufficient_evidence=true, missing_data_persists_beyond_tolerance=true, information_integrity_veto=true",
+        "T+10: Collapse decision \u2192 fail-closed to no_trade; position_size_pct=0.0; immutable_decision_flag=true"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-06T09:45:00-05:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:455a522eed575ae6a75bd30fbf17dfba4f24adf6efa30f61765f1938c5e83f7e"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews (307-460 views/day, 30-day window) show modest attention; no abnormal spike or meme-stock signal detected",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "dismiss",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "dismiss",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Financing catalyst (2025-03-03/05 $5.4M offering) corroborated by polygon_news but unverified by SEC 8-K filing; no primary-source confirmation available",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Information integrity assessment flags low-tier-only sources (T1=0, T2=0, T3=1, T4=1) with use_as_primary_signal_allowed=false; alternative-data adapters failed (github unmapped, fmp_sentiment empty, sec_13f unavailable); sentiment/community/ownership evidence not_evaluated; catalyst narrative unverified by SEC filing; macro regime mandates strict quality discipline; insufficient corroboration prevents thesis confirmation",
+      "sentiment_risk_adjustment_note": "Sentiment/community/ownership evidence not_evaluated; fmp_sentiment adapter failed (all_endpoints_empty); no sentiment score or community metrics available",
+      "ownership_risk_adjustment_note": "Ownership positioning not_evaluated; sec_13f adapter unavailable (not_available_on_current_plan); sec_form4 shows no recent insider activity (0 purchases, 0 sales in 30d); no institutional positioning data",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional ownership or sponsorship data available; sec_13f adapter unavailable",
+      "smart_money_benchmark_note": "No smart-money positioning data available; sec_13f and fmp_sentiment adapters failed",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-06T09:30:00-05:00",
+      "execution_timestamp": "2025-03-06T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:b50da8ea48666ac612106972f70f6d3d251b5411f00eda87a7352c7f894abda8",
+      "immutable_decision_flag": true
+    }
+  }
+}

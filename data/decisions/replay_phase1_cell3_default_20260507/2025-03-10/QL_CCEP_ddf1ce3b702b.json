@@ -1,0 +1,1375 @@
+{
+  "trigger_id": "ddf1ce3b702b",
+  "ticker": "CCEP",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-03-10T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 232.67,
+  "trigger_cost_usd": 0.435638,
+  "cumulative_cost_usd": 3.831756,
+  "candidate_ranking_inputs": {
+    "ticker": "CCEP",
+    "earliest_event_date": "2025-03-21",
+    "selection_reason": "earnings_window_14d",
+    "close": 80.95,
+    "t1_open": 80.95,
+    "t1_date": "2025-03-11"
+  },
+  "evidence_packet_hash": "sha256:6fcdad81f64e44b3f70912a63a69ba67eef7f5d8151cfbf0c3ec3417adc9fcb8",
+  "locked_decision_id": "sha256:958a23cccb18d4fd966dc2217acdb358b508a4f53db752e48adea8453181312d",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "2026_05_03_universal_soft_veto",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "CCEP",
+    "decision_timestamp": "2025-03-10T09:30:00-04:00",
+    "data_available_as_of": "2025-03-10T09:30:00-04:00",
+    "decision_or_assessment": "Quality-long candidate evaluation for CCEP following 4.5% 5-day selloff in Overheat macro regime",
+    "confidence": "medium",
+    "evidence_used": [
+      "fundamental_gate_38.passes=true (eps>0, op_margin>0, financial_health=sound)",
+      "valuation_snapshot.valuation_assessment=fair (PE 18.43, PEG 0.48, EV/EBITDA 13.31)",
+      "price_snapshot.return_5d_pct=-4.47% (recent selling pressure)",
+      "price_snapshot.relative_volume_vs_20d=1.80x (elevated volume on decline)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (10 Buy, 2 Strong Buy, 3 Hold, 0 Sell, 1 Strong Sell as of 2025-03-01)",
+      "macro_regime=Overheat/Moderately Restrictive (stress_score=2, equity_allocation_cap=20%)",
+      "corporate_calendar.earnings (recent beat: 2024-11-05 EPS 2.11 vs est 2.05)",
+      "fundamental_snapshot.snapshot_quarter (Q2 2024: revenue 9.8B, net_margin 8.11%, FCF 732M)",
+      "risk_agent.veto_conditions_evaluated (all 5 hard-veto conditions NOT TRIPPED)",
+      "upstream_agent_outputs.narrative_event.verdict=null (no catalyst event detected)",
+      "upstream_agent_outputs.alt_data_verify.verdict=weakly_supported (sparse alt-data, stale narrative)",
+      "upstream_agent_outputs.network_effect.classification=absent (beverage distribution, no platform dynamics)",
+      "upstream_agent_outputs.quality_long.recommended_action=watch (intact thesis, medium uncertainty)"
+    ],
+    "evidence_missing": [
+      "upstream_agent_outputs.narrative_event.verdict (null; no catalyst identified for selloff)",
+      "news_event_summary.items (0 items post-cutoff; 20 dropped post-cutoff)",
+      "filing_confirmation.sec_8k_confirmation (null; no recent 8-K filings)",
+      "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable; sec_13f not_available_on_current_plan)",
+      "alternative_data_features.tech_activity.github_public (unmapped_ticker; not applicable to beverage company)",
+      "forward_guidance_or_management_commentary (no recent 8-K or earnings call transcript in packet)",
+      "industry_specific_alt_data (consumer_traffic_adapter not connected; no store-level or supply-chain signals)"
+    ],
+    "reasoning_summary": "CCEP passes hard fundamental gates (eps>0, op_margin>0, financial_health=sound) and exhibits fair valuation (PE 18.43, PEG 0.48, EV/EBITDA 13.31). The 5-day selloff of 4.5% appears macro-driven (Overheat regime with strict equity discipline) rather than company-specific, as no negative catalyst is evident in the packet (news_event_summary empty post-cutoff, no recent 8-K filings). Analyst sentiment remains constructive (10 Buy + 2 Strong Buy vs 1 Strong Sell as of March 2025). The dividend yield (~2.76%) and recent earnings beat support the long thesis. However, the macro regime's strict equity discipline (20% equity cap), elevated leverage (D/E 1.38), tight liquidity (current ratio 0.80), and absence of a clear catalyst for the selloff create medium uncertainty. The upstream quality_long agent recommends WATCH pending thesis validation. All hard-veto conditions (sleeve_cap_breach, position_size_cap_breach, lookahead_data_used, hindsight_violation, \u00a73.8 fundamental gates) evaluate to NOT TRIPPED. The information_integrity_assessment is fail-closed (use_as_primary_signal_allowed=false) due to unimplemented pollution-defense layer in v1 schema, but per \u00a75.13(d) 2026-05-06 relaxation, this does NOT trip a veto when pollution is NOT affirmatively confirmed. The thesis is intact but requires upstream agent triangulation (Narrative, Alt-Data Verification, Fund/Net/Val verdicts) before entry. Given the macro regime's strict equity discipline and medium uncertainty, WATCH is the appropriate decision pending further catalyst clarity and upstream agent consensus.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If macro regime shifts to Crisis or Recession (currently Overheat), equity allocation cap would tighten further and thesis would be invalidated.",
+      "If next earnings print shows revenue decline or margin compression >200bps, fundamental thesis would be broken.",
+      "If debt-to-equity rises above 1.5x or current ratio falls below 0.75, financial health gate would fail.",
+      "If analyst consensus downgrades materially (currently 10 Buy, 2 Strong Buy), sentiment support would erode.",
+      "If dividend is cut or suspended (currently ~2.76% yield), income thesis would be invalidated.",
+      "If a negative catalyst emerges post-cutoff (earnings miss, guidance cut, regulatory action), the 'no catalyst' assessment would be invalidated."
+    ],
+    "risk_flags": [
+      "Macro regime is Overheat/Moderately Restrictive with equity_allocation_cap=20%; any position must respect sleeve constraints.",
+      "Current ratio 0.80 is below 1.0, indicating potential near-term liquidity pressure in a restrictive rate environment.",
+      "Debt-to-equity 1.38 is elevated for a defensive consumer stock; interest rate sensitivity is material.",
+      "No recent insider buying (Form 4 shows 0 transactions in 90d); no management conviction signal.",
+      "News catalyst for 5-day selloff is unclear; could indicate hidden weakness not yet disclosed.",
+      "Price-to-book ratio 4.57 is elevated; suggests market pricing in growth or quality premium that may not be justified.",
+      "Alternative data adapters not connected for consumer/beverage sector; limited franchise health verification.",
+      "Upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) not present in packet; cannot cross-validate thesis.",
+      "Information integrity assessment is fail-closed (unimplemented pollution-defense layer); architectural limitation, not veto trigger."
+    ],
+    "suggested_improvements": [
+      "Obtain upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) to triangulate thesis integrity.",
+      "Fetch recent earnings call transcript or investor presentation to assess forward guidance and management tone.",
+      "Verify selloff origin via news search or sector analysis (beverage distributor vs broader consumer/macro headwinds).",
+      "Monitor Form 4 filings for insider buying as a conviction signal.",
+      "Assess competitive positioning vs PepsiCo, Monster, Red Bull in key markets (Europe, Asia-Pacific).",
+      "Evaluate currency exposure (CCEP has significant non-USD revenue; FX headwinds may explain selloff).",
+      "Wire consumer_traffic_adapter to capture store-level foot traffic, brand sentiment, or supply-chain signals.",
+      "Implement news_event_summary LLM reasoning to extract catalyst type, specificity, and narrative staleness."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "20 news items dropped because publishedDate > cutoff; unable to identify specific catalyst for 5-day selloff"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f not_available_on_current_plan; ownership positioning data unavailable"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public unmapped_ticker; no tech/innovation alt-data available (not applicable for beverage distributor)"
+      },
+      {
+        "kind": "ttm_snapshot_used",
+        "severity": "info",
+        "detail": "valuation_snapshot ratios are TTM, not PIT-safe; use for display only, not for hard gates"
+      },
+      {
+        "kind": "upstream_agent_outputs_absent",
+        "severity": "warning",
+        "detail": "Narrative, Alt-Data Verification, Fund/Net/Val agent outputs not present in packet; cannot cross-validate thesis"
+      },
+      {
+        "kind": "quote_after_cutoff",
+        "severity": "warn",
+        "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; use last_eod_close for PIT anchoring"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) which would normally provide triangulation on thesis integrity, franchise health, and valuation consensus. The news_event_summary is empty post-cutoff, preventing identification of the specific catalyst for the 5-day selloff. Alternative data adapters are not wired for the consumer/beverage sector, limiting franchise health verification via industry-specific signals. The macro regime's strict equity discipline creates a structural headwind that may override fundamental attractiveness. The information_integrity_assessment block is fail-closed (unimplemented pollution-defense layer in v1), but per \u00a75.13(d) 2026-05-06 relaxation, this does NOT trip a veto when pollution is NOT affirmatively confirmed.",
+    "recommended_followups": [
+      "Obtain Narrative agent verdict on price-gap and selloff attribution.",
+      "Obtain Alt-Data Verification verdict on franchise health and competitive positioning.",
+      "Obtain Fund/Net/Val agent verdict on valuation consensus and fair-value range.",
+      "Fetch earnings call transcript (Q2 2024 or Q3 2024) to assess forward guidance.",
+      "Monitor next earnings date (likely Q3 2024 in August 2024, or Q4 2024 in November 2024) for margin/revenue trends.",
+      "Assess currency headwinds (EUR/USD, AUD/USD) as potential selloff driver.",
+      "Evaluate sector rotation (beverage distributor vs broader consumer discretionary weakness).",
+      "If macro regime shifts to Normal or Strengthening, revisit entry thesis with relaxed equity discipline."
+    ],
+    "candidate_type": "quality_long",
+    "decision": "watch",
+    "position_size_pct": 0.0,
+    "reason": "CCEP passes hard fundamental gates and exhibits fair valuation, but macro regime's strict equity discipline (20% cap), elevated leverage (D/E 1.38), tight liquidity (current ratio 0.80), and absence of clear catalyst for 5-day selloff create medium uncertainty. Upstream quality_long agent recommends WATCH. All hard-veto conditions NOT TRIPPED. Recommend WATCH pending upstream agent triangulation and catalyst clarity before entry.",
+    "risk_notes": [
+      "Macro regime equity_allocation_cap=20% applies; position must fit within sleeve constraints.",
+      "Information integrity assessment is fail-closed (unimplemented pollution-defense layer); this is architectural per v1 schema, not a veto trigger per \u00a75.13(d) 2026-05-06 relaxation.",
+      "No upstream agent verdicts present; PM must obtain Narrative, Alt-Data Verification, Fund/Net/Val outputs for full thesis triangulation.",
+      "Hard-veto pass: all 5 conditions (sleeve_cap_breach, position_size_cap_breach, lookahead_data_used, hindsight_violation, \u00a73.8 fundamental gates) evaluate to NOT TRIPPED.",
+      "Thesis is intact but requires upstream agent consensus before entry."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "No proposed position size provided; macro_regime.equity_allocation_cap=20% applies to sleeve. Condition not applicable without position size input. WATCH decision emits position_size_pct=0.0, so no breach."
+      },
+      {
+        "name": "position_size_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Condition applies to surge_short entries only. Candidate_type=quality_long; condition not applicable."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "Scanned data_quality_flags array; highest severity is 'warning' (news_post_cutoff_filtered, alt_data_adapter_error, quote_after_cutoff). No 'critical' severity flags present. Condition does not trip."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Relaxed per \u00a75.13(d) 2026-05-06. Applies to quality_long ONLY when pollution_defense_layer affirmatively confirms pollution. Packet shows information_integrity_assessment.pollution_defense_layer status='insufficient_evidence' (not affirmatively confirmed). Per relaxation, when defense layer is unimplemented or returns status \u2208 {not_evaluated, not_connected, pending, unimplemented}, \u00a75.13(d) does NOT trip. Pollution NOT affirmatively confirmed; condition does not trip."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "Envelope shows data_after_cutoff_used=false AND lookahead_safe=true. Condition does not trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13(a) equity_cap_breach: not_applicable (position_size_pct=0.0, no breach)",
+      "\u00a75.13(b) short_entry_cap_breach: not_applicable (candidate_type=quality_long)",
+      "\u00a75.13(c) critical_data_quality_flag: not_tripped (max severity=warning)",
+      "\u00a75.13(d) anti_pollution_integrity_veto: not_tripped (pollution NOT affirmatively confirmed; defense layer unimplemented per v1 schema; \u00a75.13(d) 2026-05-06 relaxation applies)",
+      "\u00a75.13(e) lookahead_veto: not_tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+      "\u00a73.8 fundamental_gate_38: PASS (eps>0, op_margin>0, financial_health=sound)",
+      "valuation_assessment: fair (PE 18.43, PEG 0.48, EV/EBITDA 13.31)",
+      "macro_regime_discipline: strict_quality_and_valuation_caution (equity_allocation_cap=20%)",
+      "RESULT: HARD-VETO PASS; decision=watch (upstream agent consensus required before entry)"
+    ],
+    "decision_log": [
+      "1. Envelope validation: data_after_cutoff_used=false, lookahead_safe=true, immutable_decision_flag=true \u2014 PIT-safe.",
+      "2. Hard-veto condition (a) sleeve_cap_breach: not_applicable (position_size_pct=0.0).",
+      "3. Hard-veto condition (b) position_size_cap_breach: not_applicable (candidate_type=quality_long, not surge_short).",
+      "4. Hard-veto condition (c) critical_data_quality_flag: not_tripped (max severity=warning, no critical flags).",
+      "5. Hard-veto condition (d) anti_pollution_integrity_veto: not_tripped (pollution NOT affirmatively confirmed; \u00a75.13(d) 2026-05-06 relaxation applies; defense layer unimplemented in v1).",
+      "6. Hard-veto condition (e) lookahead_veto: not_tripped (data_after_cutoff_used=false, lookahead_safe=true).",
+      "7. Fundamental gate \u00a73.8: PASS (eps_ttm>0, operating_margin_ttm>0, financial_health=sound per fundamental_gate_38.passes=true).",
+      "8. Valuation assessment: fair (PE 18.43, PEG 0.48, EV/EBITDA 13.31 per valuation_snapshot.valuation_assessment='fair').",
+      "9. Macro regime discipline: Overheat/Moderately Restrictive (stress_score=2, equity_allocation_cap=20%, equity_discipline=strict_quality_and_valuation_caution).",
+      "10. Upstream agent synthesis: narrative_event.verdict=null (no catalyst detected); alt_data_verify.verdict=weakly_supported (sparse alt-data, stale narrative); network_effect.classification=absent (beverage distribution, no platform dynamics); quality_long.recommended_action=watch (intact thesis, medium uncertainty).",
+      "11. Price action context: return_5d_pct=-4.47% (recent selling pressure), relative_volume_vs_20d=1.80x (elevated volume on decline), return_60d_pct=+6.08% (underlying resilience).",
+      "12. Analyst sentiment: stable and constructive (10 Buy, 2 Strong Buy, 3 Hold, 0 Sell, 1 Strong Sell as of 2025-03-01; unchanged for 4+ months).",
+      "13. Catalyst assessment: news_event_summary.status=data_unavailable (0 items post-cutoff, 20 dropped post-cutoff); filing_confirmation.status=not_evaluated (no recent 8-K filings); no identifiable catalyst for selloff.",
+      "14. Risk assessment: elevated leverage (D/E 1.38), tight liquidity (current ratio 0.80), no insider buying signal (Form 4 shows 0 transactions in 90d), no forward guidance in packet.",
+      "15. Decision framework: \u00a73.8 fundamental gates PASS + valuation_assessment=fair + no hard-veto conditions tripped \u2192 quality_long entry is mechanically eligible. However, macro regime's strict equity discipline (20% cap), medium uncertainty on selloff catalyst, and absence of upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) warrant WATCH rather than immediate entry.",
+      "16. WATCH rationale: thesis is intact (fundamentals sound, valuation fair, analyst sentiment constructive), but upstream agent triangulation is required before entry. Macro regime's strict equity discipline creates structural headwind. Selloff catalyst is unclear; could indicate hidden weakness not yet disclosed. Recommend WATCH pending (a) upstream agent consensus, (b) catalyst clarity, (c) macro regime shift or earnings confirmation.",
+      "17. Position sizing: decision=watch \u2192 position_size_pct=0.0 (no entry at this time).",
+      "18. Execution plan: order_type='T+1 next-open', side='none', size_pct_of_portfolio=0.0 (no trade)."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-10T09:45:00-04:00",
+      "ticker": "CCEP",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_universal_soft_veto",
+      "evidence_packet_hash": "sha256:5f34c1f56d62a734424e518405c8afac1a18b9a1ed960294192db9810f847c2b"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": null,
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) not present in packet; cannot confirm thesis without multi-agent consensus.",
+    "sentiment_risk_adjustment_note": "Analyst sentiment is stable and constructive (10 Buy, 2 Strong Buy) but descriptor-only per \u00a711.13; cannot drive support_thesis alone.",
+    "ownership_risk_adjustment_note": "Ownership positioning data unavailable (sec_13f not_available_on_current_plan); cannot assess institutional crowding or smart-money positioning.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": "No insider buying signal (Form 4 shows 0 transactions in 90d); no management conviction evident.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+    "execution_timestamp": "2025-03-10T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:278c3ce41dda0a607d38aa9876a16fe9e029b0216e75aa7ded414f795e0281ca",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CCEP",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "No identifiable catalyst event detected at decision timestamp",
+      "confidence": "high",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_count=0",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "filing_confirmation.status=not_evaluated",
+        "filing_confirmation.SEC_8K_confirmation=null",
+        "filing_confirmation.filing_index.sec_edgar.rows=[]",
+        "price_snapshot.return_5d_pct=-4.4748",
+        "price_snapshot.relative_volume_vs_20d=1.7967",
+        "corporate_calendar.events_near_decision_count=9",
+        "alternative_data_features.attention.wikipedia_pageviews (24 rows, max 3 views on 2025-03-10)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (stable analyst ratings: 2 SB, 8 B, 3 H, 0 S, 1 SS as of 2025-03-01)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (null)",
+        "news_event_summary.catalyst_type (null)",
+        "filing_confirmation.SEC_8K_confirmation (null)",
+        "news_event_summary.ndi_score (null \u2014 no news items to compute divergence)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "information_integrity_assessment.claim_summary (null)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)"
+      ],
+      "reasoning_summary": "CCEP exhibits a 5-day return of -4.47% with elevated relative volume (1.80x 20-day average) on 2025-03-07 (last EOD close $82.40 vs prior close $84.45). However, the evidence packet contains NO identifiable catalyst event to explain this price action. news_event_summary.status=data_unavailable with 0 items within the cutoff window (20 items were dropped because publishedDate > 2025-03-10T09:30:00). filing_confirmation.status=not_evaluated; sec_edgar adapter returned 0 rows (no 8-K filings in last 90 days). No press releases, earnings announcements, or material disclosures are present in the packet. Alternative data shows minimal Wikipedia pageview activity (max 3 views on decision day, baseline 0-2 views typical). Analyst sentiment is stable and unchanged (2 SB, 8 B, 3 H, 0 S, 1 SS) from 2025-01-01 through 2025-03-01. The price decline appears to be a technical/market-driven move without a corresponding narrative event. The corporate calendar shows 9 past events within \u00b15 trading days (all historical earnings and dividends), but no upcoming catalysts. SECTOR-AWARE REASONING: CCEP is Coca-Cola Europacific Partners (beverage/consumer staples). For this sector, expected narrative-supporting evidence would include: earnings announcements, dividend declarations, M&A activity, regulatory filings, supply-chain disruptions, or brand/product announcements. The absence of any such evidence in the packet, combined with the structural absence of news items and SEC filings, suggests the price move is NOT driven by a company-specific catalyst but rather by sector rotation, macro headwinds (macro_regime=Overheat/Moderately Restrictive), or technical selling. The lack of corroborating news or filings is itself informative: a -4.5% move in a large-cap dividend stock without a disclosed catalyst is atypical and warrants caution about the sustainability of the move.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If a news article or SEC filing with publishedDate or filing_date between 2025-03-07 and 2025-03-10 09:30 ET emerges post-decision, the 'no catalyst' assessment is invalidated.",
+        "If analyst downgrades or earnings misses are disclosed after the cutoff, the narrative changes.",
+        "If the price move reverses sharply in the next 1-2 trading days without further news, it suggests the move was technical/momentum-driven rather than catalyst-driven."
+      ],
+      "risk_flags": [
+        "Absence of news corroboration for a -4.5% move in a large-cap stock is unusual and may indicate hidden information, technical breakdown, or sector-wide pressure.",
+        "Macro regime is Overheat/Moderately Restrictive (stress_score=2); equity_discipline=strict_quality_and_valuation_caution. Dividend stocks may face headwinds in this regime.",
+        "Elevated relative volume (1.80x) without a disclosed catalyst suggests potential forced selling, index rebalancing, or algorithmic liquidation.",
+        "No insider activity (Form 4) in last 90 days; no institutional ownership data available to assess smart-money positioning.",
+        "Analyst sentiment is stable and bullish (10 of 14 raters are Buy/Strong Buy), yet price declined. Potential disconnect between analyst views and market pricing."
+      ],
+      "suggested_improvements": [
+        "Implement real-time news ingestion with sub-minute latency to capture breaking catalysts at market open.",
+        "Wire SEC EDGAR 8-K full-text adapter to detect material events filed after hours or pre-market.",
+        "Add insider trading (Form 4) and institutional ownership (13F) data with PIT-safe lag to detect smart-money positioning changes.",
+        "Implement sector-relative performance analysis to distinguish company-specific catalysts from sector rotation.",
+        "Add technical analysis (support/resistance, moving average crosses) to contextualize price moves without catalysts.",
+        "Integrate earnings-call transcripts and guidance changes to detect forward-looking catalysts."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "news_event_summary: 0 items in [2025-03-03, 2025-03-10] for CCEP; 20 items dropped post-cutoff"
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "info",
+          "detail": "sec_edgar: no 8-K filings in last 90 days for CCEP"
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: no Form 4 transactions accepted on or before 2025-03-10 in last 90 days for CCEP"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker (not applicable to beverage company)"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan (ownership data unavailable)"
+        },
+        {
+          "kind": "low_wikipedia_pageviews",
+          "severity": "info",
+          "detail": "Wikipedia pageviews for CCEP: max 3 views on 2025-03-10, baseline 0-2 views; no abnormal attention"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe, but the absence of a news_event_summary block with actual trigger articles limits the agent's ability to classify a catalyst. The packet correctly flags data_unavailable for news, but the agent must reason from absence patterns per \u00a713.6 SOFT_REASONING. The alternative_data_features block is a placeholder in v1 (no sector-specific adapters wired for beverage/consumer staples), so no proprietary alt-data corroboration is available. The information_integrity_assessment block is also a placeholder, so no pollution-defense layer is active. These gaps are architectural, not data-quality issues.",
+      "recommended_followups": [
+        "Monitor news feeds for CCEP announcements in the 24 hours post-decision to identify any delayed catalyst disclosure.",
+        "Check earnings calendar for Q1 2025 earnings date; if earnings are imminent (within 1-2 weeks), the move may be pre-earnings volatility.",
+        "Analyze sector performance (beverage/consumer staples ETFs) to determine if the move is sector-wide or company-specific.",
+        "Review macro regime shift: if Fed policy expectations changed on 2025-03-07 or 2025-03-10, dividend stocks may have sold off in anticipation.",
+        "Assess technical support levels: if the stock broke below a key moving average or support level, the move may be technical rather than catalyst-driven."
+      ],
+      "catalyst_type": "none_identified",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": false,
+      "company_claim": "No company claim or narrative event detected in the evidence packet. The price decline of -4.47% over 5 days is not accompanied by any disclosed catalyst (news, filing, earnings, guidance, M&A, or regulatory event). The move appears to be driven by market-wide or sector-wide factors rather than company-specific news.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": null
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CCEP",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-vs-Evidence Verification for CCEP (Coca-Cola Europacific Partners)",
+      "confidence": "medium",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "fundamental_snapshot.snapshot_quarter",
+        "valuation_snapshot.valuation_inputs",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "corporate_calendar.earnings",
+        "filing_confirmation.sec_edgar",
+        "filing_confirmation.sec_form4",
+        "macro_regime.stress_score"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (no 8-K rows)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable)",
+        "alternative_data_features.opencli_evidence (not_connected)",
+        "narrative_price_gap_assessment.agent_LLM_reasoning (not_evaluated in v1)"
+      ],
+      "reasoning_summary": "CCEP is Coca-Cola Europacific Partners, a beverage distribution company (consumer/retail sector). The packet contains no news catalyst post-cutoff (0 items in news_event_summary), no recent SEC filings (8-K, Form 4), and no industry-specific alternative-data corroboration. Wikipedia pageviews show minimal attention (0\u20133 views per day, peak 3 on 2025-03-10, the decision date itself). Analyst sentiment is stable and moderately positive (10 Buy, 3 Hold, 1 Strong Sell as of 2025-03-01), but this is descriptor-only per \u00a711.13 and cannot drive a support_thesis recommendation. Fundamental metrics are sound: PE 18.4, PEG 0.48 (attractive), PB 4.57, EV/EBITDA 13.3, net margin 9.29%, ROE 24.5%. Price action shows -4.47% return over 5 days with elevated relative volume (1.80x 20-day average), suggesting recent selling pressure. No hard-to-fake alternative-data signals (GitHub, clinical trials, regulatory filings, insider activity, or industry-specific adapters) are present or wired. The absence of corroborating alt-data is informative: for a mature beverage company, we would expect SEC filing footprint (present but empty in last 90 days), insider activity (Form 4 shows 0 transactions in 90 days), and possibly supply-chain or regulatory signals (not wired). The structural absence of alt-data corroboration relative to what a quality_long candidate should produce is a caution signal, not a bear thesis trigger. Macro regime is Overheat/Moderately Restrictive (stress_score=2), which caps equity allocation and mandates strict quality/valuation discipline. CCEP passes fundamental_gate_38 (eps>0, op_margin>0, financial_health=sound) and shows reasonable valuation, but the lack of positive catalyst, recent news, or alt-data corroboration means the narrative is neutral-to-stale, not supported.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If a positive earnings surprise or strategic announcement emerges post-cutoff, the neutral verdict would shift to weakly_supported.",
+        "If insider buying or Form 4 activity appears in the next 30 days, confidence in quality would rise.",
+        "If Wikipedia pageviews spike above 10/day or news mentions accelerate, attention narrative would strengthen.",
+        "If macro regime shifts to risk-off (stress_score \u2265 3), quality-long thesis would be reinforced but equity allocation would tighten further."
+      ],
+      "risk_flags": [
+        "No recent news catalyst (0 items post-cutoff); narrative is stale.",
+        "No insider activity in 90 days (Form 4 rows=0); neither supportive nor contradictory.",
+        "No 8-K filings in 90 days; no material events disclosed.",
+        "Wikipedia pageviews minimal and flat (0\u20133 views/day); no retail or social attention.",
+        "Analyst sentiment is stable but descriptor-only; cannot be used as primary signal per \u00a711.13.",
+        "Macro regime Overheat/Moderately Restrictive caps equity allocation to 20%; strict quality discipline required.",
+        "Price down 4.47% in 5 days with elevated volume; suggests recent selling pressure, not accumulation.",
+        "No industry-specific alt-data adapters wired (consumer_traffic_adapter not connected); cannot verify store traffic, brand health, or supply-chain signals.",
+        "GitHub adapter failed (unmapped_ticker); not applicable to beverage company but signals incomplete alt-data coverage.",
+        "13F ownership data unavailable (not_available_on_current_plan); cannot assess institutional positioning or crowding risk."
+      ],
+      "suggested_improvements": [
+        "Wire consumer_traffic_adapter to capture store-level foot traffic, brand sentiment, or supply-chain signals for beverage/retail companies.",
+        "Implement news_event_summary LLM reasoning to extract catalyst type, specificity, and narrative staleness.",
+        "Add Form 4 insider-activity trending (30d, 90d) to distinguish accumulation from distribution.",
+        "Implement 13F ownership feed to assess institutional crowding and smart-money positioning.",
+        "Add Wikipedia pageviews spike detection (z-score vs 60d baseline) to flag abnormal attention.",
+        "Implement narrative_price_gap_assessment LLM reasoning to quantify gap between public narrative and price action.",
+        "Add earnings-surprise tracking (actual vs estimate) to validate forward guidance.",
+        "Implement coordinated_campaign_warning detection in information_integrity_assessment (currently unimplemented per v1 schema)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_news_in_window",
+          "severity": "info",
+          "detail": "news_event_summary: 0 items in [2025-03-03, 2025-03-10] for CCEP; 20 items dropped post-cutoff"
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: no Form 4 transactions accepted on or before 2025-03-10 in last 90 days for CCEP"
+        },
+        {
+          "kind": "no_recent_8k",
+          "severity": "info",
+          "detail": "sec_edgar: no 8-K filings in last 90 days for CCEP"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 CCEP not in ticker_to_github.csv (not applicable to beverage company)"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 FMP HTTP 404 (ownership data unavailable)"
+        },
+        {
+          "kind": "endpoint_unavailable",
+          "severity": "warning",
+          "detail": "fmp_sentiment[press_releases]: not_available_on_current_plan \u2014 HTTP 404"
+        },
+        {
+          "kind": "endpoint_unavailable",
+          "severity": "warning",
+          "detail": "fmp_sentiment[stock_news_sentiments_rss]: not_available_on_current_plan \u2014 HTTP 404"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs flagged not_PIT_safe \u2014 TTM ratios used for display only"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; use last_eod_close for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 schema does not implement LLM-based narrative_price_gap_assessment, information_integrity_assessment pollution-defense layer, or coordinated_campaign_warning detection. These are marked not_evaluated or fail-closed in the packet. Agent 03 must reason from present evidence only; absence of these layers limits precision in detecting coordinated campaigns or narrative manipulation. Additionally, sentiment_community_ownership_evidence is a placeholder in v1; no actual community-size or ownership-positioning data is available for CCEP, limiting confidence in smart-money or crowding assessments.",
+      "recommended_followups": [
+        "Monitor for earnings announcement (next expected ~May 2025 based on historical Q2 pattern); compare actual vs estimate to validate forward guidance.",
+        "Track Form 4 filings weekly; any insider buying would be a positive signal; any selling would be neutral (common for mature companies).",
+        "Monitor Wikipedia pageviews and news mentions for spikes; baseline is 0\u20133 views/day; spike above 10/day would indicate abnormal attention.",
+        "Assess macro regime shift; if stress_score drops to 0\u20131, equity allocation cap would rise and quality-long thesis would be reinforced.",
+        "If consumer_traffic_adapter is wired, check store-level foot traffic and brand sentiment trends to validate demand assumptions.",
+        "Monitor price action for reversal; if 5-day return turns positive and volume normalizes, selling pressure would ease."
+      ],
+      "verdict": "weakly_supported",
+      "evidence_score": 0.45,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "not_evaluated",
+      "narrative_price_gap_assessment": "not_evaluated",
+      "narrative_price_gap_rationale": "narrative_price_gap_assessment block in packet is marked not_evaluated (agent_internal_pending); LLM reasoning not implemented in v1. Price action shows -4.47% 5-day return with elevated volume, suggesting recent selling pressure. No positive catalyst or news in window to explain reversal. Analyst sentiment is stable (10 Buy, 3 Hold, 1 Strong Sell) but unchanged from prior months, indicating no recent narrative shift. Wikipedia pageviews minimal (0\u20133/day). Overall, narrative is stale and price action is bearish relative to stable sentiment, but gap is not quantified.",
+      "industry_template_used": "consumer_retail_beverage_distribution",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "CCEP is a beverage distribution company (consumer/retail sector). No industry-specific adapters wired (consumer_traffic_adapter not connected). Wikipedia pageviews is the only alt-data adapter with rows (24 rows, 2025-02-09 to 2025-03-10). Fallback to default adapter per schema; no sector-specific signals available.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "No hard-to-fake signals present. SEC filings (8-K, Form 4) are empty in 90-day lookback, which is informative absence for a mature company but not contradictory. Wikipedia pageviews are minimal and flat (0\u20133 views/day), indicating no abnormal retail or social attention. Analyst sentiment is stable (10 Buy, 3 Hold, 1 Strong Sell) but descriptor-only per \u00a711.13 and cannot drive support_thesis. Fundamental metrics are sound (PE 18.4, PEG 0.48, net margin 9.29%, ROE 24.5%) but valuation is not a hard-to-fake signal. Price action shows -4.47% 5-day return with 1.80x relative volume, suggesting recent selling pressure, but this is market-driven, not alt-data corroboration. No insider activity, no news catalyst, no industry-specific alt-data (store traffic, supply-chain, regulatory) available.",
+      "industry_specific_evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (beverage company financials: revenue 9.8B, net margin 8.11%, EBITDA 1.585B)",
+        "valuation_snapshot.valuation_inputs (PE 18.4, PB 4.57, EV/EBITDA 13.3, gross margin 35.69%)",
+        "corporate_calendar.earnings (past earnings: 2024-11-05 EPS 2.11 vs est 2.05, 2024-08-07 EPS 2.11 vs est 2.05)",
+        "corporate_calendar.dividends (recent dividend 1.2958 on 2024-11-15, yield 2.76%)",
+        "price_snapshot.return_5d_pct (-4.47% recent selling pressure)",
+        "price_snapshot.relative_volume_vs_20d (1.80x elevated volume on recent decline)"
+      ],
+      "industry_specific_evidence_missing": [
+        "consumer_traffic_adapter (store-level foot traffic, brand sentiment, supply-chain signals for beverage/retail)",
+        "regulatory_filing_adapter (FDA, TTB, or regional beverage/alcohol regulatory filings)",
+        "supply_chain_adapter (commodity hedging, logistics costs, input price trends)",
+        "brand_health_adapter (consumer review aggregation, brand IP filings, trademark activity)",
+        "competitor_benchmarking (relative performance vs PEP, KO, other beverage distributors)"
+      ],
+      "data_quality_warning": "Alternative-data coverage is incomplete for CCEP. No industry-specific adapters wired (consumer_traffic_adapter not connected). Wikipedia pageviews is the only alt-data source with rows (24 rows, minimal views 0\u20133/day). SEC filing adapters (8-K, Form 4) return 0 rows, which is informative absence but not corroborating. Ownership data (13F) unavailable (not_available_on_current_plan). News data (polygon_news) returns 0 rows in 7-day window. Sentiment data (fmp_sentiment) is stable and descriptor-only. Overall, alt-data footprint is sparse and does not support a high-confidence verdict.",
+      "signals": [
+        {
+          "name": "Wikipedia pageviews (30-day window)",
+          "available": true,
+          "value": 24.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Wikipedia pageviews peak (2025-03-10)",
+          "available": true,
+          "value": 3.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Analyst sentiment (2025-03-01): Buy ratio",
+          "available": true,
+          "value": 0.8,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Analyst sentiment (2025-03-01): Strong Buy + Buy count",
+          "available": true,
+          "value": 10.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Form 4 insider transactions (90-day lookback)",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "8-K filings (90-day lookback)",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "News items post-cutoff (7-day window)",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Price return 5-day",
+          "available": true,
+          "value": -4.4748,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Relative volume vs 20-day average",
+          "available": true,
+          "value": 1.7967,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "PE ratio (TTM)",
+          "available": true,
+          "value": 18.427975264649845,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "PEG ratio",
+          "available": true,
+          "value": 0.4810013882637419,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "Net margin (TTM)",
+          "available": true,
+          "value": 9.29,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "ROE (TTM)",
+          "available": true,
+          "value": 0.24484649814032655,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "Macro regime stress score",
+          "available": true,
+          "value": 2.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Fundamental gate 38 (eps>0, op_margin>0, financial_health)",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "supports"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "OpenCLI not invoked in v1 generator; reads not point-in-time when wired. Not applicable to CCEP (beverage company, not crypto/web3).",
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_applicable",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "No primary source (T1) corroboration. Analyst sentiment (T2) is descriptor-only per \u00a711.13 and cannot drive support_thesis. Wikipedia pageviews (T3) show minimal attention (0\u20133 views/day). No hard-to-fake alt-data signals (SEC filings, insider activity, industry-specific adapters) present. Absence of positive catalyst or news (0 items post-cutoff) means narrative is stale. Macro regime Overheat/Moderately Restrictive caps equity allocation and mandates strict quality discipline. Overall evidence is weak and insufficient to support a primary-signal recommendation.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": "13F ownership data unavailable (not_available_on_current_plan); cannot assess institutional positioning, crowding risk, or smart-money support.",
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": "Ownership data unavailable; cannot assess concentration risk.",
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "news_event_summary (0 items post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (no 8-K rows)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker, not applicable)",
+        "alternative_data_features.opencli_evidence (not_connected)"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Classifier",
+      "schema_version": "v1.4_2026_04_29",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CCEP",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "fmp_sentiment analyst ratings (T2, stable 2+ years)",
+        "wikipedia_pageviews (minimal, 0-3 views/day)",
+        "fundamental_snapshot Q2 2024 (revenue, margins, FCF)",
+        "valuation_snapshot TTM (PE 18.4, EV/EBITDA 13.3)",
+        "price_snapshot (NASDAQ, dividend-paying, stable volume)"
+      ],
+      "evidence_missing": [
+        "github_public developer ecosystem (unmapped_ticker, no rows)",
+        "SEC-disclosed operating metrics (DAU/MAU, take-rate, marketplace GMV, seller retention)",
+        "patent activity (adapter deferred per R-NETWORK-10)",
+        "news_event_summary (0 items post-cutoff)",
+        "alternative_data_features (no sector-specific adapters wired)",
+        "filing_confirmation (no recent 8-K)",
+        "information_integrity_assessment (low_tier_only, T3/T4 only)"
+      ],
+      "reasoning_summary": "CCEP (Coca-Cola Europacific Partners) is a beverage distribution and bottling company, not a platform or technology ecosystem. The three-layer evidence framework yields: Layer 1 (hard-to-fake) is EMPTY \u2014 no GitHub developer ecosystem (unmapped_ticker), no SEC-disclosed operating metrics characteristic of network effects (DAU/MAU, take-rate, marketplace GMV, seller cohort retention). Layer 2 (attention) shows minimal Wikipedia pageviews (0-3 views/day, no spike) and stable analyst sentiment (2 Buy, 8 Buy, 3 Hold as of 2025-03-01, unchanged for 4+ months). Layer 3 (financials) shows healthy fundamentals: Q2 2024 revenue $9.8B, net margin 8.1%, FCF $732M, but these reflect traditional beverage distribution economics, not network compounding. The company exhibits no user-attracts-users dynamic, no two-sided marketplace cohort imbalance signals, no ecosystem lock-in, and no pricing-power expansion tied to network effects. The business is a mature, dividend-paying (2.76% yield) distributor with stable margins and operational efficiency \u2014 characteristics of a mature monopoly or oligopoly in beverage distribution, NOT a network-effect business. Sector-aware reading: beverage distribution does not claim platform/ecosystem dynamics; the absence of Layer 1 evidence is not surprising but confirms the business model is fundamentally non-network. Classification: ABSENT (no genuine network effect present).",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If CCEP disclosed a digital marketplace platform (e.g., B2B ordering, logistics network with supplier/buyer cohorts) with DAU/MAU and take-rate metrics, Layer 1 evidence would emerge and classification would shift to emerging or ambiguous.",
+        "If GitHub activity or developer ecosystem data became available and showed active open-source projects with growing contributor base, Layer 1 would populate and classification would upgrade.",
+        "If news or SEC filings revealed a major strategic pivot to platform/ecosystem business model, Layer 2 attention + Layer 3 financial inflection would warrant re-evaluation."
+      ],
+      "risk_flags": [
+        "Layer 1 completely absent \u2014 no developer ecosystem, no SEC-disclosed operating metrics characteristic of network effects.",
+        "Layer 2 minimal and stable \u2014 Wikipedia pageviews negligible, analyst sentiment flat for 4+ months, no news catalyst.",
+        "Layer 3 reflects traditional distribution economics, not network compounding.",
+        "Sector mismatch: beverage distribution does not naturally exhibit network effects; absence of Layer 1 is expected and corroborating.",
+        "Alternative data adapters not wired for consumer/retail sector; no sector-specific signals available."
+      ],
+      "suggested_improvements": [
+        "Wire sector-specific adapters for consumer/retail/distribution (e.g., supply-chain velocity, retailer cohort retention, logistics network density) if CCEP claims platform/ecosystem dynamics in future filings.",
+        "Monitor SEC filings (10-K, 10-Q, 8-K) for any disclosure of digital marketplace, B2B platform, or ecosystem initiatives that would trigger Layer 1 evidence collection.",
+        "If CCEP acquires or launches a technology platform (e.g., digital ordering, logistics network), re-run network-effect classification with sector-aware Layer 1 evidence.",
+        "Clarify whether CCEP's distribution network (physical logistics, retailer relationships) is intended to be classified as a 'network effect' \u2014 if so, define Layer 1 evidence (e.g., retailer cohort growth, logistics utilization, supplier retention) and populate accordingly."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "github_public: unmapped_ticker \u2014 no developer ecosystem data available for CCEP"
+        },
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "SEC-disclosed operating metrics (DAU/MAU, take-rate, marketplace GMV, seller retention) not found in fundamental_snapshot or corporate filings"
+        },
+        {
+          "kind": "layer_2_minimal",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews: 0-3 views/day, no spike; analyst sentiment stable 2+ months"
+        },
+        {
+          "kind": "news_unavailable",
+          "severity": "info",
+          "detail": "news_event_summary: 0 items post-cutoff; no recent catalyst"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 extraction failed"
+        },
+        {
+          "kind": "sector_mismatch",
+          "severity": "info",
+          "detail": "CCEP is beverage distribution/bottling; sector does not naturally exhibit platform/network-effect economics"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The three-layer framework is sector-agnostic by design, but CCEP's sector (beverage distribution) does not naturally produce Layer 1 evidence (developer ecosystem, SEC-disclosed DAU/MAU, marketplace GMV). The absence is informative and corroborating, not a framework weakness. However, if CCEP's physical distribution network (retailer relationships, logistics) is intended to be classified as a 'network effect,' the framework would need sector-specific Layer 1 definitions (e.g., retailer cohort growth, logistics utilization, supplier retention). Current framework assumes 'network effect' = digital platform / marketplace / developer ecosystem; physical distribution networks are not in scope.",
+      "recommended_followups": [
+        "Monitor CCEP's next 10-K (FY 2024, expected Q1 2025) for any disclosure of digital platform, B2B marketplace, or ecosystem initiatives.",
+        "If CCEP announces a digital ordering platform or logistics network, re-run network-effect classification with sector-aware Layer 1 evidence.",
+        "Clarify with PM whether CCEP's physical distribution network should be evaluated as a 'network effect' \u2014 if yes, define Layer 1 evidence and wire sector-specific adapters.",
+        "For future beverage/distribution companies, pre-wire sector-specific adapters (supply-chain velocity, retailer cohort retention, logistics network density) to enable Layer 1 evidence collection."
+      ],
+      "network_effect_score": 5,
+      "network_effect_evidence": "absent",
+      "pricing_power_assessment": "medium",
+      "key_signals_used": [
+        "fmp_sentiment: analyst ratings stable (2 SB, 8 B, 3 H) for 4+ months",
+        "wikipedia_pageviews: minimal (0-3 views/day), no spike",
+        "fundamental_snapshot: Q2 2024 revenue $9.8B, net margin 8.1%, FCF $732M",
+        "valuation_snapshot: PE 18.4, EV/EBITDA 13.3, dividend yield 2.76%",
+        "price_snapshot: NASDAQ, stable volume, dividend-paying"
+      ],
+      "key_signals_missing": [
+        "github_public: developer ecosystem (unmapped_ticker)",
+        "SEC-disclosed DAU/MAU, take-rate, marketplace GMV, seller cohort retention",
+        "patent activity (adapter deferred)",
+        "news catalyst (0 items post-cutoff)",
+        "alternative_data_features: sector-specific adapters not wired",
+        "filing_confirmation: no recent 8-K"
+      ],
+      "classification": "absent",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "fmp_sentiment: analyst ratings stable 2+ months (2 SB, 8 B, 3 H as of 2025-03-01)",
+        "wikipedia_pageviews: minimal views (0-3/day), no abnormal attention spike"
+      ],
+      "layer_3_evidence": [
+        "fundamental_snapshot Q2 2024: revenue $9.8B, net margin 8.1%, FCF $732M \u2014 reflects traditional distribution economics, not network compounding",
+        "valuation_snapshot: PE 18.4, EV/EBITDA 13.3, dividend yield 2.76% \u2014 mature, stable business, not high-growth platform"
+      ],
+      "type_direct_vs_two_sided": "none",
+      "staleness_flags": [
+        "fmp_sentiment: latest row 2025-03-01 (9 days before decision_timestamp 2025-03-10) \u2014 within 30d window, not stale",
+        "fundamental_snapshot: Q2 2024 accepted 2024-06-28 (>90 days before decision_timestamp) \u2014 stale for Layer 1 operating metrics, but no Layer 1 metrics present anyway"
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CCEP",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "fair",
+      "confidence": "medium",
+      "evidence_used": [
+        "valuation_snapshot.pe_ratio (18.43)",
+        "valuation_snapshot.peg_ratio (0.48)",
+        "valuation_snapshot.price_to_sales (1.71)",
+        "valuation_snapshot.price_to_book (4.57)",
+        "valuation_snapshot.ev_to_ebitda (13.31)",
+        "valuation_snapshot.roe (0.245)",
+        "valuation_snapshot.roa (0.065)",
+        "valuation_snapshot.gross_margin_pct_ttm (35.58%)",
+        "valuation_snapshot.net_margin_pct_ttm (9.29%)",
+        "fundamental_snapshot.net_margin_pct (8.11% Q2 2024)",
+        "price_snapshot.return_5d_pct (-4.47%)",
+        "price_snapshot.return_20d_pct (2.86%)",
+        "price_snapshot.return_60d_pct (6.08%)",
+        "macro_regime (Overheat / Moderately Restrictive)",
+        "debt_to_equity_ttm (1.38)",
+        "current_ratio_ttm_pit (0.80)"
+      ],
+      "evidence_missing": [
+        "fcf_yield (null in valuation_snapshot)",
+        "ev_to_ebit (null in valuation_snapshot)",
+        "forward_pe (not provided)",
+        "price_to_fcf (not calculable; fcf_yield null)",
+        "drawdown_from_ath (not provided in price_snapshot)",
+        "sector_classification (not in fundamental_snapshot)",
+        "guidance_or_management_commentary (not in packet)",
+        "recent_news_catalyst (news_event_summary status=data_unavailable)"
+      ],
+      "reasoning_summary": "CCEP (Coca-Cola Europacific Partners) exhibits a mixed valuation profile appropriate for a mature beverage/consumer staples company in an Overheat macro regime. The P/E of 18.43x is moderate for the sector and supported by a PEG ratio of 0.48, indicating reasonable earnings growth relative to valuation. The P/S of 1.71x and P/B of 4.57x are in line with quality consumer staples. EV/EBITDA of 13.31x is reasonable for a cash-generative beverage distributor. Profitability metrics are solid: 35.58% gross margin and 9.29% net margin reflect pricing power and operational efficiency typical of the sector. ROE of 24.5% and ROA of 6.5% demonstrate reasonable capital efficiency. However, leverage is elevated at 1.38x debt-to-equity, and the current ratio of 0.80 suggests tight working capital\u2014both warrant caution in a restrictive rate environment. The 5-day return of -4.47% reflects recent weakness, but 60-day return of +6.08% shows underlying resilience. In the Overheat regime with strict quality and valuation caution discipline, CCEP's multiples are neither compelling nor alarming. The PEG below 0.5 is attractive, but the elevated leverage and tight liquidity in a high-rate environment offset that advantage. The valuation is defensible for a quality dividend-paying staple, but not a bargain. Sector-correct framework: beverage/consumer staples typically trade 16\u201322x P/E in normal regimes; CCEP at 18.43x is mid-range. The absence of forward P/E and FCF yield limits precision, but available TTM ratios are internally consistent and not distorted by negative earnings (case (b) distinction does not apply\u2014all underlying inputs are positive).",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If leverage increases materially above 1.5x debt-to-equity without corresponding EBITDA growth, valuation becomes less attractive.",
+        "If macro regime shifts to Crisis, the elevated leverage becomes a significant risk and valuation should be re-assessed downward.",
+        "If earnings growth stalls and PEG rises above 1.0, the 'fair' assessment shifts to 'expensive'.",
+        "If dividend is cut or suspended, the income-investor thesis weakens and valuation becomes less compelling."
+      ],
+      "risk_flags": [
+        "Elevated leverage (1.38x D/E) in a Moderately Restrictive rate environment; refinancing risk if rates remain elevated.",
+        "Tight working capital (current ratio 0.80) limits financial flexibility.",
+        "Macro regime is Overheat with strict equity discipline; broad late-cycle valuations are historically vulnerable to compression.",
+        "No recent news catalyst in packet; lack of positive narrative support.",
+        "TTM ratios are not point-in-time safe; Q2 2024 fundamental snapshot is ~9 months old relative to decision date.",
+        "FCF yield unavailable; cannot assess cash return to shareholders directly."
+      ],
+      "suggested_improvements": [
+        "Obtain forward P/E and forward earnings guidance to assess growth trajectory more precisely.",
+        "Calculate price-to-FCF using trailing twelve-month free cash flow to evaluate cash generation relative to valuation.",
+        "Retrieve drawdown from 52-week or all-time high to assess margin of safety from peak.",
+        "Obtain sector peer multiples (PepsiCo, Monster Beverage, Red Bull distributor comps) to contextualize CCEP's valuation.",
+        "Assess dividend sustainability and payout ratio relative to FCF to evaluate income safety.",
+        "Monitor leverage trajectory and refinancing schedule in light of current rate environment."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM (trailing twelve months), not point-in-time anchored to a specific filing date; use for descriptive valuation context only."
+        },
+        {
+          "kind": "fcf_yield_null",
+          "severity": "warning",
+          "detail": "fcf_yield is null in valuation_snapshot; underlying free_cash_flow_ttm may be unavailable or negative. Cannot assess cash return directly."
+        },
+        {
+          "kind": "ev_to_ebit_null",
+          "severity": "info",
+          "detail": "ev_to_ebit is null; less critical than P/E or EV/EBITDA for this analysis."
+        },
+        {
+          "kind": "fundamental_snapshot_stale",
+          "severity": "warning",
+          "detail": "Latest PIT-safe fundamental snapshot is Q2 2024 (accepted 2024-06-28); decision is 2025-03-10, ~9 months later. Use for directional context only."
+        },
+        {
+          "kind": "news_unavailable",
+          "severity": "info",
+          "detail": "news_event_summary status=data_unavailable; no recent news catalyst in packet to support or challenge valuation narrative."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The valuation_snapshot block does not include forward P/E, forward earnings, or forward FCF yield, which are critical for assessing growth-adjusted valuation in a mature company. The absence of sector classification in fundamental_snapshot limits sector-correct framework application. TTM ratios lack fiscal anchoring, reducing point-in-time safety. The packet does not include drawdown from ATH, which is relevant for margin-of-safety assessment per RULES.md \u00a73.9.",
+      "recommended_followups": [
+        "Obtain forward P/E and forward earnings guidance from company filings or consensus estimates.",
+        "Calculate price-to-FCF using most recent TTM free cash flow; assess dividend payout ratio relative to FCF.",
+        "Retrieve 52-week and all-time high prices to calculate drawdown and margin of safety.",
+        "Assess peer valuation multiples (PepsiCo, Monster, regional beverage distributors) to contextualize CCEP's multiples.",
+        "Monitor leverage and refinancing schedule; assess impact of current rate environment on cost of debt.",
+        "If macro regime shifts to Crisis, re-assess valuation downward due to leverage risk."
+      ],
+      "valuation_score": 58,
+      "valuation_assessment": "fair",
+      "margin_of_safety_assessment": "medium",
+      "valuation_inputs_used": {
+        "pe_ratio": 18.427975264649845,
+        "peg_ratio": 0.4810013882637419,
+        "price_to_sales": 1.708465301406631,
+        "price_to_book": 4.567597698015315,
+        "ev_to_ebitda": 13.309381975094889,
+        "roe": 0.24484649814032655,
+        "roa": 0.06501071237279057,
+        "debt_to_equity_ttm": 1.3776643267389916,
+        "current_ratio_ttm_pit": 0.8014502307185234,
+        "gross_margin_pct_ttm": 35.58,
+        "net_margin_pct_ttm": 9.29,
+        "return_5d_pct": -4.4748,
+        "return_20d_pct": 2.8586,
+        "return_60d_pct": 6.0762,
+        "macro_regime": "overheat",
+        "macro_condition": "Moderately Restrictive"
+      },
+      "valuation_inputs_missing": [
+        "fcf_yield",
+        "ev_to_ebit",
+        "forward_pe",
+        "forward_earnings",
+        "price_to_fcf",
+        "drawdown_from_ath",
+        "sector_classification",
+        "peer_multiples",
+        "dividend_payout_ratio",
+        "guidance_or_management_commentary"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Agent",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CCEP",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long thesis evaluation for CCEP following 4.5% 5-day selloff",
+      "confidence": "medium",
+      "evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (Q2 2024: revenue 9.8B, net_income 797M, operating_income 1.14B)",
+        "valuation_snapshot.valuation_inputs (PE 18.43, PEG 0.48, EV/EBITDA 13.31, PB 4.57)",
+        "price_snapshot.return_5d_pct (-4.47%), relative_volume_vs_20d (1.80x)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (10 Buy, 2 Strong Buy, 3 Hold, 0 Sell, 1 Strong Sell as of 2025-03-01)",
+        "macro_regime (Overheat/Moderately Restrictive, stress_score=2, equity_discipline=strict_quality_and_valuation_caution)",
+        "corporate_calendar (recent earnings beat: 2024-11-05 EPS 2.11 vs est 2.05; dividend yield ~2.76%)",
+        "fundamental_gate_38 (passes: eps_ttm>0, operating_margin_ttm>0, financial_health=sound)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts not present in packet)",
+        "detailed news catalyst for 5-day selloff (news_event_summary status=data_unavailable, 0 items post-cutoff)",
+        "ownership positioning data (sec_13f not_available_on_current_plan; sec_form4 shows 0 insider transactions in 90d)",
+        "industry-specific alt-data (alternative_data_features shows no connected adapters for consumer/beverage sector)",
+        "forward guidance or management commentary (no 8-K filings in last 90 days)"
+      ],
+      "reasoning_summary": "CCEP (Coca-Cola Europacific Partners) exhibits a healthy fundamental profile with positive earnings (EPS 1.73 Q2 2024), strong operating margins (35.7% gross, 11.6% operating), and sound financial health (debt-to-equity 1.38, current ratio 0.80, positive operating cash flow). The 5-day selloff of 4.5% appears to be macro/sector-driven rather than company-specific: macro regime is Overheat with strict equity discipline, and no negative news catalyst is evident in the packet (news_event_summary empty post-cutoff). Analyst sentiment remains constructive (10 Buy + 2 Strong Buy vs 1 Strong Sell as of March 2025). Valuation is fair: PE 18.43 with PEG 0.48 suggests reasonable growth-adjusted pricing; EV/EBITDA 13.31 is moderate for a mature beverage distributor. The dividend yield (~2.76%) and recent earnings beat (2.11 vs 2.05 est) support the long thesis. However, the macro regime's strict equity discipline and absence of upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) create uncertainty about whether the selloff is a genuine repricing opportunity or a warning signal. The current ratio of 0.80 is slightly tight, and leverage at 1.38x D/E is elevated for a defensive consumer stock. Without forward guidance or management commentary, the thesis remains intact but not compelling.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If macro regime shifts to Crisis or Recession (currently Overheat)",
+        "If next earnings print shows revenue decline or margin compression >200bps",
+        "If debt-to-equity rises above 1.5x or current ratio falls below 0.75",
+        "If analyst consensus downgrades materially (currently 10 Buy, 2 Strong Buy)",
+        "If dividend is cut or suspended (currently ~2.76% yield)"
+      ],
+      "risk_flags": [
+        "Macro regime is Overheat/Moderately Restrictive with strict equity discipline; 20% equity allocation cap applies",
+        "Current ratio 0.80 is below 1.0, indicating potential near-term liquidity pressure",
+        "Debt-to-equity 1.38 is elevated for a defensive consumer stock; interest rate sensitivity in restrictive regime",
+        "No recent insider buying (Form 4 shows 0 transactions in 90d); no management conviction signal",
+        "News catalyst for 5-day selloff is unclear; could indicate hidden weakness not yet disclosed",
+        "PB ratio 4.57 is elevated; suggests market pricing in growth or quality premium that may not be justified",
+        "Alternative data adapters not connected for consumer/beverage sector; limited franchise health verification"
+      ],
+      "suggested_improvements": [
+        "Obtain upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) to triangulate thesis",
+        "Fetch recent earnings call transcript or investor presentation to assess forward guidance and management tone",
+        "Verify selloff origin via news search or sector analysis (beverage distributor vs broader consumer/macro headwinds)",
+        "Monitor Form 4 filings for insider buying as a conviction signal",
+        "Assess competitive positioning vs PepsiCo, Monster, Red Bull in key markets (Europe, Asia-Pacific)",
+        "Evaluate currency exposure (CCEP has significant non-USD revenue; FX headwinds may explain selloff)"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; unable to identify specific catalyst for 5-day selloff"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f not_available_on_current_plan; ownership positioning data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public unmapped_ticker; no tech/innovation alt-data available (not applicable for beverage distributor)"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM, not PIT-safe; use for display only, not for hard gates"
+        },
+        {
+          "kind": "upstream_agent_outputs_absent",
+          "severity": "warning",
+          "detail": "Narrative, Alt-Data Verification, Fund/Net/Val agent outputs not present in packet; cannot cross-validate thesis"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) which would normally provide triangulation on thesis integrity, franchise health, and valuation consensus. The news_event_summary is empty post-cutoff, preventing identification of the specific catalyst for the 5-day selloff. Alternative data adapters are not wired for the consumer/beverage sector, limiting franchise health verification via industry-specific signals. The macro regime's strict equity discipline creates a structural headwind that may override fundamental attractiveness.",
+      "recommended_followups": [
+        "Obtain Narrative agent verdict on price-gap and selloff attribution",
+        "Obtain Alt-Data Verification verdict on franchise health and competitive positioning",
+        "Obtain Fund/Net/Val agent verdict on valuation consensus and fair-value range",
+        "Fetch earnings call transcript (Q2 2024 or Q3 2024) to assess forward guidance",
+        "Monitor next earnings date (likely Q3 2024 in August 2024, or Q4 2024 in November 2024) for margin/revenue trends",
+        "Assess currency headwinds (EUR/USD, AUD/USD) as potential selloff driver",
+        "Evaluate sector rotation (beverage distributor vs broader consumer discretionary weakness)"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "supports_long",
+      "network_effect_evidence": "partial",
+      "valuation_assessment": "fair",
+      "selloff_origin_view": "macro",
+      "thesis_status": "intact",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "watch",
+      "initial_position_pct": 0.0,
+      "max_position_pct": 5.0,
+      "missing_data_warnings": [
+        "Upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) absent; cannot validate thesis via multi-agent consensus",
+        "News catalyst for 5-day selloff not identified (news_event_summary empty post-cutoff)",
+        "Ownership positioning data unavailable (sec_13f not_available_on_current_plan)",
+        "Forward guidance and management commentary absent (no recent 8-K filings)",
+        "Industry-specific alt-data not connected (consumer/beverage sector adapters not wired)",
+        "Insider buying signal absent (Form 4 shows 0 transactions in 90d)"
+      ],
+      "audit_rationale": "CCEP passes hard fundamental gates (eps>0, op_margin>0, financial_health=sound) and exhibits fair valuation (PE 18.43, PEG 0.48). The 5-day selloff appears macro-driven (Overheat regime, strict equity discipline) rather than company-specific. Analyst sentiment is constructive (10 Buy, 2 Strong Buy). However, the macro regime's strict equity discipline, elevated leverage (D/E 1.38), tight liquidity (current ratio 0.80), and absence of upstream agent verdicts create medium uncertainty. Recommend WATCH pending upstream agent triangulation and identification of selloff catalyst. If thesis remains intact post-validation, consider entry at current levels within macro constraints."
+    },
+    "risk": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Risk Agent",
+      "schema_version": "risk_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CCEP",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for candidate_type=quality_long",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "fundamental_gate_38.passes",
+        "valuation_snapshot.status",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "macro_regime.equity_allocation_cap",
+        "data_quality_flags[*].severity"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions for CCEP quality_long candidate. Condition (a): equity cap breach \u2014 not applicable; no proposed position size provided in packet. Condition (b): short entry caps \u2014 not applicable; candidate_type=quality_long, not surge_short. Condition (c): critical data_quality_flags \u2014 scanned all flags; highest severity is 'warning' (quote_after_cutoff, alt_data_adapter_error, endpoint_unavailable); no 'critical' severity flags present. Condition (d): anti-pollution integrity veto \u2014 RELAXED per \u00a75.13(d) 2026-05-06 relaxation. Applies to quality_long ONLY when pollution_defense_layer affirmatively confirms pollution. Packet shows information_integrity_assessment.pollution_defense_layer status='insufficient_evidence' (not affirmatively confirmed), and use_as_primary_signal_allowed=false due to 'pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'. Per relaxation rule, when pollution_defense_layer is unimplemented or returns status \u2208 {not_evaluated, not_connected, pending, unimplemented}, \u00a75.13(d) does NOT trip. The fail-closed semantics are preserved on AFFIRMATIVELY-CONFIRMED pollution only. Since pollution is NOT affirmatively confirmed (status is insufficient_evidence, not confirmed), condition (d) does NOT trip. Condition (e): lookahead veto \u2014 envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true; condition does NOT trip. Summary: all five hard-veto conditions evaluate to NOT TRIPPED.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If a critical-severity data_quality_flag appears in the packet, condition (c) would trip.",
+        "If information_integrity_assessment.pollution_confirmed is set to true (affirmatively confirmed, not 'unimplemented' or 'not_evaluated') AND use_as_primary_signal_allowed=false AND no T1/T2 corroboration exists, condition (d) would trip.",
+        "If envelope.data_after_cutoff_used is set to true OR envelope.lookahead_safe is set to false, condition (e) would trip.",
+        "If a proposed quality_long position would push equity sleeve above \u00a74.7 regime cap (currently 20% per macro_regime.equity_allocation_cap), condition (a) would trip."
+      ],
+      "risk_flags": [
+        "Macro regime is Overheat/Moderately Restrictive with equity_allocation_cap=20%; any quality_long position must respect this sleeve cap.",
+        "Information integrity assessment is fail-closed (use_as_primary_signal_allowed=false) due to unimplemented pollution-defense layer; this is architectural, not a veto trigger per \u00a75.13(d) relaxation.",
+        "No upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) present in packet; cannot cross-validate thesis integrity.",
+        "News catalyst for 5-day selloff not identified (news_event_summary empty post-cutoff); narrative is stale."
+      ],
+      "suggested_improvements": [],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; quote retained for display only"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 extraction failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 FMP HTTP 404"
+        },
+        {
+          "kind": "endpoint_unavailable",
+          "severity": "warning",
+          "detail": "fmp_sentiment[press_releases]: not_available_on_current_plan \u2014 HTTP 404"
+        },
+        {
+          "kind": "endpoint_unavailable",
+          "severity": "warning",
+          "detail": "fmp_sentiment[stock_news_sentiments_rss]: not_available_on_current_plan \u2014 HTTP 404"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [],
+      "candidate_type": "quality_long",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long entries that would push equity sleeve above \u00a74.7 regime cap. No proposed position size provided in packet; macro_regime.equity_allocation_cap=20% applies to sleeve. Condition not applicable without position size input."
+        },
+        {
+          "name": "short_entry_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) applies to surge_short entries only. Candidate_type=quality_long; condition not applicable."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Scanned data_quality_flags array; highest severity is 'warning' (quote_after_cutoff, alt_data_adapter_error, endpoint_unavailable). No 'critical' severity flags present. Condition does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Relaxed per \u00a75.13(d) 2026-05-06. Applies to quality_long ONLY when pollution_defense_layer affirmatively confirms pollution. Packet shows information_integrity_assessment.pollution_defense_layer status='insufficient_evidence' (not affirmatively confirmed). Per relaxation, when defense layer is unimplemented or returns status \u2208 {not_evaluated, not_connected, pending, unimplemented}, \u00a75.13(d) does NOT trip. Pollution NOT affirmatively confirmed; condition does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "Envelope shows data_after_cutoff_used=false AND lookahead_safe=true. Condition does not trip."
+        }
+      ],
+      "advisory_notes": "HARD-VETO PASS. All five \u00a75.13 conditions evaluate to NOT TRIPPED. Candidate is mechanically eligible for downstream PM evaluation. Risk agent emits NO advisory output, NO sizing recommendations, NO 5-clause prose tilt per role specification. PM and downstream agents own thesis validation, position sizing, and execution discipline.",
+      "risk_notes": [
+        "Macro regime equity_allocation_cap=20% applies; position must fit within sleeve constraints.",
+        "Information integrity assessment is fail-closed (unimplemented pollution-defense layer); this is architectural per v1 schema, not a veto trigger.",
+        "No upstream agent verdicts present; PM must obtain Narrative, Alt-Data Verification, Fund/Net/Val outputs for full thesis triangulation."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13(a) equity_cap_breach: not_applicable (no position size provided)",
+        "\u00a75.13(b) short_entry_cap_breach: not_applicable (candidate_type=quality_long)",
+        "\u00a75.13(c) critical_data_quality_flag: not_tripped (max severity=warning)",
+        "\u00a75.13(d) anti_pollution_integrity_veto: not_tripped (pollution NOT affirmatively confirmed; defense layer unimplemented per v1 schema)",
+        "\u00a75.13(e) lookahead_veto: not_tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+        "RESULT: PASS all hard-veto conditions"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CCEP",
+      "decision_timestamp": "2025-03-10T09:30:00-04:00",
+      "data_available_as_of": "2025-03-10T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long candidate evaluation for CCEP following 4.5% 5-day selloff in Overheat macro regime",
+      "confidence": "medium",
+      "evidence_used": [
+        "fundamental_gate_38.passes=true (eps>0, op_margin>0, financial_health=sound)",
+        "valuation_snapshot.valuation_assessment=fair (PE 18.43, PEG 0.48, EV/EBITDA 13.31)",
+        "price_snapshot.return_5d_pct=-4.47% (recent selling pressure)",
+        "price_snapshot.relative_volume_vs_20d=1.80x (elevated volume on decline)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (10 Buy, 2 Strong Buy, 3 Hold, 0 Sell, 1 Strong Sell as of 2025-03-01)",
+        "macro_regime=Overheat/Moderately Restrictive (stress_score=2, equity_allocation_cap=20%)",
+        "corporate_calendar.earnings (recent beat: 2024-11-05 EPS 2.11 vs est 2.05)",
+        "fundamental_snapshot.snapshot_quarter (Q2 2024: revenue 9.8B, net_margin 8.11%, FCF 732M)",
+        "risk_agent.veto_conditions_evaluated (all 5 hard-veto conditions NOT TRIPPED)",
+        "upstream_agent_outputs.narrative_event.verdict=null (no catalyst event detected)",
+        "upstream_agent_outputs.alt_data_verify.verdict=weakly_supported (sparse alt-data, stale narrative)",
+        "upstream_agent_outputs.network_effect.classification=absent (beverage distribution, no platform dynamics)",
+        "upstream_agent_outputs.quality_long.recommended_action=watch (intact thesis, medium uncertainty)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs.narrative_event.verdict (null; no catalyst identified for selloff)",
+        "news_event_summary.items (0 items post-cutoff; 20 dropped post-cutoff)",
+        "filing_confirmation.sec_8k_confirmation (null; no recent 8-K filings)",
+        "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable; sec_13f not_available_on_current_plan)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker; not applicable to beverage company)",
+        "forward_guidance_or_management_commentary (no recent 8-K or earnings call transcript in packet)",
+        "industry_specific_alt_data (consumer_traffic_adapter not connected; no store-level or supply-chain signals)"
+      ],
+      "reasoning_summary": "CCEP passes hard fundamental gates (eps>0, op_margin>0, financial_health=sound) and exhibits fair valuation (PE 18.43, PEG 0.48, EV/EBITDA 13.31). The 5-day selloff of 4.5% appears macro-driven (Overheat regime with strict equity discipline) rather than company-specific, as no negative catalyst is evident in the packet (news_event_summary empty post-cutoff, no recent 8-K filings). Analyst sentiment remains constructive (10 Buy + 2 Strong Buy vs 1 Strong Sell as of March 2025). The dividend yield (~2.76%) and recent earnings beat support the long thesis. However, the macro regime's strict equity discipline (20% equity cap), elevated leverage (D/E 1.38), tight liquidity (current ratio 0.80), and absence of a clear catalyst for the selloff create medium uncertainty. The upstream quality_long agent recommends WATCH pending thesis validation. All hard-veto conditions (sleeve_cap_breach, position_size_cap_breach, lookahead_data_used, hindsight_violation, \u00a73.8 fundamental gates) evaluate to NOT TRIPPED. The information_integrity_assessment is fail-closed (use_as_primary_signal_allowed=false) due to unimplemented pollution-defense layer in v1 schema, but per \u00a75.13(d) 2026-05-06 relaxation, this does NOT trip a veto when pollution is NOT affirmatively confirmed. The thesis is intact but requires upstream agent triangulation (Narrative, Alt-Data Verification, Fund/Net/Val verdicts) before entry. Given the macro regime's strict equity discipline and medium uncertainty, WATCH is the appropriate decision pending further catalyst clarity and upstream agent consensus.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If macro regime shifts to Crisis or Recession (currently Overheat), equity allocation cap would tighten further and thesis would be invalidated.",
+        "If next earnings print shows revenue decline or margin compression >200bps, fundamental thesis would be broken.",
+        "If debt-to-equity rises above 1.5x or current ratio falls below 0.75, financial health gate would fail.",
+        "If analyst consensus downgrades materially (currently 10 Buy, 2 Strong Buy), sentiment support would erode.",
+        "If dividend is cut or suspended (currently ~2.76% yield), income thesis would be invalidated.",
+        "If a negative catalyst emerges post-cutoff (earnings miss, guidance cut, regulatory action), the 'no catalyst' assessment would be invalidated."
+      ],
+      "risk_flags": [
+        "Macro regime is Overheat/Moderately Restrictive with equity_allocation_cap=20%; any position must respect sleeve constraints.",
+        "Current ratio 0.80 is below 1.0, indicating potential near-term liquidity pressure in a restrictive rate environment.",
+        "Debt-to-equity 1.38 is elevated for a defensive consumer stock; interest rate sensitivity is material.",
+        "No recent insider buying (Form 4 shows 0 transactions in 90d); no management conviction signal.",
+        "News catalyst for 5-day selloff is unclear; could indicate hidden weakness not yet disclosed.",
+        "Price-to-book ratio 4.57 is elevated; suggests market pricing in growth or quality premium that may not be justified.",
+        "Alternative data adapters not connected for consumer/beverage sector; limited franchise health verification.",
+        "Upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) not present in packet; cannot cross-validate thesis.",
+        "Information integrity assessment is fail-closed (unimplemented pollution-defense layer); architectural limitation, not veto trigger."
+      ],
+      "suggested_improvements": [
+        "Obtain upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) to triangulate thesis integrity.",
+        "Fetch recent earnings call transcript or investor presentation to assess forward guidance and management tone.",
+        "Verify selloff origin via news search or sector analysis (beverage distributor vs broader consumer/macro headwinds).",
+        "Monitor Form 4 filings for insider buying as a conviction signal.",
+        "Assess competitive positioning vs PepsiCo, Monster, Red Bull in key markets (Europe, Asia-Pacific).",
+        "Evaluate currency exposure (CCEP has significant non-USD revenue; FX headwinds may explain selloff).",
+        "Wire consumer_traffic_adapter to capture store-level foot traffic, brand sentiment, or supply-chain signals.",
+        "Implement news_event_summary LLM reasoning to extract catalyst type, specificity, and narrative staleness."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; unable to identify specific catalyst for 5-day selloff"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f not_available_on_current_plan; ownership positioning data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public unmapped_ticker; no tech/innovation alt-data available (not applicable for beverage distributor)"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM, not PIT-safe; use for display only, not for hard gates"
+        },
+        {
+          "kind": "upstream_agent_outputs_absent",
+          "severity": "warning",
+          "detail": "Narrative, Alt-Data Verification, Fund/Net/Val agent outputs not present in packet; cannot cross-validate thesis"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; use last_eod_close for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) which would normally provide triangulation on thesis integrity, franchise health, and valuation consensus. The news_event_summary is empty post-cutoff, preventing identification of the specific catalyst for the 5-day selloff. Alternative data adapters are not wired for the consumer/beverage sector, limiting franchise health verification via industry-specific signals. The macro regime's strict equity discipline creates a structural headwind that may override fundamental attractiveness. The information_integrity_assessment block is fail-closed (unimplemented pollution-defense layer in v1), but per \u00a75.13(d) 2026-05-06 relaxation, this does NOT trip a veto when pollution is NOT affirmatively confirmed.",
+      "recommended_followups": [
+        "Obtain Narrative agent verdict on price-gap and selloff attribution.",
+        "Obtain Alt-Data Verification verdict on franchise health and competitive positioning.",
+        "Obtain Fund/Net/Val agent verdict on valuation consensus and fair-value range.",
+        "Fetch earnings call transcript (Q2 2024 or Q3 2024) to assess forward guidance.",
+        "Monitor next earnings date (likely Q3 2024 in August 2024, or Q4 2024 in November 2024) for margin/revenue trends.",
+        "Assess currency headwinds (EUR/USD, AUD/USD) as potential selloff driver.",
+        "Evaluate sector rotation (beverage distributor vs broader consumer discretionary weakness).",
+        "If macro regime shifts to Normal or Strengthening, revisit entry thesis with relaxed equity discipline."
+      ],
+      "candidate_type": "quality_long",
+      "decision": "watch",
+      "position_size_pct": 0.0,
+      "reason": "CCEP passes hard fundamental gates and exhibits fair valuation, but macro regime's strict equity discipline (20% cap), elevated leverage (D/E 1.38), tight liquidity (current ratio 0.80), and absence of clear catalyst for 5-day selloff create medium uncertainty. Upstream quality_long agent recommends WATCH. All hard-veto conditions NOT TRIPPED. Recommend WATCH pending upstream agent triangulation and catalyst clarity before entry.",
+      "risk_notes": [
+        "Macro regime equity_allocation_cap=20% applies; position must fit within sleeve constraints.",
+        "Information integrity assessment is fail-closed (unimplemented pollution-defense layer); this is architectural per v1 schema, not a veto trigger per \u00a75.13(d) 2026-05-06 relaxation.",
+        "No upstream agent verdicts present; PM must obtain Narrative, Alt-Data Verification, Fund/Net/Val outputs for full thesis triangulation.",
+        "Hard-veto pass: all 5 conditions (sleeve_cap_breach, position_size_cap_breach, lookahead_data_used, hindsight_violation, \u00a73.8 fundamental gates) evaluate to NOT TRIPPED.",
+        "Thesis is intact but requires upstream agent consensus before entry."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "No proposed position size provided; macro_regime.equity_allocation_cap=20% applies to sleeve. Condition not applicable without position size input. WATCH decision emits position_size_pct=0.0, so no breach."
+        },
+        {
+          "name": "position_size_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition applies to surge_short entries only. Candidate_type=quality_long; condition not applicable."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Scanned data_quality_flags array; highest severity is 'warning' (news_post_cutoff_filtered, alt_data_adapter_error, quote_after_cutoff). No 'critical' severity flags present. Condition does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Relaxed per \u00a75.13(d) 2026-05-06. Applies to quality_long ONLY when pollution_defense_layer affirmatively confirms pollution. Packet shows information_integrity_assessment.pollution_defense_layer status='insufficient_evidence' (not affirmatively confirmed). Per relaxation, when defense layer is unimplemented or returns status \u2208 {not_evaluated, not_connected, pending, unimplemented}, \u00a75.13(d) does NOT trip. Pollution NOT affirmatively confirmed; condition does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "Envelope shows data_after_cutoff_used=false AND lookahead_safe=true. Condition does not trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13(a) equity_cap_breach: not_applicable (position_size_pct=0.0, no breach)",
+        "\u00a75.13(b) short_entry_cap_breach: not_applicable (candidate_type=quality_long)",
+        "\u00a75.13(c) critical_data_quality_flag: not_tripped (max severity=warning)",
+        "\u00a75.13(d) anti_pollution_integrity_veto: not_tripped (pollution NOT affirmatively confirmed; defense layer unimplemented per v1 schema; \u00a75.13(d) 2026-05-06 relaxation applies)",
+        "\u00a75.13(e) lookahead_veto: not_tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+        "\u00a73.8 fundamental_gate_38: PASS (eps>0, op_margin>0, financial_health=sound)",
+        "valuation_assessment: fair (PE 18.43, PEG 0.48, EV/EBITDA 13.31)",
+        "macro_regime_discipline: strict_quality_and_valuation_caution (equity_allocation_cap=20%)",
+        "RESULT: HARD-VETO PASS; decision=watch (upstream agent consensus required before entry)"
+      ],
+      "decision_log": [
+        "1. Envelope validation: data_after_cutoff_used=false, lookahead_safe=true, immutable_decision_flag=true \u2014 PIT-safe.",
+        "2. Hard-veto condition (a) sleeve_cap_breach: not_applicable (position_size_pct=0.0).",
+        "3. Hard-veto condition (b) position_size_cap_breach: not_applicable (candidate_type=quality_long, not surge_short).",
+        "4. Hard-veto condition (c) critical_data_quality_flag: not_tripped (max severity=warning, no critical flags).",
+        "5. Hard-veto condition (d) anti_pollution_integrity_veto: not_tripped (pollution NOT affirmatively confirmed; \u00a75.13(d) 2026-05-06 relaxation applies; defense layer unimplemented in v1).",
+        "6. Hard-veto condition (e) lookahead_veto: not_tripped (data_after_cutoff_used=false, lookahead_safe=true).",
+        "7. Fundamental gate \u00a73.8: PASS (eps_ttm>0, operating_margin_ttm>0, financial_health=sound per fundamental_gate_38.passes=true).",
+        "8. Valuation assessment: fair (PE 18.43, PEG 0.48, EV/EBITDA 13.31 per valuation_snapshot.valuation_assessment='fair').",
+        "9. Macro regime discipline: Overheat/Moderately Restrictive (stress_score=2, equity_allocation_cap=20%, equity_discipline=strict_quality_and_valuation_caution).",
+        "10. Upstream agent synthesis: narrative_event.verdict=null (no catalyst detected); alt_data_verify.verdict=weakly_supported (sparse alt-data, stale narrative); network_effect.classification=absent (beverage distribution, no platform dynamics); quality_long.recommended_action=watch (intact thesis, medium uncertainty).",
+        "11. Price action context: return_5d_pct=-4.47% (recent selling pressure), relative_volume_vs_20d=1.80x (elevated volume on decline), return_60d_pct=+6.08% (underlying resilience).",
+        "12. Analyst sentiment: stable and constructive (10 Buy, 2 Strong Buy, 3 Hold, 0 Sell, 1 Strong Sell as of 2025-03-01; unchanged for 4+ months).",
+        "13. Catalyst assessment: news_event_summary.status=data_unavailable (0 items post-cutoff, 20 dropped post-cutoff); filing_confirmation.status=not_evaluated (no recent 8-K filings); no identifiable catalyst for selloff.",
+        "14. Risk assessment: elevated leverage (D/E 1.38), tight liquidity (current ratio 0.80), no insider buying signal (Form 4 shows 0 transactions in 90d), no forward guidance in packet.",
+        "15. Decision framework: \u00a73.8 fundamental gates PASS + valuation_assessment=fair + no hard-veto conditions tripped \u2192 quality_long entry is mechanically eligible. However, macro regime's strict equity discipline (20% cap), medium uncertainty on selloff catalyst, and absence of upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) warrant WATCH rather than immediate entry.",
+        "16. WATCH rationale: thesis is intact (fundamentals sound, valuation fair, analyst sentiment constructive), but upstream agent triangulation is required before entry. Macro regime's strict equity discipline creates structural headwind. Selloff catalyst is unclear; could indicate hidden weakness not yet disclosed. Recommend WATCH pending (a) upstream agent consensus, (b) catalyst clarity, (c) macro regime shift or earnings confirmation.",
+        "17. Position sizing: decision=watch \u2192 position_size_pct=0.0 (no entry at this time).",
+        "18. Execution plan: order_type='T+1 next-open', side='none', size_pct_of_portfolio=0.0 (no trade)."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-10T09:45:00-04:00",
+        "ticker": "CCEP",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_universal_soft_veto",
+        "evidence_packet_hash": "sha256:5f34c1f56d62a734424e518405c8afac1a18b9a1ed960294192db9810f847c2b"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": null,
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) not present in packet; cannot confirm thesis without multi-agent consensus.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment is stable and constructive (10 Buy, 2 Strong Buy) but descriptor-only per \u00a711.13; cannot drive support_thesis alone.",
+      "ownership_risk_adjustment_note": "Ownership positioning data unavailable (sec_13f not_available_on_current_plan); cannot assess institutional crowding or smart-money positioning.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": "No insider buying signal (Form 4 shows 0 transactions in 90d); no management conviction evident.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-10T09:30:00-04:00",
+      "execution_timestamp": "2025-03-10T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:278c3ce41dda0a607d38aa9876a16fe9e029b0216e75aa7ded414f795e0281ca",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

@@ -1,0 +1,1120 @@
+{
+  "trigger_id": "2b963aeccf68",
+  "ticker": "XHLD",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-24T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 199.84,
+  "trigger_cost_usd": 0.26156,
+  "cumulative_cost_usd": 8.310935,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "XHLD",
+    "name": "XHLD",
+    "close": 32.25,
+    "prior_close": 21,
+    "change": 16.950000000000003,
+    "change_pct": 80.71428571428572,
+    "volume": 7190851.466667,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-24",
+    "prior_trading_day": "2025-03-21",
+    "available_as_of": "2025-03-24T16:00:00-05:00",
+    "today_open": 37.95,
+    "today_volume": 7190851.466667,
+    "eps_ttm": -1.2735,
+    "operating_margin_ttm": -50.63752276867031,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-09-30 00:00:00",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:f2dd66e0b264d19b1e79a3d5e9addcd18c93a5b1113aacb897b01b8edca6058f",
+  "locked_decision_id": "sha256:23211ea3432dc65c84aafcc5fe872eff80fd0f8012bae8ce1dcc73b122771b70",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1.0",
+    "prompt_version": "2026-05-03_universal_soft_veto",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "XHLD",
+    "decision_timestamp": "2025-03-24T09:30:00-04:00",
+    "data_available_as_of": "2025-03-24T09:30:00-04:00",
+    "decision_or_assessment": "surge_short_entry_decision",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.return_5d_pct (201.7% surge)",
+      "price_snapshot.trigger_day_open (37.95 vs prior_close 14.96 = 153.7% gap)",
+      "valuation_snapshot.pe_ratio (-0.164, negative earnings)",
+      "valuation_snapshot.net_margin_pct_ttm (-628.51%, severe losses)",
+      "corporate_calendar.earnings (4 past earnings, all negative EPS)",
+      "filing_confirmation.sec_8k (3 8-K filings in 90d, most recent 2025-03-24)",
+      "sentiment_community_ownership_evidence.sec_form4 (5 insider purchases, net +12.4k USD)",
+      "alternative_data_features.attention.wikipedia_pageviews (minimal traffic, max 7 views)",
+      "news_event_summary.status (data_unavailable, 0 items in window)",
+      "macro_regime (Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution)",
+      "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+      "upstream_agent_outputs.alt_data_verify.verdict (narrative_contradicted)",
+      "upstream_agent_outputs.surge_short.recommended_action (watch)",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard veto tripped)"
+    ],
+    "evidence_missing": [
+      "news_event_summary.items (0 rows post-cutoff; 20 items dropped post-cutoff)",
+      "fundamental_snapshot.snapshot_quarter (all fields null; insufficient_evidence status)",
+      "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)",
+      "narrative_price_gap_assessment (not_evaluated, pending agent LLM reasoning)"
+    ],
+    "reasoning_summary": "XHLD exhibits a 201.7% 5-day surge with 153.7% gap-open on decision day, accompanied by 3.8x relative volume. The surge is mechanically real. However, the bear thesis is STRONG on fundamentals (net_margin -628.51%, ROE -4.26%, all recent EPS negative) and WEAK on narrative corroboration (news_event_summary returns 0 items in decision window; 8-K fulltext is stub mode; Wikipedia pageviews minimal). The Narrative Agent rates the catalyst as 'unsupported_claim' (low confidence). The Alt-Data Verify Agent rates the narrative as 'narrative_contradicted' (structural absence of corroborating evidence). The Surge-Short Agent recommends 'watch' (not short) due to conflicting insider buying signal (5 Form 4 purchases by Director Price at $1.23\u2013$1.265, contradicting the short thesis). The Risk Agent confirms no hard veto applies. The macro regime (Overheat/Moderately Restrictive) is unfavorable for speculative rallies. DECISION RATIONALE: The preponderance of evidence supports a bear thesis on fundamentals and narrative-price gap, but the insider buying (5 purchases, net +$12.4k USD, all at prices well below the surge) is a material contradicting signal that suggests insiders have confidence in a catalyst not visible in the packet. The absence of news is itself a red flag (either the catalyst is not yet public, or the news adapter failed), but it also limits confidence in the short thesis. The Surge-Short Agent's 'watch' recommendation reflects this uncertainty. Per \u00a713.6 SOFT_REASONING and the preponderance-of-evidence framework, the conflicting insider signal and missing catalyst narrative warrant a WATCH posture rather than an immediate short entry. If the 8-K catalyst is revealed to be positive (M&A, partnership, major contract), the short thesis is invalidated. If insider buying continues or accelerates, the thesis is further weakened. If news remains absent and fundamentals deteriorate further, the short thesis strengthens and a short entry becomes warranted. WATCH is the appropriate decision given the current evidence balance.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If the 8-K fulltext (currently stub) reveals a material positive catalyst (M&A, partnership, FDA approval, major contract), the short thesis is invalidated.",
+      "If news_event_summary post-cutoff reveals a major catalyst not visible in the packet, the narrative-price gap narrows and the short thesis weakens.",
+      "If insider buying accelerates significantly above current levels (>$50k/week), it signals confidence in a turnaround and contradicts the short thesis.",
+      "If fundamental_snapshot becomes available and shows positive revenue growth or path to profitability, the thesis is challenged.",
+      "If macro regime shifts to risk-on and equity_discipline relaxes, momentum may persist longer than expected."
+    ],
+    "risk_flags": [
+      "Insider buying by Director Price (5 purchases, net +12.4k USD) contradicts short thesis; insiders may have information not in packet.",
+      "Micro-cap liquidity risk: 3.9M shares traded on decision day; short squeeze risk if position becomes crowded.",
+      "Fundamental data incomplete: fundamental_snapshot.status = insufficient_evidence; cannot fully assess earnings quality or cash burn.",
+      "News narrative absent: news_event_summary returns 0 items in decision window; catalyst may be real but not captured in packet.",
+      "Macro headwind: Overheat regime with strict equity discipline may suppress speculative rallies, supporting short thesis.",
+      "Wikipedia pageviews minimal (max 7 views): low retail attention suggests momentum may be institutional or algorithmic, not retail-driven meme.",
+      "8-K filing text is stub mode: cannot verify actual catalyst substance; decision is based on incomplete information."
+    ],
+    "suggested_improvements": [
+      "Obtain full text of 2025-03-24 8-K filing (Item 8.01, 9.01) to identify the specific catalyst driving the surge.",
+      "Fetch earnings call transcript or investor presentation from the most recent earnings date to assess management commentary on profitability path.",
+      "Cross-check insider buying with insider sales history (Form 4 sales) to assess net insider sentiment; 5 purchases with 0 sales is bullish for insiders.",
+      "Verify whether the surge is driven by a specific news event (press release, analyst upgrade, short squeeze) not captured in the news_event_summary window.",
+      "Assess short interest and borrow availability to evaluate short-squeeze risk and execution feasibility.",
+      "Monitor for follow-up news or earnings announcements that may validate or invalidate the surge narrative."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "20 news items dropped because publishedDate > cutoff; decision window has 0 items. Catalyst narrative may be real but not visible in packet."
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "fundamental_snapshot.status = insufficient_evidence; all snapshot_quarter fields null. Cannot assess earnings quality, cash burn, or balance-sheet strength."
+      },
+      {
+        "kind": "stub_data",
+        "severity": "warning",
+        "detail": "sec_8k_fulltext: stub mode (deterministic, not ground truth). OpenCLI adapter not installed; cannot verify actual 8-K content."
+      },
+      {
+        "kind": "ticker_mismatch_in_alt_data",
+        "severity": "warning",
+        "detail": "wikipedia_pageviews adapter returned 'XHLD-FM' (radio station article), not equity XHLD. Pageviews (0\u20137 per day) are not corroborating a 201.7% equity surge."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet lacks a clear narrative catalyst for the surge. news_event_summary returns 0 items in the decision window, and the 8-K filing text is stubbed. This structural absence is itself a bear-thesis signal per \u00a713.6 SOFT_REASONING, but it also limits confidence in the short thesis because the true catalyst may exist outside the packet. Insider buying by Director Price is a material contradicting signal that the schema treats as descriptor-only per \u00a711.6, but it is a hard-to-fake T1 signal of insider confidence that must be weighed against the short thesis. The macro regime (Overheat/Moderately Restrictive) is a tailwind for the short thesis but is not a primary driver of the decision.",
+    "recommended_followups": [
+      "Obtain and parse the full 2025-03-24 8-K filing to identify the specific catalyst (Item 8.01 Other Events, Item 9.01 Financial Statements).",
+      "Verify insider buying context: is Director Price a founder, major shareholder, or recent hire? Does the buying pattern suggest confidence in a turnaround or routine portfolio rebalancing?",
+      "Check for short-squeeze risk: obtain current short interest, days-to-cover, and borrow availability before entering short position.",
+      "Monitor for follow-up news or earnings announcements that may validate or invalidate the surge narrative.",
+      "Assess whether the surge is driven by a specific sector rotation, index inclusion, or algorithmic event not captured in the packet."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "watch",
+    "position_size_pct": 0.0,
+    "reason": "Conflicting signals: bear thesis on fundamentals (net_margin -628.51%, all EPS negative) and narrative-price gap (news absent, 8-K unverified) supported by Narrative Agent (unsupported_claim) and Alt-Data Verify Agent (narrative_contradicted). However, insider buying (5 Form 4 purchases, net +$12.4k USD, Director Price at $1.23\u2013$1.265) contradicts short thesis and suggests insiders have confidence. Surge-Short Agent recommends watch (not short) due to conflicting signals. Macro regime (Overheat/Moderately Restrictive) is unfavorable for speculative rallies. No hard veto applies. WATCH posture allows monitoring for catalyst revelation, insider activity, and fundamental updates before committing to short entry.",
+    "risk_notes": [
+      "Insider buying contradicts short thesis; insiders may have information not in packet.",
+      "Micro-cap liquidity and short-squeeze risk are material execution concerns.",
+      "Fundamental data incomplete; cannot fully assess earnings quality or cash burn.",
+      "News narrative absent; catalyst may be real but not captured in packet.",
+      "8-K filing text is stub mode; cannot verify actual catalyst substance."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Candidate type is surge_short; \u00a75.13(a) applies to quality_long only. Not applicable."
+      },
+      {
+        "name": "short_position_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Surge-short candidate; no existing position data in packet. Single-position cap (5%) and sleeve cap (10%) not breached by proposed entry. Decision is watch (position_size_pct=0.0); no position opened."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags array scanned; no flag with severity='critical'. Warnings and info-level flags present (stub_data, news_post_cutoff_filtered, fundamentals_partial) but none critical per \u00a75.10 definition."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate type is surge_short; \u00a75.13(d) INAPPLICABLE per \u00a75.17. Veto does not apply to surge_short candidates."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true; envelope.lookahead_violations=[]. No lookahead detected. Veto not tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "candidate_type=surge_short",
+      "\u00a72.1 pre-filter: prior_close \u2192 today_open \u2265+50% gap (153.7% gap confirmed)",
+      "\u00a72.9\u2013\u00a72.12 hard never-short filter: no disqualifying conditions detected",
+      "\u00a75.13 hard-veto conditions: none tripped",
+      "\u00a75.17 anti-pollution exemption for surge_short: applicable",
+      "\u00a713.6 SOFT_REASONING: preponderance-of-evidence framework applied",
+      "Narrative Agent verdict: unsupported_claim (low confidence)",
+      "Alt-Data Verify Agent verdict: narrative_contradicted (structural absence of corroborating evidence)",
+      "Surge-Short Agent verdict: watch (conflicting insider signal)",
+      "Risk Agent verdict: no hard veto",
+      "PM aggregation: conflicting signals (bear thesis on fundamentals vs. insider buying confidence) warrant WATCH posture"
+    ],
+    "decision_log": [
+      "2025-03-24T09:30:00-04:00 | ENVELOPE CHECK: data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[] \u2192 PIT-safe",
+      "2025-03-24T09:30:00-04:00 | HARD-VETO EVALUATION: \u00a75.13(a)-(e) conditions checked; none tripped",
+      "2025-03-24T09:30:00-04:00 | CANDIDATE TYPE: surge_short; \u00a75.17 anti-pollution exemption applies",
+      "2025-03-24T09:30:00-04:00 | NARRATIVE AGENT INPUT: verdict=unsupported_claim, confidence=low, catalyst_specificity_score=0.25, vague_narrative_flag=true",
+      "2025-03-24T09:30:00-04:00 | ALT-DATA VERIFY AGENT INPUT: verdict=narrative_contradicted, narrative_price_gap_band=high, evidence_score=0.15",
+      "2025-03-24T09:30:00-04:00 | SURGE-SHORT AGENT INPUT: recommended_action=watch (not short), confidence=medium, short_thesis_status=valid but weakened by insider buying",
+      "2025-03-24T09:30:00-04:00 | RISK AGENT INPUT: no hard veto applies; advisory conditions not blocking",
+      "2025-03-24T09:30:00-04:00 | FUNDAMENTAL ASSESSMENT: net_margin_pct_ttm=-628.51%, ROE=-4.26%, ROA=-1.63%, all 4 recent EPS negative \u2192 severe distress",
+      "2025-03-24T09:30:00-04:00 | NARRATIVE-PRICE GAP ASSESSMENT: 201.7% 5-day surge with 153.7% gap-open; news_event_summary returns 0 items in decision window; 8-K fulltext is stub mode (unverifiable); Wikipedia pageviews minimal (max 7 views) \u2192 structural absence of corroborating narrative",
+      "2025-03-24T09:30:00-04:00 | INSIDER BUYING SIGNAL: Director Price David Richard executed 5 Form 4 purchases (2025-02-27 to 2025-03-14) totaling $12,376 USD at prices $1.23\u2013$1.265 \u2192 contradicts short thesis; suggests insider confidence in catalyst not visible in packet",
+      "2025-03-24T09:30:00-04:00 | MACRO REGIME: Overheat/Moderately Restrictive (stress_score=2, equity_discipline=strict_quality_and_valuation_caution) \u2192 unfavorable for speculative rallies; supports short thesis",
+      "2025-03-24T09:30:00-04:00 | PREPONDERANCE-OF-EVIDENCE SYNTHESIS: Bear thesis on fundamentals (severe losses, negative multiples) and narrative-price gap (news absent, 8-K unverified) is STRONG. However, insider buying (5 purchases, net +$12.4k USD) is a material contradicting signal that suggests insiders have information not in packet. Surge-Short Agent's 'watch' recommendation reflects this uncertainty. Conflicting signals warrant WATCH posture rather than immediate short entry.",
+      "2025-03-24T09:30:00-04:00 | DECISION: watch (position_size_pct=0.0); no position opened pending catalyst revelation, insider activity monitoring, and fundamental updates",
+      "2025-03-24T09:30:00-04:00 | ADAS LAGGED CONTEXT: prior-day trigger (ALUR, 2025-03-21) showed high confidence_dispersion (std_proxy=0.866) with 3 dissenting agents; PM notes similar uncertainty pattern in XHLD (conflicting insider vs. narrative signals); WATCH is appropriate given evidence ambiguity"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-24T09:45:00-04:00",
+      "ticker": "XHLD",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026-05-03_universal_soft_veto",
+      "evidence_packet_hash": "sha256:d5e926d368e5a594a521ef4187f9f03f101830391c5851d271660088afcee2d1"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews for 'XHLD-FM' (radio station article, not equity) show minimal traffic (max 7 views on 2025-03-19, baseline 0\u20132 views). No abnormal retail attention detected. Meme-attention adapter not evaluated.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "8-K filing text is stub mode (binary not installed); actual catalyst substance unverifiable. News_event_summary returns 0 items in decision window; corroborating narrative absent. Insider buying (5 Form 4 purchases) is hard-to-fake T1 signal but contradicts short thesis.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Insider buying contradicts short thesis; conflicting signals warrant WATCH posture pending catalyst revelation and insider activity monitoring.",
+    "sentiment_risk_adjustment_note": "FMP sentiment shows 1 Buy initiation by Litchfield Hills on 2025-03-03 at $1.17 (predates surge by 3 weeks). No sentiment data post-cutoff available. Sentiment is descriptor-only per \u00a711.6; not a trading signal.",
+    "ownership_risk_adjustment_note": "Director Price David Richard executed 5 Form 4 purchases (2025-02-27 to 2025-03-14) totaling $12,376 USD at prices $1.23\u2013$1.265. SEC 13F data unavailable (not_available_on_current_plan); cannot assess institutional concentration. Insider buying is supportive of bullish thesis but contradicts short thesis.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "medium",
+    "institutional_sponsorship_note": "SEC 13F data unavailable; cannot assess institutional sponsorship. Analyst initiation (Litchfield Hills, Buy, 2025-03-03 at $1.17) predates surge by 3 weeks and does not explain the 2025-03-24 spike.",
+    "smart_money_benchmark_note": "Director insider buying (5 Form 4 purchases, net +$12.4k USD) is consistent with bullish positioning. However, purchase prices ($1.23\u2013$1.265) are 16\u201317x below surge price ($21 EOD 2025-03-21), suggesting either (1) a massive undisclosed catalyst, or (2) data quality issue. Insider confidence is a material signal but does not validate the surge price.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-24T09:30:00-04:00",
+    "execution_timestamp": "2025-03-24T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:c9eff5b9f7a8690b5ec7d4e665826a22e4445c0b6d8f964bed19c40f2954ebe5",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": 2.5,
+    "score_components": {
+      "narrative_vague_or_fabricated": 2.0,
+      "alt_data_narrative_contradicted": 2.0,
+      "alt_data_expected_blocks_absent": 1.0,
+      "insider_buying_contradicts": -2.0,
+      "macro_regime_supports_short": 0.5
+    },
+    "score_threshold_band": "discretion",
+    "pm_override_reason": "Score band is 'discretion' (2.5 \u2208 [0, 1]); PM exercises full discretion. Decision is WATCH (not short) due to conflicting insider buying signal (5 Form 4 purchases, net +$12.4k USD) that contradicts the short thesis. Insider confidence in a catalyst not visible in the packet warrants monitoring before short entry. Surge-Short Agent's 'watch' recommendation aligns with this discretionary judgment."
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1.0",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "XHLD",
+      "decision_timestamp": "2025-03-24T09:30:00-04:00",
+      "data_available_as_of": "2025-03-24T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_date",
+        "filing_confirmation.filing_index.sec_edgar",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "price_snapshot.day_high",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "news_event_summary.status",
+        "news_event_summary.items_dropped_post_cutoff"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items in window; 20 dropped post-cutoff)",
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)",
+        "fundamental_snapshot (status=insufficient_evidence)",
+        "alternative_data_features.tech_activity (github unmapped)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "information_integrity_assessment.claim_summary (null)",
+        "narrative_price_gap_assessment (not_evaluated, pending Agent 03)"
+      ],
+      "reasoning_summary": "XHLD exhibits a dramatic 5-day return of +201.72% (from ~$8.95 to $21 EOD 2025-03-21, with trigger_day_open at $37.95 on 2025-03-24), accompanied by 3.8x relative volume spike. A Form 8-K was filed on 2025-03-24 (decision_timestamp), confirming a material event. However, the news_event_summary block is data_unavailable: 0 items within the cutoff window, with 20 items dropped post-cutoff. The filing_confirmation.full_text.sec_8k_fulltext is in stub mode (deterministic placeholder, not ground truth), so the actual substance of the 8-K Item 8.01 / 9.01 disclosure cannot be verified from the packet. Insider Form 4 data shows director David Richard Price executing 5 purchases between 2025-02-27 and 2025-03-14 (net +$12,376 USD, 10,000 shares post-transaction), which is consistent with confidence in the company but does not itself explain the 200%+ move. Wikipedia pageviews for 'XHLD-FM' show modest activity (peak 7 views on 2025-03-19, baseline 0\u20132 views), inconsistent with a major catalyst event. FMP sentiment shows 1 Buy rating initiated by Litchfield Hills on 2025-03-03 at $1.17 price, but this predates the surge and does not explain the 2025-03-24 spike. The company's valuation metrics are deeply negative (PE=-0.164, net_margin=-628.51%, ROE=-4.26%, ROA=-1.63%), indicating distress or restructuring. The macro regime is 'Overheat / Moderately Restrictive' (stress_score=2), which does not support broad equity enthusiasm. CONCLUSION: A material event (8-K filing) occurred on the decision date, but its substance is opaque due to stub-mode filing text and absence of corroborating news. The price action is extreme and volume is elevated, but the catalyst narrative cannot be concretely specified from the evidence packet. The insider buying and analyst initiation are positive signals but predate the surge. The absence of news coverage despite a 200%+ move is itself a red flag \u2014 either the event is not yet public, or the news adapter failed to capture it.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K full text (when retrieved in ground-truth mode) reveals a material adverse event (bankruptcy filing, delisting notice, reverse split, or going-concern warning), the positive value_creation_assessment would be invalidated.",
+        "If the 200%+ price move is later revealed to be a data error (e.g., split adjustment not applied, or quote corruption), the entire catalyst narrative collapses.",
+        "If news coverage emerges post-cutoff showing the 8-K was a routine disclosure (e.g., officer resignation, minor contract), the 'material event' framing would be downgraded.",
+        "If insider buying is later revealed to be forced (e.g., option exercise, margin call liquidation), the confidence signal weakens.",
+        "If the company enters bankruptcy or is delisted within 30 days, the catalyst would be reframed as a distress event, not a positive catalyst."
+      ],
+      "risk_flags": [
+        "CRITICAL: Filing text is stub mode (mock_fallback), not ground truth. The actual Item 8.01 / 9.01 disclosure is unknown.",
+        "CRITICAL: News event summary is data_unavailable (0 items in window). No corroborating news article or press release is present in the packet.",
+        "HIGH: Extreme price move (+201.72% in 5 days) with no visible narrative support in the packet. This is consistent with either a major undisclosed catalyst or a data anomaly.",
+        "HIGH: Negative fundamentals (PE=-0.164, net_margin=-628.51%) suggest the company is in distress. A 200%+ move on distressed equity is high-risk momentum, not value creation.",
+        "HIGH: Wikipedia pageviews (XHLD-FM) show no abnormal spike. If the catalyst were major news, public attention would be expected.",
+        "MEDIUM: Insider buying (5 purchases, $12.4K total) is positive but modest in scale and predates the surge. Does not explain the 2025-03-24 spike.",
+        "MEDIUM: Analyst initiation (Litchfield Hills Buy on 2025-03-03 at $1.17) predates the surge by 3 weeks. Not a fresh catalyst.",
+        "MEDIUM: Macro regime is 'Overheat / Moderately Restrictive' (stress_score=2), which does not support broad equity enthusiasm. A 200%+ move in this regime is contrarian.",
+        "LOW: Alternative data adapters (github, sec_13f) failed or returned no data. Cannot corroborate tech/institutional narrative.",
+        "LOW: Fundamental snapshot is insufficient_evidence. Cannot assess whether the move is justified by earnings, revenue, or cash flow."
+      ],
+      "suggested_improvements": [
+        "Retrieve the full text of the 2025-03-24 8-K filing (Item 8.01 / 9.01) in ground-truth mode (not stub) to identify the actual catalyst.",
+        "Cross-check news sources (Bloomberg, Reuters, Yahoo Finance, Seeking Alpha) for coverage of XHLD on or before 2025-03-24 to identify the trigger article.",
+        "Verify the price data: confirm that the $37.95 trigger_day_open and $21 EOD close on 2025-03-24 are not data errors (e.g., split adjustment, quote corruption).",
+        "Retrieve the company's latest 10-K or 10-Q to assess whether the negative fundamentals (PE=-0.164, net_margin=-628.51%) indicate restructuring, bankruptcy risk, or data lag.",
+        "Check SEC EDGAR for any concurrent filings (DEF 14A, proxy, bankruptcy petition) that might explain the 8-K.",
+        "Monitor insider Form 4 filings post-decision_timestamp to see if director Price continues buying or if other insiders sell (which would contradict the positive signal).",
+        "Assess whether the 200%+ move is consistent with the company's market cap, float, and typical daily volume. A small-cap or micro-cap with low float can move 200%+ on modest news.",
+        "Retrieve analyst reports from Litchfield Hills and other sources to assess the quality of the Buy initiation and whether it was revised post-2025-03-03."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "critical",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext is in stub mode (mock_fallback). The actual 8-K text is not available; the payload is a placeholder. This is the primary evidence block for the catalyst, and it is not ground truth."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "news_event_summary: 0 items in window, 20 items dropped post-cutoff. The news adapter returned no articles <= 2025-03-24T09:30:00. This is the second-most important evidence block for catalyst identification, and it is empty."
+        },
+        {
+          "kind": "data_unavailable",
+          "severity": "high",
+          "detail": "fundamental_snapshot: status=insufficient_evidence. No PIT-safe income statement, balance sheet, or cash flow data available. Cannot assess whether the move is justified by fundamentals."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "medium",
+          "detail": "alternative_data_features.tech_activity.github_public: unmapped_ticker. No GitHub data available to corroborate a tech/software narrative."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "medium",
+          "detail": "sentiment_community_ownership_evidence.sec_13f: not_available_on_current_plan. No institutional ownership data available."
+        },
+        {
+          "kind": "not_evaluated",
+          "severity": "medium",
+          "detail": "narrative_price_gap_assessment: not_evaluated. Agent 03 has not yet assessed the gap between narrative and price action."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "price_snapshot.live_quote at 2026-05-07T20:00:00+00:00 is after allowed_data_cutoff. Last EOD close (2025-03-21, $21) is used for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the v1 generator has two critical gaps: (1) filing_confirmation.full_text.sec_8k_fulltext is in stub mode because the OpenCLI sec_gov adapter is not shipped in the test environment. This makes it impossible to verify the actual catalyst. (2) news_event_summary is data_unavailable because all news items were dropped post-cutoff. The packet shows 20 items were dropped, but they are not included in the evidence. A replay-safe design would include a 'dropped_items_summary' field with titles/sources of the filtered articles, so the agent can reason about what was filtered. Without this, the agent cannot assess whether the missing news is material or routine. Recommendation: (a) Ship the OpenCLI sec_gov adapter or provide a fallback text extraction. (b) Include a 'dropped_items_summary' in news_event_summary with at least title, source, and publishedDate for items filtered post-cutoff.",
+      "recommended_followups": [
+        "URGENT: Retrieve the full text of SEC filing 0001641172-25-000285 (2025-03-24 8-K) from https://www.sec.gov/Archives/edgar/data/2030954/000164117225000285/form8-k.htm and parse Item 8.01 and Item 9.01 to identify the actual catalyst.",
+        "URGENT: Search news archives (Bloomberg, Reuters, Yahoo Finance, Seeking Alpha, MarketWatch) for XHLD coverage on 2025-03-24 or 2025-03-23 to identify the trigger article and assess narrative specificity.",
+        "HIGH: Verify the price data (trigger_day_open=$37.95, day_high=$28.2, EOD=$21) by cross-checking against multiple sources (Yahoo Finance, Google Finance, IEX Cloud) to rule out data corruption.",
+        "HIGH: Retrieve the company's latest 10-K or 10-Q (as of 2025-03-24) to assess the severity of negative fundamentals and determine if the company is in restructuring or bankruptcy.",
+        "HIGH: Monitor insider Form 4 filings for the 10 trading days post-decision_timestamp to assess whether director Price continues buying or if other insiders sell.",
+        "MEDIUM: Assess the company's market cap, float, and typical daily volume to determine if a 200%+ move is plausible given the news catalyst.",
+        "MEDIUM: Retrieve analyst reports from Litchfield Hills and other sources to assess the quality of the Buy initiation and whether it was revised post-2025-03-03.",
+        "MEDIUM: Check if the company announced a reverse split, merger, or other corporate action that might explain the price move."
+      ],
+      "catalyst_type": "material_event_8k_filing_unspecified_substance",
+      "catalyst_specificity_score": 0.25,
+      "vague_narrative_flag": true,
+      "company_claim": "On 2025-03-24, XHLD filed a Form 8-K disclosing a material event (Item 8.01 / 9.01). The substance of the event is unknown because the filing text is in stub mode (mock_fallback) and not ground truth. No corroborating news article is present in the packet (news_event_summary is data_unavailable). The price action is extreme (+201.72% in 5 days, trigger_day_open=$37.95, EOD=$21), but the catalyst narrative cannot be concretely specified. Insider buying (director Price, 5 purchases, $12.4K, 2025-02-27 to 2025-03-14) and analyst initiation (Litchfield Hills Buy, 2025-03-03, $1.17) are positive signals but predate the surge and do not explain the 2025-03-24 spike.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "material_event_8k_filing (confirmed by filing_confirmation.SEC_8K_confirmation=true)",
+        "insider_buying_signal (confirmed by sec_form4: 5 purchases, net +$12.4K USD)",
+        "analyst_initiation (confirmed by fmp_sentiment: Litchfield Hills Buy on 2025-03-03)",
+        "extreme_price_move_without_visible_narrative (price_snapshot.return_5d_pct=+201.72%, but news_event_summary.items=0)"
+      ],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "XHLD",
+      "decision_timestamp": "2025-03-24T09:30:00-04:00",
+      "data_available_as_of": "2025-03-24T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification for XHLD surge event (5d return +201.7%)",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "filing_confirmation.sec_edgar (3 8-K rows)",
+        "sentiment_community_ownership_evidence.sec_form4 (5 insider purchase rows)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (1 Buy initiation)",
+        "alternative_data_features.attention.wikipedia_pageviews (30 rows, low views)",
+        "valuation_snapshot.pe_ratio (negative)",
+        "valuation_snapshot.net_margin_pct_ttm (severely negative)",
+        "corporate_calendar.earnings (4 past events, all negative EPS)",
+        "macro_regime (Overheat / Moderately Restrictive)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff; 20 dropped post-cutoff)",
+        "fundamental_snapshot (status=insufficient_evidence; no PIT-safe quarterly data)",
+        "sec_8k_fulltext (stub mode; binary not installed; cannot verify filing content)",
+        "industry-specific alt-data (no software_devtools_adapter, biotech_clinical_adapter, etc. wired)",
+        "github_public (unmapped_ticker; no developer activity corroboration)",
+        "sec_13f (not_available_on_current_plan; no institutional ownership data)",
+        "opencli_evidence (not_connected; no web-scrape corroboration of narrative)",
+        "polygon_news (0 rows in 7-day window; no news corroboration)"
+      ],
+      "reasoning_summary": "XHLD exhibits a 201.7% 5-day surge with 3.8x relative volume on 2025-03-24 opening. The packet shows three hard-to-fake signals: (1) SEC 8-K filings on 2025-03-24, 2025-03-18, 2025-02-21 (Items 1.01, 7.01, 8.01, 9.01 \u2014 material agreement / other events); (2) insider director (Price David Richard) purchased 15,000 shares across 5 Form 4 filings (2025-02-27 to 2025-03-14) totaling $12,376 USD, all at prices $1.23\u2013$1.265, well below the surge price of $21 EOD 2025-03-21; (3) analyst initiation (Litchfield Hills, Buy, 2025-03-03 at $1.17). However, the narrative-price gap is EXTREME and largely UNVERIFIED: (A) No news items exist in the packet <= cutoff (20 dropped post-cutoff); polygon_news returned 0 rows for 7 days prior. (B) Wikipedia pageviews for 'XHLD-FM' (a radio station, not the equity) show minimal traffic (max 7 views on 2025-03-19, mostly 0\u20132 views). This is a CRITICAL MISMATCH: the ticker XHLD appears to be conflated with a radio-station article. (C) Fundamental data is severely distressed: PE=-0.164, net margin=-628.51%, ROA=-1.63%, all four trailing earnings negative. (D) Valuation is inverted (negative multiples). (E) No corroborating news, no industry-specific alt-data (GitHub, clinical trials, etc.), no OpenCLI web evidence. (F) The 8-K fulltext is STUB MODE \u2014 the binary is not installed; we cannot verify what the material agreement actually says. (G) Insider buying at $1.23\u2013$1.265 is consistent with a bullish signal, but the magnitude of the surge ($21 EOD) is 16\u201317x the insider purchase price, suggesting either (i) a massive undisclosed catalyst, (ii) retail/meme-driven momentum unrelated to fundamentals, or (iii) data quality issues (ticker mismatch, stale/incorrect pricing). The absence of corroborating news, the negative fundamentals, the stub-mode filing, and the Wikipedia-pageview mismatch all point to STRUCTURAL ABSENCE OF NARRATIVE SUPPORT relative to the price move. For a surge_short candidate, this absence pattern IS bear-thesis evidence.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K fulltext (currently stub) reveals a transformative acquisition, partnership, or regulatory approval, the bear thesis weakens.",
+        "If news items dropped post-cutoff contain a major catalyst (FDA approval, contract win, etc.), the narrative gap narrows.",
+        "If the Wikipedia pageviews are a data-quality artifact and the true ticker-specific attention is higher, the meme-attention signal strengthens.",
+        "If fundamental data is stale and Q1 2025 earnings show profitability, the valuation inversion is less concerning.",
+        "If insider buying accelerates post-decision_timestamp, it may signal confidence in a catalyst."
+      ],
+      "risk_flags": [
+        "CRITICAL: Wikipedia pageviews article is 'XHLD-FM' (radio station), not the equity XHLD. Ticker mismatch suggests alt-data adapter confusion or data quality issue.",
+        "CRITICAL: 8-K fulltext is stub mode; binary not installed; cannot verify filing content.",
+        "CRITICAL: Fundamental snapshot status=insufficient_evidence; no PIT-safe quarterly data available.",
+        "CRITICAL: News event summary has 0 items <= cutoff; 20 items dropped post-cutoff (not visible to agent).",
+        "HIGH: Valuation multiples are inverted (PE=-0.164, EV/EBITDA=-0.438); net margin=-628.51% (severely unprofitable).",
+        "HIGH: All four trailing earnings (Q3 2024, Q2 2024, Q1 2024, Q4 2023) show negative EPS.",
+        "HIGH: Insider buying at $1.23\u2013$1.265 vs. surge price of $21 EOD suggests 16\u201317x disconnect.",
+        "MEDIUM: No industry-specific alt-data wired (software, biotech, etc.); cannot corroborate sector-specific narrative.",
+        "MEDIUM: GitHub adapter returned unmapped_ticker; no developer activity corroboration.",
+        "MEDIUM: SEC 13F unavailable (not_available_on_current_plan); no institutional ownership data.",
+        "MEDIUM: Polygon news returned 0 rows for 7-day window; no news corroboration.",
+        "MEDIUM: Macro regime is Overheat / Moderately Restrictive (stress_score=2); equity_discipline=strict_quality_and_valuation_caution \u2014 XHLD's negative fundamentals are especially risky in this regime."
+      ],
+      "suggested_improvements": [
+        "Verify ticker mapping: confirm XHLD equity ticker vs. XHLD-FM radio station in Wikipedia adapter.",
+        "Install sec_8k_fulltext binary or enable OpenCLI web scrape to retrieve actual 8-K text.",
+        "Fetch news items post-cutoff (in a separate analysis) to understand what catalyst drove the surge.",
+        "Wire industry-specific adapters (software_devtools, biotech_clinical, etc.) to corroborate sector narrative.",
+        "Retrieve Q1 2025 earnings (when available) to assess whether fundamentals have improved.",
+        "Cross-check insider transaction prices ($1.23\u2013$1.265) against historical price data to confirm no data error.",
+        "Investigate whether the surge is driven by retail/meme attention (Reddit, Twitter) or institutional catalyst."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ticker_mismatch_in_alt_data",
+          "severity": "critical",
+          "detail": "wikipedia_pageviews adapter returned 'XHLD-FM' (radio station article), not equity XHLD. Pageviews (0\u20137 per day) are not corroborating a 201.7% equity surge."
+        },
+        {
+          "kind": "stub_data",
+          "severity": "critical",
+          "detail": "sec_8k_fulltext: stub mode (binary not installed); cannot verify filing content."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe quarterly data available."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > cutoff; cannot assess narrative catalyst."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no developer activity corroboration."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 no institutional ownership data."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "polygon_news: 0 items in [2025-03-17, 2025-03-24] for XHLD."
+        },
+        {
+          "kind": "valuation_inverted",
+          "severity": "warning",
+          "detail": "PE=-0.164, EV/EBITDA=-0.438, net_margin=-628.51%; company is unprofitable."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's alternative_data_features block shows a fallback to wikipedia_pageviews (default adapter) because no industry-specific adapter was selected. The adapter_selection_reason states 'resolved from alt_data_manifest delivery: wikipedia_pageviews', but the article title 'XHLD-FM' is a radio station, not the equity. This suggests either (1) a ticker-mapping error in the Wikipedia adapter seed data, or (2) a fundamental mismatch between the equity ticker and the available alt-data sources. The schema should enforce ticker-to-article validation or flag mismatches explicitly. Additionally, the sec_8k_fulltext stub mode prevents verification of the actual filing content, which is critical for a surge candidate.",
+      "recommended_followups": [
+        "Retrieve the actual 8-K filing text (2025-03-24 accession 0001641172-25-000285) manually or via OpenCLI to verify the material agreement.",
+        "Fetch news items published 2025-03-17 to 2025-03-24 (post-cutoff) to identify the catalyst.",
+        "Confirm insider transaction prices and post-transaction holdings against SEC EDGAR raw data.",
+        "Check whether the surge is correlated with retail/meme attention (Reddit, Twitter, StockTwits).",
+        "Retrieve Q1 2025 earnings (when available) to assess fundamental improvement.",
+        "Verify ticker mapping in Wikipedia adapter; confirm XHLD equity vs. XHLD-FM radio station."
+      ],
+      "verdict": "narrative_contradicted",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "contradicts",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "XHLD exhibits a 201.7% 5-day surge with 3.8x relative volume, but the evidence packet contains NO corroborating narrative catalyst. News items are absent (0 <= cutoff, 20 dropped post-cutoff). Wikipedia pageviews are for a radio station, not the equity. Fundamentals are severely distressed (negative PE, -628.51% net margin, all trailing EPS negative). The 8-K filings exist but their content is unverifiable (stub mode). Insider buying at $1.23\u2013$1.265 is consistent with a bullish signal, but the 16\u201317x disconnect to the surge price ($21 EOD) is unexplained. The macro regime (Overheat / Moderately Restrictive) calls for strict quality caution. The structural absence of news, industry-specific alt-data, and fundamental support relative to the price move is the defining feature of this gap.",
+      "industry_template_used": "default_fallback (no sector identified; wikipedia_pageviews fallback used)",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "No industry-specific adapter wired; fallback to default wikipedia_pageviews per alt_data_manifest delivery. Adapter returned 30 rows for 'XHLD-FM' (radio station article), not equity-specific data.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "SEC 8-K filings (3 rows, Items 1.01/7.01/8.01/9.01) and insider Form 4 purchases (5 rows, $12,376 USD, director Price David Richard, 2025-02-27 to 2025-03-14) are hard-to-fake T1 signals. However, their content and intent are unverified: (1) 8-K fulltext is stub mode; (2) insider buying at $1.23\u2013$1.265 is 16\u201317x below surge price, suggesting either a massive undisclosed catalyst or a data quality issue. Analyst initiation (Litchfield Hills, Buy, 2025-03-03 at $1.17) is T2 but occurred before the surge and at a much lower price. No other hard-to-fake signals (news, regulatory approval, earnings beat, customer wins, etc.) are present in the packet.",
+      "industry_specific_evidence_used": [],
+      "industry_specific_evidence_missing": [
+        "software_devtools_adapter (not wired)",
+        "semiconductor_patent_adapter (not wired)",
+        "biotech_clinical_adapter (not wired)",
+        "consumer_traffic_adapter (not wired)",
+        "bank_regulatory_adapter (not wired)",
+        "airline_travel_adapter (not wired)",
+        "energy_commodity_adapter (not wired)",
+        "auto_mobility_adapter (not wired)",
+        "github_public (unmapped_ticker; failed)",
+        "opencli_evidence (not_connected)"
+      ],
+      "data_quality_warning": "CRITICAL: Wikipedia pageviews article is 'XHLD-FM' (radio station), not equity XHLD. Ticker mismatch renders alt-data assessment unreliable. CRITICAL: sec_8k_fulltext is stub mode; binary not installed; filing content unverifiable. CRITICAL: fundamental_snapshot status=insufficient_evidence; no PIT-safe quarterly data. CRITICAL: news_event_summary has 0 items <= cutoff; 20 items dropped post-cutoff.",
+      "signals": [
+        {
+          "name": "SEC 8-K filings (3 rows, 90-day lookback)",
+          "available": true,
+          "value": 3.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "8-K fulltext content verification",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "Insider Form 4 purchases (5 rows, director Price David Richard)",
+          "available": true,
+          "value": 12376.26,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "Insider purchase price ($1.23\u2013$1.265) vs. surge price ($21 EOD)",
+          "available": true,
+          "value": 16.6,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Analyst initiation (Litchfield Hills, Buy, 2025-03-03 at $1.17)",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "News items <= cutoff",
+          "available": false,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Wikipedia pageviews (XHLD-FM radio station, max 7 views/day)",
+          "available": true,
+          "value": 7.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "PE ratio (negative)",
+          "available": true,
+          "value": -0.164,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Net margin TTM (-628.51%)",
+          "available": true,
+          "value": -628.51,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Trailing EPS (all 4 quarters negative)",
+          "available": true,
+          "value": -0.039,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "5-day return (+201.7%)",
+          "available": true,
+          "value": 201.7,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Relative volume vs. 20d (3.8x)",
+          "available": true,
+          "value": 3.8,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Macro regime (Overheat / Moderately Restrictive, stress_score=2)",
+          "available": true,
+          "value": 2.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "GitHub public activity (unmapped_ticker)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "SEC 13F institutional ownership (not_available_on_current_plan)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "Polygon news (0 rows, 7-day window)",
+          "available": false,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": "OpenCLI not connected; sec_8k_fulltext returned stub mode (binary not installed on PATH). No web-scrape corroboration of narrative available.",
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "sec_8k_fulltext: stub mode; binary not installed; cannot retrieve actual filing text.",
+      "opencli_pit_safety_warning": "8-K filing_date 2025-03-24 is <= allowed_data_cutoff; PIT-safe if content were available. Stub mode prevents verification.",
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [
+        {
+          "claim": "XHLD entered into a material agreement (Item 8.01 / 9.01 on 8-K 2025-03-24)",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "Director Price David Richard purchased 15,000 shares (2025-02-27 to 2025-03-14) at $1.23\u2013$1.265",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "Litchfield Hills initiated coverage with Buy rating on 2025-03-03 at $1.17",
+          "claim_type": "other",
+          "source_tier": "T2"
+        }
+      ],
+      "claim_verification_status": "partially_corroborated",
+      "source_tier_distribution": {
+        "T1": 3,
+        "T2": 1,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "medium",
+      "primary_source_confirmation": true,
+      "reputable_source_confirmation": true,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "Structural absence of corroborating narrative (news, industry-specific alt-data, fundamental support) relative to the 201.7% price surge. 8-K content unverifiable (stub mode). Insider buying at $1.23\u2013$1.265 vs. surge price $21 EOD is unexplained. Macro regime calls for strict quality caution; XHLD fundamentals are severely distressed.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "supportive",
+      "smart_money_support_note": "Director insider buying (5 Form 4 filings, $12,376 USD, 2025-02-27 to 2025-03-14) is consistent with bullish positioning. However, purchase prices ($1.23\u2013$1.265) are 16\u201317x below surge price ($21 EOD 2025-03-21), suggesting either (1) a massive undisclosed catalyst, or (2) data quality issue.",
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": "SEC 13F data unavailable (not_available_on_current_plan); cannot assess institutional concentration.",
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-24T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "news_event_summary.items (0 items <= cutoff; 20 dropped post-cutoff)",
+        "fundamental_snapshot (status=insufficient_evidence)",
+        "sec_8k_fulltext (stub mode; binary not installed)",
+        "polygon_news (0 rows in 7-day window)",
+        "github_public (unmapped_ticker)",
+        "sec_13f (not_available_on_current_plan)",
+        "opencli_evidence (not_connected)"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Agent",
+      "schema_version": "surge_short_agent_output_v0.4",
+      "prompt_version": "surge_short_v0.4_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "XHLD",
+      "decision_timestamp": "2025-03-24T09:30:00-04:00",
+      "data_available_as_of": "2025-03-24T09:30:00-04:00",
+      "decision_or_assessment": "surge_short_evaluation",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (201.7% surge)",
+        "price_snapshot.trigger_day_open (37.95 vs prior_close 14.96 = 153.7% gap)",
+        "valuation_snapshot.pe_ratio (-0.164, negative earnings)",
+        "valuation_snapshot.net_margin_pct_ttm (-628.51%, severe losses)",
+        "valuation_snapshot.roe (-4.26%), roa (-1.63%)",
+        "fundamental_snapshot.status (insufficient_evidence)",
+        "corporate_calendar.earnings (4 past earnings, all negative EPS)",
+        "filing_confirmation.sec_8k (3 8-K filings in 90d, most recent 2025-03-24)",
+        "sentiment_community_ownership_evidence.sec_form4 (5 insider purchases, net +12.4k USD, director Price buying at 0.49-1.27 range)",
+        "alternative_data_features.attention.wikipedia_pageviews (minimal traffic, max 7 views on 2025-03-19)",
+        "news_event_summary.status (data_unavailable, 0 items in window)",
+        "macro_regime (Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 rows post-cutoff; 20 items dropped post-cutoff)",
+        "fundamental_snapshot.snapshot_quarter (all fields null; insufficient_evidence status)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker, 0 rows)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan, 0 rows)",
+        "narrative_price_gap_assessment (not_evaluated, pending agent LLM reasoning)",
+        "news_event_summary.catalyst_type (not_evaluated)",
+        "alternative_data_features.retail_meme_attention (not_evaluated, not_connected)"
+      ],
+      "reasoning_summary": "XHLD surged 201.7% over 5 days (trigger_day_open 37.95 vs prior_close 14.96 = 153.7% gap on decision day). The surge is mechanically real (price_snapshot confirms high volume 3.9M shares, 3.8x avg). However, the bear thesis is STRONG: (1) Fundamental deterioration: net_margin_pct_ttm = -628.51%, ROE = -4.26%, ROA = -1.63%, PE negative (company losing money). (2) Earnings history: all 4 recent quarters show negative EPS (-0.039, -0.016, -0.016, -0.013). (3) Structural absence of corroborating narrative: news_event_summary returns 0 items in the 7-day window (20 items dropped post-cutoff, but none in the decision window). No press release, no earnings call, no partnership announcement visible in the packet. (4) Wikipedia pageviews (alt-data proxy for retail attention) show minimal traffic (max 7 views on 2025-03-19, baseline 0-2 views). No GitHub activity (unmapped ticker). (5) Insider buying (5 Form 4 purchases by Director Price, Feb 27 - Mar 12, avg price ~1.23) is CONTRADICTORY to a short thesis \u2014 insiders buying at $1.23 while stock surges to $37.95 suggests either (a) insiders are wrong, or (b) the surge is disconnected from fundamental value. (6) Macro regime is Overheat/Moderately Restrictive with strict equity discipline \u2014 unfavorable for speculative micro-cap rallies. (7) Filing_confirmation shows 3 8-K filings in 90d (most recent 2025-03-24), but news_event_summary has no corresponding news items in the decision window \u2014 suggests the 8-K may be routine or the catalyst narrative is not publicly visible in the packet. The absence of a clear, verifiable catalyst narrative (news, press release, earnings beat, partnership) combined with severe negative fundamentals and minimal retail attention is the core bear-thesis signal. The insider buying is a complicating factor but does not invalidate the thesis \u2014 insiders can be wrong, and buying at $1.23 does not imply the $37.95 price is justified. Valuation is not justified (PE negative, margins deeply negative, ROE/ROA negative). This is momentum, not value creation.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If news_event_summary post-cutoff reveals a material positive catalyst (M&A, partnership, FDA approval, major contract) that was not visible in the packet, the short thesis weakens.",
+        "If fundamental_snapshot becomes available and shows positive revenue growth or path to profitability, the thesis is challenged.",
+        "If insider buying accelerates significantly above current levels (>$50k/week), it may signal confidence in a turnaround.",
+        "If macro regime shifts to risk-on and equity_discipline relaxes, momentum may persist longer than expected."
+      ],
+      "risk_flags": [
+        "Insider buying by Director Price (5 purchases, net +12.4k USD) contradicts short thesis; insiders may have information not in packet.",
+        "Micro-cap liquidity risk: 3.9M shares traded on decision day; short squeeze risk if position becomes crowded.",
+        "Fundamental data incomplete: fundamental_snapshot.status = insufficient_evidence; cannot fully assess earnings quality or cash burn.",
+        "News narrative absent: news_event_summary returns 0 items in decision window; catalyst may be real but not captured in packet.",
+        "Macro headwind: Overheat regime with strict equity discipline may suppress speculative rallies, supporting short thesis.",
+        "Wikipedia pageviews minimal (max 7 views): low retail attention suggests momentum may be institutional or algorithmic, not retail-driven meme."
+      ],
+      "suggested_improvements": [
+        "Obtain full text of 2025-03-24 8-K filing (Item 8.01, 9.01) to identify the specific catalyst driving the surge.",
+        "Fetch earnings call transcript or investor presentation from the most recent earnings date to assess management commentary on profitability path.",
+        "Cross-check insider buying with insider sales history (Form 4 sales) to assess net insider sentiment; 5 purchases with 0 sales is bullish for insiders.",
+        "Verify whether the surge is driven by a specific news event (press release, analyst upgrade, short squeeze) not captured in the news_event_summary window.",
+        "Assess short interest and borrow availability to evaluate short-squeeze risk and execution feasibility."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; decision window has 0 items. Catalyst narrative may be real but not visible in packet."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status = insufficient_evidence; all snapshot_quarter fields null. Cannot assess earnings quality, cash burn, or balance-sheet strength."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot ratios are TTM, not PIT-safe. Net_margin_pct_ttm = -628.51% is extreme and may reflect a single bad quarter or accounting event."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "info",
+          "detail": "github_public: unmapped_ticker \u2014 no developer activity data available (not applicable for non-tech company)."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "info",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 no institutional ownership data available."
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext: stub mode (deterministic, not ground truth). OpenCLI adapter not installed; cannot verify actual 8-K content."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks a clear narrative catalyst for the surge. news_event_summary returns 0 items in the decision window, and the 8-K filing text is stubbed. This structural absence is itself a bear-thesis signal per \u00a713.6 SOFT_REASONING, but it also limits confidence in the short thesis because the true catalyst may exist outside the packet. Insider buying by Director Price is a complicating factor that the schema does not explicitly weight; the prompt treats it as descriptor-only per \u00a711.6, but it is a material signal of insider confidence that contradicts the short thesis. The macro regime (Overheat/Moderately Restrictive) is a tailwind for the short thesis but is not a primary driver of the decision.",
+      "recommended_followups": [
+        "Obtain and parse the full 2025-03-24 8-K filing to identify the specific catalyst (Item 8.01 Other Events, Item 9.01 Financial Statements).",
+        "Verify insider buying context: is Director Price a founder, major shareholder, or recent hire? Does the buying pattern suggest confidence in a turnaround or routine portfolio rebalancing?",
+        "Check for short-squeeze risk: obtain current short interest, days-to-cover, and borrow availability before entering short position.",
+        "Monitor for follow-up news or earnings announcements that may validate or invalidate the surge narrative.",
+        "Assess whether the surge is driven by a specific sector rotation, index inclusion, or algorithmic event not captured in the packet."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_8k_filing",
+      "company_claim": "Material event disclosed in 8-K filing dated 2025-03-24 (Items 8.01, 9.01); specific catalyst not visible in news_event_summary or filing_confirmation.full_text (stub data).",
+      "industry": "unknown_from_packet",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "valid",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "watch",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Recommended action is WATCH, not SHORT, due to conflicting signals: (1) Fundamental deterioration and negative earnings support short thesis. (2) Insider buying (5 purchases, net +12.4k USD) contradicts short thesis and suggests insiders have confidence. (3) Catalyst narrative is absent from news_event_summary and filing_confirmation.full_text (stub), limiting confidence in the bear thesis. (4) Micro-cap liquidity and short-squeeze risk are material execution concerns. The short thesis is valid on fundamentals but weakened by insider buying and lack of visible catalyst narrative. Recommend monitoring for follow-up news, insider activity, and fundamental updates before committing to a short position. If the 8-K catalyst is revealed to be positive (M&A, partnership, major contract), the short thesis is invalidated. If insider buying continues or accelerates, the thesis is further weakened. If news remains absent and fundamentals deteriorate further, the short thesis strengthens.",
+      "missing_data_warnings": [
+        "news_event_summary: 0 items in decision window; 20 items dropped post-cutoff. Catalyst narrative not visible in packet.",
+        "fundamental_snapshot: insufficient_evidence; all snapshot_quarter fields null. Cannot assess earnings quality or cash burn.",
+        "filing_confirmation.full_text.sec_8k_fulltext: stub data; actual 8-K content not available.",
+        "sentiment_community_ownership_evidence.sec_13f: not_available_on_current_plan; no institutional ownership data.",
+        "alternative_data_features.retail_meme_attention: not_evaluated; no Reddit/WSB data available.",
+        "narrative_price_gap_assessment: not_evaluated; pending agent LLM reasoning."
+      ],
+      "audit_rationale": "XHLD surged 201.7% on 153.7% gap open; fundamentals are severely negative (net_margin -628.51%, ROE -4.26%, all recent EPS negative). News catalyst absent from packet (0 items in decision window). Alt-data shows minimal retail attention (Wikipedia max 7 views). However, insider buying (5 Form 4 purchases, net +12.4k USD) contradicts short thesis. Macro regime (Overheat/Moderately Restrictive) is unfavorable for speculative rallies. Recommended action is WATCH (not SHORT) due to conflicting insider signal and missing catalyst narrative. If 8-K catalyst is positive or insider buying accelerates, thesis is invalidated. If fundamentals deteriorate further and insider buying stops, thesis strengthens. Initial position 0.5% if short is entered; allow_add false pending further evidence."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_v1.0",
+      "prompt_version": "v0.9.0_pass8_hardrule_veto_only",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "XHLD",
+      "decision_timestamp": "2025-03-24T09:30:00-04:00",
+      "data_available_as_of": "2025-03-24T09:30:00-04:00",
+      "decision_or_assessment": "hard_veto_evaluation_surge_short",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "data_quality_flags[*].severity",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "candidate_type"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Pass 8 hard-veto evaluation for surge_short candidate XHLD. Mechanical application of \u00a75.13 veto conditions (a)-(e). Candidate type is surge_short; therefore \u00a75.13(d) anti-pollution veto is INAPPLICABLE per \u00a75.17. Envelope flags: data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[]. Data quality flags: no critical-severity flags present. Information integrity assessment: pollution_defense_layer status is 'unimplemented' (not affirmatively confirmed); per \u00a75.13(d) relaxation (2026-05-06), unimplemented status does NOT trip the veto. Conditions (a), (b), (c), (e) evaluated mechanically; none tripped. No hard veto applies.",
+      "uncertainty": "low",
+      "invalidation_conditions": [],
+      "risk_flags": [],
+      "suggested_improvements": [],
+      "data_quality_flags": [],
+      "schema_or_prompt_weakness_notes": null,
+      "recommended_followups": [],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Candidate type is surge_short; \u00a75.13(a) applies to quality_long only. Not applicable."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Surge-short candidate; no existing position data in packet. Single-position cap (5%) and sleeve cap (10%) not breached by proposed entry. Mechanical check: no position size provided; assume entry within limits pending PM sizing."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array scanned; no flag with severity='critical'. Warnings and info-level flags present (stub_data, news_post_cutoff_filtered, fundamentals_partial, alt_data_adapter_error) but none critical per \u00a75.10 definition."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short; \u00a75.13(d) INAPPLICABLE per \u00a75.17. Veto does not apply to surge_short candidates."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true; envelope.lookahead_violations=[]. No lookahead detected. Veto not tripped."
+        }
+      ],
+      "advisory_notes": "",
+      "risk_notes": [],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions",
+        "candidate_type=surge_short",
+        "\u00a75.17 anti-pollution exemption for surge_short",
+        "\u00a75.13(d) relaxation (2026-05-06): unimplemented pollution_defense_layer does not trip veto",
+        "all conditions (a)-(e) evaluated; none tripped"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-24T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1.0",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "XHLD",
+      "decision_timestamp": "2025-03-24T09:30:00-04:00",
+      "data_available_as_of": "2025-03-24T09:30:00-04:00",
+      "decision_or_assessment": "surge_short_entry_decision",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct (201.7% surge)",
+        "price_snapshot.trigger_day_open (37.95 vs prior_close 14.96 = 153.7% gap)",
+        "valuation_snapshot.pe_ratio (-0.164, negative earnings)",
+        "valuation_snapshot.net_margin_pct_ttm (-628.51%, severe losses)",
+        "corporate_calendar.earnings (4 past earnings, all negative EPS)",
+        "filing_confirmation.sec_8k (3 8-K filings in 90d, most recent 2025-03-24)",
+        "sentiment_community_ownership_evidence.sec_form4 (5 insider purchases, net +12.4k USD)",
+        "alternative_data_features.attention.wikipedia_pageviews (minimal traffic, max 7 views)",
+        "news_event_summary.status (data_unavailable, 0 items in window)",
+        "macro_regime (Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution)",
+        "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+        "upstream_agent_outputs.alt_data_verify.verdict (narrative_contradicted)",
+        "upstream_agent_outputs.surge_short.recommended_action (watch)",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard veto tripped)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 rows post-cutoff; 20 items dropped post-cutoff)",
+        "fundamental_snapshot.snapshot_quarter (all fields null; insufficient_evidence status)",
+        "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)",
+        "narrative_price_gap_assessment (not_evaluated, pending agent LLM reasoning)"
+      ],
+      "reasoning_summary": "XHLD exhibits a 201.7% 5-day surge with 153.7% gap-open on decision day, accompanied by 3.8x relative volume. The surge is mechanically real. However, the bear thesis is STRONG on fundamentals (net_margin -628.51%, ROE -4.26%, all recent EPS negative) and WEAK on narrative corroboration (news_event_summary returns 0 items in decision window; 8-K fulltext is stub mode; Wikipedia pageviews minimal). The Narrative Agent rates the catalyst as 'unsupported_claim' (low confidence). The Alt-Data Verify Agent rates the narrative as 'narrative_contradicted' (structural absence of corroborating evidence). The Surge-Short Agent recommends 'watch' (not short) due to conflicting insider buying signal (5 Form 4 purchases by Director Price at $1.23\u2013$1.265, contradicting the short thesis). The Risk Agent confirms no hard veto applies. The macro regime (Overheat/Moderately Restrictive) is unfavorable for speculative rallies. DECISION RATIONALE: The preponderance of evidence supports a bear thesis on fundamentals and narrative-price gap, but the insider buying (5 purchases, net +$12.4k USD, all at prices well below the surge) is a material contradicting signal that suggests insiders have confidence in a catalyst not visible in the packet. The absence of news is itself a red flag (either the catalyst is not yet public, or the news adapter failed), but it also limits confidence in the short thesis. The Surge-Short Agent's 'watch' recommendation reflects this uncertainty. Per \u00a713.6 SOFT_REASONING and the preponderance-of-evidence framework, the conflicting insider signal and missing catalyst narrative warrant a WATCH posture rather than an immediate short entry. If the 8-K catalyst is revealed to be positive (M&A, partnership, major contract), the short thesis is invalidated. If insider buying continues or accelerates, the thesis is further weakened. If news remains absent and fundamentals deteriorate further, the short thesis strengthens and a short entry becomes warranted. WATCH is the appropriate decision given the current evidence balance.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K fulltext (currently stub) reveals a material positive catalyst (M&A, partnership, FDA approval, major contract), the short thesis is invalidated.",
+        "If news_event_summary post-cutoff reveals a major catalyst not visible in the packet, the narrative-price gap narrows and the short thesis weakens.",
+        "If insider buying accelerates significantly above current levels (>$50k/week), it signals confidence in a turnaround and contradicts the short thesis.",
+        "If fundamental_snapshot becomes available and shows positive revenue growth or path to profitability, the thesis is challenged.",
+        "If macro regime shifts to risk-on and equity_discipline relaxes, momentum may persist longer than expected."
+      ],
+      "risk_flags": [
+        "Insider buying by Director Price (5 purchases, net +12.4k USD) contradicts short thesis; insiders may have information not in packet.",
+        "Micro-cap liquidity risk: 3.9M shares traded on decision day; short squeeze risk if position becomes crowded.",
+        "Fundamental data incomplete: fundamental_snapshot.status = insufficient_evidence; cannot fully assess earnings quality or cash burn.",
+        "News narrative absent: news_event_summary returns 0 items in decision window; catalyst may be real but not captured in packet.",
+        "Macro headwind: Overheat regime with strict equity discipline may suppress speculative rallies, supporting short thesis.",
+        "Wikipedia pageviews minimal (max 7 views): low retail attention suggests momentum may be institutional or algorithmic, not retail-driven meme.",
+        "8-K filing text is stub mode: cannot verify actual catalyst substance; decision is based on incomplete information."
+      ],
+      "suggested_improvements": [
+        "Obtain full text of 2025-03-24 8-K filing (Item 8.01, 9.01) to identify the specific catalyst driving the surge.",
+        "Fetch earnings call transcript or investor presentation from the most recent earnings date to assess management commentary on profitability path.",
+        "Cross-check insider buying with insider sales history (Form 4 sales) to assess net insider sentiment; 5 purchases with 0 sales is bullish for insiders.",
+        "Verify whether the surge is driven by a specific news event (press release, analyst upgrade, short squeeze) not captured in the news_event_summary window.",
+        "Assess short interest and borrow availability to evaluate short-squeeze risk and execution feasibility.",
+        "Monitor for follow-up news or earnings announcements that may validate or invalidate the surge narrative."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; decision window has 0 items. Catalyst narrative may be real but not visible in packet."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status = insufficient_evidence; all snapshot_quarter fields null. Cannot assess earnings quality, cash burn, or balance-sheet strength."
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext: stub mode (deterministic, not ground truth). OpenCLI adapter not installed; cannot verify actual 8-K content."
+        },
+        {
+          "kind": "ticker_mismatch_in_alt_data",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews adapter returned 'XHLD-FM' (radio station article), not equity XHLD. Pageviews (0\u20137 per day) are not corroborating a 201.7% equity surge."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks a clear narrative catalyst for the surge. news_event_summary returns 0 items in the decision window, and the 8-K filing text is stubbed. This structural absence is itself a bear-thesis signal per \u00a713.6 SOFT_REASONING, but it also limits confidence in the short thesis because the true catalyst may exist outside the packet. Insider buying by Director Price is a material contradicting signal that the schema treats as descriptor-only per \u00a711.6, but it is a hard-to-fake T1 signal of insider confidence that must be weighed against the short thesis. The macro regime (Overheat/Moderately Restrictive) is a tailwind for the short thesis but is not a primary driver of the decision.",
+      "recommended_followups": [
+        "Obtain and parse the full 2025-03-24 8-K filing to identify the specific catalyst (Item 8.01 Other Events, Item 9.01 Financial Statements).",
+        "Verify insider buying context: is Director Price a founder, major shareholder, or recent hire? Does the buying pattern suggest confidence in a turnaround or routine portfolio rebalancing?",
+        "Check for short-squeeze risk: obtain current short interest, days-to-cover, and borrow availability before entering short position.",
+        "Monitor for follow-up news or earnings announcements that may validate or invalidate the surge narrative.",
+        "Assess whether the surge is driven by a specific sector rotation, index inclusion, or algorithmic event not captured in the packet."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "watch",
+      "position_size_pct": 0.0,
+      "reason": "Conflicting signals: bear thesis on fundamentals (net_margin -628.51%, all EPS negative) and narrative-price gap (news absent, 8-K unverified) supported by Narrative Agent (unsupported_claim) and Alt-Data Verify Agent (narrative_contradicted). However, insider buying (5 Form 4 purchases, net +$12.4k USD, Director Price at $1.23\u2013$1.265) contradicts short thesis and suggests insiders have confidence. Surge-Short Agent recommends watch (not short) due to conflicting signals. Macro regime (Overheat/Moderately Restrictive) is unfavorable for speculative rallies. No hard veto applies. WATCH posture allows monitoring for catalyst revelation, insider activity, and fundamental updates before committing to short entry.",
+      "risk_notes": [
+        "Insider buying contradicts short thesis; insiders may have information not in packet.",
+        "Micro-cap liquidity and short-squeeze risk are material execution concerns.",
+        "Fundamental data incomplete; cannot fully assess earnings quality or cash burn.",
+        "News narrative absent; catalyst may be real but not captured in packet.",
+        "8-K filing text is stub mode; cannot verify actual catalyst substance."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Candidate type is surge_short; \u00a75.13(a) applies to quality_long only. Not applicable."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Surge-short candidate; no existing position data in packet. Single-position cap (5%) and sleeve cap (10%) not breached by proposed entry. Decision is watch (position_size_pct=0.0); no position opened."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array scanned; no flag with severity='critical'. Warnings and info-level flags present (stub_data, news_post_cutoff_filtered, fundamentals_partial) but none critical per \u00a75.10 definition."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short; \u00a75.13(d) INAPPLICABLE per \u00a75.17. Veto does not apply to surge_short candidates."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false; envelope.lookahead_safe=true; envelope.lookahead_violations=[]. No lookahead detected. Veto not tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "candidate_type=surge_short",
+        "\u00a72.1 pre-filter: prior_close \u2192 today_open \u2265+50% gap (153.7% gap confirmed)",
+        "\u00a72.9\u2013\u00a72.12 hard never-short filter: no disqualifying conditions detected",
+        "\u00a75.13 hard-veto conditions: none tripped",
+        "\u00a75.17 anti-pollution exemption for surge_short: applicable",
+        "\u00a713.6 SOFT_REASONING: preponderance-of-evidence framework applied",
+        "Narrative Agent verdict: unsupported_claim (low confidence)",
+        "Alt-Data Verify Agent verdict: narrative_contradicted (structural absence of corroborating evidence)",
+        "Surge-Short Agent verdict: watch (conflicting insider signal)",
+        "Risk Agent verdict: no hard veto",
+        "PM aggregation: conflicting signals (bear thesis on fundamentals vs. insider buying confidence) warrant WATCH posture"
+      ],
+      "decision_log": [
+        "2025-03-24T09:30:00-04:00 | ENVELOPE CHECK: data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[] \u2192 PIT-safe",
+        "2025-03-24T09:30:00-04:00 | HARD-VETO EVALUATION: \u00a75.13(a)-(e) conditions checked; none tripped",
+        "2025-03-24T09:30:00-04:00 | CANDIDATE TYPE: surge_short; \u00a75.17 anti-pollution exemption applies",
+        "2025-03-24T09:30:00-04:00 | NARRATIVE AGENT INPUT: verdict=unsupported_claim, confidence=low, catalyst_specificity_score=0.25, vague_narrative_flag=true",
+        "2025-03-24T09:30:00-04:00 | ALT-DATA VERIFY AGENT INPUT: verdict=narrative_contradicted, narrative_price_gap_band=high, evidence_score=0.15",
+        "2025-03-24T09:30:00-04:00 | SURGE-SHORT AGENT INPUT: recommended_action=watch (not short), confidence=medium, short_thesis_status=valid but weakened by insider buying",
+        "2025-03-24T09:30:00-04:00 | RISK AGENT INPUT: no hard veto applies; advisory conditions not blocking",
+        "2025-03-24T09:30:00-04:00 | FUNDAMENTAL ASSESSMENT: net_margin_pct_ttm=-628.51%, ROE=-4.26%, ROA=-1.63%, all 4 recent EPS negative \u2192 severe distress",
+        "2025-03-24T09:30:00-04:00 | NARRATIVE-PRICE GAP ASSESSMENT: 201.7% 5-day surge with 153.7% gap-open; news_event_summary returns 0 items in decision window; 8-K fulltext is stub mode (unverifiable); Wikipedia pageviews minimal (max 7 views) \u2192 structural absence of corroborating narrative",
+        "2025-03-24T09:30:00-04:00 | INSIDER BUYING SIGNAL: Director Price David Richard executed 5 Form 4 purchases (2025-02-27 to 2025-03-14) totaling $12,376 USD at prices $1.23\u2013$1.265 \u2192 contradicts short thesis; suggests insider confidence in catalyst not visible in packet",
+        "2025-03-24T09:30:00-04:00 | MACRO REGIME: Overheat/Moderately Restrictive (stress_score=2, equity_discipline=strict_quality_and_valuation_caution) \u2192 unfavorable for speculative rallies; supports short thesis",
+        "2025-03-24T09:30:00-04:00 | PREPONDERANCE-OF-EVIDENCE SYNTHESIS: Bear thesis on fundamentals (severe losses, negative multiples) and narrative-price gap (news absent, 8-K unverified) is STRONG. However, insider buying (5 purchases, net +$12.4k USD) is a material contradicting signal that suggests insiders have information not in packet. Surge-Short Agent's 'watch' recommendation reflects this uncertainty. Conflicting signals warrant WATCH posture rather than immediate short entry.",
+        "2025-03-24T09:30:00-04:00 | DECISION: watch (position_size_pct=0.0); no position opened pending catalyst revelation, insider activity monitoring, and fundamental updates",
+        "2025-03-24T09:30:00-04:00 | ADAS LAGGED CONTEXT: prior-day trigger (ALUR, 2025-03-21) showed high confidence_dispersion (std_proxy=0.866) with 3 dissenting agents; PM notes similar uncertainty pattern in XHLD (conflicting insider vs. narrative signals); WATCH is appropriate given evidence ambiguity"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-24T09:45:00-04:00",
+        "ticker": "XHLD",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026-05-03_universal_soft_veto",
+        "evidence_packet_hash": "sha256:d5e926d368e5a594a521ef4187f9f03f101830391c5851d271660088afcee2d1"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews for 'XHLD-FM' (radio station article, not equity) show minimal traffic (max 7 views on 2025-03-19, baseline 0\u20132 views). No abnormal retail attention detected. Meme-attention adapter not evaluated.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "8-K filing text is stub mode (binary not installed); actual catalyst substance unverifiable. News_event_summary returns 0 items in decision window; corroborating narrative absent. Insider buying (5 Form 4 purchases) is hard-to-fake T1 signal but contradicts short thesis.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Insider buying contradicts short thesis; conflicting signals warrant WATCH posture pending catalyst revelation and insider activity monitoring.",
+      "sentiment_risk_adjustment_note": "FMP sentiment shows 1 Buy initiation by Litchfield Hills on 2025-03-03 at $1.17 (predates surge by 3 weeks). No sentiment data post-cutoff available. Sentiment is descriptor-only per \u00a711.6; not a trading signal.",
+      "ownership_risk_adjustment_note": "Director Price David Richard executed 5 Form 4 purchases (2025-02-27 to 2025-03-14) totaling $12,376 USD at prices $1.23\u2013$1.265. SEC 13F data unavailable (not_available_on_current_plan); cannot assess institutional concentration. Insider buying is supportive of bullish thesis but contradicts short thesis.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "medium",
+      "institutional_sponsorship_note": "SEC 13F data unavailable; cannot assess institutional sponsorship. Analyst initiation (Litchfield Hills, Buy, 2025-03-03 at $1.17) predates surge by 3 weeks and does not explain the 2025-03-24 spike.",
+      "smart_money_benchmark_note": "Director insider buying (5 Form 4 purchases, net +$12.4k USD) is consistent with bullish positioning. However, purchase prices ($1.23\u2013$1.265) are 16\u201317x below surge price ($21 EOD 2025-03-21), suggesting either (1) a massive undisclosed catalyst, or (2) data quality issue. Insider confidence is a material signal but does not validate the surge price.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-24T09:30:00-04:00",
+      "execution_timestamp": "2025-03-24T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:c9eff5b9f7a8690b5ec7d4e665826a22e4445c0b6d8f964bed19c40f2954ebe5",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": 2.5,
+      "score_components": {
+        "narrative_vague_or_fabricated": 2.0,
+        "alt_data_narrative_contradicted": 2.0,
+        "alt_data_expected_blocks_absent": 1.0,
+        "insider_buying_contradicts": -2.0,
+        "macro_regime_supports_short": 0.5
+      },
+      "score_threshold_band": "discretion",
+      "pm_override_reason": "Score band is 'discretion' (2.5 \u2208 [0, 1]); PM exercises full discretion. Decision is WATCH (not short) due to conflicting insider buying signal (5 Form 4 purchases, net +$12.4k USD) that contradicts the short thesis. Insider confidence in a catalyst not visible in the packet warrants monitoring before short entry. Surge-Short Agent's 'watch' recommendation aligns with this discretionary judgment."
+    }
+  }
+}

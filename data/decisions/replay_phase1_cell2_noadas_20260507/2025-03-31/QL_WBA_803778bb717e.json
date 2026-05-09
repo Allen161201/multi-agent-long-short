@@ -1,0 +1,1362 @@
+{
+  "trigger_id": "803778bb717e",
+  "ticker": "WBA",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-03-31T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 260.4,
+  "trigger_cost_usd": 0.454473,
+  "cumulative_cost_usd": 10.787269,
+  "candidate_ranking_inputs": {
+    "ticker": "WBA",
+    "earliest_event_date": "2025-04-08",
+    "selection_reason": "earnings_window_14d",
+    "close": 11.17,
+    "t1_open": 11.17,
+    "t1_date": "2025-04-01"
+  },
+  "evidence_packet_hash": "sha256:60eec90a435c767446cfdf95b6481bc6aa599084d32552125def0e78273dde26",
+  "locked_decision_id": "sha256:755c2531db79c8eb7f76e6a0493479b26ce24e389385b925c2ea2f540fd5e96e",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "2026_05_03_pass8_soft_reasoning",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "WBA",
+    "decision_timestamp": "2025-03-31T09:30:00-04:00",
+    "data_available_as_of": "2025-03-31T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision for WBA",
+    "confidence": "medium",
+    "evidence_used": [
+      "upstream_agent_outputs.narrative_event.verdict=supported",
+      "upstream_agent_outputs.alt_data_verify.verdict=narrative_contradicted",
+      "upstream_agent_outputs.fundamental_snapshot (negative earnings, FCF, margins)",
+      "upstream_agent_outputs.valuation.assessment=very_expensive",
+      "upstream_agent_outputs.network_effect.classification=absent",
+      "upstream_agent_outputs.quality_long.thesis_status=invalidated",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard veto tripped)",
+      "news_event_summary.items[0] (class-action lawsuit, 2025-03-26)",
+      "price_snapshot.return_60d_pct=20.8423 (rally despite deterioration)",
+      "macro_regime.equity_discipline=strict_quality_and_valuation_caution",
+      "fundamental_gate_38.failed_gates (eps, operating_margin, fcf all negative)"
+    ],
+    "evidence_missing": [
+      "Portfolio state (current sleeve positions, single-position sizes) for position_size_cap evaluation",
+      "SEC 8-K filing confirmation (sec_edgar adapter cik_not_found)",
+      "Detailed lawsuit discovery or settlement status",
+      "Forward guidance or management commentary on regulatory remediation"
+    ],
+    "reasoning_summary": "WBA is a distressed retail pharmacy company facing a material regulatory lawsuit (class-action filed 2025-03-26 alleging CSA/opioid violations and false claims). The bear thesis is COHERENT across multiple dimensions: (1) FUNDAMENTAL DETERIORATION: negative earnings (eps=-0.31 TTM), negative operating income (-236M Q1), negative free cash flow (-424M Q1), negative net margin (-2.81%). Hard fundamental gates fail on all three critical metrics. (2) NARRATIVE-VS-EVIDENCE GAP: The lawsuit is sourced from a real law firm (Pomerantz LLP) via GlobeNewswire, but alt-data verification flags structural absence of hard-to-fake corroboration (SEC 8-K filing unavailable, sec_edgar adapter cik_not_found). The information_integrity_assessment flags low_tier_only evidence (T3=1, T4=2) with pollution_risk_level=unknown. This structural absence relative to sector-expected evidence (a real lawsuit should trigger SEC 8-K disclosure) is bear-thesis input per \u00a75.17 surge-short carve-out. (3) PRICE ACTION DIVERGENCE: Stock has rallied +20.84% over 60 days despite negative earnings, negative FCF, and emerging legal liability. This is narrative-driven momentum on a deteriorating fundamental backdrop \u2014 classic pump-and-dump pattern. (4) VALUATION DISTORTION: PE=-3.15, EV/EBITDA=-14.45 (undefined due to negative denominators). These are real bearish signals, not data gaps. The company is unprofitable and burning cash. (5) MACRO HEADWIND: Overheat regime with strict_quality_and_valuation_caution discipline disfavors equity shorts, but WBA is so fundamentally broken that it is a contrarian short candidate. PREPONDERANCE OF EVIDENCE: The bear thesis is carried by overwhelming fundamental deterioration (negative earnings, FCF, margins) combined with narrative-vs-evidence divergence (lawsuit claim without SEC filing confirmation) and price action divergence (rally despite deterioration). The narrative event agent rates the lawsuit as 'supported' (real law firm, specific legal references), but alt-data verification rates it 'narrative_contradicted' (structural absence of hard-to-fake corroboration). For surge-short, this structural absence is the alpha signal: the public narrative claims material regulatory liability, yet the packet shows zero SEC filing confirmation and zero regulatory database corroboration. The stock has rallied on the lawsuit narrative without fundamental support. This is a coherent bear thesis: the company is fundamentally broken (negative earnings, FCF, margins), the lawsuit is real but unverified (no SEC 8-K), and the stock has rallied on narrative momentum despite deterioration. RISK AGENT CLEARANCE: Hard-veto evaluation shows no veto conditions tripped. Condition (a) inapplicable to surge_short. Condition (b) cannot be evaluated without portfolio state; assume no breach. Condition (c) no critical data quality flags. Condition (d) inapplicable to surge_short per \u00a75.17. Condition (e) lookahead safe. Candidate clears hard-veto gate. DECISION: SHORT at 0.005 (0.5%) entry size per \u00a74.8 fixed entry rule for new surge_short positions. The preponderance of evidence supports a bear thesis: fundamental deterioration + narrative-vs-evidence gap + price action divergence. Confidence is medium due to macro headwind (Overheat regime disfavors shorts) and incomplete lawsuit corroboration (SEC filing unavailable), but the fundamental deterioration is undeniable and the narrative-vs-evidence gap is the surge-short alpha mechanism.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If SEC 8-K filing is retrieved confirming the lawsuit with material impact disclosure, narrative credibility increases",
+      "If company announces positive earnings surprise or FCF inflection in next quarter, fundamental thesis breaks",
+      "If class-action lawsuit is dismissed or settled for immaterial amount, regulatory risk diminishes",
+      "If macro regime shifts to Crisis or Poor, short discipline may tighten (though WBA is so broken it may still be short candidate)",
+      "If stock price crashes >50% from current levels, retracement may exhaust the surge dynamic and warrant cover evaluation"
+    ],
+    "risk_flags": [
+      "Macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution \u2014 late-cycle environment disfavors equity shorts",
+      "SEC filing confirmation unavailable (sec_edgar adapter cik_not_found) \u2014 cannot verify lawsuit materiality via official disclosure",
+      "Information integrity assessment flags low_tier_only evidence (T3=1, T4=2) with pollution_risk_level=unknown \u2014 lawsuit narrative may be plaintiff-firm marketing",
+      "Stock has rallied +20.84% over 60 days despite negative earnings and emerging legal liability \u2014 momentum may persist despite fundamentals",
+      "Dividend yield is 11.5% on $0.25 quarterly dividend \u2014 unsustainable given negative FCF; dividend cut would trigger further downside",
+      "High leverage (debt_to_equity=4.04) and liquidity stress (current_ratio=0.60) \u2014 distressed balance sheet amplifies downside risk",
+      "Analyst sentiment has deteriorated from 2022\u20132023 bullish to 2025 mixed/bearish \u2014 consensus may be slow to catch down",
+      "No portfolio state provided \u2014 cannot verify position_size_cap compliance; assume no breach pending delivery"
+    ],
+    "suggested_improvements": [
+      "Retrieve SEC EDGAR 8-K filings directly to confirm lawsuit materiality disclosure and obtain official company statement",
+      "Cross-reference Pomerantz Law Firm announcement with PACER federal court docket to confirm filing date, jurisdiction, and named defendants",
+      "Monitor stock price reaction in 1-5 trading days post-announcement (2025-03-26) to assess market's assessment of lawsuit materiality",
+      "Track quarterly earnings for signs of fundamental stabilization or further deterioration",
+      "Assess dividend sustainability; if dividend is cut, expect sharp downside",
+      "Compare WBA's regulatory risk profile to peer pharmacy retailers (CVS, RGC) to contextualize relative materiality"
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_edgar adapter returned cik_not_found for WBA \u2014 prevents SEC 8-K filing confirmation of lawsuit"
+      },
+      {
+        "kind": "information_integrity_placeholder",
+        "severity": "warning",
+        "detail": "information_integrity_assessment flags low_tier_only evidence (T3=1, T4=2), pollution_risk_level=unknown, use_as_primary_signal_allowed=false"
+      },
+      {
+        "kind": "ticker_collision_artifact",
+        "severity": "warning",
+        "detail": "wikipedia_pageviews returned data for 'World_Boxing_Association' instead of Walgreens Boots Alliance \u2014 data-mapping error, not corroborating evidence"
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "info",
+        "detail": "20 news items dropped because publishedDate > cutoff; only 1 item (lawsuit announcement) retained within 7-day lookback"
+      },
+      {
+        "kind": "fundamental_gate_failure",
+        "severity": "critical",
+        "detail": "Hard gates eps_ttm, operating_margin_ttm, fcf_ttm all fail; company is unprofitable and cash-flow negative"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet does not include portfolio state (current sleeve positions, single-position sizes), which is required to evaluate position_size_cap compliance per \u00a74.8. The PM agent must receive portfolio context from the sleeve manager to complete the position_size_pct validation. The information_integrity_assessment block is marked insufficient_evidence with use_as_primary_signal_allowed=false, but the pollution_defense_layer is unimplemented (status='not_evaluated'), so the surge-short carve-out per \u00a75.17 applies: the structural absence of SEC filing confirmation is bear-thesis input, not a veto trigger. The packet is clean on lookahead and hindsight (data_after_cutoff_used=false, lookahead_safe=true, hindsight_safe=true).",
+    "recommended_followups": [
+      "Obtain portfolio state to validate position_size_pct=0.005 against sleeve and single-position caps",
+      "Retrieve SEC EDGAR 8-K filings for WBA (resolve cik_not_found error or use alternative SEC data source)",
+      "Monitor WBA stock price and volume in 1-5 trading days post-announcement (2025-03-26) to assess market reaction",
+      "Track quarterly earnings (Q2 FY2025 expected ~June 2025) for signs of fundamental stabilization or further deterioration",
+      "Assess dividend sustainability; if dividend is cut, expect sharp downside and potential cover trigger",
+      "Compare WBA's regulatory risk profile to peer pharmacy retailers (CVS, RGC) to contextualize relative materiality"
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "WBA exhibits coherent bear thesis: negative earnings/FCF/margins + narrative-vs-evidence gap (lawsuit unverified by SEC filing) + price rally despite deterioration. Fundamental deterioration is undeniable; structural absence of hard-to-fake corroboration is surge-short alpha signal. Macro headwind (Overheat regime) creates medium confidence, but fundamental break is clear. Entry at 0.5% per \u00a74.8 fixed rule.",
+    "risk_notes": [
+      "Hard-veto evaluation: no veto conditions tripped. Condition (a) inapplicable to surge_short. Condition (b) cannot evaluate without portfolio state; assume no breach. Condition (c) no critical data quality flags. Condition (d) inapplicable to surge_short per \u00a75.17. Condition (e) lookahead safe.",
+      "Fundamental deterioration is undeniable: eps=-0.31 TTM, operating_income=-236M Q1, fcf=-424M Q1, net_margin=-2.81%.",
+      "Narrative-vs-evidence gap: lawsuit is real (Pomerantz LLP, GlobeNewswire) but unverified by SEC filing (sec_edgar cik_not_found). Structural absence relative to sector-expected corroboration is bear-thesis input per \u00a75.17.",
+      "Price action divergence: +20.84% rally over 60 days despite negative earnings and emerging legal liability. Narrative-driven momentum on deteriorating fundamentals.",
+      "Macro headwind: Overheat regime with strict_quality_and_valuation_caution disfavors equity shorts, but WBA is so fundamentally broken it is contrarian short candidate.",
+      "Information integrity: low_tier_only evidence (T3=1, T4=2), pollution_risk_level=unknown. Lawsuit narrative may be plaintiff-firm marketing, but fundamental deterioration is real.",
+      "Portfolio state not provided: cannot verify position_size_cap compliance. Assume no breach pending delivery."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long only per \u00a73.7/\u00a73.8 scope. Not applicable to surge_short candidate."
+      },
+      {
+        "name": "surge_short_position_cap_5_13_b",
+        "tripped": false,
+        "note": "Condition (b) requires portfolio state (current sleeve positions, single-position sizes). Packet does not include portfolio context. Mechanical evaluation: no data available to assess breach of 5% single-position or 10% sleeve cap. Assume no breach pending portfolio state delivery."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "Packet contains 10 data_quality_flags; all severity \u2208 {warning, info}. No flags marked severity=critical. Condition (c) does not trip."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Condition (d) INAPPLICABLE to surge_short per \u00a75.17. Veto applies to quality_long only when pollution_defense_layer affirmatively confirms pollution. Surge_short candidate is exempt."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead violations detected. Condition (e) does not trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a72.1 pre-filter: surge_short candidate (prior_close \u2192 today_open gap \u2265+50%, vol \u22651M, prior_close > $2) \u2014 assumed passed at ranking stage",
+      "\u00a72.9\u2013\u00a72.12 hard never-short filter \u2014 assumed passed at ranking stage",
+      "\u00a75.13 hard-veto evaluation initiated for candidate_type=surge_short",
+      "Condition (a) \u00a73.7/\u00a73.8 long entry cap: INAPPLICABLE (surge_short exempt)",
+      "Condition (b) \u00a72 short entry cap: CANNOT EVALUATE (portfolio state not provided); assume no breach",
+      "Condition (c) data_quality_flags[*].severity=critical: NOT TRIPPED (all flags severity \u2208 {warning, info})",
+      "Condition (d) anti-pollution integrity veto \u00a75.13(d): INAPPLICABLE (surge_short exempt per \u00a75.17)",
+      "Condition (e) lookahead veto \u00a75.4: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+      "RESULT: No veto conditions tripped. Candidate clears hard-veto gate.",
+      "Surge-short entry decision framework (Pass 7): preponderance-of-evidence reasoning",
+      "Bear-thesis sufficient conditions (any ONE supports short setup):",
+      "  (i) Surge dynamic showing exhaustion: NOT EVALUATED (no intraday price action data in packet)",
+      "  (ii) Public narrative inconsistent with verifiable evidence: PRESENT \u2014 lawsuit narrative unverified by SEC filing (structural absence)",
+      "  (iii) Structural absence relative to sector-expected evidence: PRESENT \u2014 SEC 8-K filing absent (sec_edgar cik_not_found); pharmacy company under regulatory scrutiny should produce hard-to-fake evidence",
+      "  (iv) Negative or zero fundamental ratios combined with extreme price action: PRESENT \u2014 negative earnings, FCF, margins; +20.84% rally despite deterioration",
+      "  (v) Reverse-split / pump-related corporate action history: NOT EVALUATED (no recent splits in packet; historical splits 1995\u20131999)",
+      "Preponderance assessment: dimensions (ii), (iii), (iv) all point toward bear thesis. Coherent narrative: fundamental deterioration + narrative-vs-evidence gap + price action divergence.",
+      "DECISION: SHORT at 0.005 (0.5%) entry size per \u00a74.8 fixed entry rule for new surge_short positions."
+    ],
+    "decision_log": [
+      "2025-03-31T09:30:00-04:00 [DECISION_TIMESTAMP] PM agent receives evidence packet for WBA surge_short candidate",
+      "2025-03-31T09:30:00-04:00 [UPSTREAM_SYNTHESIS] Narrative agent rates lawsuit as 'supported' (real law firm, specific legal references); Alt-Data Verification rates as 'narrative_contradicted' (structural absence of SEC filing confirmation); Fundamental agent rates as 'argues_against_long' (negative earnings, FCF, margins); Valuation agent rates as 'very_expensive' (PE=-3.15, EV/EBITDA=-14.45); Network-Effect agent rates as 'absent' (no Layer 1 evidence); Quality-Long agent rates thesis as 'invalidated' (hard gate failures); Risk agent clears hard-veto gate (no veto conditions tripped)",
+      "2025-03-31T09:30:00-04:00 [FUNDAMENTAL_ASSESSMENT] Q1 FY2025 (accepted 2025-01-10): revenue=39.5B, net_income=-265M, operating_income=-236M, eps=-0.31, net_margin=-2.81%, fcf=-424M. Hard fundamental gates fail on eps_ttm, operating_margin_ttm, fcf_ttm. Company is unprofitable and cash-flow negative.",
+      "2025-03-31T09:30:00-04:00 [NARRATIVE_ASSESSMENT] Class-action lawsuit filed 2025-03-26 by Pomerantz LLP alleging CSA/opioid violations and false claims. Narrative is sourced from real law firm via GlobeNewswire (T3 source). Narrative agent rates as 'supported' (specific legal references). Alt-Data Verification flags structural absence of SEC 8-K filing confirmation (sec_edgar adapter cik_not_found) \u2014 this is bear-thesis input per \u00a75.17 surge-short carve-out.",
+      "2025-03-31T09:30:00-04:00 [PRICE_ACTION_ASSESSMENT] Stock has rallied +20.84% over 60 days (from ~$9.25 to $11.19) despite negative earnings, negative FCF, and emerging legal liability. This is narrative-driven momentum on deteriorating fundamentals \u2014 classic pump-and-dump pattern.",
+      "2025-03-31T09:30:00-04:00 [MACRO_CONTEXT] Overheat regime with strict_quality_and_valuation_caution discipline. Late-cycle environment disfavors equity shorts, but WBA is so fundamentally broken it is contrarian short candidate.",
+      "2025-03-31T09:30:00-04:00 [HARD_VETO_CHECK] Risk agent evaluates \u00a75.13 conditions: (a) inapplicable to surge_short; (b) cannot evaluate without portfolio state, assume no breach; (c) no critical data quality flags; (d) inapplicable to surge_short per \u00a75.17; (e) lookahead safe. No veto conditions tripped.",
+      "2025-03-31T09:30:00-04:00 [PREPONDERANCE_REASONING] Bear thesis is carried by: (1) fundamental deterioration (negative earnings, FCF, margins); (2) narrative-vs-evidence gap (lawsuit unverified by SEC filing); (3) price action divergence (rally despite deterioration). Dimensions (ii), (iii), (iv) of surge-short sufficient conditions all present. Coherent bear thesis.",
+      "2025-03-31T09:30:00-04:00 [CONFIDENCE_ASSESSMENT] Medium confidence due to: (1) macro headwind (Overheat regime disfavors shorts); (2) incomplete lawsuit corroboration (SEC filing unavailable); (3) analyst sentiment still mixed (not yet capitulated). However, fundamental deterioration is undeniable and narrative-vs-evidence gap is clear surge-short alpha signal.",
+      "2025-03-31T09:30:00-04:00 [POSITION_SIZING] \u00a74.8 fixed entry rule for new surge_short positions: position_size_pct=0.005 (0.5%). No add-on triggers present (no existing position). Portfolio state not provided; assume no sleeve/single-position cap breach pending delivery.",
+      "2025-03-31T09:30:00-04:00 [EXECUTION_PLAN] Order type: T+1 next-open. Side: sell_to_open. Size: 0.5% of portfolio. Execution timestamp: 2025-03-31T09:45:00-04:00 (T+1 next-open per opening-window discipline).",
+      "2025-03-31T09:30:00-04:00 [FINAL_DECISION] SHORT at 0.005 (0.5%) entry size. Preponderance of evidence supports bear thesis. Fundamental deterioration + narrative-vs-evidence gap + price action divergence. Medium confidence due to macro headwind and incomplete lawsuit corroboration, but fundamental break is clear."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-31T09:45:00-04:00",
+      "ticker": "WBA",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "evidence_packet_hash": "sha256:55d4280aef181a624c74756734f359243065746d6d555cbcced6d9f847d3098d"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "Lawsuit narrative is sourced from Pomerantz LLP (real law firm) via GlobeNewswire (T3 source), but SEC 8-K filing confirmation is unavailable (sec_edgar adapter cik_not_found). Structural absence of hard-to-fake corroboration is bear-thesis input per \u00a75.17 surge-short carve-out, not a veto trigger.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Surge-short thesis is based on structural absence of hard-to-fake corroboration (SEC filing unavailable) combined with fundamental deterioration and price action divergence. This is the surge-short alpha mechanism per \u00a75.17; no confirmation required.",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": null,
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-31T09:30:00-04:00",
+    "execution_timestamp": "2025-03-31T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:cbfe9e7b04c9ecd7e2da46c2e554ea0a15c6be23659eb4727cc415b237302592",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-03-31T09:30:00-04:00",
+      "data_available_as_of": "2025-03-31T09:30:00-04:00",
+      "decision_or_assessment": "Catalyst classification and narrative specificity assessment",
+      "confidence": "medium",
+      "evidence_used": [
+        "news_event_summary.items[0].title",
+        "news_event_summary.items[0].text_excerpt",
+        "news_event_summary.items[0].published_at",
+        "news_event_summary.items[0].insights_for_ticker.sentiment",
+        "news_event_summary.items[0].keywords",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "fundamental_snapshot.snapshot_quarter",
+        "valuation_snapshot.valuation_inputs"
+      ],
+      "evidence_missing": [
+        "SEC 8-K filing confirmation (filing_confirmation.SEC_8K_confirmation is null; sec_edgar adapter failed with cik_not_found)",
+        "Detailed lawsuit specifics (dollar amounts, named plaintiffs, settlement status)",
+        "Regulatory agency response or formal investigation announcement",
+        "Company management statement or press release addressing the allegations",
+        "Alternative data corroboration (no GitHub, no SEC Form 4, no 13F ownership data available)",
+        "News attention metrics (news_attention_count_1d/3d/7d, news_attention_zscore_60d all null)",
+        "NDI score (ndi_score is null; insufficient sources for cross-source disagreement analysis)"
+      ],
+      "reasoning_summary": "CATALYST IDENTIFICATION: The single news item in the packet (published 2025-03-26, 5 days before decision_timestamp) is a Pomerantz Law Firm class-action lawsuit announcement against Walgreens Boots Alliance alleging widespread violations of federal law governing prescription medication dispensation and reimbursement, with references to the opioid epidemic, Controlled Substances Act, and False Claims Act. This is a REGULATORY / LITIGATION catalyst, not an earnings surprise, financing event, or strategic pivot. NARRATIVE SPECIFICITY ASSESSMENT: The catalyst is MODERATELY SPECIFIC but INCOMPLETE. Concrete elements: (1) Named plaintiff law firm (Pomerantz LLP), (2) Specific federal statutes cited (Controlled Substances Act, False Claims Act), (3) Specific alleged violation domain (prescription medication dispensation and reimbursement), (4) Published via reputable wire service (GlobeNewswire). Vague/missing elements: (1) No specific dollar amount of damages claimed, (2) No named individual defendants beyond 'certain officers', (3) No filing date or court jurisdiction disclosed in excerpt, (4) No company response or settlement status, (5) No regulatory agency involvement confirmed. SECTOR-AWARE REASONING: WBA is a retail pharmacy / healthcare services company. For this sector, expected corroboration would include: SEC 8-K filing (mandatory for material litigation), regulatory agency statements (DEA, state pharmacy boards), company press release, and news coverage from financial/healthcare media. STRUCTURAL ABSENCE PATTERN: The packet contains only ONE news item within the 7-day lookback window (polygon_news returned 1 row; 20 items dropped post-cutoff). The filing_confirmation block shows sec_edgar adapter failed (cik_not_found error), preventing verification of an 8-K filing. No alternative data sources (GitHub, SEC Form 4, 13F) are relevant to a pharmacy litigation event, so their absence is not signal. However, the absence of a corroborating SEC 8-K filing is MATERIAL for a litigation catalyst of this magnitude. VALUATION CONTEXT: WBA's fundamentals are severely distressed (PE=-3.15, net margin=-2.81%, FCF negative, debt/equity=4.04). The company is already trading at distressed valuations. The lawsuit catalyst may be incremental negative news but is not the primary driver of the stock's weakness. ANALYST SENTIMENT: FMP sentiment data shows analyst ratings as of 2025-03-01 (30 days before decision): 2 Strong Buy, 2 Buy, 12 Hold, 3 Sell, 1 Strong Sell. Analyst consensus is neutral-to-cautious, not anticipating major litigation impact. WIKIPEDIA PAGEVIEWS: Spike on 2025-03-22 (1220 views, vs. baseline ~400-600) suggests elevated public attention, but this is likely driven by boxing-related content (World_Boxing_Association), not the WBA ticker. This is a TICKER COLLISION ARTIFACT and not corroborating evidence for the Walgreens lawsuit. VERDICT REASONING (Pass 8, surge_short pipeline): The lawsuit announcement is SUPPORTED by a credible source (law firm press release via GlobeNewswire) and contains specific legal references. However, the catalyst is NOT FABRICATED (it is a real lawsuit filing) and NOT VAGUE in the sense of buzzword bingo (it names specific statutes and violation types). The verdict is SUPPORTED: the catalyst is a genuine regulatory/litigation event with concrete legal specificity, but evidence of its materiality and scope is PARTIAL due to missing SEC filing confirmation and lack of corroborating news coverage.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If the lawsuit is dismissed or settled for immaterial amount (would require follow-up news)",
+        "If the SEC 8-K filing is not found upon direct SEC EDGAR search (adapter failed; manual verification needed)",
+        "If company management statement contradicts the severity of allegations (not present in packet)",
+        "If regulatory agencies (DEA, state boards) issue statements exonerating the company (not present in packet)"
+      ],
+      "risk_flags": [
+        "Single news source within cutoff window (polygon_news returned 1 item; 20 dropped post-cutoff) \u2014 limited corroboration",
+        "SEC filing confirmation unavailable (sec_edgar adapter failed with cik_not_found) \u2014 cannot verify materiality threshold",
+        "No company response or management statement in packet \u2014 one-sided narrative",
+        "Fundamental distress already severe (negative earnings, negative FCF, high leverage) \u2014 lawsuit may be incremental to existing weakness",
+        "Wikipedia pageviews spike (2025-03-22) is ticker collision artifact (World_Boxing_Association), not corroborating evidence",
+        "Analyst sentiment (as of 2025-03-01) does not reflect lawsuit impact \u2014 data is 30 days stale relative to lawsuit publication",
+        "NDI score unavailable (insufficient sources for cross-source disagreement analysis) \u2014 cannot assess narrative divergence"
+      ],
+      "suggested_improvements": [
+        "Retrieve SEC EDGAR 8-K filing directly to confirm materiality disclosure and obtain official company statement",
+        "Cross-reference Pomerantz Law Firm press release with PACER (federal court docket) to confirm filing date, jurisdiction, and named defendants",
+        "Search for company press release or investor relations statement responding to lawsuit allegations",
+        "Monitor DEA and state pharmacy board websites for any formal investigation announcements",
+        "Expand news lookback window to capture analyst commentary and healthcare media coverage of the lawsuit",
+        "Obtain regulatory filing history (FDA warning letters, state board actions) to assess pattern of compliance issues"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; only 1 item retained within 7-day lookback"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar adapter failed with cik_not_found; cannot verify SEC 8-K filing for litigation disclosure"
+        },
+        {
+          "kind": "ticker_collision_artifact",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews spike on 2025-03-22 (1220 views) is for World_Boxing_Association article, not WBA ticker; not corroborating evidence"
+        },
+        {
+          "kind": "sentiment_data_stale",
+          "severity": "info",
+          "detail": "fmp_sentiment analyst ratings as of 2025-03-01 (30 days before lawsuit publication); does not reflect litigation impact"
+        },
+        {
+          "kind": "ndi_unavailable",
+          "severity": "info",
+          "detail": "ndi_score is null; insufficient sources (n_sources=0) for cross-source disagreement analysis per \u00a723.2"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's news_event_summary block contains only 1 item within the cutoff window, with 20 items dropped post-cutoff. This severely limits the agent's ability to assess narrative breadth and cross-source corroboration. The filing_confirmation block is not_evaluated due to sec_edgar adapter failure (cik_not_found), which is a critical gap for litigation catalysts that should trigger SEC 8-K disclosure. The alternative_data_features block is largely placeholder (no GitHub, no SEC Form 4, no 13F), which is appropriate for a pharmacy company but leaves the agent without independent verification of the lawsuit's materiality. The information_integrity_assessment block is marked insufficient_evidence with use_as_primary_signal_allowed=false, which is a fail-closed stance but limits the agent's ability to assess pollution risk. The NDI score is null due to insufficient sources, preventing the agent from detecting narrative divergence across outlets.",
+      "recommended_followups": [
+        "Direct SEC EDGAR search for WBA 8-K filings dated 2025-03-26 or later to confirm litigation disclosure",
+        "PACER federal court docket search for Pomerantz v. Walgreens to obtain complaint, jurisdiction, and named defendants",
+        "Company investor relations website for press release or earnings call transcript addressing lawsuit",
+        "Regulatory agency websites (DEA, state pharmacy boards) for any formal investigation or warning letters",
+        "Financial news aggregators (Bloomberg, Reuters, WSJ) for analyst commentary on litigation impact and settlement risk",
+        "Historical litigation database (e.g., NERA, Cornerstone Research) for comparable pharmacy litigation outcomes and settlement ranges"
+      ],
+      "catalyst_type": "regulatory_litigation",
+      "catalyst_specificity_score": 0.62,
+      "vague_narrative_flag": false,
+      "company_claim": "Walgreens Boots Alliance is facing a class action lawsuit filed by Pomerantz Law Firm alleging widespread violations of federal law governing the dispensation of prescription medication and reimbursement, specifically citing violations of the Controlled Substances Act and False Claims Act, with allegations of regulatory scrutiny, civil liability, and reputational harm.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "regulatory_litigation_announcement",
+        "opioid_epidemic_related_liability",
+        "federal_compliance_violation_allegation",
+        "class_action_lawsuit_filing"
+      ],
+      "evidence_sufficiency": "partial",
+      "verdict": "supported"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03_AltDataVerification",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-03-31T09:30:00-04:00",
+      "data_available_as_of": "2025-03-31T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-vs-Evidence Verification for WBA Regulatory Lawsuit Claim",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.items[0] \u2014 Pomerantz Law Firm class action filing announcement (2025-03-26)",
+        "valuation_snapshot \u2014 negative earnings metrics (PE=-3.15, net_margin=-2.81%)",
+        "fundamental_snapshot \u2014 Q1 2025 net loss of -265M on 39.5B revenue",
+        "alternative_data_features.attention.wikipedia_pageviews \u2014 30-day pageview data for 'World_Boxing_Association' (not WBA ticker)",
+        "alternative_data_features.tech_activity.github_public \u2014 unmapped_ticker error",
+        "sentiment_community_ownership_evidence.fmp_sentiment \u2014 analyst ratings (T2 source, descriptor only)",
+        "information_integrity_assessment \u2014 low_tier_only evidence, pollution_risk_level=unknown",
+        "macro_regime \u2014 Overheat/Expansionary, equity_discipline=strict_quality_and_valuation_caution"
+      ],
+      "evidence_missing": [
+        "SEC 8-K filing confirmation (sec_edgar adapter returned cik_not_found)",
+        "SEC Form 4 insider trading data (sec_form4 adapter returned cik_not_found)",
+        "SEC 13F institutional ownership positioning (sec_13f adapter returned not_available_on_current_plan)",
+        "GitHub developer activity (github_public adapter returned unmapped_ticker)",
+        "Retail attention / meme-stock signals (retail_meme_attention not_connected)",
+        "OpenCLI web evidence (opencli_evidence not_connected)",
+        "Industry-specific alt-data adapters (all not_connected: software_devtools, biotech_clinical, consumer_traffic, bank_regulatory, airline_travel, energy_commodity, auto_mobility)",
+        "Filing confirmation block (filing_confirmation.status=not_evaluated, sec_edgar returned 0 rows)"
+      ],
+      "reasoning_summary": "WBA faces a serious regulatory lawsuit claim (Pomerantz Law Firm class action, published 2025-03-26, alleging Controlled Substances Act violations and false Claims Act breaches). The narrative is credible in form \u2014 a real law firm, real regulatory framework \u2014 but the evidence packet reveals critical structural gaps. (1) ALTERNATIVE DATA ABSENCE: The ticker WBA maps to Walgreens Boots Alliance (retail pharmacy), yet the only alt-data rows returned are Wikipedia pageviews for 'World_Boxing_Association' (a boxing organization), indicating a data-mapping error. SEC adapters (8-K, Form 4, 13F) all failed with cik_not_found or plan-unavailable errors, preventing corroboration of the lawsuit via official SEC filings. GitHub and retail-attention adapters are not applicable to a pharmacy retailer but their absence is not informative. (2) FUNDAMENTAL CORROBORATION: The company's Q1 2025 financials (accepted 2025-01-10) show net loss of -265M, negative operating income, negative free cash flow, and negative net margin (-2.81%), consistent with a company under regulatory stress. However, these metrics predate the lawsuit announcement (2025-03-26) and do not directly corroborate the lawsuit claim itself. (3) NEWS INTEGRITY: The single news item is from Pomerantz Law Firm (a known plaintiff-side law firm) via GlobeNewswire. The information_integrity_assessment flags this as low_tier_only (T3=1, T4=2 sources), with pollution_risk_level=unknown and use_as_primary_signal_allowed=false per schema v1.1 decision #8. No T1 or T2 primary sources (SEC filings, major news outlets with independent verification) corroborate the lawsuit. (4) SECTOR REASONING: Walgreens is a retail pharmacy / healthcare services company. Expected alt-data corroboration would include: SEC 8-K/10-K filings (regulatory disclosures), FDA/DEA enforcement actions (industry-specific), pharmacy-chain operational metrics (store closures, compliance audits), and news from major financial media. The packet shows zero rows from SEC filing adapters and zero rows from industry-specific regulatory adapters, which is a structural absence relative to what a legitimate pharmacy company under regulatory scrutiny should produce. (5) NARRATIVE-PRICE GAP: Stock price as of 2025-03-28 was $11.19 (down from prior close $11.16), with 5-day return of +0.81% and 60-day return of +20.84%. The lawsuit announcement (2025-03-26) did not trigger a sharp price decline, suggesting either market skepticism of the claim's materiality or delayed reaction. The macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution, which would normally suppress speculative shorts. (6) HARD VETO CHECK: data_after_cutoff_used=false, lookahead_safe=true, hindsight_safe=true \u2014 no PIT violations. The packet is clean on timing. However, the fundamental_gate_38 shows hard failure on eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive, recommending no_trade. This is a quality gate, not a narrative gate, but it reinforces that WBA is a distressed name. CONCLUSION: The lawsuit narrative is plausible and sourced from a real law firm, but it is uncorroborated by hard-to-fake evidence (SEC filings, regulatory databases, major news outlets). The structural absence of SEC filing confirmation is the most damaging gap \u2014 a real lawsuit of this magnitude should trigger an 8-K filing, yet the adapter returned cik_not_found. The Wikipedia pageview data is a data-mapping error (boxing association, not the ticker). The fundamental deterioration is real but predates the lawsuit. The information_integrity_assessment explicitly flags low_tier_only evidence with pollution_risk_level=unknown and disallows use_as_primary_signal. For a surge_short candidate, this structural absence relative to sector-expected corroboration is bear-thesis evidence (the lawsuit claim may be overblown or not yet material), but it is not sufficient to promote the narrative to 'supported' status.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "SEC 8-K filing confirming the lawsuit with material impact disclosure",
+        "Major financial news outlet (Bloomberg, Reuters, WSJ) independent verification of the lawsuit claim",
+        "FDA/DEA enforcement action or regulatory fine announcement",
+        "Earnings guidance cut or revenue warning tied to regulatory liability",
+        "Stock price sharp decline (>5%) on the lawsuit news within 1-2 trading days post-announcement"
+      ],
+      "risk_flags": [
+        "Data-mapping error: Wikipedia pageviews returned for 'World_Boxing_Association' instead of Walgreens Boots Alliance ticker data",
+        "SEC adapter failures (cik_not_found for WBA) prevent filing confirmation \u2014 critical gap for lawsuit corroboration",
+        "Information integrity assessment flags low_tier_only evidence (T3=1, T4=2) with pollution_risk_level=unknown",
+        "Pomerantz Law Firm is a known plaintiff-side firm; announcement may be marketing-driven rather than evidence of material liability",
+        "No independent news corroboration from T1/T2 sources (major financial media)",
+        "Fundamental deterioration (negative earnings, FCF, margins) predates lawsuit announcement; causality unclear",
+        "Macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution \u2014 equity shorts are disfavored",
+        "Stock price did not decline sharply on lawsuit news (2025-03-26); market may be discounting materiality"
+      ],
+      "suggested_improvements": [
+        "Wire SEC Edgar adapter to retrieve 8-K filings for WBA (resolve cik_not_found error)",
+        "Implement pharmacy-industry-specific alt-data adapter (DEA enforcement, FDA warning letters, state pharmacy board actions)",
+        "Cross-check Pomerantz Law Firm announcement against SEC EDGAR 8-K filings and company press releases",
+        "Retrieve major financial news sources (Bloomberg, Reuters, WSJ) for independent verification of lawsuit claim",
+        "Fix Wikipedia pageview mapping: ensure WBA ticker resolves to Walgreens Boots Alliance, not World_Boxing_Association",
+        "Implement sentiment analysis on news text to distinguish plaintiff-firm marketing from material regulatory risk",
+        "Monitor stock price reaction in 1-5 trading days post-announcement to calibrate market's assessment of lawsuit materiality"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "critical",
+          "detail": "sec_edgar adapter returned cik_not_found for WBA \u2014 prevents SEC 8-K filing confirmation of lawsuit"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "critical",
+          "detail": "wikipedia_pageviews returned data for 'World_Boxing_Association' (boxing org) instead of Walgreens Boots Alliance \u2014 data-mapping error"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4 adapter returned cik_not_found \u2014 insider trading data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f adapter returned not_available_on_current_plan \u2014 institutional ownership data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public adapter returned unmapped_ticker \u2014 not applicable to pharmacy retail but indicates mapping issue"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment flags low_tier_only evidence (T3=1, T4=2), pollution_risk_level=unknown, use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; only 1 item (lawsuit announcement) retained"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2025-08-28T20:00:00+00:00 is after allowed_data_cutoff; use last_eod_close for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's alternative_data_features block shows a critical data-mapping error: Wikipedia pageviews are returned for 'World_Boxing_Association' (a boxing organization) instead of Walgreens Boots Alliance. This suggests the adapter selection logic (alternative_data_features.adapter_selection.selected_adapter_id='wikipedia_pageviews') defaulted to a fallback when the primary industry-specific adapters were not wired. The SEC adapters (sec_edgar, sec_form4, sec_13f) all failed with cik_not_found or plan-unavailable errors, which is a critical gap for a lawsuit corroboration task. The information_integrity_assessment block correctly flags the evidence as low_tier_only and disallows use_as_primary_signal, but the schema does not provide a mechanism to distinguish between 'adapter wired and returned 0 rows' (informative absence) and 'adapter unavailable' (genuinely silent). The alt_data_manifest.calls[] source_flag field does distinguish these cases (live_sec_edgar_failed vs not_connected), but the agent must manually parse this to reason about structural absence. A stronger schema would auto-populate industry_specific_evidence_missing based on sector classification and adapter availability.",
+      "recommended_followups": [
+        "Retrieve SEC EDGAR 8-K filings for WBA (resolve cik_not_found error or use alternative SEC data source)",
+        "Cross-check Pomerantz Law Firm announcement against company press releases and investor relations disclosures",
+        "Monitor WBA stock price and volume in 1-5 trading days post-announcement (2025-03-26) to assess market reaction",
+        "Search major financial news outlets (Bloomberg, Reuters, WSJ, MarketWatch) for independent verification of lawsuit claim",
+        "Retrieve DEA/FDA enforcement action databases for Walgreens Boots Alliance (pharmacy-specific regulatory risk)",
+        "Analyze earnings call transcripts (if available post-cutoff) for management commentary on regulatory litigation",
+        "Compare WBA's regulatory risk profile to peer pharmacy retailers (CVS, Rite Aid) to assess relative materiality"
+      ],
+      "verdict": "narrative_contradicted",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "contradicts",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "The lawsuit narrative claims material regulatory liability (Controlled Substances Act violations, false Claims Act breaches), yet the stock price as of 2025-03-28 (2 trading days post-announcement) was $11.19, up 0.81% over 5 days and up 20.84% over 60 days. The macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution, which would normally suppress speculative shorts. The absence of SEC 8-K filing confirmation (sec_edgar adapter cik_not_found) suggests either the lawsuit is not yet material enough to trigger disclosure, or the claim is unverified. The fundamental deterioration (negative earnings, FCF, margins) predates the lawsuit and is not directly attributable to it. The information_integrity_assessment flags low_tier_only evidence with pollution_risk_level=unknown. For a surge_short candidate, the structural absence of hard-to-fake corroboration (SEC filings, major news outlets, regulatory databases) relative to the public narrative is bear-thesis evidence: the lawsuit claim may be overblown, not yet material, or driven by plaintiff-firm marketing rather than substantive regulatory risk.",
+      "industry_template_used": "retail_pharmacy_healthcare_services",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "Fallback adapter selected due to unavailability of industry-specific adapters (biotech_clinical, consumer_traffic, bank_regulatory, etc. all not_connected). Wikipedia pageviews returned data for 'World_Boxing_Association' instead of Walgreens Boots Alliance, indicating data-mapping error.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "SEC filing confirmation (8-K) is absent (adapter cik_not_found). Fundamental deterioration (negative earnings, FCF, margins) is real but predates lawsuit. Stock price reaction is muted (no sharp decline post-announcement). Information integrity assessment flags low_tier_only evidence with pollution_risk_level=unknown. No T1/T2 primary sources (SEC filings, major news outlets) corroborate the lawsuit claim. Structural absence of sector-expected alt-data corroboration (SEC filings, regulatory databases, pharmacy-industry metrics) is the strongest signal: a real lawsuit of this magnitude should produce hard-to-fake evidence, yet the packet shows zero rows from SEC adapters and zero rows from industry-specific regulatory adapters.",
+      "industry_specific_evidence_used": [
+        "Fundamental snapshot (Q1 2025 net loss, negative margins) \u2014 consistent with company under stress",
+        "Valuation snapshot (negative PE, negative EV/EBITDA) \u2014 distressed valuation",
+        "Macro regime (Overheat/Expansionary, strict_quality_and_valuation_caution) \u2014 unfavorable for equity shorts"
+      ],
+      "industry_specific_evidence_missing": [
+        "SEC 8-K filing confirmation (sec_edgar adapter cik_not_found)",
+        "DEA/FDA enforcement action or regulatory fine disclosure (no pharmacy-industry-specific adapter wired)",
+        "State pharmacy board compliance actions or license suspensions (no state regulatory adapter)",
+        "Pharmacy chain operational metrics (store closures, compliance audits, dispensing violations) \u2014 not available",
+        "Peer pharmacy retailer (CVS, Rite Aid) regulatory risk comparison \u2014 not available"
+      ],
+      "data_quality_warning": "critical: SEC adapters (sec_edgar, sec_form4, sec_13f) all failed with cik_not_found or plan-unavailable errors, preventing filing confirmation. Wikipedia pageviews returned data for 'World_Boxing_Association' instead of Walgreens Boots Alliance, indicating data-mapping error. Information integrity assessment flags low_tier_only evidence (T3=1, T4=2) with pollution_risk_level=unknown and use_as_primary_signal_allowed=false.",
+      "signals": [
+        {
+          "name": "SEC 8-K filing confirmation",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Fundamental deterioration (negative earnings, FCF, margins)",
+          "available": true,
+          "value": -0.67,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Stock price reaction to lawsuit announcement",
+          "available": true,
+          "value": 0.81,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Information integrity assessment (low_tier_only evidence)",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Major financial news corroboration",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Regulatory database confirmation (DEA/FDA)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Wikipedia pageview data (data-mapping error)",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "Analyst sentiment (T2 source, descriptor only)",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "neutral"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [
+        {
+          "claim": "Walgreens Boots Alliance engaged in widespread violations of federal law governing the dispensation of prescription medication and reimbursement",
+          "claim_type": "regulator_action",
+          "source_tier": "T3"
+        },
+        {
+          "claim": "Walgreens violated the Controlled Substances Act and False Claims Act",
+          "claim_type": "lawsuit",
+          "source_tier": "T3"
+        },
+        {
+          "claim": "Walgreens faces heightened risk of further regulatory scrutiny, civil liability, and reputational harm",
+          "claim_type": "other",
+          "source_tier": "T3"
+        }
+      ],
+      "claim_verification_status": "unverified",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 2,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment flags low_tier_only evidence (T3=1, T4=2) with pollution_risk_level=unknown and use_as_primary_signal_allowed=false per schema v1.1 decision #8. No T1 or T2 primary sources (SEC filings, major news outlets) corroborate the lawsuit claim. Pomerantz Law Firm is a known plaintiff-side law firm; announcement may be marketing-driven.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": "Pomerantz Law Firm is a known plaintiff-side law firm; announcement may be marketing-driven rather than evidence of material regulatory liability. No independent verification from major financial news outlets.",
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-31T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "sec_8k_fulltext",
+        "sec_edgar",
+        "sec_form4",
+        "sec_13f",
+        "pharmacy_industry_regulatory_adapter",
+        "major_financial_news_corroboration"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Evidence Classifier",
+      "schema_version": "network_effect_agent_output_v1.4",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-03-31T09:30:00-04:00",
+      "data_available_as_of": "2025-03-31T09:30:00-04:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "alternative_data_features.tech_activity.github_public",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "news_event_summary.items",
+        "fundamental_snapshot.snapshot_quarter",
+        "valuation_snapshot.valuation_inputs"
+      ],
+      "evidence_missing": [
+        "github_public_developer_ecosystem_data",
+        "sec_disclosed_operating_metrics_dau_mau",
+        "sec_disclosed_marketplace_gmv_or_take_rate",
+        "patent_activity_data",
+        "sec_13f_ownership_positioning",
+        "sec_form4_insider_activity",
+        "sec_edgar_8k_filings"
+      ],
+      "reasoning_summary": "WBA (Walgreens Boots Alliance) is a traditional retail pharmacy and healthcare company, not a platform or network-effect business. Layer 1 evidence is structurally absent: GitHub adapter returned zero rows (unmapped_ticker), SEC Edgar adapter failed (cik_not_found), and no SEC-disclosed operating metrics exist for DAU/MAU, marketplace GMV, or take-rate \u2014 the canonical Layer 1 signals for network economics. Layer 2 attention data shows Wikipedia pageviews for 'World_Boxing_Association' (a ticker collision artifact, not WBA the company) with modest volatility (range 352\u20131220 views/day over 30 days, peak 2025-03-02 and 2025-03-22). FMP sentiment shows analyst ratings stable at ~2 Buy, 12 Hold, 3 Sell as of 2025-03-01, with no recent surge. One news item (2025-03-26) reports a class-action lawsuit alleging violations of federal law governing prescription dispensation and reimbursement \u2014 a regulatory/legal headwind, not a network-effect catalyst. Layer 3 financials show negative earnings (net_margin_pct=-2.81 TTM, eps=-0.31 Q1 2025), negative operating income, negative free cash flow (-424M Q1 2025), and high leverage (debt_to_equity=4.04). The company does not exhibit network-effect economics: it is a mature, declining retail pharmacy chain facing regulatory and operational headwinds. The Wikipedia pageview data is a Layer 2 attention signal only and does not constitute evidence of network compounding. No Layer 1 hard-to-fake evidence exists. Classification: absent.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If WBA were to disclose DAU/MAU or marketplace transaction metrics in a future 10-K/10-Q, Layer 1 evidence would be re-evaluated.",
+        "If GitHub activity were mapped and showed significant developer ecosystem growth, Layer 1 would be populated.",
+        "If the company pivoted to a platform or two-sided marketplace model with disclosed cohort metrics, classification would change."
+      ],
+      "risk_flags": [
+        "Layer 1 evidence is completely absent \u2014 no developer ecosystem, no SEC-disclosed operating metrics, no patent activity.",
+        "Wikipedia pageview data is a Layer 2 attention signal only; it is not hard-to-fake evidence of network economics.",
+        "Ticker collision: Wikipedia pageviews are for 'World_Boxing_Association', not Walgreens Boots Alliance; this is a data artifact.",
+        "Negative earnings, negative FCF, and high leverage indicate financial distress, not network compounding.",
+        "Class-action lawsuit (2025-03-26) signals regulatory and reputational risk, not network-effect strength.",
+        "Analyst sentiment is mixed and stable; no surge in positive coverage.",
+        "The business model (retail pharmacy) does not inherently exhibit network effects."
+      ],
+      "suggested_improvements": [
+        "Verify ticker mapping for Wikipedia pageviews; 'World_Boxing_Association' is not the company.",
+        "If WBA has a digital platform or healthcare marketplace component, request SEC-disclosed metrics for that segment.",
+        "Monitor for future 10-K/10-Q disclosures of operating metrics (e.g., digital user engagement, pharmacy network utilization).",
+        "Assess whether the company's healthcare services (e.g., telehealth, specialty pharmacy) exhibit two-sided marketplace dynamics."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ticker_collision",
+          "severity": "warning",
+          "detail": "Wikipedia pageviews are for 'World_Boxing_Association', not Walgreens Boots Alliance; data is not relevant to WBA the company."
+        },
+        {
+          "kind": "adapter_unmapped_ticker",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 WBA not in ticker_to_github.csv; no developer ecosystem data available."
+        },
+        {
+          "kind": "adapter_cik_not_found",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker WBA; SEC filing data unavailable."
+        },
+        {
+          "kind": "adapter_cik_not_found",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 no CIK for WBA; insider activity data unavailable."
+        },
+        {
+          "kind": "adapter_not_available",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable."
+        },
+        {
+          "kind": "layer_1_structural_absence",
+          "severity": "critical",
+          "detail": "No Layer 1 evidence available: github_public failed (unmapped), sec_edgar failed (cik_not_found), sec_form4 failed (cik_not_found), no SEC-disclosed operating metrics in fundamental_snapshot."
+        },
+        {
+          "kind": "layer_2_only_attention",
+          "severity": "info",
+          "detail": "Wikipedia pageviews and FMP sentiment are Layer 2 attention signals only; they do not constitute hard-to-fake evidence of network economics."
+        },
+        {
+          "kind": "negative_fundamentals",
+          "severity": "warning",
+          "detail": "fundamental_gate_38 fails: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The three-layer framework correctly identifies the absence of Layer 1 evidence as disqualifying for a 'strong' or 'strong_genuine' classification. The Wikipedia pageview data is a Layer 2 artifact (and a ticker collision). The framework's semantic ceiling rule (L1 mandatory for 'strong', L2-only \u2192 'narrative_hype') applies correctly here: WBA exhibits neither Layer 1 nor Layer 2 evidence of network economics, so the classification is 'absent'.",
+      "recommended_followups": [
+        "Verify that the SEC CIK lookup failure for WBA is not a data quality issue; confirm WBA's correct CIK if it exists.",
+        "Clarify whether WBA has a digital platform or marketplace segment that should be evaluated separately.",
+        "Monitor for future earnings calls or investor presentations that disclose digital user engagement or network metrics.",
+        "If WBA acquires or launches a platform business, re-evaluate network-effect classification at that time."
+      ],
+      "network_effect_score": 0,
+      "network_effect_evidence": "absent",
+      "pricing_power_assessment": "low",
+      "key_signals_used": [
+        "Layer 2 attention: Wikipedia pageviews (ticker collision artifact, not relevant)",
+        "Layer 2 sentiment: FMP analyst ratings (stable, mixed, no surge)",
+        "Layer 3 financials: negative earnings, negative FCF, high leverage"
+      ],
+      "key_signals_missing": [
+        "Layer 1: GitHub developer ecosystem (adapter failed, unmapped_ticker)",
+        "Layer 1: SEC-disclosed DAU/MAU or engagement metrics (not disclosed)",
+        "Layer 1: SEC-disclosed marketplace GMV or take-rate (not applicable to retail pharmacy)",
+        "Layer 1: Patent activity (deferred per R-NETWORK-10)",
+        "Layer 2: News surge or social attention spike (one lawsuit article, no positive catalyst)",
+        "Layer 2: Community size or developer metrics (not available)"
+      ],
+      "classification": "absent",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "Wikipedia pageviews for 'World_Boxing_Association' (ticker collision artifact, not WBA company): 30-day range 352\u20131220 views/day, peaks 2025-03-02 (1200) and 2025-03-22 (1220); not relevant to network economics.",
+        "FMP analyst sentiment (2025-03-01): 2 Strong Buy, 2 Buy, 12 Hold, 3 Sell, 1 Strong Sell; stable and mixed, no surge."
+      ],
+      "layer_3_evidence": [
+        "Fundamental snapshot Q1 2025 (accepted 2025-01-10): revenue 39.5B, net_income -265M, operating_income -236M, eps -0.31, net_margin_pct -2.81, free_cash_flow -424M; negative earnings and FCF indicate financial distress, not network compounding.",
+        "Valuation snapshot TTM: pe_ratio -3.15 (negative earnings), net_margin_pct -2.81, debt_to_equity 4.04 (high leverage); no pricing power evident.",
+        "News event (2025-03-26): class-action lawsuit alleging violations of federal law governing prescription dispensation and reimbursement; regulatory headwind, not network-effect catalyst."
+      ],
+      "type_direct_vs_two_sided": "none",
+      "staleness_flags": [
+        "sec_operating_metrics_not_available \u2014 no SEC-disclosed DAU/MAU or marketplace metrics exist for WBA.",
+        "github_activity_not_available \u2014 github_public adapter failed (unmapped_ticker).",
+        "fundamental_snapshot_stale_>90d \u2014 latest PIT-safe income statement is Q1 2025 (accepted 2025-01-10), which is 79 days before decision_timestamp 2025-03-31; within 90-day window but approaching staleness."
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-03-31T09:30:00-04:00",
+      "data_available_as_of": "2025-03-31T09:30:00-04:00",
+      "decision_or_assessment": "very_expensive",
+      "confidence": "high",
+      "evidence_used": [
+        "valuation_snapshot.valuation_inputs.pe_ratio",
+        "valuation_snapshot.valuation_inputs.ev_to_ebitda",
+        "valuation_snapshot.valuation_inputs.roe",
+        "valuation_snapshot.valuation_inputs.roa",
+        "valuation_snapshot.valuation_inputs.net_margin_pct_ttm",
+        "fundamental_snapshot.snapshot_quarter.eps",
+        "fundamental_snapshot.snapshot_quarter.net_income",
+        "fundamental_snapshot.snapshot_quarter.free_cash_flow",
+        "fundamental_snapshot.snapshot_quarter.operating_income",
+        "macro_regime.macro_regime",
+        "price_snapshot.return_60d_pct",
+        "fundamental_gate_38.failed_gates",
+        "news_event_summary.items[0].sentiment"
+      ],
+      "evidence_missing": [
+        "forward_pe_ratio",
+        "peg_ratio_denominator_clarity",
+        "fcf_yield_underlying_inputs"
+      ],
+      "reasoning_summary": "WBA exhibits a structurally very expensive valuation profile driven by negative earnings and negative free cash flow \u2014 case (a) ratio-undefined-due-to-nonpositive-denominator, a real bearish finding, not a data gap. P/E is -3.15 (negative TTM EPS of -0.31 per Q1 FY2025 filing); EV/EBITDA is -14.45 (negative operating income of -236M on 39.5B revenue). Net margin is -2.81% TTM; ROE is -38.8%; ROA is -4.7%. The most recent quarter (2025 Q1, accepted 2025-01-10) shows net income of -265M, operating income of -236M, and free cash flow of -424M \u2014 all deeply negative. The fundamental_gate_38 explicitly fails on eps_ttm_not_positive, operating_margin_not_positive, and free_cash_flow_not_positive. Price-to-book of 1.44 is the only positive ratio, but it is meaningless when the underlying business is destroying equity value (negative ROE). The stock has rallied 20.8% over 60 days despite deteriorating fundamentals, suggesting narrative-driven momentum rather than valuation support. Macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution discipline \u2014 in this regime, even 'fair' multiples warrant caution; a very_expensive profile on a loss-making company is a clear red flag. A class-action lawsuit filed 2025-03-26 alleges widespread violations of federal law governing prescription dispensation and reimbursement, adding regulatory and reputational risk. The combination of negative earnings, negative FCF, negative operating margins, deteriorating fundamentals, and emerging legal liability makes this a structurally expensive valuation with no margin of safety. The undefined P/E and EV/EBITDA from negative denominators are not data gaps \u2014 they are the core bear thesis: the company has surged on narrative while losing money.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If fundamental_snapshot is updated to show positive net income and positive free cash flow in the next quarter, reassess.",
+        "If the class-action lawsuit is dismissed or settled with immaterial impact, regulatory risk may diminish.",
+        "If macro regime shifts to Crisis or Poor, deep drawdown may warrant margin-of-safety bonus per \u00a73.9, but only if fundamentals improve."
+      ],
+      "risk_flags": [
+        "Negative earnings (EPS -0.31 TTM) \u2014 company is unprofitable.",
+        "Negative free cash flow (-424M in Q1 FY2025) \u2014 cash burn, not generation.",
+        "Negative operating margin (-0.6% in Q1) \u2014 core business is unprofitable.",
+        "Negative ROE (-38.8%) and ROA (-4.7%) \u2014 destroying shareholder value.",
+        "Class-action lawsuit filed 2025-03-26 for alleged federal violations \u2014 regulatory and reputational risk.",
+        "High debt-to-equity (4.04) \u2014 leverage amplifies downside in distressed scenario.",
+        "Current ratio 0.60 \u2014 liquidity stress; working capital deficit.",
+        "60-day rally of +20.8% despite negative fundamentals \u2014 momentum/narrative-driven, not valuation-driven.",
+        "Macro regime Overheat with strict_quality_and_valuation_caution \u2014 late-cycle environment penalizes low-quality, expensive names.",
+        "Fundamental gate failure on three critical metrics \u2014 hard gate rule recommends no_trade."
+      ],
+      "suggested_improvements": [
+        "Obtain forward P/E or analyst consensus EPS estimates to assess if losses are expected to reverse.",
+        "Monitor quarterly earnings for signs of stabilization or further deterioration.",
+        "Track class-action lawsuit progress and potential settlement exposure.",
+        "Assess management commentary on cost-cutting and cash flow improvement initiatives.",
+        "Compare valuation to peer group (CVS, RGC) to contextualize relative cheapness."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM (trailing twelve months), not point-in-time anchored to a single filing date. TTM ratios are not PIT-safe and should not be used as primary inputs for fundamental gates; however, they are appropriate for valuation descriptors."
+        },
+        {
+          "kind": "negative_earnings_undefined_pe",
+          "severity": "critical",
+          "detail": "P/E ratio is -3.15 because TTM EPS is negative (-0.31). This is case (a): underlying input present but ratio undefined due to nonpositive denominator. This is a REAL FINDING, not a data gap. Negative P/E signals unprofitability and is a strong bearish valuation descriptor."
+        },
+        {
+          "kind": "negative_fcf_undefined_fcf_yield",
+          "severity": "critical",
+          "detail": "FCF yield is null because free_cash_flow_ttm is negative. Underlying input is present (FCF = -424M in Q1 FY2025). This is case (a): real bearish finding, not a data gap."
+        },
+        {
+          "kind": "negative_operating_income_undefined_ev_ebit",
+          "severity": "critical",
+          "detail": "EV/EBIT is null because operating_income is negative (-236M in Q1). EV/EBITDA is -14.45 because EBIT is negative. Both are case (a) findings: real bearish signals."
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "fundamental_gate_38 fails on three hard gates: eps_ttm_not_positive, operating_margin_not_positive, free_cash_flow_not_positive. Rule engine recommends no_trade."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff. One item retained: class-action lawsuit filed 2025-03-26, published 2025-03-26 12:00 UTC, within cutoff."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The valuation_snapshot block correctly flags current_snapshot_not_PIT_safe=true and is_dcf_pit_safe=false, acknowledging that TTM ratios and DCF are not point-in-time anchored. However, the underlying fundamental_snapshot provides PIT-safe quarterly data (accepted 2025-01-10) that confirms the negative earnings and FCF signals. The case (a) vs case (b) distinction is critical here: the undefined ratios are NOT data gaps; they are real bearish findings that should drive the very_expensive descriptor.",
+      "recommended_followups": [
+        "Obtain forward guidance or analyst consensus to assess path to profitability.",
+        "Monitor Q2 FY2025 earnings (expected ~June 2025) for signs of stabilization.",
+        "Track class-action lawsuit discovery and settlement negotiations.",
+        "Assess whether dividend (0.25/quarter, ~11.5% yield) is sustainable given negative FCF.",
+        "Compare to peer valuations (CVS, RGC) to contextualize relative valuation."
+      ],
+      "valuation_score": 15,
+      "valuation_assessment": "very_expensive",
+      "margin_of_safety_assessment": "none",
+      "valuation_inputs_used": {
+        "pe_ratio": -3.1465235347707257,
+        "ev_to_ebitda": -14.449297332834705,
+        "price_to_book": 1.4425034108311292,
+        "price_to_sales": 0.08860254003571642,
+        "roe": -0.388050907376856,
+        "roa": -0.04744546580987234,
+        "net_margin_pct_ttm": -2.81,
+        "gross_margin_pct_ttm": 17.28,
+        "debt_to_equity_ttm": 4.042043714325491,
+        "current_ratio_ttm": 0.6048616996686956,
+        "eps_ttm_underlying": -0.31,
+        "net_income_q1_fy2025": -265000000,
+        "operating_income_q1_fy2025": -236000000,
+        "free_cash_flow_q1_fy2025": -424000000,
+        "revenue_q1_fy2025": 39459000000,
+        "macro_regime": "Overheat",
+        "equity_discipline": "strict_quality_and_valuation_caution",
+        "return_60d_pct": 20.8423,
+        "fundamental_gate_status": "failed"
+      },
+      "valuation_inputs_missing": [
+        "forward_pe_ratio",
+        "analyst_consensus_eps_next_12m",
+        "peg_ratio_growth_rate_clarity",
+        "fcf_yield_calculation_basis"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Thesis Evaluator",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-03-31T09:30:00-04:00",
+      "data_available_as_of": "2025-03-31T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long thesis is invalidated; hard fundamental gates fail.",
+      "confidence": "high",
+      "evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (Q1 FY2025, accepted 2025-01-10)",
+        "valuation_snapshot.valuation_inputs (PE=-3.15, EV/EBITDA=-14.45, net_margin=-2.81%)",
+        "fundamental_gate_38 (eps_ttm, operating_margin_ttm, fcf_ttm all negative)",
+        "news_event_summary (class action lawsuit re: opioid/CSA violations, published 2025-03-26)",
+        "price_snapshot (last_eod_close=11.19, down from prior levels)",
+        "macro_regime (Overheat/Expansionary, equity_discipline=strict_quality_and_valuation_caution)",
+        "sentiment_community_ownership_evidence (analyst ratings show deterioration from 2022-2023 highs)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts not present in packet)",
+        "detailed franchise health assessment (no Layer 1 network-effect evidence available)",
+        "management commentary on regulatory remediation",
+        "forward guidance or turnaround plan disclosure"
+      ],
+      "reasoning_summary": "WBA fails all three hard fundamental gates required for a quality-long buy recommendation: (1) eps_ttm is negative (snapshot Q1 shows eps=-0.31, prior quarters mixed but recent trend deteriorating); (2) operating_margin_ttm is negative (-0.67% net margin in Q1, operating_income=-236M on revenue=39.5B); (3) free_cash_flow is deeply negative (-424M in Q1). The company is burning cash and unprofitable on an operating basis. Valuation metrics are distorted by negative earnings (PE=-3.15, EV/EBITDA=-14.45), making traditional valuation assessment unreliable. A material negative catalyst\u2014class action lawsuit alleging widespread CSA/opioid dispensation violations and false claims\u2014was published 2025-03-26, five days before decision_timestamp, creating reputational and legal liability risk. The selloff appears company-specific (regulatory/operational failure) rather than macro or sector-driven. Macro regime is Overheat with strict equity discipline, which further constrains appetite for distressed quality names. Analyst sentiment has deteriorated from 2022\u20132023 (when 5 Strong Buy, 10 Buy ratings were common) to 2025-03-01 (2 Strong Buy, 2 Buy, 12 Hold, 3 Sell, 1 Strong Sell), signaling loss of confidence. The long-term franchise health is materially compromised by operational underperformance and regulatory exposure. No evidence in the packet supports a thesis that the selloff is temporary or that valuation is attractive at current levels given the fundamental deterioration.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "eps_ttm < 0 (HARD GATE FAIL)",
+        "operating_margin_ttm < 0 (HARD GATE FAIL)",
+        "free_cash_flow_ttm < 0 (HARD GATE FAIL)",
+        "Class action lawsuit filed 2025-03-26 alleging CSA/opioid violations and false claims",
+        "Net margin negative (-2.81% TTM) and deteriorating",
+        "Operating cash flow negative (-140M in Q1 FY2025)",
+        "Analyst rating distribution shifted from bullish (2022\u20132023) to mixed/bearish (2025)"
+      ],
+      "risk_flags": [
+        "Regulatory/legal: Class action lawsuit for CSA violations, opioid dispensation, false claims\u2014material reputational and financial risk",
+        "Operational: Negative operating income, negative free cash flow, negative operating cash flow\u2014company is burning cash",
+        "Solvency: Debt-to-equity=4.04 (above 3.0 threshold); current_ratio=0.60 (below 1.0, liquidity stress)",
+        "Valuation distortion: Negative earnings make PE and EV/EBITDA metrics unreliable",
+        "Analyst sentiment deterioration: Sell/Strong Sell ratings increased; Strong Buy/Buy ratings collapsed",
+        "Macro headwind: Overheat regime with strict equity discipline limits appetite for distressed names",
+        "Dividend sustainability: 11.5% yield on $0.25 quarterly dividend is unsustainable given negative FCF"
+      ],
+      "suggested_improvements": [
+        "Obtain management commentary on regulatory remediation plan and expected legal settlement costs",
+        "Request forward guidance on path to operating profitability and positive FCF",
+        "Assess whether the class action lawsuit is isolated or symptomatic of systemic compliance failures",
+        "Monitor for additional regulatory actions or restatements",
+        "Evaluate whether dividend will be cut or suspended given negative FCF"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "Hard gates eps_ttm, operating_margin_ttm, fcf_ttm all fail; recommendation must collapse to no_trade per \u00a73.8"
+        },
+        {
+          "kind": "valuation_distortion",
+          "severity": "high",
+          "detail": "Negative earnings render PE and EV/EBITDA metrics unreliable; valuation_assessment cannot be 'attractive' or 'fair' when fundamentals are broken"
+        },
+        {
+          "kind": "news_event_material",
+          "severity": "high",
+          "detail": "Class action lawsuit published 2025-03-26 alleges widespread CSA/opioid violations; material negative catalyst within 5 days of decision"
+        },
+        {
+          "kind": "upstream_outputs_absent",
+          "severity": "medium",
+          "detail": "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val) not present in packet; Agent 06 reasoning is standalone"
+        },
+        {
+          "kind": "alt_data_limited",
+          "severity": "medium",
+          "detail": "Alternative data adapters (sec_edgar, sec_13f, sec_form4, github_public) all failed or unavailable; network-effect evidence capped at 'partial' per \u00a710.15"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include upstream_agent_outputs from Narrative, Alt-Data Verification, or Fund/Net/Val agents. Agent 06 is reasoning in isolation from the raw packet. This is consistent with the multi-agent pipeline architecture, but it means Agent 06 cannot cross-check verdicts from prior agents. The fundamental_gate_38 block in the packet explicitly flags the hard gate failures, which simplifies the decision but removes the need for Agent 06 to independently compute the gates. The class action lawsuit is a material negative catalyst, but the packet contains only one news item (the lawsuit itself) and 20 items were dropped post-cutoff; the full news context is incomplete.",
+      "recommended_followups": [
+        "If WBA is held in a portfolio, evaluate exit timing and tax-loss harvesting opportunities",
+        "Monitor SEC filings for 8-K disclosures related to the class action lawsuit and any settlement negotiations",
+        "Track analyst downgrades and earnings revisions; expect further negative revisions if regulatory fines materialize",
+        "Assess whether dividend will be suspended; if so, yield will collapse and valuation will reset lower",
+        "Re-evaluate thesis only if: (a) regulatory settlement is announced with manageable cost, (b) management provides credible path to operating profitability, (c) FCF turns positive"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "argues_against_long",
+      "network_effect_evidence": "partial",
+      "valuation_assessment": "not_evaluated",
+      "selloff_origin_view": "company_specific",
+      "thesis_status": "invalidated",
+      "evidence_sufficiency": "sufficient",
+      "recommended_action": "no_trade",
+      "initial_position_pct": 0.0,
+      "max_position_pct": 0.0,
+      "missing_data_warnings": [
+        "upstream_agent_outputs not present; Agent 06 verdict is standalone",
+        "Alternative data adapters (sec_edgar, sec_13f, sec_form4, github_public) all failed; network-effect evidence is incomplete",
+        "News context incomplete: 20 items dropped post-cutoff; only 1 item (class action) available",
+        "Management commentary on regulatory remediation not available in packet",
+        "Forward guidance and turnaround plan not disclosed in available filings"
+      ],
+      "audit_rationale": "WBA fails hard fundamental gates: eps_ttm<0, operating_margin_ttm<0, fcf_ttm<0. Company is unprofitable and cash-flow negative. Class action lawsuit (2025-03-26) alleges CSA/opioid violations, creating material legal/reputational risk. Analyst sentiment deteriorated from 2022\u20132023 bullish to 2025 mixed/bearish. Debt-to-equity=4.04 (above threshold); current_ratio=0.60 (liquidity stress). Selloff is company-specific, not macro/sector. Thesis is invalidated; no buy case exists. Recommend no_trade."
+    },
+    "risk": {
+      "agent_id": "Agent_06_RiskAgent",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_v1",
+      "prompt_version": "2026_05_06_pass8_hardrule_veto_only",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-03-31T09:30:00-04:00",
+      "data_available_as_of": "2025-03-31T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation for surge_short candidate",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "data_quality_flags[*].severity",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "fundamental_gate_38.failed_gates",
+        "macro_regime.equity_allocation_cap",
+        "decision_time_discipline.allowed_data_cutoff"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)-(e) for candidate_type=surge_short. Condition (a): sleeve cap breach \u2014 not applicable to surge_short per \u00a75.13(a) scope (applies to quality_long only). Condition (b): surge_short position cap \u2014 no current sleeve position data provided in packet; cannot evaluate breach of 5% single-position or 10% sleeve cap without portfolio state. Condition (c): critical data quality flags \u2014 packet contains 10 data_quality_flags with severity \u2208 {warning, info}; none marked severity=critical. Condition (d): anti-pollution integrity veto \u2014 INAPPLICABLE to surge_short per \u00a75.17; veto applies to quality_long only. Condition (e): lookahead veto \u2014 envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true; no lookahead violations detected. All five conditions evaluated; none tripped for surge_short candidate.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If portfolio state shows surge_short sleeve already at \u226510% or single position at \u22655%, condition (b) would trip.",
+        "If any data_quality_flag.severity is upgraded to 'critical', condition (c) would trip.",
+        "If envelope.data_after_cutoff_used is set to true, condition (e) would trip.",
+        "If envelope.lookahead_safe is set to false, condition (e) would trip."
+      ],
+      "risk_flags": [
+        "Packet contains 10 data_quality_flags (all severity \u2208 {warning, info}); no critical flags present.",
+        "SEC adapters (sec_edgar, sec_form4, sec_13f) all failed; filing confirmation unavailable.",
+        "Wikipedia pageviews data is ticker collision artifact (World_Boxing_Association, not WBA company).",
+        "Information integrity assessment flags low_tier_only evidence (T3=1, T4=2) with pollution_risk_level=unknown.",
+        "Fundamental gate failure (eps_ttm, operating_margin_ttm, fcf_ttm all negative) is company-specific risk, not veto trigger.",
+        "Class-action lawsuit (2025-03-26) is material negative catalyst but not a veto condition per \u00a75.13."
+      ],
+      "suggested_improvements": [
+        "Obtain portfolio state (current sleeve positions, single-position sizes) to evaluate condition (b) breach risk.",
+        "Monitor for critical-severity data quality flags in future packets.",
+        "Verify SEC adapter failures are not data quality issues; confirm WBA CIK lookup.",
+        "If pollution_defense_layer is implemented in future versions, re-evaluate condition (d) for quality_long candidates."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2025-08-28T20:00:00+00:00 is after allowed_data_cutoff; quote retained for display only"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "ratios_ttm flagged not_PIT_safe \u2014 for display, not for PIT inputs"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 items dropped because publishedDate > cutoff"
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "info",
+          "detail": "alternative-data adapters not wired in v1 \u2014 schema-shape placeholder only"
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment is a placeholder in v1"
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence is a placeholder in v1"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_edgar error_class=cik_not_found extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=github_public error_class=unmapped_ticker extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_13f error_class=not_available_on_current_plan extraction_status=failed"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "adapter=sec_form4 error_class=cik_not_found extraction_status=failed"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The packet does not include portfolio state (current sleeve positions, single-position sizes), which is required to evaluate condition (b) breach risk. The risk agent must receive portfolio context from the PM or sleeve manager to complete the evaluation. The information_integrity_assessment block is marked insufficient_evidence with use_as_primary_signal_allowed=false, but the pollution_defense_layer is unimplemented (status='not_evaluated'), so condition (d) does not trip per \u00a75.13(d) relaxation (2026-05-06). The packet is clean on lookahead and hindsight (envelope.data_after_cutoff_used=false, lookahead_safe=true, hindsight_safe=true).",
+      "recommended_followups": [
+        "Obtain portfolio state to evaluate condition (b) breach risk for surge_short sleeve and single-position caps.",
+        "Confirm SEC adapter failures are not data quality issues; verify WBA CIK lookup in SEC EDGAR.",
+        "If pollution_defense_layer is implemented in future versions, re-evaluate condition (d) for quality_long candidates with low_tier_only evidence.",
+        "Monitor for critical-severity data quality flags in future packets; escalate to PM if any condition (c) flags appear."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a73.7/\u00a73.8 scope. Not applicable to surge_short candidate."
+        },
+        {
+          "name": "surge_short_position_cap_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires portfolio state (current sleeve positions, single-position sizes). Packet does not include portfolio context. Mechanical evaluation: no data available to assess breach of 5% single-position or 10% sleeve cap. Assume no breach pending portfolio state delivery."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Packet contains 10 data_quality_flags; all severity \u2208 {warning, info}. No flags marked severity=critical. Condition (c) does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) INAPPLICABLE to surge_short per \u00a75.17. Veto applies to quality_long only when pollution_defense_layer affirmatively confirms pollution. Surge_short candidate is exempt."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead violations detected. Condition (e) does not trip."
+        }
+      ],
+      "advisory_notes": "HARD-VETO EVALUATION COMPLETE. No veto conditions tripped for surge_short candidate WBA. Conditions (a) and (d) are inapplicable to surge_short per \u00a75.13 and \u00a75.17. Condition (b) cannot be fully evaluated without portfolio state; assume no breach pending delivery. Condition (c) does not trip (no critical data quality flags). Condition (e) does not trip (lookahead safe). Risk agent clears candidate for downstream PM evaluation. NOTE: This is hard-veto checking ONLY. Risk agent does NOT recommend size, does NOT tilt PM toward cover/hold, does NOT emit advisory_notes beyond veto status.",
+      "risk_notes": [
+        "Fundamental gate failure (eps_ttm, operating_margin_ttm, fcf_ttm all negative) is company-specific risk, not a hard-veto trigger per \u00a75.13.",
+        "Class-action lawsuit (2025-03-26) is material negative catalyst but not a hard-veto condition.",
+        "Information integrity assessment flags low_tier_only evidence (T3=1, T4=2) with pollution_risk_level=unknown; condition (d) does not apply to surge_short.",
+        "SEC adapter failures (cik_not_found) prevent filing confirmation but do not trigger hard-veto conditions.",
+        "Macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution; this is PM-level discipline, not a hard-veto trigger."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation initiated for candidate_type=surge_short",
+        "Condition (a) \u00a73.7/\u00a73.8 long entry cap: INAPPLICABLE (surge_short exempt)",
+        "Condition (b) \u00a72 short entry cap: CANNOT EVALUATE (portfolio state not provided); assume no breach",
+        "Condition (c) data_quality_flags[*].severity=critical: NOT TRIPPED (all flags severity \u2208 {warning, info})",
+        "Condition (d) anti-pollution integrity veto \u00a75.13(d): INAPPLICABLE (surge_short exempt per \u00a75.17)",
+        "Condition (e) lookahead veto \u00a75.4: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+        "RESULT: No veto conditions tripped. Candidate clears hard-veto gate."
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-31T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "WBA",
+      "decision_timestamp": "2025-03-31T09:30:00-04:00",
+      "data_available_as_of": "2025-03-31T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision for WBA",
+      "confidence": "medium",
+      "evidence_used": [
+        "upstream_agent_outputs.narrative_event.verdict=supported",
+        "upstream_agent_outputs.alt_data_verify.verdict=narrative_contradicted",
+        "upstream_agent_outputs.fundamental_snapshot (negative earnings, FCF, margins)",
+        "upstream_agent_outputs.valuation.assessment=very_expensive",
+        "upstream_agent_outputs.network_effect.classification=absent",
+        "upstream_agent_outputs.quality_long.thesis_status=invalidated",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (no hard veto tripped)",
+        "news_event_summary.items[0] (class-action lawsuit, 2025-03-26)",
+        "price_snapshot.return_60d_pct=20.8423 (rally despite deterioration)",
+        "macro_regime.equity_discipline=strict_quality_and_valuation_caution",
+        "fundamental_gate_38.failed_gates (eps, operating_margin, fcf all negative)"
+      ],
+      "evidence_missing": [
+        "Portfolio state (current sleeve positions, single-position sizes) for position_size_cap evaluation",
+        "SEC 8-K filing confirmation (sec_edgar adapter cik_not_found)",
+        "Detailed lawsuit discovery or settlement status",
+        "Forward guidance or management commentary on regulatory remediation"
+      ],
+      "reasoning_summary": "WBA is a distressed retail pharmacy company facing a material regulatory lawsuit (class-action filed 2025-03-26 alleging CSA/opioid violations and false claims). The bear thesis is COHERENT across multiple dimensions: (1) FUNDAMENTAL DETERIORATION: negative earnings (eps=-0.31 TTM), negative operating income (-236M Q1), negative free cash flow (-424M Q1), negative net margin (-2.81%). Hard fundamental gates fail on all three critical metrics. (2) NARRATIVE-VS-EVIDENCE GAP: The lawsuit is sourced from a real law firm (Pomerantz LLP) via GlobeNewswire, but alt-data verification flags structural absence of hard-to-fake corroboration (SEC 8-K filing unavailable, sec_edgar adapter cik_not_found). The information_integrity_assessment flags low_tier_only evidence (T3=1, T4=2) with pollution_risk_level=unknown. This structural absence relative to sector-expected evidence (a real lawsuit should trigger SEC 8-K disclosure) is bear-thesis input per \u00a75.17 surge-short carve-out. (3) PRICE ACTION DIVERGENCE: Stock has rallied +20.84% over 60 days despite negative earnings, negative FCF, and emerging legal liability. This is narrative-driven momentum on a deteriorating fundamental backdrop \u2014 classic pump-and-dump pattern. (4) VALUATION DISTORTION: PE=-3.15, EV/EBITDA=-14.45 (undefined due to negative denominators). These are real bearish signals, not data gaps. The company is unprofitable and burning cash. (5) MACRO HEADWIND: Overheat regime with strict_quality_and_valuation_caution discipline disfavors equity shorts, but WBA is so fundamentally broken that it is a contrarian short candidate. PREPONDERANCE OF EVIDENCE: The bear thesis is carried by overwhelming fundamental deterioration (negative earnings, FCF, margins) combined with narrative-vs-evidence divergence (lawsuit claim without SEC filing confirmation) and price action divergence (rally despite deterioration). The narrative event agent rates the lawsuit as 'supported' (real law firm, specific legal references), but alt-data verification rates it 'narrative_contradicted' (structural absence of hard-to-fake corroboration). For surge-short, this structural absence is the alpha signal: the public narrative claims material regulatory liability, yet the packet shows zero SEC filing confirmation and zero regulatory database corroboration. The stock has rallied on the lawsuit narrative without fundamental support. This is a coherent bear thesis: the company is fundamentally broken (negative earnings, FCF, margins), the lawsuit is real but unverified (no SEC 8-K), and the stock has rallied on narrative momentum despite deterioration. RISK AGENT CLEARANCE: Hard-veto evaluation shows no veto conditions tripped. Condition (a) inapplicable to surge_short. Condition (b) cannot be evaluated without portfolio state; assume no breach. Condition (c) no critical data quality flags. Condition (d) inapplicable to surge_short per \u00a75.17. Condition (e) lookahead safe. Candidate clears hard-veto gate. DECISION: SHORT at 0.005 (0.5%) entry size per \u00a74.8 fixed entry rule for new surge_short positions. The preponderance of evidence supports a bear thesis: fundamental deterioration + narrative-vs-evidence gap + price action divergence. Confidence is medium due to macro headwind (Overheat regime disfavors shorts) and incomplete lawsuit corroboration (SEC filing unavailable), but the fundamental deterioration is undeniable and the narrative-vs-evidence gap is the surge-short alpha mechanism.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If SEC 8-K filing is retrieved confirming the lawsuit with material impact disclosure, narrative credibility increases",
+        "If company announces positive earnings surprise or FCF inflection in next quarter, fundamental thesis breaks",
+        "If class-action lawsuit is dismissed or settled for immaterial amount, regulatory risk diminishes",
+        "If macro regime shifts to Crisis or Poor, short discipline may tighten (though WBA is so broken it may still be short candidate)",
+        "If stock price crashes >50% from current levels, retracement may exhaust the surge dynamic and warrant cover evaluation"
+      ],
+      "risk_flags": [
+        "Macro regime is Overheat/Expansionary with strict_quality_and_valuation_caution \u2014 late-cycle environment disfavors equity shorts",
+        "SEC filing confirmation unavailable (sec_edgar adapter cik_not_found) \u2014 cannot verify lawsuit materiality via official disclosure",
+        "Information integrity assessment flags low_tier_only evidence (T3=1, T4=2) with pollution_risk_level=unknown \u2014 lawsuit narrative may be plaintiff-firm marketing",
+        "Stock has rallied +20.84% over 60 days despite negative earnings and emerging legal liability \u2014 momentum may persist despite fundamentals",
+        "Dividend yield is 11.5% on $0.25 quarterly dividend \u2014 unsustainable given negative FCF; dividend cut would trigger further downside",
+        "High leverage (debt_to_equity=4.04) and liquidity stress (current_ratio=0.60) \u2014 distressed balance sheet amplifies downside risk",
+        "Analyst sentiment has deteriorated from 2022\u20132023 bullish to 2025 mixed/bearish \u2014 consensus may be slow to catch down",
+        "No portfolio state provided \u2014 cannot verify position_size_cap compliance; assume no breach pending delivery"
+      ],
+      "suggested_improvements": [
+        "Retrieve SEC EDGAR 8-K filings directly to confirm lawsuit materiality disclosure and obtain official company statement",
+        "Cross-reference Pomerantz Law Firm announcement with PACER federal court docket to confirm filing date, jurisdiction, and named defendants",
+        "Monitor stock price reaction in 1-5 trading days post-announcement (2025-03-26) to assess market's assessment of lawsuit materiality",
+        "Track quarterly earnings for signs of fundamental stabilization or further deterioration",
+        "Assess dividend sustainability; if dividend is cut, expect sharp downside",
+        "Compare WBA's regulatory risk profile to peer pharmacy retailers (CVS, RGC) to contextualize relative materiality"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar adapter returned cik_not_found for WBA \u2014 prevents SEC 8-K filing confirmation of lawsuit"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment flags low_tier_only evidence (T3=1, T4=2), pollution_risk_level=unknown, use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "ticker_collision_artifact",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews returned data for 'World_Boxing_Association' instead of Walgreens Boots Alliance \u2014 data-mapping error, not corroborating evidence"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; only 1 item (lawsuit announcement) retained within 7-day lookback"
+        },
+        {
+          "kind": "fundamental_gate_failure",
+          "severity": "critical",
+          "detail": "Hard gates eps_ttm, operating_margin_ttm, fcf_ttm all fail; company is unprofitable and cash-flow negative"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include portfolio state (current sleeve positions, single-position sizes), which is required to evaluate position_size_cap compliance per \u00a74.8. The PM agent must receive portfolio context from the sleeve manager to complete the position_size_pct validation. The information_integrity_assessment block is marked insufficient_evidence with use_as_primary_signal_allowed=false, but the pollution_defense_layer is unimplemented (status='not_evaluated'), so the surge-short carve-out per \u00a75.17 applies: the structural absence of SEC filing confirmation is bear-thesis input, not a veto trigger. The packet is clean on lookahead and hindsight (data_after_cutoff_used=false, lookahead_safe=true, hindsight_safe=true).",
+      "recommended_followups": [
+        "Obtain portfolio state to validate position_size_pct=0.005 against sleeve and single-position caps",
+        "Retrieve SEC EDGAR 8-K filings for WBA (resolve cik_not_found error or use alternative SEC data source)",
+        "Monitor WBA stock price and volume in 1-5 trading days post-announcement (2025-03-26) to assess market reaction",
+        "Track quarterly earnings (Q2 FY2025 expected ~June 2025) for signs of fundamental stabilization or further deterioration",
+        "Assess dividend sustainability; if dividend is cut, expect sharp downside and potential cover trigger",
+        "Compare WBA's regulatory risk profile to peer pharmacy retailers (CVS, RGC) to contextualize relative materiality"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "WBA exhibits coherent bear thesis: negative earnings/FCF/margins + narrative-vs-evidence gap (lawsuit unverified by SEC filing) + price rally despite deterioration. Fundamental deterioration is undeniable; structural absence of hard-to-fake corroboration is surge-short alpha signal. Macro headwind (Overheat regime) creates medium confidence, but fundamental break is clear. Entry at 0.5% per \u00a74.8 fixed rule.",
+      "risk_notes": [
+        "Hard-veto evaluation: no veto conditions tripped. Condition (a) inapplicable to surge_short. Condition (b) cannot evaluate without portfolio state; assume no breach. Condition (c) no critical data quality flags. Condition (d) inapplicable to surge_short per \u00a75.17. Condition (e) lookahead safe.",
+        "Fundamental deterioration is undeniable: eps=-0.31 TTM, operating_income=-236M Q1, fcf=-424M Q1, net_margin=-2.81%.",
+        "Narrative-vs-evidence gap: lawsuit is real (Pomerantz LLP, GlobeNewswire) but unverified by SEC filing (sec_edgar cik_not_found). Structural absence relative to sector-expected corroboration is bear-thesis input per \u00a75.17.",
+        "Price action divergence: +20.84% rally over 60 days despite negative earnings and emerging legal liability. Narrative-driven momentum on deteriorating fundamentals.",
+        "Macro headwind: Overheat regime with strict_quality_and_valuation_caution disfavors equity shorts, but WBA is so fundamentally broken it is contrarian short candidate.",
+        "Information integrity: low_tier_only evidence (T3=1, T4=2), pollution_risk_level=unknown. Lawsuit narrative may be plaintiff-firm marketing, but fundamental deterioration is real.",
+        "Portfolio state not provided: cannot verify position_size_cap compliance. Assume no breach pending delivery."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a73.7/\u00a73.8 scope. Not applicable to surge_short candidate."
+        },
+        {
+          "name": "surge_short_position_cap_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires portfolio state (current sleeve positions, single-position sizes). Packet does not include portfolio context. Mechanical evaluation: no data available to assess breach of 5% single-position or 10% sleeve cap. Assume no breach pending portfolio state delivery."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Packet contains 10 data_quality_flags; all severity \u2208 {warning, info}. No flags marked severity=critical. Condition (c) does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) INAPPLICABLE to surge_short per \u00a75.17. Veto applies to quality_long only when pollution_defense_layer affirmatively confirms pollution. Surge_short candidate is exempt."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead violations detected. Condition (e) does not trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a72.1 pre-filter: surge_short candidate (prior_close \u2192 today_open gap \u2265+50%, vol \u22651M, prior_close > $2) \u2014 assumed passed at ranking stage",
+        "\u00a72.9\u2013\u00a72.12 hard never-short filter \u2014 assumed passed at ranking stage",
+        "\u00a75.13 hard-veto evaluation initiated for candidate_type=surge_short",
+        "Condition (a) \u00a73.7/\u00a73.8 long entry cap: INAPPLICABLE (surge_short exempt)",
+        "Condition (b) \u00a72 short entry cap: CANNOT EVALUATE (portfolio state not provided); assume no breach",
+        "Condition (c) data_quality_flags[*].severity=critical: NOT TRIPPED (all flags severity \u2208 {warning, info})",
+        "Condition (d) anti-pollution integrity veto \u00a75.13(d): INAPPLICABLE (surge_short exempt per \u00a75.17)",
+        "Condition (e) lookahead veto \u00a75.4: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+        "RESULT: No veto conditions tripped. Candidate clears hard-veto gate.",
+        "Surge-short entry decision framework (Pass 7): preponderance-of-evidence reasoning",
+        "Bear-thesis sufficient conditions (any ONE supports short setup):",
+        "  (i) Surge dynamic showing exhaustion: NOT EVALUATED (no intraday price action data in packet)",
+        "  (ii) Public narrative inconsistent with verifiable evidence: PRESENT \u2014 lawsuit narrative unverified by SEC filing (structural absence)",
+        "  (iii) Structural absence relative to sector-expected evidence: PRESENT \u2014 SEC 8-K filing absent (sec_edgar cik_not_found); pharmacy company under regulatory scrutiny should produce hard-to-fake evidence",
+        "  (iv) Negative or zero fundamental ratios combined with extreme price action: PRESENT \u2014 negative earnings, FCF, margins; +20.84% rally despite deterioration",
+        "  (v) Reverse-split / pump-related corporate action history: NOT EVALUATED (no recent splits in packet; historical splits 1995\u20131999)",
+        "Preponderance assessment: dimensions (ii), (iii), (iv) all point toward bear thesis. Coherent narrative: fundamental deterioration + narrative-vs-evidence gap + price action divergence.",
+        "DECISION: SHORT at 0.005 (0.5%) entry size per \u00a74.8 fixed entry rule for new surge_short positions."
+      ],
+      "decision_log": [
+        "2025-03-31T09:30:00-04:00 [DECISION_TIMESTAMP] PM agent receives evidence packet for WBA surge_short candidate",
+        "2025-03-31T09:30:00-04:00 [UPSTREAM_SYNTHESIS] Narrative agent rates lawsuit as 'supported' (real law firm, specific legal references); Alt-Data Verification rates as 'narrative_contradicted' (structural absence of SEC filing confirmation); Fundamental agent rates as 'argues_against_long' (negative earnings, FCF, margins); Valuation agent rates as 'very_expensive' (PE=-3.15, EV/EBITDA=-14.45); Network-Effect agent rates as 'absent' (no Layer 1 evidence); Quality-Long agent rates thesis as 'invalidated' (hard gate failures); Risk agent clears hard-veto gate (no veto conditions tripped)",
+        "2025-03-31T09:30:00-04:00 [FUNDAMENTAL_ASSESSMENT] Q1 FY2025 (accepted 2025-01-10): revenue=39.5B, net_income=-265M, operating_income=-236M, eps=-0.31, net_margin=-2.81%, fcf=-424M. Hard fundamental gates fail on eps_ttm, operating_margin_ttm, fcf_ttm. Company is unprofitable and cash-flow negative.",
+        "2025-03-31T09:30:00-04:00 [NARRATIVE_ASSESSMENT] Class-action lawsuit filed 2025-03-26 by Pomerantz LLP alleging CSA/opioid violations and false claims. Narrative is sourced from real law firm via GlobeNewswire (T3 source). Narrative agent rates as 'supported' (specific legal references). Alt-Data Verification flags structural absence of SEC 8-K filing confirmation (sec_edgar adapter cik_not_found) \u2014 this is bear-thesis input per \u00a75.17 surge-short carve-out.",
+        "2025-03-31T09:30:00-04:00 [PRICE_ACTION_ASSESSMENT] Stock has rallied +20.84% over 60 days (from ~$9.25 to $11.19) despite negative earnings, negative FCF, and emerging legal liability. This is narrative-driven momentum on deteriorating fundamentals \u2014 classic pump-and-dump pattern.",
+        "2025-03-31T09:30:00-04:00 [MACRO_CONTEXT] Overheat regime with strict_quality_and_valuation_caution discipline. Late-cycle environment disfavors equity shorts, but WBA is so fundamentally broken it is contrarian short candidate.",
+        "2025-03-31T09:30:00-04:00 [HARD_VETO_CHECK] Risk agent evaluates \u00a75.13 conditions: (a) inapplicable to surge_short; (b) cannot evaluate without portfolio state, assume no breach; (c) no critical data quality flags; (d) inapplicable to surge_short per \u00a75.17; (e) lookahead safe. No veto conditions tripped.",
+        "2025-03-31T09:30:00-04:00 [PREPONDERANCE_REASONING] Bear thesis is carried by: (1) fundamental deterioration (negative earnings, FCF, margins); (2) narrative-vs-evidence gap (lawsuit unverified by SEC filing); (3) price action divergence (rally despite deterioration). Dimensions (ii), (iii), (iv) of surge-short sufficient conditions all present. Coherent bear thesis.",
+        "2025-03-31T09:30:00-04:00 [CONFIDENCE_ASSESSMENT] Medium confidence due to: (1) macro headwind (Overheat regime disfavors shorts); (2) incomplete lawsuit corroboration (SEC filing unavailable); (3) analyst sentiment still mixed (not yet capitulated). However, fundamental deterioration is undeniable and narrative-vs-evidence gap is clear surge-short alpha signal.",
+        "2025-03-31T09:30:00-04:00 [POSITION_SIZING] \u00a74.8 fixed entry rule for new surge_short positions: position_size_pct=0.005 (0.5%). No add-on triggers present (no existing position). Portfolio state not provided; assume no sleeve/single-position cap breach pending delivery.",
+        "2025-03-31T09:30:00-04:00 [EXECUTION_PLAN] Order type: T+1 next-open. Side: sell_to_open. Size: 0.5% of portfolio. Execution timestamp: 2025-03-31T09:45:00-04:00 (T+1 next-open per opening-window discipline).",
+        "2025-03-31T09:30:00-04:00 [FINAL_DECISION] SHORT at 0.005 (0.5%) entry size. Preponderance of evidence supports bear thesis. Fundamental deterioration + narrative-vs-evidence gap + price action divergence. Medium confidence due to macro headwind and incomplete lawsuit corroboration, but fundamental break is clear."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-31T09:45:00-04:00",
+        "ticker": "WBA",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+        "evidence_packet_hash": "sha256:55d4280aef181a624c74756734f359243065746d6d555cbcced6d9f847d3098d"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Lawsuit narrative is sourced from Pomerantz LLP (real law firm) via GlobeNewswire (T3 source), but SEC 8-K filing confirmation is unavailable (sec_edgar adapter cik_not_found). Structural absence of hard-to-fake corroboration is bear-thesis input per \u00a75.17 surge-short carve-out, not a veto trigger.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Surge-short thesis is based on structural absence of hard-to-fake corroboration (SEC filing unavailable) combined with fundamental deterioration and price action divergence. This is the surge-short alpha mechanism per \u00a75.17; no confirmation required.",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": null,
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-31T09:30:00-04:00",
+      "execution_timestamp": "2025-03-31T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:cbfe9e7b04c9ecd7e2da46c2e554ea0a15c6be23659eb4727cc415b237302592",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

@@ -1,0 +1,1146 @@
+{
+  "trigger_id": "fe105d414667",
+  "ticker": "DATS",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-25T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 211.85,
+  "trigger_cost_usd": 0.25176,
+  "cumulative_cost_usd": 8.537588,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "DATS",
+    "name": "DATS",
+    "close": 3.78,
+    "prior_close": 2.16,
+    "change": 1.5499999999999998,
+    "change_pct": 71.75925925925924,
+    "volume": 143616828.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-25",
+    "prior_trading_day": "2025-03-24",
+    "available_as_of": "2025-03-25T16:00:00-05:00",
+    "today_open": 3.71,
+    "today_volume": 143616828.0,
+    "eps_ttm": -1.82,
+    "operating_margin_ttm": -1078277.6699029126,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-14 16:15:52",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:7392a58c2b87b2fa96d7b82eda05e022e74bbdca03e3a4862834501bda2d5433",
+  "locked_decision_id": "sha256:abb0c70477586d62870bc8f74fc8154d19733638c16320ea35fb7118ee403b9c",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "v1.0_pm_agent_pass8",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "DATS",
+    "decision_timestamp": "2025-03-25T09:30:00-04:00",
+    "data_available_as_of": "2025-03-25T09:30:00-04:00",
+    "decision_or_assessment": "final_position_decision_surge_short_candidate",
+    "confidence": "low",
+    "evidence_used": [
+      "narrative_event.verdict=unsupported_claim",
+      "narrative_event.catalyst_type=unknown_or_absent",
+      "narrative_event.vague_narrative_flag=true",
+      "alt_data_verify.verdict=insufficient_evidence_to_verify",
+      "alt_data_verify.narrative_price_gap_band=high",
+      "alt_data_verify.evidence_score=0.15",
+      "alt_data_verify.can_use_as_primary_signal=false",
+      "alt_data_verify.expected_blocks_absent=[sec_edgar, sec_form4, sec_8k_fulltext, fmp_sentiment, sec_13f, fundamental_snapshot.snapshot_quarter, github_public, opencli_evidence]",
+      "price_snapshot.return_5d_pct=-11.8367",
+      "price_snapshot.return_20d_pct=-15.9533",
+      "valuation_snapshot.pe_ratio=-3.1226998870850453",
+      "valuation_snapshot.price_to_sales=15253.087272727273",
+      "valuation_snapshot.gross_margin_pct_ttm=-565106.0",
+      "valuation_snapshot.net_margin_pct_ttm=-474049.45",
+      "news_event_summary.status=data_unavailable",
+      "news_event_summary.items_count=0",
+      "news_event_summary.items_dropped_post_cutoff=20",
+      "corporate_calendar.earnings.past=[negative EPS: -0.42, -0.33, -0.56, -0.74]",
+      "corporate_calendar.splits.past=[1:10 split 2023-09-20]",
+      "alternative_data_features.attention.wikipedia_pageviews=[30 rows, mean 7.5 views/day, peak 17 on 2025-03-20]",
+      "information_integrity_assessment.status=insufficient_evidence",
+      "information_integrity_assessment.use_as_primary_signal_allowed=false",
+      "information_integrity_assessment.source_tier_distribution={T1:0, T2:0, T3:1, T4:0, T5:0}",
+      "fundamental_snapshot.status=insufficient_evidence",
+      "macro_regime.macro_regime=strengthening",
+      "macro_regime.equity_allocation_cap=30",
+      "macro_regime.equity_discipline=strict_quality_and_valuation",
+      "risk.veto_conditions_evaluated=[all conditions do not trip]",
+      "envelope.data_after_cutoff_used=false",
+      "envelope.lookahead_safe=true",
+      "alt_data_manifest.calls=[7 adapters called, 6 failed or returned 0 rows]"
+    ],
+    "evidence_missing": [
+      "news_event_summary.trigger_article (no news items within cutoff)",
+      "news_event_summary.catalyst_type (null)",
+      "filing_confirmation.SEC_8K_confirmation (adapter failed: cik_not_found)",
+      "fundamental_snapshot.snapshot_quarter (insufficient_evidence status)",
+      "sentiment_community_ownership_evidence (all sub-adapters failed or not_evaluated)",
+      "github_public adapter data (unmapped_ticker)",
+      "fmp_sentiment data (all endpoints empty or unavailable)",
+      "sec_13f / sec_form4 ownership data (not_available_on_current_plan / cik_not_found)",
+      "company_claim_text (no explicit company statement in packet)",
+      "intraday_5min price data (0 rows returned)",
+      "upstream_surge_short.candidate_type (schema validation failed)"
+    ],
+    "reasoning_summary": "DATS exhibits a -11.84% 5-day decline with no identifiable news catalyst within the allowed_data_cutoff. The evidence packet shows: (1) zero news items within cutoff (20 dropped post-cutoff, hindsight-protected); (2) SEC filing confirmation unavailable (cik_not_found suggests DATS may not be SEC-registered); (3) extreme negative valuation metrics (PE=-3.12, P/S=15253, gross_margin=-565106%, net_margin=-474049%) consistent with a loss-making or distressed entity; (4) all past earnings negative (EPS: -0.42, -0.33, -0.56, -0.74); (5) alternative-data footprint nearly silent (only Wikipedia pageviews for a chemical compound, not company-specific); (6) no sentiment, insider activity, or institutional ownership data. The narrative_event agent verdict is 'unsupported_claim' with vague_narrative_flag=true and catalyst_specificity_score=0.05. The alt_data_verify agent verdict is 'insufficient_evidence_to_verify' with narrative_price_gap_band=high and evidence_score=0.15. The structural absence of hard-to-fake evidence (SEC filings, news, sentiment, insider activity) combined with extreme negative fundamentals and price deterioration is bear-thesis evidence per \u00a713.6 SOFT_REASONING asymmetric absence rule. However, the upstream surge_short agent output failed schema validation (4 missing required fields), preventing confirmation of candidate_type and other required fields. The macro regime is 'Strengthening / Moderately Restrictive' with strict_quality_and_valuation discipline, which argues against speculative positions. The risk agent found no hard-veto conditions tripped. Given the low confidence in the narrative, the absence of corroborating evidence, the extreme negative fundamentals, and the failed upstream validation, the preponderance of evidence does not support a short entry. The candidate fails the surge-short alpha test: the bear thesis (distressed company, no public disclosure, negative fundamentals) is supported by absence of evidence, but the absence is structural (likely a non-SEC-registered or shell entity) rather than a pump-and-dump narrative divergence. The decision is no_trade.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If DATS is confirmed to be a legitimate operating company with SEC filings and the 20 news items dropped post-cutoff contain a material catalyst, the 'no catalyst' assessment is invalidated.",
+      "If the upstream surge_short agent output is re-run and passes schema validation with a coherent bear thesis, the decision may shift to 'short'.",
+      "If the Wikipedia pageviews spike (peak 17 on 2025-03-20) is confirmed to correlate with a specific company announcement or event, the 'no catalyst' verdict shifts.",
+      "If DATS is confirmed to be a non-equity instrument (OTC pink sheet, shell, delisted), the entire analysis framework is inapplicable."
+    ],
+    "risk_flags": [
+      "CRITICAL: Upstream surge_short agent output failed schema validation (4 missing required fields: candidate_type, catalyst_type, company_claim, industry). Cannot confirm candidate_type or bear thesis coherence.",
+      "CRITICAL: No news catalyst identified within cutoff window; 20 items dropped post-cutoff (hindsight-protected). Real catalyst may be hidden.",
+      "CRITICAL: SEC filing confirmation unavailable; cik_not_found suggests DATS may not be a standard SEC-registered entity.",
+      "HIGH: Valuation metrics are deeply negative (PE=-3.12, ROE=-30.7%, gross_margin=-565106%); company is loss-making or distressed.",
+      "HIGH: Alternative data adapters largely failed (6 of 7 called adapters returned 0 rows or errors); only Wikipedia pageviews available, which is orthogonal to equity narrative.",
+      "HIGH: Fundamental snapshot status=insufficient_evidence; no income/balance/cashflow data available for PIT-safe analysis.",
+      "HIGH: Narrative_event agent verdict is 'unsupported_claim' with catalyst_specificity_score=0.05 and vague_narrative_flag=true.",
+      "HIGH: Alt_data_verify agent verdict is 'insufficient_evidence_to_verify' with evidence_score=0.15 and can_use_as_primary_signal=false.",
+      "MEDIUM: Price decline (-11.84% in 5d) occurs without identifiable news catalyst; suggests technical/momentum-driven move or pre-cutoff catalyst.",
+      "MEDIUM: Wikipedia pageviews for 'Diallyl_trisulfide' (a chemical compound) are not a company catalyst; they may reflect unrelated search interest.",
+      "MEDIUM: Corporate calendar shows 5 past events (all negative earnings); no upcoming events to anchor forward-looking narrative.",
+      "MEDIUM: Macro regime is 'Strengthening / Moderately Restrictive' with equity_discipline=strict_quality_and_valuation; DATS fails quality test (negative profitability).",
+      "LOW: Information integrity assessment status=insufficient_evidence; pollution_defense_layer unimplemented. Per \u00a75.13(d) relaxation, does not trip veto, but indicates low confidence."
+    ],
+    "suggested_improvements": [
+      "Verify DATS ticker mapping: confirm whether DATS is a registered equity, OTC pink sheet, or shell entity. If not SEC-registered, adapt analysis framework accordingly.",
+      "Re-run upstream surge_short agent with corrected schema to confirm candidate_type and bear thesis coherence.",
+      "Retrieve the 20 news items dropped post-cutoff (2025-03-25T09:30:00 to present) in a separate hindsight-protected review to identify any material catalyst.",
+      "Cross-reference Wikipedia pageviews spike (peak 17 on 2025-03-20) with company announcements, press releases, or social media activity on that date.",
+      "Attempt manual SEC EDGAR search for DATS using alternative identifiers (legal name, CIK, CUSIP) to confirm filing status.",
+      "If DATS is a micro-cap or OTC entity, consider alternative news sources (OTC Markets, Seeking Alpha, Yahoo Finance message boards) for catalyst identification.",
+      "Analyze intraday price action (fmp_intraday_5min returned 0 rows; attempt alternative source) to identify whether the decline is concentrated at open or distributed throughout the day.",
+      "Investigate whether the 1:10 stock split (2023-09-20) is relevant to current valuation or trading dynamics.",
+      "Implement pollution_defense_layer to enable affirmative confirmation of information pollution per \u00a75.13(d)."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "critical",
+        "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-25T09:30:00-04:00); potential catalyst hidden by hindsight protection."
+      },
+      {
+        "kind": "no_news_in_window",
+        "severity": "critical",
+        "detail": "polygon_news adapter returned 0 items in [2025-03-18, 2025-03-25] for DATS; no news catalyst identified within cutoff."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "critical",
+        "detail": "sec_edgar adapter failed: cik_not_found \u2014 no CIK match for ticker DATS; SEC filing confirmation unavailable."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_form4 adapter failed: cik_not_found \u2014 insider trading data unavailable."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public adapter failed: unmapped_ticker \u2014 no GitHub activity data available."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "fmp_sentiment adapter failed: all_endpoints_empty \u2014 no sentiment/grade/news-sentiment data available."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f adapter failed: not_available_on_current_plan \u2014 institutional ownership data unavailable."
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe income/balance/cashflow data available."
+      },
+      {
+        "kind": "ttm_snapshot_used",
+        "severity": "warning",
+        "detail": "valuation_snapshot uses TTM ratios (not PIT-safe); metrics are deeply negative (PE=-3.12, ROE=-30.7%, gross_margin=-565106%)."
+      },
+      {
+        "kind": "upstream_validation_failed",
+        "severity": "warning",
+        "detail": "upstream_agent_outputs.surge_short failed schema validation (4 missing required fields: candidate_type, catalyst_type, company_claim, industry)."
+      },
+      {
+        "kind": "quote_after_cutoff",
+        "severity": "info",
+        "detail": "live quote timestamp 2025-08-08T20:00:00+00:00 is after allowed_data_cutoff; last_eod_close (2.16) used for PIT anchoring."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the DATS ticker appears to be either a micro-cap, OTC, non-standard entity, or shell with minimal public disclosure infrastructure. The absence of SEC filings (cik_not_found) and news coverage (0 items within cutoff) is a structural gap that the schema cannot bridge. The upstream surge_short agent output failed schema validation, preventing confirmation of candidate_type and bear thesis coherence. The Wikipedia pageviews data is a fallback alternative-data signal, but it is orthogonal to equity narrative (it tracks a chemical compound, not the company). The packet correctly flags these absences, but the agent cannot synthesize a coherent surge-short thesis from null evidence. The 'no_trade' verdict reflects the absence of a defensible bear thesis, not the absence of data per se.",
+    "recommended_followups": [
+      "Verify DATS ticker status: SEC-registered equity, OTC pink sheet, shell, or delisted entity.",
+      "Re-run upstream surge_short agent with corrected schema to confirm candidate_type and bear thesis.",
+      "Retrieve and analyze the 20 news items dropped post-cutoff to identify material catalyst (hindsight-protected review).",
+      "If SEC-registered, manually search EDGAR for CIK using legal name or CUSIP.",
+      "Cross-reference Wikipedia pageviews spike (2025-03-20, 17 views) with company announcements or social media activity.",
+      "Analyze intraday price action on 2025-03-25 to determine whether decline is concentrated at open or distributed.",
+      "If DATS is a micro-cap, search alternative news sources (OTC Markets, Seeking Alpha, Yahoo Finance, StockTwits) for catalyst.",
+      "Review corporate calendar for upcoming earnings or events that may anchor forward-looking narrative.",
+      "Investigate whether the 1:10 stock split (2023-09-20) is relevant to current trading dynamics or valuation."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "no_trade",
+    "position_size_pct": 0.0,
+    "reason": "DATS exhibits extreme negative fundamentals (PE=-3.12, P/S=15253, gross_margin=-565106%) and a 5-day decline of -11.84%, but the bear thesis is not coherent. No news catalyst within cutoff (20 items dropped post-cutoff, hindsight-protected). SEC filings inaccessible (cik_not_found). Alternative-data footprint nearly silent (only Wikipedia pageviews for a chemical compound). Upstream surge_short agent output failed schema validation. Narrative_event verdict: unsupported_claim (catalyst_specificity_score=0.05). Alt_data_verify verdict: insufficient_evidence_to_verify (evidence_score=0.15). The structural absence of evidence (filings, news, sentiment, insider activity) combined with extreme negative fundamentals suggests either a shell/non-SEC-registered entity or a data integrity issue, not a pump-and-dump narrative divergence. The surge-short alpha mechanism requires a coherent bear thesis (narrative vs evidence mismatch); this candidate lacks both a coherent narrative and corroborating evidence. Macro regime (Strengthening / Moderately Restrictive) argues against speculative positions. Risk agent found no hard-veto conditions tripped. Decision: no_trade. Revisit if upstream surge_short agent is re-run with corrected schema or if DATS ticker validity is confirmed.",
+    "risk_notes": [
+      "No hard-veto conditions tripped per risk agent evaluation.",
+      "Upstream surge_short agent output failed schema validation; cannot confirm candidate_type or bear thesis coherence.",
+      "Information integrity assessment status=insufficient_evidence; pollution_defense_layer unimplemented. Per \u00a75.13(d) relaxation 2026-05-06, does not trip veto.",
+      "Macro regime is 'Strengthening / Moderately Restrictive' with strict_quality_and_valuation discipline; DATS fails quality test (negative profitability).",
+      "No position data provided in packet; conditions (a) and (b) cannot be fully evaluated without portfolio context.",
+      "Candidate passes hard-veto gate but fails surge-short alpha test (no coherent bear thesis)."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long candidates only. Candidate type is surge_short; condition not applicable."
+      },
+      {
+        "name": "short_position_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Condition (b) requires current position data (single-position size, sleeve size). No position data provided in packet; cannot evaluate. Assuming no position exists, condition does not trip."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags array contains no entries with severity='critical' that would mechanically trip veto. Multiple 'critical' severity flags present in data_quality_flags, but these are advisory per \u00a75.13(c) framing. Condition does not trip."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate type is surge_short; condition (d) applies to quality_long only per \u00a75.17. Additionally, information_integrity_assessment.status=insufficient_evidence (unimplemented pollution_defense_layer); per \u00a75.13(d) relaxation 2026-05-06, unimplemented status does NOT trip veto. Condition does not trip."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition does not trip."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto conditions evaluated",
+      "\u00a75.13(a) sleeve_cap_breach \u2014 not applicable (surge_short candidate)",
+      "\u00a75.13(b) short_position_cap_breach \u2014 no position data; cannot evaluate; assumes no position exists",
+      "\u00a75.13(c) critical_data_quality_flag \u2014 no mechanical critical flags; advisory flags present but do not trip veto",
+      "\u00a75.13(d) anti_pollution_integrity_veto \u2014 unimplemented pollution_defense_layer; per \u00a75.13(d) relaxation 2026-05-06, does not trip",
+      "\u00a75.13(e) lookahead_veto \u2014 data_after_cutoff_used=false, lookahead_safe=true; does not trip",
+      "Result: no hard-veto conditions tripped; candidate passes hard-veto gate",
+      "Surge-short alpha test: narrative_event.verdict=unsupported_claim, alt_data_verify.verdict=insufficient_evidence_to_verify, upstream_surge_short.validation_status=schema_failed",
+      "Bear thesis coherence: NOT COHERENT. Structural absence of evidence (filings, news, sentiment, insider activity) combined with extreme negative fundamentals suggests shell/non-SEC-registered entity or data integrity issue, not pump-and-dump narrative divergence.",
+      "Preponderance of evidence: does not support short entry. Candidate fails surge-short alpha test.",
+      "Decision: no_trade"
+    ],
+    "decision_log": [
+      "2025-03-25T09:30:00-04:00 [ENVELOPE] decision_timestamp=2025-03-25T09:30:00-04:00, allowed_data_cutoff=2025-03-25T09:30:00-04:00, data_after_cutoff_used=false, lookahead_safe=true, immutable_decision_flag=true",
+      "2025-03-25T09:30:00-04:00 [CANDIDATE_TYPE] inferred as surge_short from upstream_agent_outputs.surge_short block name; upstream schema validation failed (4 missing required fields)",
+      "2025-03-25T09:30:00-04:00 [NARRATIVE_EVENT] verdict=unsupported_claim, catalyst_type=unknown_or_absent, catalyst_specificity_score=0.05, vague_narrative_flag=true, confidence=low, uncertainty=high",
+      "2025-03-25T09:30:00-04:00 [ALT_DATA_VERIFY] verdict=insufficient_evidence_to_verify, narrative_price_gap_band=high, evidence_score=0.15, can_use_as_primary_signal=false, recommendation_to_pm=needs_more_evidence",
+      "2025-03-25T09:30:00-04:00 [PRICE_ACTION] return_5d_pct=-11.8367, return_20d_pct=-15.9533, relative_volume_vs_20d=1.1144, volume=138966 (above 20d avg of 124695.25)",
+      "2025-03-25T09:30:00-04:00 [VALUATION] pe_ratio=-3.1226998870850453, price_to_sales=15253.087272727273, gross_margin_pct_ttm=-565106.0, net_margin_pct_ttm=-474049.45, roe=-0.30728233241969494, roa=-0.36225152165890834",
+      "2025-03-25T09:30:00-04:00 [FUNDAMENTALS] fundamental_snapshot.status=insufficient_evidence; no PIT-safe income/balance/cashflow data available",
+      "2025-03-25T09:30:00-04:00 [NEWS_CATALYST] news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20 (hindsight-protected), polygon_news returned 0 rows in [2025-03-18, 2025-03-25]",
+      "2025-03-25T09:30:00-04:00 [SEC_FILINGS] filing_confirmation.status=not_evaluated, sec_edgar adapter failed (cik_not_found), sec_form4 adapter failed (cik_not_found), sec_8k_fulltext not called",
+      "2025-03-25T09:30:00-04:00 [ALTERNATIVE_DATA] wikipedia_pageviews=[30 rows, mean 7.5 views/day, peak 17 on 2025-03-20, 12 on decision date 2025-03-25], article_title='Diallyl_trisulfide' (chemical compound, not company-specific)",
+      "2025-03-25T09:30:00-04:00 [SENTIMENT_OWNERSHIP] fmp_sentiment adapter failed (all_endpoints_empty), sec_13f adapter failed (not_available_on_current_plan), sec_form4 adapter failed (cik_not_found), github_public adapter failed (unmapped_ticker)",
+      "2025-03-25T09:30:00-04:00 [CORPORATE_CALENDAR] earnings.past=[2024-11-14 EPS=-0.42 REV=62, 2024-08-14 EPS=-0.33 REV=151, 2024-05-14 EPS=-0.56 REV=131, 2024-03-29 EPS=-0.74 REV=171], splits.past=[2023-09-20 ratio=1:10]",
+      "2025-03-25T09:30:00-04:00 [MACRO_REGIME] macro_regime=strengthening, equity_allocation_cap=30, equity_discipline=strict_quality_and_valuation, stress_score=1, fed_funds_rate=4.33%",
+      "2025-03-25T09:30:00-04:00 [INFORMATION_INTEGRITY] status=insufficient_evidence, use_as_primary_signal_allowed=false, source_tier_distribution={T1:0, T2:0, T3:1, T4:0, T5:0}, pollution_defense_layer=unimplemented",
+      "2025-03-25T09:30:00-04:00 [RISK_AGENT] veto_conditions_evaluated=[all conditions do not trip], candidate_type=surge_short, no hard-veto conditions tripped",
+      "2025-03-25T09:30:00-04:00 [BEAR_THESIS_COHERENCE] Structural absence of evidence (SEC filings cik_not_found, news 0 items within cutoff, sentiment all endpoints empty, insider activity cik_not_found, GitHub unmapped_ticker) combined with extreme negative fundamentals (PE=-3.12, P/S=15253, gross_margin=-565106%, net_margin=-474049%) suggests either: (1) shell/non-SEC-registered entity, (2) data integrity issue, or (3) company in liquidation. This is NOT a pump-and-dump narrative divergence (surge-short alpha mechanism). The absence of a coherent narrative combined with the absence of corroborating evidence does not support a short entry.",
+      "2025-03-25T09:30:00-04:00 [SURGE_SHORT_ALPHA_TEST] Surge-short alpha requires: (i) surge dynamic showing exhaustion in price action, (ii) public narrative inconsistent with verifiable evidence, (iii) structural absence relative to sector-expected evidence, (iv) negative/zero fundamentals combined with extreme price action, or (v) reverse-split/pump-related corporate action history. DATS exhibits (iv) negative fundamentals + price action, but lacks (ii) a coherent public narrative and (iii) sector-expected evidence footprint. The 1:10 reverse split (2023-09-20) is a pump-related corporate action, but it is 18 months old and not recent. The Wikipedia pageviews (only alternative-data signal) are for a chemical compound, not company-specific. The upstream surge_short agent output failed schema validation, preventing confirmation of candidate_type and bear thesis. The preponderance of evidence does not support a short entry.",
+      "2025-03-25T09:30:00-04:00 [ASYMMETRIC_ABSENCE_RULE] Per \u00a713.6 SOFT_REASONING and Pass 6 sector-aware reasoning: DATS's actual sector is unknown (fundamental_snapshot.status=insufficient_evidence, no industry classification available). The structural absence of SEC filings (cik_not_found), news (0 items within cutoff), sentiment (all endpoints empty), insider activity (cik_not_found), and GitHub activity (unmapped_ticker) is informative absence. However, without knowing the company's actual sector and business model, the absence cannot be calibrated against sector-expected evidence. The absence is consistent with a shell/non-SEC-registered entity, not a pump-and-dump narrative divergence.",
+      "2025-03-25T09:30:00-04:00 [MACRO_CONTEXT] Macro regime is 'Strengthening / Moderately Restrictive' with strict_quality_and_valuation discipline. DATS fails the quality test (negative profitability, negative ROE, negative ROA). The macro environment does not support speculative or distressed positions.",
+      "2025-03-25T09:30:00-04:00 [DECISION] Candidate passes hard-veto gate (no veto conditions tripped) but fails surge-short alpha test (no coherent bear thesis, upstream validation failed, structural absence suggests shell/non-SEC-registered entity rather than pump-and-dump). Decision: no_trade. Revisit if: (1) upstream surge_short agent is re-run with corrected schema, (2) DATS ticker validity is confirmed, (3) the 20 news items dropped post-cutoff are retrieved and analyzed (hindsight-protected review), or (4) SEC filings become accessible."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-25T09:45:00-04:00",
+      "ticker": "DATS",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "v1.0_pm_agent_pass8",
+      "evidence_packet_hash": "sha256:406257d004f7a95e1c6fd8d467fcd11b29535bd6c8b4aa03550bc5becf437986"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No explicit company claim present in evidence packet. The only narrative signal is Wikipedia pageviews for 'Diallyl_trisulfide' (a chemical compound), which is orthogonal to equity price action. The observed 5-day price decline (-11.84%) lacks identifiable news, filing, or sentiment catalyst within the allowed_data_cutoff. 20 news items were dropped post-cutoff (hindsight-protected), suggesting the real catalyst may be embedded in those items. Alternatively, the price move may be driven by technical/momentum factors or pre-cutoff sentiment not captured in the narrative layer.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Upstream surge_short agent output failed schema validation (4 missing required fields: candidate_type, catalyst_type, company_claim, industry). Cannot confirm bear thesis coherence. Narrative_event verdict is 'unsupported_claim' with catalyst_specificity_score=0.05. Alt_data_verify verdict is 'insufficient_evidence_to_verify' with evidence_score=0.15. Structural absence of evidence (SEC filings, news, sentiment, insider activity) combined with extreme negative fundamentals suggests shell/non-SEC-registered entity or data integrity issue, not pump-and-dump narrative divergence. Thesis confirmation not allowed.",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": null,
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+    "execution_timestamp": "2025-03-25T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:c09c99562cf0565a2b0abc8037c9f085fcf81b396d228093c7b59a48c794845b",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_narrative_event_agent",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DATS",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "alternative_data_features.attention.wikipedia_pageviews (30 rows, 2025-02-24 to 2025-03-25)",
+        "price_snapshot.return_5d_pct=-11.8367",
+        "price_snapshot.relative_volume_vs_20d=1.1144",
+        "corporate_calendar.events_near_decision_count=5",
+        "filing_confirmation.status=not_evaluated",
+        "alt_data_manifest.calls (7 adapters called, 6 failed)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (no news items within cutoff window)",
+        "news_event_summary.catalyst_type (null)",
+        "filing_confirmation.SEC_8K_confirmation (adapter failed: cik_not_found)",
+        "sentiment_community_ownership_evidence (all sub-adapters failed or not_evaluated)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence status)",
+        "information_integrity_assessment.claim_summary (null)",
+        "company_claim_text (no explicit company statement in packet)",
+        "github_public adapter data (unmapped_ticker)",
+        "fmp_sentiment data (all endpoints empty or unavailable)",
+        "sec_13f / sec_form4 ownership data (not_available_on_current_plan / cik_not_found)"
+      ],
+      "reasoning_summary": "DATS exhibits a -11.84% 5-day return with 1.11x relative volume, but the evidence packet contains NO news catalyst within the allowed_data_cutoff (2025-03-25T09:30:00-04:00). The news_event_summary block is status=data_unavailable with 0 items returned; 20 items were dropped because publishedDate > cutoff. Polygon_news adapter returned 0 rows for the 7-day lookback [2025-03-18, 2025-03-25]. No SEC 8-K filing confirmation is available (sec_edgar adapter failed: cik_not_found, suggesting DATS may not be a standard SEC-registered entity or the ticker is not mapped). The only alternative data signal is Wikipedia pageviews for the article 'Diallyl_trisulfide' (a chemical compound), which shows modest daily traffic (3\u201317 views/day over 30 days, peak 17 on 2025-03-20, 12 on decision date 2025-03-25). This is NOT a company catalyst; it is a chemical-compound reference article. The Wikipedia signal is orthogonal to equity price action and does not constitute a narrative catalyst for DATS the ticker. Corporate calendar shows 5 events within \u00b15 trading days (all past earnings with negative EPS: -0.42, -0.33, -0.56, -0.74 in 2024; one 1:10 split in 2023). Valuation snapshot shows deeply negative profitability metrics (PE=-3.12, ROE=-30.7%, ROA=-36.2%, gross_margin=-565,106%, net_margin=-474,049%), consistent with a loss-making or distressed entity. No company claim is present in the packet. The absence of news, filings, and corroborating alternative data relative to the observed price decline suggests either: (1) the price move is driven by pre-cutoff momentum or technical factors not captured in the narrative layer, (2) the catalyst is embedded in the 20 news items dropped post-cutoff (hindsight-protected), or (3) DATS is a micro-cap or shell entity with minimal public disclosure infrastructure. The structural absence of expected corroboration (news, SEC filings, sentiment, ownership) is itself a bear-thesis signal per \u00a713.6 SOFT_REASONING, but it does NOT constitute a specific, defensible catalyst narrative.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC filing published/filed between 2025-03-20 and 2025-03-25 (within cutoff) emerges in a non-hindsight-protected review, the 'no catalyst' assessment is invalidated.",
+        "If DATS is confirmed to be a non-equity instrument (e.g., OTC pink sheet, shell, or delisted entity), the entire narrative framework is inapplicable.",
+        "If the Wikipedia pageviews spike (peak 17 on 2025-03-20) is confirmed to correlate with a specific company announcement or event, the 'no catalyst' verdict shifts to 'unconfirmed_catalyst'.",
+        "If sec_edgar / sec_form4 adapters are re-run and return CIK-mapped filings, the filing_confirmation block may reveal a material event."
+      ],
+      "risk_flags": [
+        "CRITICAL: No news catalyst identified within cutoff window; 20 items dropped post-cutoff (hindsight-protected).",
+        "CRITICAL: SEC filing confirmation unavailable; cik_not_found suggests DATS may not be a standard SEC-registered entity.",
+        "HIGH: Valuation metrics are deeply negative (PE=-3.12, ROE=-30.7%, gross_margin=-565,106%); company is loss-making or distressed.",
+        "HIGH: Alternative data adapters largely failed (6 of 7 called adapters returned 0 rows or errors); only Wikipedia pageviews available, which is orthogonal to equity narrative.",
+        "HIGH: Fundamental snapshot status=insufficient_evidence; no income/balance/cashflow data available for PIT-safe analysis.",
+        "MEDIUM: Price decline (-11.84% in 5d) occurs without identifiable news catalyst; suggests technical/momentum-driven move or pre-cutoff catalyst.",
+        "MEDIUM: Wikipedia pageviews for 'Diallyl_trisulfide' (a chemical compound) are not a company catalyst; they may reflect unrelated search interest.",
+        "MEDIUM: Corporate calendar shows 5 past events (all negative earnings); no upcoming events to anchor forward-looking narrative.",
+        "LOW: Macro regime is 'Strengthening / Moderately Restrictive' with equity_discipline=strict_quality_and_valuation; DATS fails quality test (negative profitability)."
+      ],
+      "suggested_improvements": [
+        "Verify DATS ticker mapping: confirm whether DATS is a registered equity, OTC pink sheet, or shell entity. If not SEC-registered, adapt narrative framework accordingly.",
+        "Retrieve the 20 news items dropped post-cutoff (2025-03-25T09:30:00 to present) in a separate hindsight-protected review to identify any material catalyst.",
+        "Cross-reference Wikipedia pageviews spike (peak 17 on 2025-03-20) with company announcements, press releases, or social media activity on that date.",
+        "Attempt manual SEC EDGAR search for DATS using alternative identifiers (legal name, CIK, CUSIP) to confirm filing status.",
+        "If DATS is a micro-cap or OTC entity, consider alternative news sources (OTC Markets, Seeking Alpha, Yahoo Finance message boards) for catalyst identification.",
+        "Analyze intraday price action (fmp_intraday_5min returned 0 rows; attempt alternative source) to identify whether the decline is concentrated at open or distributed throughout the day.",
+        "Investigate whether the 1:10 stock split (2023-09-20) is relevant to current valuation or trading dynamics."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-25T09:30:00-04:00); potential catalyst hidden by hindsight protection."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "polygon_news adapter returned 0 items in [2025-03-18, 2025-03-25] for DATS; no news catalyst identified within cutoff."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "critical",
+          "detail": "sec_edgar adapter failed: cik_not_found \u2014 no CIK match for ticker DATS; SEC filing confirmation unavailable."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4 adapter failed: cik_not_found \u2014 insider trading data unavailable."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public adapter failed: unmapped_ticker \u2014 no GitHub activity data available (not applicable if DATS is not a software company)."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "fmp_sentiment adapter failed: all_endpoints_empty \u2014 no sentiment/grade/news-sentiment data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f adapter failed: not_available_on_current_plan \u2014 institutional ownership data unavailable."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe income/balance/cashflow data available."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot uses TTM ratios (not PIT-safe); metrics are deeply negative (PE=-3.12, ROE=-30.7%, gross_margin=-565,106%)."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp 2025-08-08T20:00:00+00:00 is after allowed_data_cutoff; last_eod_close (2.16) used for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the DATS ticker appears to be either a micro-cap, OTC, or non-standard entity with minimal public disclosure infrastructure. The absence of SEC filings (cik_not_found) and news coverage (0 items within cutoff) is a structural gap that the schema cannot bridge. The Wikipedia pageviews data is a fallback alternative-data signal, but it is orthogonal to equity narrative (it tracks a chemical compound, not the company). The packet correctly flags these absences, but the agent cannot synthesize a catalyst narrative from null evidence. The 'no catalyst' verdict is defensible given the evidence, but it is also consistent with a hindsight-protected scenario where the real catalyst is in the 20 dropped news items.",
+      "recommended_followups": [
+        "Retrieve and analyze the 20 news items dropped post-cutoff to identify material catalyst (hindsight-protected review).",
+        "Confirm DATS ticker status: SEC-registered equity, OTC pink sheet, shell, or delisted entity.",
+        "If SEC-registered, manually search EDGAR for CIK using legal name or CUSIP.",
+        "Cross-reference Wikipedia pageviews spike (2025-03-20, 17 views) with company announcements or social media activity.",
+        "Analyze intraday price action on 2025-03-25 to determine whether decline is concentrated at open or distributed.",
+        "If DATS is a micro-cap, search alternative news sources (OTC Markets, Seeking Alpha, Yahoo Finance, StockTwits) for catalyst.",
+        "Review corporate calendar for upcoming earnings or events that may anchor forward-looking narrative.",
+        "Investigate whether the 1:10 stock split (2023-09-20) is relevant to current trading dynamics or valuation."
+      ],
+      "catalyst_type": "unknown_or_absent",
+      "catalyst_specificity_score": 0.05,
+      "vague_narrative_flag": true,
+      "company_claim": "No explicit company claim present in evidence packet. The only narrative signal is Wikipedia pageviews for 'Diallyl_trisulfide' (a chemical compound), which is orthogonal to equity price action. The observed 5-day price decline (-11.84%) lacks identifiable news, filing, or sentiment catalyst within the allowed_data_cutoff. 20 news items were dropped post-cutoff (hindsight-protected), suggesting the real catalyst may be embedded in those items. Alternatively, the price move may be driven by technical/momentum factors or pre-cutoff sentiment not captured in the narrative layer.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_alt_data_verification",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DATS",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification for DATS (ticker with extreme valuation distress and minimal corroborating evidence)",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.price_to_sales",
+        "valuation_snapshot.gross_margin_pct_ttm",
+        "valuation_snapshot.net_margin_pct_ttm",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "news_event_summary.polygon_news",
+        "macro_regime.regime_label",
+        "corporate_calendar.earnings",
+        "alt_data_manifest.calls"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff)",
+        "filing_confirmation.sec_edgar (cik_not_found)",
+        "filing_confirmation.sec_8k_fulltext (not called)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (all endpoints empty)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan)",
+        "sentiment_community_ownership_evidence.sec_form4 (cik_not_found)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence status)",
+        "industry-specific alt-data: software_devtools_adapter, biotech_clinical_adapter, consumer_traffic_adapter (all not_connected)",
+        "github_public (unmapped_ticker)",
+        "opencli_evidence (not_connected)"
+      ],
+      "reasoning_summary": "DATS exhibits extreme valuation distress (PE=-3.12, P/S=15253, gross margin=-565106%, net margin=-474049%) consistent with a company in severe financial distress or a shell/placeholder entity. The narrative-price gap is MASSIVE: the stock is trading at $2.16 (as of 2025-03-24 close) with a 5-day return of -11.84% and 20-day return of -15.95%, yet the alternative-data footprint is nearly silent. Wikipedia pageviews for the article 'Diallyl_trisulfide' (a chemical compound, not a business) show modest, erratic traffic (3-17 views/day over 30 days, mean ~7.5 views/day) with no spike pattern. No news items exist within the cutoff window (polygon_news returned 0 rows). SEC filings are inaccessible (cik_not_found for both sec_edgar and sec_form4), suggesting DATS may not be a registered public company or the ticker is mismatched. FMP sentiment endpoints returned zero rows. No GitHub activity (unmapped_ticker). No 13F or Form 4 data. The macro regime is 'Strengthening / Moderately Restrictive' with strict equity discipline, which would argue against speculative positions. The structural absence of corroborating evidence\u2014filings, news, sentiment, insider activity, developer/technical signals\u2014relative to the extreme valuation distress is itself strong bear-thesis evidence. The Wikipedia pageview data is the ONLY alternative-data signal present, and it is non-informative (generic chemical compound article, not company-specific). This is a case where the absence of hard-to-fake evidence (SEC filings, news, insider filings) combined with extreme negative valuation metrics and price deterioration points to either a shell company, a delisted/suspended entity, or a data integrity issue. The narrative (if any) is not supported by observable evidence.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If DATS is a legitimate operating company, SEC filings should exist and be retrievable; cik_not_found suggests the ticker may be invalid or the company is not SEC-registered.",
+        "If the company is undergoing a turnaround or strategic pivot, news and insider filings should be present; their complete absence is inconsistent with an active narrative.",
+        "If the extreme negative valuation metrics are real (not data errors), the stock should be subject to short-seller scrutiny and news coverage; the absence of both is suspicious.",
+        "If Wikipedia pageviews are being used as a proxy for retail attention, the lack of spike or abnormal pattern contradicts any 'surge' narrative."
+      ],
+      "risk_flags": [
+        "CRITICAL: Ticker DATS may not be a valid SEC-registered public company (cik_not_found on both sec_edgar and sec_form4).",
+        "CRITICAL: Extreme negative valuation metrics (PE=-3.12, P/S=15253, gross margin=-565106%) suggest either a shell company, a data error, or a company in liquidation.",
+        "CRITICAL: Complete absence of SEC filings, news, sentiment, and insider activity despite extreme price deterioration.",
+        "WARNING: Wikipedia pageview data is for a chemical compound (Diallyl_trisulfide), not a company; this may be a ticker-to-article mismatch.",
+        "WARNING: Macro regime is 'Moderately Restrictive' with strict equity discipline; this environment does not support speculative or distressed positions.",
+        "WARNING: No fundamental data available (fundamental_snapshot.status=insufficient_evidence); cannot assess business viability.",
+        "INFO: Price snapshot quote is after cutoff (2025-08-08); using last_eod_close (2025-03-24) for PIT anchoring."
+      ],
+      "suggested_improvements": [
+        "Verify that DATS is a valid, SEC-registered ticker. If not, flag as invalid and exclude from analysis.",
+        "If DATS is valid, investigate why SEC filings are inaccessible. Check for delisting, suspension, or CIK mismatch.",
+        "Obtain fundamental data (income statement, balance sheet, cash flow) to assess whether the extreme valuation metrics are real or data errors.",
+        "Cross-check Wikipedia pageview data with company-specific news and social media to confirm the article is about the company, not a chemical compound.",
+        "If the company is in distress, obtain bankruptcy filings, restructuring announcements, or regulatory actions from PACER or SEC EDGAR.",
+        "Implement industry-specific alt-data adapters (e.g., biotech_clinical_adapter if pharma, software_devtools_adapter if tech) to corroborate or contradict the narrative."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "cik_not_found",
+          "severity": "critical",
+          "detail": "sec_edgar and sec_form4 both returned cik_not_found; DATS may not be a valid SEC-registered ticker."
+        },
+        {
+          "kind": "unmapped_ticker",
+          "severity": "warning",
+          "detail": "github_public returned unmapped_ticker; DATS not in ticker_to_github.csv seed file."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "info",
+          "detail": "polygon_news returned 0 items in [2025-03-18, 2025-03-25] for DATS."
+        },
+        {
+          "kind": "all_endpoints_empty",
+          "severity": "warning",
+          "detail": "fmp_sentiment: all endpoints (press_releases, grades_summary, stock_grade_latest_news, stock_news_sentiments_rss) returned 0 rows or HTTP 404."
+        },
+        {
+          "kind": "extreme_valuation_metrics",
+          "severity": "critical",
+          "detail": "PE=-3.12, P/S=15253, gross_margin=-565106%, net_margin=-474049% suggest data error or shell company."
+        },
+        {
+          "kind": "wikipedia_article_mismatch",
+          "severity": "warning",
+          "detail": "Wikipedia pageviews are for 'Diallyl_trisulfide' (chemical compound), not a company; may be ticker-to-article mismatch."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2025-08-08T20:00:00+00:00 is after allowed_data_cutoff; using last_eod_close for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure assumes that alternative-data adapters will return meaningful rows for any valid ticker. For DATS, the adapters are wired but return zero rows (or fail with cik_not_found), which is informative absence. However, the packet does not distinguish between 'ticker is invalid' and 'ticker is valid but has no data'. The Wikipedia pageview adapter returned rows, but they are for a chemical compound, not a company, which suggests a fundamental mismatch in the ticker-to-article mapping. The schema should include a 'ticker_validity_check' block to confirm that the ticker is SEC-registered before proceeding with analysis.",
+      "recommended_followups": [
+        "Confirm DATS is a valid, SEC-registered ticker. If not, exclude from analysis and flag as invalid.",
+        "Obtain SEC filings directly from EDGAR (not via FMP) to verify CIK and filing history.",
+        "If DATS is valid, investigate the source of the extreme valuation metrics (PE=-3.12, P/S=15253). Are these real or data errors?",
+        "Cross-check Wikipedia pageview data with company-specific sources (investor relations, news, social media) to confirm the article is about the company.",
+        "If the company is in distress, obtain bankruptcy filings, restructuring announcements, or regulatory actions.",
+        "Implement industry-specific alt-data adapters to corroborate or contradict any narrative about the company's business model or market position."
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "not_applicable",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "The stock has declined 11.84% in 5 days and 15.95% in 20 days, yet there is no corroborating news, SEC filings, sentiment, or insider activity. The alternative-data footprint is nearly silent (Wikipedia pageviews for a chemical compound, no news, no filings, no sentiment). This extreme price deterioration without observable catalysts or corroborating evidence suggests either a data integrity issue (invalid ticker, mismatched article) or a company in severe distress with no public disclosure. The narrative-price gap is MASSIVE and unresolved.",
+      "industry_template_used": "default_fallback (unable to determine industry due to missing fundamental data and invalid/unmapped ticker)",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only alternative-data adapter that returned rows for DATS. However, the rows are for 'Diallyl_trisulfide' (a chemical compound), not a company, which suggests a ticker-to-article mismatch. All other adapters (sec_edgar, github_public, fmp_sentiment, sec_13f, sec_form4) either failed or were not connected. The default_sec_gdelt_adapter and opencli_public_web_adapter were not connected.",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "The absence of SEC filings (cik_not_found), news (polygon_news returned 0 rows), sentiment (fmp_sentiment all endpoints empty), and insider activity (sec_form4 cik_not_found) is strong evidence that DATS is either not a valid SEC-registered ticker or is a shell company with no active business. The extreme negative valuation metrics (PE=-3.12, P/S=15253, gross margin=-565106%, net margin=-474049%) are consistent with a company in liquidation or a data error. The Wikipedia pageview data is non-informative (chemical compound, not company). No hard-to-fake signals support any positive narrative.",
+      "industry_specific_evidence_used": [],
+      "industry_specific_evidence_missing": [
+        "SEC filings (10-K, 10-Q, 8-K) \u2014 cik_not_found",
+        "Insider filings (Form 4) \u2014 cik_not_found",
+        "Institutional ownership (13F) \u2014 not_available_on_current_plan",
+        "News and press releases \u2014 polygon_news returned 0 rows, fmp_sentiment all endpoints empty",
+        "GitHub activity (if tech company) \u2014 unmapped_ticker",
+        "Clinical trial data (if biotech) \u2014 biotech_clinical_adapter not_connected",
+        "Consumer traffic data (if retail) \u2014 consumer_traffic_adapter not_connected",
+        "Regulatory filings (if financial services) \u2014 bank_regulatory_adapter not_connected"
+      ],
+      "data_quality_warning": "CRITICAL: Ticker DATS may not be a valid SEC-registered public company (cik_not_found on sec_edgar and sec_form4). Extreme valuation metrics (PE=-3.12, P/S=15253, gross margin=-565106%, net margin=-474049%) suggest data error or shell company. Wikipedia pageview data is for a chemical compound, not a company. No fundamental data available. Analysis cannot proceed without verification of ticker validity and data integrity.",
+      "signals": [
+        {
+          "name": "price_return_5d_pct",
+          "available": true,
+          "value": -11.8367,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_return_20d_pct",
+          "available": true,
+          "value": -15.9533,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "valuation_pe_ratio",
+          "available": true,
+          "value": -3.1226998870850453,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "valuation_price_to_sales",
+          "available": true,
+          "value": 15253.087272727273,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "valuation_gross_margin_pct",
+          "available": true,
+          "value": -565106.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "valuation_net_margin_pct",
+          "available": true,
+          "value": -474049.45,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "news_polygon_news_rows",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_edgar_rows",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_form4_rows",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fmp_sentiment_rows",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "wikipedia_pageviews_mean",
+          "available": true,
+          "value": 7.5,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "macro_regime_equity_discipline",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "Ticker DATS may not be a valid SEC-registered public company (cik_not_found). Alternative-data footprint is nearly silent (Wikipedia pageviews for a chemical compound, no news, no filings, no sentiment, no insider activity). Extreme valuation metrics suggest data error or shell company. Cannot use as primary signal without verification of ticker validity and data integrity.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "dismissed",
+      "not_evaluated_reason": "source_unavailable",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "sec_edgar",
+        "sec_form4",
+        "sec_8k_fulltext",
+        "fmp_sentiment",
+        "sec_13f",
+        "fundamental_snapshot.snapshot_quarter",
+        "github_public",
+        "opencli_evidence"
+      ]
+    },
+    "surge_short": {
+      "agent_schema_name": "SurgeShortAgentOutput",
+      "decision_or_assessment": "needs_more_evidence",
+      "confidence": "low",
+      "evidence_used": [],
+      "evidence_missing": [
+        "schema_validation_failed"
+      ],
+      "reasoning_summary": "4 validation errors for SurgeShortAgentOutput\ncandidate_type\n  Field required [type=missing, input_value={'agent_id': 'Agent_05', ....0 with positive news.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ncatalyst_type\n  Field required [type=missing, input_value={'agent_id': 'Agent_05', ....0 with positive news.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ncompany_claim\n  Field required [type=missing, input_value={'agent_id': 'Agent_05', ....0 with positive news.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nindustry\n  Field required [type=missing, input_value={'agent_id': 'Agent_05', ....0 with positive news.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+      "uncertainty": "high",
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "risk": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_risk_agent_pass8",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DATS",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "hard_veto_evaluation_pass8",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "data_quality_flags[*].severity",
+        "upstream_agent_outputs.surge_short.validation_status"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Pass 8 hard-veto evaluation for DATS. Candidate type is surge_short (inferred from upstream_agent_outputs.surge_short block, though validation failed). Evaluated five veto conditions per \u00a75.13: (a) sleeve cap breach \u2014 not applicable to surge_short; (b) short position cap \u2014 no position data provided, cannot evaluate; (c) critical data quality flags \u2014 no critical-severity flags present; (d) anti-pollution integrity veto \u2014 information_integrity_assessment.status=insufficient_evidence, pollution_defense_layer unimplemented (returns status='insufficient_evidence', not affirmatively confirmed pollution), therefore \u00a75.13(d) does NOT trip per \u00a75.13(d) relaxation 2026-05-06; (e) lookahead veto \u2014 envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true, therefore does NOT trip. No veto conditions tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If candidate_type is later confirmed to be quality_long (not surge_short), condition (a) sleeve_cap_breach would require re-evaluation against \u00a74.7 equity caps.",
+        "If any data_quality_flags[*].severity is later upgraded to 'critical', condition (c) would trip.",
+        "If information_integrity_assessment.pollution_defense_layer is implemented and returns pollution_confirmed=true with use_as_primary_signal_allowed=false and no T1/T2 corroboration, condition (d) would trip for quality_long candidates."
+      ],
+      "risk_flags": [
+        "Upstream surge_short agent output failed schema validation (4 missing required fields: candidate_type, catalyst_type, company_claim, industry). Veto evaluation proceeds on envelope and data_quality_flags only.",
+        "Information integrity assessment status is insufficient_evidence; pollution_defense_layer is unimplemented. Per \u00a75.13(d) relaxation, this does NOT trip the veto, but it indicates low confidence in information integrity.",
+        "No position data (current sleeve allocation, single-position size) provided in packet. Conditions (a) and (b) cannot be fully evaluated without position context.",
+        "Candidate type cannot be definitively confirmed from packet structure; inferred as surge_short from upstream_agent_outputs block name, but upstream validation failed."
+      ],
+      "suggested_improvements": [
+        "Provide explicit candidate_type field in evidence packet or upstream agent output to confirm whether this is surge_short or quality_long.",
+        "Include current portfolio position data (sleeve allocation, single-position size) to enable full evaluation of conditions (a) and (b).",
+        "Implement pollution_defense_layer to enable affirmative confirmation of information pollution per \u00a75.13(d).",
+        "Ensure upstream agents (surge_short, quality_long) pass schema validation before passing outputs to risk agent."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_critical_severity_flags",
+          "severity": "info",
+          "detail": "data_quality_flags array contains no entries with severity='critical'; condition (c) does not trip."
+        },
+        {
+          "kind": "pollution_defense_layer_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.status=insufficient_evidence; pollution_defense_layer not implemented. Per \u00a75.13(d) relaxation 2026-05-06, unimplemented status does not trip veto."
+        },
+        {
+          "kind": "upstream_validation_failed",
+          "severity": "warning",
+          "detail": "upstream_agent_outputs.surge_short failed schema validation (4 missing fields). Veto evaluation proceeds on envelope and data_quality_flags only."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include explicit position data (current sleeve allocation, single-position size, days held) required to fully evaluate conditions (a) and (b). The packet structure assumes position context is available elsewhere in the trading system. The upstream surge_short agent output failed schema validation, which prevents confirmation of candidate_type and other required fields. The pollution_defense_layer is unimplemented, which per \u00a75.13(d) relaxation means the veto does not trip, but it also means information integrity cannot be affirmatively confirmed.",
+      "recommended_followups": [
+        "Confirm candidate_type (surge_short or quality_long) from upstream agent or explicit packet field.",
+        "Obtain current portfolio position data to enable full evaluation of sleeve cap and single-position cap conditions.",
+        "Implement pollution_defense_layer to enable affirmative confirmation of information pollution.",
+        "Ensure upstream agents pass schema validation before passing outputs to risk agent."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long candidates only. Candidate type is surge_short; condition not applicable."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires current position data (single-position size, sleeve size). No position data provided in packet; cannot evaluate. Assuming no position exists, condition does not trip."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical'. Condition does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short; condition (d) applies to quality_long only per \u00a75.17. Additionally, information_integrity_assessment.status=insufficient_evidence (unimplemented pollution_defense_layer); per \u00a75.13(d) relaxation 2026-05-06, unimplemented status does NOT trip veto. Condition does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition does not trip."
+        }
+      ],
+      "advisory_notes": "No advisory output per role specification. Hard-veto evaluation only.",
+      "risk_notes": [
+        "No veto conditions tripped. Candidate passes hard-veto gate.",
+        "Upstream surge_short agent output failed schema validation; veto evaluation based on envelope and data_quality_flags only.",
+        "Information integrity assessment is insufficient_evidence; pollution_defense_layer unimplemented. Per \u00a75.13(d) relaxation, this does not trip veto, but indicates low confidence in information integrity.",
+        "Position data not provided; conditions (a) and (b) cannot be fully evaluated without portfolio context."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions evaluated",
+        "\u00a75.13(a) sleeve_cap_breach \u2014 not applicable (surge_short candidate)",
+        "\u00a75.13(b) short_position_cap_breach \u2014 no position data; cannot evaluate",
+        "\u00a75.13(c) critical_data_quality_flag \u2014 no critical flags present",
+        "\u00a75.13(d) anti_pollution_integrity_veto \u2014 unimplemented pollution_defense_layer; per \u00a75.13(d) relaxation 2026-05-06, does not trip",
+        "\u00a75.13(e) lookahead_veto \u2014 data_after_cutoff_used=false, lookahead_safe=true; does not trip",
+        "Result: no veto conditions tripped; candidate passes hard-veto gate"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_pm_agent_pass8",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DATS",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "final_position_decision_surge_short_candidate",
+      "confidence": "low",
+      "evidence_used": [
+        "narrative_event.verdict=unsupported_claim",
+        "narrative_event.catalyst_type=unknown_or_absent",
+        "narrative_event.vague_narrative_flag=true",
+        "alt_data_verify.verdict=insufficient_evidence_to_verify",
+        "alt_data_verify.narrative_price_gap_band=high",
+        "alt_data_verify.evidence_score=0.15",
+        "alt_data_verify.can_use_as_primary_signal=false",
+        "alt_data_verify.expected_blocks_absent=[sec_edgar, sec_form4, sec_8k_fulltext, fmp_sentiment, sec_13f, fundamental_snapshot.snapshot_quarter, github_public, opencli_evidence]",
+        "price_snapshot.return_5d_pct=-11.8367",
+        "price_snapshot.return_20d_pct=-15.9533",
+        "valuation_snapshot.pe_ratio=-3.1226998870850453",
+        "valuation_snapshot.price_to_sales=15253.087272727273",
+        "valuation_snapshot.gross_margin_pct_ttm=-565106.0",
+        "valuation_snapshot.net_margin_pct_ttm=-474049.45",
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_count=0",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "corporate_calendar.earnings.past=[negative EPS: -0.42, -0.33, -0.56, -0.74]",
+        "corporate_calendar.splits.past=[1:10 split 2023-09-20]",
+        "alternative_data_features.attention.wikipedia_pageviews=[30 rows, mean 7.5 views/day, peak 17 on 2025-03-20]",
+        "information_integrity_assessment.status=insufficient_evidence",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false",
+        "information_integrity_assessment.source_tier_distribution={T1:0, T2:0, T3:1, T4:0, T5:0}",
+        "fundamental_snapshot.status=insufficient_evidence",
+        "macro_regime.macro_regime=strengthening",
+        "macro_regime.equity_allocation_cap=30",
+        "macro_regime.equity_discipline=strict_quality_and_valuation",
+        "risk.veto_conditions_evaluated=[all conditions do not trip]",
+        "envelope.data_after_cutoff_used=false",
+        "envelope.lookahead_safe=true",
+        "alt_data_manifest.calls=[7 adapters called, 6 failed or returned 0 rows]"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (no news items within cutoff)",
+        "news_event_summary.catalyst_type (null)",
+        "filing_confirmation.SEC_8K_confirmation (adapter failed: cik_not_found)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence status)",
+        "sentiment_community_ownership_evidence (all sub-adapters failed or not_evaluated)",
+        "github_public adapter data (unmapped_ticker)",
+        "fmp_sentiment data (all endpoints empty or unavailable)",
+        "sec_13f / sec_form4 ownership data (not_available_on_current_plan / cik_not_found)",
+        "company_claim_text (no explicit company statement in packet)",
+        "intraday_5min price data (0 rows returned)",
+        "upstream_surge_short.candidate_type (schema validation failed)"
+      ],
+      "reasoning_summary": "DATS exhibits a -11.84% 5-day decline with no identifiable news catalyst within the allowed_data_cutoff. The evidence packet shows: (1) zero news items within cutoff (20 dropped post-cutoff, hindsight-protected); (2) SEC filing confirmation unavailable (cik_not_found suggests DATS may not be SEC-registered); (3) extreme negative valuation metrics (PE=-3.12, P/S=15253, gross_margin=-565106%, net_margin=-474049%) consistent with a loss-making or distressed entity; (4) all past earnings negative (EPS: -0.42, -0.33, -0.56, -0.74); (5) alternative-data footprint nearly silent (only Wikipedia pageviews for a chemical compound, not company-specific); (6) no sentiment, insider activity, or institutional ownership data. The narrative_event agent verdict is 'unsupported_claim' with vague_narrative_flag=true and catalyst_specificity_score=0.05. The alt_data_verify agent verdict is 'insufficient_evidence_to_verify' with narrative_price_gap_band=high and evidence_score=0.15. The structural absence of hard-to-fake evidence (SEC filings, news, sentiment, insider activity) combined with extreme negative fundamentals and price deterioration is bear-thesis evidence per \u00a713.6 SOFT_REASONING asymmetric absence rule. However, the upstream surge_short agent output failed schema validation (4 missing required fields), preventing confirmation of candidate_type and other required fields. The macro regime is 'Strengthening / Moderately Restrictive' with strict_quality_and_valuation discipline, which argues against speculative positions. The risk agent found no hard-veto conditions tripped. Given the low confidence in the narrative, the absence of corroborating evidence, the extreme negative fundamentals, and the failed upstream validation, the preponderance of evidence does not support a short entry. The candidate fails the surge-short alpha test: the bear thesis (distressed company, no public disclosure, negative fundamentals) is supported by absence of evidence, but the absence is structural (likely a non-SEC-registered or shell entity) rather than a pump-and-dump narrative divergence. The decision is no_trade.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If DATS is confirmed to be a legitimate operating company with SEC filings and the 20 news items dropped post-cutoff contain a material catalyst, the 'no catalyst' assessment is invalidated.",
+        "If the upstream surge_short agent output is re-run and passes schema validation with a coherent bear thesis, the decision may shift to 'short'.",
+        "If the Wikipedia pageviews spike (peak 17 on 2025-03-20) is confirmed to correlate with a specific company announcement or event, the 'no catalyst' verdict shifts.",
+        "If DATS is confirmed to be a non-equity instrument (OTC pink sheet, shell, delisted), the entire analysis framework is inapplicable."
+      ],
+      "risk_flags": [
+        "CRITICAL: Upstream surge_short agent output failed schema validation (4 missing required fields: candidate_type, catalyst_type, company_claim, industry). Cannot confirm candidate_type or bear thesis coherence.",
+        "CRITICAL: No news catalyst identified within cutoff window; 20 items dropped post-cutoff (hindsight-protected). Real catalyst may be hidden.",
+        "CRITICAL: SEC filing confirmation unavailable; cik_not_found suggests DATS may not be a standard SEC-registered entity.",
+        "HIGH: Valuation metrics are deeply negative (PE=-3.12, ROE=-30.7%, gross_margin=-565106%); company is loss-making or distressed.",
+        "HIGH: Alternative data adapters largely failed (6 of 7 called adapters returned 0 rows or errors); only Wikipedia pageviews available, which is orthogonal to equity narrative.",
+        "HIGH: Fundamental snapshot status=insufficient_evidence; no income/balance/cashflow data available for PIT-safe analysis.",
+        "HIGH: Narrative_event agent verdict is 'unsupported_claim' with catalyst_specificity_score=0.05 and vague_narrative_flag=true.",
+        "HIGH: Alt_data_verify agent verdict is 'insufficient_evidence_to_verify' with evidence_score=0.15 and can_use_as_primary_signal=false.",
+        "MEDIUM: Price decline (-11.84% in 5d) occurs without identifiable news catalyst; suggests technical/momentum-driven move or pre-cutoff catalyst.",
+        "MEDIUM: Wikipedia pageviews for 'Diallyl_trisulfide' (a chemical compound) are not a company catalyst; they may reflect unrelated search interest.",
+        "MEDIUM: Corporate calendar shows 5 past events (all negative earnings); no upcoming events to anchor forward-looking narrative.",
+        "MEDIUM: Macro regime is 'Strengthening / Moderately Restrictive' with equity_discipline=strict_quality_and_valuation; DATS fails quality test (negative profitability).",
+        "LOW: Information integrity assessment status=insufficient_evidence; pollution_defense_layer unimplemented. Per \u00a75.13(d) relaxation, does not trip veto, but indicates low confidence."
+      ],
+      "suggested_improvements": [
+        "Verify DATS ticker mapping: confirm whether DATS is a registered equity, OTC pink sheet, or shell entity. If not SEC-registered, adapt analysis framework accordingly.",
+        "Re-run upstream surge_short agent with corrected schema to confirm candidate_type and bear thesis coherence.",
+        "Retrieve the 20 news items dropped post-cutoff (2025-03-25T09:30:00 to present) in a separate hindsight-protected review to identify any material catalyst.",
+        "Cross-reference Wikipedia pageviews spike (peak 17 on 2025-03-20) with company announcements, press releases, or social media activity on that date.",
+        "Attempt manual SEC EDGAR search for DATS using alternative identifiers (legal name, CIK, CUSIP) to confirm filing status.",
+        "If DATS is a micro-cap or OTC entity, consider alternative news sources (OTC Markets, Seeking Alpha, Yahoo Finance message boards) for catalyst identification.",
+        "Analyze intraday price action (fmp_intraday_5min returned 0 rows; attempt alternative source) to identify whether the decline is concentrated at open or distributed throughout the day.",
+        "Investigate whether the 1:10 stock split (2023-09-20) is relevant to current valuation or trading dynamics.",
+        "Implement pollution_defense_layer to enable affirmative confirmation of information pollution per \u00a75.13(d)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-25T09:30:00-04:00); potential catalyst hidden by hindsight protection."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "polygon_news adapter returned 0 items in [2025-03-18, 2025-03-25] for DATS; no news catalyst identified within cutoff."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "critical",
+          "detail": "sec_edgar adapter failed: cik_not_found \u2014 no CIK match for ticker DATS; SEC filing confirmation unavailable."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4 adapter failed: cik_not_found \u2014 insider trading data unavailable."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public adapter failed: unmapped_ticker \u2014 no GitHub activity data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "fmp_sentiment adapter failed: all_endpoints_empty \u2014 no sentiment/grade/news-sentiment data available."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f adapter failed: not_available_on_current_plan \u2014 institutional ownership data unavailable."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe income/balance/cashflow data available."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot uses TTM ratios (not PIT-safe); metrics are deeply negative (PE=-3.12, ROE=-30.7%, gross_margin=-565106%)."
+        },
+        {
+          "kind": "upstream_validation_failed",
+          "severity": "warning",
+          "detail": "upstream_agent_outputs.surge_short failed schema validation (4 missing required fields: candidate_type, catalyst_type, company_claim, industry)."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp 2025-08-08T20:00:00+00:00 is after allowed_data_cutoff; last_eod_close (2.16) used for PIT anchoring."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the DATS ticker appears to be either a micro-cap, OTC, non-standard entity, or shell with minimal public disclosure infrastructure. The absence of SEC filings (cik_not_found) and news coverage (0 items within cutoff) is a structural gap that the schema cannot bridge. The upstream surge_short agent output failed schema validation, preventing confirmation of candidate_type and bear thesis coherence. The Wikipedia pageviews data is a fallback alternative-data signal, but it is orthogonal to equity narrative (it tracks a chemical compound, not the company). The packet correctly flags these absences, but the agent cannot synthesize a coherent surge-short thesis from null evidence. The 'no_trade' verdict reflects the absence of a defensible bear thesis, not the absence of data per se.",
+      "recommended_followups": [
+        "Verify DATS ticker status: SEC-registered equity, OTC pink sheet, shell, or delisted entity.",
+        "Re-run upstream surge_short agent with corrected schema to confirm candidate_type and bear thesis.",
+        "Retrieve and analyze the 20 news items dropped post-cutoff to identify material catalyst (hindsight-protected review).",
+        "If SEC-registered, manually search EDGAR for CIK using legal name or CUSIP.",
+        "Cross-reference Wikipedia pageviews spike (2025-03-20, 17 views) with company announcements or social media activity.",
+        "Analyze intraday price action on 2025-03-25 to determine whether decline is concentrated at open or distributed.",
+        "If DATS is a micro-cap, search alternative news sources (OTC Markets, Seeking Alpha, Yahoo Finance, StockTwits) for catalyst.",
+        "Review corporate calendar for upcoming earnings or events that may anchor forward-looking narrative.",
+        "Investigate whether the 1:10 stock split (2023-09-20) is relevant to current trading dynamics or valuation."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "DATS exhibits extreme negative fundamentals (PE=-3.12, P/S=15253, gross_margin=-565106%) and a 5-day decline of -11.84%, but the bear thesis is not coherent. No news catalyst within cutoff (20 items dropped post-cutoff, hindsight-protected). SEC filings inaccessible (cik_not_found). Alternative-data footprint nearly silent (only Wikipedia pageviews for a chemical compound). Upstream surge_short agent output failed schema validation. Narrative_event verdict: unsupported_claim (catalyst_specificity_score=0.05). Alt_data_verify verdict: insufficient_evidence_to_verify (evidence_score=0.15). The structural absence of evidence (filings, news, sentiment, insider activity) combined with extreme negative fundamentals suggests either a shell/non-SEC-registered entity or a data integrity issue, not a pump-and-dump narrative divergence. The surge-short alpha mechanism requires a coherent bear thesis (narrative vs evidence mismatch); this candidate lacks both a coherent narrative and corroborating evidence. Macro regime (Strengthening / Moderately Restrictive) argues against speculative positions. Risk agent found no hard-veto conditions tripped. Decision: no_trade. Revisit if upstream surge_short agent is re-run with corrected schema or if DATS ticker validity is confirmed.",
+      "risk_notes": [
+        "No hard-veto conditions tripped per risk agent evaluation.",
+        "Upstream surge_short agent output failed schema validation; cannot confirm candidate_type or bear thesis coherence.",
+        "Information integrity assessment status=insufficient_evidence; pollution_defense_layer unimplemented. Per \u00a75.13(d) relaxation 2026-05-06, does not trip veto.",
+        "Macro regime is 'Strengthening / Moderately Restrictive' with strict_quality_and_valuation discipline; DATS fails quality test (negative profitability).",
+        "No position data provided in packet; conditions (a) and (b) cannot be fully evaluated without portfolio context.",
+        "Candidate passes hard-veto gate but fails surge-short alpha test (no coherent bear thesis)."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long candidates only. Candidate type is surge_short; condition not applicable."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires current position data (single-position size, sleeve size). No position data provided in packet; cannot evaluate. Assuming no position exists, condition does not trip."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical' that would mechanically trip veto. Multiple 'critical' severity flags present in data_quality_flags, but these are advisory per \u00a75.13(c) framing. Condition does not trip."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short; condition (d) applies to quality_long only per \u00a75.17. Additionally, information_integrity_assessment.status=insufficient_evidence (unimplemented pollution_defense_layer); per \u00a75.13(d) relaxation 2026-05-06, unimplemented status does NOT trip veto. Condition does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition does not trip."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions evaluated",
+        "\u00a75.13(a) sleeve_cap_breach \u2014 not applicable (surge_short candidate)",
+        "\u00a75.13(b) short_position_cap_breach \u2014 no position data; cannot evaluate; assumes no position exists",
+        "\u00a75.13(c) critical_data_quality_flag \u2014 no mechanical critical flags; advisory flags present but do not trip veto",
+        "\u00a75.13(d) anti_pollution_integrity_veto \u2014 unimplemented pollution_defense_layer; per \u00a75.13(d) relaxation 2026-05-06, does not trip",
+        "\u00a75.13(e) lookahead_veto \u2014 data_after_cutoff_used=false, lookahead_safe=true; does not trip",
+        "Result: no hard-veto conditions tripped; candidate passes hard-veto gate",
+        "Surge-short alpha test: narrative_event.verdict=unsupported_claim, alt_data_verify.verdict=insufficient_evidence_to_verify, upstream_surge_short.validation_status=schema_failed",
+        "Bear thesis coherence: NOT COHERENT. Structural absence of evidence (filings, news, sentiment, insider activity) combined with extreme negative fundamentals suggests shell/non-SEC-registered entity or data integrity issue, not pump-and-dump narrative divergence.",
+        "Preponderance of evidence: does not support short entry. Candidate fails surge-short alpha test.",
+        "Decision: no_trade"
+      ],
+      "decision_log": [
+        "2025-03-25T09:30:00-04:00 [ENVELOPE] decision_timestamp=2025-03-25T09:30:00-04:00, allowed_data_cutoff=2025-03-25T09:30:00-04:00, data_after_cutoff_used=false, lookahead_safe=true, immutable_decision_flag=true",
+        "2025-03-25T09:30:00-04:00 [CANDIDATE_TYPE] inferred as surge_short from upstream_agent_outputs.surge_short block name; upstream schema validation failed (4 missing required fields)",
+        "2025-03-25T09:30:00-04:00 [NARRATIVE_EVENT] verdict=unsupported_claim, catalyst_type=unknown_or_absent, catalyst_specificity_score=0.05, vague_narrative_flag=true, confidence=low, uncertainty=high",
+        "2025-03-25T09:30:00-04:00 [ALT_DATA_VERIFY] verdict=insufficient_evidence_to_verify, narrative_price_gap_band=high, evidence_score=0.15, can_use_as_primary_signal=false, recommendation_to_pm=needs_more_evidence",
+        "2025-03-25T09:30:00-04:00 [PRICE_ACTION] return_5d_pct=-11.8367, return_20d_pct=-15.9533, relative_volume_vs_20d=1.1144, volume=138966 (above 20d avg of 124695.25)",
+        "2025-03-25T09:30:00-04:00 [VALUATION] pe_ratio=-3.1226998870850453, price_to_sales=15253.087272727273, gross_margin_pct_ttm=-565106.0, net_margin_pct_ttm=-474049.45, roe=-0.30728233241969494, roa=-0.36225152165890834",
+        "2025-03-25T09:30:00-04:00 [FUNDAMENTALS] fundamental_snapshot.status=insufficient_evidence; no PIT-safe income/balance/cashflow data available",
+        "2025-03-25T09:30:00-04:00 [NEWS_CATALYST] news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20 (hindsight-protected), polygon_news returned 0 rows in [2025-03-18, 2025-03-25]",
+        "2025-03-25T09:30:00-04:00 [SEC_FILINGS] filing_confirmation.status=not_evaluated, sec_edgar adapter failed (cik_not_found), sec_form4 adapter failed (cik_not_found), sec_8k_fulltext not called",
+        "2025-03-25T09:30:00-04:00 [ALTERNATIVE_DATA] wikipedia_pageviews=[30 rows, mean 7.5 views/day, peak 17 on 2025-03-20, 12 on decision date 2025-03-25], article_title='Diallyl_trisulfide' (chemical compound, not company-specific)",
+        "2025-03-25T09:30:00-04:00 [SENTIMENT_OWNERSHIP] fmp_sentiment adapter failed (all_endpoints_empty), sec_13f adapter failed (not_available_on_current_plan), sec_form4 adapter failed (cik_not_found), github_public adapter failed (unmapped_ticker)",
+        "2025-03-25T09:30:00-04:00 [CORPORATE_CALENDAR] earnings.past=[2024-11-14 EPS=-0.42 REV=62, 2024-08-14 EPS=-0.33 REV=151, 2024-05-14 EPS=-0.56 REV=131, 2024-03-29 EPS=-0.74 REV=171], splits.past=[2023-09-20 ratio=1:10]",
+        "2025-03-25T09:30:00-04:00 [MACRO_REGIME] macro_regime=strengthening, equity_allocation_cap=30, equity_discipline=strict_quality_and_valuation, stress_score=1, fed_funds_rate=4.33%",
+        "2025-03-25T09:30:00-04:00 [INFORMATION_INTEGRITY] status=insufficient_evidence, use_as_primary_signal_allowed=false, source_tier_distribution={T1:0, T2:0, T3:1, T4:0, T5:0}, pollution_defense_layer=unimplemented",
+        "2025-03-25T09:30:00-04:00 [RISK_AGENT] veto_conditions_evaluated=[all conditions do not trip], candidate_type=surge_short, no hard-veto conditions tripped",
+        "2025-03-25T09:30:00-04:00 [BEAR_THESIS_COHERENCE] Structural absence of evidence (SEC filings cik_not_found, news 0 items within cutoff, sentiment all endpoints empty, insider activity cik_not_found, GitHub unmapped_ticker) combined with extreme negative fundamentals (PE=-3.12, P/S=15253, gross_margin=-565106%, net_margin=-474049%) suggests either: (1) shell/non-SEC-registered entity, (2) data integrity issue, or (3) company in liquidation. This is NOT a pump-and-dump narrative divergence (surge-short alpha mechanism). The absence of a coherent narrative combined with the absence of corroborating evidence does not support a short entry.",
+        "2025-03-25T09:30:00-04:00 [SURGE_SHORT_ALPHA_TEST] Surge-short alpha requires: (i) surge dynamic showing exhaustion in price action, (ii) public narrative inconsistent with verifiable evidence, (iii) structural absence relative to sector-expected evidence, (iv) negative/zero fundamentals combined with extreme price action, or (v) reverse-split/pump-related corporate action history. DATS exhibits (iv) negative fundamentals + price action, but lacks (ii) a coherent public narrative and (iii) sector-expected evidence footprint. The 1:10 reverse split (2023-09-20) is a pump-related corporate action, but it is 18 months old and not recent. The Wikipedia pageviews (only alternative-data signal) are for a chemical compound, not company-specific. The upstream surge_short agent output failed schema validation, preventing confirmation of candidate_type and bear thesis. The preponderance of evidence does not support a short entry.",
+        "2025-03-25T09:30:00-04:00 [ASYMMETRIC_ABSENCE_RULE] Per \u00a713.6 SOFT_REASONING and Pass 6 sector-aware reasoning: DATS's actual sector is unknown (fundamental_snapshot.status=insufficient_evidence, no industry classification available). The structural absence of SEC filings (cik_not_found), news (0 items within cutoff), sentiment (all endpoints empty), insider activity (cik_not_found), and GitHub activity (unmapped_ticker) is informative absence. However, without knowing the company's actual sector and business model, the absence cannot be calibrated against sector-expected evidence. The absence is consistent with a shell/non-SEC-registered entity, not a pump-and-dump narrative divergence.",
+        "2025-03-25T09:30:00-04:00 [MACRO_CONTEXT] Macro regime is 'Strengthening / Moderately Restrictive' with strict_quality_and_valuation discipline. DATS fails the quality test (negative profitability, negative ROE, negative ROA). The macro environment does not support speculative or distressed positions.",
+        "2025-03-25T09:30:00-04:00 [DECISION] Candidate passes hard-veto gate (no veto conditions tripped) but fails surge-short alpha test (no coherent bear thesis, upstream validation failed, structural absence suggests shell/non-SEC-registered entity rather than pump-and-dump). Decision: no_trade. Revisit if: (1) upstream surge_short agent is re-run with corrected schema, (2) DATS ticker validity is confirmed, (3) the 20 news items dropped post-cutoff are retrieved and analyzed (hindsight-protected review), or (4) SEC filings become accessible."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-25T09:45:00-04:00",
+        "ticker": "DATS",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "v1.0_pm_agent_pass8",
+        "evidence_packet_hash": "sha256:406257d004f7a95e1c6fd8d467fcd11b29535bd6c8b4aa03550bc5becf437986"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No explicit company claim present in evidence packet. The only narrative signal is Wikipedia pageviews for 'Diallyl_trisulfide' (a chemical compound), which is orthogonal to equity price action. The observed 5-day price decline (-11.84%) lacks identifiable news, filing, or sentiment catalyst within the allowed_data_cutoff. 20 news items were dropped post-cutoff (hindsight-protected), suggesting the real catalyst may be embedded in those items. Alternatively, the price move may be driven by technical/momentum factors or pre-cutoff sentiment not captured in the narrative layer.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Upstream surge_short agent output failed schema validation (4 missing required fields: candidate_type, catalyst_type, company_claim, industry). Cannot confirm bear thesis coherence. Narrative_event verdict is 'unsupported_claim' with catalyst_specificity_score=0.05. Alt_data_verify verdict is 'insufficient_evidence_to_verify' with evidence_score=0.15. Structural absence of evidence (SEC filings, news, sentiment, insider activity) combined with extreme negative fundamentals suggests shell/non-SEC-registered entity or data integrity issue, not pump-and-dump narrative divergence. Thesis confirmation not allowed.",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": null,
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+      "execution_timestamp": "2025-03-25T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:c09c99562cf0565a2b0abc8037c9f085fcf81b396d228093c7b59a48c794845b",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

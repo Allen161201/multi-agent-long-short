@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro &amp; Pipeline — Alt-Data Agentic Long-Short</title>
+    <meta name="description" content="Macro regime classification, yield curve, FRED live data, and agent pipeline flow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        /* ── Tab Navigation ── */
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            background: var(--surface-dim);
+            border-bottom: 1px solid var(--outline-variant);
+            padding: 0 var(--sp-6);
+        }
+        .tab-link {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--on-surface-dim);
+            text-decoration: none;
+            padding: var(--sp-3) var(--sp-5);
+            border-bottom: 2px solid transparent;
+            transition: color 0.15s, border-color 0.15s;
+        }
+        .tab-link:hover { color: var(--on-surface-variant); }
+        .tab-link.active {
+            color: var(--agent-blue);
+            border-bottom-color: var(--agent-blue);
+        }
+
+        /* ── Macro Grid ── */
+        .macro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--sp-2);
+            padding: var(--sp-3);
+        }
+        .macro-full { grid-column: span 2; }
+
+        /* ── Indicator Cards ── */
+        .indicator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: var(--sp-2);
+        }
+        .indicator-card {
+            background: var(--surface-container-high);
+            padding: var(--sp-3);
+            transition: background 0.15s;
+            border-left: 2px solid transparent;
+        }
+        .indicator-card:hover { background: var(--surface-container-highest); }
+        .indicator-card.warning-card { border-left-color: var(--warning); }
+        .indicator-card.negative-card { border-left-color: var(--bearish); }
+        .indicator-card.positive-card { border-left-color: var(--bullish); }
+        .indicator-label {
+            font-family: var(--font-ui);
+            font-size: 0.52rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--on-surface-dim);
+            text-transform: uppercase;
+            margin-bottom: var(--sp-1);
+        }
+        .indicator-value {
+            font-family: var(--font-data);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--on-surface);
+        }
+        .indicator-meta {
+            font-family: var(--font-data);
+            font-size: 0.52rem;
+            color: var(--on-surface-dim);
+            margin-top: 2px;
+        }
+        .indicator-value.negative { color: var(--bearish); }
+        .indicator-value.positive { color: var(--bullish); }
+        .indicator-value.warning { color: var(--warning); }
+
+        /* ── Yield Curve Chart ── */
+        .chart-container {
+            position: relative;
+            height: 340px;
+            padding: var(--sp-3);
+        }
+        .chart-meta {
+            display: flex;
+            gap: var(--sp-4);
+            padding: var(--sp-2) var(--sp-3);
+            font-family: var(--font-data);
+            font-size: 0.65rem;
+            color: var(--on-surface-dim);
+            flex-wrap: wrap;
+        }
+        .chart-meta-item { display: flex; gap: var(--sp-1); align-items: center; }
+        .chart-meta-value { color: var(--on-surface); font-weight: 500; }
+        .shape-inverted { color: var(--bearish); font-weight: 700; }
+        .shape-flat { color: var(--warning); font-weight: 700; }
+        .shape-upward { color: var(--bullish); font-weight: 700; }
+
+        /* ── Pipeline Flow (Vertical) ── */
+        .pipeline-vertical {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: var(--sp-3);
+        }
+        .pipeline-stage {
+            display: flex;
+            align-items: center;
+            gap: var(--sp-3);
+            padding: var(--sp-3) var(--sp-4);
+            background: var(--surface-container-high);
+            transition: background 0.2s, transform 0.15s;
+        }
+        .pipeline-stage:hover {
+            background: var(--surface-container-highest);
+            transform: translateX(2px);
+        }
+        .pipeline-stage.macro-stage {
+            background: var(--core-accent-bg);
+            outline: 1px solid rgba(212,168,255,0.18);
+        }
+        .pipeline-stage.core-stage {
+            outline: 1px solid rgba(212,168,255,0.18);
+        }
+        .stage-id {
+            font-family: var(--font-data);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--agent-blue);
+            min-width: 28px;
+        }
+        .macro-stage .stage-id { color: var(--core-accent); }
+        .stage-info { flex: 1; }
+        .stage-name {
+            font-family: var(--font-ui);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--on-surface);
+        }
+        .stage-desc {
+            font-family: var(--font-data);
+            font-size: 0.55rem;
+            color: var(--on-surface-dim);
+            margin-top: 2px;
+        }
+        .stage-output {
+            font-family: var(--font-data);
+            font-size: 0.62rem;
+            color: var(--on-surface-variant);
+            text-align: right;
+            min-width: 200px;
+        }
+        .stage-output .output-value {
+            font-weight: 700;
+            color: var(--agent-blue);
+        }
+        .macro-stage .stage-output .output-value { color: var(--core-accent); }
+        .stage-arrow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2px 0;
+            font-family: var(--font-data);
+            font-size: 0.7rem;
+            color: var(--on-surface-dim);
+        }
+        .stage-arrow::before {
+            content: '';
+            display: block;
+            width: 1px;
+            height: 14px;
+            background: linear-gradient(180deg, rgba(175,203,216,0.4), rgba(175,203,216,0.1));
+            margin: 0 auto;
+        }
+
+        /* ── Validation ── */
+        .validation-table { width: 100%; margin-top: var(--sp-2); }
+        .validation-table th { font-size: 0.55rem !important; }
+        .val-ok { color: var(--bullish); }
+        .val-fail { color: var(--bearish); }
+        .val-warn { color: var(--warning); }
+
+        /* ── Source Badge ── */
+        .source-badge {
+            display: inline-block;
+            font-family: var(--font-ui);
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            padding: 2px 10px;
+            text-transform: uppercase;
+        }
+        .source-fred {
+            background: rgba(169,208,174,0.15);
+            color: var(--bullish);
+            border: 1px solid rgba(169,208,174,0.25);
+        }
+        .source-mock {
+            background: var(--warning-bg);
+            color: var(--warning);
+            border: 1px solid rgba(240,198,116,0.25);
+        }
+        .source-cached {
+            background: var(--agent-blue-bg);
+            color: var(--agent-blue);
+            border: 1px solid rgba(175,203,216,0.25);
+        }
+
+        /* ── Refresh Button ── */
+        .refresh-btn {
+            font-family: var(--font-ui);
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: var(--sp-1) var(--sp-3);
+            background: transparent;
+            color: var(--agent-blue);
+            border: 1px solid var(--agent-blue);
+            cursor: pointer;
+            transition: background 0.15s, transform 0.1s;
+            letter-spacing: 0.04em;
+        }
+        .refresh-btn:hover {
+            background: var(--agent-blue-bg);
+            transform: scale(1.02);
+        }
+        .refresh-btn:active { transform: scale(0.98); }
+
+        /* ── Evidence Packet Section ── */
+        .evidence-section {
+            background: var(--surface-container-high);
+            padding: var(--sp-3);
+            margin-top: var(--sp-2);
+        }
+        .evidence-title {
+            font-family: var(--font-ui);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--core-accent);
+            text-transform: uppercase;
+            margin-bottom: var(--sp-2);
+        }
+        .evidence-json {
+            font-family: var(--font-data);
+            font-size: 0.58rem;
+            color: var(--on-surface-variant);
+            line-height: 1.7;
+            white-space: pre-wrap;
+            background: var(--surface-container);
+            padding: var(--sp-3);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* ── Regime Badge ── */
+        .regime-badge {
+            display: inline-block;
+            font-family: var(--font-ui);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            padding: 4px 14px;
+            text-transform: uppercase;
+        }
+        .regime-normal { background: rgba(169,208,174,0.15); color: var(--bullish); border: 1px solid rgba(169,208,174,0.3); }
+        .regime-weakening { background: var(--warning-bg); color: var(--warning); border: 1px solid rgba(240,198,116,0.3); }
+        .regime-poor { background: rgba(255,180,171,0.1); color: var(--bearish); border: 1px solid rgba(255,180,171,0.2); }
+        .regime-crisis { background: rgba(255,180,171,0.2); color: var(--bearish); border: 1px solid rgba(255,180,171,0.4); }
+
+        /* ── Status Pill ── */
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-family: var(--font-data);
+            font-size: 0.58rem;
+            font-weight: 500;
+            padding: 2px 8px;
+        }
+        .status-pill::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+        .status-pill.live::before { background: var(--bullish); box-shadow: 0 0 6px var(--bullish); }
+        .status-pill.live { color: var(--bullish); }
+        .status-pill.mock::before { background: var(--warning); box-shadow: 0 0 6px var(--warning); }
+        .status-pill.mock { color: var(--warning); }
+        .status-pill.cached::before { background: var(--agent-blue); }
+        .status-pill.cached { color: var(--agent-blue); }
+
+        /* ── Validation Grid ── */
+        .validation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--sp-3);
+        }
+        .val-metric {
+            background: var(--surface-container-high);
+            padding: var(--sp-3);
+        }
+        .val-metric-label {
+            font-family: var(--font-ui);
+            font-size: 0.52rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--on-surface-dim);
+            text-transform: uppercase;
+            margin-bottom: var(--sp-1);
+        }
+        .val-metric-value {
+            font-family: var(--font-data);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+        .val-metric-detail {
+            font-family: var(--font-data);
+            font-size: 0.52rem;
+            color: var(--on-surface-dim);
+            margin-top: 2px;
+        }
+
+        /* ── Mock Fallback Banner ── */
+        .mock-banner {
+            background: var(--warning-bg);
+            border: 1px solid rgba(240,198,116,0.3);
+            padding: var(--sp-2) var(--sp-4);
+            font-family: var(--font-data);
+            font-size: 0.65rem;
+            color: var(--warning);
+            display: none;
+            margin: var(--sp-2) var(--sp-3) 0;
+        }
+
+        /* ── Dashboard State (Date Semantics) ── */
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: var(--sp-2);
+            padding: var(--sp-2) var(--sp-3);
+        }
+        .date-card {
+            background: var(--surface-container-high);
+            padding: var(--sp-3);
+            border-left: 2px solid var(--agent-blue);
+        }
+        .date-card.live { border-left-color: var(--bullish); }
+        .date-card.mock { border-left-color: var(--warning); }
+        .date-card.cache { border-left-color: var(--agent-blue); }
+        .date-card-label {
+            font-family: var(--font-ui);
+            font-size: 0.52rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--on-surface-dim);
+            text-transform: uppercase;
+            margin-bottom: var(--sp-1);
+        }
+        .date-card-value {
+            font-family: var(--font-data);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--on-surface);
+            word-break: break-all;
+        }
+        .date-card-hint {
+            font-family: var(--font-data);
+            font-size: 0.52rem;
+            color: var(--on-surface-dim);
+            margin-top: 2px;
+        }
+        .obs-by-series {
+            padding: 0 var(--sp-3) var(--sp-3);
+            font-family: var(--font-data);
+            font-size: 0.6rem;
+            color: var(--on-surface-variant);
+            line-height: 1.7;
+        }
+        .obs-by-series strong {
+            color: var(--agent-blue);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .obs-row {
+            display: inline-block;
+            margin-right: var(--sp-3);
+        }
+        .obs-row .sid {
+            color: var(--on-surface-dim);
+            font-weight: 600;
+        }
+        .obs-row .obs {
+            color: var(--on-surface);
+        }
+
+        @media (max-width: 1024px) {
+            .macro-grid { grid-template-columns: 1fr; }
+            .macro-full { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ══════════ HEADER ══════════ -->
+    <header id="main-header">
+        <div class="header-left">
+            <div class="system-title">ALT-DATA AGENTIC</div>
+            <div class="system-subtitle">LONG-SHORT SYSTEM v0.3</div>
+        </div>
+        <div class="header-center">
+            <div class="header-chip">
+                <span class="chip-label">REGIME</span>
+                <span class="chip-value" id="regime-chip" style="color:var(--core-accent)">—</span>
+            </div>
+            <div class="header-chip">
+                <span class="chip-label">FI / EQ</span>
+                <span class="chip-value" id="alloc-chip">—</span>
+            </div>
+            <div class="header-chip">
+                <span class="chip-label">FRED</span>
+                <span class="chip-value" id="fred-status-chip">—</span>
+            </div>
+            <div class="header-chip">
+                <span class="chip-label">DATE</span>
+                <span class="chip-value" id="date-chip">—</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="refresh-btn" id="btn-refresh" onclick="refreshFred()">⟳ REFRESH FRED DATA</button>
+            <button class="btn-primary" onclick="runMacroPipeline()">RUN PIPELINE</button>
+        </div>
+    </header>
+
+    <!-- ══════════ TAB NAV (Phase-2 7-tab structure, mirrors index.html) ══════════ -->
+    <!-- Macro Regime is the only tab that lives on its own page (/macro).
+         The other six are hash routes back to the main dashboard. -->
+    <nav class="tab-nav" role="tablist" aria-label="Workflow tabs">
+        <a class="tab-link" href="/#decision">Decision Center</a>
+        <a class="tab-link" href="/#candidates">Candidates</a>
+        <a class="tab-link" href="/#market-data">Market Data</a>
+        <a class="tab-link" href="/#alternative-data">Alternative Data</a>
+        <a class="tab-link tab-link-active active" href="/macro" aria-current="page">Macro Regime</a>
+        <a class="tab-link" href="/#backtest">Backtest Lab</a>
+        <a class="tab-link" href="/#audit">Audit Log</a>
+        <a class="tab-link" href="/#rules">Rules &amp; Settings</a>
+    </nav>
+
+    <!-- ══════════ MOCK BANNER ══════════ -->
+    <div class="mock-banner" id="mock-banner">
+        ⚠ FRED API key missing — using mock macro data. Set <code style="background:var(--surface-container-highest);padding:1px 4px;">FRED_API_KEY</code> in <code style="background:var(--surface-container-highest);padding:1px 4px;">.env</code> to enable live data.
+    </div>
+
+    <!-- ══════════ MAIN ══════════ -->
+    <main class="macro-grid" id="macro-main">
+        <!-- ROW 0: Dashboard State (Four-Date Separation) -->
+        <section class="panel macro-full" id="panel-dashboard-state">
+            <div class="panel-header">
+                <span class="panel-title">DASHBOARD STATE</span>
+                <span class="panel-subtitle">Date semantics — dashboard / cache / observation / decision</span>
+                <span class="panel-badge" id="ds-mode-badge" style="margin-left:auto;">—</span>
+            </div>
+            <div class="panel-body">
+                <div class="dates-grid" id="dates-grid"></div>
+                <div class="obs-by-series" id="obs-by-series"></div>
+            </div>
+        </section>
+
+        <!-- ROW 1: Regime Classification + Key Indicators -->
+        <section class="panel" id="panel-regime">
+            <div class="panel-header">
+                <span class="panel-title">MACRO REGIME CLASSIFICATION</span>
+                <span class="panel-subtitle" id="regime-source-badge"></span>
+                <span class="panel-badge" id="classifier-version" style="margin-left:auto;"></span>
+            </div>
+            <div class="panel-body" id="regime-body">
+                <div style="display:flex;align-items:center;gap:var(--sp-3);margin-bottom:var(--sp-2);flex-wrap:wrap;">
+                    <span class="regime-badge" id="macro-regime-badge">Loading...</span>
+                    <span class="regime-badge" id="macro-condition-badge" style="font-size:0.55rem;"></span>
+                    <span id="regime-confidence" style="font-family:var(--font-data);font-size:0.62rem;color:var(--on-surface-dim);"></span>
+                </div>
+                <!-- Stress Score Bar -->
+                <div id="stress-score-bar" style="margin-bottom:var(--sp-3);">
+                    <div style="display:flex;align-items:center;gap:var(--sp-2);margin-bottom:4px;">
+                        <span style="font-family:var(--font-ui);font-size:0.55rem;font-weight:600;letter-spacing:0.08em;color:var(--on-surface-dim);text-transform:uppercase;">Stress Score</span>
+                        <span id="stress-score-value" style="font-family:var(--font-data);font-size:1.1rem;font-weight:700;"></span>
+                        <span id="stress-score-range" style="font-family:var(--font-data);font-size:0.55rem;color:var(--on-surface-dim);"></span>
+                    </div>
+                    <div style="width:100%;height:6px;background:var(--surface-container-highest);overflow:hidden;">
+                        <div id="stress-bar-fill" style="height:100%;transition:width 0.5s ease;"></div>
+                    </div>
+                </div>
+                <!-- Condition reason -->
+                <div id="condition-reason" style="font-family:var(--font-data);font-size:0.6rem;color:var(--on-surface-variant);margin-bottom:var(--sp-2);"></div>
+                <!-- Evidence -->
+                <div id="regime-evidence" style="margin-bottom:var(--sp-3);font-family:var(--font-data);font-size:0.62rem;color:var(--on-surface-variant);line-height:1.7;"></div>
+                <div style="margin-top:var(--sp-3);">
+                    <div class="alloc-bars">
+                        <div class="alloc-bar-group">
+                            <span class="alloc-bar-label">FIXED INCOME</span>
+                            <div class="alloc-bar-track"><div class="alloc-bar-fill fi-bar" id="m-fi-bar" style="width:0%"></div></div>
+                            <span class="alloc-bar-value" id="m-fi-pct">—</span>
+                        </div>
+                        <div class="alloc-bar-group">
+                            <span class="alloc-bar-label">EQUITY CAP</span>
+                            <div class="alloc-bar-track"><div class="alloc-bar-fill eq-bar" id="m-eq-bar" style="width:0%"></div></div>
+                            <span class="alloc-bar-value" id="m-eq-pct">—</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="regime-warnings" style="margin-top:var(--sp-3);"></div>
+                <div id="regime-meta" style="margin-top:var(--sp-3);font-family:var(--font-data);font-size:0.55rem;color:var(--on-surface-dim);"></div>
+            </div>
+        </section>
+
+        <section class="panel" id="panel-indicators">
+            <div class="panel-header">
+                <span class="panel-title">KEY MACRO INDICATORS</span>
+                <span class="panel-subtitle" id="indicators-date"></span>
+            </div>
+            <div class="panel-body">
+                <div class="indicator-grid" id="key-indicators"></div>
+            </div>
+        </section>
+
+        <!-- ROW 1.5: Stress Score Breakdown (full width) -->
+        <section class="panel macro-full" id="panel-stress">
+            <div class="panel-header">
+                <span class="panel-title">STRESS SCORE BREAKDOWN</span>
+                <span class="panel-subtitle">Rule-based triggers (not LLM-determined)</span>
+                <span class="panel-badge" id="stress-total-badge" style="margin-left:auto;"></span>
+            </div>
+            <div class="panel-body">
+                <div style="display:grid;grid-template-columns:auto 1fr auto auto auto;gap:0;font-family:var(--font-data);font-size:0.65rem;">
+                    <div style="display:contents;font-family:var(--font-ui);font-size:0.52rem;font-weight:600;letter-spacing:0.1em;color:var(--on-surface-dim);text-transform:uppercase;border-bottom:1px solid var(--outline-variant);">
+                        <div style="padding:var(--sp-2) var(--sp-3);">CATEGORY</div>
+                        <div style="padding:var(--sp-2) var(--sp-3);">RULE</div>
+                        <div style="padding:var(--sp-2) var(--sp-3);">INPUT VALUE</div>
+                        <div style="padding:var(--sp-2) var(--sp-3);">THRESHOLD</div>
+                        <div style="padding:var(--sp-2) var(--sp-3);">POINTS</div>
+                    </div>
+                    <div id="stress-triggers-grid"></div>
+                </div>
+                <div id="stress-no-triggers" style="display:none;font-family:var(--font-data);font-size:0.65rem;color:var(--bullish);padding:var(--sp-3);">
+                    ✓ No stress triggers active — macro environment is benign.
+                </div>
+                <div style="margin-top:var(--sp-3);padding:var(--sp-2) var(--sp-3);background:var(--surface-container-high);font-family:var(--font-data);font-size:0.55rem;color:var(--on-surface-dim);line-height:1.7;">
+                    <strong style="color:var(--agent-blue);">Regime mapping (v0.6 5-tier max-cap):</strong>
+                    Score 6+ &amp; recession → Crisis (30 FI / 70 eq) &nbsp;|&nbsp;
+                    Score 6+ &amp; late-cycle → Overheat (80 / 20) &nbsp;|&nbsp;
+                    Score 4–5 → Poor (40 / 60) or Overheat (80 / 20) &nbsp;|&nbsp;
+                    Score 2–3 → Normal (60 / 40) &nbsp;|&nbsp;
+                    Score 0–1 + healthy UNRATE → Strengthening (70 / 30)
+                    <br><span style="color:var(--on-surface-dim);">Caps are upper bounds (Step C Decision 1). Recession signal: UNRATE ≥ 5.0 OR 3-month change ≥ 0.3pp. Late-cycle signal: CPI YoY &gt; 4.0 OR DFF ≥ 4.0 with no recession signal.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROW 2: Yield Curve Chart -->
+        <section class="panel macro-full" id="panel-yield-curve">
+            <div class="panel-header">
+                <span class="panel-title">US TREASURY YIELD CURVE</span>
+                <span class="panel-subtitle" id="yc-subtitle"></span>
+                <span id="yc-status" style="margin-left:auto;"></span>
+            </div>
+            <div class="panel-body">
+                <div class="chart-meta" id="yc-meta"></div>
+                <div class="chart-container">
+                    <canvas id="yield-curve-chart"></canvas>
+                </div>
+                <div id="yc-warnings" style="padding:0 var(--sp-3);font-family:var(--font-data);font-size:0.6rem;color:var(--warning);"></div>
+            </div>
+        </section>
+
+        <!-- ROW 3: FRED Data Table -->
+        <section class="panel macro-full" id="panel-fred-data">
+            <div class="panel-header">
+                <span class="panel-title">FRED DATA TABLE</span>
+                <span class="panel-subtitle" id="fred-table-source"></span>
+                <span class="panel-badge" id="fred-series-count" style="margin-left:auto;"></span>
+            </div>
+            <div class="panel-body">
+                <table class="data-table validation-table" id="fred-data-table">
+                    <thead>
+                        <tr>
+                            <th>SERIES</th><th>ID</th><th>VALUE</th>
+                            <th>OBS DATE</th><th>REALTIME START</th><th>REALTIME END</th>
+                            <th>AVAIL AS OF</th><th>SOURCE</th><th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fred-data-tbody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ROW 4: Agent Pipeline -->
+        <section class="panel macro-full" id="panel-pipeline">
+            <div class="panel-header">
+                <span class="panel-title">AGENT DECISION PIPELINE</span>
+                <span class="panel-subtitle">00 Macro Regime → 01-05 Agent Sequential Flow</span>
+            </div>
+            <div class="panel-body">
+                <div class="pipeline-vertical" id="pipeline-flow"></div>
+            </div>
+        </section>
+
+        <!-- ROW 5: FRED Validation Report -->
+        <section class="panel macro-full" id="panel-validation">
+            <div class="panel-header">
+                <span class="panel-title">FRED API VALIDATION REPORT</span>
+                <span class="panel-badge" id="val-badge"></span>
+            </div>
+            <div class="panel-body" id="validation-body">
+                <div style="font-family:var(--font-data);font-size:0.7rem;color:var(--on-surface-dim);">Loading...</div>
+            </div>
+        </section>
+
+        <!-- ROW 6: Point-in-Time Evidence Packet -->
+        <section class="panel macro-full" id="panel-evidence">
+            <div class="panel-header">
+                <span class="panel-title">MACRO EVIDENCE PACKET (POINT-IN-TIME)</span>
+                <span class="panel-subtitle">No-lookahead safety audit</span>
+            </div>
+            <div class="panel-body" id="evidence-body">
+                <div style="font-family:var(--font-data);font-size:0.7rem;color:var(--on-surface-dim);">Loading...</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ══════════ LOADING ══════════ -->
+    <div id="loading-overlay" style="display:none;">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Fetching FRED Data...</div>
+    </div>
+
+    <script>
+    let ycChart = null;
+
+    // ── Init ──
+    document.addEventListener('DOMContentLoaded', () => {
+        loadMacroData();
+    });
+
+    async function loadMacroData() {
+        try {
+            const [macroRes, ycRes, valRes, evidenceRes] = await Promise.all([
+                fetch('/api/macro').then(r => r.json()),
+                fetch('/api/yield_curve').then(r => r.json()),
+                fetch('/api/fred_validation').then(r => r.json()),
+                fetch('/api/macro_evidence_packet').then(r => r.json()),
+            ]);
+            renderDashboardState(macroRes.dates || {});
+            renderRegime(macroRes);
+            renderIndicators(macroRes);
+            renderYieldCurve(ycRes);
+            renderFredTable(macroRes);
+            renderPipeline(macroRes);
+            renderValidation(valRes);
+            renderEvidencePacket(evidenceRes);
+        } catch (e) {
+            console.error('Load error:', e);
+        }
+    }
+
+    // ── Render Dashboard State (four-date separation) ──
+    function renderDashboardState(dates) {
+        const grid = document.getElementById('dates-grid');
+        const obsRow = document.getElementById('obs-by-series');
+        const badge = document.getElementById('ds-mode-badge');
+
+        const mode = dates.data_mode || 'unknown';
+        const source = dates.source || 'unknown';
+        const fromCache = dates.from_cache;
+        const fetched = (dates.fetched_at || '').slice(0, 19).replace('T', ' ');
+        const cacheCardCls = fromCache ? 'cache' : (mode === 'live' ? 'live' : 'mock');
+
+        const fields = [
+            {label: 'Dashboard Run Date', value: dates.dashboard_run_date || '—',
+             hint: 'today (America/New_York)', cls: mode === 'live' ? 'live' : 'mock'},
+            {label: 'Cache Date', value: dates.cache_date || '—',
+             hint: 'invariant: equals dashboard run date', cls: cacheCardCls},
+            {label: 'Decision Date', value: dates.decision_date || '— (live mode)',
+             hint: 'set only in backtest mode', cls: ''},
+            {label: 'Data Mode', value: mode.toUpperCase(),
+             hint: dates.synthetic_observation_dates ? 'observation dates are synthetic placeholders' : 'real FRED observations',
+             cls: mode === 'live' ? 'live' : 'mock'},
+            {label: 'Source', value: source.replace(/_/g, ' ').toUpperCase(),
+             hint: source === 'fresh_api' ? 'just fetched from FRED'
+                   : source === 'daily_cache' ? "today's cache reused"
+                   : "FRED unavailable — mock fallback",
+             cls: source === 'fresh_api' ? 'live' : (source === 'mock_fallback' ? 'mock' : 'cache')},
+            {label: 'Fetched At', value: fetched || '—', hint: 'ET', cls: ''},
+        ];
+        grid.innerHTML = fields.map(f => `
+            <div class="date-card ${f.cls}">
+                <div class="date-card-label">${f.label}</div>
+                <div class="date-card-value">${f.value}</div>
+                <div class="date-card-hint">${f.hint}</div>
+            </div>
+        `).join('');
+
+        // Per-series observation dates (separate from dashboard_run_date)
+        const obs = dates.observation_date_by_series || {};
+        const keys = Object.keys(obs);
+        if (keys.length) {
+            const rows = keys.map(sid =>
+                `<span class="obs-row"><span class="sid">${sid}:</span> <span class="obs">${obs[sid]}</span></span>`
+            ).join('');
+            obsRow.innerHTML = `<strong>Latest observation date per series:</strong> ${rows}`;
+        } else {
+            obsRow.innerHTML = '';
+        }
+
+        // Mode badge
+        badge.textContent = `${mode.toUpperCase()} · ${source.replace(/_/g, ' ').toUpperCase()}`;
+        badge.style.background = mode === 'live'
+            ? 'var(--bullish-bg)'
+            : (mode === 'mock' ? 'var(--warning-bg)' : 'var(--surface-container-highest)');
+        badge.style.color = mode === 'live'
+            ? 'var(--bullish)'
+            : (mode === 'mock' ? 'var(--warning)' : 'var(--on-surface-dim)');
+    }
+
+    async function refreshFred() {
+        const overlay = document.getElementById('loading-overlay');
+        const loadText = overlay.querySelector('.loading-text');
+        const btn = document.getElementById('btn-refresh');
+        loadText.textContent = 'Refreshing FRED Data... (live API call, up to ~60s)';
+        overlay.style.display = 'flex';
+        btn.textContent = '⟳ REFRESHING...';
+        btn.disabled = true;
+
+        // Hard timeout via AbortController so the page never hangs forever.
+        // FRED live fetch makes 16 sequential calls × up to 15s each, so 60s
+        // is generous for a healthy network and short enough to fail fast
+        // when FRED is unreachable.
+        const FETCH_TIMEOUT_MS = 60000;
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+
+        const start = Date.now();
+        let result = null;
+        let errorMsg = null;
+        try {
+            const resp = await fetch('/api/fred_refresh', {
+                method: 'POST',
+                headers: {'Accept': 'application/json'},
+                signal: controller.signal,
+            });
+            clearTimeout(timer);
+            // Always try to parse JSON; backend always returns JSON, even on 500.
+            try {
+                result = await resp.json();
+            } catch (_) {
+                errorMsg = `Server returned non-JSON (HTTP ${resp.status})`;
+            }
+            if (!resp.ok && !errorMsg) {
+                errorMsg = (result && result.error) || `HTTP ${resp.status}`;
+            }
+            if (result && result.success === false && !errorMsg) {
+                errorMsg = result.error || 'Unknown backend failure';
+            }
+        } catch (err) {
+            clearTimeout(timer);
+            if (err.name === 'AbortError') {
+                errorMsg = `Refresh timed out after ${FETCH_TIMEOUT_MS / 1000}s. FRED API may be slow or unreachable.`;
+            } else {
+                errorMsg = err.message || String(err);
+            }
+        } finally {
+            overlay.style.display = 'none';
+            btn.textContent = '⟳ REFRESH FRED DATA';
+            btn.disabled = false;
+        }
+
+        const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+        if (errorMsg) {
+            showRefreshFeedback('error',
+                `Refresh failed (${elapsed}s): ${errorMsg}. Today's existing cache is still in effect.`);
+            return;
+        }
+
+        // Success: reload the dashboard once. Wrap in try/catch so a render
+        // error after a successful refresh doesn't leave the user stuck.
+        try {
+            await loadMacroData();
+            const series = result && result.series_retrieved;
+            const mode = result && result.data_mode;
+            const source = result && result.source;
+            showRefreshFeedback('success',
+                `Refreshed ${series} series in ${elapsed}s — mode=${mode}, source=${source}.`);
+        } catch (e) {
+            showRefreshFeedback('warn',
+                `Refresh succeeded but rendering failed: ${e.message}. Reload the page.`);
+        }
+    }
+
+    function showRefreshFeedback(level, msg) {
+        // Lightweight non-blocking inline banner above the macro grid.
+        let bar = document.getElementById('refresh-feedback');
+        if (!bar) {
+            bar = document.createElement('div');
+            bar.id = 'refresh-feedback';
+            bar.style.cssText =
+                'margin: var(--sp-2) var(--sp-3) 0; padding: var(--sp-2) var(--sp-4);' +
+                'font-family: var(--font-data); font-size: 0.65rem; border: 1px solid;';
+            const main = document.getElementById('macro-main');
+            main.parentNode.insertBefore(bar, main);
+        }
+        const palette = {
+            success: ['var(--bullish-bg)', 'var(--bullish)', 'rgba(169,208,174,0.3)'],
+            warn:    ['var(--warning-bg)', 'var(--warning)', 'rgba(240,198,116,0.3)'],
+            error:   ['rgba(255,180,171,0.1)', 'var(--bearish)', 'rgba(255,180,171,0.3)'],
+        }[level] || ['var(--surface-container-high)', 'var(--on-surface)', 'var(--outline-variant)'];
+        bar.style.background = palette[0];
+        bar.style.color = palette[1];
+        bar.style.borderColor = palette[2];
+        bar.textContent = msg;
+        // auto-dismiss success after 6s; keep errors until next click
+        if (level === 'success') {
+            setTimeout(() => { if (bar.parentNode) bar.parentNode.removeChild(bar); }, 6000);
+        }
+    }
+
+    async function runMacroPipeline() {
+        const overlay = document.getElementById('loading-overlay');
+        overlay.querySelector('.loading-text').textContent = 'Running Agent Pipeline...';
+        overlay.style.display = 'flex';
+        try {
+            await fetch('/api/run', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({date: new Date().toISOString().slice(0,10), regime: null})
+            });
+            await loadMacroData();
+        } finally {
+            overlay.style.display = 'none';
+        }
+    }
+
+    // ── Render Regime ──
+    function renderRegime(data) {
+        const regime = data.macro_regime || 'unknown';
+        const condition = data.macro_condition || '';
+        const label = data.regime_label || regime;
+        const fi = data.fixed_income_base_allocation || 0;
+        const eq = data.equity_allocation_cap || 0;
+        const conf = data.macro_confidence || 'unknown';
+        const stressScore = data.stress_score ?? 0;
+        const triggers = data.stress_triggers || [];
+        const indicators = data.indicators || {};
+        const firstKey = Object.keys(indicators).find(k => !k.startsWith('_'));
+        const source = firstKey ? (indicators[firstKey]?.source || 'mock') : 'mock';
+        const fromCache = indicators._from_cache || false;
+
+        // Regime badge — shows regime only
+        const badge = document.getElementById('macro-regime-badge');
+        badge.textContent = regime.toUpperCase();
+        badge.className = 'regime-badge regime-' + regime;
+
+        // Condition badge
+        const condBadge = document.getElementById('macro-condition-badge');
+        condBadge.textContent = condition;
+        const condMap = {
+            'Stress': 'regime-crisis', 'Restrictive': 'regime-poor',
+            'Moderately Restrictive': 'regime-weakening', 'Tightening Shift': 'regime-weakening',
+            'Neutral': 'regime-normal', 'Expansionary': 'regime-normal',
+            'Easing Shift': 'regime-normal',
+        };
+        condBadge.className = 'regime-badge ' + (condMap[condition] || 'regime-normal');
+
+        // Confidence
+        document.getElementById('regime-confidence').textContent = `Confidence: ${conf.toUpperCase()}`;
+
+        // Classifier version
+        const cvEl = document.getElementById('classifier-version');
+        cvEl.textContent = data.classifier_version || '';
+        cvEl.style.fontSize = '0.5rem';
+
+        // Stress Score bar
+        const ssVal = document.getElementById('stress-score-value');
+        const scoreColor = stressScore <= 1 ? 'var(--bullish)' : stressScore <= 3 ? 'var(--warning)' : 'var(--bearish)';
+        ssVal.textContent = stressScore;
+        ssVal.style.color = scoreColor;
+        document.getElementById('stress-score-range').textContent =
+            `/ 10  →  ${regime.toUpperCase()} (${fi}% FI / ${eq}% EQ)`;
+        const barFill = document.getElementById('stress-bar-fill');
+        barFill.style.width = Math.min(stressScore / 10 * 100, 100) + '%';
+        barFill.style.background = `linear-gradient(90deg, ${scoreColor}, ${scoreColor}80)`;
+
+        // Condition reason
+        document.getElementById('condition-reason').innerHTML =
+            `<span style="color:var(--agent-blue);font-weight:600;">Condition:</span> ${condition} — ${data.condition_reason || ''}`;
+
+        // Header chips
+        document.getElementById('regime-chip').textContent = regime.toUpperCase();
+        document.getElementById('alloc-chip').textContent = `${fi}/${eq}`;
+        // Date chip: use dashboard_run_date from the dates block (dynamic America/New_York).
+        // Stale per-series observation dates are NEVER used as the dashboard run date.
+        const dates = data.dates || {};
+        const dashboardDate = dates.dashboard_run_date
+            || data.dashboard_run_date
+            || new Date().toLocaleDateString('en-CA', {timeZone: 'America/New_York'});
+        document.getElementById('date-chip').textContent = dashboardDate;
+
+        // FRED status — driven by data_mode/source from the dates block (authoritative)
+        const fredChip = document.getElementById('fred-status-chip');
+        const mockBanner = document.getElementById('mock-banner');
+        const dsMode = dates.data_mode || (source === 'FRED' ? 'live' : 'mock');
+        const dsSource = dates.source
+            || (source === 'FRED' ? 'fresh_api' : (fromCache ? 'daily_cache' : 'mock_fallback'));
+        if (dsMode === 'live' && dsSource === 'fresh_api') {
+            fredChip.innerHTML = '<span class="status-pill live">LIVE</span>';
+            mockBanner.style.display = 'none';
+        } else if (dsSource === 'daily_cache') {
+            fredChip.innerHTML = '<span class="status-pill cached">CACHED</span>';
+            mockBanner.style.display = 'none';
+        } else {
+            fredChip.innerHTML = '<span class="status-pill mock">MOCK</span>';
+            mockBanner.innerHTML = '⚠ <strong>Mock fallback active.</strong> '
+                + 'FRED API key missing or live fetch failed. '
+                + `Mock observation dates (currently ${dashboardDate}) are <em>synthetic placeholders</em>, not real FRED observations. `
+                + 'Set <code style="background:var(--surface-container-highest);padding:1px 4px;">FRED_API_KEY</code> '
+                + 'in <code style="background:var(--surface-container-highest);padding:1px 4px;">.env</code> to enable live data.';
+            mockBanner.style.display = 'block';
+        }
+
+        // Source badge
+        const srcBadge = document.getElementById('regime-source-badge');
+        if (source === 'FRED') {
+            srcBadge.innerHTML = '<span class="source-badge source-fred">FRED LIVE</span>';
+        } else if (fromCache) {
+            srcBadge.innerHTML = '<span class="source-badge source-cached">CACHED</span>';
+        } else {
+            srcBadge.innerHTML = '<span class="source-badge source-mock">MOCK</span>';
+        }
+
+        // Allocation bars
+        document.getElementById('m-fi-bar').style.width = fi + '%';
+        document.getElementById('m-fi-pct').textContent = fi + '%';
+        document.getElementById('m-eq-bar').style.width = eq + '%';
+        document.getElementById('m-eq-pct').textContent = eq + '%';
+
+        // Evidence
+        const evDiv = document.getElementById('regime-evidence');
+        const evidence = data.macro_evidence_summary || [];
+        evDiv.innerHTML = evidence.map(e => {
+            const isNeg = e.includes('inverted') || e.includes('High') || e.includes('Restrictive') || e.includes('Elevated') || e.includes('surging') || e.includes('Very');
+            const isPos = e.includes('positive') || e.includes('Low') || e.includes('near target') || e.includes('Accommodative') || e.includes('fell');
+            const cls = isNeg ? 'color:var(--bearish)' : isPos ? 'color:var(--bullish)' : '';
+            return `<div style="${cls}">• ${e}</div>`;
+        }).join('');
+
+        // Warnings
+        const wDiv = document.getElementById('regime-warnings');
+        const warnings = data.missing_data_warnings || [];
+        if (warnings.length) {
+            wDiv.innerHTML = warnings.map(w =>
+                `<div style="font-family:var(--font-data);font-size:0.58rem;color:var(--warning);padding:2px 0;">⚠ ${w}</div>`
+            ).join('');
+        } else {
+            wDiv.innerHTML = `<div style="font-family:var(--font-data);font-size:0.58rem;color:var(--bullish);">✓ Lookahead safe: ${data.lookahead_safe ? 'Yes' : 'No'}</div>`;
+        }
+
+        // Meta — explicit four-date provenance from dates block
+        const metaDiv = document.getElementById('regime-meta');
+        const cacheDate = dates.cache_date || '—';
+        const fetchedAt = (dates.fetched_at || '—').slice(0, 19).replace('T', ' ');
+        metaDiv.innerHTML = `
+            Dashboard run: ${dashboardDate} (America/New_York) |
+            Cache date: ${cacheDate} |
+            Mode: ${dsMode.toUpperCase()} |
+            Source: ${dsSource.replace(/_/g, ' ').toUpperCase()} |
+            Fetched: ${fetchedAt} |
+            Indicators: ${data.indicators_available || '—'}
+        `;
+
+        // Render stress triggers
+        renderStressTriggers(triggers, stressScore);
+    }
+
+    // ── Render Stress Triggers Grid ──
+    function renderStressTriggers(triggers, totalScore) {
+        const grid = document.getElementById('stress-triggers-grid');
+        const noTrig = document.getElementById('stress-no-triggers');
+        const badge = document.getElementById('stress-total-badge');
+
+        badge.textContent = `SCORE: ${totalScore}`;
+        const scoreColor = totalScore <= 1 ? 'var(--bullish)' : totalScore <= 3 ? 'var(--warning)' : 'var(--bearish)';
+        badge.style.background = totalScore <= 1 ? 'var(--bullish-bg)' : totalScore <= 3 ? 'var(--warning-bg)' : 'rgba(255,180,171,0.15)';
+        badge.style.color = scoreColor;
+
+        if (!triggers || triggers.length === 0) {
+            grid.innerHTML = '';
+            noTrig.style.display = 'block';
+            return;
+        }
+        noTrig.style.display = 'none';
+
+        const catIcons = {
+            yield_curve: '📉', unemployment: '👷', unemployment_change: '📈',
+            inflation: '💹', policy_rate: '🏦',
+        };
+
+        grid.innerHTML = triggers.map(t => {
+            const icon = catIcons[t.category] || '•';
+            const ptColor = t.points >= 2 ? 'var(--bearish)' : 'var(--warning)';
+            return `<div style="display:contents;">
+                <div style="padding:var(--sp-2) var(--sp-3);color:var(--on-surface-dim);font-size:0.6rem;">${icon} ${(t.category || '').replace(/_/g,' ')}</div>
+                <div style="padding:var(--sp-2) var(--sp-3);color:var(--on-surface);">${t.rule}</div>
+                <div style="padding:var(--sp-2) var(--sp-3);font-weight:600;color:var(--on-surface);">${t.input_value}</div>
+                <div style="padding:var(--sp-2) var(--sp-3);color:var(--on-surface-dim);font-size:0.58rem;">${t.threshold}</div>
+                <div style="padding:var(--sp-2) var(--sp-3);font-weight:700;color:${ptColor};">+${t.points}</div>
+            </div>`;
+        }).join('');
+    }
+
+    // ── Render Key Indicators ──
+    function renderIndicators(data) {
+        const indicators = data.indicators || {};
+        const grid = document.getElementById('key-indicators');
+        const keys = [
+            {k: 'yield_curve_10y2y', fmt: v => (v>=0?'+':'') + v.toFixed(2) + '%', cls: v => v<0?'negative':'positive', card: v => v<0?'negative-card':'positive-card'},
+            {k: 'yield_curve_10y3m', fmt: v => (v>=0?'+':'') + v.toFixed(2) + '%', cls: v => v<0?'negative':'positive', card: v => v<0?'negative-card':'positive-card'},
+            {k: 'fed_funds_rate',    fmt: v => v.toFixed(2) + '%', cls: v => v>5?'warning':'', card: v => v>5?'warning-card':''},
+            {k: 'cpi_yoy',          fmt: v => v.toFixed(1) + '%', cls: v => v>3.5?'warning':'positive', card: v => v>3.5?'warning-card':'positive-card'},
+            {k: 'unemployment_rate', fmt: v => v.toFixed(1) + '%', cls: v => v>5?'negative':'positive', card: v => v>5?'negative-card':'positive-card'},
+            {k: 'treasury_10y',     fmt: v => v.toFixed(2) + '%', cls: () => '', card: () => ''},
+            // ── v0.7 credit spreads (RULES.md §4.12) ──
+            // HY OAS feeds the credit-stress side-signal in macro_regime;
+            // thresholds are 600/800/350 bps. Cards are tagged
+            // informational_descriptor_for_agent_reasoning per §11.6 —
+            // they are NOT trading rules.
+            {k: 'hy_oas',         fmt: v => v.toFixed(2) + '%', cls: v => v>8?'negative':v>6?'warning':v<3.5?'positive':'',     card: v => v>8?'negative-card':v>6?'warning-card':v<3.5?'positive-card':'', tag: 'side-signal'},
+            {k: 'ig_oas',         fmt: v => v.toFixed(2) + '%', cls: () => '', card: () => '', tag: 'descriptor'},
+            {k: 'bbb_oas',        fmt: v => v.toFixed(2) + '%', cls: () => '', card: () => '', tag: 'descriptor'},
+            {k: 'breakeven_10y',  fmt: v => v.toFixed(2) + '%', cls: () => '', card: () => '', tag: 'descriptor'},
+        ];
+
+        let html = '';
+        keys.forEach(({k, fmt, cls, card, tag}) => {
+            const ind = indicators[k];
+            // Per RULES.md §11.6 and §4.12: tag credit-spread cards as
+            // informational_descriptor_for_agent_reasoning. HY OAS is
+            // tagged "side-signal" (it feeds the regime classifier);
+            // IG / BBB / T10Y BE are tagged "descriptor" (informational
+            // only, no rule wiring). Both are descriptors-not-rules.
+            const tagText = tag === 'side-signal' ? '§4.12 side-signal'
+                          : tag === 'descriptor'  ? '§11.6 descriptor'
+                          : '';
+            if (!ind || ind.value === null) {
+                html += `<div class="indicator-card"><div class="indicator-label">${k.replace(/_/g,' ')}</div><div class="indicator-value" style="color:var(--on-surface-dim)">N/A</div><div class="indicator-meta">Data unavailable${tagText ? ' · ' + tagText : ''}</div></div>`;
+                return;
+            }
+            const v = ind.value;
+            const c = cls(v);
+            const cardCls = card(v);
+            html += `<div class="indicator-card ${cardCls}">
+                <div class="indicator-label">${ind.label}</div>
+                <div class="indicator-value ${c}">${fmt(v)}</div>
+                <div class="indicator-meta">obs: ${ind.observation_date || '—'} | ${ind.source || '—'}${tagText ? ' · ' + tagText : ''}</div>
+            </div>`;
+        });
+
+        grid.innerHTML = html;
+        const dateLabel = document.getElementById('indicators-date');
+        // Subtitle uses dashboard_run_date and data_mode from the dates block.
+        // Per-card "obs:" labels show actual per-series observation dates separately.
+        const dates = data.dates || {};
+        const dashboardDate = dates.dashboard_run_date
+            || data.dashboard_run_date
+            || new Date().toLocaleDateString('en-CA', {timeZone: 'America/New_York'});
+        const dsMode = dates.data_mode || 'unknown';
+        const dsSource = dates.source || 'unknown';
+        dateLabel.textContent = `dashboard: ${dashboardDate} | mode: ${dsMode.toUpperCase()} | source: ${dsSource.replace(/_/g, ' ').toUpperCase()}`;
+    }
+
+    // ── Render Yield Curve ──
+    function renderYieldCurve(data) {
+        const points = data.points || [];
+        const labels = points.map(p => p.maturity);
+        const values = points.map(p => p.yield_pct);
+
+        // Meta bar
+        const metaDiv = document.getElementById('yc-meta');
+        const shapeClass = data.curve_shape === 'inverted' ? 'shape-inverted' :
+                          data.curve_shape === 'flat' ? 'shape-flat' : 'shape-upward';
+        const shapeLabel = (data.curve_shape || '').replace(/_/g, ' ').toUpperCase();
+
+        const spread10y2y = data.spread_10y_2y !== null && data.spread_10y_2y !== undefined
+            ? data.spread_10y_2y.toFixed(2) + '%' : 'N/A';
+        const spread10y3m = data.spread_10y_3m !== null && data.spread_10y_3m !== undefined
+            ? data.spread_10y_3m.toFixed(2) + '%' : 'N/A';
+
+        metaDiv.innerHTML = `
+            <div class="chart-meta-item">Shape: <span class="chart-meta-value ${shapeClass}">${shapeLabel}</span></div>
+            <div class="chart-meta-item">10Y−2Y: <span class="chart-meta-value">${spread10y2y}</span></div>
+            <div class="chart-meta-item">10Y−3M: <span class="chart-meta-value">${spread10y3m}</span></div>
+            <div class="chart-meta-item">Source: <span class="chart-meta-value">${data.source || '—'}</span></div>
+            <div class="chart-meta-item">Latest Obs: <span class="chart-meta-value">${data.latest_observation_date || '—'}</span></div>
+        `;
+
+        // Subtitle
+        const subtitle = document.getElementById('yc-subtitle');
+        const statusEl = document.getElementById('yc-status');
+        if (data.source === 'FRED') {
+            subtitle.textContent = 'Live FRED data';
+            statusEl.innerHTML = '<span class="source-badge source-fred">LIVE VALUES</span>';
+        } else if (data.from_cache) {
+            subtitle.textContent = 'Cached FRED data';
+            statusEl.innerHTML = '<span class="source-badge source-cached">CACHED</span>';
+        } else {
+            subtitle.textContent = 'Mock data — set FRED_API_KEY for live values';
+            statusEl.innerHTML = '<span class="source-badge source-mock">MOCK VALUES</span>';
+        }
+
+        // Warnings
+        if (data.warnings && data.warnings.length) {
+            document.getElementById('yc-warnings').innerHTML = data.warnings.map(w => `⚠ ${w}`).join('<br>');
+        } else {
+            document.getElementById('yc-warnings').innerHTML = '';
+        }
+
+        // Chart
+        const ctx = document.getElementById('yield-curve-chart').getContext('2d');
+        if (ycChart) ycChart.destroy();
+
+        const gradient = ctx.createLinearGradient(0, 0, 0, 340);
+        gradient.addColorStop(0, 'rgba(175, 203, 216, 0.3)');
+        gradient.addColorStop(1, 'rgba(175, 203, 216, 0.02)');
+
+        // Dynamic color: green if upward, red if inverted, blue default
+        const lineColor = data.curve_shape === 'inverted' ? '#ffb4ab' :
+                          data.curve_shape === 'upward_sloping' ? '#a9d0ae' : '#afcbd8';
+
+        ycChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Yield %',
+                    data: values,
+                    borderColor: lineColor,
+                    backgroundColor: gradient,
+                    fill: true,
+                    tension: 0.35,
+                    pointRadius: 5,
+                    pointBackgroundColor: lineColor,
+                    pointBorderColor: '#1d2023',
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 8,
+                    pointHoverBorderWidth: 3,
+                    borderWidth: 2.5,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: { duration: 800, easing: 'easeOutQuart' },
+                plugins: {
+                    legend: {display: false},
+                    tooltip: {
+                        backgroundColor: '#1d2023',
+                        titleColor: '#e2e2e6',
+                        bodyColor: '#c2c6cc',
+                        borderColor: 'rgba(175,203,216,0.3)',
+                        borderWidth: 1,
+                        titleFont: {family: 'Inter', size: 12, weight: 600},
+                        bodyFont: {family: 'Roboto Mono', size: 11},
+                        padding: 12,
+                        displayColors: false,
+                        callbacks: {
+                            title: (items) => `${items[0].label} Treasury`,
+                            label: (ctx) => `Yield: ${ctx.parsed.y.toFixed(3)}%`,
+                            afterLabel: (ctx) => {
+                                const p = points[ctx.dataIndex];
+                                return p ? `Obs: ${p.observation_date}\nID: ${p.series_id}` : '';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {color: 'rgba(194,198,204,0.08)'},
+                        ticks: {
+                            color: '#8b8f96',
+                            font: {family: 'Roboto Mono', size: 11, weight: 500}
+                        },
+                        title: {
+                            display: true,
+                            text: 'Maturity',
+                            color: '#8b8f96',
+                            font: {family: 'Inter', size: 11, weight: 600}
+                        }
+                    },
+                    y: {
+                        grid: {color: 'rgba(194,198,204,0.08)'},
+                        ticks: {
+                            color: '#8b8f96',
+                            font: {family: 'Roboto Mono', size: 11},
+                            callback: v => v.toFixed(1) + '%',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Yield %',
+                            color: '#8b8f96',
+                            font: {family: 'Inter', size: 11, weight: 600}
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // ── Render FRED Data Table ──
+    function renderFredTable(data) {
+        const indicators = data.indicators || {};
+        const tbody = document.getElementById('fred-data-tbody');
+        let rows = '';
+        let total = 0, ok = 0;
+
+        // Sort keys — treasury maturities first, then spreads, then policy, then econ
+        const sortOrder = ['treasury_1m','treasury_3m','treasury_6m','treasury_1y','treasury_2y',
+                          'treasury_5y','treasury_7y','treasury_10y','treasury_20y','treasury_30y',
+                          'yield_curve_10y2y','yield_curve_10y3m','fed_funds_rate',
+                          'cpi_index','cpi_yoy','unemployment_rate'];
+        const sortedKeys = [...new Set([...sortOrder, ...Object.keys(indicators)])];
+
+        sortedKeys.forEach(k => {
+            const ind = indicators[k];
+            if (!ind || typeof ind !== 'object' || !ind.series_id) return;
+            total++;
+            const missing = ind.missing_data_flag;
+            if (!missing) ok++;
+            const val = ind.value !== null && ind.value !== undefined ? ind.value : 'N/A';
+            const srcCls = ind.source === 'FRED' ? 'val-ok' : 'val-warn';
+            const statusCls = missing ? 'val-fail' : 'val-ok';
+
+            rows += `<tr>
+                <td>${ind.label || k}</td>
+                <td style="font-family:var(--font-data);font-size:0.62rem;">${ind.series_id}</td>
+                <td class="num" style="font-weight:600">${typeof val === 'number' ? val.toFixed(3) : val}</td>
+                <td>${ind.observation_date || '—'}</td>
+                <td>${ind.realtime_start || '—'}</td>
+                <td>${ind.realtime_end || '—'}</td>
+                <td>${(ind.data_available_as_of || '—').slice(0,10)}</td>
+                <td class="${srcCls}">${ind.source || '—'}</td>
+                <td class="${statusCls}">${missing ? '✗ MISSING' : '✓ OK'}</td>
+            </tr>`;
+        });
+
+        tbody.innerHTML = rows;
+
+        const firstKey = Object.keys(indicators).find(k => !k.startsWith('_'));
+        const src = firstKey ? (indicators[firstKey]?.source || 'mock') : 'mock';
+        document.getElementById('fred-table-source').textContent =
+            src === 'FRED' ? 'Live FRED API' : 'Mock data';
+        document.getElementById('fred-series-count').textContent = `${ok} / ${total}`;
+    }
+
+    // ── Render Pipeline ──
+    function renderPipeline(macroData) {
+        const regime = macroData.macro_regime || 'unknown';
+        const fi = macroData.fixed_income_base_allocation || 0;
+        const eq = macroData.equity_allocation_cap || 0;
+
+        const stages = [
+            {id: '00', name: 'Macro Regime Module', cls: 'macro-stage',
+             desc: 'Classifies macro environment using FRED data. Determines regime and allocation cap. NOT a stock picker.',
+             output: `Regime: <span class="output-value">${regime.toUpperCase()}</span> → FI ${fi}% / EQ ${eq}%`},
+            {arrow: true},
+            {id: '01', name: 'Market Screener', cls: '',
+             desc: 'Scans top 3–5 daily gainers for surge-short candidates + quality-long universe',
+             output: 'Finds daily candidates'},
+            {arrow: true},
+            {id: '02', name: 'Narrative / Event Classifier', cls: '',
+             desc: 'Labels event as real value (earnings, FDA, contract) vs suspicious narrative (meme, pump)',
+             output: 'Protected events / suspicious flags'},
+            {arrow: true},
+            {id: '03', name: 'Alt-Data Verification Agent', cls: 'core-stage',
+             desc: 'Validates or contradicts narratives using alternative data (GitHub, H-1B, SEC, Reddit)',
+             output: 'Verdict: supported / contradicted'},
+            {arrow: true},
+            {id: '04', name: 'Fundamental / Network / Valuation', cls: '',
+             desc: 'Scores quality (0–100), network effect (0–100), and valuation attractiveness',
+             output: 'Combined score → BUY / WATCH hint'},
+            {arrow: true},
+            {id: '05', name: 'Risk / PM Agent', cls: '',
+             desc: 'Applies regime allocation limits, risk rules, produces final trade decision',
+             output: '<span class="output-value">BUY / SHORT / WATCH / NO TRADE / VETO</span>'},
+        ];
+
+        const flow = document.getElementById('pipeline-flow');
+        flow.innerHTML = stages.map(s => {
+            if (s.arrow) {
+                return `<div class="stage-arrow"></div>`;
+            }
+            return `<div class="pipeline-stage ${s.cls}">
+                <div class="stage-id">${s.id}</div>
+                <div class="stage-info">
+                    <div class="stage-name">${s.name}</div>
+                    <div class="stage-desc">${s.desc}</div>
+                </div>
+                <div class="stage-output">${s.output}</div>
+            </div>`;
+        }).join('');
+    }
+
+    // ── Render Validation Report ──
+    function renderValidation(report) {
+        const body = document.getElementById('validation-body');
+        const badge = document.getElementById('val-badge');
+
+        const ok = report.usable_for_live;
+        badge.textContent = ok ? 'READY' : 'NOT READY';
+        badge.style.background = ok ? 'var(--bullish-bg)' : 'var(--warning-bg)';
+        badge.style.color = ok ? 'var(--bullish)' : 'var(--warning)';
+
+        let html = `<div class="validation-grid">
+            <div class="val-metric">
+                <div class="val-metric-label">1. API CONNECTION</div>
+                <div class="val-metric-value ${report.fred_api_key_set ? 'val-ok' : 'val-warn'}">
+                    ${(report.api_connection || 'UNKNOWN').toUpperCase()}
+                </div>
+                <div class="val-metric-detail">Key set: ${report.fred_api_key_set ? 'Yes' : 'No'}</div>
+            </div>
+            <div class="val-metric">
+                <div class="val-metric-label">2–3. SERIES COUNT</div>
+                <div class="val-metric-value" style="color:var(--agent-blue)">
+                    ${report.series_retrieved} / ${report.total_series_requested}
+                </div>
+                <div class="val-metric-detail">Retrieved: ${report.series_retrieved} | Missing: ${report.series_missing}</div>
+            </div>
+            <div class="val-metric">
+                <div class="val-metric-label">6. REALTIME SUPPORT</div>
+                <div class="val-metric-value ${report.realtime_support ? 'val-ok' : 'val-warn'}">
+                    ${report.realtime_support ? 'YES' : 'PARTIAL'}
+                </div>
+                <div class="val-metric-detail">Required for PIT backtest</div>
+            </div>
+            <div class="val-metric">
+                <div class="val-metric-label">7. USABLE FOR LIVE</div>
+                <div class="val-metric-value ${report.usable_for_live ? 'val-ok' : 'val-fail'}">
+                    ${report.usable_for_live ? 'YES' : 'NO'}
+                </div>
+                <div class="val-metric-detail">Requires ≥6 series</div>
+            </div>
+            <div class="val-metric">
+                <div class="val-metric-label">8. USABLE FOR BACKTEST</div>
+                <div class="val-metric-value ${report.usable_for_backtest ? 'val-ok' : 'val-warn'}">
+                    ${report.usable_for_backtest ? 'YES' : 'PARTIAL'}
+                </div>
+                <div class="val-metric-detail">Requires all realtime fields</div>
+            </div>
+            <div class="val-metric">
+                <div class="val-metric-label">9. CACHE STATUS</div>
+                <div class="val-metric-value" style="color:var(--agent-blue)">
+                    ${report.cache_status?.cached ? 'CACHED' : 'NO CACHE'}
+                </div>
+                <div class="val-metric-detail">${report.cache_status?.fetched_at?.slice(0,19) || '—'}</div>
+            </div>
+        </div>`;
+
+        // Series detail table
+        if (report.series_detail && report.series_detail.length) {
+            html += `<div style="margin-top:var(--sp-4);">
+                <div style="font-family:var(--font-ui);font-size:0.6rem;font-weight:600;color:var(--on-surface-dim);letter-spacing:0.08em;margin-bottom:var(--sp-2);">4–5. SERIES DETAIL</div>
+                <table class="data-table validation-table"><thead><tr>
+                    <th>KEY</th><th>SERIES ID</th><th>VALUE</th>
+                    <th>OBS DATE</th><th>REALTIME</th><th>SOURCE</th><th>STATUS</th>
+                </tr></thead><tbody>`;
+            report.series_detail.forEach(s => {
+                const cls = s.missing ? 'val-fail' : 'val-ok';
+                html += `<tr>
+                    <td>${s.key}</td>
+                    <td style="font-size:0.6rem">${s.series_id}</td>
+                    <td class="num">${s.value !== null ? (typeof s.value === 'number' ? s.value.toFixed(2) : s.value) : 'N/A'}</td>
+                    <td>${s.observation_date || '—'}</td>
+                    <td class="${s.has_realtime ? 'val-ok' : 'val-warn'}">${s.has_realtime ? '✓' : '✗'}</td>
+                    <td>${s.source || '—'}</td>
+                    <td class="${cls}">${s.missing ? 'MISSING' : 'OK'}</td>
+                </tr>`;
+            });
+            html += `</tbody></table></div>`;
+        }
+
+        // Warnings
+        if (report.warnings && report.warnings.length) {
+            html += '<div style="margin-top:var(--sp-4);">';
+            html += '<div style="font-family:var(--font-ui);font-size:0.6rem;font-weight:600;color:var(--warning);letter-spacing:0.08em;margin-bottom:var(--sp-1);">10. WARNINGS</div>';
+            report.warnings.forEach(w => {
+                html += `<div style="font-family:var(--font-data);font-size:0.62rem;color:var(--warning);padding:2px 0;">⚠ ${w}</div>`;
+            });
+            html += '</div>';
+        }
+
+        body.innerHTML = html;
+    }
+
+    // ── Render Evidence Packet ──
+    function renderEvidencePacket(packet) {
+        const body = document.getElementById('evidence-body');
+        if (!packet || packet.error) {
+            body.innerHTML = '<div style="color:var(--warning);font-family:var(--font-data);font-size:0.7rem;">Evidence packet unavailable.</div>';
+            return;
+        }
+
+        let html = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);">
+            <div class="evidence-section">
+                <div class="evidence-title">Decision Metadata</div>
+                <div style="font-family:var(--font-data);font-size:0.62rem;color:var(--on-surface-variant);line-height:1.8;">
+                    <div>Decision Date: <strong style="color:var(--on-surface)">${packet.decision_date || '—'}</strong></div>
+                    <div>Decision Timestamp: <strong style="color:var(--on-surface)">${(packet.decision_timestamp || '—').slice(0,19)}</strong></div>
+                    <div>Macro Regime: <strong style="color:var(--core-accent)">${(packet.macro_regime || '—').toUpperCase()}</strong></div>
+                    <div>Macro Condition: <strong style="color:var(--agent-blue)">${packet.macro_condition || '—'}</strong></div>
+                    <div>Regime Label: <strong style="color:var(--on-surface)">${packet.regime_label || '—'}</strong> <em>(dynamic)</em></div>
+                    <div>Stress Score: <strong style="color:${(packet.stress_score||0) <= 1 ? 'var(--bullish)' : (packet.stress_score||0) <= 3 ? 'var(--warning)' : 'var(--bearish)'}">${packet.stress_score ?? '—'}</strong></div>
+                    <div>Confidence: <strong style="color:var(--on-surface)">${packet.macro_confidence || '—'}</strong></div>
+                    <div>FI Allocation: <strong style="color:var(--agent-blue)">${packet.fixed_income_base_allocation || '—'}%</strong></div>
+                    <div>EQ Cap: <strong style="color:var(--bullish)">${packet.equity_allocation_cap || '—'}%</strong></div>
+                    <div>Lookahead Safe: <strong style="color:${packet.lookahead_safe ? 'var(--bullish)' : 'var(--bearish)'}">${packet.lookahead_safe ? 'YES' : 'NO'}</strong></div>
+                    <div>Classifier: <strong style="color:var(--on-surface)">${packet.classifier_version || '—'}</strong></div>
+                </div>
+            </div>
+            <div class="evidence-section">
+                <div class="evidence-title">Cache Status</div>
+                <div style="font-family:var(--font-data);font-size:0.62rem;color:var(--on-surface-variant);line-height:1.8;">
+                    <div>Cached: <strong style="color:var(--on-surface)">${packet.cache_status?.cached ? 'Yes' : 'No'}</strong></div>
+                    <div>Cache Date: <strong style="color:var(--on-surface)">${packet.cache_status?.cache_date || '—'}</strong></div>
+                    <div>Fetched At: <strong style="color:var(--on-surface)">${(packet.cache_status?.fetched_at || '—').slice(0,19)}</strong></div>
+                    <div>Data Mode: <strong style="color:var(--on-surface)">${packet.cache_status?.data_mode || '—'}</strong></div>
+                    <div>Source: <strong style="color:var(--on-surface)">${packet.cache_status?.cached ? 'daily_cache' : (packet.cache_status?.data_mode === 'mock' ? 'mock_fallback' : 'fresh_api')}</strong></div>
+                    <div>API Success: <strong style="color:${packet.cache_status?.api_success ? 'var(--bullish)' : 'var(--warning)'}">${packet.cache_status?.api_success !== undefined ? (packet.cache_status.api_success ? 'Yes' : 'No') : '—'}</strong></div>
+                </div>
+                ${packet.condition_reason ? `<div style="margin-top:var(--sp-2);font-family:var(--font-data);font-size:0.58rem;color:var(--on-surface-dim);"><strong>Condition reason:</strong> ${packet.condition_reason}</div>` : ''}
+            </div>
+        </div>`;
+
+        // FRED series used
+        if (packet.fred_series_used && packet.fred_series_used.length) {
+            html += `<div class="evidence-section" style="margin-top:var(--sp-2);">
+                <div class="evidence-title">FRED Series Used (Point-in-Time Audit)</div>
+                <div style="font-family:var(--font-data);font-size:0.55rem;color:var(--on-surface-dim);margin-bottom:var(--sp-2);">
+                    Backtest integrity rule: macro_data_available_as_of ≤ decision_timestamp
+                </div>
+                <table class="data-table validation-table"><thead><tr>
+                    <th>SERIES ID</th><th>VALUE</th><th>OBS DATE</th>
+                    <th>REALTIME START</th><th>REALTIME END</th><th>AVAIL AS OF</th>
+                    <th>LAG</th><th>MISSING</th>
+                </tr></thead><tbody>`;
+            packet.fred_series_used.forEach(s => {
+                const missing = s.missing_data_flag;
+                html += `<tr>
+                    <td>${s.series_id}</td>
+                    <td class="num" style="font-weight:600">${s.value !== null ? (typeof s.value === 'number' ? s.value.toFixed(2) : s.value) : 'N/A'}</td>
+                    <td>${s.observation_date || '—'}</td>
+                    <td>${s.realtime_start || '—'}</td>
+                    <td>${s.realtime_end || '—'}</td>
+                    <td>${(s.data_available_as_of || '—').slice(0,10)}</td>
+                    <td>${s.conservative_lag_applied ? '✓' : '—'}</td>
+                    <td class="${missing ? 'val-fail' : 'val-ok'}">${missing ? '✗' : '✓'}</td>
+                </tr>`;
+            });
+            html += `</tbody></table></div>`;
+        }
+
+        // Evidence summary
+        if (packet.evidence_summary && packet.evidence_summary.length) {
+            html += `<div class="evidence-section" style="margin-top:var(--sp-2);">
+                <div class="evidence-title">Evidence Summary</div>
+                <div style="font-family:var(--font-data);font-size:0.62rem;color:var(--on-surface-variant);line-height:1.7;">`;
+            packet.evidence_summary.forEach(e => {
+                html += `<div>• ${e}</div>`;
+            });
+            html += `</div></div>`;
+        }
+
+        body.innerHTML = html;
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1088 @@
+{
+  "trigger_id": "92c43ec5b5cd",
+  "ticker": "OBLG",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-04-22T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 194.8,
+  "trigger_cost_usd": 0.287711,
+  "cumulative_cost_usd": 9.312548,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "OBLG",
+    "name": "OBLG",
+    "close": 3.54,
+    "prior_close": 2.14,
+    "change": 1.8199999999999998,
+    "change_pct": 85.04672897196261,
+    "volume": 21111063.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-04-22",
+    "prior_trading_day": "2025-04-21",
+    "available_as_of": "2025-04-22T16:00:00-05:00",
+    "today_open": 3.96,
+    "today_volume": 21111063.0,
+    "eps_ttm": -16.4,
+    "operating_margin_ttm": -176.7031118587048,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2025-03-18 16:18:22",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:cc2fd70e37f7ba624c46defecab435101ff0a58d0b4434985281702b9039a49a",
+  "locked_decision_id": "sha256:2f586a9e36e1629c2516b9704a675daad73c8291e371b99dfaef6e9c510178cb",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026_05_03_universal_soft_veto",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "OBLG",
+    "decision_timestamp": "2025-04-22T09:30:00-04:00",
+    "data_available_as_of": "2025-04-22T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision with structural absence corroboration",
+    "confidence": "medium",
+    "evidence_used": [
+      "price_snapshot.trigger_day_open (3.96) vs last_eod_close (2.14)",
+      "price_snapshot.return_5d_pct (-13.36%)",
+      "price_snapshot.return_20d_pct (-40.56%)",
+      "price_snapshot.relative_volume_vs_20d (2.605x)",
+      "corporate_calendar.earnings (consistent negative EPS: -0.7721, -11.25, -1.6, -2.8)",
+      "corporate_calendar.splits (1:40, 1:15, 1:10 reverse splits)",
+      "valuation_snapshot.pe_ratio (-0.937)",
+      "valuation_snapshot.net_margin_pct_ttm (-260.77%)",
+      "news_event_summary.status (data_unavailable, 0 items in window)",
+      "filing_confirmation.status (not_evaluated)",
+      "alternative_data_features.wikipedia_pageviews (unrelated mapping to Atlantean_language)",
+      "alternative_data_features.github_public (unmapped_ticker)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (1 Buy rating unchanged since 2021-09)",
+      "information_integrity_assessment.source_tier_distribution (T1=0, T2=0, T3=1, T4=1)",
+      "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+      "upstream_agent_outputs.alt_data_verify.verdict (insufficient_evidence_to_verify)",
+      "upstream_agent_outputs.surge_short.recommended_action (short)",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (no veto tripped)"
+    ],
+    "evidence_missing": [
+      "news_event_summary.items (0 rows; 20 dropped post-cutoff)",
+      "filing_confirmation.sec_8k_fulltext (not_connected)",
+      "fundamental_snapshot.snapshot_quarter (all null)",
+      "upstream_agent_outputs.fundamental (not provided)",
+      "upstream_agent_outputs.valuation (not provided)",
+      "upstream_agent_outputs.network_effect (not provided)"
+    ],
+    "reasoning_summary": "OBLG surged 93.2% (2.05\u21923.96) then collapsed 45.9% (3.96\u21922.14). The surge lacks observable corroboration: zero news items in the allowed window (20 dropped post-cutoff), no SEC filing confirmation, no analyst updates, and no legitimate alternative-data signals (Wikipedia pageviews mapped to 'Atlantean_language' is a data artifact; GitHub unmapped). Fundamentals are deteriorating: EPS -0.7721 (Q1 2025), -11.25 (Q4 2024); net margin -260.77%; multiple reverse splits (1:40, 1:15, 1:10) signal chronic distress. The structural absence of hard-to-fake evidence (news, filings, analyst activity, legitimate alt-data) relative to the magnitude of the surge is the primary bear-thesis signal per \u00a713.6 SOFT_REASONING and \u00a75.17 surge-short integrity-veto exception. This is a classic momentum reversal in a fundamentally distressed micro-cap. Narrative Agent verdict: unsupported_claim (no catalyst identified). Alt-Data Verification verdict: insufficient_evidence_to_verify (structural absence is bear-thesis input). Surge-Short Agent verdict: short (momentum vs value judgment favors short). Risk Agent verdict: no veto tripped (all five conditions evaluated mechanically; candidate passes veto gate). Macro regime is Strengthening/Expansionary with strict equity discipline, which does not explain a -40% 20-day decline in a single micro-cap. ADaS lagged shows prior-day disagreement on CHRO (confidence_dispersion=0.7071, 3 dissenting agents), but this is a different ticker and does not override today's OBLG analysis. PM aggregates upstream verdicts: the preponderance of evidence supports a bear thesis driven by structural absence of corroboration, negative fundamentals, and momentum exhaustion. Position sizing per \u00a74.8: new surge-short entry = 0.005 (0.5%) mechanically.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If an 8-K or press release emerges post-decision confirming a material catalyst (M&A, financing, partnership, regulatory approval) that drove the surge, the bear thesis weakens.",
+      "If Q2 2025 earnings (expected ~May 2025) show material revenue growth or path to profitability, the short thesis is challenged.",
+      "If alternative data (GitHub, web traffic, hiring, patent filings) emerges showing real operational activity, confidence in the short thesis declines.",
+      "If institutional ownership or short-squeeze dynamics emerge and borrow becomes unavailable, momentum could override fundamentals in the near term.",
+      "If Wikipedia pageviews mapping is corrected to reflect legitimate OBLG company attention (not 'Atlantean_language'), the alt-data assessment changes."
+    ],
+    "risk_flags": [
+      "Micro-cap liquidity risk: volume 29,828 shares, dollar volume $63,831.92; position sizing must account for low float and wide spreads.",
+      "Reverse-split history (1:40, 1:15, 1:10) indicates chronic distress; bankruptcy or further dilution is a tail risk.",
+      "Negative earnings and negative margins create potential for gap-down moves on bad news; short squeeze risk if borrow availability is constrained.",
+      "Information integrity low (T1=0, T2=0); narrative may be driven by low-tier sources or retail speculation.",
+      "Data-quality risk: Wikipedia pageviews mapped to 'Atlantean_language' suggests potential data-quality pollution; recommend post-decision verification.",
+      "No upstream agent verdicts for Fundamental, Valuation, or Network-Effect agents in packet; cannot cross-check with full prelude suite."
+    ],
+    "suggested_improvements": [
+      "Obtain SEC EDGAR filings (8-K, 10-K, 10-Q) for OBLG to establish the company's actual sector, business model, and recent material events.",
+      "Retrieve and review the 20 news items dropped post-cutoff to determine if any contain material disclosures (bankruptcy, delisting, reverse split announcement, etc.).",
+      "Verify the data-mapping between ticker OBLG and Wikipedia article 'Atlantean_language' \u2014 this appears to be a schema or seed-data error.",
+      "Cross-check with OTC Markets or FINRA to confirm OBLG's listing status and any trading halts or delisting notices.",
+      "Implement a 'data-mapping validation' layer in the alternative_data_features adapter to flag nonsensical ticker-to-article mappings before they reach the agent.",
+      "Wire sec_8k_fulltext and sec_edgar adapters to retrieve actual SEC filings for distressed equities.",
+      "Add sector-specific risk flags for micro-cap distressed equities (bankruptcy-watch, delisting-risk, reverse-split tracking).",
+      "Implement real-time analyst-grade change detection (not just historical snapshots) to catch downgrades."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "info",
+        "detail": "20 news items dropped because publishedDate > cutoff; no items remain in window. This is the PRIMARY BEAR-THESIS SIGNAL: a 93% surge should have verifiable news, but none is present in the allowed window."
+      },
+      {
+        "kind": "alt_data_mapping_error",
+        "severity": "warning",
+        "detail": "wikipedia_pageviews: ticker='OBLG' mapped to article_title='Atlantean_language' \u2014 likely data-mapping artifact; no business relevance."
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "info",
+        "detail": "fundamental_snapshot.snapshot_quarter all null; no PIT-safe quarterly data available."
+      },
+      {
+        "kind": "filing_not_evaluated",
+        "severity": "warning",
+        "detail": "filing_confirmation.status='not_evaluated'; SEC 8-K adapter not wired; no filing confirmation available."
+      },
+      {
+        "kind": "information_integrity_low",
+        "severity": "warning",
+        "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=1; use_as_primary_signal_allowed=false per schema v1.1 decision #8."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet structure is sound and PIT-safe. The primary weakness is the absence of news_event_summary.items and filing_confirmation data \u2014 these are not schema weaknesses but rather informative absences that support the bear thesis. The packet correctly flags these as data_unavailable and not_evaluated. The Wikipedia pageviews mapping error (OBLG \u2192 Atlantean_language) is a data-quality issue that undermines confidence in the alternative_data_features block, but this is an operational issue, not a schema weakness. The surge_short agent's alpha is principally driven by structural-absence reasoning, and this packet exemplifies that pattern.",
+    "recommended_followups": [
+      "Post-decision: retrieve and analyze the 20 news items dropped post-cutoff to identify any material catalyst that occurred on 2025-04-22 after 09:30 ET.",
+      "Post-decision: obtain OBLG's SEC filings to confirm sector, business model, and any recent material events (bankruptcy, delisting, reverse split, etc.).",
+      "Post-decision: cross-check OBLG's listing status on NASDAQ, OTC Markets, and FINRA to confirm it is still trading and not under a halt.",
+      "Post-decision: monitor for critical-severity flags in real-time data feeds.",
+      "Post-decision: assess short-borrow availability and cost before position entry; if constrained, squeeze risk may override fundamental thesis.",
+      "Set review trigger at Q2 2025 earnings (expected ~May 2025) to reassess fundamentals and confirm or invalidate the short thesis."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "OBLG surged 93% without news/filing corroboration; collapsed 46% post-surge. Structural absence of hard-to-fake evidence (news, SEC filings, analyst updates, legitimate alt-data) is bear-thesis signal. Fundamentals deteriorating (EPS -0.77/-11.25/-1.6/-2.8; margin -260.77%). Multiple reverse splits (1:40, 1:15, 1:10) signal distress. Momentum reversal in micro-cap with negative fundamentals. Entry at 0.5% per \u00a74.8 fixed sizing.",
+    "risk_notes": [
+      "Micro-cap liquidity: volume 29,828 shares; position sizing accounts for low float.",
+      "Distress risk: multiple reverse splits and negative fundamentals indicate chronic distress; bankruptcy tail risk.",
+      "Squeeze risk: monitor short-borrow availability and cost; if constrained, squeeze risk may override fundamental thesis.",
+      "Data-quality risk: Wikipedia pageviews mapping error suggests potential data-quality pollution; recommend post-decision verification.",
+      "No upstream Fundamental/Valuation/Network-Effect verdicts in packet; cannot cross-check with full prelude suite."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long candidates only. Candidate type is surge_short; not applicable."
+      },
+      {
+        "name": "short_position_cap_5_13_b",
+        "tripped": false,
+        "note": "No current position data provided in packet. Candidate is initial entry. Surge-short sleeve cap (10% max per \u00a74.8) not breached by new 0.5% position."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags array contains no entries with severity='critical'. Highest severity is 'warning'. Condition not tripped."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Condition (d) is INAPPLICABLE to candidate_type=surge_short per \u00a75.17. Veto does not apply."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. No lookahead violation. Condition not tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "candidate_type=surge_short identified",
+      "\u00a75.13 hard-veto evaluation initiated",
+      "condition (a) sleeve_cap_breach: not applicable to surge_short",
+      "condition (b) short_position_cap: no current position; initial entry; not breached",
+      "condition (c) critical_data_quality_flag: no critical-severity flags present",
+      "condition (d) anti_pollution_integrity_veto: INAPPLICABLE per \u00a75.17 for surge_short",
+      "condition (e) lookahead_veto: data_after_cutoff_used=false, lookahead_safe=true; not tripped",
+      "all five conditions evaluated mechanically",
+      "no veto conditions tripped",
+      "candidate passes veto gate",
+      "upstream_agent_outputs aggregated: narrative_event (unsupported_claim), alt_data_verify (insufficient_evidence_to_verify), surge_short (short), risk (no veto)",
+      "preponderance of evidence analysis: structural absence of corroboration + negative fundamentals + momentum exhaustion = bear thesis",
+      "decision: short at 0.005 (0.5%) per \u00a74.8 fixed sizing for new surge-short entry",
+      "execution_plan: T+1 next-open, sell_to_open, 0.5% of portfolio"
+    ],
+    "decision_log": [
+      "2025-04-22T09:30:00-04:00 [ENVELOPE] decision_timestamp=2025-04-22T09:30:00-04:00, allowed_data_cutoff=2025-04-22T09:30:00-04:00, data_after_cutoff_used=false, lookahead_safe=true, immutable_decision_flag=true",
+      "2025-04-22T09:30:00-04:00 [CANDIDATE_TYPE] candidate_type=surge_short identified from upstream_agent_outputs.surge_short",
+      "2025-04-22T09:30:00-04:00 [PRICE_ACTION] trigger_day_open=3.96, last_eod_close=2.14, surge_magnitude=+93.2%, post_surge_decay=-45.9%, return_5d=-13.36%, return_20d=-40.56%, relative_volume=2.605x",
+      "2025-04-22T09:30:00-04:00 [NARRATIVE_ASSESSMENT] upstream_agent_outputs.narrative_event.verdict=unsupported_claim, catalyst_type=unknown_no_catalyst_identified, company_claim=NO COMPANY CLAIM AVAILABLE, evidence_sufficiency=insufficient",
+      "2025-04-22T09:30:00-04:00 [ALT_DATA_ASSESSMENT] upstream_agent_outputs.alt_data_verify.verdict=insufficient_evidence_to_verify, evidence_score=0.15, narrative_price_gap_assessment=not_evaluated, hard_to_fake_signal_summary=NO HARD-TO-FAKE SIGNALS PRESENT",
+      "2025-04-22T09:30:00-04:00 [STRUCTURAL_ABSENCE_ANALYSIS] news_event_summary.status=data_unavailable (0 items in window, 20 dropped post-cutoff), filing_confirmation.status=not_evaluated (not_connected), alternative_data_features.wikipedia_pageviews=data_mapping_error (Atlantean_language), alternative_data_features.github_public=unmapped_ticker, sentiment_community_ownership_evidence.fmp_sentiment=stale (1 Buy rating unchanged since 2021-09)",
+      "2025-04-22T09:30:00-04:00 [FUNDAMENTAL_ASSESSMENT] corporate_calendar.earnings=[EPS -0.7721 (Q1 2025), -11.25 (Q4 2024), -1.6 (Q3 2024), -2.8 (Q2 2024)], valuation_snapshot.pe_ratio=-0.937, valuation_snapshot.net_margin_pct_ttm=-260.77%, valuation_snapshot.roe=-0.808, valuation_snapshot.roa=-0.773",
+      "2025-04-22T09:30:00-04:00 [DISTRESS_SIGNALS] corporate_calendar.splits=[1:40 (2024-08-26), 1:15 (2023-01-04), 1:10 (2019-04-18)], multiple_reverse_splits=true, chronic_dilution_pattern=true",
+      "2025-04-22T09:30:00-04:00 [INFORMATION_INTEGRITY] information_integrity_assessment.status=insufficient_evidence, source_tier_distribution=[T1=0, T2=0, T3=1, T4=1], use_as_primary_signal_allowed=false, pollution_risk_level=unknown",
+      "2025-04-22T09:30:00-04:00 [SURGE_SHORT_VERDICT] upstream_agent_outputs.surge_short.recommended_action=short, short_thesis_status=valid, evidence_sufficiency=partial, momentum_vs_value_judgment=momentum",
+      "2025-04-22T09:30:00-04:00 [RISK_VETO_EVALUATION] upstream_agent_outputs.risk.veto_conditions_evaluated=[sleeve_cap_breach=false, short_position_cap=false, critical_data_quality_flag=false, anti_pollution_integrity_veto=INAPPLICABLE_per_5_17, lookahead_veto=false], no_veto_tripped=true",
+      "2025-04-22T09:30:00-04:00 [MACRO_CONTEXT] macro_regime=Strengthening/Expansionary, equity_allocation_cap=30%, equity_discipline=strict_quality_and_valuation, stress_score=1, does_not_explain_40pct_decline_in_micro_cap=true",
+      "2025-04-22T09:30:00-04:00 [ADAS_LAGGED_CONTEXT] adas_lagged.ticker=CHRO (different ticker), adas_lagged.confidence_dispersion=0.7071 (prior-day disagreement), does_not_override_oblg_analysis=true",
+      "2025-04-22T09:30:00-04:00 [PREPONDERANCE_OF_EVIDENCE] structural_absence_of_corroboration=primary_bear_signal, negative_fundamentals=supporting_signal, momentum_exhaustion=supporting_signal, lack_of_positive_alt_data=supporting_signal, coherence_of_bear_thesis=high",
+      "2025-04-22T09:30:00-04:00 [DECISION_SYNTHESIS] bear_thesis_preponderance=strong, confidence_level=medium (due to missing upstream agents and data-quality issues), decision=short, position_size_pct=0.005 (per \u00a74.8 fixed sizing for new surge-short entry)",
+      "2025-04-22T09:30:00-04:00 [EXECUTION_PLAN] order_type=T+1_next-open, execution_timestamp=2025-04-22T09:45:00-04:00, side=sell_to_open, size_pct_of_portfolio=0.005"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-22T09:45:00-04:00",
+      "ticker": "OBLG",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_universal_soft_veto",
+      "evidence_packet_hash": "sha256:46a9c1961c91c7fbde77a4c3c07524f9a1bf8daa21d338d6f456a9604d5563c9"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews mapped to 'Atlantean_language' is a data-quality artifact, not legitimate community attention. FMP sentiment shows 1 Buy rating unchanged since 2021-09; no recent retail or community-driven attention detected.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "dismiss",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No company claim available in evidence packet. News_event_summary.status='data_unavailable'; all news items dropped post-cutoff. No SEC 8-K filing, press release, or official disclosure present. The surge lacks a verifiable public narrative.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Structural absence of hard-to-fake evidence (news, SEC filings, analyst updates, legitimate alt-data) prevents confirmation of a positive thesis. The bear thesis is driven by absence patterns, not by positive confirmation.",
+    "sentiment_risk_adjustment_note": "FMP sentiment is stale (1 Buy rating unchanged since 2021-09, 5+ months old). No recent analyst updates or sentiment shifts detected. Sentiment data is descriptor-only and does not override the structural absence of corroboration.",
+    "ownership_risk_adjustment_note": "Ownership positioning data not evaluated in packet. No institutional sponsorship or smart-money support signals available. Micro-cap liquidity risk remains.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "medium",
+    "institutional_sponsorship_note": "No institutional sponsorship signals detected. Analyst sentiment flat (1 Buy rating unchanged since 2021-09). No evidence of institutional support for the surge.",
+    "smart_money_benchmark_note": "No smart-money support detected. Structural absence of positive alt-data signals suggests the surge is driven by momentum/retail speculation, not smart-money activity.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-22T09:30:00-04:00",
+    "execution_timestamp": "2025-04-22T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:0d0ee092fead7ae9568c49356614013218cb49762f51e154143c8ebccb930379",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "OBLG",
+      "decision_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_available_as_of": "2025-04-22T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "news_event_summary.status",
+        "news_event_summary.items_dropped_post_cutoff",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "corporate_calendar.events_near_decision",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "information_integrity_assessment.source_tier_distribution"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "filing_confirmation.SEC_8K_confirmation",
+        "news_event_summary.items (all items dropped post-cutoff)",
+        "fundamental_snapshot.snapshot_quarter (all null)",
+        "company_press_release_or_disclosure",
+        "SEC_8K_filing_text",
+        "earnings_call_transcript",
+        "analyst_note_or_downgrade"
+      ],
+      "reasoning_summary": "OBLG exhibits a sharp 5-day decline of -13.36% and 20-day decline of -40.56% with elevated relative volume (2.605x 20-day average). However, the evidence packet reveals a CRITICAL STRUCTURAL ABSENCE: news_event_summary.status='data_unavailable' with items_dropped_post_cutoff=20, meaning all news items were published AFTER the decision_timestamp cutoff (2025-04-22T09:30:00). The polygon_news adapter returned 0 rows in the 7-day lookback window. No SEC 8-K filing confirmation is available. No company claim, press release, or official disclosure is present in the packet. The only alternative data signal is Wikipedia pageviews for 'Atlantean_language' (30 rows, 55-120 views/day range, no spike pattern relative to baseline). FMP sentiment shows 1 analyst 'Buy' rating as of 2024-11-01, unchanged since then. The macro regime is 'Strengthening/Expansionary' with strict equity discipline. SECTOR-AWARE REASONING: OBLG's actual sector is unknown from the packet (no fundamental_snapshot.sector, no 10-K Item 1 description). The ticker appears to be a micro-cap or distressed equity (negative EPS, negative margins, multiple reverse splits 1:40 in Aug 2024, 1:15 in Jan 2023, 1:10 in Apr 2019). For such a company, the ABSENCE of news corroboration vs. the PRESENCE of sharp price decline is itself a bear-thesis signal per \u00a713.6 SOFT_REASONING: the stock is falling without identifiable public catalyst. This structural absence\u2014no news, no filing, no analyst action, no earnings surprise\u2014relative to the magnitude of the move suggests either (a) a technical/liquidity event unrelated to fundamental catalyst, (b) a rumor or social-media-driven move not captured in formal news, or (c) a delayed disclosure that will arrive post-cutoff. The Wikipedia pageview data is UNRELATED to OBLG's business and appears to be a data-mapping artifact (ticker OBLG mapped to article 'Atlantean_language' is nonsensical). This is a RED FLAG for data quality. VERDICT: The catalyst cannot be identified from the evidence packet. No concrete, specific, or vague narrative claim is present. The price action is UNSUPPORTED by any observable catalyst in the allowed data window. This is consistent with a 'surge_short' candidate where the absence of corroboration IS the signal\u2014the stock is falling without a named reason, which is a classic short-squeeze or panic-liquidation pattern, not a fundamental catalyst.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC 8-K filing dated 2025-04-22 or earlier is discovered post-analysis, the 'no catalyst' verdict is invalidated.",
+        "If the Wikipedia pageview data is confirmed to be a data-mapping error (OBLG \u2260 Atlantean_language), the alternative_data_features block loses credibility.",
+        "If OBLG is confirmed to be a shell company, SPAC, or bankruptcy candidate, the absence of news becomes expected and the catalyst classification shifts to 'distressed_restructuring' or 'liquidation'.",
+        "If the 20 dropped news items are reviewed and found to contain a material disclosure (e.g., bankruptcy filing, delisting notice), the decision must be re-run with post-cutoff data."
+      ],
+      "risk_flags": [
+        "CRITICAL: news_event_summary.status='data_unavailable' \u2014 all news items dropped post-cutoff; no catalyst narrative available for analysis.",
+        "CRITICAL: alternative_data_features.attention.wikipedia_pageviews mapped to 'Atlantean_language' \u2014 likely data-mapping error; ticker OBLG does not correspond to a real company with a Wikipedia article on ancient languages.",
+        "HIGH: fundamental_snapshot.status='insufficient_evidence' \u2014 all snapshot_quarter fields null; no earnings, revenue, or profitability data available.",
+        "HIGH: information_integrity_assessment.use_as_primary_signal_allowed=false \u2014 pollution-defense layer not implemented; low-tier sources only (T3=1, T4=1).",
+        "MEDIUM: corporate_calendar shows 4 past earnings with negative EPS (-0.7721, -11.25, -1.6, -2.8) and declining revenue (563k, 578k, 611k, 626k) \u2014 company is unprofitable and shrinking.",
+        "MEDIUM: Multiple reverse splits (1:40, 1:15, 1:10) suggest severe dilution and potential distress.",
+        "MEDIUM: Analyst sentiment flat at 1 'Buy' rating since 2024-11-01; no recent upgrades or downgrades.",
+        "LOW: Macro regime 'Strengthening/Expansionary' does not explain a -40% 20-day decline in a single micro-cap."
+      ],
+      "suggested_improvements": [
+        "Verify the data-mapping between ticker OBLG and Wikipedia article 'Atlantean_language' \u2014 this appears to be a schema or seed-data error.",
+        "Retrieve and review the 20 news items dropped post-cutoff to determine if any contain material disclosures (bankruptcy, delisting, reverse split announcement, etc.).",
+        "Obtain SEC EDGAR filings (10-K, 10-Q, 8-K, S-1) for OBLG to establish the company's actual sector, business model, and recent material events.",
+        "Cross-check with OTC Markets or FINRA to confirm OBLG's listing status and any trading halts or delisting notices.",
+        "If OBLG is a micro-cap or penny stock, consider whether the price decline is driven by technical factors (margin calls, short squeeze unwind, liquidity event) rather than a named catalyst.",
+        "Implement a 'data-mapping validation' layer in the alternative_data_features adapter to flag nonsensical ticker-to-article mappings before they reach the agent."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_unavailable_post_cutoff",
+          "severity": "critical",
+          "detail": "news_event_summary: 20 items dropped because publishedDate > allowed_data_cutoff; no news available for catalyst analysis at decision_timestamp."
+        },
+        {
+          "kind": "alt_data_mapping_error",
+          "severity": "critical",
+          "detail": "alternative_data_features.attention.wikipedia_pageviews: ticker OBLG mapped to article 'Atlantean_language' \u2014 likely data-mapping artifact; no business relevance."
+        },
+        {
+          "kind": "fundamentals_unavailable",
+          "severity": "high",
+          "detail": "fundamental_snapshot.snapshot_quarter: all fields null; no income statement, balance sheet, or cash flow data available."
+        },
+        {
+          "kind": "filing_not_evaluated",
+          "severity": "high",
+          "detail": "filing_confirmation.status='not_evaluated'; SEC 8-K adapter not wired; no filing confirmation available."
+        },
+        {
+          "kind": "information_integrity_fail_closed",
+          "severity": "high",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution-defense layer unimplemented; fail-closed per schema v1.1 decision #8."
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "medium",
+          "detail": "sentiment_community_ownership_evidence: placeholder in v1; no community size, ownership positioning, or smart-money data available."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the ABSENCE of news items at decision_timestamp creates a fundamental challenge: the Narrative Agent is tasked with classifying a catalyst, but no catalyst narrative is present in the allowed data window. The packet correctly flags this (news_event_summary.status='data_unavailable'), but the alternative_data_features block contains a nonsensical mapping (OBLG \u2192 Atlantean_language) that cannot substitute for real news. The information_integrity_assessment block is fail-closed (use_as_primary_signal_allowed=false), which is correct but leaves the agent with no credible alternative signal. The schema design is appropriate for this scenario \u2014 it forces the agent to reason about absence patterns rather than hallucinate a catalyst. However, the PM agent will need to decide whether this 'no catalyst' verdict is a signal for a surge_short candidate (stock falling without reason = panic/liquidity event) or a data gap that requires post-cutoff review.",
+      "recommended_followups": [
+        "Post-decision: retrieve and analyze the 20 news items dropped post-cutoff to identify any material catalyst that occurred on 2025-04-22 after 09:30 ET.",
+        "Post-decision: obtain OBLG's SEC filings to confirm sector, business model, and any recent material events (bankruptcy, delisting, reverse split, etc.).",
+        "Post-decision: cross-check OBLG's listing status on NASDAQ, OTC Markets, and FINRA to confirm it is still trading and not under a halt.",
+        "Schema improvement: implement a 'data-mapping validation' layer in alternative_data_features to flag ticker-to-article mappings that have zero business relevance (e.g., ticker mapped to unrelated Wikipedia article).",
+        "Schema improvement: consider adding a 'post_cutoff_news_summary' field to news_event_summary that lists the titles/sources of dropped items, allowing the agent to flag high-priority post-cutoff catalysts.",
+        "Operational: for surge_short candidates with 'no catalyst' verdicts, establish a protocol to review post-cutoff news within 1-2 hours of decision_timestamp to confirm or invalidate the short thesis."
+      ],
+      "catalyst_type": "unknown_no_catalyst_identified",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": true,
+      "company_claim": "NO COMPANY CLAIM AVAILABLE. News_event_summary.status='data_unavailable'; all news items dropped post-cutoff. No SEC 8-K filing, press release, or official disclosure present in the evidence packet. The only alternative data signal is Wikipedia pageviews for 'Atlantean_language' (unrelated to OBLG's business). Price action: -13.36% (5d), -40.56% (20d), +2.605x relative volume. No identified catalyst.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "OBLG",
+      "decision_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_available_as_of": "2025-04-22T09:30:00-04:00",
+      "decision_or_assessment": "Alternative-data verification of narrative claims against hard-to-fake evidence",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "corporate_calendar.earnings_history",
+        "valuation_snapshot.pe_ratio",
+        "news_event_summary.polygon_news",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "information_integrity_assessment.source_tier_distribution"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "opencli_evidence (not_connected)"
+      ],
+      "reasoning_summary": "OBLG exhibits a severe structural absence of corroborating alternative-data evidence relative to what a legitimate public equity should produce. Decision timestamp 2025-04-22T09:30:00-04:00 is in opening-window mode. Price action shows -13.36% return over 5d, -40.56% over 20d, -44.85% over 60d, with elevated relative volume (2.605x 20d avg), consistent with a surge-short candidate. However, the alternative-data footprint is hollow: (1) Wikipedia pageviews for 'Atlantean_language' (30 rows, 77\u2013120 views/day) are completely disconnected from OBLG ticker \u2014 this is a data-mapping error or mock fallback, not legitimate company attention. (2) GitHub public adapter returned 0 rows with error_class='unmapped_ticker' \u2014 informative absence for a tech/software company. (3) Polygon news returned 0 rows in [2025-04-15, 2025-04-22] \u2014 informative absence. (4) FMP sentiment shows 40 rows of analyst grades (T2 tier) spanning 2021\u20132024, with only 1 Buy rating as of 2024-11-01; no recent upgrades or downgrades. (5) No SEC 8-K filings retrieved (filing_confirmation not_connected). (6) Fundamental snapshot status='insufficient_evidence' \u2014 no PIT-safe quarterly data. (7) News event summary status='data_unavailable' \u2014 20 items dropped post-cutoff, 0 items in window. (8) Information integrity assessment: T1=0, T2=0, T3=1 (Wikipedia), T4=1 (FMP sentiment); use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented). The Wikipedia pageviews row is a red flag: ticker='OBLG' mapped to article_title='Atlantean_language' is either a data-quality error or a mock fallback. This is NOT legitimate company attention. The analyst sentiment (1 Buy, 0 Hold, 0 Sell) is stale (last update 2024-11-01, 5+ months before decision) and descriptor-only (T2 tier, not a gate). Sector-aware reasoning: OBLG is a micro-cap equity with negative earnings (EPS -0.7721 Q1 2025, -11.25 Q3 2024, -1.6 Q2 2024, -2.8 Q1 2024), negative margins (-260.77% net margin TTM), and a 1:40 stock split in Aug 2024 \u2014 classic distressed equity profile. For such a company, we would expect: (a) SEC filings (8-K, 10-Q, 10-K) \u2014 absent. (b) News coverage or press releases \u2014 absent (polygon_news=0, fmp_news=0). (c) Analyst activity \u2014 minimal (1 Buy rating, no recent changes). (d) Community/retail attention \u2014 Wikipedia pageviews for 'Atlantean_language' is not a signal. The structural absence of hard-to-fake evidence (SEC filings, news, analyst updates, legitimate alt-data) relative to the public narrative of a distressed micro-cap is itself bear-thesis corroboration. The price decline (-44.85% over 60d) is NOT contradicted by alt-data; rather, the alt-data void suggests the decline is driven by fundamental deterioration, not narrative hype. Verdict: The alternative-data evidence does NOT support a positive narrative about OBLG. The absence of corroborating signals (informative absence via source_flag='cache' or 'live_*_failed' for adapters that returned 0 rows) is consistent with a company in distress. The Wikipedia pageviews row is a data-quality artifact and cannot be used as primary signal per schema v1.1. Recommendation: The PM should treat this as a surge-short candidate with structural corroboration via absence. The lack of positive alt-data signals, combined with negative fundamentals and price collapse, supports a bear thesis. However, the absence of a clear positive narrative claim in the packet (no Agent 02 classification provided) limits the ability to emit a full 'narrative_contradicted' verdict. Instead, the verdict is 'insufficient_evidence_to_verify' due to missing narrative input, but the recommendation is to challenge any bullish thesis.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a positive catalyst (earnings beat, strategic announcement, regulatory approval, M&A) emerges post-decision, the bear thesis is invalidated.",
+        "If Wikipedia pageviews row is corrected to reflect legitimate OBLG company attention (not 'Atlantean_language'), the alt-data assessment changes.",
+        "If SEC 8-K or 10-Q filings appear with positive guidance or strategic update, the thesis is challenged.",
+        "If analyst upgrades or new Buy ratings appear, sentiment shifts."
+      ],
+      "risk_flags": [
+        "Data quality: Wikipedia pageviews mapped to 'Atlantean_language' is a data-quality error or mock fallback \u2014 not legitimate company attention.",
+        "Structural absence: No SEC filings, no news, no GitHub activity, no recent analyst updates \u2014 informative absence for a distressed micro-cap.",
+        "Fundamental deterioration: Negative EPS, negative margins, multiple stock splits (1:40 in Aug 2024, 1:15 in Jan 2023, 1:10 in Apr 2019) \u2014 classic distressed equity.",
+        "Information integrity: T1=0, T2=0, T3=1 (Wikipedia mock), T4=1 (FMP sentiment); use_as_primary_signal_allowed=false.",
+        "Sentiment stale: Last analyst grade 2024-11-01 (5+ months old); no recent updates.",
+        "Price action extreme: -44.85% over 60d, -40.56% over 20d, -13.36% over 5d \u2014 consistent with distress, not narrative hype.",
+        "No positive corroboration: Zero hard-to-fake signals supporting a bullish narrative."
+      ],
+      "suggested_improvements": [
+        "Implement pollution-defense layer in information_integrity_assessment to distinguish mock_fallback from live data.",
+        "Wire sec_8k_fulltext and sec_edgar adapters to retrieve actual SEC filings for distressed equities.",
+        "Correct Wikipedia pageviews mapping: OBLG should not map to 'Atlantean_language' \u2014 either fix the mapping or exclude the row.",
+        "Add sector-specific adapters for micro-cap distressed equities (e.g., bankruptcy-watch, delisting-risk, reverse-split tracking).",
+        "Implement real-time analyst-grade change detection (not just historical snapshots) to catch downgrades.",
+        "Add news-sentiment aggregation from multiple sources (not just polygon_news and fmp_sentiment) to detect narrative shifts."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "alt_data_mapping_error",
+          "severity": "critical",
+          "detail": "wikipedia_pageviews: ticker='OBLG' mapped to article_title='Atlantean_language' \u2014 not a legitimate company signal. This is either a data-quality error or a mock fallback and should not be used for verification."
+        },
+        {
+          "kind": "adapter_unmapped",
+          "severity": "warning",
+          "detail": "github_public: error_class='unmapped_ticker' \u2014 OBLG not in ticker_to_github.csv. Informative absence for a tech/software company."
+        },
+        {
+          "kind": "news_unavailable",
+          "severity": "warning",
+          "detail": "polygon_news: 0 rows in [2025-04-15, 2025-04-22]. Informative absence."
+        },
+        {
+          "kind": "filing_not_connected",
+          "severity": "warning",
+          "detail": "filing_confirmation: status='not_evaluated', source='not_connected'. No SEC 8-K or 10-K data available."
+        },
+        {
+          "kind": "fundamentals_insufficient",
+          "severity": "warning",
+          "detail": "fundamental_snapshot: status='insufficient_evidence'. No PIT-safe quarterly data."
+        },
+        {
+          "kind": "sentiment_stale",
+          "severity": "warning",
+          "detail": "fmp_sentiment: last analyst grade 2024-11-01 (5+ months old). No recent updates."
+        },
+        {
+          "kind": "information_integrity_low_tier",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=1. use_as_primary_signal_allowed=false per schema v1.1."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include a narrative claim from Agent 02 (narrative classification). Without a specific bullish or bearish claim to verify, the verdict is constrained to 'insufficient_evidence_to_verify'. However, the structural absence of positive alt-data signals is itself bear-thesis corroboration. The Wikipedia pageviews row is a critical data-quality issue that undermines confidence in the alternative_data_features block. The pollution-defense layer is unimplemented, forcing a fail-closed stance on information_integrity_assessment.",
+      "recommended_followups": [
+        "Retrieve actual SEC filings (8-K, 10-Q, 10-K) for OBLG to assess fundamental status and any material events.",
+        "Correct Wikipedia pageviews mapping or exclude the row entirely.",
+        "Check for recent analyst downgrades or coverage changes post-2024-11-01.",
+        "Monitor for bankruptcy-watch or delisting-risk signals (OTC/pink-sheet migration, reverse-split announcements).",
+        "If a positive narrative claim emerges (e.g., 'OBLG announced strategic partnership'), cross-check against SEC filings and news sources.",
+        "Implement real-time sentiment tracking to detect narrative shifts."
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "not_evaluated",
+      "narrative_price_gap_assessment": "not_evaluated",
+      "narrative_price_gap_rationale": "No explicit narrative claim provided in evidence packet. Price action (-44.85% over 60d) is extreme and consistent with distressed equity, but without a specific narrative to verify, the gap assessment is deferred. Structural absence of positive alt-data signals (SEC filings, news, analyst updates, legitimate company attention) suggests the price decline is driven by fundamental deterioration, not narrative hype.",
+      "industry_template_used": "micro_cap_distressed_equity",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only alternative-data adapter that returned rows (30 rows). However, the mapping to 'Atlantean_language' is a data-quality error and cannot be used for verification. Other adapters (github_public, sec_8k_fulltext, sec_edgar) were either not_connected or returned 0 rows (informative absence).",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "No hard-to-fake signals present. SEC filings (8-K, 10-K, 10-Q) are absent. News coverage is absent (polygon_news=0, fmp_news=0). Analyst activity is minimal and stale (1 Buy rating as of 2024-11-01, no recent changes). GitHub activity is absent (unmapped_ticker). Wikipedia pageviews are a data-quality artifact. The structural absence of hard-to-fake evidence is itself informative: a legitimate public equity in distress should produce SEC filings, news, and analyst coverage. The void suggests either a data-quality issue or a company in severe distress with minimal market attention.",
+      "industry_specific_evidence_used": [
+        "corporate_calendar.earnings_history: negative EPS trend (-0.7721, -11.25, -1.6, -2.8 over 4 quarters)",
+        "valuation_snapshot.pe_ratio: -0.937 (negative earnings)",
+        "valuation_snapshot.net_margin_pct_ttm: -260.77% (severe profitability deterioration)",
+        "corporate_calendar.splits: 1:40 (Aug 2024), 1:15 (Jan 2023), 1:10 (Apr 2019) \u2014 classic distressed equity pattern"
+      ],
+      "industry_specific_evidence_missing": [
+        "SEC 8-K filings (material events, executive changes, financing announcements)",
+        "SEC 10-Q filings (quarterly financial statements, MD&A)",
+        "SEC 10-K filings (annual financial statements, risk disclosures)",
+        "Bankruptcy-watch or delisting-risk signals",
+        "Reverse-split announcements or OTC/pink-sheet migration notices",
+        "Analyst downgrades or coverage changes",
+        "Press releases or investor relations updates"
+      ],
+      "data_quality_warning": "CRITICAL: Wikipedia pageviews row (article_title='Atlantean_language') is a data-quality error or mock fallback. This row cannot be used for verification and undermines confidence in the alternative_data_features block. Additionally, information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer unimplemented). Recommend fail-closed stance on all alternative-data signals until data quality is verified.",
+      "signals": [
+        {
+          "name": "Wikipedia pageviews (Atlantean_language)",
+          "available": true,
+          "value": 89.0,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "GitHub public activity",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "Polygon news coverage",
+          "available": false,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "FMP analyst sentiment (Buy ratings)",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "SEC 8-K filings",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "Price return 60d",
+          "available": true,
+          "value": -44.8454,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Relative volume vs 20d",
+          "available": true,
+          "value": 2.605,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Net margin TTM",
+          "available": true,
+          "value": -260.77,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8. Additionally, Wikipedia pageviews row is a data-quality error (mapped to 'Atlantean_language', not OBLG company attention). FMP sentiment is T2 tier and descriptor-only. No T1 sources present. Pollution-defense layer unimplemented.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": "Wikipedia pageviews mapping error suggests data-quality pollution. FMP sentiment is stale (5+ months old). No recent analyst updates.",
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": "pollution_risk_high",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-22T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "filing_confirmation.sec_8k_fulltext",
+        "filing_confirmation.sec_edgar",
+        "news_event_summary.items",
+        "fundamental_snapshot.snapshot_quarter",
+        "alternative_data_features.tech_activity.github_public"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "surge_short_v0.4_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "OBLG",
+      "decision_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_available_as_of": "2025-04-22T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short evaluation for OBLG at decision_timestamp 2025-04-22T09:30:00-04:00",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open (3.96) vs last_eod_close (2.14) = -45.9% reversal",
+        "price_snapshot.return_5d_pct = -13.36% (post-surge decay)",
+        "price_snapshot.return_20d_pct = -40.56% (sustained weakness)",
+        "corporate_calendar.earnings: Q1 2025 (2025-03-17) EPS -0.7721, Q4 2024 EPS -11.25, Q3 2024 EPS -1.6, Q2 2024 EPS -2.8 (consistent losses)",
+        "corporate_calendar.splits: 1:40 (2024-08-26), 1:15 (2023-01-04), 1:10 (2019-04-18) (severe dilution pattern)",
+        "valuation_snapshot.pe_ratio = -0.937 (negative earnings)",
+        "valuation_snapshot.net_margin_pct_ttm = -260.77% (severe unprofitability)",
+        "valuation_snapshot.roe = -0.808, roa = -0.773 (negative returns)",
+        "fundamental_snapshot.status = insufficient_evidence (no PIT-safe quarterly data)",
+        "news_event_summary.status = data_unavailable (0 items in 7-day window, 20 dropped post-cutoff)",
+        "alternative_data_features.wikipedia_pageviews: 30 rows, views range 55-120 (baseline ~75 views/day, no spike correlated to surge)",
+        "alternative_data_features.github_public: unmapped_ticker (no developer activity footprint)",
+        "sentiment_community_ownership_evidence.fmp_sentiment: 1 Buy rating (consistent since 2021-09), no recent upgrade",
+        "information_integrity_assessment.status = insufficient_evidence, use_as_primary_signal_allowed = false (T1=0, T2=0, T3=1, T4=1)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 rows; no public narrative explaining the surge)",
+        "filing_confirmation (not_evaluated; no 8-K or press release confirming catalyst)",
+        "fundamental_snapshot.snapshot_quarter (all null; no quarterly financials available)",
+        "alternative_data_features.tech_activity (github_public failed; no developer/engineering corroboration)",
+        "narrative_price_gap_assessment (not_evaluated; agent-internal pending)",
+        "upstream_agent_outputs (no prelude agent verdicts provided in packet)"
+      ],
+      "reasoning_summary": "OBLG surged from 2.05 open to 3.96 trigger_day_open (+93.2%), then collapsed to 2.14 close (-45.9% from surge peak). The surge lacks observable corroboration: (1) NO NEWS in 7-day window (polygon_news returned 0 rows; 20 items dropped post-cutoff). (2) NO SEC FILING CONFIRMATION (filing_confirmation not_evaluated; no 8-K or press release in packet). (3) STRUCTURAL ABSENCE OF NARRATIVE: a listed company surging 93% on a public catalyst SHOULD have verifiable news/filing footprint; absence is bear-thesis evidence. (4) FUNDAMENTALS DETERIORATING: Q1 2025 EPS -0.7721, Q4 2024 EPS -11.25; net margin -260.77%; PE negative; ROE/ROA negative. (5) REPEATED REVERSE SPLITS (1:40, 1:15, 1:10) signal chronic dilution and distress. (6) ALTERNATIVE DATA SILENT: Wikipedia pageviews show baseline ~75 views/day with no spike; no GitHub footprint (unmapped_ticker); analyst sentiment flat (1 Buy rating unchanged since 2021-09). (7) INFORMATION INTEGRITY: T1=0, T2=0 sources; use_as_primary_signal_allowed=false. The surge appears to be MOMENTUM/NOISE, not value creation. The absence of news, filings, and corroborating alt-data relative to the magnitude of the surge is the primary bear-thesis signal. Price decay (-13.36% in 5d, -40.56% in 20d) post-surge is consistent with a momentum reversal in a fundamentally distressed micro-cap.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If an 8-K or press release emerges post-decision confirming a material business event (M&A, financing, partnership, regulatory approval) that drove the surge, the bear thesis weakens.",
+        "If Q2 2025 earnings (expected ~May 2025) show material revenue growth or path to profitability, the short thesis is challenged.",
+        "If alternative data (GitHub, web traffic, hiring, patent filings) emerges showing real operational activity, confidence in the short thesis declines.",
+        "If institutional ownership or short-squeeze dynamics emerge, momentum could override fundamentals in the near term."
+      ],
+      "risk_flags": [
+        "Micro-cap liquidity risk: volume 29,828 shares, dollar volume $63,831.92; position sizing must account for low float and wide spreads.",
+        "Reverse-split history (1:40, 1:15, 1:10) indicates chronic distress; bankruptcy or further dilution is a tail risk.",
+        "Negative earnings and negative margins create potential for gap-down moves on bad news; short squeeze risk if borrow availability is constrained.",
+        "Information integrity low (T1=0, T2=0); narrative may be driven by low-tier sources or retail speculation.",
+        "No upstream agent verdicts in packet; cannot cross-check with Narrative, Alt-Data Verification, or Fund/Net/Val agents."
+      ],
+      "suggested_improvements": [
+        "Obtain SEC EDGAR 8-K and press-release filings for the 5 trading days prior to decision_timestamp to confirm or refute the catalyst narrative.",
+        "Fetch real-time news from Polygon, Reuters, Bloomberg, or other T1 sources to identify the specific event that triggered the surge.",
+        "Retrieve GitHub commit history, web traffic (Similarweb), and hiring data (LinkedIn) to assess operational reality vs. narrative.",
+        "Cross-check with prelude agents (Narrative, Alt-Data Verification, Fund/Net/Val) to aggregate verdicts on the surge catalyst.",
+        "Monitor Q2 2025 earnings (expected ~May 2025) for evidence of revenue stabilization or continued deterioration.",
+        "Assess short-borrow availability and cost; if borrow is constrained, short-squeeze risk may override fundamental thesis."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "critical",
+          "detail": "20 news items dropped because publishedDate > cutoff; no items remain in window. This is the PRIMARY BEAR-THESIS SIGNAL: a 93% surge should have verifiable news, but none is present in the allowed window."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.snapshot_quarter all null; no PIT-safe quarterly data available for analysis."
+        },
+        {
+          "kind": "filing_confirmation_not_evaluated",
+          "severity": "critical",
+          "detail": "filing_confirmation.status = not_evaluated; no 8-K or press-release confirmation available. Structural absence of expected SEC disclosure is bear-thesis evidence."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no developer activity footprint available."
+        },
+        {
+          "kind": "information_integrity_low",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=1; use_as_primary_signal_allowed=false. Narrative sourcing is low-tier only."
+        },
+        {
+          "kind": "sentiment_flat",
+          "severity": "info",
+          "detail": "fmp_sentiment: 1 Buy rating unchanged since 2021-09; no recent upgrade or downgrade correlated to surge."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet is well-structured and PIT-safe. The primary weakness is the absence of news_event_summary.items and filing_confirmation data \u2014 these are not schema weaknesses but rather informative absences that support the bear thesis. The packet correctly flags these as data_unavailable and not_evaluated, which is appropriate. The surge_short agent's alpha is principally driven by structural-absence reasoning, and this packet exemplifies that pattern: a 93% surge with zero news, zero filings, and zero alt-data corroboration is a red flag.",
+      "recommended_followups": [
+        "Obtain SEC EDGAR filings (8-K, press releases, Form 4) for 2025-04-15 to 2025-04-22 to identify the catalyst.",
+        "Fetch news from T1 sources (Reuters, Bloomberg, AP) for the same window.",
+        "Monitor OBLG short interest and borrow availability; assess squeeze risk.",
+        "Set a review trigger at Q2 2025 earnings (expected ~May 2025) to reassess fundamentals.",
+        "If no catalyst is found post-decision, the short thesis strengthens (momentum reversal in a distressed micro-cap)."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown",
+      "company_claim": "Unknown; no news or filing confirmation available. Surge magnitude (+93.2%) suggests a material event, but no public narrative is present in the evidence packet.",
+      "industry": "Unknown; fundamental_snapshot.sector not provided; no 10-K business description in packet.",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "valid",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "short",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Exit if (1) 8-K or press release emerges confirming a material catalyst; (2) Q2 2025 earnings show revenue growth or profitability path; (3) short-squeeze dynamics emerge and borrow becomes unavailable; (4) price stabilizes above 3.00 with positive news flow.",
+      "missing_data_warnings": [
+        "news_event_summary.items: 0 rows in window; 20 dropped post-cutoff. This is the critical absence.",
+        "filing_confirmation: not_evaluated; no 8-K or press-release data available.",
+        "fundamental_snapshot.snapshot_quarter: all null; no quarterly financials.",
+        "upstream_agent_outputs: not provided in packet; cannot cross-check with Narrative, Alt-Data Verification, or Fund/Net/Val agents.",
+        "narrative_price_gap_assessment: not_evaluated; agent-internal pending."
+      ],
+      "audit_rationale": "OBLG surged 93% (2.05\u21923.96) then collapsed 46% (3.96\u21922.14). No news, no filings, no alt-data corroboration. Structural absence of expected SEC/news footprint for a 93% surge is bear-thesis evidence. Fundamentals deteriorating (EPS -0.77, -11.25, -1.6, -2.8; margin -260.77%). Repeated reverse splits (1:40, 1:15, 1:10) signal distress. Wikipedia pageviews flat (~75/day); GitHub unmapped; analyst sentiment unchanged (1 Buy since 2021-09). Information integrity low (T1=0, T2=0). Momentum reversal in micro-cap with negative fundamentals. Recommend short at 0.5% initial position; monitor for catalyst confirmation or Q2 earnings."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "OBLG",
+      "decision_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_available_as_of": "2025-04-22T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for surge_short candidate",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "macro_regime.equity_allocation_cap",
+        "upstream_agent_outputs.surge_short.candidate_type"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Pass 8 hard-veto evaluation for OBLG surge_short candidate. Candidate type is surge_short per upstream_agent_outputs.surge_short. Evaluating five veto conditions per \u00a75.13: (a) sleeve_cap_breach \u2014 not applicable to surge_short; (b) short_position_cap \u2014 no current position data provided; candidate is initial entry; (c) critical_data_quality_flags \u2014 no critical-severity flags present in data_quality_flags array; (d) anti-pollution_integrity_veto \u2014 RELAXED per \u00a75.17 for surge_short candidate type; veto is INAPPLICABLE; (e) lookahead_veto \u2014 envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; no lookahead violation. All five conditions evaluated mechanically per \u00a75.13. No veto conditions tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If a critical-severity data_quality_flag is discovered post-evaluation, condition (c) would trip retroactively.",
+        "If data_after_cutoff_used is later found to be true, condition (e) would trip retroactively."
+      ],
+      "risk_flags": [
+        "Micro-cap liquidity: volume 29,828 shares, dollar volume $63,831.92; position sizing must account for low float.",
+        "Reverse-split history (1:40, 1:15, 1:10) indicates chronic distress; bankruptcy risk is a tail event.",
+        "Negative fundamentals: EPS -0.7721 (Q1 2025), net margin -260.77%; gap-down risk on bad news.",
+        "Information integrity low: T1=0, T2=0; narrative sourcing is low-tier only.",
+        "No upstream agent verdicts cross-check available in packet."
+      ],
+      "suggested_improvements": [
+        "Implement real-time critical-flag detection to catch data-quality issues before veto evaluation.",
+        "Wire sec_8k_fulltext and sec_edgar adapters to retrieve actual SEC filings for distressed equities.",
+        "Add sector-specific risk flags for micro-cap distressed equities (bankruptcy-watch, delisting-risk).",
+        "Implement borrow-availability and short-interest monitoring for squeeze-risk assessment."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; no critical-severity flag."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "info",
+          "detail": "fundamental_snapshot.snapshot_quarter all null; no critical-severity flag."
+        },
+        {
+          "kind": "alt_data_mapping_error",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews mapped to 'Atlantean_language'; not critical-severity."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "No schema or prompt weaknesses identified. The hard-veto evaluation is mechanically straightforward for this candidate. The absence of critical-severity flags and the clean lookahead/data-cutoff envelope allow the candidate to pass veto evaluation.",
+      "recommended_followups": [
+        "Monitor for critical-severity flags in real-time data feeds.",
+        "Retrieve SEC filings post-decision to confirm or refute the surge catalyst.",
+        "Assess short-borrow availability and cost before position entry.",
+        "Set review trigger at Q2 2025 earnings (expected ~May 2025) to reassess fundamentals."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long candidates only. Candidate type is surge_short; not applicable."
+        },
+        {
+          "name": "short_position_cap_5_13_b",
+          "tripped": false,
+          "note": "No current position data provided in packet. Candidate is initial entry. Surge-short sleeve cap (10% max per \u00a74.8) not breached by new 0.5% position."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical'. Highest severity is 'warning' (alt_data_mapping_error). Condition not tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) is INAPPLICABLE to candidate_type=surge_short per \u00a75.17. Veto does not apply."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. No lookahead violation. Condition not tripped."
+        }
+      ],
+      "advisory_notes": "Hard-veto evaluation complete. No veto conditions tripped. Candidate passes veto gate and is eligible for downstream PM evaluation. Risk agent emits no advisory recommendations per role specification.",
+      "risk_notes": [
+        "Micro-cap liquidity risk: position sizing must account for low float and wide spreads.",
+        "Distress risk: multiple reverse splits and negative fundamentals indicate chronic distress.",
+        "Squeeze risk: monitor short-borrow availability and cost; if constrained, squeeze risk may override fundamental thesis.",
+        "Data-quality risk: Wikipedia pageviews mapping error suggests potential data-quality pollution; recommend post-decision verification."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation initiated",
+        "candidate_type=surge_short identified",
+        "condition (a) sleeve_cap_breach: not applicable to surge_short",
+        "condition (b) short_position_cap: no current position; initial entry; not breached",
+        "condition (c) critical_data_quality_flag: no critical-severity flags present",
+        "condition (d) anti_pollution_integrity_veto: INAPPLICABLE per \u00a75.17 for surge_short",
+        "condition (e) lookahead_veto: data_after_cutoff_used=false, lookahead_safe=true; not tripped",
+        "all five conditions evaluated mechanically",
+        "no veto conditions tripped",
+        "candidate passes veto gate"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": false,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-22T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "OBLG",
+      "decision_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_available_as_of": "2025-04-22T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision with structural absence corroboration",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open (3.96) vs last_eod_close (2.14)",
+        "price_snapshot.return_5d_pct (-13.36%)",
+        "price_snapshot.return_20d_pct (-40.56%)",
+        "price_snapshot.relative_volume_vs_20d (2.605x)",
+        "corporate_calendar.earnings (consistent negative EPS: -0.7721, -11.25, -1.6, -2.8)",
+        "corporate_calendar.splits (1:40, 1:15, 1:10 reverse splits)",
+        "valuation_snapshot.pe_ratio (-0.937)",
+        "valuation_snapshot.net_margin_pct_ttm (-260.77%)",
+        "news_event_summary.status (data_unavailable, 0 items in window)",
+        "filing_confirmation.status (not_evaluated)",
+        "alternative_data_features.wikipedia_pageviews (unrelated mapping to Atlantean_language)",
+        "alternative_data_features.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (1 Buy rating unchanged since 2021-09)",
+        "information_integrity_assessment.source_tier_distribution (T1=0, T2=0, T3=1, T4=1)",
+        "upstream_agent_outputs.narrative_event.verdict (unsupported_claim)",
+        "upstream_agent_outputs.alt_data_verify.verdict (insufficient_evidence_to_verify)",
+        "upstream_agent_outputs.surge_short.recommended_action (short)",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (no veto tripped)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 rows; 20 dropped post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (not_connected)",
+        "fundamental_snapshot.snapshot_quarter (all null)",
+        "upstream_agent_outputs.fundamental (not provided)",
+        "upstream_agent_outputs.valuation (not provided)",
+        "upstream_agent_outputs.network_effect (not provided)"
+      ],
+      "reasoning_summary": "OBLG surged 93.2% (2.05\u21923.96) then collapsed 45.9% (3.96\u21922.14). The surge lacks observable corroboration: zero news items in the allowed window (20 dropped post-cutoff), no SEC filing confirmation, no analyst updates, and no legitimate alternative-data signals (Wikipedia pageviews mapped to 'Atlantean_language' is a data artifact; GitHub unmapped). Fundamentals are deteriorating: EPS -0.7721 (Q1 2025), -11.25 (Q4 2024); net margin -260.77%; multiple reverse splits (1:40, 1:15, 1:10) signal chronic distress. The structural absence of hard-to-fake evidence (news, filings, analyst activity, legitimate alt-data) relative to the magnitude of the surge is the primary bear-thesis signal per \u00a713.6 SOFT_REASONING and \u00a75.17 surge-short integrity-veto exception. This is a classic momentum reversal in a fundamentally distressed micro-cap. Narrative Agent verdict: unsupported_claim (no catalyst identified). Alt-Data Verification verdict: insufficient_evidence_to_verify (structural absence is bear-thesis input). Surge-Short Agent verdict: short (momentum vs value judgment favors short). Risk Agent verdict: no veto tripped (all five conditions evaluated mechanically; candidate passes veto gate). Macro regime is Strengthening/Expansionary with strict equity discipline, which does not explain a -40% 20-day decline in a single micro-cap. ADaS lagged shows prior-day disagreement on CHRO (confidence_dispersion=0.7071, 3 dissenting agents), but this is a different ticker and does not override today's OBLG analysis. PM aggregates upstream verdicts: the preponderance of evidence supports a bear thesis driven by structural absence of corroboration, negative fundamentals, and momentum exhaustion. Position sizing per \u00a74.8: new surge-short entry = 0.005 (0.5%) mechanically.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If an 8-K or press release emerges post-decision confirming a material catalyst (M&A, financing, partnership, regulatory approval) that drove the surge, the bear thesis weakens.",
+        "If Q2 2025 earnings (expected ~May 2025) show material revenue growth or path to profitability, the short thesis is challenged.",
+        "If alternative data (GitHub, web traffic, hiring, patent filings) emerges showing real operational activity, confidence in the short thesis declines.",
+        "If institutional ownership or short-squeeze dynamics emerge and borrow becomes unavailable, momentum could override fundamentals in the near term.",
+        "If Wikipedia pageviews mapping is corrected to reflect legitimate OBLG company attention (not 'Atlantean_language'), the alt-data assessment changes."
+      ],
+      "risk_flags": [
+        "Micro-cap liquidity risk: volume 29,828 shares, dollar volume $63,831.92; position sizing must account for low float and wide spreads.",
+        "Reverse-split history (1:40, 1:15, 1:10) indicates chronic distress; bankruptcy or further dilution is a tail risk.",
+        "Negative earnings and negative margins create potential for gap-down moves on bad news; short squeeze risk if borrow availability is constrained.",
+        "Information integrity low (T1=0, T2=0); narrative may be driven by low-tier sources or retail speculation.",
+        "Data-quality risk: Wikipedia pageviews mapped to 'Atlantean_language' suggests potential data-quality pollution; recommend post-decision verification.",
+        "No upstream agent verdicts for Fundamental, Valuation, or Network-Effect agents in packet; cannot cross-check with full prelude suite."
+      ],
+      "suggested_improvements": [
+        "Obtain SEC EDGAR filings (8-K, 10-K, 10-Q) for OBLG to establish the company's actual sector, business model, and recent material events.",
+        "Retrieve and review the 20 news items dropped post-cutoff to determine if any contain material disclosures (bankruptcy, delisting, reverse split announcement, etc.).",
+        "Verify the data-mapping between ticker OBLG and Wikipedia article 'Atlantean_language' \u2014 this appears to be a schema or seed-data error.",
+        "Cross-check with OTC Markets or FINRA to confirm OBLG's listing status and any trading halts or delisting notices.",
+        "Implement a 'data-mapping validation' layer in the alternative_data_features adapter to flag nonsensical ticker-to-article mappings before they reach the agent.",
+        "Wire sec_8k_fulltext and sec_edgar adapters to retrieve actual SEC filings for distressed equities.",
+        "Add sector-specific risk flags for micro-cap distressed equities (bankruptcy-watch, delisting-risk, reverse-split tracking).",
+        "Implement real-time analyst-grade change detection (not just historical snapshots) to catch downgrades."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; no items remain in window. This is the PRIMARY BEAR-THESIS SIGNAL: a 93% surge should have verifiable news, but none is present in the allowed window."
+        },
+        {
+          "kind": "alt_data_mapping_error",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews: ticker='OBLG' mapped to article_title='Atlantean_language' \u2014 likely data-mapping artifact; no business relevance."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "info",
+          "detail": "fundamental_snapshot.snapshot_quarter all null; no PIT-safe quarterly data available."
+        },
+        {
+          "kind": "filing_not_evaluated",
+          "severity": "warning",
+          "detail": "filing_confirmation.status='not_evaluated'; SEC 8-K adapter not wired; no filing confirmation available."
+        },
+        {
+          "kind": "information_integrity_low",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=1; use_as_primary_signal_allowed=false per schema v1.1 decision #8."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound and PIT-safe. The primary weakness is the absence of news_event_summary.items and filing_confirmation data \u2014 these are not schema weaknesses but rather informative absences that support the bear thesis. The packet correctly flags these as data_unavailable and not_evaluated. The Wikipedia pageviews mapping error (OBLG \u2192 Atlantean_language) is a data-quality issue that undermines confidence in the alternative_data_features block, but this is an operational issue, not a schema weakness. The surge_short agent's alpha is principally driven by structural-absence reasoning, and this packet exemplifies that pattern.",
+      "recommended_followups": [
+        "Post-decision: retrieve and analyze the 20 news items dropped post-cutoff to identify any material catalyst that occurred on 2025-04-22 after 09:30 ET.",
+        "Post-decision: obtain OBLG's SEC filings to confirm sector, business model, and any recent material events (bankruptcy, delisting, reverse split, etc.).",
+        "Post-decision: cross-check OBLG's listing status on NASDAQ, OTC Markets, and FINRA to confirm it is still trading and not under a halt.",
+        "Post-decision: monitor for critical-severity flags in real-time data feeds.",
+        "Post-decision: assess short-borrow availability and cost before position entry; if constrained, squeeze risk may override fundamental thesis.",
+        "Set review trigger at Q2 2025 earnings (expected ~May 2025) to reassess fundamentals and confirm or invalidate the short thesis."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "OBLG surged 93% without news/filing corroboration; collapsed 46% post-surge. Structural absence of hard-to-fake evidence (news, SEC filings, analyst updates, legitimate alt-data) is bear-thesis signal. Fundamentals deteriorating (EPS -0.77/-11.25/-1.6/-2.8; margin -260.77%). Multiple reverse splits (1:40, 1:15, 1:10) signal distress. Momentum reversal in micro-cap with negative fundamentals. Entry at 0.5% per \u00a74.8 fixed sizing.",
+      "risk_notes": [
+        "Micro-cap liquidity: volume 29,828 shares; position sizing accounts for low float.",
+        "Distress risk: multiple reverse splits and negative fundamentals indicate chronic distress; bankruptcy tail risk.",
+        "Squeeze risk: monitor short-borrow availability and cost; if constrained, squeeze risk may override fundamental thesis.",
+        "Data-quality risk: Wikipedia pageviews mapping error suggests potential data-quality pollution; recommend post-decision verification.",
+        "No upstream Fundamental/Valuation/Network-Effect verdicts in packet; cannot cross-check with full prelude suite."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long candidates only. Candidate type is surge_short; not applicable."
+        },
+        {
+          "name": "short_position_cap_5_13_b",
+          "tripped": false,
+          "note": "No current position data provided in packet. Candidate is initial entry. Surge-short sleeve cap (10% max per \u00a74.8) not breached by new 0.5% position."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains no entries with severity='critical'. Highest severity is 'warning'. Condition not tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) is INAPPLICABLE to candidate_type=surge_short per \u00a75.17. Veto does not apply."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. No lookahead violation. Condition not tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "candidate_type=surge_short identified",
+        "\u00a75.13 hard-veto evaluation initiated",
+        "condition (a) sleeve_cap_breach: not applicable to surge_short",
+        "condition (b) short_position_cap: no current position; initial entry; not breached",
+        "condition (c) critical_data_quality_flag: no critical-severity flags present",
+        "condition (d) anti_pollution_integrity_veto: INAPPLICABLE per \u00a75.17 for surge_short",
+        "condition (e) lookahead_veto: data_after_cutoff_used=false, lookahead_safe=true; not tripped",
+        "all five conditions evaluated mechanically",
+        "no veto conditions tripped",
+        "candidate passes veto gate",
+        "upstream_agent_outputs aggregated: narrative_event (unsupported_claim), alt_data_verify (insufficient_evidence_to_verify), surge_short (short), risk (no veto)",
+        "preponderance of evidence analysis: structural absence of corroboration + negative fundamentals + momentum exhaustion = bear thesis",
+        "decision: short at 0.005 (0.5%) per \u00a74.8 fixed sizing for new surge-short entry",
+        "execution_plan: T+1 next-open, sell_to_open, 0.5% of portfolio"
+      ],
+      "decision_log": [
+        "2025-04-22T09:30:00-04:00 [ENVELOPE] decision_timestamp=2025-04-22T09:30:00-04:00, allowed_data_cutoff=2025-04-22T09:30:00-04:00, data_after_cutoff_used=false, lookahead_safe=true, immutable_decision_flag=true",
+        "2025-04-22T09:30:00-04:00 [CANDIDATE_TYPE] candidate_type=surge_short identified from upstream_agent_outputs.surge_short",
+        "2025-04-22T09:30:00-04:00 [PRICE_ACTION] trigger_day_open=3.96, last_eod_close=2.14, surge_magnitude=+93.2%, post_surge_decay=-45.9%, return_5d=-13.36%, return_20d=-40.56%, relative_volume=2.605x",
+        "2025-04-22T09:30:00-04:00 [NARRATIVE_ASSESSMENT] upstream_agent_outputs.narrative_event.verdict=unsupported_claim, catalyst_type=unknown_no_catalyst_identified, company_claim=NO COMPANY CLAIM AVAILABLE, evidence_sufficiency=insufficient",
+        "2025-04-22T09:30:00-04:00 [ALT_DATA_ASSESSMENT] upstream_agent_outputs.alt_data_verify.verdict=insufficient_evidence_to_verify, evidence_score=0.15, narrative_price_gap_assessment=not_evaluated, hard_to_fake_signal_summary=NO HARD-TO-FAKE SIGNALS PRESENT",
+        "2025-04-22T09:30:00-04:00 [STRUCTURAL_ABSENCE_ANALYSIS] news_event_summary.status=data_unavailable (0 items in window, 20 dropped post-cutoff), filing_confirmation.status=not_evaluated (not_connected), alternative_data_features.wikipedia_pageviews=data_mapping_error (Atlantean_language), alternative_data_features.github_public=unmapped_ticker, sentiment_community_ownership_evidence.fmp_sentiment=stale (1 Buy rating unchanged since 2021-09)",
+        "2025-04-22T09:30:00-04:00 [FUNDAMENTAL_ASSESSMENT] corporate_calendar.earnings=[EPS -0.7721 (Q1 2025), -11.25 (Q4 2024), -1.6 (Q3 2024), -2.8 (Q2 2024)], valuation_snapshot.pe_ratio=-0.937, valuation_snapshot.net_margin_pct_ttm=-260.77%, valuation_snapshot.roe=-0.808, valuation_snapshot.roa=-0.773",
+        "2025-04-22T09:30:00-04:00 [DISTRESS_SIGNALS] corporate_calendar.splits=[1:40 (2024-08-26), 1:15 (2023-01-04), 1:10 (2019-04-18)], multiple_reverse_splits=true, chronic_dilution_pattern=true",
+        "2025-04-22T09:30:00-04:00 [INFORMATION_INTEGRITY] information_integrity_assessment.status=insufficient_evidence, source_tier_distribution=[T1=0, T2=0, T3=1, T4=1], use_as_primary_signal_allowed=false, pollution_risk_level=unknown",
+        "2025-04-22T09:30:00-04:00 [SURGE_SHORT_VERDICT] upstream_agent_outputs.surge_short.recommended_action=short, short_thesis_status=valid, evidence_sufficiency=partial, momentum_vs_value_judgment=momentum",
+        "2025-04-22T09:30:00-04:00 [RISK_VETO_EVALUATION] upstream_agent_outputs.risk.veto_conditions_evaluated=[sleeve_cap_breach=false, short_position_cap=false, critical_data_quality_flag=false, anti_pollution_integrity_veto=INAPPLICABLE_per_5_17, lookahead_veto=false], no_veto_tripped=true",
+        "2025-04-22T09:30:00-04:00 [MACRO_CONTEXT] macro_regime=Strengthening/Expansionary, equity_allocation_cap=30%, equity_discipline=strict_quality_and_valuation, stress_score=1, does_not_explain_40pct_decline_in_micro_cap=true",
+        "2025-04-22T09:30:00-04:00 [ADAS_LAGGED_CONTEXT] adas_lagged.ticker=CHRO (different ticker), adas_lagged.confidence_dispersion=0.7071 (prior-day disagreement), does_not_override_oblg_analysis=true",
+        "2025-04-22T09:30:00-04:00 [PREPONDERANCE_OF_EVIDENCE] structural_absence_of_corroboration=primary_bear_signal, negative_fundamentals=supporting_signal, momentum_exhaustion=supporting_signal, lack_of_positive_alt_data=supporting_signal, coherence_of_bear_thesis=high",
+        "2025-04-22T09:30:00-04:00 [DECISION_SYNTHESIS] bear_thesis_preponderance=strong, confidence_level=medium (due to missing upstream agents and data-quality issues), decision=short, position_size_pct=0.005 (per \u00a74.8 fixed sizing for new surge-short entry)",
+        "2025-04-22T09:30:00-04:00 [EXECUTION_PLAN] order_type=T+1_next-open, execution_timestamp=2025-04-22T09:45:00-04:00, side=sell_to_open, size_pct_of_portfolio=0.005"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-22T09:45:00-04:00",
+        "ticker": "OBLG",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_universal_soft_veto",
+        "evidence_packet_hash": "sha256:46a9c1961c91c7fbde77a4c3c07524f9a1bf8daa21d338d6f456a9604d5563c9"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews mapped to 'Atlantean_language' is a data-quality artifact, not legitimate community attention. FMP sentiment shows 1 Buy rating unchanged since 2021-09; no recent retail or community-driven attention detected.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "dismiss",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No company claim available in evidence packet. News_event_summary.status='data_unavailable'; all news items dropped post-cutoff. No SEC 8-K filing, press release, or official disclosure present. The surge lacks a verifiable public narrative.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Structural absence of hard-to-fake evidence (news, SEC filings, analyst updates, legitimate alt-data) prevents confirmation of a positive thesis. The bear thesis is driven by absence patterns, not by positive confirmation.",
+      "sentiment_risk_adjustment_note": "FMP sentiment is stale (1 Buy rating unchanged since 2021-09, 5+ months old). No recent analyst updates or sentiment shifts detected. Sentiment data is descriptor-only and does not override the structural absence of corroboration.",
+      "ownership_risk_adjustment_note": "Ownership positioning data not evaluated in packet. No institutional sponsorship or smart-money support signals available. Micro-cap liquidity risk remains.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "medium",
+      "institutional_sponsorship_note": "No institutional sponsorship signals detected. Analyst sentiment flat (1 Buy rating unchanged since 2021-09). No evidence of institutional support for the surge.",
+      "smart_money_benchmark_note": "No smart-money support detected. Structural absence of positive alt-data signals suggests the surge is driven by momentum/retail speculation, not smart-money activity.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-22T09:30:00-04:00",
+      "execution_timestamp": "2025-04-22T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:0d0ee092fead7ae9568c49356614013218cb49762f51e154143c8ebccb930379",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

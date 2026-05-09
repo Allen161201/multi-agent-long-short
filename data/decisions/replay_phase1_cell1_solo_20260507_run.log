@@ -1,0 +1,400 @@
+  ablation cell-id    : phase1_cell1_solo
+  ablation agent_mode : solo
+  ablation topology   : pipeline
+  ablation leave-out  : (none)
+  ablation disable_adas: 0
+  effective adapters  : ('wikipedia_pageviews', 'sec_edgar', 'github_public', 'sec_8k_fulltext', 'github_commit_messages', 'sec_form4', 'sec_13f', 'polygon_news', 'fmp_sentiment')
+  PORT_DIR            : F:\projects\altdata\data\decisions\_portfolios\phase1_cell1_solo_20260507
+[precondition] P1 mode='replay' enforced at market_screener.get_top_gainers
+[precondition] P2 packet replay-mode forbidden-fields (14 paths) wired
+[precondition] P3 decision_date explicit per WINDOW_DAYS
+[precondition] Backtest preconditions: mode=replay packet_mode=replay get_top_gainers_mode=replay decision_date_explicit=True
+[start] window=2025-03-03..2025-03-31 (21 days)  hard_cap=$22.5 max_surge/day=3
+[start] cumulative_cost_at_entry=$0.0000
+[start] ¡ì27.14 default initial state: 100% cash (no UST seed). Agent decides FI deployment per ¡ì27.15.
+
+=== day 2025-03-03 ===
+  surge-short candidates passing ¡ì2.1: 3
+    BTOG      + 421.81%  vol=4,879,550.316667  close=$19.16
+    ACON      + 115.22%  vol=3,352,416.296296  close=$205.20
+    FTFT      +  85.94%  vol= 5,500,649.5  close=$10.08
+  [trigger] BTOG surge_short  cumulative=$0.0000
+    -> done in 4.32s  cost=$0.0000  pos_opened=True
+  [trigger] ACON surge_short  cumulative=$0.0000
+    -> done in 4.1s  cost=$0.0000  pos_opened=True
+  [trigger] FTFT surge_short  cumulative=$0.0000
+    -> done in 44.78s  cost=$0.0619  pos_opened=False
+  [ql] weekly scan firing (first day of window)
+  [ql_universe] PIT as-of 2025-03-03: 520 tickers (sp500 ¡È ndx100, reconstructed from FMP change log)
+  [ql_scan] progress 50/520; candidates_so_far=0
+  [ql_scan] progress 100/520; candidates_so_far=1
+  [ql_scan] progress 150/520; candidates_so_far=1
+  [ql_scan] progress 200/520; candidates_so_far=1
+  [ql_scan] progress 250/520; candidates_so_far=1
+  [ql_scan] progress 300/520; candidates_so_far=1
+  [ql_scan] progress 350/520; candidates_so_far=1
+  [ql_scan] progress 400/520; candidates_so_far=1
+  [ql_scan] progress 450/520; candidates_so_far=1
+  [ql_scan] progress 500/520; candidates_so_far=1
+  [ql_scan] scan complete: 1 tickers with event in [2025-03-03, 2025-03-17]; top 5 = ['BF-B']
+  [trigger] BF-B quality_long  earliest_event=2025-03-04  cumulative=$0.0619
+    -> done in 43.2s  cost=$0.0625  pos_opened=False
+  [cover-init] BTOG baseline profit=0.00% days_held=0
+  [cover-init] ACON baseline profit=0.00% days_held=0
+  eod nav=$1,000,000.00 wall=612.3s   state-> 2025-03-03_eod_state.json
+
+=== day 2025-03-04 ===
+  surge-short candidates passing ¡ì2.1: 0
+  [cover-skip] BTOG no trigger (profit=-12.12%, days_held=1)
+  [cover-eval] ACON triggers=['band_cross'] cumulative=$0.1244
+    HOLD ACON: 
+  eod nav=$1,000,611.26 wall=58.7s   state-> 2025-03-04_eod_state.json
+
+=== day 2025-03-05 ===
+  surge-short candidates passing ¡ì2.1: 2
+    ARBB      +  70.56%  vol=5,861,051.733333  close=$12.55
+    CMRX      +  69.35%  vol=118,555,030.0  close=$8.46
+  [trigger] ARBB surge_short  cumulative=$0.2329
+    -> done in 51.69s  cost=$0.0562  pos_opened=False
+  [trigger] CMRX surge_short  cumulative=$0.2891
+    -> done in 69.15s  cost=$0.0819  pos_opened=False
+  [cover-skip] BTOG no trigger (profit=-4.82%, days_held=2)
+  [cover-eval] ACON triggers=['band_cross'] cumulative=$0.3711
+    HOLD ACON: Position is +7.89% profitable after 2 days, capturing the bulk of the 77.71% 5-day surge. Retracemen
+  eod nav=$1,000,153.64 wall=176.6s   state-> 2025-03-05_eod_state.json
+
+=== day 2025-03-06 ===
+  surge-short candidates passing ¡ì2.1: 3
+    AGMH      +  89.15%  vol=13,894,106.96  close=$10.75
+    GV        +  64.82%  vol=135,249,439.0  close=$4.89
+    PSTV      +  62.86%  vol=14,383,401.24  close=$36.00
+  [trigger] AGMH surge_short  cumulative=$0.4651
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 44.27s  cost=$0.0484  pos_opened=False
+  [trigger] GV surge_short  cumulative=$0.5134
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 50.8s  cost=$0.0509  pos_opened=False
+  [trigger] PSTV surge_short  cumulative=$0.5644
+    -> done in 46.25s  cost=$0.0637  pos_opened=False
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$0.6281
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-eval] ACON triggers=['band_cross', 'profit_>=35%'] cumulative=$0.7004
+    COVER ACON: ¡ì10.14.R-COVER-08 mandatory profit >=35%
+  eod nav=$1,013,512.02 wall=203.3s   state-> 2025-03-06_eod_state.json
+
+=== day 2025-03-07 ===
+  surge-short candidates passing ¡ì2.1: 1
+    SUNE      + 184.19%  vol=2,410,460.655  close=$79.70
+  [trigger] SUNE surge_short  cumulative=$0.7004
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 5.36s  cost=$0.0000  pos_opened=True
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$0.7004
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-init] SUNE baseline profit=0.00% days_held=0
+  [¡ì4.9 reinvest] realized=$3,947.94 regime=overheat -> to_long=25.0% ($986.99) to_cash=75.0% exec=2025-03-10
+  [Friday FI review] 2025-03-07 cumulative=$0.7674
+    FI: deploy 1m face=$150,000
+    FI: deploy 3m face=$100,000
+    FI: deploy 6m face=$100,000
+    FI: deploy 1y face=$50,000
+  eod nav=$1,013,909.46 wall=93.4s   state-> 2025-03-07_eod_state.json
+
+=== day 2025-03-10 ===
+  surge-short candidates passing ¡ì2.1: 2
+    RDFN      +  72.34%  vol=94,381,872.0  close=$9.77
+    CKPT      +  65.18%  vol=61,924,933.0  close=$3.98
+  [trigger] RDFN surge_short  cumulative=$0.7981
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 56.41s  cost=$0.0703  pos_opened=False
+  [trigger] CKPT surge_short  cumulative=$0.8684
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 52.13s  cost=$0.0696  pos_opened=False
+  [ql] weekly scan firing (first day of window)
+  [ql_universe] PIT as-of 2025-03-10: 520 tickers (sp500 ¡È ndx100, reconstructed from FMP change log)
+  [ql_scan] progress 50/520; candidates_so_far=0
+  [ql_scan] progress 100/520; candidates_so_far=1
+  [ql_scan] progress 150/520; candidates_so_far=1
+  [ql_scan] progress 200/520; candidates_so_far=1
+  [ql_scan] progress 250/520; candidates_so_far=1
+  [ql_scan] progress 300/520; candidates_so_far=1
+  [ql_scan] progress 350/520; candidates_so_far=1
+  [ql_scan] progress 400/520; candidates_so_far=1
+  [ql_scan] progress 450/520; candidates_so_far=1
+  [ql_scan] progress 500/520; candidates_so_far=1
+  [ql_scan] scan complete: 1 tickers with event in [2025-03-10, 2025-03-24]; top 5 = ['CCEP']
+  [trigger] CCEP quality_long  earliest_event=2025-03-21  cumulative=$0.9379
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 52.09s  cost=$0.0642  pos_opened=False
+  [cover-skip] BTOG no trigger (profit=-48.79%, days_held=5)
+  [cover-eval] SUNE triggers=['band_cross'] cumulative=$1.0022
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD SUNE: 
+  eod nav=$1,017,752.18 wall=223.6s   state-> 2025-03-10_eod_state.json
+
+=== day 2025-03-11 ===
+  surge-short candidates passing ¡ì2.1: 1
+    TSVT      +  75.71%  vol=31,485,630.0  close=$4.95
+  [trigger] TSVT surge_short  cumulative=$1.0796
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 51.54s  cost=$0.0611  pos_opened=False
+  [cover-skip] BTOG no trigger (profit=-52.87%, days_held=6)
+  [cover-eval] SUNE triggers=['band_cross'] cumulative=$1.1407
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD SUNE: 
+  eod nav=$1,017,004.59 wall=106.8s   state-> 2025-03-11_eod_state.json
+
+=== day 2025-03-12 ===
+  surge-short candidates passing ¡ì2.1: 0
+  [cover-skip] BTOG no trigger (profit=-15.57%, days_held=7)
+  [cover-eval] SUNE triggers=['band_cross'] cumulative=$1.2181
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD SUNE: Position shows 27.23% unrealized profit over 3 days, placing it in the 'consider cover' band per ¡ì33
+  eod nav=$1,019,584.54 wall=59.6s   state-> 2025-03-12_eod_state.json
+
+=== day 2025-03-13 ===
+  surge-short candidates passing ¡ì2.1: 1
+    SPGC      +  76.76%  vol=12,193,133.066667  close=$4.20
+  [trigger] SPGC surge_short  cumulative=$1.2975
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 53.5s  cost=$0.0553  pos_opened=False
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$1.3528
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: Position BTOG short entered 2025-03-03 at 19.158; currently 22.14 (last EOD 2025-03-12). Unrealized 
+  [cover-eval] SUNE triggers=['band_cross'] cumulative=$1.4268
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD SUNE: 
+  eod nav=$1,020,796.59 wall=185.6s   state-> 2025-03-13_eod_state.json
+
+=== day 2025-03-14 ===
+  surge-short candidates passing ¡ì2.1: 1
+    RDUS      + 107.50%  vol= 8,534,952.0  close=$27.81
+  [trigger] RDUS surge_short  cumulative=$1.5121
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 9.81s  cost=$0.0011  pos_opened=True
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$1.5132
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-eval] SUNE triggers=['band_cross'] cumulative=$1.5823
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD SUNE: Surge-short position SUNE entered 2025-03-07 at 79.7 is now -31.74% underwater at 63.98 (2025-03-13 
+  [cover-init] RDUS baseline profit=0.00% days_held=0
+  [Friday FI review] 2025-03-14 cumulative=$1.6611
+  eod nav=$1,017,563.45 wall=155.4s   state-> 2025-03-14_eod_state.json
+
+=== day 2025-03-17 ===
+  surge-short candidates passing ¡ì2.1: 1
+    NAOV      +  75.44%  vol=42,177,896.0  close=$3.43
+  [trigger] NAOV surge_short  cumulative=$1.6887
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 56.95s  cost=$0.0690  pos_opened=False
+  [ql] weekly scan firing (first day of window)
+  [ql_universe] PIT as-of 2025-03-17: 520 tickers (sp500 ¡È ndx100, reconstructed from FMP change log)
+  [ql_scan] progress 50/520; candidates_so_far=0
+  [ql_scan] progress 100/520; candidates_so_far=1
+  [ql_scan] progress 150/520; candidates_so_far=1
+  [ql_scan] progress 200/520; candidates_so_far=1
+  [ql_scan] progress 250/520; candidates_so_far=1
+  [ql_scan] progress 300/520; candidates_so_far=1
+  [ql_scan] progress 350/520; candidates_so_far=1
+  [ql_scan] progress 400/520; candidates_so_far=1
+  [ql_scan] progress 450/520; candidates_so_far=1
+  [ql_scan] progress 500/520; candidates_so_far=1
+  [ql_scan] scan complete: 1 tickers with event in [2025-03-17, 2025-03-31]; top 5 = ['CCEP']
+  [trigger] CCEP quality_long  earliest_event=2025-03-21  cumulative=$1.7577
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 52.88s  cost=$0.0684  pos_opened=False
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$1.8261
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-skip] SUNE no trigger (profit=-13.95%, days_held=6)
+  [cover-skip] RDUS no trigger (profit=-3.63%, days_held=1)
+  eod nav=$1,018,443.47 wall=170.7s   state-> 2025-03-17_eod_state.json
+
+=== day 2025-03-18 ===
+  surge-short candidates passing ¡ì2.1: 0
+  [cover-skip] BTOG no trigger (profit=12.62%, days_held=11)
+  [cover-skip] SUNE no trigger (profit=1.88%, days_held=7)
+  [cover-skip] RDUS no trigger (profit=-4.21%, days_held=2)
+  eod nav=$1,019,522.31 wall=3.1s   state-> 2025-03-18_eod_state.json
+
+=== day 2025-03-19 ===
+  surge-short candidates passing ¡ì2.1: 0
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$1.8963
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-skip] SUNE no trigger (profit=-8.91%, days_held=8)
+  [cover-skip] RDUS no trigger (profit=-4.49%, days_held=3)
+  eod nav=$1,019,202.67 wall=59.7s   state-> 2025-03-19_eod_state.json
+
+=== day 2025-03-20 ===
+  surge-short candidates passing ¡ì2.1: 0
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$1.9670
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-skip] SUNE no trigger (profit=-12.67%, days_held=9)
+  [cover-skip] RDUS no trigger (profit=-4.24%, days_held=4)
+  eod nav=$1,018,459.82 wall=60.8s   state-> 2025-03-20_eod_state.json
+
+=== day 2025-03-21 ===
+  surge-short candidates passing ¡ì2.1: 1
+    ALUR      +  69.74%  vol=74,451,737.0  close=$3.58
+  [trigger] ALUR surge_short  cumulative=$2.0381
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 63.77s  cost=$0.0612  pos_opened=False
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$2.0993
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-skip] SUNE no trigger (profit=-12.55%, days_held=10)
+  [cover-skip] RDUS no trigger (profit=-4.46%, days_held=5)
+  [Friday FI review] 2025-03-21 cumulative=$2.1717
+    FI: deploy 3m face=$100,000
+    FI: deploy 6m face=$100,000
+    FI: hold 1m face=$150,000
+    FI: hold 3m face=$100,000
+    FI: hold 6m face=$100,000
+    FI: hold 1y face=$50,000
+  eod nav=$1,022,205.57 wall=175.2s   state-> 2025-03-21_eod_state.json
+
+=== day 2025-03-24 ===
+  surge-short candidates passing ¡ì2.1: 1
+    XHLD      +  80.71%  vol=7,190,851.466667  close=$32.25
+  [trigger] XHLD surge_short  cumulative=$2.2072
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 65.39s  cost=$0.0580  pos_opened=False
+  [ql] weekly scan firing (first day of window)
+  [ql_universe] PIT as-of 2025-03-24: 519 tickers (sp500 ¡È ndx100, reconstructed from FMP change log)
+  [ql_scan] progress 50/519; candidates_so_far=0
+  [ql_scan] progress 100/519; candidates_so_far=0
+  [ql_scan] progress 150/519; candidates_so_far=0
+  [ql_scan] progress 200/519; candidates_so_far=0
+  [ql_scan] progress 250/519; candidates_so_far=0
+  [ql_scan] progress 300/519; candidates_so_far=0
+  [ql_scan] progress 350/519; candidates_so_far=0
+  [ql_scan] progress 400/519; candidates_so_far=0
+  [ql_scan] progress 450/519; candidates_so_far=0
+  [ql_scan] progress 500/519; candidates_so_far=0
+  [ql_scan] scan complete: 0 tickers with event in [2025-03-24, 2025-04-07]; top 5 = []
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$2.2652
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-skip] SUNE no trigger (profit=-35.51%, days_held=11)
+  [cover-skip] RDUS no trigger (profit=-4.28%, days_held=6)
+  eod nav=$1,020,860.68 wall=133.8s   state-> 2025-03-24_eod_state.json
+
+=== day 2025-03-25 ===
+  surge-short candidates passing ¡ì2.1: 2
+    DATS      +  71.76%  vol=143,616,828.0  close=$3.78
+    DM        +  70.04%  vol=53,773,657.0  close=$4.52
+  [trigger] DATS surge_short  cumulative=$2.3343
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 57.83s  cost=$0.0495  pos_opened=False
+  [trigger] DM surge_short  cumulative=$2.3837
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 62.86s  cost=$0.0638  pos_opened=False
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$2.4475
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-skip] SUNE no trigger (profit=-20.38%, days_held=12)
+  [cover-skip] RDUS no trigger (profit=-4.31%, days_held=7)
+  eod nav=$1,021,815.42 wall=181.5s   state-> 2025-03-25_eod_state.json
+
+=== day 2025-03-26 ===
+  surge-short candidates passing ¡ì2.1: 0
+  [cover-eval] BTOG triggers=['band_cross'] cumulative=$2.5150
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD BTOG: 
+  [cover-skip] SUNE no trigger (profit=-11.84%, days_held=13)
+  [cover-skip] RDUS no trigger (profit=-4.64%, days_held=8)
+  eod nav=$1,022,783.89 wall=63.2s   state-> 2025-03-26_eod_state.json
+
+=== day 2025-03-27 ===
+  surge-short candidates passing ¡ì2.1: 1
+    DRMA      +  62.96%  vol= 7,633,164.9  close=$14.20
+  [trigger] DRMA surge_short  cumulative=$2.5862
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 72.5s  cost=$0.0656  pos_opened=False
+  [cover-skip] BTOG no trigger (profit=31.13%, days_held=18)
+  [cover-skip] SUNE no trigger (profit=-11.54%, days_held=14)
+  [cover-skip] RDUS no trigger (profit=-4.57%, days_held=9)
+  eod nav=$1,023,039.61 wall=77.5s   state-> 2025-03-27_eod_state.json
+
+=== day 2025-03-28 ===
+  surge-short candidates passing ¡ì2.1: 1
+    PRTG      + 153.72%  vol=29,921,312.0  close=$9.60
+  [trigger] PRTG surge_short  cumulative=$2.6518
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 13.43s  cost=$0.0000  pos_opened=True
+  [cover-skip] BTOG no trigger (profit=34.07%, days_held=19)
+  [cover-skip] SUNE no trigger (profit=-1.63%, days_held=15)
+  [cover-skip] RDUS no trigger (profit=-4.21%, days_held=10)
+  [cover-init] PRTG baseline profit=0.00% days_held=0
+  [Friday FI review] 2025-03-28 cumulative=$2.6518
+  eod nav=$1,023,752.97 wall=48.2s   state-> 2025-03-28_eod_state.json
+
+=== day 2025-03-31 ===
+  surge-short candidates passing ¡ì2.1: 0
+  [ql] weekly scan firing (first day of window)
+  [ql_universe] PIT as-of 2025-03-31: 519 tickers (sp500 ¡È ndx100, reconstructed from FMP change log)
+  [ql_scan] progress 50/519; candidates_so_far=0
+  [ql_scan] progress 100/519; candidates_so_far=0
+  [ql_scan] progress 150/519; candidates_so_far=0
+  [ql_scan] progress 200/519; candidates_so_far=0
+  [ql_scan] progress 250/519; candidates_so_far=0
+  [ql_scan] progress 300/519; candidates_so_far=0
+  [ql_scan] progress 350/519; candidates_so_far=0
+  [ql_scan] progress 400/519; candidates_so_far=0
+  [ql_scan] progress 450/519; candidates_so_far=0
+  [ql_scan] progress 500/519; candidates_so_far=1
+  [ql_scan] scan complete: 1 tickers with event in [2025-03-31, 2025-04-14]; top 5 = ['WBA']
+  [trigger] WBA quality_long  earliest_event=2025-04-08  cumulative=$2.6808
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    -> done in 49.35s  cost=$0.0674  pos_opened=False
+  [cover-eval] BTOG triggers=['band_cross', 'profit_>=35%'] cumulative=$2.7482
+    COVER BTOG: ¡ì10.14.R-COVER-08 mandatory profit >=35%
+  [cover-eval] SUNE triggers=['band_cross'] cumulative=$2.7482
+fmp_sentiment press-releases: not available on current FMP plan (HTTP 404); continuing without this endpoint
+fmp_sentiment news/stock-sentiments-rss: not available on current FMP plan (HTTP 404); continuing without this endpoint
+    HOLD SUNE: SUNE short position (entry 2025-03-07 at 79.7, 16 days held, 17.99% profit) evaluated for cover. Pri
+  [cover-skip] RDUS no trigger (profit=-3.85%, days_held=11)
+  [cover-skip] PRTG no trigger (profit=3.65%, days_held=1)
+  eod nav=$1,032,325.26 wall=119.5s   state-> 2025-03-31_eod_state.json
+
+[summary] F:\projects\altdata\data\decisions\replay_phase1_cell1_solo_20260507\_summary.json
+[done] cost=$2.8253 triggers=25 wall=2969.9s
+[precondition] P4 post-cutoff scan: 25 triggers checked, 0 violations

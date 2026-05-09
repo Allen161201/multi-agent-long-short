@@ -1,0 +1,266 @@
+{
+  "trigger_id": "92d6ad7ddb36",
+  "ticker": "GV",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-06T09:30:00-05:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 50.8,
+  "trigger_cost_usd": 0.050915,
+  "cumulative_cost_usd": 0.564358,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "GV",
+    "name": "GV",
+    "close": 4.89,
+    "prior_close": 3.695,
+    "change": 2.395,
+    "change_pct": 64.81732070365359,
+    "volume": 135249439.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-06",
+    "prior_trading_day": "2025-03-05",
+    "available_as_of": "2025-03-06T16:00:00-05:00",
+    "today_open": 6.09,
+    "today_volume": 135249439.0,
+    "eps_ttm": -1.5789,
+    "operating_margin_ttm": -6.8448709500149345,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-09-29 20:00:00",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:8d8ebad0e9fb28729bf41361c22a69da86f7dfca92d9695aecf71604a6d4142b",
+  "locked_decision_id": "sha256:937c324236e225ee9be12564d7fbea7b831070464b5b4ba6ec0d005e38172893",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "baseline_solo_08",
+      "agent_role_label": "Baseline Solo Agent (single-shot decision)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "GV",
+      "decision_timestamp": "2025-03-06T09:30:00-05:00",
+      "data_available_as_of": "2025-03-06T09:30:00-05:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "valuation_snapshot.valuation_inputs (PE=-0.047, PB=0.144, EV/EBITDA=-5.69)",
+        "fundamental_snapshot.snapshot_quarter (revenue=3.3M, net_income=-5.9M, net_margin=-175.69%)",
+        "price_snapshot.return_5d_pct (153.4% spike)",
+        "price_snapshot.relative_volume_vs_20d (19.47x normal)",
+        "macro_regime (Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution)",
+        "alternative_data_features.attention.wikipedia_pageviews (low, stable 8-27 views/day, no spike)",
+        "news_event_summary (status=data_unavailable, 0 items post-cutoff)",
+        "information_integrity_assessment (status=insufficient_evidence, T3 only, use_as_primary_signal_allowed=false)",
+        "sentiment_community_ownership_evidence (status=not_evaluated, no data)",
+        "corporate_calendar (no near-term catalysts, past earnings all negative)"
+      ],
+      "evidence_missing": [
+        "narrative_price_gap_assessment (agent_internal_pending, no LLM reasoning)",
+        "fmp_sentiment (all endpoints empty or unavailable)",
+        "sec_13f / institutional ownership positioning (not_available_on_current_plan)",
+        "sec_form4 / insider activity (no recent transactions)",
+        "filing_confirmation / 8-K (no recent filings)",
+        "github_public / tech activity (unmapped_ticker)",
+        "market_sentiment / credibility-adjusted sentiment (not_evaluated)",
+        "primary source corroboration for any catalyst claim"
+      ],
+      "reasoning_summary": "GV exhibits extreme distress fundamentals (negative PE, negative margins -175.69%, negative ROA/ROE, debt/equity 9.46x, current ratio 0.066) paired with a 153% 5-day price spike and 19.5x volume surge. Macro regime is Overheat/Moderately Restrictive, mandating strict quality discipline. Wikipedia pageviews show no abnormal attention (8-27 views/day, stable). No news, no sentiment data, no institutional positioning data, no insider activity, no 8-K filings. Information integrity assessment flags low-tier-only evidence (T3 only) and explicitly disallows use_as_primary_signal. The price spike lacks corroboration from alternative data, news, or fundamental improvement. This pattern is consistent with a distressed micro-cap experiencing retail-driven volatility without underlying catalyst or quality support. Insufficient evidence to confirm a durable short thesis; missing alt-data verification blocks the decision. Macro regime caps equity allocation at 20% and mandates strict quality\u2014GV fails quality test decisively.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Insufficient alternative data corroboration for price spike catalyst",
+        "Information integrity assessment blocks primary-signal use",
+        "Macro regime strict_quality_and_valuation_caution discipline not met",
+        "No news event, no sentiment, no ownership data to triangulate thesis",
+        "Narrative price gap assessment pending (no LLM reasoning available)"
+      ],
+      "risk_flags": [
+        "Extreme leverage (debt/equity 9.46x, current_ratio 0.066 \u2014 insolvency risk)",
+        "Negative profitability (net_margin -175.69%, ROA -0.249, ROE -1.385)",
+        "Micro-cap liquidity risk (avg_volume_20d 9.7M, but 19.5x spike suggests retail-driven)",
+        "Macro headwind: Overheat regime, 4.33% policy rate, inverted yield curve",
+        "Price spike (153% in 5d) lacks fundamental or alt-data support",
+        "Wikipedia attention flat (no meme/retail spike detected)",
+        "No institutional sponsorship data available",
+        "No insider buying to contradict distress narrative"
+      ],
+      "suggested_improvements": [
+        "Wire fmp_sentiment adapter to capture analyst grades / news sentiment",
+        "Enable sec_13f to assess institutional positioning and crowding risk",
+        "Implement narrative_price_gap_assessment LLM reasoning to triangulate catalyst",
+        "Connect github_public for tech-sector companies (GV appears unmapped)",
+        "Populate information_integrity_assessment pollution-defense layer (currently fail-closed)",
+        "Fetch Form 4 insider transactions to detect CEO/CFO confidence signals",
+        "Implement sentiment_community_ownership_evidence for retail attention detection"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "insufficient_evidence",
+          "severity": "critical",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false; T1/T2 sources absent; T3 only"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped post-cutoff; 0 items available for decision"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "fmp_sentiment: all_endpoints_empty; sec_13f: not_available_on_current_plan; github_public: unmapped_ticker"
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "warning",
+          "detail": "sentiment_community_ownership_evidence is skeleton in v1; no actual data"
+        },
+        {
+          "kind": "narrative_price_gap_pending",
+          "severity": "warning",
+          "detail": "narrative_price_gap_assessment.status=not_evaluated; agent_internal_pending; no LLM reasoning available"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs are TTM, not PIT-safe; used for display only"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not populate narrative_price_gap_assessment or sentiment_community_ownership_evidence with LLM reasoning; these blocks remain skeleton. Information_integrity_assessment pollution-defense layer unimplemented (fail-closed per schema v1.1 decision #8). Alternative-data adapters (fmp_sentiment, sec_13f, github_public) either unavailable on current plan or unmapped. This forces the baseline agent to make a decision with severely limited corroboration capacity.",
+      "recommended_followups": [
+        "Upgrade FMP plan to enable press_releases and news_sentiments_rss endpoints",
+        "Map GV ticker to github_public if applicable (currently unmapped)",
+        "Implement LLM-based narrative_price_gap_assessment in v2 generator",
+        "Enable sec_13f adapter to assess institutional crowding and smart-money positioning",
+        "Populate Form 4 insider transaction analysis (currently 0 transactions in 90d)",
+        "Implement sentiment_community_ownership_evidence with live Reddit/Twitter feeds",
+        "Add pollution-defense layer to information_integrity_assessment (currently fail-closed)"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "GV exhibits extreme distress (negative PE, -175.69% net margin, 9.46x debt/equity, 0.066 current ratio) and a 153% 5-day price spike with 19.5x volume surge. However, alternative data (Wikipedia pageviews) shows no abnormal attention, news is absent, sentiment/ownership data unavailable, and information_integrity_assessment explicitly blocks primary-signal use (T3 only, use_as_primary_signal_allowed=false). Macro regime mandates strict quality discipline; GV fails decisively. Insufficient corroboration to confirm a durable short thesis. Missing narrative_price_gap_assessment LLM reasoning and multiple alt-data adapters (fmp_sentiment, sec_13f, github_public) prevents triangulation. Fail-closed per missing-evidence policy.",
+      "risk_notes": [
+        "Extreme leverage and insolvency risk (debt/equity 9.46x, current_ratio 0.066)",
+        "Negative profitability across all metrics (net_margin -175.69%, ROA -0.249, ROE -1.385)",
+        "Price spike (153% in 5d) lacks fundamental improvement or alt-data corroboration",
+        "Wikipedia pageviews flat (8-27 views/day); no meme/retail attention spike detected",
+        "Macro regime Overheat/Moderately Restrictive mandates strict quality; GV fails",
+        "No news, no sentiment, no ownership data to support or refute short thesis",
+        "Information integrity assessment flags low-tier-only evidence; primary-signal use disallowed",
+        "Narrative price gap assessment pending (no LLM reasoning available in v1)",
+        "Multiple alt-data adapters unavailable or failed (fmp_sentiment, sec_13f, github_public)",
+        "No insider buying to contradict distress narrative; no Form 4 activity in 90d"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false; T1/T2 sources absent; narrative_price_gap_assessment pending; multiple alt-data adapters unavailable (fmp_sentiment, sec_13f, github_public)"
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": true,
+          "note": "Macro regime Overheat/Moderately Restrictive mandates strict_quality_and_valuation_caution; GV fails quality test decisively (negative PE, -175.69% net margin, 9.46x debt/equity, 0.066 current ratio)"
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "narrative_price_gap_assessment (agent_internal_pending), fmp_sentiment (all_endpoints_empty), sec_13f (not_available_on_current_plan), github_public (unmapped_ticker), sentiment_community_ownership_evidence (skeleton), sec_form4 (0 transactions in 90d)"
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false; T3 only; pollution-defense layer unimplemented; fail-closed per schema v1.1 decision #8"
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false; lookahead_safe=true; no hindsight violations detected"
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: lookahead_safe=true, data_after_cutoff_used=false, immutable_decision_flag=true \u2192 proceed",
+        "2. Assess macro_regime: Overheat/Moderately Restrictive, stress_score=2, equity_discipline=strict_quality_and_valuation_caution \u2192 strict quality required",
+        "3. Evaluate fundamental_snapshot: revenue=3.3M, net_income=-5.9M, net_margin=-175.69%, debt/equity=9.46x, current_ratio=0.066 \u2192 extreme distress, fails quality test",
+        "4. Check valuation_snapshot: PE=-0.047, PB=0.144, EV/EBITDA=-5.69 \u2192 negative metrics, not PIT-safe (TTM) \u2192 fails quality test",
+        "5. Assess price_snapshot: return_5d_pct=153.4%, relative_volume_vs_20d=19.47x \u2192 extreme spike, requires corroboration",
+        "6. Check alternative_data_features: wikipedia_pageviews stable (8-27 views/day), no spike; github_public unmapped; fmp_sentiment unavailable \u2192 no alt-data corroboration",
+        "7. Check news_event_summary: status=data_unavailable, 0 items post-cutoff \u2192 no catalyst narrative",
+        "8. Check information_integrity_assessment: use_as_primary_signal_allowed=false, T3 only, pollution-defense unimplemented \u2192 blocks primary-signal use",
+        "9. Check sentiment_community_ownership_evidence: status=not_evaluated, skeleton \u2192 no ownership/sentiment data",
+        "10. Check narrative_price_gap_assessment: status=not_evaluated, agent_internal_pending \u2192 no LLM reasoning available",
+        "11. Evaluate candidate_type=surge_short: requires corroboration of distress + catalyst + no quality support \u2192 corroboration missing (alt-data, news, sentiment all absent/unavailable)",
+        "12. Trigger veto: insufficient_evidence (multiple adapters unavailable, narrative_price_gap pending), hard_risk_limit_breached (macro regime strict quality, GV fails), missing_data_persists_beyond_tolerance (narrative, sentiment, ownership, news all absent), information_integrity_veto (T3 only, primary-signal disallowed)",
+        "13. Decision: veto \u2192 position_size_pct=0.0, decision=no_trade (fail-closed per missing-evidence policy)"
+      ],
+      "decision_log": [
+        "T+0: Envelope check \u2014 lookahead_safe=true, data_after_cutoff_used=false, immutable_decision_flag=true \u2192 proceed to analysis",
+        "T+1: Macro regime assessment \u2014 Overheat/Moderately Restrictive, stress_score=2, equity_discipline=strict_quality_and_valuation_caution \u2192 strict quality discipline required for any equity position",
+        "T+2: Fundamental analysis \u2014 revenue=3.3M, net_income=-5.9M, net_margin=-175.69%, operating_income=-169k, EBITDA=-3.3M, ROA=-0.249, ROE=-1.385, debt/equity=9.46x, current_ratio=0.066 \u2192 extreme distress, fails quality test decisively",
+        "T+3: Valuation analysis \u2014 PE=-0.047 (negative), PB=0.144, EV/EBITDA=-5.69 (negative), FCF_yield=null, ROE=-1.385, ROA=-0.249 \u2192 all metrics negative or inverted, not PIT-safe (TTM), fails quality test",
+        "T+4: Price action assessment \u2014 return_5d_pct=153.4%, return_20d_pct=140.3%, return_60d_pct=160.6%, relative_volume_vs_20d=19.47x, volume=188M (vs avg_20d=9.7M) \u2192 extreme spike, requires external corroboration",
+        "T+5: Catalyst narrative check \u2014 news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20 \u2192 no news catalyst available for decision",
+        "T+6: Alternative data corroboration \u2014 wikipedia_pageviews stable (8-27 views/day, no spike), github_public unmapped, fmp_sentiment all_endpoints_empty, sec_13f not_available_on_current_plan \u2192 no alt-data support for price spike",
+        "T+7: Information integrity assessment \u2014 use_as_primary_signal_allowed=false, T3 only (no T1/T2), pollution-defense layer unimplemented, fail-closed per schema v1.1 \u2192 blocks primary-signal use",
+        "T+8: Sentiment/ownership check \u2014 sentiment_community_ownership_evidence.status=not_evaluated, skeleton block, no data available \u2192 no sentiment or ownership corroboration",
+        "T+9: Narrative price gap check \u2014 narrative_price_gap_assessment.status=not_evaluated, agent_internal_pending, no LLM reasoning \u2192 cannot triangulate catalyst",
+        "T+10: Candidate type evaluation \u2014 candidate_type=surge_short requires (1) corroboration of distress (\u2713 fundamentals extreme), (2) catalyst narrative (\u2717 news absent), (3) alt-data corroboration (\u2717 wikipedia flat, sentiment unavailable), (4) no quality support (\u2713 fails quality test) \u2192 corroboration missing on (2) and (3)",
+        "T+11: Veto evaluation \u2014 insufficient_evidence (narrative_price_gap pending, multiple adapters unavailable), hard_risk_limit_breached (macro regime strict quality, GV fails), missing_data_persists_beyond_tolerance (news, sentiment, ownership, narrative all absent), information_integrity_veto (T3 only, primary-signal disallowed) \u2192 all veto conditions tripped",
+        "T+12: Final decision \u2014 veto tripped \u2192 decision=no_trade, position_size_pct=0.0, fail-closed per missing-evidence policy"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-06T09:45:00-05:00",
+        "ticker": null,
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:b05dba023884001515953405543ca05d99b44224ffa90e68bdac2d8c79fd97a3"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews stable (8-27 views/day); no abnormal retail/meme attention detected. Price spike (153% in 5d) not corroborated by attention metrics.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Price spike (153% in 5d) lacks primary-source corroboration. No news catalyst, no sentiment data, no ownership data, no insider activity. Information integrity assessment blocks primary-signal use (T3 only, use_as_primary_signal_allowed=false).",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "information_integrity_assessment.use_as_primary_signal_allowed=false; narrative_price_gap_assessment pending (no LLM reasoning); multiple alt-data adapters unavailable (fmp_sentiment, sec_13f, github_public); sentiment_community_ownership_evidence is skeleton; missing_data_persists_beyond_tolerance veto tripped.",
+      "sentiment_risk_adjustment_note": "Sentiment data unavailable (fmp_sentiment all_endpoints_empty, sec_13f not_available_on_current_plan). Cannot assess credibility-adjusted sentiment or sentiment_pollution_risk. Fail-closed.",
+      "ownership_risk_adjustment_note": "Ownership data unavailable (sec_13f not_available_on_current_plan, sec_form4 0 transactions in 90d). Cannot assess institutional positioning, crowding risk, or smart-money support. Fail-closed.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional ownership data available (sec_13f not_available_on_current_plan). Cannot assess sponsorship or crowding risk.",
+      "smart_money_benchmark_note": "No insider activity (sec_form4 0 transactions in 90d) and no institutional positioning data (sec_13f unavailable). Cannot assess smart-money support or confidence signals.",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-06T09:30:00-05:00",
+      "execution_timestamp": "2025-03-06T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:c41c1bd1f1741ef65c6a44b5fa816ecedf80611efa8cd5b7f00f654062b09bb3",
+      "immutable_decision_flag": true
+    }
+  }
+}

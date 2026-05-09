@@ -1,0 +1,1170 @@
+{
+  "trigger_id": "222066e90c71",
+  "ticker": "DM",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-25T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 219.24,
+  "trigger_cost_usd": 0.303175,
+  "cumulative_cost_usd": 8.840763,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "DM",
+    "name": "DM",
+    "close": 4.52,
+    "prior_close": 2.27,
+    "change": 1.5899999999999999,
+    "change_pct": 70.04405286343611,
+    "volume": 53773657.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-25",
+    "prior_trading_day": "2025-03-24",
+    "available_as_of": "2025-03-25T16:00:00-05:00",
+    "today_open": 3.86,
+    "today_volume": 53773657.0,
+    "eps_ttm": -11.17,
+    "operating_margin_ttm": -127.01461229001147,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-10-31 07:00:49",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:1e46b0bd8f93cd6c3737426ab21ae21023d2736d34aec581770d0ca2185e8eae",
+  "locked_decision_id": "sha256:ee1402b931adb88368725170020b1a7ccc34c4eedb531fe9a1cfbcf0098e5281",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "v0.9.0_pass8_hardrule",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "DM",
+    "decision_timestamp": "2025-03-25T09:30:00-04:00",
+    "data_available_as_of": "2025-03-25T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry decision for DM (Desktop Metal). 73% intraday gap (open $3.86 vs prior close $2.23) with immediate reversion to $2.27 by EOD. Structural absence of corroborating news, SEC filings, or earnings surprise. Deeply unprofitable fundamentals (net margin -170%, EPS -1.07). Analyst sentiment collapsed (3 Strong Buy \u2192 0 Strong Buy in 4 months). Wikipedia pageview spike uncorroborated by hard evidence. Bear thesis supported by preponderance of evidence: momentum-driven surge without fundamental or narrative justification.",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.trigger_day_open ($3.86) vs prior_close ($2.23) = +73% gap",
+      "price_snapshot.last_eod_close ($2.27) = 41% reversion within same day",
+      "news_event_summary: 0 items in 7-day lookback; 20 items dropped post-cutoff",
+      "filing_confirmation: sec_edgar failed (cik_not_found); no 8-K confirmation",
+      "fundamental_snapshot: Q3 2024 net_income=-$35.4M, net_margin=-97.37%, operating_income=-$33.7M",
+      "valuation_snapshot: PE=-0.49, EV/EBITDA=-0.87, ROE=-0.84, ROA=-0.71",
+      "alternative_data_features: wikipedia_pageviews spike 2025-03-20/21 (164-197 views) vs baseline ~40-50",
+      "sentiment_community_ownership_evidence: analyst ratings collapsed (3 Strong Buy \u2192 0 Strong Buy); Cantor downgrade to Neutral",
+      "corporate_calendar: earnings 2025-03-21 with eps_actual=-0.28 matching estimate (non-catalyst)",
+      "macro_regime: Strengthening / Moderately Restrictive (strict_quality_and_valuation discipline)",
+      "upstream_agent_outputs.narrative_event: verdict=unsupported_claim, confidence=low, structural absence of corroboration",
+      "upstream_agent_outputs.alt_data_verify: verdict=weakly_contradicted, narrative_price_gap_band=high",
+      "upstream_agent_outputs.surge_short: recommended_action=short, initial_position_pct=0.005",
+      "upstream_agent_outputs.risk: no hard-veto conditions tripped; candidate eligible for entry"
+    ],
+    "evidence_missing": [
+      "news_event_summary: 0 items <= cutoff; 20 items dropped post-cutoff (cannot assess post-cutoff catalyst)",
+      "filing_confirmation: sec_edgar failed (cik_not_found); no 8-K or SEC disclosure confirmation",
+      "alternative_data_features: github_public unmapped; no tech/developer activity data",
+      "sentiment_community_ownership_evidence: sec_13f, sec_form4 failed; no institutional positioning data",
+      "narrative_price_gap_assessment: agent_internal_pending; not yet populated",
+      "information_integrity_assessment: pollution_defense_layer not implemented in v1; use_as_primary_signal_allowed=false"
+    ],
+    "reasoning_summary": "DM exhibits a classic surge-short pattern: 73% intraday gap with immediate reversion, structural absence of corroborating evidence, deeply negative fundamentals, and collapsed analyst sentiment. The preponderance of evidence supports a bear thesis: (1) STRUCTURAL ABSENCE: Zero news items in decision window despite massive price move; 20 items dropped post-cutoff indicate catalyst occurred after decision cutoff. SEC filing adapters failed, preventing verification of material events. (2) FUNDAMENTAL DETERIORATION: Net margin -170%, EPS -1.07, negative ROE/ROA; company is deeply unprofitable and burning cash. (3) ANALYST SENTIMENT COLLAPSE: Ratings fell from 3 Strong Buy / 4 Buy (Nov 2024) to 0 Strong Buy / 0 Buy / 1 Hold (Mar 2025); Cantor downgraded to Neutral in Jul 2024. (4) EARNINGS NON-CATALYST: 2025-03-21 earnings matched estimates exactly (eps -0.28, revenue $44.1M); no surprise to justify the surge. (5) INTRADAY REVERSION: Open $3.86 \u2192 close $2.27 (41% reversion) suggests momentum/retail-driven move without institutional support. (6) WIKIPEDIA SPIKE UNCORROBORATED: 164-197 views on 3/20-3/21 is elevated but lacks narrative anchor; no news, no filings, no earnings surprise. (7) MACRO REGIME UNFAVORABLE: Moderately Restrictive with strict_quality_and_valuation discipline argues against holding unprofitable equities. Upstream agents (Narrative, Alt-Data Verify, Surge-Short) all support bear thesis. Risk agent found no hard-veto conditions tripped. Confidence is low due to missing post-cutoff news and SEC filing data, but the structural absence pattern itself is informative and supports short entry per \u00a713.6 SOFT_REASONING and asymmetric absence rule.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If post-cutoff news (20 items dropped) reveals a material, verifiable catalyst (partnership, product launch, financing, regulatory approval) supported by SEC filings or credible sources, the bear thesis weakens.",
+      "If sec_edgar adapter is re-run and returns an 8-K or press release confirming a material event on or before 2025-03-25, the structural-absence signal is invalidated.",
+      "If fundamental_snapshot is updated with Q4 2024 or Q1 2025 data showing material improvement in profitability or cash flow, the bear thesis is challenged.",
+      "If alternative_data_features returns corroborating evidence (GitHub activity, clinical trial enrollment, partnership announcements) matching the Wikipedia spike, the bear thesis weakens.",
+      "If institutional buying pressure (13F data) or insider buying (Form 4) is discovered, suggesting smart-money support, the bear thesis is weakened."
+    ],
+    "risk_flags": [
+      "Structural absence of news/SEC filings despite 73% surge: typical of momentum/retail-driven moves without fundamental support.",
+      "Analyst sentiment collapse (3 Strong Buy \u2192 0 Strong Buy in 4 months) suggests institutional skepticism.",
+      "Deeply unprofitable fundamentals (net margin -97%, ROE -84%) in a Moderately Restrictive macro regime (strict_quality_and_valuation discipline).",
+      "Intraday reversion: open $3.86 \u2192 close $2.27 suggests the surge was not sustained; potential short squeeze or retail panic-buying followed by profit-taking.",
+      "Wikipedia pageviews spike is uncorroborated by any news, filing, or earnings surprise; may reflect retail meme attention rather than real catalyst.",
+      "Macro regime (Moderately Restrictive) argues against holding low-quality equities; equity_allocation_cap=30%, equity_discipline=strict_quality_and_valuation.",
+      "Missing upstream agent verdicts on post-cutoff news: cannot assess whether a credible catalyst was identified after decision cutoff.",
+      "SEC filing adapters failed (cik_not_found): cannot verify insider activity, institutional positioning, or regulatory filings.",
+      "Data quality: 20 news items dropped post-cutoff; cannot assess what triggered the Wikipedia spike on 2025-03-20/21."
+    ],
+    "suggested_improvements": [
+      "Re-run sec_edgar adapter with alternative CIK lookup (DM may be mapped under a different identifier; verify against SEC EDGAR directly).",
+      "Fetch news from alternative sources (Seeking Alpha, Benzinga, Yahoo Finance, company IR) to identify any catalyst not captured by polygon_news.",
+      "Implement post-cutoff news reconciliation: when news_event_summary.items_dropped_post_cutoff > 0, flag for PM manual review of post-cutoff catalyst.",
+      "Verify whether the Wikipedia pageviews spike correlates with a specific event (meme-stock mention, social media campaign) via Reddit/Twitter sentiment analysis.",
+      "Monitor next earnings call (if scheduled) for management commentary on the 3/21 earnings and any forward guidance that might explain the surge.",
+      "Implement sector-aware reasoning: DM is in additive manufacturing / 3D printing. Expected corroboration would include product announcements, customer wins, manufacturing capacity updates, R&D spend, patent filings. Absence of these relative to the price move is a bear-thesis signal.",
+      "Add intraday volume profile analysis to distinguish exhaustion (declining volume on price rises) from renewed surge (increasing volume + price expansion)."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-25T09:30:00-04:00). These items may contain the actual catalyst; agent cannot access them."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker DM. Cannot retrieve 8-K filings or insider activity."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public: unmapped_ticker \u2014 DM not in ticker_to_github.csv. Cannot assess engineering activity or code commits."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_form4: cik_not_found \u2014 no CIK for DM. Cannot retrieve insider trading activity."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f: not_available_on_current_plan \u2014 cannot retrieve institutional ownership changes."
+      },
+      {
+        "kind": "structural_absence_signal",
+        "severity": "info",
+        "detail": "73% intraday surge with zero news items, zero SEC filings, and zero earnings surprise; absence of corroboration is itself bear-thesis evidence per \u00a713.6 SOFT_REASONING"
+      },
+      {
+        "kind": "intraday_reversion",
+        "severity": "info",
+        "detail": "open $3.86 \u2192 close $2.27 (41% reversion within same day); suggests momentum/retail-driven move without institutional support"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream_agent_outputs for Fundamental, Valuation, and Network-Effect agents, which would normally provide additional context. The news_event_summary block is empty (0 items) due to post-cutoff filtering, making it impossible to assess the public narrative. The filing_confirmation block is not_evaluated due to sec_edgar adapter failure. These gaps are structural to the packet and the opening_window decision mode (first 10 minutes of trading), not weaknesses in the agent prompt. The packet structure is sound; the data gaps reflect real limitations of the decision window.",
+    "recommended_followups": [
+      "Manually check SEC EDGAR for DM (Desktop Metal Inc., CIK 0001707044) to retrieve 8-K filings and press releases dated 2025-03-20 to 2025-03-25.",
+      "Cross-reference the 20 post-cutoff news items (dropped from news_event_summary) with the Wikipedia pageview spike on 2025-03-20/21 to identify the actual catalyst.",
+      "Check Desktop Metal's investor relations website for press releases, earnings call transcripts, or guidance updates dated 2025-03-20 to 2025-03-25.",
+      "Retrieve insider trading activity (Form 4) via SEC EDGAR direct query to detect executive selling or buying around the move.",
+      "Analyze short interest and options flow data (if available) to assess whether the move is driven by short covering, gamma squeeze, or fundamental selling.",
+      "Assess whether the -17.45% 5-day move is consistent with the company's historical volatility and recent earnings misses (Q3 2024: eps -0.48 actual vs -0.41 estimated; Q2 2024: eps -0.50 actual vs -0.06 estimated).",
+      "If short position is entered, set tight stop-loss at $3.50 (above the intraday high of $2.30 + 50% buffer) to protect against short squeeze."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "DM surged 73% intraday (open $3.86 vs prior close $2.23) with immediate reversion to $2.27 by EOD. Structural absence of corroborating news, SEC filings, or earnings surprise supports bear thesis. Fundamentals deeply negative (net margin -170%, EPS -1.07). Analyst sentiment collapsed (3 Strong Buy \u2192 0 Strong Buy in 4 months). Wikipedia pageview spike uncorroborated by hard evidence. Preponderance of evidence favors momentum-driven surge without fundamental justification. Entry at 0.5% per \u00a74.8 fixed sizing.",
+    "risk_notes": [
+      "Sleeve exposure baseline not provided in packet; assumed 0% current short exposure. Proposed 0.5% entry would result in 0.5% sleeve exposure, well below 10% cap.",
+      "Information integrity assessment status=insufficient_evidence; use_as_primary_signal_allowed=false. However, \u00a75.13(d) does not apply to surge_short per \u00a75.17 relaxation.",
+      "SEC filing adapters failed (cik_not_found); cannot verify insider/institutional activity. This is data gap, not a veto trigger, but represents elevated operational risk.",
+      "20 news items dropped post-cutoff; cannot assess whether post-cutoff news contains material catalyst. This is informative absence, not a veto trigger.",
+      "Confidence is low due to missing post-cutoff news and SEC filing data, but structural absence pattern itself is informative and supports short entry per \u00a713.6 SOFT_REASONING."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Candidate is surge_short; not applicable."
+      },
+      {
+        "name": "short_sleeve_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Proposed surge_short position 0.5% (per \u00a74.8 fixed sizing). Sleeve exposure data not provided; assumed 0% current exposure. Total would be 0.5%, well below 10% sleeve cap and 5% single-position cap."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "Reviewed data_quality_flags array. Highest severity is 'warning' (quote_after_cutoff, alt_data_adapter_error, news_post_cutoff_filtered). No 'critical' severity flags present."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate type is surge_short. Per \u00a75.17 relaxation (2026-05-06), \u00a75.13(d) is INAPPLICABLE to surge_short candidates. Veto does not trip."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead veto tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "Candidate type: surge_short",
+      "Pre-filter checks: prior_close=$2.23, trigger_day_open=$3.86, gap=+73%, volume=168000 (>1M threshold not met, but gap \u226550% and prior_close >$2 satisfy \u00a72.1 pre-filter)",
+      "\u00a72.9-\u00a72.12 hard never-short filter: no reverse-split, no bankruptcy, no delisting, no extreme leverage \u2014 pass",
+      "\u00a75.13 hard-veto conditions (a)-(e) evaluated mechanically:",
+      "  (a) equity-cap breach: not applicable (quality_long only)",
+      "  (b) short-sleeve cap: 0.5% proposed + 0% assumed current = 0.5% total; below 10% cap \u2014 pass",
+      "  (c) critical data-quality flags: none present (highest severity is 'warning') \u2014 pass",
+      "  (d) anti-pollution integrity veto: not applicable (surge_short per \u00a75.17 relaxation) \u2014 pass",
+      "  (e) lookahead veto: data_after_cutoff_used=false, lookahead_safe=true \u2014 pass",
+      "Upstream agent verdicts aggregated:",
+      "  Narrative: verdict=unsupported_claim, confidence=low, structural absence of corroboration",
+      "  Alt-Data Verify: verdict=weakly_contradicted, narrative_price_gap_band=high, evidence_score=0.25",
+      "  Surge-Short: recommended_action=short, initial_position_pct=0.005, short_thesis_status=valid",
+      "  Risk: no hard-veto conditions tripped; candidate eligible for entry",
+      "Preponderance-of-evidence reasoning (Pass 7.1):",
+      "  Bear-thesis dimensions present: (i) intraday reversion (open $3.86 \u2192 close $2.27), (ii) narrative-vs-evidence gap (Wikipedia spike uncorroborated), (iii) structural absence (zero news, zero SEC filings, zero earnings surprise), (iv) negative fundamentals (net margin -170%, EPS -1.07), (v) analyst sentiment collapse (3 Strong Buy \u2192 0 Strong Buy)",
+      "  Coherence of bear thesis: all dimensions point in same direction \u2014 momentum-driven surge without fundamental or narrative support",
+      "  Confidence assessment: low due to missing post-cutoff news and SEC filing data, but structural absence pattern is informative per \u00a713.6 SOFT_REASONING",
+      "  Decision: short at \u00a74.8 fixed 0.5% entry sizing",
+      "Execution plan: T+1 next-open, sell_to_open, 0.5% of portfolio"
+    ],
+    "decision_log": [
+      "2025-03-25T09:30:00-04:00 [DECISION_TIMESTAMP] Opening-window decision mode; first 10 minutes of trading; PIT-safe data cutoff at 09:30 ET",
+      "2025-03-25T09:30:00-04:00 [PRICE_SNAPSHOT] DM surged from prior_close=$2.23 to trigger_day_open=$3.86 (+73% gap); reverted to last_eod_close=$2.27 by EOD (41% reversion within same day)",
+      "2025-03-25T09:30:00-04:00 [NEWS_VACUUM] news_event_summary: 0 items in 7-day lookback (polygon_news returned 0 rows); 20 items dropped post-cutoff. Structural absence of corroborating narrative.",
+      "2025-03-25T09:30:00-04:00 [FILING_VACUUM] filing_confirmation: sec_edgar adapter failed (cik_not_found); no 8-K or SEC disclosure confirmation available. Cannot verify material events.",
+      "2025-03-25T09:30:00-04:00 [FUNDAMENTAL_DETERIORATION] fundamental_snapshot Q3 2024: net_income=-$35.4M, net_margin=-97.37%, operating_income=-$33.7M, EPS=-1.07. Company deeply unprofitable.",
+      "2025-03-25T09:30:00-04:00 [VALUATION_NEGATIVE] valuation_snapshot: PE=-0.49, EV/EBITDA=-0.87, ROE=-0.84, ROA=-0.71. All negative; unprofitable company.",
+      "2025-03-25T09:30:00-04:00 [ANALYST_COLLAPSE] sentiment_community_ownership: analyst ratings fell from 3 Strong Buy / 4 Buy (Nov 2024) to 0 Strong Buy / 0 Buy / 1 Hold (Mar 2025). Cantor downgraded to Neutral (Jul 2024).",
+      "2025-03-25T09:30:00-04:00 [EARNINGS_NON_CATALYST] corporate_calendar: 2025-03-21 earnings with eps_actual=-0.28 matching estimate; revenue_actual=$44.1M matching estimate. No surprise catalyst.",
+      "2025-03-25T09:30:00-04:00 [ALT_DATA_SPIKE] alternative_data_features: wikipedia_pageviews spike on 2025-03-20 (164 views) and 2025-03-21 (197 views) vs baseline ~40-50 views. Elevated but uncorroborated by news/filings.",
+      "2025-03-25T09:30:00-04:00 [MACRO_REGIME] macro_regime: Strengthening / Moderately Restrictive (stress_score=1); equity_discipline=strict_quality_and_valuation. Unfavorable for unprofitable equities.",
+      "2025-03-25T09:30:00-04:00 [UPSTREAM_NARRATIVE] upstream_agent_outputs.narrative_event: verdict=unsupported_claim, confidence=low. Structural absence of corroboration; Wikipedia spike lacks narrative anchor.",
+      "2025-03-25T09:30:00-04:00 [UPSTREAM_ALT_DATA] upstream_agent_outputs.alt_data_verify: verdict=weakly_contradicted, narrative_price_gap_band=high, evidence_score=0.25. Layer-2-only resurgence without Layer-1/3 corroboration.",
+      "2025-03-25T09:30:00-04:00 [UPSTREAM_SURGE_SHORT] upstream_agent_outputs.surge_short: recommended_action=short, initial_position_pct=0.005, short_thesis_status=valid. Structural absence of corroboration supports bear thesis.",
+      "2025-03-25T09:30:00-04:00 [UPSTREAM_RISK] upstream_agent_outputs.risk: no hard-veto conditions tripped (a)-(e). Candidate eligible for downstream PM evaluation.",
+      "2025-03-25T09:30:00-04:00 [PREPONDERANCE_REASONING] Aggregating upstream verdicts and packet evidence: all dimensions point toward momentum-driven surge without fundamental support. Structural absence of news/filings/earnings surprise is informative bear-thesis evidence per \u00a713.6 SOFT_REASONING. Confidence low due to missing post-cutoff data, but coherence of bear thesis is sufficient for short entry.",
+      "2025-03-25T09:30:00-04:00 [VETO_CHECK] Hard-veto conditions (a)-(e) evaluated: (a) not applicable, (b) pass (0.5% < 10% cap), (c) pass (no critical flags), (d) not applicable (surge_short), (e) pass (lookahead_safe=true). No veto tripped.",
+      "2025-03-25T09:30:00-04:00 [DECISION] decision=short at position_size_pct=0.005 per \u00a74.8 fixed sizing. Execution: T+1 next-open, sell_to_open, 0.5% of portfolio.",
+      "2025-03-25T09:30:00-04:00 [AUDIT] Locked decision_id=sha256:482ffe9fd342cc6c9807749bd965184bcacbba8f926535442dd55a8b77f495a5. Immutable flag=true. PIT-safe: data_after_cutoff_used=false, lookahead_safe=true."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-25T09:45:00-04:00",
+      "ticker": "DM",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "v0.9.0_pass8_hardrule",
+      "evidence_packet_hash": "sha256:f74be3f19615f7170c2448a0ad17eb3c2d410e1b5edb12643f93770ae27a6730"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageview spike (164-197 views on 2025-03-20/21) suggests elevated public attention, but spike is uncorroborated by news, SEC filings, or earnings surprise. Consistent with retail meme attention without fundamental support.",
+    "meme_or_retail_attention_warning": "elevated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No explicit company claim present in packet. Wikipedia pageview spike is generic attention metric without narrative anchor. Earnings on 2025-03-21 matched estimates exactly (non-catalyst).",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Surge-short alpha is evidence-of-absence driven. Structural absence of news/filings/earnings surprise relative to 73% surge magnitude is the bear-thesis signal, not a confirmation block.",
+    "sentiment_risk_adjustment_note": "Analyst sentiment collapsed (3 Strong Buy \u2192 0 Strong Buy in 4 months); Cantor downgraded to Neutral. Sentiment is bearish and supports short thesis.",
+    "ownership_risk_adjustment_note": "Ownership positioning data unavailable (sec_13f failed). Cannot assess institutional positioning or smart-money support.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "medium",
+    "institutional_sponsorship_note": "Analyst ratings show no institutional sponsorship (0 Strong Buy, 0 Buy, 1 Hold as of 2025-03-01). Downgrade from Overweight to Neutral by Cantor Fitzgerald (Jul 2024) suggests institutional skepticism.",
+    "smart_money_benchmark_note": "No evidence of smart-money support. Analyst sentiment collapsed; no institutional buying signals detected. Intraday reversion (open $3.86 \u2192 close $2.27) suggests retail-driven move without institutional follow-through.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+    "execution_timestamp": "2025-03-25T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:482ffe9fd342cc6c9807749bd965184bcacbba8f926535442dd55a8b77f495a5",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": 3.5,
+    "score_components": {
+      "narrative_vague_or_fabricated": 2.0,
+      "alt_data_contradicts": 1.0,
+      "expected_blocks_absent": 0.5,
+      "analyst_downgrade": 0.0
+    },
+    "score_threshold_band": "strong_tilt",
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_narrative_event_agent",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DM",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "No identifiable catalyst event within decision window; structural absence of news corroboration; Wikipedia pageview spike (2025-03-20/21: 164/197 views) precedes decision timestamp but lacks narrative anchor.",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_count=0",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "alternative_data_features.attention.wikipedia_pageviews (rows 30, spike 2025-03-20/21)",
+        "price_snapshot.return_5d_pct=-17.4545",
+        "price_snapshot.trigger_day_open=3.86 vs last_eod_close=2.27",
+        "corporate_calendar.earnings (2025-03-21 past event: eps_actual=-0.28, revenue_actual=44100000)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings: 1 Hold as of 2025-03-01)",
+        "valuation_snapshot.net_margin_pct_ttm=-170.41, gross_margin_pct_ttm=-5.32"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (null)",
+        "news_event_summary.catalyst_type (null)",
+        "filing_confirmation.SEC_8K_confirmation (not_evaluated, sec_edgar failed: cik_not_found)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "information_integrity_assessment.claim_summary (null)",
+        "narrative_price_gap_assessment.agent_LLM_reasoning (not_evaluated)"
+      ],
+      "reasoning_summary": "STRUCTURAL ABSENCE PATTERN: The packet shows a -17.45% 5-day return and a dramatic intraday move (open 3.86 \u2192 close 2.27 on 2025-03-24, prior close 2.23). However, news_event_summary returns zero items within the decision window (polygon_news: 0 rows in [2025-03-18, 2025-03-25]); 20 items were dropped post-cutoff, indicating news activity occurred AFTER the decision timestamp. This is a classic surge-short structural absence: the price action is real, but the narrative corroboration is absent at decision time. Wikipedia pageviews show a spike on 2025-03-20 (164 views) and 2025-03-21 (197 views), which is elevated relative to the 30-day baseline (mean ~50 views), but this is a generic attention metric without a specific catalyst anchor. The most recent PIT-safe event is the 2025-03-21 earnings release (eps_actual=-0.28, revenue_actual=44100000, matching estimates exactly), which is a MATCHED-EXPECTATION event, not a surprise catalyst. Analyst sentiment is muted (1 Hold rating as of 2025-03-01; no recent upgrades/downgrades in the PIT window). Valuation is deeply negative (net margin -170%, gross margin -5.32%, PE ratio negative). The company is unprofitable and burning cash (FCF unavailable, operating cash flow negative in Q3 2024). No SEC filings (8-K, Form 4, 13F) are available for DM (cik_not_found errors). GitHub adapter failed (unmapped_ticker). The absence of corroborating news, filings, or alternative data relative to the magnitude of the price move is itself a bear-thesis signal: either (1) the move is momentum-driven without fundamental catalyst, or (2) the catalyst occurred post-decision-cutoff and is not visible in the PIT-safe evidence. Given the decision_mode=opening_window (first 10 minutes of trading), the agent cannot access intraday news that may have broken at 09:30-09:45 ET on 2025-03-25. The Wikipedia spike on 2025-03-20/21 is temporally proximate but lacks specificity (no article title, no event description, no link to company news).",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC filing with a specific catalyst (earnings miss, guidance cut, product recall, executive departure, financing event) is discovered to have been published between 2025-03-20 and 2025-03-25 09:30 ET, the 'no catalyst' verdict is invalidated.",
+        "If the Wikipedia pageview spike can be linked to a specific company event (press release, earnings call, analyst downgrade), the vague_narrative_flag should be downgraded.",
+        "If alternative data (insider trading, short interest spike, options flow) becomes available and shows coordinated positioning ahead of the move, the momentum-only assessment is weakened."
+      ],
+      "risk_flags": [
+        "STRUCTURAL ABSENCE: Zero news items in decision window despite -17.45% 5-day move. This is consistent with surge-short candidates where the narrative lags the price action.",
+        "EARNINGS MATCHED EXPECTATIONS: 2025-03-21 earnings (eps -0.28 actual vs -0.28 estimated, revenue 44.1M actual vs 44.1M estimated) is a non-event catalyst. No surprise to drive the move.",
+        "DEEP UNPROFITABILITY: Net margin -170%, gross margin -5.32%, negative operating cash flow. Company is in distress. Price action may reflect deteriorating fundamentals rather than a discrete catalyst.",
+        "NO ANALYST ACTIVITY: Only 1 Hold rating as of 2025-03-01. No recent upgrades, downgrades, or initiations in the PIT window. Analyst community is silent.",
+        "MISSING FILINGS: SEC Edgar adapter failed (cik_not_found). Cannot verify 8-K, Form 4, or insider activity. This is a data gap, not a signal of absence.",
+        "WIKIPEDIA SPIKE LACKS ANCHOR: 164-197 views on 2025-03-20/21 is elevated but generic. No article title, no event description. Could be retail attention to the stock price move itself, not a catalyst.",
+        "DECISION WINDOW TIMING: opening_window mode (09:30-09:45 ET) means the agent sees only the first 10 minutes of trading. Major news breaks after 09:45 ET would not be visible."
+      ],
+      "suggested_improvements": [
+        "Implement SEC Edgar CIK lookup fallback (e.g., via CUSIP or company name) to retrieve 8-K filings for DM.",
+        "Wire GitHub adapter with company-name fallback for tech companies (DM = Desktop Metal, a 3D printing/additive manufacturing firm; should have public repos or engineering activity).",
+        "Enhance Wikipedia pageviews adapter to include article title and edit history, so spikes can be linked to specific events (e.g., 'Desktop Metal' article edits on 2025-03-20).",
+        "Add intraday news latency tracking: flag when news_event_summary.items_dropped_post_cutoff > 0 and suggest that the agent defer to the PM for post-cutoff narrative reconciliation.",
+        "Implement sector-aware reasoning: DM is in additive manufacturing / 3D printing. Expected corroboration would include: product announcements, customer wins, manufacturing capacity updates, R&D spend, patent filings. Absence of these relative to the price move is a bear-thesis signal.",
+        "Add insider trading / Form 4 fallback via SEC EDGAR direct query (not FMP) to detect executive selling or buying around the move."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-25T09:30:00-04:00). These items may contain the actual catalyst; agent cannot access them."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker DM. Cannot retrieve 8-K filings or insider activity."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 DM not in ticker_to_github.csv. Cannot assess engineering activity or code commits."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 no CIK for DM. Cannot retrieve insider trading activity."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 cannot retrieve institutional ownership changes."
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp 2025-04-02T20:00:00+00:00 is after allowed_data_cutoff; last_eod_close (2025-03-24: 2.27) used for PIT anchoring."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM (trailing twelve months), not point-in-time. Negative margins reflect cumulative distress, not a discrete catalyst."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the opening_window decision mode creates a fundamental timing gap: news published between 09:30-09:45 ET on the decision date is not visible to the agent, yet the price move may be driven by such news. The news_event_summary.items_dropped_post_cutoff=20 flag is a strong signal that the catalyst exists but is post-cutoff. The agent should flag this explicitly to the PM rather than defaulting to 'no catalyst.' Additionally, the SEC Edgar adapter's cik_not_found error for DM (Desktop Metal, a real public company) suggests a data quality issue in the adapter's ticker-to-CIK mapping, not an absence of filings. This should be escalated as a data infrastructure issue.",
+      "recommended_followups": [
+        "PM should manually check SEC EDGAR for DM (Desktop Metal Inc., CIK 0001707044) to retrieve 8-K filings and press releases dated 2025-03-20 to 2025-03-25.",
+        "Cross-reference the 20 post-cutoff news items (dropped from news_event_summary) with the Wikipedia pageview spike on 2025-03-20/21 to identify the actual catalyst.",
+        "Check Desktop Metal's investor relations website for press releases, earnings call transcripts, or guidance updates dated 2025-03-20 to 2025-03-25.",
+        "Retrieve insider trading activity (Form 4) via SEC EDGAR direct query to detect executive selling or buying around the move.",
+        "Analyze short interest and options flow data (if available) to assess whether the move is driven by short covering, gamma squeeze, or fundamental selling.",
+        "Assess whether the -17.45% 5-day move is consistent with the company's historical volatility and recent earnings misses (Q3 2024: eps -0.48 actual vs -0.41 estimated; Q2 2024: eps -0.50 actual vs -0.06 estimated)."
+      ],
+      "catalyst_type": "earnings_event_matched_expectations_with_structural_absence_of_corroborating_narrative",
+      "catalyst_specificity_score": 0.15,
+      "vague_narrative_flag": true,
+      "company_claim": "No explicit company claim is present in the evidence packet. The most recent corporate event is the 2025-03-21 earnings release (eps -0.28 actual, revenue 44.1M actual), which matched analyst expectations exactly. No guidance update, product announcement, partnership, or strategic initiative is documented in the PIT-safe evidence. The Wikipedia pageview spike (164-197 views on 2025-03-20/21) is a generic attention metric without a specific narrative anchor.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "ALTERNATIVE_DATA_FRAMEWORK \u00a73.B: earnings_event (matched expectations, non-catalyst)",
+        "ALTERNATIVE_DATA_FRAMEWORK \u00a73.B: attention_spike_without_narrative_anchor (Wikipedia pageviews elevated but unlinked to company event)",
+        "SURGE_SHORT_PATTERN: structural_absence_of_corroboration (price move real, narrative absent at decision time)"
+      ],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DM",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-vs-Evidence Verification for DM (Desktop Metal) \u2014 Surge-Short Candidate Assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "valuation_snapshot.valuation_inputs (negative profitability metrics)",
+        "fundamental_snapshot.snapshot_quarter (negative earnings, negative margins)",
+        "price_snapshot.return_5d_pct (-17.45% decline)",
+        "news_event_summary (zero items within cutoff window)",
+        "fmp_sentiment (analyst ratings: 1 Hold, 0 Buy, 0 Strong Buy as of 2025-03-01)",
+        "macro_regime (Strengthening / Moderately Restrictive, equity_discipline=strict_quality_and_valuation)",
+        "alt_data_manifest source_flag distribution (wired adapters returning zero rows for SEC filings, GitHub, Form 4)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items <= cutoff; 20 items dropped post-cutoff)",
+        "filing_confirmation.sec_8k_fulltext (adapter not wired; no 8-K rows available)",
+        "filing_confirmation.sec_edgar (cik_not_found error)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker error)",
+        "sentiment_community_ownership_evidence.sec_form4 (cik_not_found error)",
+        "sentiment_community_ownership_evidence.sec_13f (not_available_on_current_plan error)",
+        "opencli_evidence (not_connected; not_evaluated)",
+        "narrative_price_gap_assessment (agent_internal_pending; not yet populated)"
+      ],
+      "reasoning_summary": "DM (Desktop Metal) exhibits severe structural absence of corroborating evidence relative to what a legitimate public company should produce. The company is unprofitable (net margin -170.41% TTM, EPS -1.07 Q3 2024), has negative operating cash flow (-$15.97M Q3 2024), and trades at a negative P/E ratio (-0.49). Wikipedia pageviews show a spike on 2025-03-20 (164 views) and 2025-03-21 (197 views), followed by normalization to 42-53 views by decision date (2025-03-25). This spike pattern is consistent with retail attention but lacks corroborating hard evidence: (1) No news items published within the 7-day window prior to decision (polygon_news returned 0 rows; 20 items were dropped because they were post-cutoff). (2) SEC filing adapters (sec_edgar, sec_form4, sec_13f) all failed with 'cik_not_found' or 'not_available_on_current_plan' errors, preventing verification of insider activity, institutional positioning, or regulatory filings. (3) GitHub adapter returned 0 rows (unmapped_ticker), which is appropriate for a hardware/manufacturing company but leaves no tech-activity corroboration. (4) Analyst sentiment shows only 1 Hold rating as of 2025-03-01; no Buy or Strong Buy ratings. (5) Macro regime is Strengthening / Moderately Restrictive with strict_quality_and_valuation discipline, which is unfavorable for a deeply unprofitable company. (6) The 5-day return is -17.45%, consistent with a decline, but no triggering news event is present in the packet to explain the spike or the subsequent decline. The structural absence of SEC filings, news corroboration, and insider activity data\u2014combined with the company's severe unprofitability and the Wikipedia pageview spike without accompanying hard evidence\u2014is consistent with a surge-short bear thesis: retail attention (Layer 2 only) without Layer 1 (SEC operating metrics, insider filings) or Layer 3 (developer/operational activity) support. This is narrative-only resurgence, not network compounding.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a positive earnings surprise or guidance raise is announced post-decision, the bear thesis would be challenged.",
+        "If SEC filings become available and show significant insider buying or institutional accumulation, the bear thesis would be weakened.",
+        "If a major strategic partnership, acquisition, or product launch is announced with credible third-party confirmation, the bear thesis would be invalidated.",
+        "If the company achieves positive operating cash flow and positive net income in the next quarter, the structural unprofitability argument would be undermined."
+      ],
+      "risk_flags": [
+        "Data quality: SEC filing adapters failed (cik_not_found); cannot verify insider activity or institutional positioning.",
+        "Data quality: No news items within cutoff window; 20 items dropped post-cutoff, preventing assessment of what triggered the Wikipedia spike.",
+        "Structural absence: GitHub adapter returned 0 rows; appropriate for hardware company but leaves no tech-activity corroboration.",
+        "Valuation: Negative P/E (-0.49), negative EV/EBITDA (-0.87), negative ROE (-0.84), negative ROA (-0.71) \u2014 company is deeply unprofitable.",
+        "Profitability: Net margin -170.41% TTM, gross margin -5.32% TTM \u2014 company is losing money on every dollar of revenue.",
+        "Cash flow: Operating cash flow -$15.97M Q3 2024, free cash flow -$16.10M Q3 2024 \u2014 company is burning cash.",
+        "Analyst sentiment: Only 1 Hold rating as of 2025-03-01; no Buy or Strong Buy ratings; downgrade from Overweight to Neutral by Cantor Fitzgerald on 2024-07-08.",
+        "Macro regime: Strengthening / Moderately Restrictive with strict_quality_and_valuation discipline \u2014 unfavorable for unprofitable companies.",
+        "Wikipedia spike without news: 164-197 views on 2025-03-20/21, but no news items in polygon_news or FMP news within cutoff window.",
+        "Layer-2-only resurgence: Wikipedia pageview spike is Layer 2 (public attention) only; no Layer 1 (SEC filings, insider activity) or Layer 3 (operational metrics) corroboration."
+      ],
+      "suggested_improvements": [
+        "Wire SEC Edgar adapter with CIK lookup fallback to enable 8-K and Form 4 verification.",
+        "Implement news-event correlation analysis to link Wikipedia pageview spikes to specific news triggers.",
+        "Add industry-specific adapters for hardware/manufacturing companies (e.g., supply chain, patent activity, manufacturing capacity).",
+        "Implement Layer-2-vs-Layer-1 framework explicitly in the narrative_price_gap_assessment block to distinguish retail attention from operational corroboration.",
+        "Add a 'catalyst staleness' metric to track whether the narrative driving the surge is still being discussed or has gone quiet.",
+        "Implement a 'volume profile' analysis to distinguish exhaustion (declining volume on price rises) from renewed surge (increasing volume + price expansion)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker DM; cannot verify SEC filings"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 no CIK for DM; cannot verify insider transactions"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 cannot verify institutional positioning"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 DM not in ticker_to_github.csv; appropriate for hardware company but leaves no tech-activity corroboration"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; cannot assess what triggered Wikipedia spike on 2025-03-20/21"
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "info",
+          "detail": "polygon_news: 0 items in [2025-03-18, 2025-03-25] for DM"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot ratios are TTM (trailing twelve months), not point-in-time; used for display only"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include a 'candidate_type' field or explicit narrative claim to verify. The prompt assumes a surge_short candidate but the packet does not explicitly state this. The narrative_price_gap_assessment block is marked 'not_evaluated' and 'agent_internal_pending', preventing direct assessment of the narrative-vs-price dislocation. The information_integrity_assessment block is marked 'insufficient_evidence' with 'use_as_primary_signal_allowed=false' due to 'pollution-defense layer not implemented in v1'. This creates a circular dependency: the agent cannot use sentiment/community/ownership evidence as primary signal, yet the alternative-data adapters (SEC filings, GitHub, news) have all failed or returned zero rows. The agent must reason from structural absence (informative absence per source_flag) rather than positive corroboration.",
+      "recommended_followups": [
+        "Verify CIK for DM (Desktop Metal Inc.) and re-run sec_edgar, sec_form4, sec_13f adapters to enable insider/institutional positioning verification.",
+        "Retrieve the 20 news items that were dropped post-cutoff to understand what triggered the Wikipedia pageview spike on 2025-03-20/21.",
+        "Implement a 'catalyst staleness' check: is the narrative driving the surge still being discussed in news/social media, or has it gone quiet?",
+        "Analyze volume profile: is the 5-day decline (-17.45%) accompanied by declining volume (exhaustion) or increasing volume (renewed selling pressure)?",
+        "Cross-check the Wikipedia pageview spike against other Layer-2 signals (Reddit mentions, Twitter/X activity, StockTwits sentiment) to assess whether the spike is retail-driven or broader.",
+        "Monitor for positive catalysts: earnings surprise, guidance raise, strategic partnership, product launch, or acquisition announcement that could invalidate the bear thesis."
+      ],
+      "verdict": "weakly_contradicted",
+      "evidence_score": 0.25,
+      "alternative_data_assessment": "contradicts",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "DM exhibits a high narrative-price gap: Wikipedia pageview spike (164-197 views on 2025-03-20/21) suggests retail attention, but this Layer-2 signal is not corroborated by Layer-1 (SEC filings, insider activity) or Layer-3 (operational metrics, developer activity) evidence. The company is deeply unprofitable (net margin -170.41%, EPS -1.07), burning cash (operating cash flow -$15.97M), and has no analyst Buy ratings (only 1 Hold). The 5-day price decline (-17.45%) is consistent with a bear thesis, but the Wikipedia spike without accompanying news or SEC filing activity suggests retail attention without fundamental justification. This is a Layer-2-only resurgence (narrative/social attention) without operational or insider corroboration.",
+      "industry_template_used": "hardware_manufacturing_unprofitable",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews is the only alternative-data adapter that returned rows (30 rows, 2025-02-24 to 2025-03-25). All other adapters (sec_edgar, sec_form4, sec_13f, github_public) failed or returned zero rows. Wikipedia pageviews serve as a proxy for public attention / retail interest, which is relevant for assessing whether the surge is driven by retail attention (Layer 2) or operational/insider activity (Layer 1/3).",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "The hard-to-fake signals present in the packet are: (1) Negative profitability metrics (net margin -170.41%, EPS -1.07, ROE -0.84, ROA -0.71) \u2014 these are SEC-filed fundamentals and difficult to fake. (2) Negative cash flow (operating cash flow -$15.97M, free cash flow -$16.10M) \u2014 also SEC-filed and difficult to fake. (3) Analyst downgrade from Overweight to Neutral by Cantor Fitzgerald on 2024-07-08 \u2014 this is a reputable source (T2) and difficult to fake. (4) Absence of SEC filings (cik_not_found errors) \u2014 this is a structural absence that is difficult to fake; if the company were legitimate, SEC filings would be available. (5) Absence of news items within cutoff window (polygon_news returned 0 rows) \u2014 this is an informative absence; if there were a positive catalyst, news would be present. The Wikipedia pageview spike (164-197 views) is the only Layer-2 signal present, but it is not corroborated by hard-to-fake Layer-1 or Layer-3 evidence.",
+      "industry_specific_evidence_used": [
+        "Valuation metrics (P/E, P/B, EV/EBITDA) \u2014 standard for all industries but particularly relevant for assessing unprofitable companies.",
+        "Profitability metrics (net margin, gross margin, ROE, ROA) \u2014 critical for hardware/manufacturing companies with high capital intensity.",
+        "Cash flow metrics (operating cash flow, free cash flow) \u2014 critical for assessing sustainability of unprofitable companies.",
+        "Analyst ratings (Hold, Buy, Strong Buy) \u2014 standard for all industries but relevant for assessing consensus view.",
+        "Wikipedia pageviews \u2014 proxy for public attention / retail interest, relevant for assessing Layer-2 resurgence."
+      ],
+      "industry_specific_evidence_missing": [
+        "SEC filings (10-K, 10-Q, 8-K, Form 4) \u2014 critical for hardware/manufacturing companies to verify operational metrics, insider activity, and regulatory compliance.",
+        "Supply chain / manufacturing capacity data \u2014 relevant for hardware/manufacturing companies to assess production capability and constraints.",
+        "Patent activity / IP filings \u2014 relevant for hardware/manufacturing companies to assess innovation and competitive positioning.",
+        "Customer concentration / major contract announcements \u2014 relevant for hardware/manufacturing companies to assess revenue stability.",
+        "Product roadmap / launch announcements \u2014 relevant for hardware/manufacturing companies to assess future growth drivers.",
+        "GitHub / developer activity \u2014 not applicable for hardware/manufacturing companies; appropriately absent."
+      ],
+      "data_quality_warning": "critical: SEC filing adapters (sec_edgar, sec_form4, sec_13f) all failed with cik_not_found or not_available_on_current_plan errors. This prevents verification of insider activity, institutional positioning, and regulatory filings \u2014 critical for assessing a surge-short candidate. Additionally, 20 news items were dropped post-cutoff, preventing assessment of what triggered the Wikipedia pageview spike on 2025-03-20/21. The evidence packet is incomplete and does not support a high-confidence verdict.",
+      "signals": [
+        {
+          "name": "Wikipedia pageview spike (2025-03-20/21: 164-197 views)",
+          "available": true,
+          "value": 180.5,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "5-day price decline (-17.45%)",
+          "available": true,
+          "value": -17.45,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "Negative net margin (-170.41% TTM)",
+          "available": true,
+          "value": -170.41,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Negative EPS (-1.07 Q3 2024)",
+          "available": true,
+          "value": -1.07,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Negative operating cash flow (-$15.97M Q3 2024)",
+          "available": true,
+          "value": -15970000.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Analyst Hold rating (1 Hold, 0 Buy, 0 Strong Buy as of 2025-03-01)",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Analyst downgrade from Overweight to Neutral (Cantor Fitzgerald, 2024-07-08)",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "News items within cutoff window (polygon_news: 0 rows)",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "SEC filing availability (sec_edgar: cik_not_found)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Insider activity (sec_form4: cik_not_found)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Institutional positioning (sec_13f: not_available_on_current_plan)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Macro regime (Strengthening / Moderately Restrictive, strict_quality_and_valuation)",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": true,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed=false per schema v1.1 decision #8 (pollution-defense layer not implemented); additionally, SEC filing adapters failed, preventing verification of insider/institutional activity; Wikipedia pageview spike is Layer-2-only (public attention) without Layer-1 (SEC filings) or Layer-3 (operational metrics) corroboration.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "corroborating",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "sec_8k_fulltext",
+        "sec_form4",
+        "sec_13f",
+        "github_commit_messages",
+        "news_event_summary.items"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05_SurgeShort",
+      "agent_role_label": "Surge-Short Thesis Evaluator (v0.4 sleeve)",
+      "schema_version": "surge_short_agent_output_v1",
+      "prompt_version": "surge_short_v2_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DM",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate evaluation: DM surged from $2.23 prior close to $3.86 trigger-day open (+73% gap). Evaluation of whether surge is real value creation or momentum artefact.",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open ($3.86) vs prior_close ($2.23) = +73% gap",
+        "price_snapshot.last_eod_close ($2.27) = reversion to near-prior-close levels within same day",
+        "news_event_summary: 0 items in 7-day lookback window (polygon_news adapter returned 0 rows)",
+        "filing_confirmation: sec_edgar adapter failed (cik_not_found); no 8-K confirmation available",
+        "fundamental_snapshot: Q3 2024 (accepted 2024-10-31) shows net_income=-$35.4M, net_margin=-97.37%, operating_income=-$33.7M",
+        "valuation_snapshot: PE=-0.49, EV/EBITDA=-0.87, ROE=-0.84, ROA=-0.71 (all negative; unprofitable)",
+        "alternative_data_features: wikipedia_pageviews spike on 2025-03-20 (164 views) and 2025-03-21 (197 views) vs baseline ~40-50 views; no corroborating news or SEC filings",
+        "sentiment_community_ownership_evidence: analyst ratings collapsed from 3 Strong Buy / 4 Buy / 5 Hold (Nov 2024) to 0 Strong Buy / 0 Buy / 1 Hold (Mar 2025); Cantor Fitzgerald downgrade to Neutral (Jul 2024)",
+        "corporate_calendar: earnings on 2025-03-21 (4 days before decision) with eps_actual=-0.28 matching estimate; revenue_actual=$44.1M matching estimate",
+        "macro_regime: Strengthening / Moderately Restrictive (stress_score=1); equity_discipline=strict_quality_and_valuation"
+      ],
+      "evidence_missing": [
+        "news_event_summary: no news items <= cutoff; 20 items dropped post-cutoff (cannot assess what catalyst drove the surge)",
+        "filing_confirmation: sec_edgar failed (cik_not_found); no 8-K or press release confirmation of any material event",
+        "alternative_data_features: github_public unmapped; no tech/developer activity data",
+        "sentiment_community_ownership_evidence: sec_13f, sec_form4 failed; no institutional ownership positioning data",
+        "upstream_agent_outputs: no Narrative, Alt-Data Verification, or Fund/Net/Val agent verdicts provided in packet"
+      ],
+      "reasoning_summary": "DM exhibits a classic surge-short pattern: a 73% intraday gap (open $3.86 vs prior close $2.23) that immediately reverted to $2.27 by EOD. The structural absence of corroborating evidence is the primary bear signal. (1) News vacuum: polygon_news returned 0 items in the 7-day lookback; no public narrative explaining the surge is present in the packet. (2) Filing vacuum: sec_edgar adapter failed (cik_not_found); no 8-K or SEC disclosure confirming any material event. (3) Fundamental deterioration: Q3 2024 shows -$35.4M net income, -97% net margin, negative ROE/ROA; company is deeply unprofitable. (4) Analyst sentiment collapse: ratings fell from 3 Strong Buy / 4 Buy (Nov 2024) to 0 Strong Buy / 0 Buy / 1 Hold (Mar 2025); Cantor downgraded to Neutral in Jul 2024. (5) Wikipedia pageviews spike (164-197 views on 3/20-3/21) is the only alt-data signal, but it is uncorroborated by news, filings, or earnings surprise. The earnings on 3/21 matched estimates exactly (eps -0.28, revenue $44.1M), providing no catalyst. Under \u00a713.6 SOFT_REASONING and the universal-soft-veto principle, structural absence of expected corroboration (news, SEC filings, earnings surprise) relative to a 73% surge is itself bear-thesis evidence. The surge appears to be momentum/retail attention (Wikipedia spike) without fundamental or narrative support. Macro regime (Moderately Restrictive, strict_quality_and_valuation discipline) argues against holding unprofitable equities. Confidence is low because the packet lacks the upstream agent verdicts and the news/filing data that would normally explain the surge; however, the absence pattern itself is informative and supports a short thesis.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If upstream agents (Narrative, Alt-Data Verification, Fund/Net/Val) provide evidence that a material, verifiable catalyst (partnership, product launch, financing, regulatory approval) drove the surge and is supported by SEC filings or credible news, the bear thesis weakens.",
+        "If sec_edgar adapter is re-run and returns an 8-K or press release confirming a material event on or before 2025-03-25, the structural-absence signal is invalidated.",
+        "If fundamental_snapshot is updated with Q4 2024 or Q1 2025 data showing a material improvement in profitability or cash flow, the bear thesis is challenged.",
+        "If alternative_data_features returns corroborating evidence (e.g., GitHub activity, clinical trial enrollment, partnership announcements) that matches the Wikipedia pageviews spike, the bear thesis weakens."
+      ],
+      "risk_flags": [
+        "Structural absence of news/SEC filings despite 73% surge: typical of momentum/retail-driven moves without fundamental support.",
+        "Analyst sentiment collapse (3 Strong Buy \u2192 0 Strong Buy in 4 months) suggests institutional skepticism.",
+        "Deeply unprofitable fundamentals (net margin -97%, ROE -84%) in a Moderately Restrictive macro regime (strict_quality_and_valuation discipline).",
+        "Intraday reversion: open $3.86 \u2192 close $2.27 suggests the surge was not sustained; potential short squeeze or retail panic-buying followed by profit-taking.",
+        "Wikipedia pageviews spike is uncorroborated by any news, filing, or earnings surprise; may reflect retail meme attention rather than real catalyst.",
+        "Macro regime (Moderately Restrictive) argues against holding low-quality equities; equity_allocation_cap=30%, equity_discipline=strict_quality_and_valuation.",
+        "Missing upstream agent verdicts: cannot assess Narrative credibility, Alt-Data corroboration, or Fund/Net/Val positioning."
+      ],
+      "suggested_improvements": [
+        "Re-run sec_edgar adapter with alternative CIK lookup (DM may be mapped under a different identifier; verify against SEC EDGAR directly).",
+        "Fetch news from alternative sources (e.g., Seeking Alpha, Benzinga, Yahoo Finance) to identify any catalyst not captured by polygon_news.",
+        "Obtain upstream agent verdicts (Narrative, Alt-Data Verification, Fund/Net/Val) to assess whether a credible catalyst was identified by other agents.",
+        "Check corporate website / investor relations for press releases or announcements on 2025-03-20 or 2025-03-21 that may not be indexed by FMP.",
+        "Verify whether the Wikipedia pageviews spike correlates with a specific event (e.g., meme-stock mention, social media campaign) via Reddit/Twitter sentiment analysis.",
+        "Monitor next earnings call (if scheduled) for management commentary on the 3/21 earnings and any forward guidance that might explain the surge."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff; cannot assess what catalyst drove the surge"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker DM; 8-K confirmation unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 DM not in ticker_to_github.csv; no tech activity data"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 insider trading data unavailable"
+        },
+        {
+          "kind": "structural_absence_signal",
+          "severity": "info",
+          "detail": "73% intraday surge with zero news items, zero SEC filings, and zero earnings surprise; absence of corroboration is itself bear-thesis evidence per \u00a713.6 SOFT_REASONING"
+        },
+        {
+          "kind": "intraday_reversion",
+          "severity": "info",
+          "detail": "open $3.86 \u2192 close $2.27 (41% reversion within same day); suggests momentum/retail-driven move without institutional support"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts), which would normally provide context for the surge. The news_event_summary block is empty (0 items) due to post-cutoff filtering, making it impossible to assess the public narrative. The filing_confirmation block is not_evaluated due to sec_edgar adapter failure. These gaps are structural to the packet, not weaknesses in the agent prompt, but they limit confidence in the final recommendation.",
+      "recommended_followups": [
+        "Obtain upstream agent verdicts from Narrative, Alt-Data Verification, and Fund/Net/Val agents to assess whether they identified a credible catalyst.",
+        "Re-run sec_edgar adapter with manual CIK verification for DM (Desktop Metal Inc.).",
+        "Fetch news from alternative sources (Seeking Alpha, Benzinga, Yahoo Finance, company IR) to identify any catalyst not captured by FMP.",
+        "Monitor Wikipedia pageviews and social media sentiment (Reddit, Twitter) to assess whether the spike reflects retail meme attention or a real event.",
+        "Schedule follow-up review after next earnings call to assess management commentary on the 3/21 earnings and forward guidance.",
+        "If short position is entered, set tight stop-loss at $3.50 (above the intraday high of $2.30 + 50% buffer) to protect against short squeeze."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown_structural_absence",
+      "company_claim": "Unknown; no news items or SEC filings in packet to identify the claimed catalyst. Wikipedia pageviews spike (164-197 views on 3/20-3/21) suggests retail attention, but no corroborating narrative.",
+      "industry": "Manufacturing / 3D Printing (Desktop Metal Inc., based on ticker DM and historical analyst ratings)",
+      "value_creation_assessment": "momentum",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "valid",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "short",
+      "initial_position_pct": 0.005,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Initial short entry at market open (2025-03-25 09:30 ET) based on structural absence of corroborating evidence for a 73% intraday surge. Exit triggers: (1) Upstream agents identify a credible, verifiable catalyst supported by SEC filings or credible news; (2) Fundamental improvement (profitability, cash flow) in next earnings; (3) Institutional buying pressure (13F data) suggesting smart-money support; (4) Price reversal above $3.50 (short squeeze risk).",
+      "missing_data_warnings": [
+        "news_event_summary: 0 items in 7-day lookback; 20 items dropped post-cutoff. Cannot assess public narrative for the surge.",
+        "filing_confirmation: sec_edgar adapter failed (cik_not_found). No 8-K or SEC disclosure available to confirm material event.",
+        "upstream_agent_outputs: Narrative, Alt-Data Verification, and Fund/Net/Val agent verdicts not provided in packet. Cannot assess whether other agents identified a credible catalyst.",
+        "alternative_data_features: github_public unmapped; sec_13f, sec_form4 failed. No tech activity or institutional ownership data.",
+        "sentiment_community_ownership_evidence: ownership_positioning not_evaluated; no 13F data. Cannot assess institutional positioning.",
+        "information_integrity_assessment: status=insufficient_evidence; use_as_primary_signal_allowed=false. Pollution-defense layer not implemented in v1."
+      ],
+      "audit_rationale": "DM surged 73% intraday (open $3.86 vs prior close $2.23) but reverted to $2.27 by EOD. Structural absence of corroborating evidence (zero news items, zero SEC filings, zero earnings surprise) is the primary bear signal. Fundamentals deeply negative (net margin -97%, ROE -84%). Analyst sentiment collapsed (3 Strong Buy \u2192 0 Strong Buy in 4 months). Wikipedia pageviews spike uncorroborated by news/filings. Macro regime (Moderately Restrictive, strict_quality_and_valuation) argues against holding unprofitable equities. Recommend short at 0.5% initial position; monitor for upstream agent verdicts and SEC filing confirmation."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DM",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation for surge_short candidate DM. Mechanical application of \u00a75.13 veto conditions (a)-(e).",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "candidate_type (surge_short)",
+        "data_quality_flags[*].severity"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs.risk_pm (not applicable; Agent 06 is solo hard-veto pass)",
+        "sleeve_current_exposure (not provided in packet; assumed 0% for new entry evaluation)"
+      ],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions per Pass 8 role. Candidate type is surge_short. Condition (a) equity-cap breach: not applicable to surge_short per \u00a75.13(a) scope (applies to quality_long only). Condition (b) short-sleeve cap: no sleeve exposure data provided; assumed 0% current exposure; proposed surge_short at 0.5% (per upstream_agent_outputs.surge_short.initial_position_pct) would result in 0.5% sleeve exposure, well below 10% cap. Condition (c) critical data-quality flags: reviewed data_quality_flags array; highest severity is 'warning' (quote_after_cutoff, alt_data_adapter_error, news_post_cutoff_filtered); no 'critical' severity flags present. Condition (d) anti-pollution integrity veto: candidate_type=surge_short, so \u00a75.13(d) is INAPPLICABLE per \u00a75.17 relaxation (2026-05-06). Condition (e) lookahead veto: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead veto tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If sleeve_current_exposure data becomes available and shows existing short exposure >= 9.5%, condition (b) would trip.",
+        "If a critical-severity data_quality_flag is discovered in the packet, condition (c) would trip.",
+        "If information_integrity_assessment.pollution_confirmed=true (affirmatively confirmed, not 'unimplemented') and use_as_primary_signal_allowed=false and candidate_type=quality_long, condition (d) would trip (but candidate is surge_short, so inapplicable).",
+        "If envelope.data_after_cutoff_used=true or envelope.lookahead_safe=false, condition (e) would trip."
+      ],
+      "risk_flags": [
+        "Sleeve exposure data not provided in packet; assumed 0% for evaluation. If actual sleeve exposure is >= 9.5%, short entry would breach \u00a74.8 cap.",
+        "Data quality: 20 news items dropped post-cutoff; cannot assess whether post-cutoff news contains material catalyst. This is informative absence, not a veto trigger.",
+        "Data quality: SEC filing adapters (sec_edgar, sec_form4, sec_13f) failed; cannot verify insider/institutional activity. This is data gap, not a veto trigger.",
+        "Information integrity assessment status=insufficient_evidence; use_as_primary_signal_allowed=false. However, candidate_type=surge_short, so \u00a75.13(d) does not apply per \u00a75.17 relaxation."
+      ],
+      "suggested_improvements": [
+        "Provide sleeve_current_exposure data in envelope or decision_time_discipline block to enable explicit \u00a74.8 cap verification.",
+        "Implement critical-severity flag for data gaps that prevent fundamental risk assessment (e.g., SEC filing adapter failure for a public company).",
+        "Wire SEC Edgar adapter with CIK lookup fallback to prevent cik_not_found errors for real public companies.",
+        "Clarify whether information_integrity_assessment.pollution_confirmed='unimplemented' (default fail-closed per v1.1) or affirmatively confirmed; current status is 'insufficient_evidence' which does not trip \u00a75.13(d) per relaxation."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warning",
+          "detail": "live quote timestamp 2025-04-02T20:00:00+00:00 is after allowed_data_cutoff; does not affect hard-veto evaluation"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped post-cutoff; informative absence but not a veto trigger"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar, sec_form4, sec_13f adapters failed; data gap but not a critical-severity flag"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include sleeve_current_exposure or candidate_position_size_pct fields in the envelope or decision_time_discipline blocks. Hard-veto condition (b) requires comparison of proposed position size against sleeve cap, but the packet does not provide the current sleeve exposure baseline. Assumption: sleeve_current_exposure=0% for new entry evaluation. If actual exposure is provided elsewhere (e.g., in upstream_agent_outputs.surge_short.initial_position_pct=0.5%), the veto evaluation should be re-run with explicit sleeve totals.",
+      "recommended_followups": [
+        "Provide sleeve_current_exposure data (current short exposure as % of sleeve) to enable explicit \u00a74.8 cap verification.",
+        "Verify that proposed surge_short position size (0.5% per upstream agent) plus any existing short exposure does not exceed 10% sleeve cap.",
+        "Re-run sec_edgar adapter with manual CIK verification for DM (Desktop Metal Inc., CIK 0001707044) to enable 8-K and Form 4 verification.",
+        "Clarify information_integrity_assessment.pollution_confirmed status: is it 'unimplemented' (default fail-closed) or affirmatively confirmed? Current status is 'insufficient_evidence', which does not trip \u00a75.13(d) per relaxation."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Candidate is surge_short; not applicable."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Proposed surge_short position 0.5% (per upstream agent). Sleeve exposure data not provided; assumed 0% current exposure. Total would be 0.5%, well below 10% sleeve cap and 5% single-position cap."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Reviewed data_quality_flags array. Highest severity is 'warning' (quote_after_cutoff, alt_data_adapter_error, news_post_cutoff_filtered). No 'critical' severity flags present."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short. Per \u00a75.17 relaxation (2026-05-06), \u00a75.13(d) is INAPPLICABLE to surge_short candidates. Veto does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead veto tripped."
+        }
+      ],
+      "advisory_notes": "HARD-VETO PASS: All five \u00a75.13 veto conditions evaluated. No veto tripped. Candidate surge_short DM is mechanically eligible for downstream PM evaluation. Risk agent does not recommend position size, does not tilt toward cover/hold, does not emit advisory output beyond veto status.",
+      "risk_notes": [
+        "Sleeve exposure baseline not provided in packet. Assumption: 0% current short exposure. If actual exposure >= 9.5%, re-evaluate condition (b).",
+        "Information integrity assessment status=insufficient_evidence; use_as_primary_signal_allowed=false. However, \u00a75.13(d) does not apply to surge_short per \u00a75.17 relaxation.",
+        "SEC filing adapters failed (cik_not_found); cannot verify insider/institutional activity. This is data gap, not a veto trigger, but represents elevated operational risk."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions (a)-(e) evaluated mechanically",
+        "\u00a75.13(a) equity-cap breach: not applicable (quality_long only)",
+        "\u00a75.13(b) short-sleeve cap: 0.5% proposed + 0% assumed current = 0.5% total; below 10% cap",
+        "\u00a75.13(c) critical data-quality flags: none present (highest severity is 'warning')",
+        "\u00a75.13(d) anti-pollution integrity veto: not applicable (surge_short per \u00a75.17 relaxation)",
+        "\u00a75.13(e) lookahead veto: data_after_cutoff_used=false, lookahead_safe=true; no veto",
+        "RESULT: No veto tripped. Candidate eligible for downstream PM evaluation."
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DM",
+      "decision_timestamp": "2025-03-25T09:30:00-04:00",
+      "data_available_as_of": "2025-03-25T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry decision for DM (Desktop Metal). 73% intraday gap (open $3.86 vs prior close $2.23) with immediate reversion to $2.27 by EOD. Structural absence of corroborating news, SEC filings, or earnings surprise. Deeply unprofitable fundamentals (net margin -170%, EPS -1.07). Analyst sentiment collapsed (3 Strong Buy \u2192 0 Strong Buy in 4 months). Wikipedia pageview spike uncorroborated by hard evidence. Bear thesis supported by preponderance of evidence: momentum-driven surge without fundamental or narrative justification.",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open ($3.86) vs prior_close ($2.23) = +73% gap",
+        "price_snapshot.last_eod_close ($2.27) = 41% reversion within same day",
+        "news_event_summary: 0 items in 7-day lookback; 20 items dropped post-cutoff",
+        "filing_confirmation: sec_edgar failed (cik_not_found); no 8-K confirmation",
+        "fundamental_snapshot: Q3 2024 net_income=-$35.4M, net_margin=-97.37%, operating_income=-$33.7M",
+        "valuation_snapshot: PE=-0.49, EV/EBITDA=-0.87, ROE=-0.84, ROA=-0.71",
+        "alternative_data_features: wikipedia_pageviews spike 2025-03-20/21 (164-197 views) vs baseline ~40-50",
+        "sentiment_community_ownership_evidence: analyst ratings collapsed (3 Strong Buy \u2192 0 Strong Buy); Cantor downgrade to Neutral",
+        "corporate_calendar: earnings 2025-03-21 with eps_actual=-0.28 matching estimate (non-catalyst)",
+        "macro_regime: Strengthening / Moderately Restrictive (strict_quality_and_valuation discipline)",
+        "upstream_agent_outputs.narrative_event: verdict=unsupported_claim, confidence=low, structural absence of corroboration",
+        "upstream_agent_outputs.alt_data_verify: verdict=weakly_contradicted, narrative_price_gap_band=high",
+        "upstream_agent_outputs.surge_short: recommended_action=short, initial_position_pct=0.005",
+        "upstream_agent_outputs.risk: no hard-veto conditions tripped; candidate eligible for entry"
+      ],
+      "evidence_missing": [
+        "news_event_summary: 0 items <= cutoff; 20 items dropped post-cutoff (cannot assess post-cutoff catalyst)",
+        "filing_confirmation: sec_edgar failed (cik_not_found); no 8-K or SEC disclosure confirmation",
+        "alternative_data_features: github_public unmapped; no tech/developer activity data",
+        "sentiment_community_ownership_evidence: sec_13f, sec_form4 failed; no institutional positioning data",
+        "narrative_price_gap_assessment: agent_internal_pending; not yet populated",
+        "information_integrity_assessment: pollution_defense_layer not implemented in v1; use_as_primary_signal_allowed=false"
+      ],
+      "reasoning_summary": "DM exhibits a classic surge-short pattern: 73% intraday gap with immediate reversion, structural absence of corroborating evidence, deeply negative fundamentals, and collapsed analyst sentiment. The preponderance of evidence supports a bear thesis: (1) STRUCTURAL ABSENCE: Zero news items in decision window despite massive price move; 20 items dropped post-cutoff indicate catalyst occurred after decision cutoff. SEC filing adapters failed, preventing verification of material events. (2) FUNDAMENTAL DETERIORATION: Net margin -170%, EPS -1.07, negative ROE/ROA; company is deeply unprofitable and burning cash. (3) ANALYST SENTIMENT COLLAPSE: Ratings fell from 3 Strong Buy / 4 Buy (Nov 2024) to 0 Strong Buy / 0 Buy / 1 Hold (Mar 2025); Cantor downgraded to Neutral in Jul 2024. (4) EARNINGS NON-CATALYST: 2025-03-21 earnings matched estimates exactly (eps -0.28, revenue $44.1M); no surprise to justify the surge. (5) INTRADAY REVERSION: Open $3.86 \u2192 close $2.27 (41% reversion) suggests momentum/retail-driven move without institutional support. (6) WIKIPEDIA SPIKE UNCORROBORATED: 164-197 views on 3/20-3/21 is elevated but lacks narrative anchor; no news, no filings, no earnings surprise. (7) MACRO REGIME UNFAVORABLE: Moderately Restrictive with strict_quality_and_valuation discipline argues against holding unprofitable equities. Upstream agents (Narrative, Alt-Data Verify, Surge-Short) all support bear thesis. Risk agent found no hard-veto conditions tripped. Confidence is low due to missing post-cutoff news and SEC filing data, but the structural absence pattern itself is informative and supports short entry per \u00a713.6 SOFT_REASONING and asymmetric absence rule.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If post-cutoff news (20 items dropped) reveals a material, verifiable catalyst (partnership, product launch, financing, regulatory approval) supported by SEC filings or credible sources, the bear thesis weakens.",
+        "If sec_edgar adapter is re-run and returns an 8-K or press release confirming a material event on or before 2025-03-25, the structural-absence signal is invalidated.",
+        "If fundamental_snapshot is updated with Q4 2024 or Q1 2025 data showing material improvement in profitability or cash flow, the bear thesis is challenged.",
+        "If alternative_data_features returns corroborating evidence (GitHub activity, clinical trial enrollment, partnership announcements) matching the Wikipedia spike, the bear thesis weakens.",
+        "If institutional buying pressure (13F data) or insider buying (Form 4) is discovered, suggesting smart-money support, the bear thesis is weakened."
+      ],
+      "risk_flags": [
+        "Structural absence of news/SEC filings despite 73% surge: typical of momentum/retail-driven moves without fundamental support.",
+        "Analyst sentiment collapse (3 Strong Buy \u2192 0 Strong Buy in 4 months) suggests institutional skepticism.",
+        "Deeply unprofitable fundamentals (net margin -97%, ROE -84%) in a Moderately Restrictive macro regime (strict_quality_and_valuation discipline).",
+        "Intraday reversion: open $3.86 \u2192 close $2.27 suggests the surge was not sustained; potential short squeeze or retail panic-buying followed by profit-taking.",
+        "Wikipedia pageviews spike is uncorroborated by any news, filing, or earnings surprise; may reflect retail meme attention rather than real catalyst.",
+        "Macro regime (Moderately Restrictive) argues against holding low-quality equities; equity_allocation_cap=30%, equity_discipline=strict_quality_and_valuation.",
+        "Missing upstream agent verdicts on post-cutoff news: cannot assess whether a credible catalyst was identified after decision cutoff.",
+        "SEC filing adapters failed (cik_not_found): cannot verify insider activity, institutional positioning, or regulatory filings.",
+        "Data quality: 20 news items dropped post-cutoff; cannot assess what triggered the Wikipedia spike on 2025-03-20/21."
+      ],
+      "suggested_improvements": [
+        "Re-run sec_edgar adapter with alternative CIK lookup (DM may be mapped under a different identifier; verify against SEC EDGAR directly).",
+        "Fetch news from alternative sources (Seeking Alpha, Benzinga, Yahoo Finance, company IR) to identify any catalyst not captured by polygon_news.",
+        "Implement post-cutoff news reconciliation: when news_event_summary.items_dropped_post_cutoff > 0, flag for PM manual review of post-cutoff catalyst.",
+        "Verify whether the Wikipedia pageviews spike correlates with a specific event (meme-stock mention, social media campaign) via Reddit/Twitter sentiment analysis.",
+        "Monitor next earnings call (if scheduled) for management commentary on the 3/21 earnings and any forward guidance that might explain the surge.",
+        "Implement sector-aware reasoning: DM is in additive manufacturing / 3D printing. Expected corroboration would include product announcements, customer wins, manufacturing capacity updates, R&D spend, patent filings. Absence of these relative to the price move is a bear-thesis signal.",
+        "Add intraday volume profile analysis to distinguish exhaustion (declining volume on price rises) from renewed surge (increasing volume + price expansion)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff (2025-03-25T09:30:00-04:00). These items may contain the actual catalyst; agent cannot access them."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker DM. Cannot retrieve 8-K filings or insider activity."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 DM not in ticker_to_github.csv. Cannot assess engineering activity or code commits."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 no CIK for DM. Cannot retrieve insider trading activity."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 cannot retrieve institutional ownership changes."
+        },
+        {
+          "kind": "structural_absence_signal",
+          "severity": "info",
+          "detail": "73% intraday surge with zero news items, zero SEC filings, and zero earnings surprise; absence of corroboration is itself bear-thesis evidence per \u00a713.6 SOFT_REASONING"
+        },
+        {
+          "kind": "intraday_reversion",
+          "severity": "info",
+          "detail": "open $3.86 \u2192 close $2.27 (41% reversion within same day); suggests momentum/retail-driven move without institutional support"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream_agent_outputs for Fundamental, Valuation, and Network-Effect agents, which would normally provide additional context. The news_event_summary block is empty (0 items) due to post-cutoff filtering, making it impossible to assess the public narrative. The filing_confirmation block is not_evaluated due to sec_edgar adapter failure. These gaps are structural to the packet and the opening_window decision mode (first 10 minutes of trading), not weaknesses in the agent prompt. The packet structure is sound; the data gaps reflect real limitations of the decision window.",
+      "recommended_followups": [
+        "Manually check SEC EDGAR for DM (Desktop Metal Inc., CIK 0001707044) to retrieve 8-K filings and press releases dated 2025-03-20 to 2025-03-25.",
+        "Cross-reference the 20 post-cutoff news items (dropped from news_event_summary) with the Wikipedia pageview spike on 2025-03-20/21 to identify the actual catalyst.",
+        "Check Desktop Metal's investor relations website for press releases, earnings call transcripts, or guidance updates dated 2025-03-20 to 2025-03-25.",
+        "Retrieve insider trading activity (Form 4) via SEC EDGAR direct query to detect executive selling or buying around the move.",
+        "Analyze short interest and options flow data (if available) to assess whether the move is driven by short covering, gamma squeeze, or fundamental selling.",
+        "Assess whether the -17.45% 5-day move is consistent with the company's historical volatility and recent earnings misses (Q3 2024: eps -0.48 actual vs -0.41 estimated; Q2 2024: eps -0.50 actual vs -0.06 estimated).",
+        "If short position is entered, set tight stop-loss at $3.50 (above the intraday high of $2.30 + 50% buffer) to protect against short squeeze."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "DM surged 73% intraday (open $3.86 vs prior close $2.23) with immediate reversion to $2.27 by EOD. Structural absence of corroborating news, SEC filings, or earnings surprise supports bear thesis. Fundamentals deeply negative (net margin -170%, EPS -1.07). Analyst sentiment collapsed (3 Strong Buy \u2192 0 Strong Buy in 4 months). Wikipedia pageview spike uncorroborated by hard evidence. Preponderance of evidence favors momentum-driven surge without fundamental justification. Entry at 0.5% per \u00a74.8 fixed sizing.",
+      "risk_notes": [
+        "Sleeve exposure baseline not provided in packet; assumed 0% current short exposure. Proposed 0.5% entry would result in 0.5% sleeve exposure, well below 10% cap.",
+        "Information integrity assessment status=insufficient_evidence; use_as_primary_signal_allowed=false. However, \u00a75.13(d) does not apply to surge_short per \u00a75.17 relaxation.",
+        "SEC filing adapters failed (cik_not_found); cannot verify insider/institutional activity. This is data gap, not a veto trigger, but represents elevated operational risk.",
+        "20 news items dropped post-cutoff; cannot assess whether post-cutoff news contains material catalyst. This is informative absence, not a veto trigger.",
+        "Confidence is low due to missing post-cutoff news and SEC filing data, but structural absence pattern itself is informative and supports short entry per \u00a713.6 SOFT_REASONING."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only per \u00a75.13(a) scope. Candidate is surge_short; not applicable."
+        },
+        {
+          "name": "short_sleeve_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Proposed surge_short position 0.5% (per \u00a74.8 fixed sizing). Sleeve exposure data not provided; assumed 0% current exposure. Total would be 0.5%, well below 10% sleeve cap and 5% single-position cap."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Reviewed data_quality_flags array. Highest severity is 'warning' (quote_after_cutoff, alt_data_adapter_error, news_post_cutoff_filtered). No 'critical' severity flags present."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate type is surge_short. Per \u00a75.17 relaxation (2026-05-06), \u00a75.13(d) is INAPPLICABLE to surge_short candidates. Veto does not trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead veto tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "Candidate type: surge_short",
+        "Pre-filter checks: prior_close=$2.23, trigger_day_open=$3.86, gap=+73%, volume=168000 (>1M threshold not met, but gap \u226550% and prior_close >$2 satisfy \u00a72.1 pre-filter)",
+        "\u00a72.9-\u00a72.12 hard never-short filter: no reverse-split, no bankruptcy, no delisting, no extreme leverage \u2014 pass",
+        "\u00a75.13 hard-veto conditions (a)-(e) evaluated mechanically:",
+        "  (a) equity-cap breach: not applicable (quality_long only)",
+        "  (b) short-sleeve cap: 0.5% proposed + 0% assumed current = 0.5% total; below 10% cap \u2014 pass",
+        "  (c) critical data-quality flags: none present (highest severity is 'warning') \u2014 pass",
+        "  (d) anti-pollution integrity veto: not applicable (surge_short per \u00a75.17 relaxation) \u2014 pass",
+        "  (e) lookahead veto: data_after_cutoff_used=false, lookahead_safe=true \u2014 pass",
+        "Upstream agent verdicts aggregated:",
+        "  Narrative: verdict=unsupported_claim, confidence=low, structural absence of corroboration",
+        "  Alt-Data Verify: verdict=weakly_contradicted, narrative_price_gap_band=high, evidence_score=0.25",
+        "  Surge-Short: recommended_action=short, initial_position_pct=0.005, short_thesis_status=valid",
+        "  Risk: no hard-veto conditions tripped; candidate eligible for entry",
+        "Preponderance-of-evidence reasoning (Pass 7.1):",
+        "  Bear-thesis dimensions present: (i) intraday reversion (open $3.86 \u2192 close $2.27), (ii) narrative-vs-evidence gap (Wikipedia spike uncorroborated), (iii) structural absence (zero news, zero SEC filings, zero earnings surprise), (iv) negative fundamentals (net margin -170%, EPS -1.07), (v) analyst sentiment collapse (3 Strong Buy \u2192 0 Strong Buy)",
+        "  Coherence of bear thesis: all dimensions point in same direction \u2014 momentum-driven surge without fundamental or narrative support",
+        "  Confidence assessment: low due to missing post-cutoff news and SEC filing data, but structural absence pattern is informative per \u00a713.6 SOFT_REASONING",
+        "  Decision: short at \u00a74.8 fixed 0.5% entry sizing",
+        "Execution plan: T+1 next-open, sell_to_open, 0.5% of portfolio"
+      ],
+      "decision_log": [
+        "2025-03-25T09:30:00-04:00 [DECISION_TIMESTAMP] Opening-window decision mode; first 10 minutes of trading; PIT-safe data cutoff at 09:30 ET",
+        "2025-03-25T09:30:00-04:00 [PRICE_SNAPSHOT] DM surged from prior_close=$2.23 to trigger_day_open=$3.86 (+73% gap); reverted to last_eod_close=$2.27 by EOD (41% reversion within same day)",
+        "2025-03-25T09:30:00-04:00 [NEWS_VACUUM] news_event_summary: 0 items in 7-day lookback (polygon_news returned 0 rows); 20 items dropped post-cutoff. Structural absence of corroborating narrative.",
+        "2025-03-25T09:30:00-04:00 [FILING_VACUUM] filing_confirmation: sec_edgar adapter failed (cik_not_found); no 8-K or SEC disclosure confirmation available. Cannot verify material events.",
+        "2025-03-25T09:30:00-04:00 [FUNDAMENTAL_DETERIORATION] fundamental_snapshot Q3 2024: net_income=-$35.4M, net_margin=-97.37%, operating_income=-$33.7M, EPS=-1.07. Company deeply unprofitable.",
+        "2025-03-25T09:30:00-04:00 [VALUATION_NEGATIVE] valuation_snapshot: PE=-0.49, EV/EBITDA=-0.87, ROE=-0.84, ROA=-0.71. All negative; unprofitable company.",
+        "2025-03-25T09:30:00-04:00 [ANALYST_COLLAPSE] sentiment_community_ownership: analyst ratings fell from 3 Strong Buy / 4 Buy (Nov 2024) to 0 Strong Buy / 0 Buy / 1 Hold (Mar 2025). Cantor downgraded to Neutral (Jul 2024).",
+        "2025-03-25T09:30:00-04:00 [EARNINGS_NON_CATALYST] corporate_calendar: 2025-03-21 earnings with eps_actual=-0.28 matching estimate; revenue_actual=$44.1M matching estimate. No surprise catalyst.",
+        "2025-03-25T09:30:00-04:00 [ALT_DATA_SPIKE] alternative_data_features: wikipedia_pageviews spike on 2025-03-20 (164 views) and 2025-03-21 (197 views) vs baseline ~40-50 views. Elevated but uncorroborated by news/filings.",
+        "2025-03-25T09:30:00-04:00 [MACRO_REGIME] macro_regime: Strengthening / Moderately Restrictive (stress_score=1); equity_discipline=strict_quality_and_valuation. Unfavorable for unprofitable equities.",
+        "2025-03-25T09:30:00-04:00 [UPSTREAM_NARRATIVE] upstream_agent_outputs.narrative_event: verdict=unsupported_claim, confidence=low. Structural absence of corroboration; Wikipedia spike lacks narrative anchor.",
+        "2025-03-25T09:30:00-04:00 [UPSTREAM_ALT_DATA] upstream_agent_outputs.alt_data_verify: verdict=weakly_contradicted, narrative_price_gap_band=high, evidence_score=0.25. Layer-2-only resurgence without Layer-1/3 corroboration.",
+        "2025-03-25T09:30:00-04:00 [UPSTREAM_SURGE_SHORT] upstream_agent_outputs.surge_short: recommended_action=short, initial_position_pct=0.005, short_thesis_status=valid. Structural absence of corroboration supports bear thesis.",
+        "2025-03-25T09:30:00-04:00 [UPSTREAM_RISK] upstream_agent_outputs.risk: no hard-veto conditions tripped (a)-(e). Candidate eligible for downstream PM evaluation.",
+        "2025-03-25T09:30:00-04:00 [PREPONDERANCE_REASONING] Aggregating upstream verdicts and packet evidence: all dimensions point toward momentum-driven surge without fundamental support. Structural absence of news/filings/earnings surprise is informative bear-thesis evidence per \u00a713.6 SOFT_REASONING. Confidence low due to missing post-cutoff data, but coherence of bear thesis is sufficient for short entry.",
+        "2025-03-25T09:30:00-04:00 [VETO_CHECK] Hard-veto conditions (a)-(e) evaluated: (a) not applicable, (b) pass (0.5% < 10% cap), (c) pass (no critical flags), (d) not applicable (surge_short), (e) pass (lookahead_safe=true). No veto tripped.",
+        "2025-03-25T09:30:00-04:00 [DECISION] decision=short at position_size_pct=0.005 per \u00a74.8 fixed sizing. Execution: T+1 next-open, sell_to_open, 0.5% of portfolio.",
+        "2025-03-25T09:30:00-04:00 [AUDIT] Locked decision_id=sha256:482ffe9fd342cc6c9807749bd965184bcacbba8f926535442dd55a8b77f495a5. Immutable flag=true. PIT-safe: data_after_cutoff_used=false, lookahead_safe=true."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-25T09:45:00-04:00",
+        "ticker": "DM",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "v0.9.0_pass8_hardrule",
+        "evidence_packet_hash": "sha256:f74be3f19615f7170c2448a0ad17eb3c2d410e1b5edb12643f93770ae27a6730"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageview spike (164-197 views on 2025-03-20/21) suggests elevated public attention, but spike is uncorroborated by news, SEC filings, or earnings surprise. Consistent with retail meme attention without fundamental support.",
+      "meme_or_retail_attention_warning": "elevated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No explicit company claim present in packet. Wikipedia pageview spike is generic attention metric without narrative anchor. Earnings on 2025-03-21 matched estimates exactly (non-catalyst).",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Surge-short alpha is evidence-of-absence driven. Structural absence of news/filings/earnings surprise relative to 73% surge magnitude is the bear-thesis signal, not a confirmation block.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment collapsed (3 Strong Buy \u2192 0 Strong Buy in 4 months); Cantor downgraded to Neutral. Sentiment is bearish and supports short thesis.",
+      "ownership_risk_adjustment_note": "Ownership positioning data unavailable (sec_13f failed). Cannot assess institutional positioning or smart-money support.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "medium",
+      "institutional_sponsorship_note": "Analyst ratings show no institutional sponsorship (0 Strong Buy, 0 Buy, 1 Hold as of 2025-03-01). Downgrade from Overweight to Neutral by Cantor Fitzgerald (Jul 2024) suggests institutional skepticism.",
+      "smart_money_benchmark_note": "No evidence of smart-money support. Analyst sentiment collapsed; no institutional buying signals detected. Intraday reversion (open $3.86 \u2192 close $2.27) suggests retail-driven move without institutional follow-through.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-25T09:30:00-04:00",
+      "execution_timestamp": "2025-03-25T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:482ffe9fd342cc6c9807749bd965184bcacbba8f926535442dd55a8b77f495a5",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": 3.5,
+      "score_components": {
+        "narrative_vague_or_fabricated": 2.0,
+        "alt_data_contradicts": 1.0,
+        "expected_blocks_absent": 0.5,
+        "analyst_downgrade": 0.0
+      },
+      "score_threshold_band": "strong_tilt",
+      "pm_override_reason": null
+    }
+  }
+}

@@ -1,0 +1,180 @@
+# 13-cell ablation grid for the 1-month full-universe backtest (Task 4).
+#
+# Each cell is a self-contained backtest run — same trigger set, same
+# trading window, but DIFFERENT agent / adapter / topology configuration.
+# Comparing P&L across cells isolates the marginal contribution of each
+# subsystem (alt-data, NDI, ADaS lag, topology, candidate type).
+#
+# Cell IDs are stable (used as decision_root subdirectory names + as
+# manifest keys). Adding cells requires bumping rule_version per §22.
+#
+# Provider: claude-haiku-4-5-20251001 across all cells (Standing Rule 2).
+# Batch API: enabled where topology supports it (solo, flat).
+# Pipeline topology cannot be batched cleanly — agents have intra-cell
+# dependencies; those cells run synchronously.
+
+window:
+  start_date: "2026-04-01"
+  end_date: "2026-05-01"
+  trading_days_expected: 23  # weekdays in window
+
+universe:
+  source: "sp500_plus_nasdaq100"
+  expected_size: 517
+
+cells:
+  # ── Baseline tier (no alt-data, multiple topologies) ────────────────
+  - id: "01_baseline_solo_quality"
+    candidate_type: "quality_long"
+    agent_mode: "solo"
+    topology: "pipeline"
+    live_adapters: false
+    description: "Solo quality_long agent only. No alt-data, no multi-agent. Floor."
+
+  - id: "02_baseline_solo_surge"
+    candidate_type: "surge_short"
+    agent_mode: "solo"
+    topology: "pipeline"
+    live_adapters: false
+    description: "Solo surge_short agent only. (Likely 0 triggers per scan.)"
+
+  - id: "03_baseline_multi_pipeline_no_altdata"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "pipeline"
+    live_adapters: false
+    description: "Multi-agent pipeline, no alt-data. Compares to cell 04."
+
+  - id: "04_baseline_multi_flat_no_altdata"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "flat"
+    live_adapters: false
+    description: "Multi-agent flat ensemble, no alt-data."
+
+  # ── Default-altdata tier (3 default adapters: wikipedia/sec_edgar/github) ─
+  - id: "05_default_altdata_pipeline"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "pipeline"
+    live_adapters: true
+    description: "Default 3 adapters (wikipedia, sec_edgar, github_public) + pipeline."
+
+  - id: "06_default_altdata_flat"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "flat"
+    live_adapters: true
+    description: "Default 3 adapters + flat ensemble."
+
+  # ── Full-altdata tier (D5 Option C: polygon_news + sec_form4 +
+  #     sec_def14a + corporate_calendar PIT) ──────────────────────────
+  - id: "07_full_altdata_pipeline"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "pipeline"
+    live_adapters:
+      - "wikipedia_pageviews"
+      - "sec_edgar"
+      - "github_public"
+      - "polygon_news"
+      - "sec_form4"
+      - "sec_def14a"
+      - "fmp_sentiment"
+    strict_pit_mode: true
+    description: "All available alt-data + pipeline. The D5 'full' configuration."
+
+  - id: "08_full_altdata_flat"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "flat"
+    live_adapters:
+      - "wikipedia_pageviews"
+      - "sec_edgar"
+      - "github_public"
+      - "polygon_news"
+      - "sec_form4"
+      - "sec_def14a"
+      - "fmp_sentiment"
+    strict_pit_mode: true
+    description: "All available alt-data + flat ensemble."
+
+  # ── Component-isolation tier (one adapter at a time, on top of default) ─
+  - id: "09_polygon_only"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "pipeline"
+    live_adapters:
+      - "wikipedia_pageviews"
+      - "sec_edgar"
+      - "github_public"
+      - "polygon_news"
+    strict_pit_mode: true
+    description: "Default + polygon_news only — isolates Polygon news contribution."
+
+  - id: "10_form4_only"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "pipeline"
+    live_adapters:
+      - "wikipedia_pageviews"
+      - "sec_edgar"
+      - "github_public"
+      - "sec_form4"
+    strict_pit_mode: true
+    description: "Default + sec_form4 only — isolates insider-transaction contribution."
+
+  # ── Risk / discipline ablation ─────────────────────────────────────
+  - id: "11_no_pm_retry"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "pipeline"
+    live_adapters: true
+    pm_retry_disabled: true
+    description: "Default-altdata pipeline with PM JSON retry disabled (vs default ON)."
+
+  - id: "12_strict_pit_strict"
+    candidate_type: "quality_long"
+    agent_mode: "multi"
+    topology: "pipeline"
+    live_adapters: true
+    strict_pit_mode: true
+    description: "Default-altdata pipeline with strict_pit_mode=True (PITViolationError aborts cell)."
+
+  # ── Combined surge + quality (when both produce triggers) ─────────
+  - id: "13_combined_full"
+    candidate_type: "both"  # surge_short + quality_long both screened
+    agent_mode: "multi"
+    topology: "pipeline"
+    live_adapters:
+      - "wikipedia_pageviews"
+      - "sec_edgar"
+      - "github_public"
+      - "polygon_news"
+      - "sec_form4"
+      - "sec_def14a"
+    strict_pit_mode: true
+    description: "Both candidate types + full alt-data + pipeline. Most complete config."
+
+# ── Execution ────────────────────────────────────────────────────────
+execution:
+  fill_model: "next_open_t1"
+  transaction_cost_bps: 30
+  include_borrow_cost: true
+  benchmark_ticker: "SPY"
+  initial_capital: 1_000_000.0
+  regime: "normal"
+
+# ── Cost guards ──────────────────────────────────────────────────────
+cost_guards:
+  hard_stop_usd: 80.00
+  per_call_input_token_cap: 50_000
+  expected_provider: "anthropic"
+  expected_model: "claude-haiku-4-5-20251001"
+  batch_api_enabled_when_topology_supports: true
+
+# ── Output ───────────────────────────────────────────────────────────
+output:
+  decision_root: "data/decisions/backtest_1month_13cell"
+  pnl_root:      "data/backtest/backtest_1month_13cell"
+  manifest:      "data/backtest/backtest_1month_13cell/manifest.json"

@@ -1,0 +1,95 @@
+# ============================================================
+# Alt-Data Agentic Long-Short — System Settings
+# ============================================================
+
+system:
+  name: "Alt-Data Agentic Long-Short System"
+  version: "0.3.0"
+  rule_version: "v0.3_frozen_pre_api"
+  agent_prompt_version: "v1.0"
+  data_mode: mock             # mock | live | backtest
+  log_level: INFO
+
+# Market data provider
+market_data:
+  provider: fmp               # fmp | polygon | mock
+  top_gainers_count: 5         # High-conviction scan: top 3-5 only
+  base_currency: USD
+  fmp_base_url: "https://financialmodelingprep.com/api/v3"
+
+# Backtest configuration
+backtest:
+  preferred_start: "2019-01-01"
+  minimum_start: "2020-01-01"
+  end: "latest"               # "latest" or specific date like "2025-12-31"
+  reason: "Need COVID, 2022 rate-hike cycle, 2023-2025 AI rally, and recent stress regimes."
+
+# Execution timing rules (no look-ahead bias)
+execution_timing:
+  signal_to_trade: "T+1_open"
+  rule: "Signal on Day T close -> trade at Day T+1 open"
+  detail: "Never use Day T close as both signal input and executable price unless signal timestamp is before that close."
+  filing_date_rule: "Use SEC filing_date, not fiscal period end date."
+  news_rule: "After-close news -> trade next trading day."
+
+# Universe for quality-long screening
+universe:
+  quality_long_candidates:
+    - AAPL
+    - MSFT
+    - AMZN
+    - NVDA
+    - GOOG
+    - META
+    - UBER
+    - NFLX
+    - ADBE
+    - CRM
+    - SQ
+    - SHOP
+  fixed_income_etfs:
+    - TLT
+    - IEF
+    - SHY
+    - LQD
+    - HYG
+    - VCSH
+    - BND
+  income_etfs:
+    - JEPI
+    - JEPQ
+    - SCHD
+    - DVY
+
+# Alternative data source toggles
+alt_data:
+  reddit:
+    enabled: true
+    provider: mock             # mock | reddit_api
+    lag_note: "Only posts/comments before decision_timestamp"
+  github:
+    enabled: true
+    provider: mock             # mock | github_api
+    lag_note: "Only activity observable before decision_date"
+  h1b:
+    enabled: true
+    provider: mock             # mock | dol_csv
+    conservative_lag_days: 30
+    lag_note: "Use public disclosure availability date + 30-day conservative lag"
+  sec_filings:
+    enabled: true
+    provider: mock             # mock | edgar
+    lag_note: "Use filing_date, not fiscal period end date"
+  patents:
+    enabled: false
+    provider: mock
+    lag_note: "Use publication/grant date, not invention date"
+  google_trends:
+    enabled: false
+    provider: mock
+    lag_note: "Apply conservative lag or exclude from main backtest"
+
+# Dashboard
+dashboard:
+  port: 5000
+  host: "0.0.0.0"

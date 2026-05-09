@@ -1,0 +1,231 @@
+{
+  "trigger_id": "c9cf849804cb",
+  "ticker": "CCEP",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-03-17T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 52.88,
+  "trigger_cost_usd": 0.068407,
+  "cumulative_cost_usd": 1.82613,
+  "candidate_ranking_inputs": {
+    "ticker": "CCEP",
+    "earliest_event_date": "2025-03-21",
+    "selection_reason": "earnings_window_14d",
+    "close": 84.74,
+    "t1_open": 84.5,
+    "t1_date": "2025-03-18"
+  },
+  "evidence_packet_hash": "sha256:773828bbef4333b59581253f3a11b32653034b0b67cc0cb1e4c1a45e821e99aa",
+  "locked_decision_id": "sha256:ae08c99236007ce5f599b1d3671d09e8c9676a0b513e84ac9cd29880ad35c411",
+  "pm_agent_key": "",
+  "pm_decision_extract": null,
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "baseline_solo": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "baseline_solo": {
+      "agent_id": "Agent_08_Baseline_Solo",
+      "agent_role_label": "Baseline Solo Agent (single-agent ablation control)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "baseline_solo_v1.0",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CCEP",
+      "decision_timestamp": "2025-03-17T09:30:00-04:00",
+      "data_available_as_of": "2025-03-17T09:30:00-04:00",
+      "decision_or_assessment": "no_trade",
+      "confidence": "low",
+      "evidence_used": [
+        "macro_regime (overheat, moderately restrictive)",
+        "valuation_snapshot (PE 18.43, PB 4.57, EV/EBITDA 13.31)",
+        "fundamental_snapshot (Q2 2024: revenue 9.8B, net margin 8.11%)",
+        "price_snapshot (last EOD close 83.4, 5d return +1.21%)",
+        "sentiment_community_ownership_evidence (analyst ratings stable, no ownership data)",
+        "alternative_data_features (Wikipedia pageviews minimal, no tech activity)",
+        "news_event_summary (no news items within cutoff window)",
+        "information_integrity_assessment (low-tier sources only, uncorroborated)"
+      ],
+      "evidence_missing": [
+        "catalyst narrative (no news event summary items post-cutoff)",
+        "alternative data corroboration (adapters not wired; Wikipedia pageviews alone insufficient)",
+        "ownership positioning (13F data unavailable; Form 4 shows no recent insider activity)",
+        "information integrity verification (pollution-defense layer unimplemented in v1)",
+        "narrative price gap assessment (agent-LLM reasoning not available in v1)"
+      ],
+      "reasoning_summary": "CCEP exhibits stable fundamentals (PE 18.4, PB 4.6, net margin 8.1%) and modest positive price momentum (+1.2% 5d). Macro regime is overheat/moderately restrictive, constraining equity allocation. No catalyst identified: news_event_summary is empty post-cutoff, alternative data is sparse (Wikipedia pageviews only, no tech/GitHub activity), and information_integrity_assessment flags low-tier sources only with no primary corroboration. Analyst sentiment is descriptor-only (10 buy, 3 hold, 1 sell as of 2025-03-01) and cannot drive decision. Ownership data unavailable. Without external corroboration of a catalyst or material thesis, and given macro headwinds, position sizing cannot be justified. Fail-closed to no_trade pending upstream multi-agent decomposition.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Macro regime overheat + strict_quality_and_valuation_caution discipline limits equity exposure to 20% cap",
+        "No news catalyst identified within decision window",
+        "Alternative data sources insufficient (Wikipedia pageviews only; GitHub unmapped; no consumer/sector-specific adapters wired)",
+        "Information integrity assessment blocks primary-signal use (low-tier sources, uncorroborated)",
+        "Ownership positioning data unavailable (13F not available on plan; Form 4 shows no recent insider activity)"
+      ],
+      "risk_flags": [
+        "macro_regime_constraint: overheat regime with moderately restrictive policy (DFF 4.33%, yield curve +0.29%) limits equity allocation to 20%",
+        "missing_catalyst: no news items, no material events, no price gap narrative",
+        "alt_data_sparse: Wikipedia pageviews only (1-3 views per day, no spike); GitHub unmapped; no sector-specific adapters",
+        "information_integrity_low: T3 and T4 sources only; no T1/T2 primary corroboration",
+        "valuation_moderate: PE 18.4 is reasonable but not compelling in overheat regime; PB 4.6 elevated",
+        "leverage_elevated: debt-to-equity 1.38, current ratio 0.80 (below 1.0 liquidity concern)",
+        "no_ownership_signal: 13F unavailable; Form 4 shows zero insider activity in 90d",
+        "sentiment_descriptor_only: analyst ratings (10 buy, 3 hold, 1 sell) are descriptors; cannot override missing catalyst"
+      ],
+      "suggested_improvements": [
+        "Implement multi-agent decomposition (Agent 02 narrative, Agent 03 alt-data verification, Agent 04 fundamentals, Agent 07 risk) to cross-check catalyst and corroboration independently",
+        "Wire industry-specific alternative data adapters (consumer_traffic_adapter for beverage/retail, energy_commodity_adapter for commodity exposure) to supplement Wikipedia pageviews",
+        "Implement information_integrity_assessment pollution-defense layer (v1 placeholder) to formally assess low-tier source credibility",
+        "Fetch 13F ownership data when available; monitor Form 4 for insider activity as leading indicator",
+        "Establish narrative_price_gap_assessment via Agent 03 LLM reasoning to detect mismatch between price action and fundamental/news backdrop"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "warn",
+          "detail": "live quote timestamp 2026-05-07T20:00:01+00:00 is after allowed_data_cutoff; using last_eod_close 83.4 from 2025-03-14"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 FMP news items dropped because publishedDate > cutoff; news_event_summary.items is empty"
+        },
+        {
+          "kind": "alt_data_sparse",
+          "severity": "warning",
+          "detail": "alternative_data_features: Wikipedia pageviews only (23 rows, max 3 views/day); GitHub unmapped; no sector adapters wired"
+        },
+        {
+          "kind": "information_integrity_placeholder",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: low-tier sources only (T3=1, T4=1); pollution-defense layer unimplemented in v1; use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "ownership_data_unavailable",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan; sec_form4: 0 rows in 90d lookback"
+        },
+        {
+          "kind": "valuation_ttm_not_pit_safe",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM (no fiscal anchor); used for context only, not PIT inputs"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not populate narrative_price_gap_assessment (agent_internal_pending) or implement information_integrity_assessment pollution-defense layer. Alternative data adapters are mostly not wired (only Wikipedia pageviews and FMP sentiment available). These gaps force fail-closed decision in baseline solo mode; multi-agent pipeline will decompose and cross-check independently.",
+      "recommended_followups": [
+        "Deploy multi-agent pipeline (Agent 02 narrative, Agent 03 alt-data, Agent 04 fundamentals, Agent 07 risk, Agent 06 PM) to enable cross-agent verification",
+        "Monitor for earnings catalyst (next earnings not in calendar; last was 2024-11-05 with EPS beat 2.11 vs 2.05 est)",
+        "Track macro regime transition: if yield curve inverts further or policy rate cuts, equity allocation cap may relax",
+        "Establish watch list entry for CCEP if alt-data adapters are wired and show material activity spike",
+        "Re-evaluate if information_integrity_assessment pollution-defense layer is implemented and confirms corroboration"
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Insufficient evidence to justify position. Macro regime (overheat, 20% equity cap) constrains sizing. No catalyst identified (empty news_event_summary post-cutoff). Alternative data sparse (Wikipedia only, no corroboration). Information integrity assessment blocks primary-signal use (low-tier sources, uncorroborated). Ownership data unavailable. Fundamentals stable but not compelling. Fail-closed pending multi-agent decomposition.",
+      "risk_notes": [
+        "Macro overheat regime with moderately restrictive policy limits equity allocation to 20% portfolio cap; CCEP alone cannot justify full position",
+        "No news catalyst or material event identified within decision window; price momentum (+1.2% 5d) is modest and unsupported by narrative",
+        "Alternative data sources insufficient: Wikipedia pageviews only (1-3 views/day, no spike); GitHub unmapped; no sector-specific adapters wired",
+        "Information integrity assessment flags low-tier sources only (T3, T4); no T1/T2 primary corroboration; pollution-defense layer unimplemented",
+        "Ownership positioning data unavailable (13F not on plan; Form 4 shows zero insider activity in 90d); cannot assess smart-money support",
+        "Valuation moderate (PE 18.4, PB 4.6) but not compelling in overheat regime; leverage elevated (D/E 1.38, current ratio 0.80)",
+        "Analyst sentiment (10 buy, 3 hold, 1 sell) is descriptor-only and cannot override missing catalyst or corroboration",
+        "Sentiment_community_ownership_evidence block is placeholder in v1; no actual community/ownership signal available"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "insufficient_evidence",
+          "tripped": true,
+          "note": "No catalyst narrative (empty news_event_summary post-cutoff). Alternative data sparse (Wikipedia only). Information integrity assessment blocks primary-signal use (low-tier sources, uncorroborated). Ownership data unavailable. Narrative_price_gap_assessment not populated in v1."
+        },
+        {
+          "name": "hard_risk_limit_breached",
+          "tripped": false,
+          "note": "Macro regime overheat with 20% equity cap is a constraint, not a hard breach. Leverage (D/E 1.38) and liquidity (current ratio 0.80) are elevated but not critical. No hard limit breached."
+        },
+        {
+          "name": "missing_data_persists_beyond_tolerance",
+          "tripped": true,
+          "note": "Alternative data adapters mostly not wired (only Wikipedia, FMP sentiment). Information integrity assessment is placeholder. Narrative_price_gap_assessment not populated. Ownership positioning unavailable. These gaps exceed tolerance for confident decision."
+        },
+        {
+          "name": "information_integrity_veto",
+          "tripped": true,
+          "note": "information_integrity_assessment.use_as_primary_signal_allowed=false. Low-tier sources only (T3=1, T4=1). Pollution-defense layer unimplemented in v1. Corroboration status: uncorroborated. Cannot use alt-data as primary signal."
+        },
+        {
+          "name": "lookahead_data_used",
+          "tripped": false,
+          "note": "data_after_cutoff_used=false. lookahead_safe=true. No lookahead violations. Decision is PIT-safe."
+        }
+      ],
+      "rule_engine_path": [
+        "1. Read envelope: decision_timestamp 2025-03-17T09:30:00-04:00, allowed_data_cutoff 2025-03-17T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false",
+        "2. Evaluate macro_regime: overheat, moderately restrictive, stress_score=2, equity_allocation_cap=20%, equity_discipline=strict_quality_and_valuation_caution",
+        "3. Evaluate catalyst (news_event_summary): status=data_unavailable, items_count=0, items_dropped_post_cutoff=20. No catalyst identified.",
+        "4. Evaluate alternative_data_features: Wikipedia pageviews only (23 rows, 1-3 views/day, no spike). GitHub unmapped. No sector adapters wired. Sparse corroboration.",
+        "5. Evaluate information_integrity_assessment: status=insufficient_evidence, low-tier sources only (T3=1, T4=1), use_as_primary_signal_allowed=false, corroboration_status=uncorroborated",
+        "6. Evaluate sentiment_community_ownership_evidence: placeholder in v1. Analyst ratings (10 buy, 3 hold, 1 sell) are descriptor-only. Ownership data unavailable (13F not on plan, Form 4 zero activity).",
+        "7. Evaluate fundamental_snapshot: Q2 2024 (accepted 2024-06-28), revenue 9.8B, net margin 8.11%, EPS 1.73. Stable but not compelling.",
+        "8. Evaluate valuation_snapshot: PE 18.43, PB 4.57, EV/EBITDA 13.31, D/E 1.38, current_ratio 0.80. Moderate valuation, elevated leverage.",
+        "9. Evaluate price_snapshot: last EOD close 83.4 (2025-03-14), 5d return +1.21%, 20d return +0.83%. Modest momentum, unsupported by narrative.",
+        "10. Check veto conditions: insufficient_evidence=TRIPPED, missing_data_persists_beyond_tolerance=TRIPPED, information_integrity_veto=TRIPPED, lookahead_data_used=FALSE",
+        "11. Candidate type: quality_long (fundamentals pass gate_38, but insufficient corroboration and macro constraint)",
+        "12. Decision: veto conditions tripped \u2192 decision=no_trade, position_size_pct=0.0"
+      ],
+      "decision_log": [
+        "T+0: Envelope validation: decision_timestamp 2025-03-17T09:30:00-04:00, allowed_data_cutoff 2025-03-17T09:30:00-04:00, lookahead_safe=true, data_after_cutoff_used=false. PIT-safe.",
+        "T+1: Macro regime assessment: overheat, moderately restrictive (DFF 4.33%, yield curve +0.29%), stress_score=2, equity_allocation_cap=20%. Constrains sizing.",
+        "T+2: Catalyst assessment (Agent 02 equivalent): news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20. No catalyst narrative identified.",
+        "T+3: Alternative data corroboration (Agent 03 equivalent): Wikipedia pageviews only (23 rows, max 3 views/day, no spike). GitHub unmapped. No sector adapters wired. Insufficient corroboration.",
+        "T+4: Information integrity assessment: low-tier sources only (T3=1, T4=1), use_as_primary_signal_allowed=false, corroboration_status=uncorroborated. Pollution-defense layer unimplemented. Blocks primary-signal use.",
+        "T+5: Fundamental assessment (Agent 04 equivalent): Q2 2024 revenue 9.8B, net margin 8.11%, EPS 1.73. Stable. Gate_38 passes (eps>0, op_margin>0, financial_health=sound). But valuation moderate (PE 18.4, PB 4.6) and leverage elevated (D/E 1.38, current_ratio 0.80).",
+        "T+6: Sentiment/ownership assessment (Agent 05 equivalent): Analyst ratings (10 buy, 3 hold, 1 sell) are descriptor-only, cannot drive decision. Ownership data unavailable (13F not on plan, Form 4 zero activity in 90d). No smart-money signal.",
+        "T+7: Price/momentum assessment: Last EOD close 83.4 (2025-03-14), 5d return +1.21%, 20d return +0.83%. Modest momentum, unsupported by narrative or catalyst.",
+        "T+8: Sleeve eligibility check: candidate_type=quality_long (fundamentals pass). But macro constraint (20% equity cap) and missing catalyst/corroboration prevent sizing.",
+        "T+9: Risk/PM assessment (Agent 07 equivalent): Veto conditions evaluated: insufficient_evidence=TRIPPED (no catalyst, sparse alt-data, low-tier sources only), missing_data_persists_beyond_tolerance=TRIPPED (adapters not wired, narrative_price_gap not populated, ownership unavailable), information_integrity_veto=TRIPPED (use_as_primary_signal_allowed=false). Lookahead_data_used=FALSE (PIT-safe).",
+        "T+10: Final decision: Veto conditions tripped \u2192 decision=no_trade, position_size_pct=0.0. Fail-closed pending multi-agent decomposition."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-17T09:45:00-04:00",
+        "ticker": "CCEP",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "baseline_solo_v1.0",
+        "evidence_packet_hash": "sha256:3f249aec44864435b06b1c6161d46c8fb4f094b91ab0ef84e252f1e751e3b654"
+      },
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews minimal (1-3 views/day, no spike). No retail/meme attention detected. Community attention risk: low.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": true,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No claims to verify. News_event_summary is empty post-cutoff. Alternative data sparse (Wikipedia only). No narrative to corroborate.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Essential blocks absent or insufficient: (1) news_event_summary.items is empty post-cutoff (no catalyst narrative); (2) alternative_data_features adapters mostly not wired (Wikipedia only, no corroboration); (3) information_integrity_assessment blocks primary-signal use (low-tier sources, uncorroborated); (4) narrative_price_gap_assessment not populated in v1 (agent_internal_pending); (5) sentiment_community_ownership_evidence is placeholder (no actual ownership data). Without these blocks, thesis confirmation is not allowed per \u00a713.6 null-block-handling clause.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment (10 buy, 3 hold, 1 sell as of 2025-03-01) is descriptor-only and cannot override missing catalyst or corroboration. Sentiment_community_ownership_evidence block is placeholder in v1; no actual sentiment signal available.",
+      "ownership_risk_adjustment_note": "Ownership positioning data unavailable: 13F not available on current plan; Form 4 shows zero insider activity in 90d lookback. Cannot assess smart-money support or crowding risk. Ownership_positioning.status=not_evaluated.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "Ownership data unavailable (13F not on plan). Cannot assess institutional sponsorship or smart-money support.",
+      "smart_money_benchmark_note": "Form 4 shows zero insider activity in 90d. No smart-money signal available. Ownership_positioning.status=not_evaluated.",
+      "decision_mode": "historical_replay",
+      "allowed_data_cutoff": "2025-03-17T09:30:00-04:00",
+      "execution_timestamp": "2025-03-17T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:e83ae13b5af87d6c8cb4f3128553b8bb81ba8a8e445d7d1de389fd6955fcc24e",
+      "immutable_decision_flag": true
+    }
+  }
+}

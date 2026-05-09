@@ -1,0 +1,1129 @@
+{
+  "trigger_id": "a06e7cda0b29",
+  "ticker": "ALUR",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-21T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 208.26,
+  "trigger_cost_usd": 0.282469,
+  "cumulative_cost_usd": 7.732464,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "ALUR",
+    "name": "ALUR",
+    "close": 3.58,
+    "prior_close": 2.28,
+    "change": 1.5900000000000003,
+    "change_pct": 69.73684210526318,
+    "volume": 74451737.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-21",
+    "prior_trading_day": "2025-03-20",
+    "available_as_of": "2025-03-21T16:00:00-05:00",
+    "today_open": 3.87,
+    "today_volume": 74451737.0,
+    "eps_ttm": -16.9,
+    "operating_margin_ttm": -169.2323185820337,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-13 16:30:41",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:a6752c2d480f8b5c3758c6b3f881bba9344dea73a31fd7890a3dca902cea0519",
+  "locked_decision_id": "sha256:ec5157b28dfc350c6f00129cd02d72a40b9887dcb09f784eb2dfddd58e41058e",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026_05_03_universal_soft_veto",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "ALUR",
+    "decision_timestamp": "2025-03-21T09:30:00-04:00",
+    "data_available_as_of": "2025-03-21T09:30:00-04:00",
+    "decision_or_assessment": "surge_short_entry_decision",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.return_60d_pct",
+      "price_snapshot.return_20d_pct",
+      "price_snapshot.relative_volume_vs_20d",
+      "price_snapshot.trigger_day_open",
+      "corporate_calendar.splits",
+      "valuation_snapshot.valuation_inputs",
+      "fundamental_snapshot.status",
+      "news_event_summary.status",
+      "alternative_data_features.attention.wikipedia_pageviews",
+      "filing_confirmation.sec_edgar",
+      "sentiment_community_ownership_evidence.fmp_sentiment",
+      "upstream_agent_outputs.narrative_event.verdict",
+      "upstream_agent_outputs.alt_data_verify.verdict",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated",
+      "macro_regime.macro_regime"
+    ],
+    "evidence_missing": [
+      "fundamental_snapshot (insufficient_evidence status)",
+      "news_event_summary.items (0 items <= cutoff)",
+      "sec_form4 (0 insider transactions in 90d)",
+      "sec_13f (adapter unavailable)",
+      "github_public (unmapped_ticker)",
+      "upstream_agent_outputs.surge_short (schema validation failed)"
+    ],
+    "reasoning_summary": "ALUR exhibits extreme price deterioration (-67.4% over 60d, -36.7% over 20d) with documented structural absence of corroborating evidence. Narrative Agent verdict: unsupported_claim (8-K filing 29 days stale, zero news coverage, vague material-agreement claim). Alt-Data Verify verdict: weakly_contradicted (reverse split 1:25 on 2025-01-03 signals distress; net margin -188.8% TTM; current ratio 0.33; zero Form 4 activity; zero GitHub data; zero news). Risk Agent: no hard-veto conditions tripped; candidate eligible for PM evaluation. Macro regime Overheat/Moderately Restrictive with strict_quality_and_valuation_caution discipline is unfavorable for speculative recovery. Preponderance of evidence supports bear thesis: (i) price action shows exhaustion (intraday collapse from 3.87 to 2.28 on trigger day); (ii) narrative inconsistent with verifiable evidence (8-K claim unsupported by news, analyst upgrades, or insider buying); (iii) structural absence relative to sector-expected evidence (no news, no insider support, no developer activity for micro-cap OTC); (iv) negative fundamentals (loss-making, negative margins, liquidity stress); (v) reverse split history (distress signal). No hard-veto conditions tripped. Surge-short entry gate met: prior_close 2.4 \u2192 trigger_day_open 3.87 = 61.3% gap (\u226550% threshold); volume 3.1M (\u22651M threshold); prior_close 2.4 (>$2 threshold). Position sizing per \u00a74.8: new entry = 0.005 (0.5%) fixed. Conviction is low due to data gaps (fundamental_snapshot insufficient, 8-K fulltext stub mode, no news items <= cutoff), but preponderance of present evidence (price collapse, reverse split, negative margins, zero corroboration) supports short entry at fixed 0.5% size.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "Positive earnings surprise or guidance raise post-decision",
+      "Strategic acquisition or partnership announcement with credible counterparty and named customer",
+      "Regulatory approval or FDA clearance (if applicable)",
+      "Insider buying by CEO/CFO at current price levels",
+      "Analyst upgrade with material price target increase",
+      "Reversal of reverse split via forward split or recapitalization",
+      "News coverage post-decision that names the 8-K counterparty and contract value"
+    ],
+    "risk_flags": [
+      "Fundamental snapshot insufficient_evidence \u2014 cannot assess underlying business health",
+      "8-K fulltext is stub data (mock_fallback) \u2014 actual filing content not verified",
+      "Valuation metrics distorted by negative earnings \u2014 PE/PB/EV ratios unreliable",
+      "No news items available for analysis \u2014 narrative vacuum",
+      "Macro regime strict_quality_and_valuation_caution \u2014 unfavorable for recovery thesis",
+      "Reverse split (1:25) on 2025-01-03 \u2014 potential delisting risk signal",
+      "Net margin -188.8% TTM \u2014 severe profitability crisis",
+      "Current ratio 0.33 \u2014 potential liquidity stress",
+      "No insider activity in 90d \u2014 lack of management confidence signal",
+      "Wikipedia pageviews flat and minimal \u2014 no retail attention or narrative momentum",
+      "Upstream surge_short agent output failed schema validation \u2014 candidate_type field missing",
+      "Analyst sentiment unchanged (1 SB / 2 B / 1 H) post-8-K filing \u2014 no upgrade signal"
+    ],
+    "suggested_improvements": [
+      "Wire industry-specific adapters for ALUR's actual sector (currently all not_connected)",
+      "Implement sec_8k_fulltext binary extraction (currently stub mode) to verify actual filing content",
+      "Fetch fundamental_snapshot with PIT-safe quarterly data to assess operating metrics",
+      "Retrieve news items pre-cutoff to identify specific catalysts driving price collapse",
+      "Connect GitHub adapter if ALUR has software/developer component",
+      "Implement 13F adapter to assess institutional positioning changes",
+      "Retrieve full Form 4 history to assess insider confidence at current price",
+      "Verify Wikipedia pageviews data source and confirm it refers to ticker ALUR, not ethnic group"
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "stub_data",
+        "severity": "warning",
+        "detail": "sec_8k_fulltext: stub mode (deterministic, not ground truth) \u2014 binary adapter not installed"
+      },
+      {
+        "kind": "fundamentals_partial",
+        "severity": "warning",
+        "detail": "fundamental_snapshot: status=insufficient_evidence \u2014 cannot assess operating metrics"
+      },
+      {
+        "kind": "no_news_in_window",
+        "severity": "warning",
+        "detail": "news_event_summary: 0 items <= cutoff; 20 items dropped post-cutoff"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public: unmapped_ticker \u2014 no GitHub data available"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable"
+      },
+      {
+        "kind": "no_recent_form4",
+        "severity": "info",
+        "detail": "sec_form4: no Form 4 transactions in last 90d for ALUR"
+      },
+      {
+        "kind": "ttm_snapshot_used",
+        "severity": "warning",
+        "detail": "valuation_snapshot: TTM ratios not PIT-safe; distorted by negative earnings"
+      },
+      {
+        "kind": "quote_after_cutoff",
+        "severity": "info",
+        "detail": "live quote timestamp after allowed_data_cutoff; last_eod_close used for PIT anchoring"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "v1 generator does not wire industry-specific adapters (software_devtools, biotech_clinical, etc.) \u2014 all show not_connected. OpenCLI is not invoked in v1 (not_connected). Pollution-defense layer unimplemented; use_as_primary_signal_allowed stays fail-closed per schema v1.1 decision #8. Fundamental snapshot insufficient_evidence prevents sector-aware reasoning from operating metrics. 8-K fulltext stub mode prevents verification of actual filing content. Upstream surge_short agent output failed schema validation (candidate_type field missing); PM must verify candidate_type specification from caller.",
+    "recommended_followups": [
+      "Identify ALUR's actual sector/industry from 10-K Item 1 or business description",
+      "Wire appropriate industry-specific alt-data adapter (currently all not_connected)",
+      "Retrieve PIT-safe fundamental snapshot to assess operating metrics and cash position",
+      "Fetch full 8-K text (not stub) to verify material agreement details and corporate events",
+      "Retrieve news items pre-cutoff to identify specific catalysts and narrative",
+      "Assess insider positioning via Form 4 history and 13F filings",
+      "Evaluate reverse split (1:25 on 2025-01-03) as delisting risk or recapitalization signal",
+      "Cross-check analyst sentiment (stable at 1 SB / 2 B / 1 H) against price collapse for divergence"
+    ],
+    "candidate_type": "surge_short",
+    "decision": "short",
+    "position_size_pct": 0.005,
+    "reason": "Surge-short entry at 0.5% fixed size. ALUR exhibits extreme price deterioration (-67.4% over 60d) with structural absence of corroborating evidence (zero news, zero insider buying, zero GitHub, negative fundamentals). Narrative unsupported (8-K claim vague and 29 days stale). Reverse split (1:25) signals distress. Preponderance of evidence supports bear thesis despite data gaps. No hard-veto conditions tripped. Macro regime unfavorable for recovery.",
+    "risk_notes": [
+      "Condition (a) sleeve_cap_breach_5_13_a: not applicable to surge_short",
+      "Condition (b) surge_short_sleeve_cap_5_13_b: no upstream sleeve position data; cannot evaluate; assume no breach pending PM state",
+      "Condition (c) critical_severity_data_quality_5_13_c: no critical-severity flags found; not tripped",
+      "Condition (d) anti_pollution_integrity_veto_5_13_d: inapplicable to surge_short per \u00a75.17 relaxation 2026-05-06; not tripped",
+      "Condition (e) lookahead_veto_5_13_e: data_after_cutoff_used=false, lookahead_safe=true; not tripped",
+      "Hard-veto pass: candidate eligible for PM evaluation",
+      "Data quality concerns (fundamental_snapshot insufficient, 8-K fulltext stub mode, no news items <= cutoff) are flagged but do not trigger hard veto",
+      "Confidence low due to data gaps; conviction supported by preponderance of present evidence (price collapse, reverse split, negative margins, zero corroboration)"
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long only (\u00a73.7/\u00a73.8 equity caps \u00a74.7). Candidate_type=surge_short; not applicable."
+      },
+      {
+        "name": "surge_short_sleeve_cap_5_13_b",
+        "tripped": false,
+        "note": "Condition (b) requires upstream sleeve position data (current single-position % and sleeve %). No upstream position data provided in packet; cannot evaluate. Assume no breach pending PM sleeve state."
+      },
+      {
+        "name": "critical_severity_data_quality_5_13_c",
+        "tripped": false,
+        "note": "Examined data_quality_flags array (8 entries). Severity values: 'warning' (5), 'info' (3). No severity='critical' entries found. Condition (c) NOT tripped."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Candidate_type=surge_short per \u00a75.17 RELAXED 2026-05-06: veto INAPPLICABLE to surge_short. Condition (d) does NOT apply."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition (e) NOT tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a72.1 surge-short pre-filter: prior_close 2.4 \u2192 trigger_day_open 3.87 = 61.3% gap (\u226550% threshold met)",
+      "\u00a72.1 surge-short pre-filter: volume 3.1M (\u22651M threshold met)",
+      "\u00a72.1 surge-short pre-filter: prior_close 2.4 (>$2 threshold met)",
+      "\u00a72.9\u2013\u00a72.12 hard never-short filter: no disqualifying conditions identified",
+      "\u00a75.13 hard-veto evaluation: candidate_type=surge_short",
+      "\u00a75.13(a) equity_cap_breach: not applicable to surge_short",
+      "\u00a75.13(b) surge_short_sleeve_cap: no upstream position data; assume no breach",
+      "\u00a75.13(c) critical_severity_flags: none found",
+      "\u00a75.13(d) anti_pollution_integrity: inapplicable per \u00a75.17 relaxation",
+      "\u00a75.13(e) lookahead_veto: not tripped",
+      "HARD-VETO PASS: no conditions tripped; candidate eligible for PM evaluation",
+      "\u00a733.2 PASS 8 SCORING: narrative_event.verdict=unsupported_claim (+2), alt_data_verify.verdict=weakly_contradicted (+1), expected_blocks_absent=5 (capped +2) \u2192 SHORT_CONVICTION_SCORE = 5.0",
+      "\u00a733.2 score_threshold_band: 5.0 \u2208 [2, 5] \u2192 strong_tilt",
+      "PM decision: short at fixed 0.005 (0.5%) per \u00a74.8 new entry sizing",
+      "Execution: T+1 next-open per \u00a719.7 rule engine"
+    ],
+    "decision_log": [
+      "2025-03-21T09:30:00-04:00 [ENVELOPE] Decision timestamp locked; PIT-safe mode; lookahead_safe=true; data_after_cutoff_used=false",
+      "2025-03-21T09:30:00-04:00 [PRICE_SNAPSHOT] ALUR last_eod_close=2.28 (prior 2.4, -5% 1d); trigger_day_open=3.87 (69.7% above EOD); 5d return -6.56%; 20d return -36.67%; 60d return -67.43%; relative_volume=11.6x 20d avg",
+      "2025-03-21T09:30:00-04:00 [CORPORATE_CALENDAR] Reverse split 1:25 on 2025-01-03 (distress signal); 5 events within \u00b15 trading days (all past earnings and split)",
+      "2025-03-21T09:30:00-04:00 [VALUATION_SNAPSHOT] PE=-1.78 (negative earnings); PB=-0.66; EV/EBITDA=-1.04; net_margin=-188.8% TTM; current_ratio=0.33 (liquidity stress); gross_margin=62.84% (positive but offset by negative net margin)",
+      "2025-03-21T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] Status=insufficient_evidence; cannot assess operating metrics; no PIT-safe quarterly data available",
+      "2025-03-21T09:30:00-04:00 [NEWS_EVENT_SUMMARY] Status=data_unavailable; 0 items <= cutoff; 20 items dropped post-cutoff; polygon_news returned 0 rows for [2025-03-14, 2025-03-21]",
+      "2025-03-21T09:30:00-04:00 [FILING_CONFIRMATION] SEC 8-K filed 2025-02-21 (29 days pre-decision) with items 1.01 (material agreement), 3.02 (unregistered sales), 8.01 (other events), 9.01 (financial statements); 7 8-K filings in 90d; fulltext stub mode (not ground truth)",
+      "2025-03-21T09:30:00-04:00 [ALTERNATIVE_DATA] Wikipedia pageviews for 'Alur' show 0-5 views/day (likely ethnic group, not ticker); no spike pattern; GitHub unmapped_ticker (0 rows); no developer activity",
+      "2025-03-21T09:30:00-04:00 [SENTIMENT_COMMUNITY_OWNERSHIP] FMP analyst sentiment stable: 1 Strong Buy, 2 Buy, 1 Hold as of 2025-03-01 (20 days pre-decision); no upgrade post-8-K filing; sec_form4 returned 0 insider transactions in 90d; sec_13f unavailable",
+      "2025-03-21T09:30:00-04:00 [MACRO_REGIME] Overheat / Moderately Restrictive (stress_score=2); equity_discipline=strict_quality_and_valuation_caution; unfavorable for speculative recovery",
+      "2025-03-21T09:30:00-04:00 [NARRATIVE_EVENT_AGENT] Verdict=unsupported_claim; confidence=low; 8-K filing 29 days stale; zero news coverage in 7-day window; vague material-agreement claim (no customer named, no dollar amount disclosed); no insider buying; analyst sentiment unchanged; Wikipedia pageviews baseline noise",
+      "2025-03-21T09:30:00-04:00 [ALT_DATA_VERIFY_AGENT] Verdict=weakly_contradicted; confidence=low; reverse split 1:25 signals distress; net margin -188.8% TTM; current ratio 0.33; zero Form 4 activity; zero GitHub data; zero news; structural absence relative to sector-expected evidence supports bear thesis",
+      "2025-03-21T09:30:00-04:00 [RISK_AGENT] Hard-veto evaluation: no conditions (a)-(e) tripped; candidate eligible for PM evaluation; data quality concerns flagged but do not trigger hard veto",
+      "2025-03-21T09:30:00-04:00 [SURGE_SHORT_PRE_FILTER] Prior_close 2.4 \u2192 trigger_day_open 3.87 = 61.3% gap (\u226550% threshold met); volume 3.1M (\u22651M threshold met); prior_close 2.4 (>$2 threshold met); pre-filter conditions satisfied",
+      "2025-03-21T09:30:00-04:00 [SURGE_SHORT_NEVER_SHORT_FILTER] No disqualifying conditions identified (\u00a72.9\u2013\u00a72.12)",
+      "2025-03-21T09:30:00-04:00 [BEAR_THESIS_SYNTHESIS] Preponderance of evidence supports bear thesis: (i) price action shows exhaustion (intraday collapse from 3.87 to 2.28); (ii) narrative inconsistent with verifiable evidence (8-K claim unsupported by news, analyst upgrades, insider buying); (iii) structural absence relative to sector-expected evidence (no news, no insider support, no developer activity); (iv) negative fundamentals (loss-making, negative margins, liquidity stress); (v) reverse split history (distress signal). Confidence low due to data gaps (fundamental_snapshot insufficient, 8-K fulltext stub mode, no news items <= cutoff), but present evidence coherently supports short entry.",
+      "2025-03-21T09:30:00-04:00 [PASS_8_SCORING] narrative_event.verdict=unsupported_claim (+2); alt_data_verify.verdict=weakly_contradicted (+1); expected_blocks_absent=5 (capped +2) \u2192 SHORT_CONVICTION_SCORE = 5.0; score_threshold_band=strong_tilt (2 \u2264 5.0 \u2264 5)",
+      "2025-03-21T09:30:00-04:00 [PM_DECISION] Candidate_type=surge_short; decision=short; position_size_pct=0.005 (0.5% fixed per \u00a74.8 new entry); confidence=low; uncertainty=high; no hard-veto conditions tripped; preponderance of evidence supports bear thesis despite data gaps",
+      "2025-03-21T09:30:00-04:00 [EXECUTION_PLAN] Order_type=T+1 next-open; execution_timestamp=2025-03-21T09:45:00-04:00; side=sell_to_open; size_pct_of_portfolio=0.005"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-21T09:45:00-04:00",
+      "ticker": "ALUR",
+      "side": "sell_to_open",
+      "size_pct_of_portfolio": 0.005
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_universal_soft_veto",
+      "evidence_packet_hash": "sha256:0e8441bf1741e8d5d5b13055b12c316e182d1d353ab71ba8e7deb02a16e4e25f"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews for 'Alur' show 0-5 views/day with no spike pattern; likely refers to ethnic group, not ticker ALUR; no retail attention signal detected.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "8-K filing (2025-02-21) claims material agreement (Item 1.01) and unregistered sales (Item 3.02); fulltext is stub mode (not ground truth); claim is vague (no customer named, no dollar amount disclosed); zero news corroboration; analyst sentiment unchanged; no insider buying.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Fundamental snapshot insufficient_evidence; 8-K fulltext stub mode; no news items <= cutoff; cannot confirm thesis with ground-truth evidence.",
+    "sentiment_risk_adjustment_note": "FMP analyst sentiment stable (1 SB / 2 B / 1 H) from 2024-12-01 through 2025-03-01; no upgrade post-8-K filing (2025-02-21); sentiment is descriptor-only and does not support bullish thesis.",
+    "ownership_risk_adjustment_note": "sec_form4 returned 0 insider transactions in 90d; sec_13f unavailable; no institutional positioning data; lack of insider buying despite material agreement signals lack of management confidence.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": "No institutional sponsorship signal detected; analyst sentiment unchanged post-8-K filing; no 13F data available.",
+    "smart_money_benchmark_note": "No smart-money support signal detected; analyst sentiment stable; no insider buying; no Form 4 activity in 90d.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-21T09:30:00-04:00",
+    "execution_timestamp": "2025-03-21T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:cd6aaff2ab664a57814bb7acffa23afcde6ac0bfa2cedb9c640494ba4d4397b2",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": 5.0,
+    "score_components": {
+      "narrative_event_unsupported_claim": 2.0,
+      "alt_data_verify_weakly_contradicted": 1.0,
+      "expected_blocks_absent_capped": 2.0
+    },
+    "score_threshold_band": "strong_tilt",
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ALUR",
+      "decision_timestamp": "2025-03-21T09:30:00-04:00",
+      "data_available_as_of": "2025-03-21T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification_and_narrative_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_date",
+        "filing_confirmation.filing_index.sec_edgar",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "corporate_calendar.events_near_decision",
+        "news_event_summary.status",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items returned; 20 dropped post-cutoff)",
+        "news_event_summary.trigger_article (null)",
+        "news_event_summary.catalyst_type (null)",
+        "news_event_summary.ndi_score (null)",
+        "filing_confirmation.full_text.sec_8k_fulltext.parsed_payload.text (stub mode only)",
+        "fundamental_snapshot (insufficient_evidence status)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "alternative_data_features.valuation_context (not_evaluated)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)"
+      ],
+      "reasoning_summary": "ALUR exhibits a severe structural absence of narrative corroboration relative to its price action. Decision timestamp 2025-03-21 09:30 ET shows: (1) Price snapshot: last EOD close 2.28 (prior 2.4, -5% 1d), trigger_day_open 3.87 (69.7% above EOD), 5d return -6.56%, 20d return -36.67%, 60d return -67.43%, relative volume 11.6x 20d average. (2) Filing confirmation: SEC 8-K filed 2025-02-21 (29 days pre-decision) with items 1.01 (material agreement), 3.02 (unregistered sales), 8.01 (other events), 9.01 (financial statements). (3) News event summary: status=data_unavailable, 0 items in window, 20 items dropped post-cutoff. Polygon news adapter returned 0 rows for [2025-03-14, 2025-03-21]. FMP news endpoint returned 0 items. (4) Alternative data: Wikipedia pageviews for 'Alur' (likely the ethnic group, not the ticker) show 3-5 views/day, no spike pattern. (5) Analyst sentiment: FMP grades show 3 Buy, 1 Hold, 0 Sell as of 2025-03-01 (20 days pre-decision), unchanged from prior months. (6) Corporate calendar: 5 events within \u00b15 trading days (all past earnings and 1:25 split on 2025-01-03). SECTOR-AWARE REASONING: ALUR is OTC-traded, micro-cap. The 8-K filing (Item 1.01 material agreement + Item 3.02 unregistered sales) suggests a capital event or restructuring. However, the absence of ANY news coverage in the 7-day window preceding the decision, combined with the 29-day lag between the 8-K filing and the decision timestamp, indicates the catalyst is NOT fresh. The trigger_day_open of 3.87 vs EOD 2.28 suggests intraday volatility or a gap-down open, but without contemporaneous news or press release, the narrative driver is OPAQUE. The 1:25 reverse split (2025-01-03) is a structural red flag for distressed equity. The negative earnings history (EPS -15.75 on 2024-03-21, -3.5 on 2024-11-13) and negative net margin (-188.8% TTM) indicate fundamental deterioration. ABSENCE PATTERN INTERPRETATION: For a micro-cap OTC stock with a material 8-K filing, we would expect: (a) press release or news pickup within 1-2 days of filing, (b) retail/meme attention if the narrative is bullish, (c) insider activity (Form 4) if management is confident. Present evidence: (a) NO news in 7-day window; (b) Wikipedia pageviews are baseline noise (3-5 views/day, no spike); (c) NO Form 4 activity in 90 days. This structural absence relative to the 8-K's material-agreement claim is a BEAR-THESIS SIGNAL per \u00a713.6 SOFT_REASONING. The company's claim (inferred from 8-K Item 1.01) is VAGUE: no customer named, no dollar amount disclosed, no contract terms in the stub filing text. The narrative is UNSUPPORTED by contemporaneous news or corroboration.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K filing text (currently stub mode) reveals a specific, named customer or dollar-amount contract, catalyst specificity would rise and vague_narrative_flag would flip to false.",
+        "If news coverage emerges post-decision_timestamp (post-2025-03-21 09:30) that names the counterparty and contract value, the absence pattern would be explained as a delayed disclosure lag, not a red flag.",
+        "If Form 4 insider purchases appear in the 30 days post-filing, confidence in management's belief in the catalyst would increase.",
+        "If the next earnings call (post-2025-03-21) explicitly discusses the material agreement and its revenue impact, the catalyst would crystallize from vague to supported."
+      ],
+      "risk_flags": [
+        "Reverse split (1:25 on 2025-01-03) is a classic distress signal; combined with negative earnings, suggests equity is under pressure.",
+        "Negative net margin (-188.8% TTM) and negative ROA (-1.82) indicate the company is burning cash or has one-time charges.",
+        "8-K filing is 29 days old at decision time; if the material agreement was truly value-accretive, why no news coverage or analyst upgrade in the interim?",
+        "Stub-mode 8-K text does not contain actual filing content; cannot verify the claim's specificity.",
+        "No insider buying despite material agreement; suggests management may not be confident in the catalyst's value.",
+        "Analyst sentiment unchanged (3 Buy, 1 Hold) from 2024-12-01 through 2025-03-01; no upgrade post-8-K filing.",
+        "Macro regime is 'Overheat / Moderately Restrictive' with equity_discipline='strict_quality_and_valuation_caution'; ALUR's negative fundamentals and OTC status make it a poor fit for this regime.",
+        "Price action (trigger_day_open 3.87 vs EOD 2.28) suggests gap-down or intraday capitulation; inconsistent with a positive catalyst narrative."
+      ],
+      "suggested_improvements": [
+        "Retrieve the full 8-K text (Item 1.01 and Item 3.02) to extract specific contract terms, counterparty name, and dollar amount.",
+        "Cross-reference the 8-K filing date (2025-02-21) with press releases, earnings calls, or investor presentations issued on or within 2 business days.",
+        "Check SEC EDGAR for any 424B5 (prospectus supplement) or other capital-raise filings that might explain the Item 3.02 unregistered sales.",
+        "Retrieve Form 4 filings for the past 60 days (post-8-K) to assess insider confidence.",
+        "Obtain the most recent earnings call transcript (post-2024-11-13) to see if management discussed the material agreement.",
+        "Verify the Wikipedia pageviews data: confirm that 'Alur' refers to the ticker ALUR and not the ethnic group; if the latter, the alt-data is noise.",
+        "Obtain intraday OHLCV for 2025-03-21 to understand the trigger_day_open 3.87 spike and subsequent collapse to 2.28."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff; cannot assess if any post-cutoff news explains the price action."
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext returned stub mode only; actual filing text not available for narrative extraction."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "polygon_news returned 0 items for [2025-03-14, 2025-03-21]; fmp_news_stock_latest returned 0 items <= cutoff."
+        },
+        {
+          "kind": "alt_data_mismatch",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews for 'Alur' likely refers to the ethnic group, not the ticker ALUR; pageviews (3-5/day) are baseline noise, not a catalyst signal."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; cannot assess whether the material agreement is accretive to earnings or cash flow."
+        },
+        {
+          "kind": "filing_lag",
+          "severity": "info",
+          "detail": "8-K filing date 2025-02-21 is 29 days before decision_timestamp 2025-03-21; catalyst is stale relative to decision window."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's news_event_summary block is marked data_unavailable with 0 items and 20 items dropped post-cutoff. This is a critical gap for narrative assessment: the agent cannot determine whether the 8-K filing triggered any news coverage, analyst commentary, or market narrative. The filing_confirmation block provides the 8-K metadata but the full_text.sec_8k_fulltext is in stub mode, preventing extraction of the actual contract terms. The alternative_data_features block shows wikipedia_pageviews but does not disambiguate whether 'Alur' refers to the ticker or the ethnic group; if the latter, the data is noise. The sentiment_community_ownership_evidence block is largely not_evaluated (ownership_positioning, community_size). These gaps are structural to v1 of the generator and limit the agent's ability to classify the catalyst with high confidence.",
+      "recommended_followups": [
+        "Retrieve the full 8-K filing text from SEC EDGAR and extract Item 1.01 (material agreement) and Item 3.02 (unregistered sales) details.",
+        "Search for press releases issued by ALUR on or within 2 business days of 2025-02-21.",
+        "Check if the 8-K filing triggered any analyst reports, upgrades, or downgrades between 2025-02-21 and 2025-03-21.",
+        "Obtain intraday price and volume data for 2025-03-21 to understand the trigger_day_open 3.87 and the subsequent decline to 2.28.",
+        "Verify the Wikipedia pageviews data source and confirm it refers to the ticker ALUR, not the ethnic group.",
+        "Retrieve Form 4 filings for ALUR insiders in the 60 days post-8-K filing to assess insider confidence.",
+        "Obtain the most recent earnings call transcript and investor presentation to see if management discussed the material agreement.",
+        "Cross-reference the 8-K Item 3.02 (unregistered sales) with any concurrent capital-raise filings (424B5, S-1, etc.)."
+      ],
+      "catalyst_type": "material_agreement_or_capital_event_inferred",
+      "catalyst_specificity_score": 0.15,
+      "vague_narrative_flag": true,
+      "company_claim": "INFERRED from 8-K filing (2025-02-21, Items 1.01 and 3.02): Company entered into a material agreement and conducted unregistered sales. SPECIFICITY: None. No customer named, no dollar amount disclosed, no contract terms provided in stub filing text. CORROBORATION: Zero news coverage in 7-day window pre-decision. No analyst upgrade post-filing. No insider buying. No press release identified. ASSESSMENT: Claim is vague and unsupported by contemporaneous narrative or market reaction.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "ALTERNATIVE_DATA_FRAMEWORK \u00a73.B: material_agreement_or_partnership (inferred from 8-K Item 1.01, but unspecified)",
+        "ALTERNATIVE_DATA_FRAMEWORK \u00a73.B: capital_event_or_financing (inferred from 8-K Item 3.02 unregistered sales, but unspecified)"
+      ],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v1.0_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ALUR",
+      "decision_timestamp": "2025-03-21T09:30:00-04:00",
+      "data_available_as_of": "2025-03-21T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-Price Dislocation Verification: ALUR surge-short candidate",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "corporate_calendar.splits",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "filing_confirmation.sec_edgar",
+        "valuation_snapshot.valuation_inputs",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "news_event_summary.polygon_news"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot (status=insufficient_evidence)",
+        "news_event_summary.items (0 items <= cutoff)",
+        "sec_form4 (0 insider transactions in 90d)",
+        "sec_13f (adapter unavailable)",
+        "github_public (unmapped_ticker)",
+        "opencli_evidence (not_connected)",
+        "industry-specific alt-data adapters (not_connected)"
+      ],
+      "reasoning_summary": "ALUR exhibits extreme price deterioration (-67.4% over 60d, -36.7% over 20d, -6.6% over 5d) with a 1:25 reverse split on 2025-01-03 and elevated relative volume (11.6x 20d avg). The trigger-day open of $3.87 vs current $2.28 suggests a sharp intraday collapse on 2025-03-20. Filing activity is present (7 8-K filings in 90d, most recent 2025-02-21 with items 1.01/3.02/8.01/9.01 indicating material agreements and corporate events), but the 8-K fulltext is stub data (not ground truth). Wikipedia pageviews show minimal, flat attention (0-5 views/day, no spike pattern). Analyst sentiment is stable (1 Strong Buy, 2 Buy, 1 Hold as of 2025-03-01) but descriptor-only. No news items available <= cutoff. Valuation metrics are distorted (PE=-1.78, PB=-0.66, EV/EBITDA=-1.04, net margin=-188.8%) due to negative earnings. Fundamental snapshot is insufficient_evidence. No insider buying/selling activity. No GitHub or 13F data. The structural absence of corroborating alt-data (zero rows from GitHub, zero Form 4 activity, zero news, minimal Wikipedia attention) relative to the public narrative of a company undergoing material corporate events is consistent with a bear thesis for a surge-short candidate: the price collapse is real and documented in price/volume data, but the company's operational footprint and stakeholder activity are either genuinely absent or not captured by available adapters. The reverse split and negative fundamentals suggest financial distress. Macro regime is Overheat/Moderately Restrictive (equity_discipline=strict_quality_and_valuation_caution), which is unfavorable for speculative recovery. The absence of positive catalysts (no news, no insider support, no developer activity) in the face of documented price collapse is informative absence supporting the bear thesis.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Positive earnings surprise or guidance raise post-decision",
+        "Strategic acquisition or partnership announcement with credible counterparty",
+        "Regulatory approval or FDA clearance (if applicable to business model)",
+        "Insider buying by CEO/CFO at current price levels",
+        "Analyst upgrade with material price target increase",
+        "Reversal of reverse split via forward split or recapitalization"
+      ],
+      "risk_flags": [
+        "Fundamental snapshot insufficient_evidence \u2014 cannot assess underlying business health",
+        "8-K fulltext is stub data (mock_fallback) \u2014 actual filing content not verified",
+        "Valuation metrics distorted by negative earnings \u2014 PE/PB/EV ratios unreliable",
+        "No news items available for analysis \u2014 narrative vacuum",
+        "Macro regime strict_quality_and_valuation_caution \u2014 unfavorable for recovery thesis",
+        "Reverse split (1:25) on 2025-01-03 \u2014 potential delisting risk signal",
+        "Net margin -188.8% TTM \u2014 severe profitability crisis",
+        "Current ratio 0.33 \u2014 potential liquidity stress",
+        "No insider activity in 90d \u2014 lack of management confidence signal",
+        "Wikipedia pageviews flat and minimal \u2014 no retail attention or narrative momentum"
+      ],
+      "suggested_improvements": [
+        "Wire industry-specific adapters for ALUR's actual sector (currently all not_connected)",
+        "Implement sec_8k_fulltext binary extraction (currently stub mode) to verify actual filing content",
+        "Fetch fundamental_snapshot with PIT-safe quarterly data to assess operating metrics",
+        "Retrieve news items pre-cutoff to identify specific catalysts driving price collapse",
+        "Connect GitHub adapter if ALUR has software/developer component",
+        "Implement 13F adapter to assess institutional positioning changes",
+        "Add clinical trial or FDA filing adapter if ALUR is biotech",
+        "Retrieve full Form 4 history to assess insider confidence at current price"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext: stub mode (deterministic, not ground truth) \u2014 binary adapter not installed"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot: status=insufficient_evidence \u2014 cannot assess operating metrics"
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "news_event_summary: 0 items <= cutoff; 20 items dropped post-cutoff"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no GitHub data available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable"
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: no Form 4 transactions in last 90d for ALUR"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot: TTM ratios not PIT-safe; distorted by negative earnings"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp after allowed_data_cutoff; last_eod_close used for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not wire industry-specific adapters (software_devtools, biotech_clinical, etc.) \u2014 all show not_connected. OpenCLI is not invoked in v1 (not_connected). Pollution-defense layer unimplemented; use_as_primary_signal_allowed stays fail-closed per schema v1.1 decision #8. Fundamental snapshot insufficient_evidence prevents sector-aware reasoning from operating metrics. 8-K fulltext stub mode prevents verification of actual filing content.",
+      "recommended_followups": [
+        "Identify ALUR's actual sector/industry from 10-K Item 1 or business description",
+        "Wire appropriate industry-specific alt-data adapter (currently all not_connected)",
+        "Retrieve PIT-safe fundamental snapshot to assess operating metrics and cash position",
+        "Fetch full 8-K text (not stub) to verify material agreement details and corporate events",
+        "Retrieve news items pre-cutoff to identify specific catalysts and narrative",
+        "Assess insider positioning via Form 4 history and 13F filings",
+        "Evaluate reverse split (1:25 on 2025-01-03) as delisting risk or recapitalization signal",
+        "Cross-check analyst sentiment (stable at 1 SB / 2 B / 1 H) against price collapse for divergence"
+      ],
+      "verdict": "weakly_contradicted",
+      "evidence_score": 0.35,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "ALUR exhibits extreme price deterioration (-67.4% over 60d) with documented filing activity (7 8-K filings in 90d) and analyst coverage (1 SB / 2 B / 1 H), yet structural absence of corroborating alt-data (zero GitHub, zero Form 4, zero news, minimal Wikipedia attention) and distorted fundamentals (PE=-1.78, net margin=-188.8%) suggest either genuine operational distress or data unavailability. The reverse split (1:25) and current ratio (0.33) signal potential liquidity crisis. For a surge-short candidate, the absence of positive catalysts (no insider buying, no news, no developer activity) in the face of documented price collapse is informative absence supporting the bear thesis. The narrative gap is high: public filings and analyst ratings suggest ongoing business activity, but the price action and operational footprint suggest severe distress.",
+      "industry_template_used": "default_fallback (sector unknown; industry-specific adapters not_connected)",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "Fallback to default adapter (wikipedia_pageviews) because all industry-specific adapters (software_devtools, biotech_clinical, semiconductor_patent, consumer_traffic, bank_regulatory, airline_travel, energy_commodity, auto_mobility) are not_connected in v1. Wikipedia pageviews is the only alt-data source with rows (30 rows, 0-5 views/day, flat pattern).",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "weak",
+      "hard_to_fake_signal_summary": "Price snapshot (OHLCV, volume) is hard-to-fake and shows extreme deterioration (-67.4% over 60d, 11.6x relative volume). SEC filings (7 8-K filings in 90d) are hard-to-fake and confirm material corporate events. Reverse split (1:25 on 2025-01-03) is hard-to-fake and signals potential delisting risk. Analyst sentiment (1 SB / 2 B / 1 H) is T2 source but descriptor-only. Wikipedia pageviews (0-5 views/day) are hard-to-fake but show minimal attention. Absence of Form 4 (0 insider transactions in 90d) is hard-to-fake and suggests lack of management confidence. Absence of GitHub (unmapped_ticker) is informative absence for tech sector (if applicable). Absence of news (0 items <= cutoff) is informative absence.",
+      "industry_specific_evidence_used": [
+        "reverse_split_1_25_on_2025_01_03 (delisting risk signal)",
+        "current_ratio_0_33 (liquidity stress)",
+        "net_margin_pct_ttm_minus_188_8 (profitability crisis)",
+        "sec_8k_filings_7_in_90d (material corporate events)"
+      ],
+      "industry_specific_evidence_missing": [
+        "sector_classification (unknown from packet)",
+        "software_devtools_adapter (not_connected)",
+        "biotech_clinical_adapter (not_connected)",
+        "semiconductor_patent_adapter (not_connected)",
+        "consumer_traffic_adapter (not_connected)",
+        "bank_regulatory_adapter (not_connected)",
+        "airline_travel_adapter (not_connected)",
+        "energy_commodity_adapter (not_connected)",
+        "auto_mobility_adapter (not_connected)",
+        "fundamental_snapshot (insufficient_evidence)",
+        "github_public (unmapped_ticker)",
+        "sec_13f (not_available_on_current_plan)"
+      ],
+      "data_quality_warning": "critical: fundamental_snapshot insufficient_evidence; 8-K fulltext stub mode; no news items <= cutoff; industry-specific adapters not_connected",
+      "signals": [
+        {
+          "name": "price_return_60d_pct",
+          "available": true,
+          "value": -67.4286,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "price_return_20d_pct",
+          "available": true,
+          "value": -36.6667,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "relative_volume_vs_20d",
+          "available": true,
+          "value": 11.6265,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "reverse_split_1_25",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "sec_8k_filings_90d",
+          "available": true,
+          "value": 7.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "analyst_sentiment_stable",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "wikipedia_pageviews_flat",
+          "available": true,
+          "value": 3.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "form4_insider_activity_90d",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "news_items_pre_cutoff",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "github_public_rows",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "sec_13f_rows",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "net_margin_pct_ttm",
+          "available": true,
+          "value": -188.8,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "current_ratio_ttm",
+          "available": true,
+          "value": 0.3327,
+          "verdict_contribution": "supports"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "OpenCLI not invoked in v1 generator; not_connected",
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [
+        {
+          "claim": "ALUR underwent material corporate events (1.01/3.02 items in 8-K filings)",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "ALUR executed 1:25 reverse split on 2025-01-03",
+          "claim_type": "other",
+          "source_tier": "T1"
+        },
+        {
+          "claim": "ALUR stock price collapsed 67.4% over 60d and 36.7% over 20d",
+          "claim_type": "other",
+          "source_tier": "T1"
+        }
+      ],
+      "claim_verification_status": "partially_corroborated",
+      "source_tier_distribution": {
+        "T1": 2,
+        "T2": 17,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "medium",
+      "primary_source_confirmation": true,
+      "reputable_source_confirmation": true,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "Pollution-defense layer unimplemented in v1; use_as_primary_signal_allowed fail-closed per schema v1.1 decision #8. Additionally, fundamental_snapshot insufficient_evidence and 8-K fulltext stub mode prevent ground-truth verification of narrative.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "corroborating",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "fundamental_snapshot (status=insufficient_evidence)",
+        "news_event_summary.items (0 items <= cutoff)",
+        "sec_form4 (0 rows in 90d)",
+        "sec_13f (adapter unavailable)",
+        "github_public (unmapped_ticker)"
+      ]
+    },
+    "surge_short": {
+      "agent_schema_name": "SurgeShortAgentOutput",
+      "decision_or_assessment": "needs_more_evidence",
+      "confidence": "low",
+      "evidence_used": [],
+      "evidence_missing": [
+        "schema_validation_failed"
+      ],
+      "reasoning_summary": "1 validation error for SurgeShortAgentOutput\ncandidate_type\n  Field required [type=missing, input_value={'agent_id': 'Agent_05', ... stop-loss discipline.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+      "uncertainty": "high",
+      "validation_status": "schema_failed_returned_needs_more_evidence"
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_06_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ALUR",
+      "decision_timestamp": "2025-03-21T09:30:00-04:00",
+      "data_available_as_of": "2025-03-21T09:30:00-04:00",
+      "decision_or_assessment": "hard_veto_evaluation_surge_short",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "data_quality_flags[*].severity",
+        "upstream_agent_outputs.surge_short.validation_status"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Pass 8 hard-veto evaluation for candidate_type=surge_short. Mechanical application of \u00a75.13 veto conditions (a)-(e). Condition (a) sleeve_cap_breach: not applicable to surge_short (\u00a74.8 applies, not \u00a74.7). Condition (b) surge_short_sleeve_cap: no upstream sleeve position data provided; cannot evaluate. Condition (c) critical_severity_flags: examined data_quality_flags array; no severity='critical' entries found. Condition (d) anti_pollution_integrity_veto: candidate_type=surge_short per \u00a75.17 RELAXED 2026-05-06 \u2014 veto INAPPLICABLE to surge_short. Condition (e) lookahead_veto: envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true; lookahead veto NOT tripped. No hard-veto conditions tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [],
+      "risk_flags": [
+        "upstream_agent_outputs.surge_short validation_status='schema_failed_returned_needs_more_evidence' \u2014 candidate_type field missing from upstream output; candidate_type must be supplied by caller or upstream pipeline",
+        "fundamental_snapshot status=insufficient_evidence \u2014 risk agent cannot assess underlying business health; PM must evaluate with caution",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false per fail-closed v1.1 schema; pollution_defense_layer unimplemented; veto does not trip per \u00a75.13(d) relaxation but signals data quality concern",
+        "8-K fulltext stub mode (mock_fallback) \u2014 actual filing content not verified; narrative assessment relies on metadata only",
+        "news_event_summary status=data_unavailable with 0 items <= cutoff \u2014 cannot assess contemporaneous market narrative",
+        "macro_regime=Overheat/Moderately_Restrictive with equity_discipline=strict_quality_and_valuation_caution \u2014 unfavorable regime for speculative short positions"
+      ],
+      "suggested_improvements": [
+        "Upstream surge_short agent must populate candidate_type field in output schema",
+        "Implement pollution_defense_layer to enable affirmative pollution confirmation (currently unimplemented, fail-closed)",
+        "Wire 8-K fulltext binary extraction to verify actual filing content (currently stub mode)",
+        "Retrieve news items pre-cutoff to assess narrative corroboration",
+        "Implement fundamental_snapshot with PIT-safe quarterly data"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "upstream_schema_validation_failed",
+          "severity": "warning",
+          "detail": "upstream_agent_outputs.surge_short validation_status='schema_failed_returned_needs_more_evidence'; candidate_type field missing"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; risk assessment incomplete"
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext in stub mode (mock_fallback); actual filing content not verified"
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "news_event_summary status=data_unavailable; 0 items <= cutoff; 20 items dropped post-cutoff"
+        },
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment.use_as_primary_signal_allowed=false; pollution_defense_layer unimplemented per v1.1 schema"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not implement pollution_defense_layer; use_as_primary_signal_allowed stays fail-closed per schema v1.1 decision #8. This is not a veto trip per \u00a75.13(d) relaxation (2026-05-06) for surge_short candidates, but signals data quality concern. Upstream surge_short agent output failed schema validation (candidate_type field missing); risk agent cannot verify candidate_type from upstream and must rely on caller specification.",
+      "recommended_followups": [
+        "Verify candidate_type=surge_short is supplied by caller or upstream pipeline",
+        "Implement pollution_defense_layer to enable affirmative pollution confirmation",
+        "Retrieve PIT-safe fundamental snapshot to assess operating metrics",
+        "Fetch full 8-K text (not stub) to verify material agreement details",
+        "Retrieve news items pre-cutoff to assess narrative corroboration",
+        "Evaluate reverse split (1:25 on 2025-01-03) as delisting risk signal"
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only (\u00a73.7/\u00a73.8 equity caps \u00a74.7). Candidate_type=surge_short; not applicable."
+        },
+        {
+          "name": "surge_short_sleeve_cap_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires upstream sleeve position data (current single-position % and sleeve %). No upstream position data provided in packet; cannot evaluate. Assume no breach pending PM sleeve state."
+        },
+        {
+          "name": "critical_severity_data_quality_5_13_c",
+          "tripped": false,
+          "note": "Examined data_quality_flags array (12 entries). Severity values: 'warn' (1), 'warning' (5), 'info' (6). No severity='critical' entries found. Condition (c) NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate_type=surge_short per \u00a75.17 RELAXED 2026-05-06: veto INAPPLICABLE to surge_short. Condition (d) does NOT apply. (Note: information_integrity_assessment.use_as_primary_signal_allowed=false and pollution_confirmed not set to true; pollution_defense_layer unimplemented. If this were quality_long, veto would not trip because pollution_confirmed is not affirmatively true.)"
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition (e) NOT tripped."
+        }
+      ],
+      "advisory_notes": "HARD-VETO PASS. No \u00a75.13 veto conditions tripped. Candidate_type=surge_short is eligible for downstream PM evaluation. Risk agent does not recommend size, does not tilt toward cover/hold, does not emit advisory output per role specification. Upstream surge_short agent output failed schema validation (candidate_type field missing); PM must verify candidate_type specification from caller. Data quality concerns (fundamental_snapshot insufficient_evidence, 8-K fulltext stub mode, no news items <= cutoff) are flagged but do not trigger hard veto.",
+      "risk_notes": [
+        "Condition (a) sleeve_cap_breach_5_13_a: not applicable to surge_short",
+        "Condition (b) surge_short_sleeve_cap_5_13_b: no upstream sleeve position data; cannot evaluate; assume no breach pending PM state",
+        "Condition (c) critical_severity_data_quality_5_13_c: no critical-severity flags found; not tripped",
+        "Condition (d) anti_pollution_integrity_veto_5_13_d: inapplicable to surge_short per \u00a75.17 relaxation 2026-05-06; not tripped",
+        "Condition (e) lookahead_veto_5_13_e: data_after_cutoff_used=false, lookahead_safe=true; not tripped"
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto evaluation",
+        "candidate_type=surge_short",
+        "\u00a75.13(a) equity_cap_breach: not applicable",
+        "\u00a75.13(b) surge_short_sleeve_cap: no upstream position data",
+        "\u00a75.13(c) critical_severity_flags: none found",
+        "\u00a75.13(d) anti_pollution_integrity: inapplicable per \u00a75.17 relaxation",
+        "\u00a75.13(e) lookahead_veto: not tripped",
+        "RESULT: no hard-veto conditions tripped; candidate eligible for PM evaluation"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "ALUR",
+      "decision_timestamp": "2025-03-21T09:30:00-04:00",
+      "data_available_as_of": "2025-03-21T09:30:00-04:00",
+      "decision_or_assessment": "surge_short_entry_decision",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.return_60d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "price_snapshot.trigger_day_open",
+        "corporate_calendar.splits",
+        "valuation_snapshot.valuation_inputs",
+        "fundamental_snapshot.status",
+        "news_event_summary.status",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "filing_confirmation.sec_edgar",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "upstream_agent_outputs.narrative_event.verdict",
+        "upstream_agent_outputs.alt_data_verify.verdict",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated",
+        "macro_regime.macro_regime"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot (insufficient_evidence status)",
+        "news_event_summary.items (0 items <= cutoff)",
+        "sec_form4 (0 insider transactions in 90d)",
+        "sec_13f (adapter unavailable)",
+        "github_public (unmapped_ticker)",
+        "upstream_agent_outputs.surge_short (schema validation failed)"
+      ],
+      "reasoning_summary": "ALUR exhibits extreme price deterioration (-67.4% over 60d, -36.7% over 20d) with documented structural absence of corroborating evidence. Narrative Agent verdict: unsupported_claim (8-K filing 29 days stale, zero news coverage, vague material-agreement claim). Alt-Data Verify verdict: weakly_contradicted (reverse split 1:25 on 2025-01-03 signals distress; net margin -188.8% TTM; current ratio 0.33; zero Form 4 activity; zero GitHub data; zero news). Risk Agent: no hard-veto conditions tripped; candidate eligible for PM evaluation. Macro regime Overheat/Moderately Restrictive with strict_quality_and_valuation_caution discipline is unfavorable for speculative recovery. Preponderance of evidence supports bear thesis: (i) price action shows exhaustion (intraday collapse from 3.87 to 2.28 on trigger day); (ii) narrative inconsistent with verifiable evidence (8-K claim unsupported by news, analyst upgrades, or insider buying); (iii) structural absence relative to sector-expected evidence (no news, no insider support, no developer activity for micro-cap OTC); (iv) negative fundamentals (loss-making, negative margins, liquidity stress); (v) reverse split history (distress signal). No hard-veto conditions tripped. Surge-short entry gate met: prior_close 2.4 \u2192 trigger_day_open 3.87 = 61.3% gap (\u226550% threshold); volume 3.1M (\u22651M threshold); prior_close 2.4 (>$2 threshold). Position sizing per \u00a74.8: new entry = 0.005 (0.5%) fixed. Conviction is low due to data gaps (fundamental_snapshot insufficient, 8-K fulltext stub mode, no news items <= cutoff), but preponderance of present evidence (price collapse, reverse split, negative margins, zero corroboration) supports short entry at fixed 0.5% size.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Positive earnings surprise or guidance raise post-decision",
+        "Strategic acquisition or partnership announcement with credible counterparty and named customer",
+        "Regulatory approval or FDA clearance (if applicable)",
+        "Insider buying by CEO/CFO at current price levels",
+        "Analyst upgrade with material price target increase",
+        "Reversal of reverse split via forward split or recapitalization",
+        "News coverage post-decision that names the 8-K counterparty and contract value"
+      ],
+      "risk_flags": [
+        "Fundamental snapshot insufficient_evidence \u2014 cannot assess underlying business health",
+        "8-K fulltext is stub data (mock_fallback) \u2014 actual filing content not verified",
+        "Valuation metrics distorted by negative earnings \u2014 PE/PB/EV ratios unreliable",
+        "No news items available for analysis \u2014 narrative vacuum",
+        "Macro regime strict_quality_and_valuation_caution \u2014 unfavorable for recovery thesis",
+        "Reverse split (1:25) on 2025-01-03 \u2014 potential delisting risk signal",
+        "Net margin -188.8% TTM \u2014 severe profitability crisis",
+        "Current ratio 0.33 \u2014 potential liquidity stress",
+        "No insider activity in 90d \u2014 lack of management confidence signal",
+        "Wikipedia pageviews flat and minimal \u2014 no retail attention or narrative momentum",
+        "Upstream surge_short agent output failed schema validation \u2014 candidate_type field missing",
+        "Analyst sentiment unchanged (1 SB / 2 B / 1 H) post-8-K filing \u2014 no upgrade signal"
+      ],
+      "suggested_improvements": [
+        "Wire industry-specific adapters for ALUR's actual sector (currently all not_connected)",
+        "Implement sec_8k_fulltext binary extraction (currently stub mode) to verify actual filing content",
+        "Fetch fundamental_snapshot with PIT-safe quarterly data to assess operating metrics",
+        "Retrieve news items pre-cutoff to identify specific catalysts driving price collapse",
+        "Connect GitHub adapter if ALUR has software/developer component",
+        "Implement 13F adapter to assess institutional positioning changes",
+        "Retrieve full Form 4 history to assess insider confidence at current price",
+        "Verify Wikipedia pageviews data source and confirm it refers to ticker ALUR, not ethnic group"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext: stub mode (deterministic, not ground truth) \u2014 binary adapter not installed"
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot: status=insufficient_evidence \u2014 cannot assess operating metrics"
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "news_event_summary: 0 items <= cutoff; 20 items dropped post-cutoff"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no GitHub data available"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable"
+        },
+        {
+          "kind": "no_recent_form4",
+          "severity": "info",
+          "detail": "sec_form4: no Form 4 transactions in last 90d for ALUR"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot: TTM ratios not PIT-safe; distorted by negative earnings"
+        },
+        {
+          "kind": "quote_after_cutoff",
+          "severity": "info",
+          "detail": "live quote timestamp after allowed_data_cutoff; last_eod_close used for PIT anchoring"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "v1 generator does not wire industry-specific adapters (software_devtools, biotech_clinical, etc.) \u2014 all show not_connected. OpenCLI is not invoked in v1 (not_connected). Pollution-defense layer unimplemented; use_as_primary_signal_allowed stays fail-closed per schema v1.1 decision #8. Fundamental snapshot insufficient_evidence prevents sector-aware reasoning from operating metrics. 8-K fulltext stub mode prevents verification of actual filing content. Upstream surge_short agent output failed schema validation (candidate_type field missing); PM must verify candidate_type specification from caller.",
+      "recommended_followups": [
+        "Identify ALUR's actual sector/industry from 10-K Item 1 or business description",
+        "Wire appropriate industry-specific alt-data adapter (currently all not_connected)",
+        "Retrieve PIT-safe fundamental snapshot to assess operating metrics and cash position",
+        "Fetch full 8-K text (not stub) to verify material agreement details and corporate events",
+        "Retrieve news items pre-cutoff to identify specific catalysts and narrative",
+        "Assess insider positioning via Form 4 history and 13F filings",
+        "Evaluate reverse split (1:25 on 2025-01-03) as delisting risk or recapitalization signal",
+        "Cross-check analyst sentiment (stable at 1 SB / 2 B / 1 H) against price collapse for divergence"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "short",
+      "position_size_pct": 0.005,
+      "reason": "Surge-short entry at 0.5% fixed size. ALUR exhibits extreme price deterioration (-67.4% over 60d) with structural absence of corroborating evidence (zero news, zero insider buying, zero GitHub, negative fundamentals). Narrative unsupported (8-K claim vague and 29 days stale). Reverse split (1:25) signals distress. Preponderance of evidence supports bear thesis despite data gaps. No hard-veto conditions tripped. Macro regime unfavorable for recovery.",
+      "risk_notes": [
+        "Condition (a) sleeve_cap_breach_5_13_a: not applicable to surge_short",
+        "Condition (b) surge_short_sleeve_cap_5_13_b: no upstream sleeve position data; cannot evaluate; assume no breach pending PM state",
+        "Condition (c) critical_severity_data_quality_5_13_c: no critical-severity flags found; not tripped",
+        "Condition (d) anti_pollution_integrity_veto_5_13_d: inapplicable to surge_short per \u00a75.17 relaxation 2026-05-06; not tripped",
+        "Condition (e) lookahead_veto_5_13_e: data_after_cutoff_used=false, lookahead_safe=true; not tripped",
+        "Hard-veto pass: candidate eligible for PM evaluation",
+        "Data quality concerns (fundamental_snapshot insufficient, 8-K fulltext stub mode, no news items <= cutoff) are flagged but do not trigger hard veto",
+        "Confidence low due to data gaps; conviction supported by preponderance of present evidence (price collapse, reverse split, negative margins, zero corroboration)"
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long only (\u00a73.7/\u00a73.8 equity caps \u00a74.7). Candidate_type=surge_short; not applicable."
+        },
+        {
+          "name": "surge_short_sleeve_cap_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires upstream sleeve position data (current single-position % and sleeve %). No upstream position data provided in packet; cannot evaluate. Assume no breach pending PM sleeve state."
+        },
+        {
+          "name": "critical_severity_data_quality_5_13_c",
+          "tripped": false,
+          "note": "Examined data_quality_flags array (8 entries). Severity values: 'warning' (5), 'info' (3). No severity='critical' entries found. Condition (c) NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Candidate_type=surge_short per \u00a75.17 RELAXED 2026-05-06: veto INAPPLICABLE to surge_short. Condition (d) does NOT apply."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. Condition (e) NOT tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a72.1 surge-short pre-filter: prior_close 2.4 \u2192 trigger_day_open 3.87 = 61.3% gap (\u226550% threshold met)",
+        "\u00a72.1 surge-short pre-filter: volume 3.1M (\u22651M threshold met)",
+        "\u00a72.1 surge-short pre-filter: prior_close 2.4 (>$2 threshold met)",
+        "\u00a72.9\u2013\u00a72.12 hard never-short filter: no disqualifying conditions identified",
+        "\u00a75.13 hard-veto evaluation: candidate_type=surge_short",
+        "\u00a75.13(a) equity_cap_breach: not applicable to surge_short",
+        "\u00a75.13(b) surge_short_sleeve_cap: no upstream position data; assume no breach",
+        "\u00a75.13(c) critical_severity_flags: none found",
+        "\u00a75.13(d) anti_pollution_integrity: inapplicable per \u00a75.17 relaxation",
+        "\u00a75.13(e) lookahead_veto: not tripped",
+        "HARD-VETO PASS: no conditions tripped; candidate eligible for PM evaluation",
+        "\u00a733.2 PASS 8 SCORING: narrative_event.verdict=unsupported_claim (+2), alt_data_verify.verdict=weakly_contradicted (+1), expected_blocks_absent=5 (capped +2) \u2192 SHORT_CONVICTION_SCORE = 5.0",
+        "\u00a733.2 score_threshold_band: 5.0 \u2208 [2, 5] \u2192 strong_tilt",
+        "PM decision: short at fixed 0.005 (0.5%) per \u00a74.8 new entry sizing",
+        "Execution: T+1 next-open per \u00a719.7 rule engine"
+      ],
+      "decision_log": [
+        "2025-03-21T09:30:00-04:00 [ENVELOPE] Decision timestamp locked; PIT-safe mode; lookahead_safe=true; data_after_cutoff_used=false",
+        "2025-03-21T09:30:00-04:00 [PRICE_SNAPSHOT] ALUR last_eod_close=2.28 (prior 2.4, -5% 1d); trigger_day_open=3.87 (69.7% above EOD); 5d return -6.56%; 20d return -36.67%; 60d return -67.43%; relative_volume=11.6x 20d avg",
+        "2025-03-21T09:30:00-04:00 [CORPORATE_CALENDAR] Reverse split 1:25 on 2025-01-03 (distress signal); 5 events within \u00b15 trading days (all past earnings and split)",
+        "2025-03-21T09:30:00-04:00 [VALUATION_SNAPSHOT] PE=-1.78 (negative earnings); PB=-0.66; EV/EBITDA=-1.04; net_margin=-188.8% TTM; current_ratio=0.33 (liquidity stress); gross_margin=62.84% (positive but offset by negative net margin)",
+        "2025-03-21T09:30:00-04:00 [FUNDAMENTAL_SNAPSHOT] Status=insufficient_evidence; cannot assess operating metrics; no PIT-safe quarterly data available",
+        "2025-03-21T09:30:00-04:00 [NEWS_EVENT_SUMMARY] Status=data_unavailable; 0 items <= cutoff; 20 items dropped post-cutoff; polygon_news returned 0 rows for [2025-03-14, 2025-03-21]",
+        "2025-03-21T09:30:00-04:00 [FILING_CONFIRMATION] SEC 8-K filed 2025-02-21 (29 days pre-decision) with items 1.01 (material agreement), 3.02 (unregistered sales), 8.01 (other events), 9.01 (financial statements); 7 8-K filings in 90d; fulltext stub mode (not ground truth)",
+        "2025-03-21T09:30:00-04:00 [ALTERNATIVE_DATA] Wikipedia pageviews for 'Alur' show 0-5 views/day (likely ethnic group, not ticker); no spike pattern; GitHub unmapped_ticker (0 rows); no developer activity",
+        "2025-03-21T09:30:00-04:00 [SENTIMENT_COMMUNITY_OWNERSHIP] FMP analyst sentiment stable: 1 Strong Buy, 2 Buy, 1 Hold as of 2025-03-01 (20 days pre-decision); no upgrade post-8-K filing; sec_form4 returned 0 insider transactions in 90d; sec_13f unavailable",
+        "2025-03-21T09:30:00-04:00 [MACRO_REGIME] Overheat / Moderately Restrictive (stress_score=2); equity_discipline=strict_quality_and_valuation_caution; unfavorable for speculative recovery",
+        "2025-03-21T09:30:00-04:00 [NARRATIVE_EVENT_AGENT] Verdict=unsupported_claim; confidence=low; 8-K filing 29 days stale; zero news coverage in 7-day window; vague material-agreement claim (no customer named, no dollar amount disclosed); no insider buying; analyst sentiment unchanged; Wikipedia pageviews baseline noise",
+        "2025-03-21T09:30:00-04:00 [ALT_DATA_VERIFY_AGENT] Verdict=weakly_contradicted; confidence=low; reverse split 1:25 signals distress; net margin -188.8% TTM; current ratio 0.33; zero Form 4 activity; zero GitHub data; zero news; structural absence relative to sector-expected evidence supports bear thesis",
+        "2025-03-21T09:30:00-04:00 [RISK_AGENT] Hard-veto evaluation: no conditions (a)-(e) tripped; candidate eligible for PM evaluation; data quality concerns flagged but do not trigger hard veto",
+        "2025-03-21T09:30:00-04:00 [SURGE_SHORT_PRE_FILTER] Prior_close 2.4 \u2192 trigger_day_open 3.87 = 61.3% gap (\u226550% threshold met); volume 3.1M (\u22651M threshold met); prior_close 2.4 (>$2 threshold met); pre-filter conditions satisfied",
+        "2025-03-21T09:30:00-04:00 [SURGE_SHORT_NEVER_SHORT_FILTER] No disqualifying conditions identified (\u00a72.9\u2013\u00a72.12)",
+        "2025-03-21T09:30:00-04:00 [BEAR_THESIS_SYNTHESIS] Preponderance of evidence supports bear thesis: (i) price action shows exhaustion (intraday collapse from 3.87 to 2.28); (ii) narrative inconsistent with verifiable evidence (8-K claim unsupported by news, analyst upgrades, insider buying); (iii) structural absence relative to sector-expected evidence (no news, no insider support, no developer activity); (iv) negative fundamentals (loss-making, negative margins, liquidity stress); (v) reverse split history (distress signal). Confidence low due to data gaps (fundamental_snapshot insufficient, 8-K fulltext stub mode, no news items <= cutoff), but present evidence coherently supports short entry.",
+        "2025-03-21T09:30:00-04:00 [PASS_8_SCORING] narrative_event.verdict=unsupported_claim (+2); alt_data_verify.verdict=weakly_contradicted (+1); expected_blocks_absent=5 (capped +2) \u2192 SHORT_CONVICTION_SCORE = 5.0; score_threshold_band=strong_tilt (2 \u2264 5.0 \u2264 5)",
+        "2025-03-21T09:30:00-04:00 [PM_DECISION] Candidate_type=surge_short; decision=short; position_size_pct=0.005 (0.5% fixed per \u00a74.8 new entry); confidence=low; uncertainty=high; no hard-veto conditions tripped; preponderance of evidence supports bear thesis despite data gaps",
+        "2025-03-21T09:30:00-04:00 [EXECUTION_PLAN] Order_type=T+1 next-open; execution_timestamp=2025-03-21T09:45:00-04:00; side=sell_to_open; size_pct_of_portfolio=0.005"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-21T09:45:00-04:00",
+        "ticker": "ALUR",
+        "side": "sell_to_open",
+        "size_pct_of_portfolio": 0.005
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_universal_soft_veto",
+        "evidence_packet_hash": "sha256:0e8441bf1741e8d5d5b13055b12c316e182d1d353ab71ba8e7deb02a16e4e25f"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews for 'Alur' show 0-5 views/day with no spike pattern; likely refers to ethnic group, not ticker ALUR; no retail attention signal detected.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "8-K filing (2025-02-21) claims material agreement (Item 1.01) and unregistered sales (Item 3.02); fulltext is stub mode (not ground truth); claim is vague (no customer named, no dollar amount disclosed); zero news corroboration; analyst sentiment unchanged; no insider buying.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Fundamental snapshot insufficient_evidence; 8-K fulltext stub mode; no news items <= cutoff; cannot confirm thesis with ground-truth evidence.",
+      "sentiment_risk_adjustment_note": "FMP analyst sentiment stable (1 SB / 2 B / 1 H) from 2024-12-01 through 2025-03-01; no upgrade post-8-K filing (2025-02-21); sentiment is descriptor-only and does not support bullish thesis.",
+      "ownership_risk_adjustment_note": "sec_form4 returned 0 insider transactions in 90d; sec_13f unavailable; no institutional positioning data; lack of insider buying despite material agreement signals lack of management confidence.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "No institutional sponsorship signal detected; analyst sentiment unchanged post-8-K filing; no 13F data available.",
+      "smart_money_benchmark_note": "No smart-money support signal detected; analyst sentiment stable; no insider buying; no Form 4 activity in 90d.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-21T09:30:00-04:00",
+      "execution_timestamp": "2025-03-21T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:cd6aaff2ab664a57814bb7acffa23afcde6ac0bfa2cedb9c640494ba4d4397b2",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": 5.0,
+      "score_components": {
+        "narrative_event_unsupported_claim": 2.0,
+        "alt_data_verify_weakly_contradicted": 1.0,
+        "expected_blocks_absent_capped": 2.0
+      },
+      "score_threshold_band": "strong_tilt",
+      "pm_override_reason": null
+    }
+  }
+}

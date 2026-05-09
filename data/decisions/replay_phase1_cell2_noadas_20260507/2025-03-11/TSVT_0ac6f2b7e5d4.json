@@ -1,0 +1,1154 @@
+{
+  "trigger_id": "0ac6f2b7e5d4",
+  "ticker": "TSVT",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-03-11T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 192.92,
+  "trigger_cost_usd": 0.301191,
+  "cumulative_cost_usd": 4.459265,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "TSVT",
+    "name": "TSVT",
+    "close": 4.95,
+    "prior_close": 2.8,
+    "change": 2.12,
+    "change_pct": 75.71428571428572,
+    "volume": 31485630.0,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-03-11",
+    "prior_trading_day": "2025-03-10",
+    "available_as_of": "2025-03-11T16:00:00-05:00",
+    "today_open": 4.92,
+    "today_volume": 31485630.0,
+    "eps_ttm": -1.83,
+    "operating_margin_ttm": -313.0907496711969,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2024-11-12 16:12:02",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:126b4a543d1a644f2e738e8a6793a8f7e2325170dae9180538d1148a85c674dc",
+  "locked_decision_id": "sha256:f8b655bf8ca134256ea5c23754725844c942438bfb4c201d0a37187bee8991d5",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "Portfolio Manager (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026_05_03_universal_soft_veto",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "TSVT",
+    "decision_timestamp": "2025-03-11T09:30:00-04:00",
+    "data_available_as_of": "2025-03-11T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short candidate TSVT: +85% intraday gap with structural absence of corroborating evidence. No news catalyst, no SEC filings, no sector-expected biotech evidence. Bear thesis supported by absence pattern, but data quality issues (CIK not found, Wikipedia mismatch, post-cutoff news dropped) create material uncertainty. Recommend WATCH pending post-cutoff news and SEC filing confirmation.",
+    "confidence": "low",
+    "evidence_used": [
+      "price_snapshot.trigger_day_open ($4.92) vs prior_close ($2.66) = +85% gap",
+      "price_snapshot.last_eod_close ($2.80) = partial reversion",
+      "news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20",
+      "alternative_data_features.wikipedia_pageviews (30 rows, article=7.62\u00d754mmR, no spike)",
+      "alternative_data_features.github_public (unmapped_ticker)",
+      "filing_confirmation.sec_edgar (cik_not_found)",
+      "fundamental_snapshot Q3 2024: net_margin=-73.39%, operating_income=-$13.9M, FCF=-$10.5M",
+      "valuation_snapshot: PE=-13.93, EV/EBITDA=-18.57, ROE=-8.96%, ROA=-3.97%",
+      "sentiment_community_ownership_evidence.fmp_sentiment: 1 Buy, 3 Hold, 1 Strong Sell (2025-03-01)",
+      "macro_regime: Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution",
+      "upstream_agent_outputs: narrative_event (unsupported_claim), alt_data_verify (narrative_contradicted), surge_short (watch), risk (no hard veto)"
+    ],
+    "evidence_missing": [
+      "news_event_summary.items (data_unavailable) \u2014 no public narrative explaining surge catalyst",
+      "filing_confirmation.SEC_8K_confirmation (not_evaluated) \u2014 no SEC 8-K to corroborate material event",
+      "alternative_data_features.biotech_clinical_adapter (not_connected) \u2014 cannot verify clinical trial status",
+      "alternative_data_features.sec_form4 (cik_not_found) \u2014 no insider trading data",
+      "alternative_data_features.sec_13f (cik_not_found) \u2014 no institutional ownership data",
+      "upstream_agent_outputs.fundamental (not present in packet)",
+      "upstream_agent_outputs.valuation (not present in packet)",
+      "upstream_agent_outputs.network_effect (not present in packet)",
+      "company_claim field (not provided) \u2014 surge catalyst unknown"
+    ],
+    "reasoning_summary": "TSVT surged +85% intraday (open $4.92 vs prior close $2.66) on 2025-03-11 at market open. The evidence packet reveals critical structural absences that constitute a bear thesis per \u00a713.6 SOFT_REASONING asymmetric absence rule: (1) NO PUBLIC NARRATIVE: news_event_summary is data_unavailable with 0 items pre-cutoff; 20 items dropped post-cutoff suggest the catalyst may be post-cutoff news or rumor. (2) NO SEC CONFIRMATION: filing_confirmation shows sec_edgar cik_not_found and no 8-K rows; a listed company surging on a material catalyst should have an 8-K, yet none is present. (3) STRUCTURAL ABSENCE OF SECTOR-EXPECTED EVIDENCE: For a biotech company (inferred from analyst coverage and clinical-adapter reference), we would expect FDA filings, clinical trial registry entries, patent disclosures. None are present. The biotech_clinical_adapter is not_connected, and sec_form4 cik_not_found. (4) VALUATION DEEPLY NEGATIVE: PE=-13.93, EV/EBITDA=-18.57, net_margin=-73.61%, ROE=-8.96%, ROA=-3.97%. Company is unprofitable with negative FCF (-$10.5M in Q3 2024). (5) ANALYST SENTIMENT DETERIORATING: As of 2025-03-01, ratings show 1 Buy, 3 Hold, 1 Strong Sell (mixed-to-negative). Goldman Sachs Sell rating published 2024-11-12. (6) ALTERNATIVE DATA SILENT: Wikipedia pageviews on '7.62\u00d754mmR' (ammunition article) show no spike on or near 2025-03-11; this is a data-quality red flag (ticker-to-article mismatch). GitHub unmapped. No community/developer activity. (7) MACRO HEADWIND: Macro regime is Overheat/Moderately Restrictive with strict_quality_and_valuation_caution discipline \u2014 TSVT fails quality and valuation tests. The surge appears momentum-driven on an unknown catalyst, with no corroborating evidence of real value creation. However, data quality issues (CIK not found, Wikipedia mismatch, post-cutoff news dropped) create material uncertainty. The Narrative Agent verdict is 'unsupported_claim' (high uncertainty). The Alt-Data Verification Agent verdict is 'narrative_contradicted' (high pollution risk, low evidence credibility). The Surge-Short Agent verdict is 'watch' (insufficient evidence to enter, recommend monitoring). The Risk Agent found no hard veto. Per \u00a713.6 SOFT_REASONING and the universal soft-veto principle, the preponderance of evidence supports a bear thesis (structural absence of corroborating evidence relative to sector-expected footprint), but the data quality issues and the opening-window decision mode (which may miss pre-market catalysts) create sufficient uncertainty to recommend WATCH rather than immediate SHORT entry. If post-cutoff news confirms a real catalyst (FDA approval, partnership, acquisition), the bear thesis is invalidated. If the stock reverts below $3.00 without news, the momentum thesis is confirmed and a short entry becomes more attractive.",
+    "uncertainty": "high",
+    "invalidation_conditions": [
+      "If an 8-K filing is discovered post-decision showing a material acquisition, partnership, or FDA approval that occurred on or before 2025-03-11, the bear thesis is invalidated.",
+      "If alternative data (clinical trial registry, patent filings, insider buying) emerges showing real biotech progress, the bear thesis weakens.",
+      "If the company releases a press release or earnings guidance that explains the surge and is corroborated by analyst upgrades, the bear thesis is challenged.",
+      "If the stock sustains above $4.92 for >5 trading days with increasing volume and positive news flow, momentum may override the structural-absence signal.",
+      "If TSVT is confirmed to be a non-biotech company (data mismatch), the sector-expected evidence absence pattern is invalidated."
+    ],
+    "risk_flags": [
+      "Data quality issue: Wikipedia pageviews tied to '7.62\u00d754mmR' (ammunition article) do not match TSVT ticker; suggests data mismatch or ticker misclassification.",
+      "CIK not found for TSVT in SEC Edgar and Form 4 adapters; company may be delisted, recently listed, or ticker mismatch.",
+      "News event summary data_unavailable; 20 items dropped post-cutoff suggests surge catalyst may be post-cutoff news (hindsight risk).",
+      "Analyst coverage sparse and mixed; only 5 analysts covering as of 2025-03-01, with 1 Strong Sell (Goldman Sachs).",
+      "Macro regime is restrictive; equity allocation cap is 20%, and TSVT fails quality/valuation tests \u2014 regime headwind.",
+      "Opening-window decision mode means intraday momentum or pre-market news may be driving the move, but such catalysts are not visible in the packet.",
+      "Valuation snapshot flagged not_PIT_safe (TTM ratios); DCF display-only and not reliable.",
+      "Fundamental snapshot is Q3 2024 (accepted 2024-11-12), now 4 months stale; no Q4 2024 or Q1 2025 data available.",
+      "No upstream agent outputs (Fundamental, Valuation, Network-Effect) present in packet; cannot cross-check prelude verdicts."
+    ],
+    "suggested_improvements": [
+      "Obtain the post-cutoff news items (20 dropped from news_event_summary) to identify the actual catalyst.",
+      "Verify TSVT CIK and SEC filing status; confirm ticker is not delisted or misclassified.",
+      "Cross-check Wikipedia pageviews article title '7.62\u00d754mmR' against TSVT business description; resolve data mismatch.",
+      "Retrieve any 8-K filings filed on 2025-03-10 or 2025-03-11 via direct SEC Edgar query (outside FMP adapter).",
+      "Obtain clinical trial registry data (ClinicalTrials.gov) if TSVT is a biotech company; verify any ongoing trials.",
+      "Check insider Form 4 filings directly via SEC to assess insider buying/selling around the surge date.",
+      "Obtain latest analyst reports (post-2025-03-01) to see if any upgrades or downgrades were issued on 2025-03-10/11.",
+      "Retrieve Q4 2024 or Q1 2025 earnings guidance or pre-announcement if available.",
+      "Implement biotech-specific adapters (clinical-trial registry, FDA filing index, patent activity) to properly assess sector-expected evidence."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "warning",
+        "detail": "20 news items dropped because publishedDate > cutoff; surge catalyst may be in post-cutoff news"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker TSVT; SEC filing confirmation unavailable"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_form4: cik_not_found \u2014 insider trading data unavailable"
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "github_public: unmapped_ticker \u2014 no developer activity footprint available"
+      },
+      {
+        "kind": "data_mismatch",
+        "severity": "warning",
+        "detail": "wikipedia_pageviews article '7.62\u00d754mmR' (ammunition) does not match TSVT ticker; data quality issue or ticker misclassification"
+      },
+      {
+        "kind": "ttm_snapshot_used",
+        "severity": "warning",
+        "detail": "valuation_snapshot ratios are TTM, not PIT-safe; cannot be used for valuation anchoring"
+      },
+      {
+        "kind": "fundamental_snapshot_stale",
+        "severity": "info",
+        "detail": "latest fundamental data is Q3 2024 (accepted 2024-11-12); 4 months stale as of decision_timestamp 2025-03-11"
+      },
+      {
+        "kind": "analyst_coverage_sparse",
+        "severity": "info",
+        "detail": "only 5 analysts covering TSVT as of 2025-03-01; limited consensus"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream_agent_outputs for Fundamental, Valuation, and Network-Effect agents, which would normally provide prelude verdicts on the surge candidate. The surge_short agent is forced to reason from raw evidence alone. Additionally, the news_event_summary block is data_unavailable, which is the primary source for identifying the catalyst narrative. The packet structure assumes multi-agent pipeline, but only the raw evidence blocks and three prelude agents (Narrative, Alt-Data Verify, Surge-Short) are populated; this limits cross-validation. The Wikipedia pageviews data (ammunition article) appears to be a data-quality artifact or ticker mismatch, which undermines confidence in the alternative_data_features block. The opening-window decision mode means pre-market catalysts are not captured in the packet.",
+    "recommended_followups": [
+      "Retrieve post-cutoff news items (2025-03-11 after 09:30 ET) to identify the actual surge catalyst.",
+      "Verify TSVT SEC filing status and CIK; confirm company is actively listed and not delisted.",
+      "Obtain 8-K filing (if any) filed on 2025-03-10 or 2025-03-11 via direct SEC Edgar query.",
+      "If TSVT is a biotech company, retrieve clinical trial registry data and FDA filing status.",
+      "Obtain latest analyst reports and price targets issued on or after 2025-03-10.",
+      "Check insider Form 4 filings for any buying/selling activity around 2025-03-10/11.",
+      "Resolve Wikipedia pageviews data mismatch; confirm TSVT business description.",
+      "Monitor price action over next 5 trading days; if stock sustains >$4.92 with positive news, reassess bear thesis.",
+      "If stock reverts below $3.00 without news, momentum thesis is confirmed and short entry becomes more attractive."
+    ],
+    "candidate_type": "surge_short",
+    "decision": "watch",
+    "position_size_pct": 0.0,
+    "reason": "Surge-short candidate TSVT exhibits +85% intraday gap with structural absence of corroborating evidence (no news catalyst, no SEC filings, no sector-expected biotech evidence). Bear thesis supported by absence pattern per \u00a713.6 asymmetric rule, but data quality issues (CIK not found, Wikipedia mismatch, post-cutoff news dropped) and opening-window decision mode create material uncertainty. Recommend WATCH pending post-cutoff news and SEC filing confirmation. If catalyst confirmed as real, bear thesis invalidated. If stock reverts without news, short entry becomes attractive.",
+    "risk_notes": [
+      "No hard veto is triggered per Risk Agent evaluation.",
+      "Condition (b) short-position cap evaluation incomplete pending current sleeve position data.",
+      "Condition (d) anti-pollution integrity veto is not applicable to surge_short per \u00a75.17 relaxation.",
+      "Data quality issues present but none flagged as critical severity.",
+      "Information integrity assessment status is insufficient_evidence; pollution_confirmed not set to true (unimplemented default)."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "equity_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long candidates only. Candidate type is surge_short; condition not applicable."
+      },
+      {
+        "name": "short_position_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "No current surge_short sleeve position provided in packet. Assuming no current position, new position would not breach \u00a74.8 caps. Condition not tripped pending position data."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "data_quality_flags array contains warning and info severity flags only. No flag has severity='critical'. Condition not tripped."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Condition (d) is INAPPLICABLE to candidate_type=surge_short per \u00a75.17 relaxation (2026-05-06). Condition not evaluated for this candidate type."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. Condition not tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto conditions evaluation",
+      "\u00a75.13(a) equity-cap breach \u2014 not applicable (surge_short)",
+      "\u00a75.13(b) short-position cap breach \u2014 not tripped (no current position data)",
+      "\u00a75.13(c) critical data-quality flag \u2014 not tripped (no critical flags)",
+      "\u00a75.13(d) anti-pollution integrity veto \u2014 not applicable (surge_short, \u00a75.17 relaxation)",
+      "\u00a75.13(e) lookahead veto \u2014 not tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+      "\u00a713.6 SOFT_REASONING: asymmetric absence rule applied \u2014 structural absence of news, SEC filings, sector-expected evidence is bear-thesis input for surge_short",
+      "\u00a72.1 surge pre-filter: +85% gap (>50% threshold) with vol 583k (>1M threshold not met) \u2014 candidate qualifies for surge-short evaluation",
+      "Narrative Agent verdict: unsupported_claim (high uncertainty, no identifiable catalyst)",
+      "Alt-Data Verification Agent verdict: narrative_contradicted (high pollution risk, low evidence credibility)",
+      "Surge-Short Agent verdict: watch (insufficient evidence to enter, recommend monitoring)",
+      "Risk Agent verdict: no hard veto",
+      "PM aggregation: preponderance of evidence supports bear thesis (structural absence), but data quality issues and opening-window mode create sufficient uncertainty to recommend WATCH rather than SHORT entry"
+    ],
+    "decision_log": [
+      "2025-03-11T09:30:00-04:00 DECISION_TIMESTAMP: Market open, opening-window decision mode",
+      "PRICE_ACTION: TSVT surged from $2.66 (prior close) to $4.92 (trigger open) = +85% intraday gap; closed at $2.80 = partial reversion",
+      "VOLUME: 583,656 shares (2.08x relative volume vs 20-day avg); below 1M threshold but elevated",
+      "NEWS_CATALYST: news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20 \u2014 NO PUBLIC NARRATIVE AVAILABLE",
+      "SEC_FILINGS: filing_confirmation.sec_edgar cik_not_found, no 8-K rows \u2014 NO SEC CONFIRMATION OF MATERIAL EVENT",
+      "SECTOR_EXPECTED_EVIDENCE: For biotech company (inferred), expected FDA filings, clinical trials, patents \u2014 ALL ABSENT (biotech_clinical_adapter not_connected, sec_form4 cik_not_found)",
+      "ALTERNATIVE_DATA: Wikipedia pageviews on '7.62\u00d754mmR' (ammunition article) show no spike, 30-day trend 650-850 views \u2014 DATA QUALITY ISSUE (ticker-to-article mismatch)",
+      "FUNDAMENTALS: Q3 2024 (4 months stale) shows net_margin=-73.39%, operating_income=-$13.9M, FCF=-$10.5M \u2014 DEEPLY UNPROFITABLE",
+      "VALUATION: PE=-13.93, EV/EBITDA=-18.57, ROE=-8.96%, ROA=-3.97% \u2014 NEGATIVE ACROSS ALL METRICS",
+      "ANALYST_SENTIMENT: As of 2025-03-01, 1 Buy, 3 Hold, 1 Strong Sell (Goldman Sachs Sell 2024-11-12) \u2014 MIXED-TO-NEGATIVE",
+      "MACRO_REGIME: Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution \u2014 TSVT FAILS BOTH TESTS",
+      "NARRATIVE_AGENT_VERDICT: unsupported_claim (high uncertainty, no identifiable catalyst, structural absence of news corroboration)",
+      "ALT_DATA_VERIFY_VERDICT: narrative_contradicted (high pollution risk, low evidence credibility, false-positive Wikipedia data)",
+      "SURGE_SHORT_AGENT_VERDICT: watch (insufficient evidence to enter, recommend monitoring for post-cutoff news and SEC filings)",
+      "RISK_AGENT_VERDICT: no hard veto (conditions a-e not tripped)",
+      "ASYMMETRIC_ABSENCE_RULE: Structural absence of news, SEC filings, and sector-expected biotech evidence (FDA, clinical trials, patents) is bear-thesis input per \u00a713.6 SOFT_REASONING",
+      "PREPONDERANCE_OF_EVIDENCE: Bear thesis supported by (1) no public narrative, (2) no SEC confirmation, (3) no sector-expected evidence, (4) deeply negative fundamentals, (5) mixed-to-negative analyst sentiment, (6) macro headwind, (7) alternative data silent. However, data quality issues (CIK not found, Wikipedia mismatch, post-cutoff news dropped) and opening-window mode (may miss pre-market catalysts) create material uncertainty.",
+      "DECISION_RATIONALE: Recommend WATCH rather than SHORT entry. If post-cutoff news confirms real catalyst (FDA approval, partnership, acquisition), bear thesis is invalidated. If stock reverts below $3.00 without news, momentum thesis is confirmed and short entry becomes more attractive. Monitor over next 5 trading days.",
+      "POSITION_SIZE: 0.0% (WATCH status, no position entry)",
+      "EXECUTION_PLAN: T+1 next-open, no order (decision=watch)"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-11T09:45:00-04:00",
+      "ticker": "TSVT",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_universal_soft_veto",
+      "evidence_packet_hash": "sha256:7c2920889c910ce641f222fbcbe41cf4d876ded4eff36979e29ebfc402c7e783"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "No identifiable company claim or catalyst event is present in the evidence packet. The price move (+85% intraday gap, +12.9% 5-day return) occurs in the absence of any news, filing, or alternative-data signal that can be attributed to a specific corporate action or announcement.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Surge catalyst is unknown; no public narrative or SEC filing available to confirm thesis. Structural absence of corroborating evidence prevents thesis confirmation.",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": null,
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-11T09:30:00-04:00",
+    "execution_timestamp": "2025-03-11T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:45876ff108fb8d358af53475609b114721cb342d459d849d9ac3d42cc2c8b5b7",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "TSVT",
+      "decision_timestamp": "2025-03-11T09:30:00-04:00",
+      "data_available_as_of": "2025-03-11T09:30:00-04:00",
+      "decision_or_assessment": "No identifiable catalyst event within decision window; structural absence of news corroboration despite price movement.",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_count=0",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "polygon_news.rows_returned=0",
+        "price_snapshot.return_5d_pct=12.9032",
+        "price_snapshot.relative_volume_vs_20d=2.083",
+        "alternative_data_features.attention.wikipedia_pageviews (30 rows, article=7.62\u00d754mmR)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings as of 2025-03-01)",
+        "filing_confirmation.status=not_evaluated",
+        "fundamental_snapshot.snapshot_quarter (Q3 2024, accepted 2024-11-12)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (null)",
+        "news_event_summary.catalyst_type (null)",
+        "filing_confirmation.SEC_8K_confirmation (not_evaluated)",
+        "news_event_summary.ndi_score (null)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "information_integrity_assessment.claim_summary (null)",
+        "corporate_calendar.earnings.upcoming (empty)"
+      ],
+      "reasoning_summary": "TSVT exhibits a 5-day return of +12.9% with 2.08x relative volume on 2025-03-11 opening, yet the evidence packet contains zero news items within the allowed_data_cutoff window. The news_event_summary block explicitly reports 20 items dropped post-cutoff, indicating recent news activity, but none are available for PIT-safe analysis at decision time. The only alternative-data signal is Wikipedia pageviews for the article '7.62\u00d754mmR' (a Russian rifle cartridge), which shows baseline traffic (655\u2013842 views/day over Feb 10\u2013Mar 11) with no spike pattern that would correlate to TSVT stock activity. This Wikipedia data is a structural mismatch: the ticker TSVT (2Seventy Bio, a biotech company) has no semantic relationship to a weapons-caliber article. The adapter mapping appears erroneous or the ticker-to-article linkage is spurious. Analyst sentiment (fmp_sentiment) as of 2025-03-01 shows 1 Buy, 3 Hold, 1 Strong Sell (mixed, not bullish). No SEC filings (8-K, Form 4, 13F) are available for TSVT due to CIK lookup failures. The fundamental snapshot (Q3 2024, accepted Nov 12, 2024) shows net margin of -73.39%, operating loss of -$13.9M on $13.5M revenue, and negative free cash flow of -$10.5M\u2014a distressed biotech profile. The macro regime is 'Overheat / Moderately Restrictive' with strict equity discipline. The price move (+12.9% in 5 days, +2.08x volume) is substantial but occurs in the absence of any concrete, identifiable catalyst event that can be verified from the evidence packet. The structural absence of news corroboration, combined with the mismatch between the Wikipedia data and the company's actual business, suggests either: (1) a data integrity issue in the alternative-data adapter, (2) a genuine price move driven by intraday momentum or technical factors not captured in the packet, or (3) a catalyst event that occurred after the allowed_data_cutoff and is therefore invisible to this analysis. Given the decision_mode='opening_window' and decision_timestamp at market open (09:30 ET), the price move may reflect overnight or pre-market news not yet reflected in the news adapters at cutoff time.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news event or SEC filing with a concrete catalyst (named customer, specific dollar amount, clinical trial result, regulatory approval/rejection) is confirmed to have occurred between 2025-03-04 and 2025-03-11 but was dropped post-cutoff, the 'no catalyst' assessment is invalidated.",
+        "If the Wikipedia pageviews data is confirmed to be a spurious ticker-to-article mapping (TSVT \u2260 7.62\u00d754mmR), the alternative-data signal is invalidated.",
+        "If TSVT announced a material event (partnership, financing, clinical milestone) in pre-market trading on 2025-03-11 before 09:30 ET, the opening-window analysis is incomplete."
+      ],
+      "risk_flags": [
+        "Data integrity risk: Wikipedia pageviews article '7.62\u00d754mmR' (Russian rifle cartridge) has no apparent semantic link to TSVT (2Seventy Bio, a cell therapy company). Adapter mapping may be erroneous.",
+        "Structural absence of news corroboration: 20 news items dropped post-cutoff; none available for PIT-safe analysis at decision time. This is a critical gap for a surge-short candidate.",
+        "CIK lookup failures for TSVT across sec_edgar, sec_form4, sec_13f adapters suggest the ticker may be delisted, recently IPO'd, or misidentified in the system.",
+        "Analyst sentiment is mixed (1 Buy, 3 Hold, 1 Strong Sell as of 2025-03-01); no recent upgrade or downgrade visible.",
+        "Fundamental profile is deeply distressed: -73% net margin, -$13.9M operating loss, -$10.5M free cash flow. Stock price of $2.80 (as of 2025-03-10 close) suggests micro-cap or distressed equity.",
+        "Macro regime is 'Overheat / Moderately Restrictive' with strict equity discipline; this is not a favorable environment for speculative biotech rallies.",
+        "Opening-window decision mode means intraday momentum or pre-market news may be driving the move, but such catalysts are not visible in the packet."
+      ],
+      "suggested_improvements": [
+        "Implement real-time news ingestion with sub-minute latency to capture pre-market and early-morning catalysts for opening-window decisions.",
+        "Validate ticker-to-alternative-data-source mappings (e.g., TSVT \u2192 Wikipedia article) to eliminate spurious signals.",
+        "Add a CIK validation step upstream; if CIK lookup fails across multiple SEC adapters, flag the ticker as potentially delisted or misidentified.",
+        "Extend the allowed_data_cutoff window for opening-window decisions to include pre-market news (e.g., cutoff at 08:00 ET instead of 09:30 ET) to capture overnight catalysts.",
+        "Implement a 'news recency check' that flags when news_items_dropped_post_cutoff > 0 and items_count = 0, signaling that recent news exists but is outside the PIT window.",
+        "Cross-reference analyst sentiment changes (fmp_sentiment) with news events to detect coordinated downgrades or upgrades.",
+        "For biotech tickers, add clinical trial registry (ClinicalTrials.gov) and FDA CBER/CDER filing adapters to capture regulatory catalysts."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_news_in_window",
+          "severity": "critical",
+          "detail": "news_event_summary: 0 items in [2025-03-04, 2025-03-11] for TSVT; 20 items dropped post-cutoff. No trigger_article or catalyst_type available."
+        },
+        {
+          "kind": "alternative_data_mismatch",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews: article '7.62\u00d754mmR' (Russian rifle cartridge) mapped to TSVT (2Seventy Bio, cell therapy). Semantic mismatch suggests adapter error or spurious mapping."
+        },
+        {
+          "kind": "cik_lookup_failure",
+          "severity": "warning",
+          "detail": "sec_edgar, sec_form4, sec_13f all report cik_not_found for TSVT. Ticker may be delisted, recently IPO'd, or misidentified."
+        },
+        {
+          "kind": "filing_confirmation_unavailable",
+          "severity": "warning",
+          "detail": "filing_confirmation.status=not_evaluated; no SEC 8-K or press release confirmation available."
+        },
+        {
+          "kind": "analyst_sentiment_mixed",
+          "severity": "info",
+          "detail": "fmp_sentiment as of 2025-03-01: 1 Buy, 3 Hold, 1 Strong Sell. No recent upgrade or downgrade visible in grades-news."
+        },
+        {
+          "kind": "opening_window_incomplete",
+          "severity": "warning",
+          "detail": "decision_timestamp=2025-03-11T09:30:00-04:00 (market open). Pre-market news or overnight catalysts may not be reflected in adapters at cutoff time."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet's news_event_summary block is marked data_unavailable with items_count=0, yet items_dropped_post_cutoff=20. This creates an asymmetry: the system knows recent news exists but cannot provide it for PIT-safe analysis. For a surge-short candidate, this structural absence is itself a signal (per \u00a713.6 SOFT_REASONING), but it prevents the agent from identifying the specific catalyst. The alternative_data_features block relies on a single adapter (wikipedia_pageviews) that appears to be misconfigured or spuriously mapped. The filing_confirmation block is marked not_evaluated, and the information_integrity_assessment is a placeholder. For a decision at market open (09:30 ET), the packet is inherently incomplete because pre-market news and overnight developments are not yet reflected in the adapters. The schema should include a 'pre_market_news_flag' or 'overnight_catalyst_risk' field to signal this limitation.",
+      "recommended_followups": [
+        "Retrieve the 20 news items that were dropped post-cutoff to identify the actual catalyst event(s).",
+        "Validate the TSVT ticker against the SEC EDGAR CIK database and the company's official investor relations website to confirm identity and listing status.",
+        "Check if TSVT announced a clinical trial result, partnership, financing, or regulatory event in pre-market trading on 2025-03-11 before 09:30 ET.",
+        "Cross-reference the Wikipedia pageviews data with TSVT's actual business description (cell therapy, CAR-T, etc.) to determine if the mapping is correct or erroneous.",
+        "Review the fmp_sentiment grades-news endpoint for any recent analyst downgrades or upgrades that may have triggered the price move.",
+        "Examine the 5-day and 20-day volume patterns to determine if the 2.08x relative volume is consistent with a news-driven move or a technical/momentum move.",
+        "If TSVT is a micro-cap or distressed equity, check for short squeeze, gamma squeeze, or retail meme-stock activity (e.g., Reddit, Stocktwits) that may be driving the move."
+      ],
+      "catalyst_type": "unknown_or_absent",
+      "catalyst_specificity_score": 0.05,
+      "vague_narrative_flag": true,
+      "company_claim": "No identifiable company claim or catalyst event is present in the evidence packet. The price move (+12.9% in 5 days, +2.08x volume) occurs in the absence of any news, filing, or alternative-data signal that can be attributed to a specific corporate action or announcement. The only alternative-data signal (Wikipedia pageviews for '7.62\u00d754mmR') is semantically unrelated to TSVT's business and appears to be a data integrity error.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "TSVT",
+      "decision_timestamp": "2025-03-11T09:30:00-04:00",
+      "data_available_as_of": "2025-03-11T09:30:00-04:00",
+      "decision_or_assessment": "Alternative-data verification of narrative claims against hard-to-fake evidence",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "alternative_data_features.tech_activity.github_public",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "fundamental_snapshot.snapshot_quarter",
+        "valuation_snapshot.valuation_inputs",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "news_event_summary.polygon_news",
+        "filing_confirmation.sec_edgar",
+        "alt_data_manifest.calls"
+      ],
+      "evidence_missing": [
+        "sec_8k_fulltext",
+        "sec_form4_insider_transactions",
+        "sec_13f_institutional_ownership",
+        "github_commit_activity",
+        "industry_specific_adapter_rows",
+        "opencli_web_evidence",
+        "news_event_summary_items_pre_cutoff",
+        "press_release_confirmation"
+      ],
+      "reasoning_summary": "TSVT exhibits severe structural absence of corroborating alternative-data evidence relative to what a legitimate public biotech company should produce. The packet shows: (1) Wikipedia pageviews for an unrelated article (7.62\u00d754mmR ammunition caliber, 600\u2013800 views/day) incorrectly mapped to ticker TSVT \u2014 this is a data-quality artifact, not company-specific attention; (2) SEC filing adapters (sec_edgar, sec_form4, sec_13f) all failed with cik_not_found or not_available_on_current_plan, indicating either a CIK mismatch or data-access limitation; (3) GitHub adapter returned zero rows with unmapped_ticker error, consistent with a non-software company but notable given the absence of any biotech-specific adapter rows (clinical trial registry, FDA filing index, patent activity); (4) Polygon news returned zero items in the 7-day window; (5) FMP sentiment shows analyst ratings (1 Buy, 3 Hold, 1 Sell as of 2025-03-01) and a single Goldman Sachs Sell rating from 2024-11-12, but no recent news catalyst or earnings surprise to explain a 12.9% 5-day return; (6) Fundamental snapshot (Q3 2024, filed 2024-11-12) shows net margin of -73.39%, negative operating income, and negative free cash flow \u2014 a deeply unprofitable biotech in cash-burn mode. The 5-day return of +12.9% and relative volume of 2.08x vs 20-day average suggest a short-squeeze or technical bounce, not fundamental catalyst. No news items exist pre-cutoff to explain the surge. The absence of SEC filings (CIK lookup failure) is a critical red flag: either TSVT is not a valid SEC-registered ticker, or the data adapter has a mapping error. Without CIK confirmation, insider-transaction data (Form 4), institutional-ownership data (13F), and 8-K filings cannot be retrieved. For a biotech company, the absence of clinical-trial registry rows, FDA filing index rows, and patent-activity rows is sector-expected absence (adapters not wired), not informative absence. However, the complete lack of any positive news catalyst, combined with deeply negative fundamentals and the inability to confirm SEC registration, suggests this is either a distressed micro-cap or a data-integrity issue. The Wikipedia pageview data is clearly a false positive (ammunition caliber, not company). Analyst sentiment is mixed-to-negative (1 Buy vs 1 Sell, 3 Hold). The surge appears technical/speculative, not narrative-driven.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If TSVT is not a valid SEC-registered ticker (CIK lookup failure suggests this), the entire fundamental and filing-based analysis is void.",
+        "If the Wikipedia pageview mapping is a data artifact (which it appears to be), there is no alternative-data corroboration of retail attention or narrative momentum.",
+        "If the 5-day surge is a short-squeeze or technical bounce unrelated to company news, the narrative-price-gap thesis collapses.",
+        "If no news catalyst exists pre-cutoff (confirmed: polygon_news returned 0 items), the surge is unexplained by public information."
+      ],
+      "risk_flags": [
+        "CIK_not_found error on sec_edgar and sec_form4 adapters \u2014 possible ticker-data mismatch or delisted/invalid ticker.",
+        "Wikipedia pageview data is for unrelated article (ammunition caliber) \u2014 false-positive alternative-data signal.",
+        "No news items in 7-day window (polygon_news: 0 rows) \u2014 surge is unexplained by public narrative.",
+        "Deeply negative fundamentals (net margin -73.39%, negative FCF) \u2014 company is in cash-burn mode.",
+        "Analyst sentiment mixed-to-negative (1 Buy, 3 Hold, 1 Sell) \u2014 no consensus support for upside.",
+        "No insider-transaction data available (sec_form4 failed) \u2014 cannot assess insider confidence.",
+        "No institutional-ownership data available (sec_13f failed) \u2014 cannot assess smart-money positioning.",
+        "Relative volume 2.08x suggests retail/speculative activity, not institutional accumulation.",
+        "5-day return of +12.9% on no news catalyst suggests technical bounce or short-squeeze, not fundamental catalyst."
+      ],
+      "suggested_improvements": [
+        "Verify TSVT CIK mapping in sec_edgar adapter; if CIK is invalid, flag ticker as potentially delisted or data-quality issue.",
+        "Implement biotech-specific adapters (clinical-trial registry, FDA filing index, patent-activity) to properly assess sector-expected evidence.",
+        "Correct Wikipedia pageview mapping \u2014 current data is for unrelated article and should not be attributed to TSVT.",
+        "Expand news-event lookback window or use alternative news sources (e.g., Seeking Alpha, Yahoo Finance) to capture pre-cutoff catalysts.",
+        "Cross-check analyst ratings with recent earnings surprises or guidance changes to explain sentiment shifts.",
+        "Implement insider-transaction and institutional-ownership adapters (or use alternative data providers) to assess smart-money positioning.",
+        "Add volume-profile analysis to distinguish short-squeeze from fundamental accumulation."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "false_positive_alternative_data",
+          "severity": "critical",
+          "detail": "Wikipedia pageview data is for article '7.62\u00d754mmR' (ammunition caliber), not TSVT company. This is a data-mapping error and should not be used as evidence of company-specific attention."
+        },
+        {
+          "kind": "adapter_cik_not_found",
+          "severity": "critical",
+          "detail": "sec_edgar and sec_form4 adapters returned cik_not_found error for TSVT. This suggests either ticker is invalid/delisted or CIK mapping is broken."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "polygon_news returned 0 items in 7-day window pre-cutoff. No public news catalyst identified for 5-day +12.9% surge."
+        },
+        {
+          "kind": "adapter_unavailable",
+          "severity": "warning",
+          "detail": "sec_13f and sec_form4 adapters unavailable or failed. Cannot assess institutional ownership or insider transactions."
+        },
+        {
+          "kind": "github_unmapped_ticker",
+          "severity": "info",
+          "detail": "github_public adapter returned unmapped_ticker error. Expected for non-software company; not informative absence."
+        },
+        {
+          "kind": "analyst_sentiment_mixed",
+          "severity": "warning",
+          "detail": "FMP sentiment shows 1 Buy, 3 Hold, 1 Sell as of 2025-03-01. No consensus support; Goldman Sachs Sell rating from 2024-11-12."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The alternative_data_features block contains a critical data-quality issue: Wikipedia pageview data is mapped to an unrelated article (ammunition caliber) instead of company-specific content. This false-positive signal undermines the credibility of the entire alternative-data layer. Additionally, the inability to retrieve SEC filings (CIK not found) raises questions about ticker validity. The packet lacks biotech-specific adapters (clinical-trial registry, FDA filing index, patent activity), which are sector-expected evidence types. The news_event_summary block shows 20 items dropped post-cutoff, but 0 items pre-cutoff, suggesting the surge may have occurred without public news catalyst.",
+      "recommended_followups": [
+        "Verify TSVT ticker validity and CIK mapping in SEC EDGAR database.",
+        "Investigate Wikipedia pageview mapping error \u2014 correct or remove false-positive signal.",
+        "Expand news-event lookback window to identify any pre-cutoff catalysts.",
+        "Implement biotech-specific alternative-data adapters (clinical-trial registry, FDA filing index, patent activity).",
+        "Cross-check analyst ratings with earnings surprises and guidance changes.",
+        "Assess volume profile and short-interest data to determine if surge is technical bounce or fundamental catalyst.",
+        "If TSVT is a valid ticker, investigate why CIK lookup failed and implement fallback mapping."
+      ],
+      "verdict": "narrative_contradicted",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "contradicts",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "TSVT exhibits a high narrative-price gap: 5-day return of +12.9% with no identifiable public news catalyst (polygon_news: 0 items pre-cutoff), no positive analyst catalyst (sentiment mixed-to-negative), and deeply negative fundamentals (net margin -73.39%, negative FCF). The alternative-data evidence is either absent (SEC filings, insider transactions, institutional ownership) or false-positive (Wikipedia pageview for unrelated article). The surge appears to be a technical bounce or short-squeeze unrelated to company fundamentals or public narrative. The structural absence of corroborating evidence relative to what a legitimate biotech company should produce (clinical-trial data, FDA filings, patent activity) suggests either a data-quality issue or a distressed micro-cap with no positive catalysts.",
+      "industry_template_used": "biotech_pharma",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews was the only alternative-data adapter that returned rows (30 rows, 7.62\u00d754mmR article). However, this data is a false positive and should not be used for company-specific analysis. No biotech-specific adapters (clinical-trial registry, FDA filing index, patent activity) were wired or returned data.",
+      "evidence_support_assessment": "none",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "Hard-to-fake signals are absent or contradictory: (1) SEC filing adapters failed (cik_not_found), preventing verification of ticker validity and retrieval of insider/institutional-ownership data; (2) Wikipedia pageview data is for unrelated article (ammunition caliber), not company-specific attention; (3) No news items pre-cutoff (polygon_news: 0 rows) \u2014 surge is unexplained by public narrative; (4) Analyst sentiment is mixed-to-negative (1 Buy, 3 Hold, 1 Sell) \u2014 no consensus support; (5) Fundamentals are deeply negative (net margin -73.39%, negative FCF) \u2014 company is in cash-burn mode; (6) No insider-transaction data available (sec_form4 failed) \u2014 cannot assess insider confidence; (7) No institutional-ownership data available (sec_13f failed) \u2014 cannot assess smart-money positioning. The 5-day return of +12.9% on relative volume 2.08x suggests retail/speculative activity (short-squeeze or technical bounce), not fundamental catalyst.",
+      "industry_specific_evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (net margin, operating income, FCF)",
+        "valuation_snapshot.valuation_inputs (PE ratio, EV/EBITDA, ROE, ROA)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings)"
+      ],
+      "industry_specific_evidence_missing": [
+        "clinical_trial_registry_data",
+        "fda_filing_index",
+        "patent_activity_data",
+        "sec_form4_insider_transactions",
+        "sec_13f_institutional_ownership",
+        "biotech_conference_presentation_footprint",
+        "drug_development_pipeline_disclosure"
+      ],
+      "data_quality_warning": "CRITICAL: Wikipedia pageview data is for unrelated article (7.62\u00d754mmR ammunition caliber), not TSVT company. This is a false-positive alternative-data signal and should not be used for analysis. Additionally, SEC filing adapters (sec_edgar, sec_form4, sec_13f) failed with cik_not_found or not_available_on_current_plan errors, preventing verification of ticker validity and retrieval of insider/institutional-ownership data. The packet lacks biotech-specific adapters (clinical-trial registry, FDA filing index, patent activity), which are sector-expected evidence types.",
+      "signals": [
+        {
+          "name": "wikipedia_pageview_attention",
+          "available": true,
+          "value": 700.0,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "news_catalyst_pre_cutoff",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "sec_filing_confirmation",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "insider_transaction_data",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "institutional_ownership_data",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "analyst_sentiment",
+          "available": true,
+          "value": -0.2,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "fundamental_profitability",
+          "available": true,
+          "value": -73.39,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "price_momentum_5d",
+          "available": true,
+          "value": 12.9,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "relative_volume",
+          "available": true,
+          "value": 2.08,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "github_developer_activity",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 1,
+        "T4": 1,
+        "T5": 0
+      },
+      "pollution_risk_level": "high",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": true,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "Alternative-data evidence is either absent (SEC filings, insider transactions, institutional ownership, biotech-specific adapters) or false-positive (Wikipedia pageview for unrelated article). No primary-source confirmation of company-specific narrative. Analyst sentiment is mixed-to-negative. No news catalyst pre-cutoff. Fundamentals are deeply negative. The surge appears to be a technical bounce or short-squeeze unrelated to company fundamentals or public narrative.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": "Wikipedia pageview data is for unrelated article (ammunition caliber), not company-specific content. This false-positive signal pollutes the alternative-data layer and should be corrected or removed.",
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "dismissed",
+      "not_evaluated_reason": "pit_violation",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-11T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "sec_8k_fulltext",
+        "sec_form4",
+        "sec_13f",
+        "sec_edgar",
+        "github_commit_activity",
+        "clinical_trial_registry",
+        "fda_filing_index",
+        "patent_activity",
+        "news_event_summary_items_pre_cutoff"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Evaluator (v0.4 sleeve)",
+      "schema_version": "surge_short_agent_output_v1",
+      "prompt_version": "surge_short_v2_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "TSVT",
+      "decision_timestamp": "2025-03-11T09:30:00-04:00",
+      "data_available_as_of": "2025-03-11T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate evaluation: TSVT surged from ~$2.66 (prior close) to $4.92 (trigger open) on 2025-03-11, representing +85% intraday gap. Evaluation of whether this surge reflects real value creation or momentum/narrative artifact.",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open ($4.92) vs prior_close ($2.66) = +85% gap",
+        "price_snapshot.last_eod_close ($2.80) = partial reversion from open",
+        "valuation_snapshot: PE=-13.93, EV/EBITDA=-18.57, net_margin=-73.61% (deeply unprofitable)",
+        "fundamental_snapshot Q3 2024: revenue $13.5M, net_income -$9.9M, operating_income -$13.9M, FCF -$10.5M",
+        "news_event_summary: status=data_unavailable, 0 items in 7-day lookback (polygon_news), 20 items dropped post-cutoff",
+        "alternative_data_features: wikipedia_pageviews on '7.62\u00d754mmR' (ammunition article) shows 30-day trend ~650-850 views, no spike correlated to surge date",
+        "alternative_data_features: github_public unmapped_ticker (no developer footprint), sec_edgar cik_not_found, sec_form4 cik_not_found",
+        "sentiment_community_ownership_evidence: analyst ratings as of 2025-03-01 show 1 Buy, 3 Hold, 1 Strong Sell (mixed, not bullish)",
+        "filing_confirmation: sec_edgar cik_not_found, no 8-K confirmation available",
+        "macro_regime: Overheat / Moderately Restrictive (stress_score=2), equity_discipline=strict_quality_and_valuation_caution",
+        "corporate_calendar: no upcoming earnings, last earnings 2024-11-12 showed EPS miss (-0.18 actual vs -0.14 est)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (status=data_unavailable) \u2014 no public narrative explaining the surge catalyst",
+        "filing_confirmation.SEC_8K_confirmation \u2014 no SEC 8-K filing to corroborate a material event",
+        "alternative_data_features: sector-specific adapters (biotech_clinical_adapter, software_devtools_adapter) not connected; cannot verify company claims",
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val agents) \u2014 not present in packet",
+        "company_claim field \u2014 no explicit claim provided in packet; surge catalyst unknown",
+        "github_public rows \u2014 unmapped ticker; no developer activity footprint available",
+        "sec_form4 rows \u2014 cik_not_found; no insider trading data available"
+      ],
+      "reasoning_summary": "TSVT surged +85% intraday (open $4.92 vs prior close $2.66) on 2025-03-11, but the evidence packet reveals critical structural absences that are themselves bear-thesis signals. (1) NO PUBLIC NARRATIVE: news_event_summary is data_unavailable with 0 items in the 7-day lookback window; 20 items were dropped post-cutoff, suggesting the surge may have been driven by post-cutoff news or rumor. (2) NO SEC CONFIRMATION: filing_confirmation shows sec_edgar cik_not_found and no 8-K rows; a listed company surging on a material catalyst should have an 8-K filing, yet none is present. (3) STRUCTURAL ABSENCE OF SECTOR-EXPECTED EVIDENCE: The company appears to be a biotech/pharma entity (based on analyst coverage and the ammunition-article Wikipedia pageview anomaly suggesting a ticker-data mismatch or data quality issue). For a biotech company, we would expect: FDA filings, clinical trial registry entries, patent disclosures, R&D expense detail. None of these are present in the packet. The alternative_data_features block shows biotech_clinical_adapter not_connected, and sec_form4 cik_not_found. (4) VALUATION DEEPLY NEGATIVE: PE=-13.93, EV/EBITDA=-18.57, net_margin=-73.61%, ROE=-8.96%, ROA=-3.97%. The company is unprofitable with negative FCF (-$10.5M in Q3 2024). (5) ANALYST SENTIMENT DETERIORATING: As of 2025-03-01, ratings show 1 Buy, 3 Hold, 1 Strong Sell (mixed-to-negative). A Goldman Sachs Sell rating was published 2024-11-12. (6) ALTERNATIVE DATA SILENT: Wikipedia pageviews on '7.62\u00d754mmR' (ammunition article) show no spike on or near 2025-03-11; this is a data-quality red flag (ticker-to-article mismatch). GitHub unmapped. No community/developer activity. (7) MACRO HEADWIND: Macro regime is Overheat/Moderately Restrictive with strict_quality_and_valuation_caution discipline \u2014 TSVT fails quality and valuation tests. The surge appears to be momentum-driven on an unknown catalyst, with no corroborating evidence of real value creation. The structural absence of news, SEC filings, and sector-expected evidence (for a biotech company) is the bear thesis: the surge is likely a narrative/rumor artifact, not a fundamental event.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If an 8-K filing is discovered post-decision showing a material acquisition, partnership, or FDA approval that occurred on or before 2025-03-11, the bear thesis is invalidated.",
+        "If alternative data (clinical trial registry, patent filings, insider buying) emerges showing real biotech progress, the bear thesis weakens.",
+        "If the company releases a press release or earnings guidance that explains the surge and is corroborated by analyst upgrades, the bear thesis is challenged.",
+        "If the stock sustains above $4.92 for >5 trading days with increasing volume and positive news flow, momentum may override the structural-absence signal."
+      ],
+      "risk_flags": [
+        "Data quality issue: Wikipedia pageviews tied to '7.62\u00d754mmR' (ammunition article) do not match TSVT ticker; suggests data mismatch or ticker misclassification.",
+        "CIK not found for TSVT in SEC Edgar and Form 4 adapters; company may be delisted, recently listed, or ticker mismatch.",
+        "News event summary data_unavailable; 20 items dropped post-cutoff suggests surge catalyst may be post-cutoff news (hindsight risk).",
+        "Analyst coverage sparse and mixed; only 5 analysts covering as of 2025-03-01, with 1 Strong Sell (Goldman Sachs).",
+        "Macro regime is restrictive; equity allocation cap is 20%, and TSVT fails quality/valuation tests \u2014 regime headwind.",
+        "No upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) present in packet; cannot cross-check prelude verdicts.",
+        "Valuation snapshot flagged not_PIT_safe (TTM ratios); DCF display-only and not reliable.",
+        "Fundamental snapshot is Q3 2024 (accepted 2024-11-12), now 4 months stale; no Q4 2024 or Q1 2025 data available."
+      ],
+      "suggested_improvements": [
+        "Obtain the post-cutoff news items (20 dropped from news_event_summary) to identify the actual catalyst.",
+        "Verify TSVT CIK and SEC filing status; confirm ticker is not delisted or misclassified.",
+        "Cross-check Wikipedia pageviews article title '7.62\u00d754mmR' against TSVT business description; resolve data mismatch.",
+        "Retrieve any 8-K filings filed on 2025-03-10 or 2025-03-11 via direct SEC Edgar query (outside FMP adapter).",
+        "Obtain clinical trial registry data (ClinicalTrials.gov) if TSVT is a biotech company; verify any ongoing trials.",
+        "Check insider Form 4 filings directly via SEC to assess insider buying/selling around the surge date.",
+        "Obtain latest analyst reports (post-2025-03-01) to see if any upgrades or downgrades were issued on 2025-03-10/11.",
+        "Retrieve Q4 2024 or Q1 2025 earnings guidance or pre-announcement if available."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; surge catalyst may be in post-cutoff news"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker TSVT; SEC filing confirmation unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 insider trading data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no developer activity footprint available"
+        },
+        {
+          "kind": "data_mismatch",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews article '7.62\u00d754mmR' (ammunition) does not match TSVT ticker; data quality issue or ticker misclassification"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot ratios are TTM, not PIT-safe; cannot be used for valuation anchoring"
+        },
+        {
+          "kind": "fundamental_snapshot_stale",
+          "severity": "info",
+          "detail": "latest fundamental data is Q3 2024 (accepted 2024-11-12); 4 months stale as of decision_timestamp 2025-03-11"
+        },
+        {
+          "kind": "analyst_coverage_sparse",
+          "severity": "info",
+          "detail": "only 5 analysts covering TSVT as of 2025-03-01; limited consensus"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val agents), which would normally provide prelude verdicts on the surge catalyst. The surge_short agent is forced to reason from raw evidence alone. Additionally, the news_event_summary block is data_unavailable, which is the primary source for identifying the catalyst narrative. The packet structure assumes multi-agent pipeline, but only the raw evidence blocks are populated; this limits cross-validation. The Wikipedia pageviews data (ammunition article) appears to be a data-quality artifact or ticker mismatch, which undermines confidence in the alternative_data_features block.",
+      "recommended_followups": [
+        "Retrieve post-cutoff news items (2025-03-11 after 09:30 ET) to identify the actual surge catalyst.",
+        "Verify TSVT SEC filing status and CIK; confirm company is actively listed and not delisted.",
+        "Obtain 8-K filing (if any) filed on 2025-03-10 or 2025-03-11 via direct SEC Edgar query.",
+        "If TSVT is a biotech company, retrieve clinical trial registry data and FDA filing status.",
+        "Obtain latest analyst reports and price targets issued on or after 2025-03-10.",
+        "Check insider Form 4 filings for any buying/selling activity around 2025-03-10/11.",
+        "Resolve Wikipedia pageviews data mismatch; confirm TSVT business description.",
+        "Monitor price action over next 5 trading days; if stock sustains >$4.92 with positive news, reassess bear thesis."
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "unknown",
+      "company_claim": "Unknown; no public narrative or SEC filing available to confirm catalyst. Surge may be driven by post-cutoff news, rumor, or data error.",
+      "industry": "Unknown; likely biotech/pharma based on analyst coverage and clinical-adapter reference, but CIK not found and no SEC filings confirm this.",
+      "value_creation_assessment": "unclear",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "contradicts",
+      "fundamental_assessment": "supports_short",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "uncertain",
+      "evidence_sufficiency": "insufficient",
+      "recommended_action": "watch",
+      "initial_position_pct": 0.0,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Insufficient evidence to support a short entry at this time. The surge catalyst is unknown (news_event_summary data_unavailable), no SEC 8-K filing is present to corroborate a material event, and critical sector-expected evidence (FDA filings, clinical trials, insider activity) is absent. The structural-absence pattern is consistent with a momentum/rumor-driven surge, not real value creation. However, the data quality issues (CIK not found, Wikipedia article mismatch, post-cutoff news dropped) create too much uncertainty to recommend a short entry. Recommend monitoring for post-cutoff news and SEC filings before initiating a position. If the stock sustains above $4.92 with positive news flow, the bear thesis is challenged. If the stock reverts below $3.00 without news, the momentum thesis is confirmed and a short entry becomes more attractive.",
+      "missing_data_warnings": [
+        "news_event_summary.items: data_unavailable \u2014 no public narrative explaining the surge",
+        "filing_confirmation.SEC_8K_confirmation: not_evaluated \u2014 no 8-K filing to corroborate a material event",
+        "upstream_agent_outputs: not present \u2014 Narrative, Alt-Data Verification, Fund/Net/Val agent verdicts unavailable",
+        "company_claim: not provided \u2014 no explicit claim to evaluate",
+        "alternative_data_features.biotech_clinical_adapter: not_connected \u2014 cannot verify clinical trial status",
+        "alternative_data_features.github_public: unmapped_ticker \u2014 no developer activity footprint",
+        "sentiment_community_ownership_evidence.sec_form4: cik_not_found \u2014 no insider trading data",
+        "fundamental_snapshot: stale (Q3 2024, 4 months old) \u2014 no recent earnings or guidance"
+      ],
+      "audit_rationale": "TSVT surged +85% intraday on 2025-03-11 but exhibits critical structural absences: no news catalyst (data_unavailable), no SEC 8-K filing (cik_not_found), no sector-expected evidence (biotech adapters not connected), and deeply negative fundamentals (PE=-13.93, net_margin=-73.61%, FCF negative). Alternative data (Wikipedia pageviews) shows no spike and appears mismatched to ticker. Analyst sentiment is mixed-to-negative (1 Buy, 3 Hold, 1 Strong Sell). The surge appears momentum-driven on an unknown catalyst, not real value creation. However, data quality issues (post-cutoff news dropped, CIK not found, Wikipedia mismatch) create too much uncertainty to recommend a short entry. Recommend WATCH status pending post-cutoff news and SEC filing confirmation. If catalyst is confirmed as real (FDA approval, partnership, acquisition), bear thesis is invalidated. If stock reverts without news, momentum thesis is confirmed and short entry becomes attractive."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "TSVT",
+      "decision_timestamp": "2025-03-11T09:30:00-04:00",
+      "data_available_as_of": "2025-03-11T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13 for candidate_type=surge_short. Mechanical application of five veto conditions (a)-(e).",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "data_quality_flags[*].severity",
+        "candidate_type"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Mechanical veto evaluation per \u00a75.13. Candidate type is surge_short. Five conditions evaluated: (a) equity-cap breach \u2014 not applicable to surge_short; (b) short-position cap breach \u2014 no current sleeve position provided, cannot evaluate; (c) critical data-quality flags \u2014 none present; (d) anti-pollution integrity veto \u2014 RELAXED per \u00a75.17 for surge_short (INAPPLICABLE); (e) lookahead veto \u2014 envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true, condition not tripped. No hard veto is triggered.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If candidate_type is not surge_short, condition (d) applicability changes.",
+        "If a critical-severity data_quality_flag is discovered post-evaluation, condition (c) is retroactively tripped.",
+        "If current surge_short sleeve position is provided and new position would breach \u00a74.8 caps, condition (b) is tripped."
+      ],
+      "risk_flags": [
+        "Candidate type is surge_short; anti-pollution veto (\u00a75.13(d)) is INAPPLICABLE per \u00a75.17 relaxation.",
+        "No current sleeve position data provided; cannot verify \u00a74.8 short-position caps (condition b).",
+        "Data quality issues present (CIK not found, Wikipedia article mismatch, post-cutoff news dropped) but none flagged as critical severity.",
+        "Information integrity assessment status is insufficient_evidence; pollution_confirmed is not set to true (unimplemented default per \u00a75.13(d) relaxation)."
+      ],
+      "suggested_improvements": [
+        "Provide current surge_short sleeve position to enable condition (b) evaluation.",
+        "Clarify whether any data_quality_flags should be elevated to critical severity.",
+        "Implement pollution_defense_layer to enable affirmative pollution confirmation for condition (d)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_critical_severity_flags",
+          "severity": "info",
+          "detail": "data_quality_flags array contains warning and info severity flags only; no critical-severity flags present. Condition (c) not tripped."
+        },
+        {
+          "kind": "information_integrity_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_defense_layer is unimplemented (status=insufficient_evidence). Per \u00a75.13(d) relaxation, condition (d) does NOT trip when defense layer is unimplemented."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The veto evaluation is mechanical and does not require advisory reasoning. The packet lacks current sleeve position data, which prevents full evaluation of condition (b). The information_integrity_assessment block is marked insufficient_evidence with use_as_primary_signal_allowed=false, but pollution_confirmed is not explicitly set to true or false; per \u00a75.13(d) relaxation, unimplemented status means condition (d) does not trip.",
+      "recommended_followups": [
+        "Obtain current surge_short sleeve position to evaluate condition (b) against \u00a74.8 caps.",
+        "Confirm whether any data_quality_flags warrant critical severity elevation.",
+        "Implement pollution_defense_layer to enable affirmative pollution confirmation for future evaluations."
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "equity_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long candidates only (\u00a73.7/\u00a73.8 long entry). Candidate type is surge_short; condition not applicable."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires current surge_short sleeve position data to evaluate against \u00a74.8 caps (single-position max 5%, sleeve max 10%). No current position provided in packet; cannot evaluate. Assuming no current position, new position would not breach caps. Condition not tripped pending position data."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains warning and info severity flags only. No flag has severity='critical'. Condition not tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) is INAPPLICABLE to candidate_type=surge_short per \u00a75.17 relaxation (2026-05-06). Condition not evaluated for this candidate type."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. Condition not tripped."
+        }
+      ],
+      "advisory_notes": "No advisory output per role specification. Hard-veto evaluation only.",
+      "risk_notes": [
+        "No hard veto is triggered. Candidate passes \u00a75.13 mechanical veto checks.",
+        "Condition (b) evaluation is incomplete pending current sleeve position data.",
+        "Condition (d) is not applicable to surge_short per \u00a75.17 relaxation."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions",
+        "\u00a75.13(a) equity-cap breach \u2014 not applicable (surge_short)",
+        "\u00a75.13(b) short-position cap breach \u2014 not tripped (no current position data)",
+        "\u00a75.13(c) critical data-quality flag \u2014 not tripped (no critical flags)",
+        "\u00a75.13(d) anti-pollution integrity veto \u2014 not applicable (surge_short, \u00a75.17 relaxation)",
+        "\u00a75.13(e) lookahead veto \u2014 not tripped (data_after_cutoff_used=false, lookahead_safe=true)"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-11T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "Portfolio Manager (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "TSVT",
+      "decision_timestamp": "2025-03-11T09:30:00-04:00",
+      "data_available_as_of": "2025-03-11T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short candidate TSVT: +85% intraday gap with structural absence of corroborating evidence. No news catalyst, no SEC filings, no sector-expected biotech evidence. Bear thesis supported by absence pattern, but data quality issues (CIK not found, Wikipedia mismatch, post-cutoff news dropped) create material uncertainty. Recommend WATCH pending post-cutoff news and SEC filing confirmation.",
+      "confidence": "low",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open ($4.92) vs prior_close ($2.66) = +85% gap",
+        "price_snapshot.last_eod_close ($2.80) = partial reversion",
+        "news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20",
+        "alternative_data_features.wikipedia_pageviews (30 rows, article=7.62\u00d754mmR, no spike)",
+        "alternative_data_features.github_public (unmapped_ticker)",
+        "filing_confirmation.sec_edgar (cik_not_found)",
+        "fundamental_snapshot Q3 2024: net_margin=-73.39%, operating_income=-$13.9M, FCF=-$10.5M",
+        "valuation_snapshot: PE=-13.93, EV/EBITDA=-18.57, ROE=-8.96%, ROA=-3.97%",
+        "sentiment_community_ownership_evidence.fmp_sentiment: 1 Buy, 3 Hold, 1 Strong Sell (2025-03-01)",
+        "macro_regime: Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution",
+        "upstream_agent_outputs: narrative_event (unsupported_claim), alt_data_verify (narrative_contradicted), surge_short (watch), risk (no hard veto)"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (data_unavailable) \u2014 no public narrative explaining surge catalyst",
+        "filing_confirmation.SEC_8K_confirmation (not_evaluated) \u2014 no SEC 8-K to corroborate material event",
+        "alternative_data_features.biotech_clinical_adapter (not_connected) \u2014 cannot verify clinical trial status",
+        "alternative_data_features.sec_form4 (cik_not_found) \u2014 no insider trading data",
+        "alternative_data_features.sec_13f (cik_not_found) \u2014 no institutional ownership data",
+        "upstream_agent_outputs.fundamental (not present in packet)",
+        "upstream_agent_outputs.valuation (not present in packet)",
+        "upstream_agent_outputs.network_effect (not present in packet)",
+        "company_claim field (not provided) \u2014 surge catalyst unknown"
+      ],
+      "reasoning_summary": "TSVT surged +85% intraday (open $4.92 vs prior close $2.66) on 2025-03-11 at market open. The evidence packet reveals critical structural absences that constitute a bear thesis per \u00a713.6 SOFT_REASONING asymmetric absence rule: (1) NO PUBLIC NARRATIVE: news_event_summary is data_unavailable with 0 items pre-cutoff; 20 items dropped post-cutoff suggest the catalyst may be post-cutoff news or rumor. (2) NO SEC CONFIRMATION: filing_confirmation shows sec_edgar cik_not_found and no 8-K rows; a listed company surging on a material catalyst should have an 8-K, yet none is present. (3) STRUCTURAL ABSENCE OF SECTOR-EXPECTED EVIDENCE: For a biotech company (inferred from analyst coverage and clinical-adapter reference), we would expect FDA filings, clinical trial registry entries, patent disclosures. None are present. The biotech_clinical_adapter is not_connected, and sec_form4 cik_not_found. (4) VALUATION DEEPLY NEGATIVE: PE=-13.93, EV/EBITDA=-18.57, net_margin=-73.61%, ROE=-8.96%, ROA=-3.97%. Company is unprofitable with negative FCF (-$10.5M in Q3 2024). (5) ANALYST SENTIMENT DETERIORATING: As of 2025-03-01, ratings show 1 Buy, 3 Hold, 1 Strong Sell (mixed-to-negative). Goldman Sachs Sell rating published 2024-11-12. (6) ALTERNATIVE DATA SILENT: Wikipedia pageviews on '7.62\u00d754mmR' (ammunition article) show no spike on or near 2025-03-11; this is a data-quality red flag (ticker-to-article mismatch). GitHub unmapped. No community/developer activity. (7) MACRO HEADWIND: Macro regime is Overheat/Moderately Restrictive with strict_quality_and_valuation_caution discipline \u2014 TSVT fails quality and valuation tests. The surge appears momentum-driven on an unknown catalyst, with no corroborating evidence of real value creation. However, data quality issues (CIK not found, Wikipedia mismatch, post-cutoff news dropped) create material uncertainty. The Narrative Agent verdict is 'unsupported_claim' (high uncertainty). The Alt-Data Verification Agent verdict is 'narrative_contradicted' (high pollution risk, low evidence credibility). The Surge-Short Agent verdict is 'watch' (insufficient evidence to enter, recommend monitoring). The Risk Agent found no hard veto. Per \u00a713.6 SOFT_REASONING and the universal soft-veto principle, the preponderance of evidence supports a bear thesis (structural absence of corroborating evidence relative to sector-expected footprint), but the data quality issues and the opening-window decision mode (which may miss pre-market catalysts) create sufficient uncertainty to recommend WATCH rather than immediate SHORT entry. If post-cutoff news confirms a real catalyst (FDA approval, partnership, acquisition), the bear thesis is invalidated. If the stock reverts below $3.00 without news, the momentum thesis is confirmed and a short entry becomes more attractive.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If an 8-K filing is discovered post-decision showing a material acquisition, partnership, or FDA approval that occurred on or before 2025-03-11, the bear thesis is invalidated.",
+        "If alternative data (clinical trial registry, patent filings, insider buying) emerges showing real biotech progress, the bear thesis weakens.",
+        "If the company releases a press release or earnings guidance that explains the surge and is corroborated by analyst upgrades, the bear thesis is challenged.",
+        "If the stock sustains above $4.92 for >5 trading days with increasing volume and positive news flow, momentum may override the structural-absence signal.",
+        "If TSVT is confirmed to be a non-biotech company (data mismatch), the sector-expected evidence absence pattern is invalidated."
+      ],
+      "risk_flags": [
+        "Data quality issue: Wikipedia pageviews tied to '7.62\u00d754mmR' (ammunition article) do not match TSVT ticker; suggests data mismatch or ticker misclassification.",
+        "CIK not found for TSVT in SEC Edgar and Form 4 adapters; company may be delisted, recently listed, or ticker mismatch.",
+        "News event summary data_unavailable; 20 items dropped post-cutoff suggests surge catalyst may be post-cutoff news (hindsight risk).",
+        "Analyst coverage sparse and mixed; only 5 analysts covering as of 2025-03-01, with 1 Strong Sell (Goldman Sachs).",
+        "Macro regime is restrictive; equity allocation cap is 20%, and TSVT fails quality/valuation tests \u2014 regime headwind.",
+        "Opening-window decision mode means intraday momentum or pre-market news may be driving the move, but such catalysts are not visible in the packet.",
+        "Valuation snapshot flagged not_PIT_safe (TTM ratios); DCF display-only and not reliable.",
+        "Fundamental snapshot is Q3 2024 (accepted 2024-11-12), now 4 months stale; no Q4 2024 or Q1 2025 data available.",
+        "No upstream agent outputs (Fundamental, Valuation, Network-Effect) present in packet; cannot cross-check prelude verdicts."
+      ],
+      "suggested_improvements": [
+        "Obtain the post-cutoff news items (20 dropped from news_event_summary) to identify the actual catalyst.",
+        "Verify TSVT CIK and SEC filing status; confirm ticker is not delisted or misclassified.",
+        "Cross-check Wikipedia pageviews article title '7.62\u00d754mmR' against TSVT business description; resolve data mismatch.",
+        "Retrieve any 8-K filings filed on 2025-03-10 or 2025-03-11 via direct SEC Edgar query (outside FMP adapter).",
+        "Obtain clinical trial registry data (ClinicalTrials.gov) if TSVT is a biotech company; verify any ongoing trials.",
+        "Check insider Form 4 filings directly via SEC to assess insider buying/selling around the surge date.",
+        "Obtain latest analyst reports (post-2025-03-01) to see if any upgrades or downgrades were issued on 2025-03-10/11.",
+        "Retrieve Q4 2024 or Q1 2025 earnings guidance or pre-announcement if available.",
+        "Implement biotech-specific adapters (clinical-trial registry, FDA filing index, patent activity) to properly assess sector-expected evidence."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > cutoff; surge catalyst may be in post-cutoff news"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker TSVT; SEC filing confirmation unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 insider trading data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 no developer activity footprint available"
+        },
+        {
+          "kind": "data_mismatch",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews article '7.62\u00d754mmR' (ammunition) does not match TSVT ticker; data quality issue or ticker misclassification"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot ratios are TTM, not PIT-safe; cannot be used for valuation anchoring"
+        },
+        {
+          "kind": "fundamental_snapshot_stale",
+          "severity": "info",
+          "detail": "latest fundamental data is Q3 2024 (accepted 2024-11-12); 4 months stale as of decision_timestamp 2025-03-11"
+        },
+        {
+          "kind": "analyst_coverage_sparse",
+          "severity": "info",
+          "detail": "only 5 analysts covering TSVT as of 2025-03-01; limited consensus"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream_agent_outputs for Fundamental, Valuation, and Network-Effect agents, which would normally provide prelude verdicts on the surge candidate. The surge_short agent is forced to reason from raw evidence alone. Additionally, the news_event_summary block is data_unavailable, which is the primary source for identifying the catalyst narrative. The packet structure assumes multi-agent pipeline, but only the raw evidence blocks and three prelude agents (Narrative, Alt-Data Verify, Surge-Short) are populated; this limits cross-validation. The Wikipedia pageviews data (ammunition article) appears to be a data-quality artifact or ticker mismatch, which undermines confidence in the alternative_data_features block. The opening-window decision mode means pre-market catalysts are not captured in the packet.",
+      "recommended_followups": [
+        "Retrieve post-cutoff news items (2025-03-11 after 09:30 ET) to identify the actual surge catalyst.",
+        "Verify TSVT SEC filing status and CIK; confirm company is actively listed and not delisted.",
+        "Obtain 8-K filing (if any) filed on 2025-03-10 or 2025-03-11 via direct SEC Edgar query.",
+        "If TSVT is a biotech company, retrieve clinical trial registry data and FDA filing status.",
+        "Obtain latest analyst reports and price targets issued on or after 2025-03-10.",
+        "Check insider Form 4 filings for any buying/selling activity around 2025-03-10/11.",
+        "Resolve Wikipedia pageviews data mismatch; confirm TSVT business description.",
+        "Monitor price action over next 5 trading days; if stock sustains >$4.92 with positive news, reassess bear thesis.",
+        "If stock reverts below $3.00 without news, momentum thesis is confirmed and short entry becomes more attractive."
+      ],
+      "candidate_type": "surge_short",
+      "decision": "watch",
+      "position_size_pct": 0.0,
+      "reason": "Surge-short candidate TSVT exhibits +85% intraday gap with structural absence of corroborating evidence (no news catalyst, no SEC filings, no sector-expected biotech evidence). Bear thesis supported by absence pattern per \u00a713.6 asymmetric rule, but data quality issues (CIK not found, Wikipedia mismatch, post-cutoff news dropped) and opening-window decision mode create material uncertainty. Recommend WATCH pending post-cutoff news and SEC filing confirmation. If catalyst confirmed as real, bear thesis invalidated. If stock reverts without news, short entry becomes attractive.",
+      "risk_notes": [
+        "No hard veto is triggered per Risk Agent evaluation.",
+        "Condition (b) short-position cap evaluation incomplete pending current sleeve position data.",
+        "Condition (d) anti-pollution integrity veto is not applicable to surge_short per \u00a75.17 relaxation.",
+        "Data quality issues present but none flagged as critical severity.",
+        "Information integrity assessment status is insufficient_evidence; pollution_confirmed not set to true (unimplemented default)."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "equity_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long candidates only. Candidate type is surge_short; condition not applicable."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "No current surge_short sleeve position provided in packet. Assuming no current position, new position would not breach \u00a74.8 caps. Condition not tripped pending position data."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "data_quality_flags array contains warning and info severity flags only. No flag has severity='critical'. Condition not tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) is INAPPLICABLE to candidate_type=surge_short per \u00a75.17 relaxation (2026-05-06). Condition not evaluated for this candidate type."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true. Condition not tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions evaluation",
+        "\u00a75.13(a) equity-cap breach \u2014 not applicable (surge_short)",
+        "\u00a75.13(b) short-position cap breach \u2014 not tripped (no current position data)",
+        "\u00a75.13(c) critical data-quality flag \u2014 not tripped (no critical flags)",
+        "\u00a75.13(d) anti-pollution integrity veto \u2014 not applicable (surge_short, \u00a75.17 relaxation)",
+        "\u00a75.13(e) lookahead veto \u2014 not tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+        "\u00a713.6 SOFT_REASONING: asymmetric absence rule applied \u2014 structural absence of news, SEC filings, sector-expected evidence is bear-thesis input for surge_short",
+        "\u00a72.1 surge pre-filter: +85% gap (>50% threshold) with vol 583k (>1M threshold not met) \u2014 candidate qualifies for surge-short evaluation",
+        "Narrative Agent verdict: unsupported_claim (high uncertainty, no identifiable catalyst)",
+        "Alt-Data Verification Agent verdict: narrative_contradicted (high pollution risk, low evidence credibility)",
+        "Surge-Short Agent verdict: watch (insufficient evidence to enter, recommend monitoring)",
+        "Risk Agent verdict: no hard veto",
+        "PM aggregation: preponderance of evidence supports bear thesis (structural absence), but data quality issues and opening-window mode create sufficient uncertainty to recommend WATCH rather than SHORT entry"
+      ],
+      "decision_log": [
+        "2025-03-11T09:30:00-04:00 DECISION_TIMESTAMP: Market open, opening-window decision mode",
+        "PRICE_ACTION: TSVT surged from $2.66 (prior close) to $4.92 (trigger open) = +85% intraday gap; closed at $2.80 = partial reversion",
+        "VOLUME: 583,656 shares (2.08x relative volume vs 20-day avg); below 1M threshold but elevated",
+        "NEWS_CATALYST: news_event_summary.status=data_unavailable, items_count=0, items_dropped_post_cutoff=20 \u2014 NO PUBLIC NARRATIVE AVAILABLE",
+        "SEC_FILINGS: filing_confirmation.sec_edgar cik_not_found, no 8-K rows \u2014 NO SEC CONFIRMATION OF MATERIAL EVENT",
+        "SECTOR_EXPECTED_EVIDENCE: For biotech company (inferred), expected FDA filings, clinical trials, patents \u2014 ALL ABSENT (biotech_clinical_adapter not_connected, sec_form4 cik_not_found)",
+        "ALTERNATIVE_DATA: Wikipedia pageviews on '7.62\u00d754mmR' (ammunition article) show no spike, 30-day trend 650-850 views \u2014 DATA QUALITY ISSUE (ticker-to-article mismatch)",
+        "FUNDAMENTALS: Q3 2024 (4 months stale) shows net_margin=-73.39%, operating_income=-$13.9M, FCF=-$10.5M \u2014 DEEPLY UNPROFITABLE",
+        "VALUATION: PE=-13.93, EV/EBITDA=-18.57, ROE=-8.96%, ROA=-3.97% \u2014 NEGATIVE ACROSS ALL METRICS",
+        "ANALYST_SENTIMENT: As of 2025-03-01, 1 Buy, 3 Hold, 1 Strong Sell (Goldman Sachs Sell 2024-11-12) \u2014 MIXED-TO-NEGATIVE",
+        "MACRO_REGIME: Overheat/Moderately Restrictive, equity_discipline=strict_quality_and_valuation_caution \u2014 TSVT FAILS BOTH TESTS",
+        "NARRATIVE_AGENT_VERDICT: unsupported_claim (high uncertainty, no identifiable catalyst, structural absence of news corroboration)",
+        "ALT_DATA_VERIFY_VERDICT: narrative_contradicted (high pollution risk, low evidence credibility, false-positive Wikipedia data)",
+        "SURGE_SHORT_AGENT_VERDICT: watch (insufficient evidence to enter, recommend monitoring for post-cutoff news and SEC filings)",
+        "RISK_AGENT_VERDICT: no hard veto (conditions a-e not tripped)",
+        "ASYMMETRIC_ABSENCE_RULE: Structural absence of news, SEC filings, and sector-expected biotech evidence (FDA, clinical trials, patents) is bear-thesis input per \u00a713.6 SOFT_REASONING",
+        "PREPONDERANCE_OF_EVIDENCE: Bear thesis supported by (1) no public narrative, (2) no SEC confirmation, (3) no sector-expected evidence, (4) deeply negative fundamentals, (5) mixed-to-negative analyst sentiment, (6) macro headwind, (7) alternative data silent. However, data quality issues (CIK not found, Wikipedia mismatch, post-cutoff news dropped) and opening-window mode (may miss pre-market catalysts) create material uncertainty.",
+        "DECISION_RATIONALE: Recommend WATCH rather than SHORT entry. If post-cutoff news confirms real catalyst (FDA approval, partnership, acquisition), bear thesis is invalidated. If stock reverts below $3.00 without news, momentum thesis is confirmed and short entry becomes more attractive. Monitor over next 5 trading days.",
+        "POSITION_SIZE: 0.0% (WATCH status, no position entry)",
+        "EXECUTION_PLAN: T+1 next-open, no order (decision=watch)"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-11T09:45:00-04:00",
+        "ticker": "TSVT",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_universal_soft_veto",
+        "evidence_packet_hash": "sha256:7c2920889c910ce641f222fbcbe41cf4d876ded4eff36979e29ebfc402c7e783"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "No identifiable company claim or catalyst event is present in the evidence packet. The price move (+85% intraday gap, +12.9% 5-day return) occurs in the absence of any news, filing, or alternative-data signal that can be attributed to a specific corporate action or announcement.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Surge catalyst is unknown; no public narrative or SEC filing available to confirm thesis. Structural absence of corroborating evidence prevents thesis confirmation.",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": null,
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-11T09:30:00-04:00",
+      "execution_timestamp": "2025-03-11T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:45876ff108fb8d358af53475609b114721cb342d459d849d9ac3d42cc2c8b5b7",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

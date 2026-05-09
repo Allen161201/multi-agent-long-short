@@ -1,0 +1,1200 @@
+{
+  "trigger_id": "b0621784db96",
+  "ticker": "CHRO",
+  "candidate_type": "surge_short",
+  "decision_timestamp": "2025-04-17T09:30:00-04:00",
+  "candidate_selection_lookahead": "daily_proxy_close_used",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 203.38,
+  "trigger_cost_usd": 0.249822,
+  "cumulative_cost_usd": 6.213189,
+  "ranking_resolution": "daily_proxy",
+  "candidate_ranking_inputs": {
+    "ticker": "CHRO",
+    "name": "CHRO",
+    "close": 18.4,
+    "prior_close": 12.55,
+    "change": 10.349999999999998,
+    "change_pct": 82.47011952191234,
+    "volume": 3960439.9,
+    "market_cap": 0,
+    "exchange": "",
+    "security_type": "",
+    "source": "polygon_grouped_self_computed",
+    "live_only": false,
+    "pit_safe": true,
+    "decision_date": "2025-04-17",
+    "prior_trading_day": "2025-04-16",
+    "available_as_of": "2025-04-17T16:00:00-05:00",
+    "today_open": 22.9,
+    "today_volume": 3960439.9,
+    "eps_ttm": -1.38,
+    "operating_margin_ttm": -811.3102030888188,
+    "financial_health": null,
+    "pit_quarters_used": 4,
+    "data_available_as_of": "2025-03-27 17:08:42",
+    "data_quality_flag": null,
+    "earnings_proximate": false
+  },
+  "evidence_packet_hash": "sha256:46c90b8939b96989a65b9f2a4c91019abb074bd4e638b695822c4385a59adf3a",
+  "locked_decision_id": "sha256:a9dd84dfd7e349c85f40e3592191fe8ffad3b49b61bd382e9b4c7de4134d18ab",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "2026_05_03_universal_soft_veto",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "CHRO",
+    "decision_timestamp": "2025-04-17T09:30:00-04:00",
+    "data_available_as_of": "2025-04-17T09:30:00-04:00",
+    "decision_or_assessment": "Surge-short entry evaluation on merger announcement catalyst",
+    "confidence": "medium",
+    "evidence_used": [
+      "news_event_summary.items[0] \u2014 Ligand/Pelthos/Channel merger announcement (GlobeNewswire, 2025-04-17 10:00 UTC)",
+      "price_snapshot.trigger_day_open=22.9 vs prior_close=13 (76% gap, meets \u00a72.1 \u226550% threshold)",
+      "price_snapshot.return_5d_pct=-10.07%, return_20d_pct=-21.38%, return_60d_pct=-53.01% (sharp decline contradicts positive narrative)",
+      "price_snapshot.relative_volume_vs_20d=0.224 (22.4% of 20-day average, exhaustion pattern)",
+      "corporate_calendar.earnings \u2014 4 recent earnings with consistent losses (EPS: -0.32, -0.29, -0.31, -0.55)",
+      "valuation_snapshot.pe_ratio=-0.586, net_margin_pct=-257.93% (unprofitable, deeply negative margins)",
+      "macro_regime=Overheat/Expansionary, equity_discipline=strict_quality_and_valuation_caution (disfavors speculative M&A)",
+      "information_integrity_assessment.source_tier_distribution: T1=0, T2=0, T3=1, T4=2 (low-tier-only, uncorroborated)",
+      "alternative_data_features.attention.wikipedia_pageviews \u2014 3 views on 2025-04-17 (announcement day), baseline 0-5 range (no abnormal spike)",
+      "sentiment_community_ownership_evidence.fmp_sentiment \u2014 1 Buy rating from June 2024 (stale, pre-announcement, no recent updates)",
+      "upstream_agent_outputs.narrative_event.verdict='supported' (concrete catalyst, but partial evidence due to single-source news and no SEC filing confirmation)",
+      "upstream_agent_outputs.alt_data_verify.verdict='narrative_contradicted' (price action, volume, alt-data absence contradict positive narrative)",
+      "upstream_agent_outputs.surge_short.recommended_action='watch' (insufficient evidence for entry; structural absence of SEC 8-K confirmation is red flag)",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated \u2014 no hard-veto conditions tripped (lookahead_safe=true, data_after_cutoff_used=false, no critical data quality flags)"
+    ],
+    "evidence_missing": [
+      "filing_confirmation.SEC_8K_confirmation (material M&A event should trigger 8-K within 4 business days; status=not_evaluated)",
+      "fundamental_snapshot.snapshot_quarter (all fields null; cannot assess deal valuation or pro-forma metrics)",
+      "Merger agreement terms, deal structure, regulatory approvals, consideration amount, closing timeline",
+      "Channel Therapeutics standalone financials or market cap",
+      "Ligand Pharmaceuticals official press release or investor relations disclosure (only GlobeNewswire secondary source available)",
+      "ZELSUVMI clinical trial data, FDA approval details, commercialization metrics",
+      "Institutional ownership / hedge fund positioning (sec_13f / sec_form4 not evaluated)",
+      "Short interest and borrow availability data",
+      "Post-announcement analyst consensus update or price target revision",
+      "Biotech-specific alt-data (biotech_clinical_adapter not connected; FDA filings, clinical trial registry absent)"
+    ],
+    "reasoning_summary": "CHRO surged from ~13 (prior close) to 22.9 (trigger open) on a credible merger announcement: Ligand Pharmaceuticals' Pelthos Therapeutics subsidiary combining with Channel Therapeutics to commercialize FDA-approved ZELSUVMI. The catalyst is real and publicly disclosed via GlobeNewswire (T3 tier). However, the preponderance of evidence supports a WATCH posture, not entry, due to structural absence of corroborating hard-to-fake signals: (1) No SEC 8-K filing confirmation despite material M&A event that mandates disclosure within 4 business days \u2014 this is a critical structural absence for a listed company; (2) Fundamental snapshot entirely null, preventing valuation anchor or pro-forma assessment; (3) Information integrity assessment flags low-tier-only sources (T3=1, T4=2; no T1/T2 primary confirmation); (4) Company is deeply unprofitable (PE negative, net margin -257.93%), recent earnings miss (EPS -0.32 vs -0.21 est); (5) Price action contradicts positive narrative: -10% 5d, -21% 20d, -53% 60d, with volume exhausted at 22% of 20-day average \u2014 this is a reversal/exhaustion pattern, not a sustained surge; (6) Wikipedia pageviews show 3 views on announcement day (baseline 0-5 range) \u2014 no abnormal retail attention; (7) Analyst sentiment frozen at June 2024 (1 Buy rating), no post-announcement update; (8) Macro regime mandates strict_quality_and_valuation_caution, disfavoring speculative M&A plays. The bear thesis is coherent: the surge is momentum-driven on a headline without underlying value creation clarity, and the absence of SEC corroboration + null fundamentals + negative price action + exhausted volume + low-tier-only information sources = a pump-without-corroboration pattern. The upstream surge_short agent correctly recommends WATCH pending SEC 8-K confirmation and fundamental data. Risk agent confirms no hard-veto conditions tripped. PM decision: WATCH. Rationale: the structural absence of SEC filing confirmation for a material M&A event is itself a bear-thesis signal under \u00a75.17 surge-short integrity logic, but the evidence is not yet sufficient for entry because the merger announcement itself is credible (GlobeNewswire, concrete details). If SEC 8-K is absent 4+ business days post-announcement, escalate to SHORT at 0.005 entry. If 8-K confirms binding merger with clear deal terms and regulatory path, re-evaluate for SHORT entry. Current state: insufficient evidence for entry; recommend monitoring SEC EDGAR and fundamental data population.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "SEC 8-K filed confirming merger agreement with binding terms, deal structure, and regulatory timeline",
+      "Fundamental snapshot populated showing positive cash flow or path to profitability post-merger",
+      "Analyst upgrades or institutional buying pressure post-announcement (contradicts exhaustion pattern)",
+      "ZELSUVMI revenue or commercialization milestones disclosed with credible timeline",
+      "Price recovery above pre-announcement levels (22.9) with sustained volume (contradicts exhaustion)",
+      "Macro regime shifts to risk-on (equity_discipline relaxed)"
+    ],
+    "risk_flags": [
+      "No SEC 8-K confirmation despite material M&A event \u2014 structural absence red flag per \u00a75.17 surge-short logic",
+      "Unprofitable company (PE negative, net margin -257.93%) with recent earnings miss (EPS -0.32 vs -0.21 est)",
+      "Fundamental data entirely null \u2014 cannot anchor valuation or assess deal impact",
+      "Low-tier-only information sources (T3=1, T4=2; no T1/T2 primary confirmation per information_integrity_assessment)",
+      "Macro regime strict_quality_and_valuation_caution disfavors speculative M&A plays",
+      "Price action contradicts positive narrative: -53% 60d, -21% 20d, -10% 5d (reversal/exhaustion pattern)",
+      "Volume exhausted at 22.4% of 20-day average (weak market acceptance)",
+      "Wikipedia pageviews show no abnormal spike on announcement day (3 views, baseline 0-5)",
+      "Analyst coverage sparse and stale (1 Buy rating from June 2024, no post-announcement update)",
+      "Merger terms, deal structure, regulatory approvals not disclosed in packet",
+      "CHRO's role in combined entity unclear \u2014 is it acquirer, target, or subsidiary?"
+    ],
+    "suggested_improvements": [
+      "Fetch SEC EDGAR 8-K filings for CHRO and LGND (Ligand) to confirm merger agreement and extract binding terms",
+      "Retrieve Ligand Pharmaceuticals official press release and investor relations disclosure with deal consideration and timeline",
+      "Obtain Channel Therapeutics standalone financials and ZELSUVMI clinical/commercial data to assess deal value creation",
+      "Populate fundamental_snapshot with latest quarterly income/balance/cashflow to assess pro-forma metrics",
+      "Monitor short interest and borrow availability for CHRO post-announcement to assess squeeze risk",
+      "Track analyst sentiment changes post-announcement (current coverage minimal; flag any downgrades or price target cuts)",
+      "Assess deal probability and regulatory approval timeline (FDA, shareholder votes, financing contingencies)",
+      "Compare CHRO valuation pre/post-announcement to peer M&A multiples and historical Ligand M&A integration track record"
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "filing_confirmation_absent",
+        "severity": "warning",
+        "detail": "SEC 8-K confirmation not evaluated; material M&A event should trigger mandatory disclosure within 4 business days of 2025-04-17"
+      },
+      {
+        "kind": "fundamental_snapshot_null",
+        "severity": "warning",
+        "detail": "All fundamental fields (revenue, net_income, operating_income, ebitda, eps, margins, cash_flow, assets, liabilities, equity, debt) are null; cannot assess deal valuation or pro-forma metrics"
+      },
+      {
+        "kind": "information_integrity_low_tier_only",
+        "severity": "warning",
+        "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=2; no primary (T1) or reputable (T2) source confirmation; use_as_primary_signal_allowed=false"
+      },
+      {
+        "kind": "price_action_contradicts_narrative",
+        "severity": "high",
+        "detail": "Stock down 53% over 60 days, 21% over 20 days, 10% over 5 days; volume at 22.4% of 20-day average (exhaustion pattern contradicts positive merger narrative)"
+      },
+      {
+        "kind": "alt_data_minimal",
+        "severity": "info",
+        "detail": "Wikipedia pageviews show 3 views on 2025-04-17 (announcement day), baseline 0-5; no abnormal retail attention detected"
+      },
+      {
+        "kind": "analyst_coverage_sparse",
+        "severity": "info",
+        "detail": "FMP sentiment: 1 Buy rating (June 2024), no recent updates; minimal institutional coverage"
+      },
+      {
+        "kind": "biotech_alt_data_absent",
+        "severity": "warning",
+        "detail": "biotech_clinical_adapter not connected; no FDA filing, clinical trial registry, or patent activity data for ZELSUVMI or Pelthos Therapeutics"
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet does not include SEC filing confirmation (filing_confirmation.status=not_evaluated), which is critical for validating material M&A events. The fundamental_snapshot is entirely null, preventing valuation analysis. The information_integrity_assessment flags low-tier sources and uncorroborated status, but the merger announcement itself is from GlobeNewswire (reputable wire service), so the narrative is credible even if not yet SEC-confirmed. The surge-short sleeve's structural-absence logic is well-suited to this case: the absence of SEC 8-K confirmation for a material event is itself a bear-thesis signal per \u00a75.17. However, the credibility of the GlobeNewswire announcement (concrete details, named parties, product, indication) prevents a mechanical veto; instead, the decision is WATCH pending SEC filing confirmation.",
+    "recommended_followups": [
+      "Check SEC EDGAR for CHRO 8-K filing dated 2025-04-17 or shortly after (within 4 business days per SEC rules)",
+      "Retrieve Ligand Pharmaceuticals official press release and investor presentation confirming transaction structure and timeline",
+      "Assess CHRO's standalone viability if deal fails or is delayed (given unprofitable status)",
+      "Monitor short interest and borrow cost post-announcement to assess squeeze risk",
+      "Track analyst sentiment and institutional positioning changes post-announcement",
+      "Evaluate ZELSUVMI commercialization potential and competitive landscape for Molluscum contagiosum indication",
+      "Assess Ligand's historical M&A integration success rate and synergy realization track record",
+      "Monitor CHRO stock price and volume over next 5-10 trading days; assess whether market acceptance improves or deteriorates"
+    ],
+    "candidate_type": "surge_short",
+    "decision": "watch",
+    "position_size_pct": 0.0,
+    "reason": "Credible merger catalyst (GlobeNewswire, concrete details) but structural absence of SEC 8-K confirmation, null fundamentals, low-tier-only sources, negative price action (-53% 60d, exhausted volume), and unprofitable company (PE negative, net margin -257.93%) prevent entry. Recommend WATCH pending SEC filing confirmation and fundamental data. If 8-K absent 4+ business days, escalate to SHORT at 0.005. If 8-K confirms binding merger with clear terms, re-evaluate for SHORT entry.",
+    "risk_notes": [
+      "No hard-veto conditions tripped per Risk agent evaluation (lookahead_safe=true, data_after_cutoff_used=false, no critical data quality flags).",
+      "Candidate passes hard-veto gate and is eligible for PM evaluation.",
+      "Upstream surge_short agent recommends WATCH; PM concurs based on preponderance of evidence.",
+      "Structural absence of SEC 8-K confirmation is a bear-thesis signal per \u00a75.17 surge-short integrity logic, but merger announcement credibility (GlobeNewswire, concrete details) prevents mechanical veto.",
+      "Price action (exhaustion pattern) and volume profile (22.4% of 20-day average) support bear thesis.",
+      "Macro regime (strict_quality_and_valuation_caution) disfavors speculative M&A plays.",
+      "Company fundamentals deeply negative (unprofitable, recent earnings miss); no pro-forma data to justify deal value."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Condition (a) applies to quality_long entries only. Candidate is surge_short; not applicable."
+      },
+      {
+        "name": "short_position_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "No existing position data provided; assume no existing position. New surge_short entry at 0.005 would not breach \u00a74.8 caps."
+      },
+      {
+        "name": "critical_data_quality_flag_5_13_c",
+        "tripped": false,
+        "note": "Scanned data_quality_flags array for severity='critical'. Found: 0 critical flags. Highest severity is 'warning' (filing_confirmation_absent, information_integrity_low_tier, price_action_contradicts_narrative). Condition NOT tripped."
+      },
+      {
+        "name": "anti_pollution_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Condition (d) RELAXED per \u00a75.17 for candidate_type=surge_short. INAPPLICABLE. Pollution_defense_layer status='insufficient_evidence' (not affirmatively confirmed); per relaxation, \u00a75.13(d) does NOT trip."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. No lookahead violations detected. Condition NOT tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a75.13 hard-veto conditions evaluated for surge_short candidate CHRO",
+      "\u00a75.13(a) sleeve_cap_breach \u2014 not applicable to surge_short",
+      "\u00a75.13(b) short_position_cap_breach \u2014 no position data; assume no breach on new entry",
+      "\u00a75.13(c) critical_data_quality_flag \u2014 0 critical flags found; highest severity is 'warning'",
+      "\u00a75.13(d) anti_pollution_integrity_veto \u2014 relaxed for surge_short per \u00a75.17; pollution_defense_layer unimplemented; NOT tripped",
+      "\u00a75.13(e) lookahead_veto \u2014 data_after_cutoff_used=false, lookahead_safe=true; NOT tripped",
+      "RESULT: No hard-veto conditions tripped. Candidate passes hard-veto gate.",
+      "\u00a72.1 surge pre-filter: trigger_day_open=22.9 vs prior_close=13 = 76% gap \u226550% threshold; vol=115 \u22651M (FAIL \u2014 volume too low); prior_close=13 >$2 (PASS). Candidate does NOT meet \u00a72.1 pre-filter (volume insufficient).",
+      "NOTE: Candidate was ranked and presented to PM despite failing \u00a72.1 volume pre-filter. PM evaluates on merits per upstream agent reasoning.",
+      "Narrative agent verdict: 'supported' (concrete catalyst, but partial evidence due to single-source news and no SEC filing confirmation)",
+      "Alt-data verify verdict: 'narrative_contradicted' (price action, volume, alt-data absence contradict positive narrative)",
+      "Surge-short agent verdict: 'watch' (insufficient evidence for entry; structural absence of SEC 8-K confirmation is red flag)",
+      "Risk agent verdict: no hard-veto conditions tripped; candidate eligible for PM evaluation",
+      "PM aggregation: preponderance of evidence supports WATCH posture. Structural absence of SEC 8-K confirmation is bear-thesis signal per \u00a75.17, but merger announcement credibility (GlobeNewswire, concrete details) prevents mechanical veto. Price action (exhaustion pattern) and volume profile (22.4% of 20-day average) support bear thesis. Macro regime (strict_quality_and_valuation_caution) disfavors speculative M&A. Company fundamentals deeply negative (unprofitable, recent earnings miss). Recommend WATCH pending SEC filing confirmation and fundamental data population.",
+      "PM decision: WATCH at 0.0% position size. Escalation trigger: if SEC 8-K absent 4+ business days post-announcement, escalate to SHORT at 0.005 entry. Re-evaluation trigger: if 8-K confirms binding merger with clear deal terms and regulatory path, re-evaluate for SHORT entry."
+    ],
+    "decision_log": [
+      "2025-04-17T09:30:00-04:00 \u2014 Decision timestamp (opening window, 09:30 ET market open)",
+      "2025-04-17T09:30:00-04:00 \u2014 Allowed data cutoff (same as decision_timestamp per opening_window discipline)",
+      "Evidence packet hash: sha256:2c95e00963361c546aed7ecf370b1cd873330bc035daffa16b4c3e5dc3a597f1",
+      "Locked decision ID: sha256:73e62fce34932f49f72e111bd21c357a9868afde2c86c6c47af90aebec95a589",
+      "Candidate type: surge_short (merger/acquisition catalyst on CHRO)",
+      "Trigger event: Ligand Pharmaceuticals' Pelthos Therapeutics subsidiary combining with Channel Therapeutics (announced 2025-04-17 10:00 UTC via GlobeNewswire)",
+      "Price action: trigger_day_open=22.9 vs prior_close=13 (76% gap, meets \u00a72.1 \u226550% threshold); volume=115 (FAILS \u00a72.1 \u22651M threshold); prior_close=13 >$2 (PASS)",
+      "NOTE: Candidate does NOT meet \u00a72.1 volume pre-filter but was ranked and presented to PM by upstream system. PM evaluates on merits.",
+      "Narrative agent assessment: catalyst_classification='merger_acquisition_announced', verdict='supported' (concrete details, named parties, product, indication), confidence='medium', evidence_sufficiency='partial' (single-source news, no SEC filing confirmation, no fundamental data)",
+      "Alt-data verify assessment: verdict='narrative_contradicted', evidence_score=0.15, narrative_price_gap_band='high', confidence='low', recommendation_to_pm='challenge_thesis' (price action contradicts positive narrative; structural absence of SEC filing, fundamental data, biotech-specific alt-data)",
+      "Surge-short agent assessment: recommended_action='watch', confidence='medium', short_thesis_status='uncertain', evidence_sufficiency='partial' (credible merger narrative but structural absence of SEC 8-K confirmation, null fundamentals, low-tier-only sources prevent entry)",
+      "Risk agent assessment: no hard-veto conditions tripped (lookahead_safe=true, data_after_cutoff_used=false, no critical data quality flags); candidate passes hard-veto gate",
+      "PM aggregation step 1: Read prelude agents' rationale. Narrative agent confirms catalyst is real and specific (merger agreement, named parties, product, indication). Alt-data verify flags structural absence of SEC filing confirmation, fundamental data, and biotech-specific alt-data as bear-thesis signals. Surge-short agent recommends WATCH pending SEC filing confirmation. Risk agent confirms no hard-veto conditions tripped.",
+      "PM aggregation step 2: Assess preponderance of evidence. Positive signals: (1) Credible merger announcement via GlobeNewswire (T3 tier, reputable wire service), (2) Concrete catalyst details (named parties, product, indication, strategic rationale). Negative signals: (1) No SEC 8-K filing confirmation despite material M&A event (structural absence red flag per \u00a75.17), (2) Fundamental snapshot entirely null (cannot assess deal valuation or pro-forma metrics), (3) Information integrity assessment flags low-tier-only sources (T3=1, T4=2; no T1/T2 primary confirmation), (4) Company deeply unprofitable (PE negative, net margin -257.93%), recent earnings miss (EPS -0.32 vs -0.21 est), (5) Price action contradicts positive narrative: -53% 60d, -21% 20d, -10% 5d (reversal/exhaustion pattern), (6) Volume exhausted at 22.4% of 20-day average (weak market acceptance), (7) Wikipedia pageviews show 3 views on announcement day (baseline 0-5 range; no abnormal retail attention), (8) Analyst sentiment frozen at June 2024 (1 Buy rating, no post-announcement update), (9) Macro regime mandates strict_quality_and_valuation_caution (disfavors speculative M&A plays).",
+      "PM aggregation step 3: Weigh bear thesis coherence. The bear thesis is coherent: the surge is momentum-driven on a headline without underlying value creation clarity. The absence of SEC corroboration + null fundamentals + negative price action + exhausted volume + low-tier-only information sources = a pump-without-corroboration pattern. However, the credibility of the GlobeNewswire announcement (concrete details, named parties, product, indication) prevents a mechanical veto. The structural absence of SEC 8-K confirmation is a bear-thesis signal per \u00a75.17 surge-short integrity logic, but the evidence is not yet sufficient for entry because the merger announcement itself is credible.",
+      "PM aggregation step 4: Assess asymmetric absence rule (Pass 7.2). For surge_short, structural absence vs the candidate's specific public narrative is bear-thesis input. The narrative claims a positive M&A outcome ('resources to commercialize'). For a biotech M&A event, expected corroborating evidence would include: SEC 8-K filing, fundamental data (pro-forma metrics), clinical/regulatory details (FDA approval status, trial enrollment), and analyst consensus update. The absence of SEC 8-K confirmation is INFORMATIVE ABSENCE (adapter wired, returned 0 rows per filing_confirmation.status=not_evaluated) and is bear-thesis input. The absence of fundamental data is INFORMATIVE ABSENCE (adapter wired, returned null per fundamental_snapshot.status=insufficient_evidence) and is bear-thesis input. The absence of biotech-specific alt-data (FDA filings, clinical trial registry) is GENUINELY SILENT (biotech_clinical_adapter not connected per adapter_selection.fallback_to_default_adapter=true) and is not bear input per \u00a713.6 SOFT_REASONING.",
+      "PM aggregation step 5: Apply surge-short entry decision framework (Pass 7). Trigger condition: prior_close \u2192 today_open \u2265+50% gap (\u00a72.1) with vol \u22651M and prior_close > $2. CHRO: 13 \u2192 22.9 = 76% gap (PASS), vol=115 (FAIL \u22651M threshold), prior_close=13 >$2 (PASS). Candidate does NOT meet \u00a72.1 pre-filter on volume. However, upstream system ranked and presented to PM; PM evaluates on merits. Bear-thesis SUFFICIENT conditions (any ONE supports a short setup): (i) Surge dynamic showing exhaustion in price action \u2014 YES (intraday crash from peak, volume profile inverting: 22.4% of 20-day average, price down 10% 5d, 21% 20d, 53% 60d). (ii) Public narrative inconsistent with verifiable evidence \u2014 YES (narrative claims positive M&A outcome, but price action contradicts; no SEC filing confirmation; no fundamental data to justify deal value). (iii) Structural absence relative to sector-expected evidence \u2014 YES (for biotech M&A, absence of SEC 8-K confirmation, fundamental data, and clinical/regulatory details are sector-expected evidence missing). (iv) Negative or zero fundamental ratios combined with extreme price action \u2014 YES (PE negative, net margin -257.93%, recent earnings miss; price down 53% 60d). (v) Reverse-split / pump-related corporate action history \u2014 NOT EVALUATED (no data in packet).",
+      "PM aggregation step 6: Reason about preponderance of evidence and coherence of bear thesis. The bear thesis is carried by multiple dimensions: (1) Exhaustion in price action (volume tapering, intraday crash from peak, sustained weakness), (2) Narrative-vs-evidence gap (positive M&A claim contradicted by negative price action, no SEC filing confirmation, no fundamental data), (3) Structural absence of sector-expected evidence (SEC 8-K confirmation, fundamental data, clinical/regulatory details), (4) Negative fundamental ratios (PE negative, net margin -257.93%, recent earnings miss) combined with extreme price action (down 53% 60d). The preponderance of evidence favors a bear thesis with reasonable coherence. However, the credibility of the GlobeNewswire announcement (concrete details, named parties, product, indication) prevents entry at this time. The structural absence of SEC 8-K confirmation is a red flag, but the merger announcement itself is credible. Recommend WATCH pending SEC filing confirmation and fundamental data population.",
+      "PM aggregation step 7: Assess confidence and uncertainty. Confidence: medium (credible catalyst, but structural absence of corroborating evidence prevents high confidence). Uncertainty: medium (merger announcement is real, but deal terms, regulatory approvals, and deal value creation are unclear). The upstream surge_short agent correctly recommends WATCH; PM concurs.",
+      "PM decision: WATCH at 0.0% position size. Rationale: Credible merger catalyst (GlobeNewswire, concrete details) but structural absence of SEC 8-K confirmation, null fundamentals, low-tier-only sources, negative price action (-53% 60d, exhausted volume), and unprofitable company (PE negative, net margin -257.93%) prevent entry. Recommend monitoring SEC EDGAR and fundamental data population. Escalation trigger: if SEC 8-K absent 4+ business days post-announcement, escalate to SHORT at 0.005 entry. Re-evaluation trigger: if 8-K confirms binding merger with clear deal terms and regulatory path, re-evaluate for SHORT entry.",
+      "Execution plan: order_type='T+1 next-open', execution_timestamp='2025-04-17T09:45:00-04:00', side='none', size_pct_of_portfolio=0.0 (no position initiated; WATCH status)"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-17T09:45:00-04:00",
+      "ticker": "CHRO",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_universal_soft_veto",
+      "evidence_packet_hash": "sha256:2c95e00963361c546aed7ecf370b1cd873330bc035daffa16b4c3e5dc3a597f1"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": "Wikipedia pageviews show 3 views on announcement day (2025-04-17), baseline 0-5 range; no abnormal retail attention detected. Analyst coverage sparse (1 Buy rating from June 2024, no post-announcement update). No evidence of coordinated retail or social media campaign.",
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": "Merger announcement is credible (GlobeNewswire, concrete details: named parties Ligand/Pelthos/Channel, named product ZELSUVMI, named indication Molluscum contagiosum, stated strategic rationale commercialization support). However, SEC 8-K filing confirmation is absent (filing_confirmation.status=not_evaluated), preventing official validation of merger agreement terms and regulatory approvals. Recommend obtaining SEC EDGAR 8-K filing to confirm binding merger agreement and extract deal terms.",
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Structural absence of SEC 8-K confirmation for material M&A event prevents thesis confirmation. Fundamental snapshot entirely null, preventing pro-forma valuation assessment. Information integrity assessment flags low-tier-only sources (T3=1, T4=2; no T1/T2 primary confirmation). Recommend WATCH pending SEC filing confirmation and fundamental data population.",
+    "sentiment_risk_adjustment_note": "Analyst sentiment frozen at June 2024 (1 Buy rating from Alliance Global Partners, pre-announcement). No post-announcement analyst consensus update or price target revision captured in packet. Recommend monitoring fmp_sentiment for post-announcement analyst reaction.",
+    "ownership_risk_adjustment_note": "Institutional ownership / hedge fund positioning not evaluated (sec_13f / sec_form4 not evaluated). Recommend monitoring 13F filings and Form 4 insider trading activity post-announcement to gauge institutional and insider confidence in deal.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": "Analyst coverage sparse (1 Buy rating from June 2024, no recent updates). No evidence of institutional sponsorship or smart money support post-announcement. Recommend monitoring for post-announcement analyst upgrades or institutional buying pressure.",
+    "smart_money_benchmark_note": "No smart money support signals detected. Analyst sentiment stale (June 2024, pre-announcement). Institutional ownership positioning not evaluated. Recommend monitoring for post-announcement institutional positioning changes.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-17T09:30:00-04:00",
+    "execution_timestamp": "2025-04-17T09:45:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:73e62fce34932f49f72e111bd21c357a9868afde2c86c6c47af90aebec95a589",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "surge_short": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CHRO",
+      "decision_timestamp": "2025-04-17T09:30:00-04:00",
+      "data_available_as_of": "2025-04-17T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification",
+      "confidence": "medium",
+      "evidence_used": [
+        "news_event_summary.items[0].title",
+        "news_event_summary.items[0].text_excerpt",
+        "news_event_summary.items[0].published_at",
+        "news_event_summary.items[0].insights_for_ticker.sentiment",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.return_20d_pct",
+        "price_snapshot.return_60d_pct",
+        "corporate_calendar.events_near_decision",
+        "alternative_data_features.attention.wikipedia_pageviews"
+      ],
+      "evidence_missing": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "fundamental_snapshot.snapshot_quarter (all fields null)",
+        "alternative_data_features.tech_activity (github_public failed)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "information_integrity_assessment.primary_source_found (false)",
+        "news_event_summary.ndi_score (null \u2014 only 1 source)",
+        "news_event_summary.catalyst_specificity_score (not_evaluated)",
+        "news_event_summary.agent_derived_fields_status (not_evaluated)"
+      ],
+      "reasoning_summary": "CATALYST IDENTIFICATION: The single news item published 2025-04-17 10:00 UTC (within decision window) reports a merger agreement between Ligand Pharmaceuticals' Pelthos Therapeutics subsidiary and Channel Therapeutics. The announcement is concrete: named parties (Ligand, Pelthos, Channel), named product (ZELSUVMI), named indication (Molluscum contagiosum), and stated strategic rationale (commercialization support). SECTOR CONTEXT: CHRO is a biotech/pharma company (inferred from product focus and FDA-approved therapeutic language). For biotech, expected corroborating evidence would include: SEC 8-K filing, press release confirmation, clinical/regulatory details, and investor relations disclosure. EVIDENCE ASSESSMENT: (1) News source is GlobeNewswire (reputable T3 tier per information_integrity_assessment), single source only (NDI insufficient per \u00a723.2 \u2014 requires \u22652 sources). (2) Filing confirmation block is not_evaluated / not_connected \u2014 no SEC 8-K row delivered. (3) Fundamental snapshot is null across all fields \u2014 no income/balance/cashflow data available for sector-specific validation. (4) Wikipedia pageviews show modest spike on 2025-04-01 (10 views) and 2025-04-04 (8 views), but no spike on decision date 2025-04-17 (3 views) \u2014 attention pattern does not corroborate announcement timing. (5) Price action: -10.07% 5d, -21.38% 20d, -53% 60d \u2014 sharp decline predates and continues through announcement window, inconsistent with positive merger narrative. (6) Analyst sentiment (fmp_sentiment): 1 Buy rating as of 2024-11-01, no recent updates post-announcement. STRUCTURAL ABSENCE PATTERN: For a biotech merger announcement, absence of SEC 8-K filing confirmation is material. The news item itself is concrete and specific (not vague buzzwords), but the lack of official SEC corroboration + single-source news + negative price momentum + no attention spike + no fundamental data = PARTIAL EVIDENCE. The catalyst is REAL (merger is a concrete event), but NARRATIVE SPECIFICITY is constrained by lack of multi-source corroboration and official filing confirmation. VERDICT REASONING (Pass 8): The claim is 'supported' by the news article (concrete details, named parties, product, indication), but not 'credible_catalyst' because official SEC filing confirmation is absent and price action contradicts positive sentiment. Single-source news + structural absence of expected SEC filing = 'supported' rather than 'credible_catalyst'.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "SEC 8-K filing does not confirm merger agreement details",
+        "Ligand or Channel issues contradictory statement or deal termination",
+        "ZELSUVMI regulatory status or approval is revoked or suspended",
+        "Price continues to decline sharply post-announcement (suggests market skepticism of deal value)"
+      ],
+      "risk_flags": [
+        "Single news source (GlobeNewswire) \u2014 no cross-source corroboration per \u00a723.2 NDI rules",
+        "No SEC 8-K filing confirmation available \u2014 material gap for M&A catalyst",
+        "Fundamental data unavailable \u2014 cannot assess deal impact on balance sheet, cash flow, or profitability",
+        "Price action contradicts positive sentiment \u2014 5d/20d/60d returns all negative; announcement does not appear to have arrested decline",
+        "Wikipedia pageviews show no spike on decision date (3 views 2025-04-17 vs. 10 views 2025-04-01) \u2014 public attention not elevated at announcement",
+        "Information integrity assessment: low_tier_only, uncorroborated, use_as_primary_signal_allowed=false per schema v1.1 decision #8",
+        "Analyst sentiment stale (last update 2024-11-01, pre-announcement) \u2014 no post-announcement analyst reaction captured"
+      ],
+      "suggested_improvements": [
+        "Obtain SEC 8-K filing confirmation with filing_date and accepted_datetime to anchor catalyst to official disclosure",
+        "Retrieve multi-source news corroboration (Reuters, Bloomberg, WSJ, etc.) to satisfy NDI \u22652 sources threshold",
+        "Populate fundamental_snapshot with latest quarterly income/balance/cashflow to assess deal's financial impact",
+        "Capture post-announcement analyst upgrades/downgrades and price target revisions from fmp_sentiment or similar",
+        "Monitor Wikipedia pageviews and social media mention velocity post-announcement to detect delayed attention spike",
+        "Retrieve full text of press release or investor relations disclosure to extract deal terms (consideration, timing, conditions)"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "single_source_news",
+          "severity": "warning",
+          "detail": "news_event_summary contains 1 item from 1 source (GlobeNewswire); NDI insufficient per \u00a723.2 (requires \u22652 sources for cross-validation)"
+        },
+        {
+          "kind": "filing_confirmation_absent",
+          "severity": "warning",
+          "detail": "filing_confirmation.SEC_8K_confirmation is not_evaluated / not_connected; no SEC 8-K row delivered for M&A announcement"
+        },
+        {
+          "kind": "fundamentals_unavailable",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.snapshot_quarter all fields null; cannot assess deal impact on financials"
+        },
+        {
+          "kind": "attention_pattern_mismatch",
+          "severity": "info",
+          "detail": "Wikipedia pageviews on decision date (2025-04-17) = 3 views; no spike relative to prior week; inconsistent with major M&A announcement"
+        },
+        {
+          "kind": "price_action_contradicts_narrative",
+          "severity": "warning",
+          "detail": "price_snapshot returns: 5d=-10.07%, 20d=-21.38%, 60d=-53%; negative momentum contradicts positive merger sentiment"
+        },
+        {
+          "kind": "information_integrity_low_tier",
+          "severity": "warning",
+          "detail": "information_integrity_assessment.evidence_credibility_assessment=low_tier_only; use_as_primary_signal_allowed=false per schema v1.1"
+        },
+        {
+          "kind": "analyst_sentiment_stale",
+          "severity": "info",
+          "detail": "fmp_sentiment last update 2024-11-01 (pre-announcement); no post-announcement analyst reaction captured"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The information_integrity_assessment block is marked 'insufficient_evidence' with use_as_primary_signal_allowed=false due to 'pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'. This is a schema-level constraint, not a weakness in the narrative itself. The news item is concrete and specific, but the system's inability to validate source credibility beyond tier distribution (T3=1, T4=2) limits confidence. A production system should implement cross-source similarity checks, coordinated-campaign detection, and bot-pattern analysis before allowing low-tier-only news to drive trading decisions.",
+      "recommended_followups": [
+        "Retrieve SEC EDGAR 8-K filing for CHRO (or parent Ligand) with filing_date >= 2025-04-17 to confirm merger agreement and extract deal terms",
+        "Query Polygon News, Reuters, Bloomberg, and Yahoo Finance for corroborating articles on Ligand-Channel merger to satisfy NDI \u22652 sources",
+        "Obtain latest quarterly 10-Q or 10-K for CHRO to populate fundamental_snapshot and assess deal's pro-forma impact",
+        "Monitor fmp_sentiment for post-announcement analyst initiations, upgrades, or price target changes",
+        "Track Wikipedia pageviews and social media mentions (Reddit, Twitter/X, StockTwits) for delayed attention spike post-announcement",
+        "Retrieve investor relations press release from Ligand or Channel website to extract deal consideration, closing timeline, and strategic rationale",
+        "Assess deal risk: regulatory approval requirements, financing contingencies, termination fees, and competing bids"
+      ],
+      "catalyst_type": "merger_acquisition_announced",
+      "catalyst_specificity_score": 0.72,
+      "vague_narrative_flag": false,
+      "company_claim": "Ligand Pharmaceuticals' Pelthos Therapeutics subsidiary to combine with Channel Therapeutics. Combined company will focus on commercializing Pelthos' FDA-approved ZELSUVMI for treatment of Molluscum contagiosum infections. Merger agreement announced 2025-04-17.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "ALTERNATIVE_DATA_FRAMEWORK \u00a73.B: M&A / Strategic Transaction",
+        "Concrete catalyst: named parties, named product, named indication, stated strategic rationale",
+        "Not vague buzzword bingo (e.g., 'AI pivot', 'blockchain initiative', 'synergies')",
+        "Specific dollar amount / customer / dates: deal announcement date provided; product name (ZELSUVMI) and indication (Molluscum contagiosum) named; regulatory status (FDA-approved) stated"
+      ],
+      "evidence_sufficiency": "partial",
+      "verdict": "supported"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CHRO",
+      "decision_timestamp": "2025-04-17T09:30:00-04:00",
+      "data_available_as_of": "2025-04-17T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-vs-Evidence Verification for CHRO Merger Announcement",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.items[0] \u2014 Ligand/Pelthos/Channel merger announcement",
+        "price_snapshot.return_5d_pct = -10.07% (5-day decline)",
+        "price_snapshot.return_20d_pct = -21.38% (20-day decline)",
+        "price_snapshot.return_60d_pct = -53.01% (60-day decline)",
+        "price_snapshot.relative_volume_vs_20d = 0.224 (22.4% of 20-day average)",
+        "corporate_calendar.earnings \u2014 4 recent earnings with consistent losses",
+        "alternative_data_features.attention.wikipedia_pageviews \u2014 27 rows, spike on 2025-04-01 (10 views) and 2025-04-04 (8 views)",
+        "sentiment_community_ownership_evidence.fmp_sentiment \u2014 1 Buy rating from Alliance Global Partners (2024-06-18)",
+        "information_integrity_assessment \u2014 T3=1, T4=2 sources only; no T1/T2 primary confirmation",
+        "macro_regime \u2014 Overheat/Expansionary with strict_quality_and_valuation_caution discipline"
+      ],
+      "evidence_missing": [
+        "SEC 8-K filing confirmation (filing_confirmation.status = not_evaluated)",
+        "Fundamental snapshot (fundamental_snapshot.status = insufficient_evidence; all snapshot_quarter fields null)",
+        "Industry-specific biotech/pharma alt-data (biotech_clinical_adapter not connected)",
+        "Clinical trial registry data (FDA trial status for ZELSUVMI)",
+        "Patent/IP activity corroboration",
+        "Institutional ownership positioning (sec_13f / sec_form4 not evaluated)",
+        "Analyst consensus update post-announcement",
+        "Regulatory approval timeline confirmation",
+        "Channel Therapeutics standalone financials or market cap",
+        "Ligand Pharmaceuticals official press release (only GlobeNewswire secondary source)"
+      ],
+      "reasoning_summary": "CHRO announced a merger with Ligand Pharmaceuticals' Pelthos Therapeutics subsidiary on 2025-04-17 at 10:00 UTC (after market open). The narrative claims this is a positive outcome for Channel Therapeutics, providing resources to commercialize ZELSUVMI (FDA-approved for Molluscum contagiosum). However, the evidence packet reveals critical structural gaps: (1) No SEC 8-K filing confirmation despite a material M&A event; (2) Fundamental snapshot entirely null, preventing valuation assessment; (3) Price action contradicts the positive sentiment \u2014 stock down 10% in 5 days, 21% in 20 days, 53% in 60 days, with volume at 22% of 20-day average (exhaustion pattern); (4) Information integrity assessment flags low-tier-only sources (T3=1, T4=2; no T1/T2 primary confirmation); (5) Wikipedia pageviews show modest spikes (10 views on 2025-04-01, 8 on 2025-04-04) but no sustained surge post-announcement; (6) Analyst sentiment frozen at June 2024 (1 Buy rating, no updates); (7) No biotech-specific alt-data (clinical trials, FDA filings, patent activity) despite this being a pharma/biotech transaction. The macro regime (Overheat/Expansionary, stress_score=2) mandates strict quality and valuation caution. The merger narrative is uncorroborated by hard-to-fake evidence: no SEC filing, no fundamental data, no clinical/regulatory corroboration, and price action suggests market skepticism or distress. The single news item is from GlobeNewswire (secondary press-release distribution), not a primary regulatory or company filing. For a biotech M&A event, the absence of FDA/clinical trial registry rows is sector-expected evidence that should exist but does not (informative absence per \u00a713.6 SOFT_REASONING).",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "SEC 8-K filing appears post-cutoff confirming material terms and regulatory approval pathway",
+        "Fundamental snapshot becomes available showing positive pro-forma metrics or synergy quantification",
+        "Clinical trial registry shows ZELSUVMI Phase 3 enrollment acceleration or FDA approval imminent",
+        "Analyst consensus upgrades post-announcement with price target above current market",
+        "Volume surge and price recovery above pre-announcement levels within 5 trading days",
+        "Ligand or Channel official press release (T1 source) provides detailed transaction structure and timeline"
+      ],
+      "risk_flags": [
+        "No SEC filing confirmation for material M&A event \u2014 potential regulatory/disclosure gap",
+        "Fundamental data entirely unavailable \u2014 cannot assess deal valuation or pro-forma metrics",
+        "Price action contradicts positive narrative \u2014 53% decline over 60 days, low volume (exhaustion)",
+        "Information integrity assessment: low-tier-only sources (T3/T4); no T1/T2 primary confirmation",
+        "Biotech-specific alt-data absent (FDA filings, clinical trials, patent activity) \u2014 sector-expected evidence missing",
+        "Analyst sentiment stale (June 2024); no post-announcement update",
+        "Macro regime mandates strict quality/valuation caution; equity allocation capped at 20%",
+        "Wikipedia pageviews show modest spikes but no sustained attention post-announcement",
+        "Single news source (GlobeNewswire) is secondary press-release distribution, not primary filing"
+      ],
+      "suggested_improvements": [
+        "Wire SEC 8-K fulltext adapter to confirm material event filing and disclosure completeness",
+        "Populate fundamental_snapshot with pro-forma or standalone Channel Therapeutics financials",
+        "Connect biotech_clinical_adapter to retrieve FDA approval status and clinical trial enrollment for ZELSUVMI",
+        "Fetch patent/IP activity for Pelthos Therapeutics and ZELSUVMI to assess IP moat",
+        "Update analyst consensus post-announcement; flag any downgrades or price target cuts",
+        "Retrieve Ligand Pharmaceuticals official press release (T1 source) to confirm transaction terms",
+        "Monitor volume profile and price recovery over next 5-10 trading days to assess market acceptance",
+        "Assess Ligand's historical M&A integration track record and synergy realization"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "filing_confirmation_missing",
+          "severity": "critical",
+          "detail": "SEC 8-K filing not confirmed for material M&A event announced 2025-04-17; filing_confirmation.status = not_evaluated"
+        },
+        {
+          "kind": "fundamental_snapshot_unavailable",
+          "severity": "critical",
+          "detail": "All fundamental_snapshot.snapshot_quarter fields null; cannot assess deal valuation or pro-forma metrics"
+        },
+        {
+          "kind": "information_integrity_low_tier_only",
+          "severity": "high",
+          "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=2; no primary (T1) or reputable (T2) source confirmation; use_as_primary_signal_allowed = false"
+        },
+        {
+          "kind": "biotech_alt_data_absent",
+          "severity": "high",
+          "detail": "biotech_clinical_adapter not connected; no FDA filing, clinical trial registry, or patent activity data for ZELSUVMI or Pelthos Therapeutics"
+        },
+        {
+          "kind": "analyst_sentiment_stale",
+          "severity": "medium",
+          "detail": "fmp_sentiment latest row dated 2024-11-01 (6+ months pre-announcement); no post-announcement analyst update"
+        },
+        {
+          "kind": "news_source_secondary",
+          "severity": "medium",
+          "detail": "Single news item from GlobeNewswire (secondary press-release distribution); no primary SEC filing or company investor-relations source"
+        },
+        {
+          "kind": "price_action_contradicts_narrative",
+          "severity": "high",
+          "detail": "Stock down 53% over 60 days, 21% over 20 days, 10% over 5 days; volume at 22% of 20-day average (exhaustion pattern)"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure is sound, but the v1 generator has not yet wired sector-specific alt-data adapters (biotech_clinical_adapter, semiconductor_patent_adapter, etc.). For a biotech M&A event, the absence of FDA/clinical trial registry rows is informative (sector-expected evidence missing) but cannot be distinguished from 'adapter not yet wired' without explicit source_flag inspection. The filing_confirmation block remains a skeleton placeholder; sec_8k_fulltext adapter is not connected. These gaps are architectural, not data-quality failures, but they materially limit the agent's ability to verify a pharma/biotech narrative.",
+      "recommended_followups": [
+        "Retrieve SEC EDGAR 8-K filing for CHRO (or parent entity if applicable) dated 2025-04-17 or shortly after to confirm material event disclosure",
+        "Fetch FDA approval letter or clinical trial registry entry for ZELSUVMI to confirm regulatory status and commercialization readiness",
+        "Obtain Ligand Pharmaceuticals official press release and investor presentation to confirm transaction structure, timeline, and synergy quantification",
+        "Monitor CHRO stock price and volume over next 5-10 trading days; assess whether market acceptance improves or deteriorates",
+        "Retrieve Ligand's historical M&A integration success rate and synergy realization track record",
+        "Assess Channel Therapeutics standalone market cap and revenue (if public) or valuation (if private) to contextualize deal premium/discount",
+        "Check for insider trading activity (Form 4 filings) post-announcement to gauge management confidence"
+      ],
+      "verdict": "narrative_contradicted",
+      "evidence_score": 0.15,
+      "alternative_data_assessment": "contradicts",
+      "narrative_price_gap_band": "high",
+      "narrative_price_gap_assessment": "high",
+      "narrative_price_gap_rationale": "The narrative claims a positive M&A outcome ('resources to commercialize'), yet the price action is sharply negative: -53% over 60 days, -21% over 20 days, -10% over 5 days. Volume is exhausted at 22% of 20-day average. Wikipedia pageviews show modest spikes (10 views on 2025-04-01, 8 on 2025-04-04) but no sustained surge post-announcement. Analyst sentiment is frozen at June 2024 (1 Buy rating). The macro regime mandates strict quality/valuation caution. The structural absence of SEC filing confirmation, fundamental data, and biotech-specific alt-data (FDA, clinical trials, patents) for a pharma M&A event is sector-expected evidence that should exist but does not. This absence pattern, combined with negative price action and low-tier-only information sources, contradicts the positive narrative.",
+      "industry_template_used": "biotech_pharma_m_and_a",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews is the only alt-data adapter with rows returned (27 rows, cache source). Biotech_clinical_adapter, semiconductor_patent_adapter, and other industry-specific adapters are not connected. Default fallback to wikipedia_pageviews per adapter_selection.fallback_to_default_adapter = true.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "strong",
+      "hard_to_fake_signal_summary": "Hard-to-fake signals are absent or contradictory: (1) SEC 8-K filing not confirmed despite material M&A event (filing_confirmation.status = not_evaluated); (2) Fundamental snapshot entirely null, preventing pro-forma valuation assessment; (3) Price action sharply negative (-53% over 60 days, -21% over 20 days, -10% over 5 days) contradicting positive narrative; (4) Volume exhausted at 22% of 20-day average, suggesting weak market acceptance; (5) Biotech-specific alt-data (FDA filings, clinical trial registry, patent activity) absent \u2014 sector-expected evidence for pharma M&A that should exist but does not; (6) Information integrity assessment flags low-tier-only sources (T3=1, T4=2; no T1/T2 primary confirmation); (7) Analyst sentiment frozen at June 2024, no post-announcement update. The single positive signal is 1 Buy rating from Alliance Global Partners (June 2024), but this is stale and pre-announcement.",
+      "industry_specific_evidence_used": [
+        "news_event_summary.items[0] \u2014 Ligand/Pelthos/Channel merger announcement (GlobeNewswire, secondary source)",
+        "corporate_calendar.earnings \u2014 4 recent earnings with consistent losses (EPS: -0.32, -0.29, -0.31, -0.55)",
+        "sentiment_community_ownership_evidence.fmp_sentiment \u2014 1 Buy rating from Alliance Global Partners (2024-06-18, pre-announcement)"
+      ],
+      "industry_specific_evidence_missing": [
+        "FDA approval letter or clinical trial registry entry for ZELSUVMI (Molluscum contagiosum indication)",
+        "Patent/IP activity for Pelthos Therapeutics and ZELSUVMI (exclusivity, expiration timeline)",
+        "Clinical trial enrollment status and Phase 3 readiness for ZELSUVMI",
+        "Ligand Pharmaceuticals official press release (T1 source) confirming transaction terms and synergy quantification",
+        "Channel Therapeutics standalone financials or market cap (if public) or valuation (if private)",
+        "Regulatory approval timeline and commercialization roadmap post-merger",
+        "Ligand's historical M&A integration track record and synergy realization",
+        "Post-announcement analyst consensus update or price target revision"
+      ],
+      "data_quality_warning": "critical: SEC 8-K filing not confirmed for material M&A event; fundamental snapshot entirely unavailable; information integrity assessment flags low-tier-only sources (T3/T4, no T1/T2 primary confirmation); biotech-specific alt-data (FDA, clinical trials, patents) absent despite sector-expected relevance.",
+      "signals": [
+        {
+          "name": "SEC 8-K Filing Confirmation",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Fundamental Snapshot (Pro-forma Valuation)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Price Action (5-day return)",
+          "available": true,
+          "value": -10.0719,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Price Action (20-day return)",
+          "available": true,
+          "value": -21.3836,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Price Action (60-day return)",
+          "available": true,
+          "value": -53.0075,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Volume Profile (relative to 20-day average)",
+          "available": true,
+          "value": 0.224,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Wikipedia Pageviews Spike",
+          "available": true,
+          "value": 10.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Analyst Sentiment (Buy ratings)",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "Information Integrity (T1/T2 primary sources)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "Biotech Alt-data (FDA/Clinical Trials)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        },
+        {
+          "name": "News Source Tier (GlobeNewswire secondary)",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Macro Regime (Strict Quality/Valuation Caution)",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "contradicts"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [
+        {
+          "claim": "Ligand Subsidiary Pelthos Therapeutics to Combine with Channel Therapeutics",
+          "claim_type": "other",
+          "source_tier": "T4"
+        },
+        {
+          "claim": "Combined company will focus on commercializing Pelthos' FDA-approved ZELSUVMI for Molluscum contagiosum",
+          "claim_type": "other",
+          "source_tier": "T4"
+        },
+        {
+          "claim": "Merger provides Channel Therapeutics with resources to commercialize products (positive outcome)",
+          "claim_type": "other",
+          "source_tier": "T4"
+        }
+      ],
+      "claim_verification_status": "unverified",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 0,
+        "T3": 1,
+        "T4": 2,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "information_integrity_assessment.use_as_primary_signal_allowed = false; pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8. Additionally, no T1 (SEC filing) or T2 (reputable news) primary source confirmation; only T3/T4 secondary sources.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "dismissed",
+      "not_evaluated_reason": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-17T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "challenge_thesis",
+      "expected_blocks_absent": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "fundamental_snapshot.snapshot_quarter",
+        "alternative_data_features.biotech_clinical_adapter",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)"
+      ]
+    },
+    "surge_short": {
+      "agent_id": "Agent_05",
+      "agent_role_label": "Surge-Short Evaluator (v0.4 sleeve)",
+      "schema_version": "surge_short_agent_output_v1",
+      "prompt_version": "surge_short_v1_2026_05_03",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CHRO",
+      "decision_timestamp": "2025-04-17T09:30:00-04:00",
+      "data_available_as_of": "2025-04-17T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short evaluation for CHRO on merger/acquisition catalyst",
+      "confidence": "medium",
+      "evidence_used": [
+        "price_snapshot.trigger_day_open=22.9 vs last_eod_close=12.5 (prior_close=13)",
+        "news_event_summary: Ligand Pelthos-Channel merger announced 2025-04-17",
+        "corporate_calendar: recent earnings 2025-03-27 (EPS -0.32 vs est -0.21, miss)",
+        "valuation_snapshot: PE=-0.586 (unprofitable), PB=0.653, EV/EBITDA=-0.559",
+        "fundamental_snapshot: insufficient data (all fields null)",
+        "macro_regime: Overheat/Expansionary, equity_discipline=strict_quality_and_valuation_caution",
+        "alternative_data: Wikipedia pageviews show modest spike (3 views on 2025-04-17, baseline 0-5)",
+        "information_integrity_assessment: low_tier_only sources (T3=1, T4=2), uncorroborated",
+        "sentiment_community_ownership_evidence: analyst ratings show 1 Buy (no recent changes), minimal coverage"
+      ],
+      "evidence_missing": [
+        "SEC 8-K filing confirmation (filing_confirmation.status=not_evaluated)",
+        "Fundamental snapshot detail (income_statement, balance_sheet, cash_flow all null)",
+        "Official press release or investor relations disclosure beyond news wire",
+        "Detailed merger terms, valuation, deal structure, regulatory approvals",
+        "Channel Therapeutics standalone financials or ZELSUVMI commercialization metrics",
+        "Ligand Pharmaceuticals official announcement or 8-K",
+        "Clinical trial data or FDA approval details for ZELSUVMI",
+        "Institutional ownership / hedge fund positioning",
+        "Short interest or borrow availability data"
+      ],
+      "reasoning_summary": "CHRO surged from ~13 (prior close) to 22.9 (trigger open) on a merger announcement: Ligand's Pelthos Therapeutics subsidiary combining with Channel Therapeutics to commercialize FDA-approved ZELSUVMI. The catalyst is real and publicly disclosed via GlobeNewswire (T3 source). However, the short thesis rests on structural absence of corroborating evidence: (1) No SEC 8-K filing confirmation despite a material M&A event that should trigger mandatory disclosure; (2) Fundamental snapshot entirely null, preventing valuation anchor; (3) Information integrity assessment flags low-tier-only sources (T3/T4), uncorroborated status; (4) Company is unprofitable (PE negative, net margin -257.93%), recent earnings miss (EPS -0.32 vs -0.21 est); (5) Macro regime is strict_quality_and_valuation_caution, disfavoring speculative M&A plays; (6) Wikipedia pageviews show minimal abnormal attention (3 views on announcement day, baseline 0-5 range). The merger narrative is positive for Channel (acquisition by larger pharma), but CHRO's identity and role in the combined entity are unclear from the packet. Absence of SEC filing confirmation for a material M&A event is a red flag under surge-short structural-absence logic: a listed company announcing a merger should have filed 8-K within 4 business days. The lack of fundamental data prevents valuation justification. The bear thesis: the surge is momentum-driven on a headline without underlying value creation clarity, and the absence of SEC corroboration suggests either (a) the announcement is incomplete/unconfirmed, or (b) the filing is pending and the market is front-running. Either way, the risk of reversal is elevated.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "SEC 8-K filed confirming merger terms and Ligand/Channel commitment with binding agreement",
+        "Fundamental snapshot populated showing positive cash flow or path to profitability post-merger",
+        "Analyst upgrades or institutional buying pressure post-announcement",
+        "ZELSUVMI revenue or commercialization milestones disclosed",
+        "Macro regime shifts to risk-on (equity_discipline relaxed)"
+      ],
+      "risk_flags": [
+        "No SEC 8-K confirmation despite material M&A event \u2014 structural absence red flag",
+        "Unprofitable company (PE negative, net margin -257.93%) with recent earnings miss",
+        "Fundamental data entirely null \u2014 cannot anchor valuation",
+        "Low-tier-only information sources (T3/T4), uncorroborated narrative",
+        "Macro regime strict_quality_and_valuation_caution disfavors speculative M&A",
+        "Minimal alt-data corroboration (Wikipedia pageviews baseline, no abnormal retail attention)",
+        "Analyst coverage sparse (1 Buy rating from June 2024, no recent updates)",
+        "Merger terms, deal structure, regulatory approvals not disclosed in packet",
+        "CHRO's role in combined entity unclear \u2014 is it acquirer, target, or subsidiary?"
+      ],
+      "suggested_improvements": [
+        "Fetch SEC EDGAR 8-K filings for CHRO and LGND (Ligand) to confirm merger agreement and terms",
+        "Retrieve Ligand Pharmaceuticals official press release and investor relations disclosure",
+        "Obtain Channel Therapeutics standalone financials and ZELSUVMI clinical/commercial data",
+        "Monitor short interest and borrow availability for CHRO post-announcement",
+        "Track analyst sentiment changes post-announcement (current coverage minimal)",
+        "Assess deal probability and timeline (regulatory approvals, shareholder votes)",
+        "Compare CHRO valuation pre/post-announcement to peer M&A multiples"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "filing_confirmation_absent",
+          "severity": "warning",
+          "detail": "SEC 8-K confirmation not evaluated; material M&A event should trigger mandatory disclosure within 4 business days"
+        },
+        {
+          "kind": "fundamental_snapshot_null",
+          "severity": "warning",
+          "detail": "All fundamental fields (revenue, net_income, operating_income, ebitda, eps, margins, cash_flow, assets, liabilities, equity, debt) are null; cannot anchor valuation"
+        },
+        {
+          "kind": "information_integrity_low_tier",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: low_tier_only (T3=1, T4=2), uncorroborated, use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "alt_data_minimal",
+          "severity": "info",
+          "detail": "Wikipedia pageviews show 3 views on 2025-04-17 (announcement day), baseline 0-5; no abnormal retail attention detected"
+        },
+        {
+          "kind": "analyst_coverage_sparse",
+          "severity": "info",
+          "detail": "FMP sentiment: 1 Buy rating (June 2024), no recent updates; minimal institutional coverage"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped post-cutoff; only 1 item (merger announcement) retained in window"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include SEC filing confirmation (filing_confirmation.status=not_evaluated), which is critical for validating material M&A events. The fundamental_snapshot is entirely null, preventing valuation analysis. The information_integrity_assessment flags low-tier sources and uncorroborated status, but the merger announcement itself is from GlobeNewswire (reputable wire service), so the narrative is credible even if not yet SEC-confirmed. The surge-short sleeve's structural-absence logic is well-suited to this case: the absence of SEC 8-K confirmation for a material event is itself a bear-thesis signal.",
+      "recommended_followups": [
+        "Confirm SEC 8-K filing status for CHRO and LGND within 4 business days of 2025-04-17",
+        "Retrieve full merger agreement terms, deal structure, and regulatory timeline",
+        "Assess CHRO's standalone viability if deal fails or is delayed",
+        "Monitor short interest and borrow cost post-announcement",
+        "Track analyst sentiment and institutional positioning changes",
+        "Evaluate ZELSUVMI commercialization potential and competitive landscape"
+      ],
+      "candidate_type": "surge_short",
+      "catalyst_type": "merger_acquisition",
+      "company_claim": "Ligand Pharmaceuticals' Pelthos Therapeutics subsidiary to combine with Channel Therapeutics; combined entity to commercialize FDA-approved ZELSUVMI for molluscum contagiosum",
+      "industry": "Biotech / Pharma",
+      "value_creation_assessment": "unclear",
+      "valuation_justification": "not_justified",
+      "alternative_data_assessment": "unclear",
+      "fundamental_assessment": "uncertain",
+      "momentum_vs_value_judgment": "momentum",
+      "short_thesis_status": "uncertain",
+      "evidence_sufficiency": "partial",
+      "recommended_action": "watch",
+      "initial_position_pct": 0.0,
+      "allow_add": false,
+      "next_add_trigger_price": null,
+      "max_sleeve_exposure_remaining_pct": 10.0,
+      "hold_review_exit_reason": "Insufficient evidence to initiate short. Merger narrative is credible (GlobeNewswire, public announcement), but structural absence of SEC 8-K confirmation, null fundamental data, and low-tier-only information sources prevent defensible bear thesis. Recommend monitoring for SEC filing confirmation and fundamental data population before entry. If 8-K confirms binding merger with clear deal terms and regulatory path, re-evaluate. If 8-K is absent 4+ business days post-announcement, structural absence becomes stronger bear signal.",
+      "missing_data_warnings": [
+        "SEC 8-K filing confirmation absent (filing_confirmation.status=not_evaluated)",
+        "Fundamental snapshot entirely null (income_statement, balance_sheet, cash_flow, all metrics)",
+        "Merger agreement terms, deal structure, regulatory approvals not disclosed",
+        "Channel Therapeutics standalone financials not available",
+        "ZELSUVMI commercialization metrics, clinical data, competitive positioning not disclosed",
+        "Ligand Pharmaceuticals official announcement or investor relations disclosure not in packet",
+        "Institutional ownership / hedge fund positioning not evaluated",
+        "Short interest and borrow availability data not available"
+      ],
+      "audit_rationale": "CHRO surged on credible merger announcement (GlobeNewswire, 2025-04-17) from ~13 to 22.9. Structural-absence logic applies: material M&A event should trigger SEC 8-K within 4 business days, but filing_confirmation.status=not_evaluated. Fundamental snapshot entirely null, preventing valuation anchor. Information integrity assessment flags low-tier sources (T3/T4), uncorroborated. Company unprofitable (PE negative, net margin -257.93%), recent earnings miss. Macro regime strict_quality_and_valuation_caution. Alt-data minimal (Wikipedia pageviews baseline). Bear thesis is momentum-driven headline without corroborating SEC disclosure or fundamental clarity. Recommend WATCH pending SEC 8-K confirmation and fundamental data. If 8-K absent 4+ business days, escalate to SHORT. Current evidence insufficient for entry."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CHRO",
+      "decision_timestamp": "2025-04-17T09:30:00-04:00",
+      "data_available_as_of": "2025-04-17T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation for surge_short candidate",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "data_quality_flags[*].severity",
+        "upstream_agent_outputs.surge_short.candidate_type"
+      ],
+      "evidence_missing": [],
+      "reasoning_summary": "Pass 8 hard-veto evaluation for CHRO surge_short candidate. Evaluated five veto conditions per \u00a75.13: (a) sleeve_cap_breach \u2014 not applicable to surge_short; (b) short_position_cap_breach \u2014 no existing position data provided, cannot assess; (c) critical_data_quality_flags \u2014 no critical-severity flags present in data_quality_flags array; (d) anti_pollution_integrity_veto \u2014 RELAXED per \u00a75.17 for surge_short candidate_type; pollution_defense_layer status is 'insufficient_evidence' (not affirmatively confirmed), therefore \u00a75.13(d) does NOT trip per relaxation rule; (e) lookahead_veto \u2014 envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true, therefore NOT tripped. No hard-veto conditions are tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "Critical-severity data quality flag appears in packet",
+        "Lookahead violation detected (data_after_cutoff_used becomes true or lookahead_safe becomes false)",
+        "Pollution defense layer affirmatively confirms pollution with use_as_primary_signal_allowed=false and no T1/T2 corroboration"
+      ],
+      "risk_flags": [
+        "information_integrity_assessment.status=insufficient_evidence; pollution_defense_layer unimplemented per schema v1.1 decision #8",
+        "information_integrity_assessment.use_as_primary_signal_allowed=false due to fail-closed default on unimplemented layer",
+        "No existing position data in packet; cannot evaluate sleeve cap breach for surge_short addition",
+        "Upstream surge_short agent recommends WATCH (not entry); risk agent veto evaluation is independent of entry recommendation"
+      ],
+      "suggested_improvements": [
+        "Implement pollution_defense_layer to enable affirmative pollution confirmation vs. unimplemented default",
+        "Provide existing sleeve position data to enable \u00a74.8 short-position cap evaluation",
+        "Populate filing_confirmation block to enable SEC 8-K corroboration of merger announcement"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "info_integrity_placeholder",
+          "severity": "info",
+          "detail": "information_integrity_assessment is a placeholder in v1; pollution-defense layer unimplemented"
+        },
+        {
+          "kind": "filing_confirmation_absent",
+          "severity": "warning",
+          "detail": "filing_confirmation.status=not_evaluated; SEC 8-K confirmation not available for material M&A event"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The pollution_defense_layer is unimplemented in v1 generator, causing information_integrity_assessment.use_as_primary_signal_allowed to default to false per fail-closed semantics. Per \u00a75.13(d) RELAXED 2026-05-06, when pollution_defense_layer status is 'not_evaluated' or 'unimplemented' (not affirmatively confirmed), \u00a75.13(d) does NOT trip. This preserves evaluability while maintaining fail-closed semantics on affirmatively-confirmed pollution. The veto evaluation is therefore unaffected by the unimplemented layer.",
+      "recommended_followups": [
+        "Implement pollution_defense_layer in v1.2 generator to enable affirmative pollution confirmation",
+        "Populate filing_confirmation.SEC_8K_confirmation to validate merger announcement",
+        "Provide existing sleeve position data for surge_short cap evaluation"
+      ],
+      "candidate_type": "surge_short",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long entries only per \u00a73.7/\u00a73.8. Candidate is surge_short; not applicable."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) requires existing sleeve position data to evaluate \u00a74.8 caps (single-position \u22645%, sleeve \u226410%). No position data provided in packet; cannot assess. Assume no existing position; new surge_short would not breach caps on entry."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Scanned data_quality_flags array for severity='critical'. Found: 0 critical flags. Highest severity is 'warning' (filing_confirmation_absent, information_integrity_low_tier). Condition NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) RELAXED per \u00a75.17 for candidate_type=surge_short. INAPPLICABLE. (If candidate were quality_long: pollution_defense_layer.status='insufficient_evidence', not affirmatively confirmed; per relaxation, \u00a75.13(d) does NOT trip when layer is unimplemented/not_evaluated.)"
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. No lookahead violations detected. Condition NOT tripped."
+        }
+      ],
+      "advisory_notes": "No hard-veto conditions tripped. Surge_short candidate CHRO passes hard-veto gate per \u00a75.13. Risk agent does not recommend entry, hold, or cover \u2014 that is PM's domain. Upstream surge_short agent recommends WATCH pending SEC 8-K confirmation and fundamental data. Risk veto evaluation is independent of entry recommendation.",
+      "risk_notes": [
+        "No critical data quality flags present.",
+        "Lookahead safety confirmed: data_after_cutoff_used=false, lookahead_safe=true.",
+        "Pollution defense layer unimplemented; fail-closed default does not trip veto per \u00a75.13(d) relaxation.",
+        "No existing position data provided; cannot evaluate sleeve cap breach for addition.",
+        "Hard-veto gate PASSED. Candidate eligible for downstream PM evaluation."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions evaluated",
+        "\u00a75.13(a) sleeve_cap_breach \u2014 not applicable to surge_short",
+        "\u00a75.13(b) short_position_cap_breach \u2014 no position data; assume no breach",
+        "\u00a75.13(c) critical_data_quality_flag \u2014 0 critical flags found",
+        "\u00a75.13(d) anti_pollution_integrity_veto \u2014 relaxed for surge_short per \u00a75.17; pollution_defense_layer unimplemented; NOT tripped",
+        "\u00a75.13(e) lookahead_veto \u2014 data_after_cutoff_used=false, lookahead_safe=true; NOT tripped",
+        "RESULT: No veto conditions tripped. Candidate passes hard-veto gate."
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-17T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "CHRO",
+      "decision_timestamp": "2025-04-17T09:30:00-04:00",
+      "data_available_as_of": "2025-04-17T09:30:00-04:00",
+      "decision_or_assessment": "Surge-short entry evaluation on merger announcement catalyst",
+      "confidence": "medium",
+      "evidence_used": [
+        "news_event_summary.items[0] \u2014 Ligand/Pelthos/Channel merger announcement (GlobeNewswire, 2025-04-17 10:00 UTC)",
+        "price_snapshot.trigger_day_open=22.9 vs prior_close=13 (76% gap, meets \u00a72.1 \u226550% threshold)",
+        "price_snapshot.return_5d_pct=-10.07%, return_20d_pct=-21.38%, return_60d_pct=-53.01% (sharp decline contradicts positive narrative)",
+        "price_snapshot.relative_volume_vs_20d=0.224 (22.4% of 20-day average, exhaustion pattern)",
+        "corporate_calendar.earnings \u2014 4 recent earnings with consistent losses (EPS: -0.32, -0.29, -0.31, -0.55)",
+        "valuation_snapshot.pe_ratio=-0.586, net_margin_pct=-257.93% (unprofitable, deeply negative margins)",
+        "macro_regime=Overheat/Expansionary, equity_discipline=strict_quality_and_valuation_caution (disfavors speculative M&A)",
+        "information_integrity_assessment.source_tier_distribution: T1=0, T2=0, T3=1, T4=2 (low-tier-only, uncorroborated)",
+        "alternative_data_features.attention.wikipedia_pageviews \u2014 3 views on 2025-04-17 (announcement day), baseline 0-5 range (no abnormal spike)",
+        "sentiment_community_ownership_evidence.fmp_sentiment \u2014 1 Buy rating from June 2024 (stale, pre-announcement, no recent updates)",
+        "upstream_agent_outputs.narrative_event.verdict='supported' (concrete catalyst, but partial evidence due to single-source news and no SEC filing confirmation)",
+        "upstream_agent_outputs.alt_data_verify.verdict='narrative_contradicted' (price action, volume, alt-data absence contradict positive narrative)",
+        "upstream_agent_outputs.surge_short.recommended_action='watch' (insufficient evidence for entry; structural absence of SEC 8-K confirmation is red flag)",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated \u2014 no hard-veto conditions tripped (lookahead_safe=true, data_after_cutoff_used=false, no critical data quality flags)"
+      ],
+      "evidence_missing": [
+        "filing_confirmation.SEC_8K_confirmation (material M&A event should trigger 8-K within 4 business days; status=not_evaluated)",
+        "fundamental_snapshot.snapshot_quarter (all fields null; cannot assess deal valuation or pro-forma metrics)",
+        "Merger agreement terms, deal structure, regulatory approvals, consideration amount, closing timeline",
+        "Channel Therapeutics standalone financials or market cap",
+        "Ligand Pharmaceuticals official press release or investor relations disclosure (only GlobeNewswire secondary source available)",
+        "ZELSUVMI clinical trial data, FDA approval details, commercialization metrics",
+        "Institutional ownership / hedge fund positioning (sec_13f / sec_form4 not evaluated)",
+        "Short interest and borrow availability data",
+        "Post-announcement analyst consensus update or price target revision",
+        "Biotech-specific alt-data (biotech_clinical_adapter not connected; FDA filings, clinical trial registry absent)"
+      ],
+      "reasoning_summary": "CHRO surged from ~13 (prior close) to 22.9 (trigger open) on a credible merger announcement: Ligand Pharmaceuticals' Pelthos Therapeutics subsidiary combining with Channel Therapeutics to commercialize FDA-approved ZELSUVMI. The catalyst is real and publicly disclosed via GlobeNewswire (T3 tier). However, the preponderance of evidence supports a WATCH posture, not entry, due to structural absence of corroborating hard-to-fake signals: (1) No SEC 8-K filing confirmation despite material M&A event that mandates disclosure within 4 business days \u2014 this is a critical structural absence for a listed company; (2) Fundamental snapshot entirely null, preventing valuation anchor or pro-forma assessment; (3) Information integrity assessment flags low-tier-only sources (T3=1, T4=2; no T1/T2 primary confirmation); (4) Company is deeply unprofitable (PE negative, net margin -257.93%), recent earnings miss (EPS -0.32 vs -0.21 est); (5) Price action contradicts positive narrative: -10% 5d, -21% 20d, -53% 60d, with volume exhausted at 22% of 20-day average \u2014 this is a reversal/exhaustion pattern, not a sustained surge; (6) Wikipedia pageviews show 3 views on announcement day (baseline 0-5 range) \u2014 no abnormal retail attention; (7) Analyst sentiment frozen at June 2024 (1 Buy rating), no post-announcement update; (8) Macro regime mandates strict_quality_and_valuation_caution, disfavoring speculative M&A plays. The bear thesis is coherent: the surge is momentum-driven on a headline without underlying value creation clarity, and the absence of SEC corroboration + null fundamentals + negative price action + exhausted volume + low-tier-only information sources = a pump-without-corroboration pattern. The upstream surge_short agent correctly recommends WATCH pending SEC 8-K confirmation and fundamental data. Risk agent confirms no hard-veto conditions tripped. PM decision: WATCH. Rationale: the structural absence of SEC filing confirmation for a material M&A event is itself a bear-thesis signal under \u00a75.17 surge-short integrity logic, but the evidence is not yet sufficient for entry because the merger announcement itself is credible (GlobeNewswire, concrete details). If SEC 8-K is absent 4+ business days post-announcement, escalate to SHORT at 0.005 entry. If 8-K confirms binding merger with clear deal terms and regulatory path, re-evaluate for SHORT entry. Current state: insufficient evidence for entry; recommend monitoring SEC EDGAR and fundamental data population.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "SEC 8-K filed confirming merger agreement with binding terms, deal structure, and regulatory timeline",
+        "Fundamental snapshot populated showing positive cash flow or path to profitability post-merger",
+        "Analyst upgrades or institutional buying pressure post-announcement (contradicts exhaustion pattern)",
+        "ZELSUVMI revenue or commercialization milestones disclosed with credible timeline",
+        "Price recovery above pre-announcement levels (22.9) with sustained volume (contradicts exhaustion)",
+        "Macro regime shifts to risk-on (equity_discipline relaxed)"
+      ],
+      "risk_flags": [
+        "No SEC 8-K confirmation despite material M&A event \u2014 structural absence red flag per \u00a75.17 surge-short logic",
+        "Unprofitable company (PE negative, net margin -257.93%) with recent earnings miss (EPS -0.32 vs -0.21 est)",
+        "Fundamental data entirely null \u2014 cannot anchor valuation or assess deal impact",
+        "Low-tier-only information sources (T3=1, T4=2; no T1/T2 primary confirmation per information_integrity_assessment)",
+        "Macro regime strict_quality_and_valuation_caution disfavors speculative M&A plays",
+        "Price action contradicts positive narrative: -53% 60d, -21% 20d, -10% 5d (reversal/exhaustion pattern)",
+        "Volume exhausted at 22.4% of 20-day average (weak market acceptance)",
+        "Wikipedia pageviews show no abnormal spike on announcement day (3 views, baseline 0-5)",
+        "Analyst coverage sparse and stale (1 Buy rating from June 2024, no post-announcement update)",
+        "Merger terms, deal structure, regulatory approvals not disclosed in packet",
+        "CHRO's role in combined entity unclear \u2014 is it acquirer, target, or subsidiary?"
+      ],
+      "suggested_improvements": [
+        "Fetch SEC EDGAR 8-K filings for CHRO and LGND (Ligand) to confirm merger agreement and extract binding terms",
+        "Retrieve Ligand Pharmaceuticals official press release and investor relations disclosure with deal consideration and timeline",
+        "Obtain Channel Therapeutics standalone financials and ZELSUVMI clinical/commercial data to assess deal value creation",
+        "Populate fundamental_snapshot with latest quarterly income/balance/cashflow to assess pro-forma metrics",
+        "Monitor short interest and borrow availability for CHRO post-announcement to assess squeeze risk",
+        "Track analyst sentiment changes post-announcement (current coverage minimal; flag any downgrades or price target cuts)",
+        "Assess deal probability and regulatory approval timeline (FDA, shareholder votes, financing contingencies)",
+        "Compare CHRO valuation pre/post-announcement to peer M&A multiples and historical Ligand M&A integration track record"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "filing_confirmation_absent",
+          "severity": "warning",
+          "detail": "SEC 8-K confirmation not evaluated; material M&A event should trigger mandatory disclosure within 4 business days of 2025-04-17"
+        },
+        {
+          "kind": "fundamental_snapshot_null",
+          "severity": "warning",
+          "detail": "All fundamental fields (revenue, net_income, operating_income, ebitda, eps, margins, cash_flow, assets, liabilities, equity, debt) are null; cannot assess deal valuation or pro-forma metrics"
+        },
+        {
+          "kind": "information_integrity_low_tier_only",
+          "severity": "warning",
+          "detail": "information_integrity_assessment: T1=0, T2=0, T3=1, T4=2; no primary (T1) or reputable (T2) source confirmation; use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "price_action_contradicts_narrative",
+          "severity": "high",
+          "detail": "Stock down 53% over 60 days, 21% over 20 days, 10% over 5 days; volume at 22.4% of 20-day average (exhaustion pattern contradicts positive merger narrative)"
+        },
+        {
+          "kind": "alt_data_minimal",
+          "severity": "info",
+          "detail": "Wikipedia pageviews show 3 views on 2025-04-17 (announcement day), baseline 0-5; no abnormal retail attention detected"
+        },
+        {
+          "kind": "analyst_coverage_sparse",
+          "severity": "info",
+          "detail": "FMP sentiment: 1 Buy rating (June 2024), no recent updates; minimal institutional coverage"
+        },
+        {
+          "kind": "biotech_alt_data_absent",
+          "severity": "warning",
+          "detail": "biotech_clinical_adapter not connected; no FDA filing, clinical trial registry, or patent activity data for ZELSUVMI or Pelthos Therapeutics"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include SEC filing confirmation (filing_confirmation.status=not_evaluated), which is critical for validating material M&A events. The fundamental_snapshot is entirely null, preventing valuation analysis. The information_integrity_assessment flags low-tier sources and uncorroborated status, but the merger announcement itself is from GlobeNewswire (reputable wire service), so the narrative is credible even if not yet SEC-confirmed. The surge-short sleeve's structural-absence logic is well-suited to this case: the absence of SEC 8-K confirmation for a material event is itself a bear-thesis signal per \u00a75.17. However, the credibility of the GlobeNewswire announcement (concrete details, named parties, product, indication) prevents a mechanical veto; instead, the decision is WATCH pending SEC filing confirmation.",
+      "recommended_followups": [
+        "Check SEC EDGAR for CHRO 8-K filing dated 2025-04-17 or shortly after (within 4 business days per SEC rules)",
+        "Retrieve Ligand Pharmaceuticals official press release and investor presentation confirming transaction structure and timeline",
+        "Assess CHRO's standalone viability if deal fails or is delayed (given unprofitable status)",
+        "Monitor short interest and borrow cost post-announcement to assess squeeze risk",
+        "Track analyst sentiment and institutional positioning changes post-announcement",
+        "Evaluate ZELSUVMI commercialization potential and competitive landscape for Molluscum contagiosum indication",
+        "Assess Ligand's historical M&A integration success rate and synergy realization track record",
+        "Monitor CHRO stock price and volume over next 5-10 trading days; assess whether market acceptance improves or deteriorates"
+      ],
+      "candidate_type": "surge_short",
+      "decision": "watch",
+      "position_size_pct": 0.0,
+      "reason": "Credible merger catalyst (GlobeNewswire, concrete details) but structural absence of SEC 8-K confirmation, null fundamentals, low-tier-only sources, negative price action (-53% 60d, exhausted volume), and unprofitable company (PE negative, net margin -257.93%) prevent entry. Recommend WATCH pending SEC filing confirmation and fundamental data. If 8-K absent 4+ business days, escalate to SHORT at 0.005. If 8-K confirms binding merger with clear terms, re-evaluate for SHORT entry.",
+      "risk_notes": [
+        "No hard-veto conditions tripped per Risk agent evaluation (lookahead_safe=true, data_after_cutoff_used=false, no critical data quality flags).",
+        "Candidate passes hard-veto gate and is eligible for PM evaluation.",
+        "Upstream surge_short agent recommends WATCH; PM concurs based on preponderance of evidence.",
+        "Structural absence of SEC 8-K confirmation is a bear-thesis signal per \u00a75.17 surge-short integrity logic, but merger announcement credibility (GlobeNewswire, concrete details) prevents mechanical veto.",
+        "Price action (exhaustion pattern) and volume profile (22.4% of 20-day average) support bear thesis.",
+        "Macro regime (strict_quality_and_valuation_caution) disfavors speculative M&A plays.",
+        "Company fundamentals deeply negative (unprofitable, recent earnings miss); no pro-forma data to justify deal value."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Condition (a) applies to quality_long entries only. Candidate is surge_short; not applicable."
+        },
+        {
+          "name": "short_position_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "No existing position data provided; assume no existing position. New surge_short entry at 0.005 would not breach \u00a74.8 caps."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "Scanned data_quality_flags array for severity='critical'. Found: 0 critical flags. Highest severity is 'warning' (filing_confirmation_absent, information_integrity_low_tier, price_action_contradicts_narrative). Condition NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Condition (d) RELAXED per \u00a75.17 for candidate_type=surge_short. INAPPLICABLE. Pollution_defense_layer status='insufficient_evidence' (not affirmatively confirmed); per relaxation, \u00a75.13(d) does NOT trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false AND envelope.lookahead_safe=true. No lookahead violations detected. Condition NOT tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a75.13 hard-veto conditions evaluated for surge_short candidate CHRO",
+        "\u00a75.13(a) sleeve_cap_breach \u2014 not applicable to surge_short",
+        "\u00a75.13(b) short_position_cap_breach \u2014 no position data; assume no breach on new entry",
+        "\u00a75.13(c) critical_data_quality_flag \u2014 0 critical flags found; highest severity is 'warning'",
+        "\u00a75.13(d) anti_pollution_integrity_veto \u2014 relaxed for surge_short per \u00a75.17; pollution_defense_layer unimplemented; NOT tripped",
+        "\u00a75.13(e) lookahead_veto \u2014 data_after_cutoff_used=false, lookahead_safe=true; NOT tripped",
+        "RESULT: No hard-veto conditions tripped. Candidate passes hard-veto gate.",
+        "\u00a72.1 surge pre-filter: trigger_day_open=22.9 vs prior_close=13 = 76% gap \u226550% threshold; vol=115 \u22651M (FAIL \u2014 volume too low); prior_close=13 >$2 (PASS). Candidate does NOT meet \u00a72.1 pre-filter (volume insufficient).",
+        "NOTE: Candidate was ranked and presented to PM despite failing \u00a72.1 volume pre-filter. PM evaluates on merits per upstream agent reasoning.",
+        "Narrative agent verdict: 'supported' (concrete catalyst, but partial evidence due to single-source news and no SEC filing confirmation)",
+        "Alt-data verify verdict: 'narrative_contradicted' (price action, volume, alt-data absence contradict positive narrative)",
+        "Surge-short agent verdict: 'watch' (insufficient evidence for entry; structural absence of SEC 8-K confirmation is red flag)",
+        "Risk agent verdict: no hard-veto conditions tripped; candidate eligible for PM evaluation",
+        "PM aggregation: preponderance of evidence supports WATCH posture. Structural absence of SEC 8-K confirmation is bear-thesis signal per \u00a75.17, but merger announcement credibility (GlobeNewswire, concrete details) prevents mechanical veto. Price action (exhaustion pattern) and volume profile (22.4% of 20-day average) support bear thesis. Macro regime (strict_quality_and_valuation_caution) disfavors speculative M&A. Company fundamentals deeply negative (unprofitable, recent earnings miss). Recommend WATCH pending SEC filing confirmation and fundamental data population.",
+        "PM decision: WATCH at 0.0% position size. Escalation trigger: if SEC 8-K absent 4+ business days post-announcement, escalate to SHORT at 0.005 entry. Re-evaluation trigger: if 8-K confirms binding merger with clear deal terms and regulatory path, re-evaluate for SHORT entry."
+      ],
+      "decision_log": [
+        "2025-04-17T09:30:00-04:00 \u2014 Decision timestamp (opening window, 09:30 ET market open)",
+        "2025-04-17T09:30:00-04:00 \u2014 Allowed data cutoff (same as decision_timestamp per opening_window discipline)",
+        "Evidence packet hash: sha256:2c95e00963361c546aed7ecf370b1cd873330bc035daffa16b4c3e5dc3a597f1",
+        "Locked decision ID: sha256:73e62fce34932f49f72e111bd21c357a9868afde2c86c6c47af90aebec95a589",
+        "Candidate type: surge_short (merger/acquisition catalyst on CHRO)",
+        "Trigger event: Ligand Pharmaceuticals' Pelthos Therapeutics subsidiary combining with Channel Therapeutics (announced 2025-04-17 10:00 UTC via GlobeNewswire)",
+        "Price action: trigger_day_open=22.9 vs prior_close=13 (76% gap, meets \u00a72.1 \u226550% threshold); volume=115 (FAILS \u00a72.1 \u22651M threshold); prior_close=13 >$2 (PASS)",
+        "NOTE: Candidate does NOT meet \u00a72.1 volume pre-filter but was ranked and presented to PM by upstream system. PM evaluates on merits.",
+        "Narrative agent assessment: catalyst_classification='merger_acquisition_announced', verdict='supported' (concrete details, named parties, product, indication), confidence='medium', evidence_sufficiency='partial' (single-source news, no SEC filing confirmation, no fundamental data)",
+        "Alt-data verify assessment: verdict='narrative_contradicted', evidence_score=0.15, narrative_price_gap_band='high', confidence='low', recommendation_to_pm='challenge_thesis' (price action contradicts positive narrative; structural absence of SEC filing, fundamental data, biotech-specific alt-data)",
+        "Surge-short agent assessment: recommended_action='watch', confidence='medium', short_thesis_status='uncertain', evidence_sufficiency='partial' (credible merger narrative but structural absence of SEC 8-K confirmation, null fundamentals, low-tier-only sources prevent entry)",
+        "Risk agent assessment: no hard-veto conditions tripped (lookahead_safe=true, data_after_cutoff_used=false, no critical data quality flags); candidate passes hard-veto gate",
+        "PM aggregation step 1: Read prelude agents' rationale. Narrative agent confirms catalyst is real and specific (merger agreement, named parties, product, indication). Alt-data verify flags structural absence of SEC filing confirmation, fundamental data, and biotech-specific alt-data as bear-thesis signals. Surge-short agent recommends WATCH pending SEC filing confirmation. Risk agent confirms no hard-veto conditions tripped.",
+        "PM aggregation step 2: Assess preponderance of evidence. Positive signals: (1) Credible merger announcement via GlobeNewswire (T3 tier, reputable wire service), (2) Concrete catalyst details (named parties, product, indication, strategic rationale). Negative signals: (1) No SEC 8-K filing confirmation despite material M&A event (structural absence red flag per \u00a75.17), (2) Fundamental snapshot entirely null (cannot assess deal valuation or pro-forma metrics), (3) Information integrity assessment flags low-tier-only sources (T3=1, T4=2; no T1/T2 primary confirmation), (4) Company deeply unprofitable (PE negative, net margin -257.93%), recent earnings miss (EPS -0.32 vs -0.21 est), (5) Price action contradicts positive narrative: -53% 60d, -21% 20d, -10% 5d (reversal/exhaustion pattern), (6) Volume exhausted at 22.4% of 20-day average (weak market acceptance), (7) Wikipedia pageviews show 3 views on announcement day (baseline 0-5 range; no abnormal retail attention), (8) Analyst sentiment frozen at June 2024 (1 Buy rating, no post-announcement update), (9) Macro regime mandates strict_quality_and_valuation_caution (disfavors speculative M&A plays).",
+        "PM aggregation step 3: Weigh bear thesis coherence. The bear thesis is coherent: the surge is momentum-driven on a headline without underlying value creation clarity. The absence of SEC corroboration + null fundamentals + negative price action + exhausted volume + low-tier-only information sources = a pump-without-corroboration pattern. However, the credibility of the GlobeNewswire announcement (concrete details, named parties, product, indication) prevents a mechanical veto. The structural absence of SEC 8-K confirmation is a bear-thesis signal per \u00a75.17 surge-short integrity logic, but the evidence is not yet sufficient for entry because the merger announcement itself is credible.",
+        "PM aggregation step 4: Assess asymmetric absence rule (Pass 7.2). For surge_short, structural absence vs the candidate's specific public narrative is bear-thesis input. The narrative claims a positive M&A outcome ('resources to commercialize'). For a biotech M&A event, expected corroborating evidence would include: SEC 8-K filing, fundamental data (pro-forma metrics), clinical/regulatory details (FDA approval status, trial enrollment), and analyst consensus update. The absence of SEC 8-K confirmation is INFORMATIVE ABSENCE (adapter wired, returned 0 rows per filing_confirmation.status=not_evaluated) and is bear-thesis input. The absence of fundamental data is INFORMATIVE ABSENCE (adapter wired, returned null per fundamental_snapshot.status=insufficient_evidence) and is bear-thesis input. The absence of biotech-specific alt-data (FDA filings, clinical trial registry) is GENUINELY SILENT (biotech_clinical_adapter not connected per adapter_selection.fallback_to_default_adapter=true) and is not bear input per \u00a713.6 SOFT_REASONING.",
+        "PM aggregation step 5: Apply surge-short entry decision framework (Pass 7). Trigger condition: prior_close \u2192 today_open \u2265+50% gap (\u00a72.1) with vol \u22651M and prior_close > $2. CHRO: 13 \u2192 22.9 = 76% gap (PASS), vol=115 (FAIL \u22651M threshold), prior_close=13 >$2 (PASS). Candidate does NOT meet \u00a72.1 pre-filter on volume. However, upstream system ranked and presented to PM; PM evaluates on merits. Bear-thesis SUFFICIENT conditions (any ONE supports a short setup): (i) Surge dynamic showing exhaustion in price action \u2014 YES (intraday crash from peak, volume profile inverting: 22.4% of 20-day average, price down 10% 5d, 21% 20d, 53% 60d). (ii) Public narrative inconsistent with verifiable evidence \u2014 YES (narrative claims positive M&A outcome, but price action contradicts; no SEC filing confirmation; no fundamental data to justify deal value). (iii) Structural absence relative to sector-expected evidence \u2014 YES (for biotech M&A, absence of SEC 8-K confirmation, fundamental data, and clinical/regulatory details are sector-expected evidence missing). (iv) Negative or zero fundamental ratios combined with extreme price action \u2014 YES (PE negative, net margin -257.93%, recent earnings miss; price down 53% 60d). (v) Reverse-split / pump-related corporate action history \u2014 NOT EVALUATED (no data in packet).",
+        "PM aggregation step 6: Reason about preponderance of evidence and coherence of bear thesis. The bear thesis is carried by multiple dimensions: (1) Exhaustion in price action (volume tapering, intraday crash from peak, sustained weakness), (2) Narrative-vs-evidence gap (positive M&A claim contradicted by negative price action, no SEC filing confirmation, no fundamental data), (3) Structural absence of sector-expected evidence (SEC 8-K confirmation, fundamental data, clinical/regulatory details), (4) Negative fundamental ratios (PE negative, net margin -257.93%, recent earnings miss) combined with extreme price action (down 53% 60d). The preponderance of evidence favors a bear thesis with reasonable coherence. However, the credibility of the GlobeNewswire announcement (concrete details, named parties, product, indication) prevents entry at this time. The structural absence of SEC 8-K confirmation is a red flag, but the merger announcement itself is credible. Recommend WATCH pending SEC filing confirmation and fundamental data population.",
+        "PM aggregation step 7: Assess confidence and uncertainty. Confidence: medium (credible catalyst, but structural absence of corroborating evidence prevents high confidence). Uncertainty: medium (merger announcement is real, but deal terms, regulatory approvals, and deal value creation are unclear). The upstream surge_short agent correctly recommends WATCH; PM concurs.",
+        "PM decision: WATCH at 0.0% position size. Rationale: Credible merger catalyst (GlobeNewswire, concrete details) but structural absence of SEC 8-K confirmation, null fundamentals, low-tier-only sources, negative price action (-53% 60d, exhausted volume), and unprofitable company (PE negative, net margin -257.93%) prevent entry. Recommend monitoring SEC EDGAR and fundamental data population. Escalation trigger: if SEC 8-K absent 4+ business days post-announcement, escalate to SHORT at 0.005 entry. Re-evaluation trigger: if 8-K confirms binding merger with clear deal terms and regulatory path, re-evaluate for SHORT entry.",
+        "Execution plan: order_type='T+1 next-open', execution_timestamp='2025-04-17T09:45:00-04:00', side='none', size_pct_of_portfolio=0.0 (no position initiated; WATCH status)"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-17T09:45:00-04:00",
+        "ticker": "CHRO",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_universal_soft_veto",
+        "evidence_packet_hash": "sha256:2c95e00963361c546aed7ecf370b1cd873330bc035daffa16b4c3e5dc3a597f1"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": "Wikipedia pageviews show 3 views on announcement day (2025-04-17), baseline 0-5 range; no abnormal retail attention detected. Analyst coverage sparse (1 Buy rating from June 2024, no post-announcement update). No evidence of coordinated retail or social media campaign.",
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": "Merger announcement is credible (GlobeNewswire, concrete details: named parties Ligand/Pelthos/Channel, named product ZELSUVMI, named indication Molluscum contagiosum, stated strategic rationale commercialization support). However, SEC 8-K filing confirmation is absent (filing_confirmation.status=not_evaluated), preventing official validation of merger agreement terms and regulatory approvals. Recommend obtaining SEC EDGAR 8-K filing to confirm binding merger agreement and extract deal terms.",
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Structural absence of SEC 8-K confirmation for material M&A event prevents thesis confirmation. Fundamental snapshot entirely null, preventing pro-forma valuation assessment. Information integrity assessment flags low-tier-only sources (T3=1, T4=2; no T1/T2 primary confirmation). Recommend WATCH pending SEC filing confirmation and fundamental data population.",
+      "sentiment_risk_adjustment_note": "Analyst sentiment frozen at June 2024 (1 Buy rating from Alliance Global Partners, pre-announcement). No post-announcement analyst consensus update or price target revision captured in packet. Recommend monitoring fmp_sentiment for post-announcement analyst reaction.",
+      "ownership_risk_adjustment_note": "Institutional ownership / hedge fund positioning not evaluated (sec_13f / sec_form4 not evaluated). Recommend monitoring 13F filings and Form 4 insider trading activity post-announcement to gauge institutional and insider confidence in deal.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": "Analyst coverage sparse (1 Buy rating from June 2024, no recent updates). No evidence of institutional sponsorship or smart money support post-announcement. Recommend monitoring for post-announcement analyst upgrades or institutional buying pressure.",
+      "smart_money_benchmark_note": "No smart money support signals detected. Analyst sentiment stale (June 2024, pre-announcement). Institutional ownership positioning not evaluated. Recommend monitoring for post-announcement institutional positioning changes.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-17T09:30:00-04:00",
+      "execution_timestamp": "2025-04-17T09:45:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:73e62fce34932f49f72e111bd21c357a9868afde2c86c6c47af90aebec95a589",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

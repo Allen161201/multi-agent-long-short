@@ -1,0 +1,1290 @@
+{
+  "trigger_id": "a7759412cba9",
+  "ticker": "BF-B",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-03-03T09:30:00-05:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 217.47,
+  "trigger_cost_usd": 0.44431,
+  "cumulative_cost_usd": 0.773329,
+  "candidate_ranking_inputs": {
+    "ticker": "BF-B",
+    "earliest_event_date": "2025-03-04",
+    "selection_reason": "earnings_window_14d",
+    "close": 33.04,
+    "t1_open": 33.09,
+    "t1_date": "2025-03-04"
+  },
+  "evidence_packet_hash": "sha256:15c4139f0c986cb1bbc60145956cd2966aa0e32313850cb7c575a8a74a47a6c7",
+  "locked_decision_id": "sha256:96537138babcc9530ce813041383a04634396c62e4b956675f0ab39a44a21844",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "pm_agent_output_v1",
+    "prompt_version": "2026_05_03_universal_soft_veto",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "BF-B",
+    "decision_timestamp": "2025-03-03T09:30:00-05:00",
+    "data_available_as_of": "2025-03-03T09:30:00-05:00",
+    "decision_or_assessment": "Quality-long candidate evaluation post-60d selloff; hard fundamental gate failure blocks entry",
+    "confidence": "medium",
+    "evidence_used": [
+      "fundamental_gate_38.passes (false)",
+      "fundamental_gate_38.failed_gates (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available)",
+      "valuation_snapshot.pe_ratio (16.01)",
+      "valuation_snapshot.price_to_book (3.17)",
+      "valuation_snapshot.ev_to_ebitda (12.75)",
+      "valuation_snapshot.net_margin_pct_ttm (20.58%)",
+      "valuation_snapshot.gross_margin_pct_ttm (59.46%)",
+      "valuation_snapshot.roe (0.199)",
+      "valuation_snapshot.debt_to_equity_ttm (0.67)",
+      "price_snapshot.return_60d_pct (-21.32%)",
+      "macro_regime (Overheat / Moderately Restrictive, stress_score=2, equity_cap=20%)",
+      "corporate_calendar.earnings (recent beats: 0.55 vs 0.49 est; 0.56 vs 0.42 est)",
+      "sentiment_community_ownership_evidence.fmp_sentiment (3 SB, 2 B, 11 H, 2 S, 3 SS as of 2025-03-01)",
+      "upstream_agent_outputs.valuation.valuation_assessment (fair)",
+      "upstream_agent_outputs.quality_long.recommended_action (no_trade)",
+      "upstream_agent_outputs.risk.veto_conditions_evaluated (all not_tripped)",
+      "upstream_agent_outputs.network_effect.classification (absent)"
+    ],
+    "evidence_missing": [
+      "fundamental_snapshot.eps_ttm (null \u2014 critical gate input)",
+      "fundamental_snapshot.operating_margin_ttm (null \u2014 critical gate input)",
+      "fundamental_snapshot.operating_cash_flow_ttm (null)",
+      "fundamental_snapshot.free_cash_flow_ttm (null)",
+      "news_event_summary.items (0 items post-cutoff)",
+      "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable)",
+      "narrative_price_gap_assessment (not_evaluated)"
+    ],
+    "reasoning_summary": "BF-B (Brown-Forman Inc., Class B) is a mature consumer-staples / beverage company that has declined 21.3% over 60 days. Valuation metrics (PE 16.0, PB 3.17, EV/EBITDA 12.75) appear fair-to-attractive, and profitability indicators (20.6% net margin, 19.9% ROE, 0.67 debt-to-equity) are solid. Recent earnings show mixed execution (Q4 beat, Q3 miss). However, the hard fundamental gate (\u00a73.8) FAILS on two critical inputs: (1) eps_ttm is null (cannot verify > 0), and (2) operating_margin_ttm is null (cannot verify > 0). Per RULES.md \u00a73.8, when hard gates fail, the recommended action collapses to no_trade / watch / needs_more_evidence. The upstream quality_long agent correctly recommends no_trade due to gate failure and data insufficiency. The macro regime is Overheat / Moderately Restrictive (stress_score=2), which caps equity allocation at 20% and mandates strict quality/valuation caution \u2014 consistent with a defensive posture. Analyst sentiment is mixed (11 Hold dominant; 5 bullish vs 5 bearish). The 60-day decline appears macro/sector-driven rather than company-specific, but without confirmed positive TTM earnings and operating margin, the thesis cannot be validated. Risk agent confirms no hard-veto conditions are tripped (sleeve cap, lookahead, hindsight all clear). The decision is no_trade pending PIT-safe fundamental data confirmation.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If fundamental_snapshot is populated with PIT-safe eps_ttm > 0 and operating_margin_ttm > 0, the hard gate would pass and thesis could be re-evaluated.",
+      "If macro regime transitions out of Overheat, equity allocation cap would relax and valuation caution would ease.",
+      "If analyst sentiment shifts materially bullish (more Buy/Strong Buy ratings), conviction would increase.",
+      "If news catalyst emerges (positive earnings guidance, strategic announcement), narrative_price_gap would shift."
+    ],
+    "risk_flags": [
+      "Hard fundamental gate failure: eps_ttm and operating_margin_ttm are null, blocking verification of strict positive requirement.",
+      "Valuation inputs are TTM (not PIT-safe); current_snapshot_not_PIT_safe=true in valuation_snapshot.",
+      "Macro regime Overheat / Moderately Restrictive caps equity allocation at 20%; strict quality discipline required.",
+      "Analyst sentiment mixed (11 Hold, 5 bullish, 5 bearish); no strong consensus support.",
+      "No recent news catalyst (0 items post-cutoff); narrative_price_gap_assessment pending.",
+      "60-day decline (-21.3%) may reflect macro/sector headwinds, but without confirmed fundamentals, recovery thesis is unvalidated.",
+      "Ownership data (13F) unavailable; cannot assess smart-money support or crowding risk."
+    ],
+    "suggested_improvements": [
+      "Populate fundamental_snapshot with PIT-safe TTM earnings and operating margin from most recent 10-Q or 10-K filing.",
+      "Retrieve 13F ownership data to assess institutional support and insider positioning.",
+      "Obtain news/catalyst clarity for the 60-day decline (macro/sector vs. company-specific).",
+      "Monitor macro regime for transition out of Overheat; if regime shifts, re-evaluate equity allocation cap.",
+      "Track analyst sentiment for upgrade/downgrade signals.",
+      "Wire alternative-data adapters (consumer_traffic_adapter for beverage footfall, valuation_context for DCF validation)."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "fundamentals_partial",
+        "severity": "critical",
+        "detail": "fundamental_snapshot.snapshot_quarter is entirely null; no PIT-safe eps_ttm or operating_margin_ttm available for hard-gate verification."
+      },
+      {
+        "kind": "ttm_snapshot_used",
+        "severity": "warning",
+        "detail": "valuation_snapshot.valuation_inputs are TTM (not PIT-safe); current_snapshot_not_PIT_safe=true."
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "info",
+        "detail": "20 news items dropped because publishedDate > cutoff; 0 items remain for narrative assessment."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f: not_available_on_current_plan \u2014 ownership data unavailable."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet does not include upstream_agent_outputs in the top-level structure, but they are present in the packet body. The fundamental_snapshot is entirely null, preventing direct verification of hard gates (eps_ttm > 0, operating_margin_ttm > 0). The valuation_snapshot uses TTM ratios (not PIT-safe), which are descriptive but not suitable for hard-gate inputs. The narrative_price_gap_assessment is not_evaluated (pending agent LLM), limiting context on the 60-day selloff origin. These gaps are architectural (v1 generator limitations) rather than data-fetch failures.",
+    "recommended_followups": [
+      "Retrieve most recent 10-Q or 10-K filing to extract PIT-safe TTM earnings and operating margin.",
+      "Re-run quality-long assessment once hard gates can be verified.",
+      "If macro regime shifts out of Overheat, re-evaluate equity allocation cap and valuation caution.",
+      "Monitor analyst sentiment for upgrade/downgrade signals.",
+      "Assess whether 60-day decline is mean-reversion opportunity or signal of structural headwind."
+    ],
+    "candidate_type": "quality_long",
+    "decision": "no_trade",
+    "position_size_pct": 0.0,
+    "reason": "Hard fundamental gate (\u00a73.8) fails: eps_ttm and operating_margin_ttm are null, preventing verification of strict positive requirement. Valuation is fair (PE 16.0, PB 3.17) but macro regime (Overheat, equity cap 20%) mandates strict quality discipline. Analyst sentiment mixed (11 Hold, 5 bullish, 5 bearish). 60-day decline (-21.3%) likely macro/sector-driven, but thesis cannot be validated without PIT-safe earnings/margin confirmation. Risk agent confirms no hard-veto conditions tripped. Decision: no_trade pending fundamental data population.",
+    "risk_notes": [
+      "All five \u00a75.13 hard-veto conditions evaluated; none tripped.",
+      "Upstream sleeve position data not provided; veto (a) assumes 0% current equity.",
+      "Pollution_defense_layer unimplemented; fail-closed semantics preserved per relaxation rule.",
+      "Fundamental_gate_38 fails (separate from hard-veto); this is a quality-gate issue per \u00a73.8, not a hard-veto issue per \u00a75.13."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Proposed quality_long position would not breach \u00a74.7 equity cap (20% per macro_regime). Upstream sleeve position not provided; assumed 0%."
+      },
+      {
+        "name": "position_size_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Condition (b) applies to surge_short only. Candidate_type=quality_long; not applicable."
+      },
+      {
+        "name": "lookahead_data_used_5_13_c",
+        "tripped": false,
+        "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violations detected."
+      },
+      {
+        "name": "hindsight_violation_5_13_r1_r7",
+        "tripped": false,
+        "note": "envelope.hindsight_safe=true, envelope.hindsight_violations=[]. No hindsight violations detected."
+      },
+      {
+        "name": "information_integrity_veto_5_13_d",
+        "tripped": false,
+        "note": "Pollution_defense_layer status='unimplemented' (not 'confirmed'). Per \u00a75.13(d) relaxation (2026-05-06), unimplemented status does NOT trip veto."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a73.8 hard fundamental gate evaluation: eps_ttm_or_net_income_ttm_not_positive (FAIL), operating_margin_not_available (FAIL)",
+      "\u00a73.8 gate failure \u2192 recommended_action = no_trade (per quality_long agent output)",
+      "\u00a75.13(a) sleeve_cap_breach: not_tripped (assumed 0% current equity; proposed position within 20% cap)",
+      "\u00a75.13(b) position_size_cap: not_applicable (candidate_type=quality_long)",
+      "\u00a75.13(c) lookahead_data_used: not_tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+      "\u00a75.13(d) information_integrity_veto: not_tripped (pollution_defense_layer unimplemented; relaxation applies)",
+      "\u00a75.13(e) hindsight_violation: not_tripped (hindsight_safe=true, no violations)",
+      "Macro regime constraint: Overheat / Moderately Restrictive (equity_cap=20%, stress_score=2) \u2192 strict quality discipline",
+      "Valuation assessment: fair (PE 16.0, PB 3.17, EV/EBITDA 12.75) \u2014 reasonable but not compelling in restrictive regime",
+      "Network-effect classification: absent (beverage company, no platform dynamics)",
+      "Analyst sentiment: mixed (11 Hold, 5 bullish, 5 bearish) \u2014 no consensus support",
+      "Final decision: no_trade (hard gate failure + data insufficiency + macro caution)"
+    ],
+    "decision_log": [
+      "1. Candidate type identified: quality_long (BF-B, mature consumer-staples / beverage company)",
+      "2. Hard fundamental gate (\u00a73.8) evaluation: eps_ttm=null (FAIL), operating_margin_ttm=null (FAIL) \u2192 gate fails",
+      "3. Per \u00a73.8 rule: when hard gates fail, recommended_action collapses to no_trade / watch / needs_more_evidence",
+      "4. Upstream quality_long agent recommends: no_trade (due to gate failure and data insufficiency)",
+      "5. Valuation assessment: fair (PE 16.0, PB 3.17, EV/EBITDA 12.75) \u2014 reasonable multiples but not compelling",
+      "6. Macro regime: Overheat / Moderately Restrictive (stress_score=2, equity_cap=20%) \u2192 strict quality discipline required",
+      "7. Analyst sentiment: mixed (11 Hold, 5 bullish, 5 bearish) \u2014 no strong consensus support",
+      "8. Price action: 60-day decline -21.3% (likely macro/sector-driven, not company-specific)",
+      "9. Network-effect classification: absent (beverage company, no platform dynamics)",
+      "10. Risk agent veto evaluation: all five \u00a75.13 conditions evaluated; none tripped",
+      "11. Sleeve cap check: assumed 0% current equity; proposed position within 20% cap (no breach)",
+      "12. Lookahead/hindsight check: data_after_cutoff_used=false, lookahead_safe=true, hindsight_safe=true (all clear)",
+      "13. Pollution_defense_layer: unimplemented (per \u00a75.13(d) relaxation, does not trip veto)",
+      "14. Final decision: no_trade (hard gate failure + data insufficiency + macro caution + mixed sentiment)",
+      "15. Position size: 0.0% (no entry; decision is to wait for fundamental data confirmation)"
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-03-03T09:45:00-05:00",
+      "ticker": "BF-B",
+      "side": "none",
+      "size_pct_of_portfolio": 0.0
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+      "agent_prompt_version": "2026_05_03_universal_soft_veto",
+      "evidence_packet_hash": "sha256:79723a64ea5887af6a1f376b48b5bd899367a1b0ef41cac5eea7118bd3a4299f"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": null,
+    "thesis_confirmation_allowed": false,
+    "thesis_confirmation_block_reason": "Hard fundamental gate failure (\u00a73.8): eps_ttm and operating_margin_ttm are null, preventing verification of strict positive requirement. Thesis cannot be confirmed without PIT-safe earnings/margin data.",
+    "sentiment_risk_adjustment_note": null,
+    "ownership_risk_adjustment_note": "13F ownership data unavailable (adapter not_available_on_current_plan); smart-money positioning not assessed.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": "Ownership positioning data unavailable; smart-money support not assessed.",
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-03-03T09:30:00-05:00",
+    "execution_timestamp": "2025-03-03T09:45:00-05:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:2266896843eed92520642180422dd108c61d9e23a2a6639d285c74f2ab055f3f",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_NarrativeEvent",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BF-B",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "catalyst_classification_and_specificity_assessment",
+      "confidence": "low",
+      "evidence_used": [
+        "filing_confirmation.SEC_8K_confirmation",
+        "filing_confirmation.filing_date",
+        "filing_confirmation.filing_index.sec_edgar",
+        "news_event_summary.status",
+        "news_event_summary.items_count",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "corporate_calendar.events_near_decision"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 items in window)",
+        "news_event_summary.trigger_article",
+        "news_event_summary.catalyst_type",
+        "filing_confirmation.full_text.sec_8k_fulltext (stub mode, not ground truth)",
+        "fundamental_snapshot (insufficient_evidence status)",
+        "company_claim_text_from_press_release_or_8k_body"
+      ],
+      "reasoning_summary": "BF-B exhibits a 3.28% 5-day return and 1.13x relative volume vs 20d average as of 2025-02-28 EOD. The evidence packet shows SEC 8-K filing confirmation (filing_date 2025-01-14, Item 2.05 \u2014 costs associated with exit or disposal activities) but the news_event_summary block is data_unavailable with 0 items in the decision window (20 items were dropped post-cutoff). The filing_confirmation.full_text.sec_8k_fulltext is in stub mode and does not contain ground-truth filing text. Wikipedia pageviews show elevated attention (peak 276 views on 2025-02-26, elevated from baseline ~140-160 range), suggesting some public interest spike, but this is a weak alternative-data signal and does not directly corroborate a specific corporate catalyst. The corporate_calendar shows no upcoming earnings or dividend events within \u00b15 trading days of decision_timestamp. The fundamental_snapshot is marked insufficient_evidence, and the fundamental_gate_38 fails on eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available. Without access to the actual 8-K text (stub mode prevents ground-truth extraction), the specific nature of the 'costs associated with exit or disposal activities' cannot be verified. The price action (modest 5d gain, elevated volume) is consistent with a modest positive catalyst, but the absence of corroborating news, the stub-mode filing text, and the lack of fundamental data make it impossible to classify the catalyst with confidence. The narrative is VAGUE because the only concrete evidence is the 8-K Item 2.05 classification, which is a legal category, not a business-specific claim. No dollar amounts, customer names, or specific dates beyond the filing date are available.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If the 8-K Item 2.05 text (when retrieved in non-stub mode) reveals the 'exit or disposal' is immaterial or routine, the catalyst specificity drops further.",
+        "If the Wikipedia pageviews spike is unrelated to BF-B corporate news (e.g., related to the generic 'BF' article), the alternative-data signal is invalidated.",
+        "If subsequent earnings or guidance revisions contradict the positive price action, the catalyst may be momentum-driven rather than value-creating."
+      ],
+      "risk_flags": [
+        "stub_mode_filing_text: sec_8k_fulltext is deterministic stub, not ground truth",
+        "no_news_corroboration: news_event_summary.items_count=0 in decision window",
+        "fundamental_gate_failure: eps_ttm_or_net_income_ttm_not_positive",
+        "weak_alternative_data: wikipedia_pageviews is generic 'BF' article, not ticker-specific",
+        "macro_regime_restrictive: Overheat / Moderately Restrictive (stress_score=2) implies strict quality discipline",
+        "valuation_concern: PE=16.01, PB=3.17, EV/EBITDA=12.75 \u2014 mid-range multiples in restrictive regime"
+      ],
+      "suggested_improvements": [
+        "Retrieve full 8-K text (Item 2.05) from SEC EDGAR in non-stub mode to extract specific dollar amounts, asset descriptions, or restructuring details.",
+        "Cross-reference the 8-K filing date (2025-01-14) with any press releases or earnings calls in the same window to corroborate the narrative.",
+        "Obtain fundamental data (income statement, balance sheet) to assess whether the 'exit or disposal' is accretive or dilutive to earnings.",
+        "Clarify whether the Wikipedia pageviews spike is ticker-specific or generic 'BF' article noise.",
+        "Monitor next earnings call for management commentary on the Item 2.05 event and its financial impact."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext is in stub mode; opencli adapter not installed or test environment forces stub. Filing text is deterministic placeholder, not ground truth."
+        },
+        {
+          "kind": "no_news_in_window",
+          "severity": "warning",
+          "detail": "news_event_summary: 0 items in [2025-02-24, 2025-03-03]; 20 items dropped post-cutoff. No corroborating news for the 8-K catalyst."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot status=insufficient_evidence; no PIT-safe income/balance/cashflow data available."
+        },
+        {
+          "kind": "alt_data_weak_signal",
+          "severity": "info",
+          "detail": "wikipedia_pageviews shows elevated views (peak 276 on 2025-02-26) but article title is generic 'BF', not ticker-specific. Signal ambiguous."
+        },
+        {
+          "kind": "filing_text_unavailable",
+          "severity": "warning",
+          "detail": "filing_confirmation.full_text.sec_8k_fulltext: binary_present_verb_unsupported \u2014 opencli lacks sec.gov adapter. Cannot extract specific claim text."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure does not include a dedicated 'company_claim_text' field extracted from the 8-K body. The filing_confirmation block confirms the 8-K exists and its Item classification (2.05 \u2014 costs associated with exit or disposal), but the full_text sub-block is in stub mode. This creates a structural gap: the agent can confirm a filing exists but cannot extract the specific narrative claim from it. For a robust catalyst classification, the packet should include either (a) the full 8-K text as a parsed field, or (b) a pre-extracted 'company_claim' summary from the filing. The current design forces the agent to reason from the Item classification alone, which is a legal category, not a business narrative.",
+      "recommended_followups": [
+        "Retrieve sec_8k_fulltext in live mode (not stub) to extract the actual narrative claim and any quantitative disclosures.",
+        "Cross-check the 8-K filing date (2025-01-14) against the price action timeline to confirm temporal alignment.",
+        "Obtain the most recent earnings report (2024-12-05 per corporate_calendar) and compare guidance/commentary to the Item 2.05 event.",
+        "If the 'exit or disposal' involves a material asset or business unit, request investor relations clarification on financial impact.",
+        "Monitor analyst sentiment (fmp_sentiment shows 3 Strong Buy, 2 Buy, 11 Hold, 2 Sell, 3 Strong Sell as of 2025-03-01) for any post-filing revisions."
+      ],
+      "catalyst_type": "corporate_restructuring_or_asset_disposal",
+      "catalyst_specificity_score": 0.25,
+      "vague_narrative_flag": true,
+      "company_claim": "SEC 8-K Item 2.05 filed 2025-01-14: 'Costs associated with exit or disposal activities.' Specific dollar amounts, asset descriptions, and business unit details are not available in the evidence packet (filing text in stub mode). The claim is a legal classification, not a concrete business narrative.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [
+        "corporate_restructuring (Item 2.05 classification suggests cost-reduction or asset-disposal event)",
+        "potential_one_time_charge (exit/disposal costs typically non-recurring)"
+      ],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "vague"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BF-B",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "Alternative-data verification of narrative claims against hard-to-fake evidence",
+      "confidence": "medium",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "filing_confirmation.sec_edgar",
+        "filing_confirmation.sec_8k_fulltext",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "sentiment_community_ownership_evidence.sec_form4",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "valuation_snapshot.pe_ratio",
+        "valuation_snapshot.ev_to_ebitda",
+        "corporate_calendar.earnings_past",
+        "macro_regime.stress_score"
+      ],
+      "evidence_missing": [
+        "news_event_summary.items (0 rows post-cutoff)",
+        "fundamental_snapshot.snapshot_quarter (insufficient_evidence status)",
+        "sec_13f ownership data (adapter unavailable)",
+        "github_public activity (unmapped_ticker)",
+        "opencli_evidence (not_connected)",
+        "industry-specific alt-data adapters (not_connected)"
+      ],
+      "reasoning_summary": "BF-B (Brown-Forman, consumer staples / beverages) is a mature, dividend-paying company with stable fundamentals. The evidence packet contains no narrative claim to verify (news_event_summary.status=data_unavailable, 0 items post-cutoff). In the absence of a specific narrative, I assess the alternative-data footprint against what a legitimate company in this sector should produce. Wikipedia pageviews show modest, stable attention (95\u2013276 views/day in Feb\u2013Mar 2025, mean ~155), consistent with a large-cap consumer brand with no recent surge or meme activity. SEC filings are present and current (8-K filed 2025-01-14, Item 2.05 material agreement). Analyst sentiment is stable (3 Strong Buy, 2 Buy, 11 Hold, 2 Sell, 3 Strong Sell as of 2025-03-01), showing no recent shift. Form 4 insider activity is absent in the 90-day lookback (no insider purchases or sales), which is neutral for a mature company. Valuation is moderate (PE 16.0, EV/EBITDA 12.8, PB 3.2), consistent with a quality consumer staple. Price action shows +3.3% return over 5 days and 1.13x relative volume, suggesting normal trading. Macro regime is Overheat/Moderately Restrictive (stress_score=2), which caps equity allocation but does not invalidate quality holdings. The absence of corroborating alt-data (GitHub, clinical trials, patent activity) is not informative for a beverage company\u2014these are not sector-expected signals. The structural absence of a news catalyst or narrative claim means there is no bear thesis to verify. The company's fundamentals, filings, and market positioning are consistent with a stable, mature dividend payer. No hard-to-fake evidence contradicts this profile.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If a material negative news event (customer loss, regulatory action, guidance cut) emerges post-cutoff and is corroborated by SEC filing or credible news source, the stable narrative would be invalidated.",
+        "If insider selling accelerates or Form 4 shows executive departures, confidence in stability would decline.",
+        "If Wikipedia pageviews spike to >500/day sustained, or analyst downgrades cluster, narrative would shift to elevated attention."
+      ],
+      "risk_flags": [
+        "fundamental_snapshot.status=insufficient_evidence \u2014 no PIT-safe quarterly snapshot available; valuation inputs are TTM only.",
+        "news_event_summary.status=data_unavailable \u2014 no recent news items within cutoff; narrative vacuum.",
+        "data_quality_warning: alt_data_adapter_error for github_public (unmapped_ticker) and sec_13f (not_available_on_current_plan) \u2014 these are not sector-relevant for beverages, so absence is not signal.",
+        "sec_8k_fulltext is stub mode (mock_fallback) \u2014 full text not ground truth; Item 2.05 (material agreement) is noted but content unverified.",
+        "macro_regime stress_score=2 (Overheat/Moderately Restrictive) \u2014 equity allocation capped at 20%; quality discipline required."
+      ],
+      "suggested_improvements": [
+        "Wire industry-specific alt-data adapters for consumer/retail (e.g., store traffic, brand IP filings, supply-chain signals) to provide sector-expected corroboration.",
+        "Implement news-sentiment adapter (T4/T5) to detect narrative shifts in real time; current packet has zero news items post-cutoff.",
+        "Resolve sec_13f adapter (currently not_available_on_current_plan) to enable ownership-crowding and smart-money positioning analysis.",
+        "Upgrade sec_8k_fulltext from stub to live extraction to verify material-agreement details and Item 2.05 substance.",
+        "Add insider-activity trend analysis (Form 4 rolling 30/60/90-day aggregates) to detect executive confidence shifts."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "no_narrative_claim",
+          "severity": "info",
+          "detail": "news_event_summary.status=data_unavailable with 0 items post-cutoff; no specific narrative to verify. Assessment is structural (absence of catalyst) rather than claim-based."
+        },
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.status=insufficient_evidence; no PIT-safe quarterly snapshot. Valuation inputs are TTM only (not point-in-time safe)."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "info",
+          "detail": "github_public: unmapped_ticker \u2014 not sector-relevant for beverages; absence is not signal."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "info",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 ownership data unavailable; limits crowding analysis but not disqualifying."
+        },
+        {
+          "kind": "stub_data",
+          "severity": "warning",
+          "detail": "sec_8k_fulltext: stub mode (mock_fallback); full text not ground truth. Item 2.05 material agreement noted but unverified."
+        },
+        {
+          "kind": "macro_regime_constraint",
+          "severity": "info",
+          "detail": "Overheat/Moderately Restrictive regime (stress_score=2) caps equity allocation at 20%; quality discipline required."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet contains no explicit narrative claim (news_event_summary is empty post-cutoff). Agent 03's role is to verify narrative against evidence, but in this case the narrative is absent. The assessment defaults to structural verification: does the alt-data footprint match what a legitimate company in this sector should produce? For BF-B (beverages), the absence of GitHub, clinical trials, and patent activity is not informative. The presence of stable Wikipedia attention, current SEC filings, and moderate valuation is consistent with a mature dividend payer. The lack of a news catalyst or analyst downgrade is itself a signal of stability, not a gap.",
+      "recommended_followups": [
+        "Monitor for news catalyst (earnings surprise, guidance change, M&A, regulatory action) that would trigger a narrative shift.",
+        "Track Form 4 insider activity for signs of executive confidence change (purchases would support, sales would challenge).",
+        "Implement consumer-traffic or brand-IP alt-data to provide sector-specific corroboration of market position.",
+        "Resolve sec_13f adapter to assess ownership concentration and smart-money positioning.",
+        "Upgrade sec_8k_fulltext extraction to verify material-agreement details and assess strategic implications."
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.55,
+      "alternative_data_assessment": "not_applicable",
+      "narrative_price_gap_band": "not_evaluated",
+      "narrative_price_gap_assessment": "not_evaluated",
+      "narrative_price_gap_rationale": "No explicit narrative claim present in evidence packet (news_event_summary.status=data_unavailable, 0 items post-cutoff). Price action (+3.3% 5d return, 1.13x relative volume) is consistent with normal trading for a stable dividend payer. Macro regime (Overheat/Moderately Restrictive) does not suggest imminent repricing. Without a narrative claim, gap assessment is not applicable.",
+      "industry_template_used": "consumer_staples_beverages",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "Wikipedia pageviews is the only industry-agnostic alt-data adapter with rows for BF-B (30 rows, Feb 2\u2013Mar 3, 2025). Industry-specific adapters (consumer_traffic_adapter, retail_restaurants_consumer) are not_connected. Default fallback (wikipedia_pageviews) provides attention baseline but is not sector-specific for beverages.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "none",
+      "hard_to_fake_signal_summary": "SEC filings (8-K, Form 4) are hard-to-fake and present. 8-K filed 2025-01-14 (Item 2.05 material agreement) is current and official. Form 4 shows zero insider transactions in 90-day lookback, which is neutral (no signal of executive confidence or concern). Analyst ratings (FMP T2 source) are stable and show no recent downgrade cluster. Wikipedia pageviews are stable (95\u2013276 views/day, mean ~155), consistent with a large-cap brand with no meme activity or surge. These signals collectively support a narrative of stability, not a catalyst for repricing.",
+      "industry_specific_evidence_used": [
+        "SEC filings (8-K, Form 4) \u2014 standard for all public companies, especially relevant for material agreements and insider activity.",
+        "Analyst sentiment (FMP grades-historical) \u2014 T2 source, stable distribution (3 SB, 2 B, 11 H, 2 S, 3 SS as of 2025-03-01).",
+        "Dividend history (corporate_calendar) \u2014 quarterly dividends (~0.22 per share) consistent with mature dividend payer.",
+        "Valuation metrics (PE 16.0, EV/EBITDA 12.8, PB 3.2) \u2014 moderate for quality consumer staple."
+      ],
+      "industry_specific_evidence_missing": [
+        "Consumer-traffic alt-data (store visits, foot traffic, brand IP filings) \u2014 would provide sector-specific corroboration of market position.",
+        "Supply-chain signals (supplier press releases, logistics data) \u2014 relevant for beverages but not wired.",
+        "Brand-sentiment aggregation (consumer review platforms, social listening) \u2014 would detect customer satisfaction shifts.",
+        "Regulatory filings (FDA, TTB alcohol labeling) \u2014 relevant for beverages but not in alt-data manifest."
+      ],
+      "data_quality_warning": "fundamental_snapshot.status=insufficient_evidence; valuation inputs are TTM only (not point-in-time safe). sec_8k_fulltext is stub mode (mock_fallback); full text unverified. news_event_summary.status=data_unavailable (0 items post-cutoff); no narrative catalyst identified.",
+      "signals": [
+        {
+          "name": "Wikipedia pageviews (30-day trend)",
+          "available": true,
+          "value": 155.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "SEC 8-K filing (2025-01-14, Item 2.05)",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "Form 4 insider activity (90-day lookback)",
+          "available": true,
+          "value": 0.0,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Analyst sentiment (FMP grades, 2025-03-01)",
+          "available": true,
+          "value": 0.5,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Price return 5-day",
+          "available": true,
+          "value": 3.2751,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Relative volume vs 20-day",
+          "available": true,
+          "value": 1.1279,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "PE ratio (TTM)",
+          "available": true,
+          "value": 16.009767955390334,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "EV/EBITDA (TTM)",
+          "available": true,
+          "value": 12.752526401006712,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "News catalyst (post-cutoff)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "GitHub activity (unmapped)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": "OpenCLI not invoked in v1 generator; sec_8k_fulltext is stub mode (mock_fallback). Full text extraction not available.",
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": "sec_8k_fulltext stub mode; full text unverified. OpenCLI not connected for live extraction.",
+      "opencli_pit_safety_warning": "8-K filing_date (2025-01-14) is <= allowed_data_cutoff (2025-03-03); PIT-safe. Stub text is deterministic, not ground truth.",
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 2,
+        "T2": 58,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "medium",
+      "primary_source_confirmation": true,
+      "reputable_source_confirmation": true,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "No explicit narrative claim to verify; assessment is structural (absence of catalyst). Alternative-data footprint is consistent with a mature dividend payer but does not constitute a primary signal for trading.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": "sec_13f adapter unavailable (not_available_on_current_plan); ownership positioning not assessed.",
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": "Ownership data unavailable; crowding risk not assessed.",
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": "not_applicable",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-03T09:30:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "news_event_summary (0 items post-cutoff)",
+        "fundamental_snapshot (insufficient_evidence status)",
+        "sec_13f (adapter unavailable)",
+        "github_public (unmapped_ticker)"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Classifier",
+      "schema_version": "network_effect_agent_output_v1.4",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BF-B",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews (30-day trajectory)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings history)",
+        "valuation_snapshot.pe_ratio, price_to_sales, ev_to_ebitda",
+        "corporate_calendar.earnings (past 4 quarters)",
+        "filing_confirmation.sec_edgar (3 recent 8-K filings)"
+      ],
+      "evidence_missing": [
+        "Layer 1 \u2014 github_public (unmapped_ticker, no developer ecosystem data)",
+        "Layer 1 \u2014 SEC-disclosed operating metrics (DAU/MAU, take-rate, marketplace GMV, seller retention) \u2014 fundamental_snapshot status=insufficient_evidence",
+        "Layer 1 \u2014 patent activity (adapter deferred per R-NETWORK-10)",
+        "Layer 2 \u2014 news_event_summary (0 items in window, all post-cutoff)",
+        "Layer 2 \u2014 community_size metrics (reddit, wallstreetbets, meme language flags not_evaluated)",
+        "Layer 3 \u2014 fundamental_snapshot (no income/balance/cashflow rows PIT-safe; gate 38 fails on eps_ttm and operating_margin)"
+      ],
+      "reasoning_summary": "BF-B (Brown-Forman Inc., Class B) is a mature consumer-goods / spirits manufacturer. The three-layer network-effect framework yields: Layer 1 (hard-to-fake evidence) is EMPTY \u2014 no GitHub developer ecosystem (unmapped ticker), no SEC-disclosed operating metrics for network dynamics (DAU/MAU/take-rate/marketplace GMV), no patent activity wired. Layer 2 (attention) shows modest Wikipedia pageview activity (126\u2013276 views/day in Feb 2025, peak 276 on 2025-02-26) and stable analyst sentiment (mostly Hold/Sell/StrongSell distribution, no material change over 3+ years). Layer 3 (financial confirmation) is STALE/UNAVAILABLE \u2014 fundamental_snapshot has insufficient_evidence status; gate 38 fails on missing eps_ttm and operating_margin. The business model is a traditional consumer-packaged-goods / spirits company with brand moats (Jack Daniel's, Woodford Reserve, etc.), NOT a platform or network-effect business. The Wikipedia pageview spike in late Feb is consistent with normal brand attention, not network compounding. Analyst sentiment is flat and mixed (3 Strong Buy, 2 Buy, 11 Hold, 2 Sell, 3 Strong Sell as of 2025-03-01). No evidence of users-attract-users, supplier/developer ecosystem growth, or pricing-power expansion from network effects. Classification: ABSENT (no genuine network effect present). The business is a mature, branded consumer-goods company with traditional moats (brand equity, distribution, scale), not network economics.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If Layer 1 evidence (GitHub developer ecosystem or SEC-disclosed operating metrics for network dynamics) becomes available and shows strong growth, classification would shift to emerging or strong_genuine.",
+        "If Layer 3 financial data becomes PIT-safe and shows accelerating revenue/margin expansion correlated with user/supplier cohort growth, classification could upgrade to emerging.",
+        "If news_event_summary reveals a material platform/ecosystem pivot (e.g., 'BF launches digital marketplace for spirits retailers'), Layer 2 attention would be re-evaluated in context of Layer 1 evidence."
+      ],
+      "risk_flags": [
+        "Layer 1 completely absent \u2014 no developer ecosystem, no SEC-disclosed network metrics, no patent activity.",
+        "Layer 3 stale/unavailable \u2014 fundamental_snapshot insufficient_evidence; gate 38 fails.",
+        "Sector mismatch \u2014 BF-B is a consumer-goods / spirits manufacturer, not a software/platform/marketplace/communication business where network effects are structurally plausible.",
+        "Wikipedia pageview spike (late Feb 2025) is modest and consistent with normal brand attention, not network compounding signal.",
+        "Analyst sentiment flat and mixed over 3+ years; no material upgrade or downgrade correlated with network narrative."
+      ],
+      "suggested_improvements": [
+        "Confirm BF-B's business model classification in the system \u2014 if it is indeed a consumer-goods / spirits company, network-effect analysis is not applicable; the framework should skip this ticker or flag it as 'sector_mismatch'.",
+        "If BF-B has launched a digital platform or marketplace (e.g., direct-to-consumer spirits sales, retailer network), wire Layer 1 evidence: GitHub (if open-source components exist), SEC-disclosed transaction volume / seller cohort metrics, patent filings.",
+        "Populate fundamental_snapshot with PIT-safe income/balance/cashflow rows to enable Layer 3 financial confirmation.",
+        "Expand news_event_summary lookback window or lower cutoff threshold to capture any platform/ecosystem announcements.",
+        "If this is a surge-short candidate, the absence of Layer 1 evidence on a ticker with no public platform/network narrative is corroborating bear evidence \u2014 flag as 'narrative_hype' if Layer 2 attention spikes without Layer 1 support."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "github_public: unmapped_ticker \u2014 no developer ecosystem data available"
+        },
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "fundamental_snapshot: status=insufficient_evidence \u2014 no SEC-disclosed operating metrics (DAU/MAU/take-rate/marketplace GMV) available"
+        },
+        {
+          "kind": "layer_3_stale",
+          "severity": "critical",
+          "detail": "fundamental_snapshot: no PIT-safe income/balance/cashflow rows; gate 38 fails on eps_ttm and operating_margin"
+        },
+        {
+          "kind": "layer_2_sparse",
+          "severity": "warning",
+          "detail": "news_event_summary: 0 items in window (all 20 post-cutoff); polygon_news returned 0 rows"
+        },
+        {
+          "kind": "sector_mismatch",
+          "severity": "warning",
+          "detail": "BF-B is a consumer-goods / spirits manufacturer; network-effect framework is designed for software/platform/marketplace/communication sectors"
+        },
+        {
+          "kind": "analyst_sentiment_flat",
+          "severity": "info",
+          "detail": "fmp_sentiment: analyst ratings stable over 3+ years; no material upgrade/downgrade correlated with network narrative"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The three-layer framework (\u00a710.15) is sector-agnostic by design, but BF-B's business model (consumer-goods / spirits) is structurally incompatible with network-effect economics. The framework correctly yields 'absent' classification, but the system should ideally pre-filter tickers by sector and skip network-effect analysis for non-platform businesses. The Wikipedia pageview spike is a Layer 2 attention signal, but without Layer 1 evidence it is correctly classified as insufficient for 'narrative_hype' \u2014 it is simply normal brand attention.",
+      "recommended_followups": [
+        "Confirm BF-B's business model and sector classification in the system.",
+        "If BF-B has a digital platform or marketplace component, wire Layer 1 adapters (GitHub, SEC operating metrics, patents).",
+        "Populate fundamental_snapshot with PIT-safe financial data to enable Layer 3 confirmation.",
+        "For surge-short candidates: if Layer 2 attention spikes without Layer 1 support, flag as 'narrative_hype' and do not justify holding short past agentic exit point (\u00a710.14 R-COVER-02)."
+      ],
+      "network_effect_score": 5,
+      "network_effect_evidence": "absent",
+      "pricing_power_assessment": "medium",
+      "key_signals_used": [
+        "wikipedia_pageviews: 30-day trajectory (126\u2013276 views/day, peak 2025-02-26)",
+        "fmp_sentiment: analyst ratings (3 SB, 2 B, 11 H, 2 S, 3 SS as of 2025-03-01)",
+        "valuation_snapshot: PE=16.01, P/S=3.28, EV/EBITDA=12.75 (moderate valuation)",
+        "corporate_calendar: 4 recent earnings (Q4 2024 EPS beat, Q3 2024 EPS miss, Q2 2024 EPS beat, Q1 2024 EPS beat)",
+        "filing_confirmation: 3 recent 8-K filings (2025-01-14, 2024-12-19, 2024-12-05)"
+      ],
+      "key_signals_missing": [
+        "Layer 1 \u2014 github_public (unmapped_ticker)",
+        "Layer 1 \u2014 SEC-disclosed DAU/MAU/take-rate/marketplace GMV (fundamental_snapshot insufficient_evidence)",
+        "Layer 1 \u2014 patent activity (adapter deferred)",
+        "Layer 2 \u2014 news_event_summary (0 items in window)",
+        "Layer 2 \u2014 community_size metrics (reddit, wallstreetbets, meme language not_evaluated)",
+        "Layer 3 \u2014 PIT-safe income/balance/cashflow (fundamental_snapshot insufficient_evidence; gate 38 fails)"
+      ],
+      "classification": "absent",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "wikipedia_pageviews: modest 30-day trajectory (126\u2013276 views/day, peak 2025-02-26); consistent with normal brand attention, not network compounding",
+        "fmp_sentiment: analyst ratings stable over 3+ years (mostly Hold/Sell/StrongSell); no material upgrade or downgrade correlated with network narrative"
+      ],
+      "layer_3_evidence": [],
+      "type_direct_vs_two_sided": "none",
+      "staleness_flags": [
+        "fundamental_snapshot: status=insufficient_evidence \u2014 no PIT-safe rows available",
+        "news_event_summary: all 20 items post-cutoff; 0 items in window",
+        "github_public: unmapped_ticker \u2014 adapter returned 0 rows"
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "valuation_agent_output_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BF-B",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "fair",
+      "confidence": "medium",
+      "evidence_used": [
+        "valuation_snapshot.pe_ratio (16.01)",
+        "valuation_snapshot.price_to_book (3.17)",
+        "valuation_snapshot.price_to_sales (3.28)",
+        "valuation_snapshot.ev_to_ebitda (12.75)",
+        "valuation_snapshot.roe (19.93%)",
+        "valuation_snapshot.net_margin_pct_ttm (20.58%)",
+        "valuation_snapshot.gross_margin_pct_ttm (59.46%)",
+        "valuation_snapshot.debt_to_equity_ttm (0.67)",
+        "valuation_snapshot.current_ratio_ttm_pit (2.77)",
+        "price_snapshot.return_60d_pct (-21.32%)",
+        "macro_regime (Overheat / Moderately Restrictive)",
+        "fundamental_gate_38 (failed: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available)",
+        "corporate_calendar.earnings (recent beats on EPS: 0.55 vs 0.49 est; 0.56 vs 0.42 est)",
+        "analyst_sentiment (3 Strong Buy, 2 Buy, 11 Hold, 2 Sell, 3 Strong Sell as of 2025-03-01)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.eps_ttm (null \u2014 underlying inputs not available)",
+        "fundamental_snapshot.net_income_ttm (null \u2014 underlying inputs not available)",
+        "fundamental_snapshot.operating_margin_pct (null \u2014 underlying inputs not available)",
+        "valuation_snapshot.fcf_yield (null)",
+        "valuation_snapshot.ev_to_ebit (null)",
+        "valuation_snapshot.peg_ratio (negative: -0.88 \u2014 indicates negative earnings growth or data anomaly)",
+        "news_event_summary (0 items post-cutoff)",
+        "fundamental_snapshot.snapshot_quarter (status: insufficient_evidence)"
+      ],
+      "reasoning_summary": "BF-B (Berkshire Hathaway Inc. Class B) presents a FAIR valuation profile at the decision timestamp. The P/E of 16.01x is moderate for a quality holding company with strong profitability metrics (20.58% net margin, 59.46% gross margin, 19.93% ROE). The P/B of 3.17x and P/S of 3.28x are reasonable given the company's earnings power and balance-sheet strength (current ratio 2.77, debt-to-equity 0.67). EV/EBITDA of 12.75x is in the mid-range for a mature, high-quality business. The stock has declined 21.3% over 60 days, providing some margin of safety from recent highs. However, the macro regime is OVERHEAT with strict quality and valuation caution discipline (equity cap 20%, stress_score=2). The fundamental_gate_38 failure (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available) signals that underlying fundamental inputs are not available in the snapshot, which is a data gap rather than a negative earnings signal \u2014 the corporate calendar shows recent earnings beats (Dec 2024: 0.55 EPS vs 0.49 est; Jun 2024: 0.56 vs 0.42 est), confirming the company is profitable. The negative PEG ratio (-0.88) is anomalous and likely reflects data quality issues (negative growth input or calculation error). Analyst sentiment is mixed-to-neutral (3 SB + 2 B = 5 bullish vs 2 S + 3 SS = 5 bearish, with 11 Hold). In an Overheat regime, even fair multiples warrant caution; the 60-day drawdown provides modest margin of safety. The valuation is neither cheap nor expensive \u2014 it reflects a quality business trading at reasonable multiples in a restrictive macro environment.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If fundamental_snapshot is populated and reveals negative earnings or deteriorating margins, the fair assessment would shift to expensive or very_expensive.",
+        "If macro regime transitions from Overheat to Crisis, the margin-of-safety bonus would increase, potentially shifting to attractive.",
+        "If analyst sentiment deteriorates materially (more Sell/Strong Sell ratings), fair could shift to expensive.",
+        "If the 60-day drawdown reverses sharply (>+10% rally) without fundamental improvement, valuation could appear expensive on momentum."
+      ],
+      "risk_flags": [
+        "Macro regime is Overheat with strict equity discipline; broad late-cycle valuations are historically vulnerable.",
+        "Fundamental_gate_38 failure indicates missing eps_ttm and operating_margin data; cannot fully validate profitability claims.",
+        "PEG ratio is negative (-0.88), suggesting either negative earnings growth or data anomaly; this is a red flag for growth assumptions.",
+        "No news items post-cutoff; narrative_price_gap_assessment is pending; cannot assess if recent 60-day decline is justified by fundamentals.",
+        "Analyst sentiment is split (5 bullish, 5 bearish, 11 hold); no consensus support.",
+        "TTM valuation ratios are not PIT-safe; they lack fiscal anchors and may not reflect the most recent quarter.",
+        "Alternative data (GitHub, SEC 13F) unavailable; cannot assess insider activity or developer/tech community support."
+      ],
+      "suggested_improvements": [
+        "Populate fundamental_snapshot with PIT-safe eps_ttm, net_income_ttm, and operating_margin_pct from the most recent accepted filing.",
+        "Investigate the negative PEG ratio; clarify whether it reflects negative earnings growth or a data quality issue.",
+        "Obtain news_event_summary items within the decision window to assess whether the 60-day decline is driven by negative catalysts.",
+        "Retrieve insider Form 4 activity and 13F positioning to assess smart-money support or selling pressure.",
+        "Clarify the macro regime's equity allocation cap (20%) and confirm whether BF-B qualifies as a strict-quality exception (e.g., Berkshire's fortress balance sheet)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "warning",
+          "detail": "fundamental_snapshot.snapshot_quarter is entirely null; eps_ttm, net_income_ttm, operating_margin_pct unavailable for PIT-safe validation."
+        },
+        {
+          "kind": "gate_failure",
+          "severity": "warning",
+          "detail": "fundamental_gate_38 failed on eps_ttm_or_net_income_ttm_not_positive and operating_margin_not_available; underlying inputs missing."
+        },
+        {
+          "kind": "peg_ratio_anomaly",
+          "severity": "warning",
+          "detail": "peg_ratio is negative (-0.88); indicates either negative earnings growth or data calculation error; not usable for valuation."
+        },
+        {
+          "kind": "ttm_snapshot_not_pit_safe",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios without fiscal anchors; not point-in-time safe for strict PIT compliance."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "news_event_summary has 0 items post-cutoff; cannot assess recent catalysts driving 60-day decline."
+        },
+        {
+          "kind": "alt_data_unavailable",
+          "severity": "info",
+          "detail": "GitHub, SEC 13F, insider Form 4 data unavailable; cannot assess insider/smart-money positioning."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The fundamental_gate_38 failure is a data gap (case b: field genuinely absent) rather than a real bearish signal (case a: underlying input present but nonpositive). The corporate calendar shows recent earnings beats, confirming profitability. However, the absence of eps_ttm and operating_margin_pct in fundamental_snapshot prevents PIT-safe validation. The negative PEG ratio is anomalous and should be investigated. The TTM valuation ratios are display-only and not PIT-safe, limiting their use in strict point-in-time analysis. The macro regime's strict equity discipline (20% cap) may not apply uniformly to all quality holdings; Berkshire's fortress balance sheet and dividend history may warrant a sector-specific exception.",
+      "recommended_followups": [
+        "Retrieve the most recent 10-Q or 10-K filing for BF-B (post-2024-12-05 earnings) to populate fundamental_snapshot with PIT-safe eps_ttm and operating_margin_pct.",
+        "Clarify the PEG ratio calculation; if negative, determine whether it reflects negative growth or a data error.",
+        "Obtain news and filing summaries from 2025-02-28 to 2025-03-03 to assess catalysts for the 60-day decline.",
+        "Retrieve insider Form 4 transactions and 13F positioning to assess smart-money activity.",
+        "Confirm whether the macro regime's strict equity discipline applies to Berkshire or if a quality/fortress-balance-sheet exception is warranted."
+      ],
+      "valuation_score": 58,
+      "valuation_assessment": "fair",
+      "margin_of_safety_assessment": "medium",
+      "valuation_inputs_used": {
+        "pe_ratio": 16.009767955390334,
+        "price_to_book": 3.1650864135227827,
+        "price_to_sales": 3.2784322972972975,
+        "ev_to_ebitda": 12.752526401006712,
+        "roe": 0.19929616595665864,
+        "net_margin_pct_ttm": 20.58,
+        "gross_margin_pct_ttm": 59.46,
+        "debt_to_equity_ttm": 0.6724644781969623,
+        "current_ratio_ttm_pit": 2.7673202614379084,
+        "return_60d_pct": -21.3165,
+        "macro_regime": "overheat",
+        "analyst_sentiment_bullish_count": 5,
+        "analyst_sentiment_bearish_count": 5,
+        "analyst_sentiment_hold_count": 11,
+        "recent_earnings_beat_flag": true
+      },
+      "valuation_inputs_missing": [
+        "eps_ttm",
+        "net_income_ttm",
+        "operating_margin_pct",
+        "fcf_yield",
+        "ev_to_ebit",
+        "peg_ratio (negative, unusable)",
+        "fundamental_snapshot.snapshot_quarter (all fields null)",
+        "news_event_summary.items (0 post-cutoff)",
+        "insider_form4_activity_30d",
+        "institutional_ownership_pct"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Agent",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BF-B",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "Quality-long thesis evaluation for BF-B following 60-day selloff (-21.3%)",
+      "confidence": "low",
+      "evidence_used": [
+        "valuation_snapshot.pe_ratio (16.01)",
+        "valuation_snapshot.price_to_book (3.17)",
+        "valuation_snapshot.ev_to_ebitda (12.75)",
+        "valuation_snapshot.gross_margin_pct_ttm (59.46%)",
+        "valuation_snapshot.net_margin_pct_ttm (20.58%)",
+        "valuation_snapshot.roe (0.199)",
+        "valuation_snapshot.debt_to_equity_ttm (0.67)",
+        "valuation_snapshot.current_ratio_ttm_pit (2.77)",
+        "price_snapshot.return_60d_pct (-21.32%)",
+        "price_snapshot.return_20d_pct (-0.27%)",
+        "corporate_calendar.earnings (4 recent prints: 0.55, 0.41, 0.56, 0.60 EPS)",
+        "corporate_calendar.dividends (consistent ~0.22 quarterly)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (analyst ratings: 3 SB, 2 B, 11 H, 2 S, 3 SS as of 2025-03-01)",
+        "macro_regime (Overheat / Moderately Restrictive, stress_score=2)",
+        "fundamental_gate_38 (failed: eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.eps_ttm (null \u2014 critical gate input)",
+        "fundamental_snapshot.operating_margin_ttm (null \u2014 critical gate input)",
+        "fundamental_snapshot.operating_cash_flow_ttm (null)",
+        "fundamental_snapshot.free_cash_flow_ttm (null)",
+        "news_event_summary.items (0 items post-cutoff; no recent catalyst clarity)",
+        "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable; 13F not wired)",
+        "sentiment_community_ownership_evidence.community_size (not_evaluated)",
+        "alternative_data_features.valuation_context (not_evaluated; adapter not connected)",
+        "narrative_price_gap_assessment (not_evaluated; pending agent LLM)",
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts not present in packet)"
+      ],
+      "reasoning_summary": "BF-B has experienced a 21.3% decline over 60 days, triggering quality-long thesis review. Valuation metrics (PE 16.0, PB 3.17, EV/EBITDA 12.75) appear moderately attractive relative to historical norms for a consumer staples / beverage company. Profitability is evident: 59.5% gross margin, 20.6% net margin, 19.9% ROE, and 9.7% ROA indicate a healthy franchise. Debt-to-equity of 0.67 and current ratio of 2.77 signal sound financial health. Recent earnings (Q4 2024: 0.55 EPS beat 0.49 est.; Q3 2024: 0.41 EPS miss 0.46 est.) show mixed execution. Analyst sentiment is mixed-to-neutral (3 SB + 2 B vs. 2 S + 3 SS; 11 Hold dominant). However, the hard fundamental gate (\u00a73.8 FAIL-CLOSED rule) FAILS on two counts: (1) eps_ttm is not positive (null in fundamental_snapshot), and (2) operating_margin_ttm is not available (null). Per RULES.md \u00a73.8, when ANY hard gate fails, recommended_action MUST collapse to 'watch', 'no_trade', or 'needs_more_evidence'. The absence of TTM earnings and operating margin data is not a defensive penalty but a genuine data gap that prevents verification of the first gate (eps_ttm > 0 strict positive). Macro regime is Overheat / Moderately Restrictive (stress_score=2), which caps equity allocation at 20% and mandates strict quality/valuation caution \u2014 consistent with a hold posture. The selloff appears mixed: macro headwinds (inverted yield curve, elevated policy rate) + sector rotation (consumer discretionary pressure) + company-specific (Q3 revenue miss) all plausible. Valuation is fair-to-attractive on multiples, but without confirmed positive TTM earnings and operating margin, the thesis cannot be validated as 'intact' per the gate logic.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "Hard fundamental gate failure: eps_ttm is null (cannot confirm > 0)",
+        "Hard fundamental gate failure: operating_margin_ttm is null (cannot confirm > 0)",
+        "Macro regime Overheat / Moderately Restrictive caps equity allocation at 20% and mandates strict quality/valuation caution",
+        "Fundamental snapshot status='insufficient_evidence' \u2014 no PIT-safe quarterly filing data available",
+        "Analyst sentiment mixed (11 Hold, 3 SB, 2 B, 2 S, 3 SS) \u2014 no strong consensus support",
+        "Q3 2024 revenue miss (951M actual vs. 1,076M est.) signals execution risk",
+        "No recent news catalyst (0 items post-cutoff) \u2014 unclear near-term driver for recovery"
+      ],
+      "risk_flags": [
+        "Critical data gap: eps_ttm and operating_margin_ttm unavailable, blocking hard gate verification",
+        "Valuation inputs are TTM (not PIT-safe); current_snapshot_not_PIT_safe=true in valuation_snapshot",
+        "Macro regime stress_score=2 (inverted yield curve, elevated policy rate) argues for defensive positioning",
+        "Analyst sentiment skews neutral-to-negative (11 Hold dominant; 5 Sell/StrongSell vs. 5 Buy/StrongBuy)",
+        "Recent earnings volatility: Q3 miss, Q4 beat \u2014 execution uncertainty",
+        "60-day decline (-21.3%) may reflect sector rotation or macro headwinds, not company-specific recovery opportunity",
+        "No ownership data (13F unavailable) \u2014 cannot assess smart-money support",
+        "Alternative data adapters not wired (valuation_context, retail_meme_attention not_evaluated)"
+      ],
+      "suggested_improvements": [
+        "Obtain PIT-safe TTM earnings and operating margin from most recent 10-Q or 10-K filing (fundamental_snapshot currently null)",
+        "Retrieve 13F ownership data to assess institutional support and insider positioning",
+        "Conduct deeper narrative analysis on Q3 revenue miss (951M vs. 1,076M est.) to determine if structural or cyclical",
+        "Monitor macro regime for shift out of Overheat / Moderately Restrictive (currently caps equity at 20%)",
+        "Assess whether 60-day decline is macro/sector-driven (likely) or company-specific (less likely given margins)",
+        "Obtain recent news/catalyst clarity (0 items post-cutoff limits narrative_price_gap assessment)",
+        "Wire alternative-data adapters (consumer_traffic_adapter for beverage/retail footfall, valuation_context for DCF validation)"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter is entirely null; no PIT-safe eps_ttm or operating_margin_ttm available"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM (not PIT-safe); current_snapshot_not_PIT_safe=true"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; 0 items remain for narrative assessment"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 ownership data unavailable"
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "info",
+          "detail": "alternative_data_features.valuation_context not_evaluated; adapter not connected"
+        },
+        {
+          "kind": "sentiment_ownership_placeholder",
+          "severity": "info",
+          "detail": "sentiment_community_ownership_evidence.ownership_positioning data_unavailable"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts), which would normally inform the quality-long decision. The fundamental_snapshot is entirely null, preventing direct verification of the hard gates (eps_ttm > 0, operating_margin_ttm > 0). The valuation_snapshot uses TTM ratios (not PIT-safe), which are descriptive but not suitable for hard-gate inputs. The narrative_price_gap_assessment is not_evaluated (pending agent LLM), limiting context on the 60-day selloff origin. These gaps are architectural (v1 generator limitations) rather than data-fetch failures.",
+      "recommended_followups": [
+        "Retrieve most recent 10-Q or 10-K filing to extract PIT-safe TTM earnings and operating margin",
+        "Re-run quality-long assessment once hard gates can be verified",
+        "If macro regime shifts out of Overheat, re-evaluate equity allocation cap and valuation caution",
+        "Monitor analyst sentiment for upgrade/downgrade signals (currently mixed)",
+        "Assess whether 60-day decline is mean-reversion opportunity or signal of structural headwind"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "argues_against_long",
+      "network_effect_evidence": "absent",
+      "valuation_assessment": "fair",
+      "selloff_origin_view": "mixed",
+      "thesis_status": "invalidated",
+      "evidence_sufficiency": "insufficient",
+      "recommended_action": "no_trade",
+      "initial_position_pct": 0.0,
+      "max_position_pct": 5.0,
+      "missing_data_warnings": [
+        "eps_ttm: null (critical for hard gate verification)",
+        "operating_margin_ttm: null (critical for hard gate verification)",
+        "operating_cash_flow_ttm: null (financial health confirmation)",
+        "free_cash_flow_ttm: null (cash generation assessment)",
+        "fundamental_snapshot.snapshot_quarter: entirely null (no PIT-safe quarterly data)",
+        "ownership_positioning: data_unavailable (13F not wired)",
+        "news_event_summary.items: 0 post-cutoff (no recent catalyst clarity)",
+        "narrative_price_gap_assessment: not_evaluated (pending agent LLM)",
+        "upstream_agent_outputs: absent (Narrative, Alt-Data Verification, Fund/Net/Val verdicts not in packet)"
+      ],
+      "audit_rationale": "BF-B fails hard fundamental gate \u00a73.8: eps_ttm and operating_margin_ttm are null, preventing verification of 'strict positive' requirement. Valuation (PE 16.0, PB 3.17) appears fair, but macro regime (Overheat, stress_score=2) mandates strict caution. Analyst sentiment mixed (11 Hold, 5 Sell/SS, 5 Buy/SB). 60-day decline (-21.3%) likely macro/sector-driven, not company-specific recovery. Thesis status: invalidated due to data insufficiency and gate failure. Recommended action: no_trade pending PIT-safe earnings/margin confirmation."
+    },
+    "risk": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BF-B",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.pollution_defense_layer",
+        "candidate_type",
+        "macro_regime.equity_allocation_cap",
+        "fundamental_gate_38.passes"
+      ],
+      "evidence_missing": [
+        "upstream_sleeve_position_data (not provided in packet; assumed 0% for evaluation)"
+      ],
+      "reasoning_summary": "Mechanical evaluation of \u00a75.13 hard-veto conditions (a)\u2013(e) for candidate_type=quality_long. Condition (a) sleeve-cap breach: not applicable without upstream sleeve position data; assumed 0%. Condition (b) short-entry cap: not applicable (candidate_type=quality_long, not surge_short). Condition (c) critical data-quality flags: none present in data_quality_flags array. Condition (d) anti-pollution integrity veto: RELAXED per \u00a75.17 (2026-05-06). Applies to quality_long ONLY when pollution_defense_layer affirmatively confirms pollution. Current packet: information_integrity_assessment.pollution_defense_layer is unimplemented (reason='pollution-defense layer not implemented in v1; fail-closed per schema doc v1.1 decision #8'). Status is 'unimplemented', not 'confirmed'. Per \u00a75.13(d) relaxation, unimplemented status does NOT trip the veto. Condition (e) lookahead veto: envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violations. All conditions evaluated; none tripped.",
+      "uncertainty": "low",
+      "invalidation_conditions": [
+        "If upstream sleeve position data becomes available and proposed quality_long position would push equity sleeve above \u00a74.7 regime cap (20% per macro_regime.equity_allocation_cap), condition (a) would trip.",
+        "If pollution_defense_layer status changes from 'unimplemented' to 'confirmed' (affirmatively confirming pollution) AND use_as_primary_signal_allowed=false AND no T1/T2 corroboration, condition (d) would trip.",
+        "If data_after_cutoff_used is later found to be true or lookahead_safe is false, condition (e) would trip."
+      ],
+      "risk_flags": [
+        "Upstream sleeve position not provided; veto (a) evaluation assumes 0% current equity allocation. If actual position is non-zero, re-evaluate against \u00a74.7 cap.",
+        "Pollution_defense_layer is unimplemented; fail-closed semantics preserved per \u00a75.13(d) relaxation (2026-05-06). If layer is wired in future, re-evaluate.",
+        "Fundamental_gate_38 fails (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available); this is NOT a hard-veto condition per \u00a75.13 but is a separate quality-gate failure per \u00a73.8."
+      ],
+      "suggested_improvements": [
+        "Provide upstream_sleeve_position_data (current equity %, proposed position %) to enable full \u00a74.7 cap evaluation.",
+        "Implement pollution_defense_layer to enable affirmative pollution confirmation (currently unimplemented, fail-closed).",
+        "Populate fundamental_snapshot with PIT-safe eps_ttm and operating_margin_ttm to resolve gate 38 failure (separate from hard-veto, but relevant to candidate viability)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "upstream_data_missing",
+          "severity": "info",
+          "detail": "upstream_sleeve_position_data not provided in packet; veto (a) evaluation assumes 0% current equity allocation"
+        },
+        {
+          "kind": "pollution_defense_layer_unimplemented",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_defense_layer status='unimplemented'; per \u00a75.13(d) relaxation, does not trip veto"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "\u00a75.13(d) relaxation (2026-05-06) correctly distinguishes between unimplemented (does not trip) and affirmatively-confirmed pollution (trips if use_as_primary_signal_allowed=false and no T1/T2 corroboration). Current packet has unimplemented status, so veto does not trip. This is mechanically correct per the relaxation rule.",
+      "recommended_followups": [
+        "Obtain upstream_sleeve_position_data to complete \u00a74.7 cap evaluation.",
+        "Monitor pollution_defense_layer implementation status; when wired, re-evaluate condition (d).",
+        "Resolve fundamental_gate_38 failure by populating PIT-safe eps_ttm and operating_margin_ttm."
+      ],
+      "candidate_type": "quality_long",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Proposed quality_long position would not breach \u00a74.7 equity cap (20% per macro_regime). Upstream sleeve position not provided; assumed 0%. If actual position is non-zero, re-evaluate."
+        },
+        {
+          "name": "short_entry_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) applies to surge_short only. Candidate_type=quality_long; not applicable."
+        },
+        {
+          "name": "critical_data_quality_flag_5_13_c",
+          "tripped": false,
+          "note": "No data_quality_flags with severity='critical' present in packet. Flags present are 'warning' and 'info' only."
+        },
+        {
+          "name": "anti_pollution_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Pollution_defense_layer status='unimplemented' (not 'confirmed'). Per \u00a75.13(d) relaxation (2026-05-06), unimplemented status does NOT trip veto. Condition requires affirmatively-confirmed pollution to trip."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true, envelope.lookahead_violations=[]. No lookahead violations detected."
+        }
+      ],
+      "advisory_notes": "No hard-veto conditions tripped. Candidate passes \u00a75.13 mechanical veto check. Note: fundamental_gate_38 fails (separate from hard-veto), which is a quality-gate issue per \u00a73.8, not a hard-veto issue per \u00a75.13. Risk agent does not recommend sizing or advisory tilt; that is PM's role.",
+      "risk_notes": [
+        "All five \u00a75.13 hard-veto conditions evaluated; none tripped.",
+        "Upstream sleeve position data not provided; veto (a) assumes 0% current equity. Confirm before execution.",
+        "Pollution_defense_layer unimplemented; fail-closed semantics preserved per relaxation rule."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13(a) sleeve_cap_breach: not_tripped (assumed 0% current equity; proposed position within 20% cap)",
+        "\u00a75.13(b) short_entry_cap: not_applicable (candidate_type=quality_long)",
+        "\u00a75.13(c) critical_data_quality: not_tripped (no critical flags present)",
+        "\u00a75.13(d) anti_pollution_integrity: not_tripped (pollution_defense_layer unimplemented; relaxation applies)",
+        "\u00a75.13(e) lookahead_veto: not_tripped (data_after_cutoff_used=false, lookahead_safe=true)"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-03T09:30:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "pm_agent_output_v1",
+      "prompt_version": "2026_05_03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "BF-B",
+      "decision_timestamp": "2025-03-03T09:30:00-05:00",
+      "data_available_as_of": "2025-03-03T09:30:00-05:00",
+      "decision_or_assessment": "Quality-long candidate evaluation post-60d selloff; hard fundamental gate failure blocks entry",
+      "confidence": "medium",
+      "evidence_used": [
+        "fundamental_gate_38.passes (false)",
+        "fundamental_gate_38.failed_gates (eps_ttm_or_net_income_ttm_not_positive, operating_margin_not_available)",
+        "valuation_snapshot.pe_ratio (16.01)",
+        "valuation_snapshot.price_to_book (3.17)",
+        "valuation_snapshot.ev_to_ebitda (12.75)",
+        "valuation_snapshot.net_margin_pct_ttm (20.58%)",
+        "valuation_snapshot.gross_margin_pct_ttm (59.46%)",
+        "valuation_snapshot.roe (0.199)",
+        "valuation_snapshot.debt_to_equity_ttm (0.67)",
+        "price_snapshot.return_60d_pct (-21.32%)",
+        "macro_regime (Overheat / Moderately Restrictive, stress_score=2, equity_cap=20%)",
+        "corporate_calendar.earnings (recent beats: 0.55 vs 0.49 est; 0.56 vs 0.42 est)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (3 SB, 2 B, 11 H, 2 S, 3 SS as of 2025-03-01)",
+        "upstream_agent_outputs.valuation.valuation_assessment (fair)",
+        "upstream_agent_outputs.quality_long.recommended_action (no_trade)",
+        "upstream_agent_outputs.risk.veto_conditions_evaluated (all not_tripped)",
+        "upstream_agent_outputs.network_effect.classification (absent)"
+      ],
+      "evidence_missing": [
+        "fundamental_snapshot.eps_ttm (null \u2014 critical gate input)",
+        "fundamental_snapshot.operating_margin_ttm (null \u2014 critical gate input)",
+        "fundamental_snapshot.operating_cash_flow_ttm (null)",
+        "fundamental_snapshot.free_cash_flow_ttm (null)",
+        "news_event_summary.items (0 items post-cutoff)",
+        "sentiment_community_ownership_evidence.ownership_positioning (data_unavailable)",
+        "narrative_price_gap_assessment (not_evaluated)"
+      ],
+      "reasoning_summary": "BF-B (Brown-Forman Inc., Class B) is a mature consumer-staples / beverage company that has declined 21.3% over 60 days. Valuation metrics (PE 16.0, PB 3.17, EV/EBITDA 12.75) appear fair-to-attractive, and profitability indicators (20.6% net margin, 19.9% ROE, 0.67 debt-to-equity) are solid. Recent earnings show mixed execution (Q4 beat, Q3 miss). However, the hard fundamental gate (\u00a73.8) FAILS on two critical inputs: (1) eps_ttm is null (cannot verify > 0), and (2) operating_margin_ttm is null (cannot verify > 0). Per RULES.md \u00a73.8, when hard gates fail, the recommended action collapses to no_trade / watch / needs_more_evidence. The upstream quality_long agent correctly recommends no_trade due to gate failure and data insufficiency. The macro regime is Overheat / Moderately Restrictive (stress_score=2), which caps equity allocation at 20% and mandates strict quality/valuation caution \u2014 consistent with a defensive posture. Analyst sentiment is mixed (11 Hold dominant; 5 bullish vs 5 bearish). The 60-day decline appears macro/sector-driven rather than company-specific, but without confirmed positive TTM earnings and operating margin, the thesis cannot be validated. Risk agent confirms no hard-veto conditions are tripped (sleeve cap, lookahead, hindsight all clear). The decision is no_trade pending PIT-safe fundamental data confirmation.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If fundamental_snapshot is populated with PIT-safe eps_ttm > 0 and operating_margin_ttm > 0, the hard gate would pass and thesis could be re-evaluated.",
+        "If macro regime transitions out of Overheat, equity allocation cap would relax and valuation caution would ease.",
+        "If analyst sentiment shifts materially bullish (more Buy/Strong Buy ratings), conviction would increase.",
+        "If news catalyst emerges (positive earnings guidance, strategic announcement), narrative_price_gap would shift."
+      ],
+      "risk_flags": [
+        "Hard fundamental gate failure: eps_ttm and operating_margin_ttm are null, blocking verification of strict positive requirement.",
+        "Valuation inputs are TTM (not PIT-safe); current_snapshot_not_PIT_safe=true in valuation_snapshot.",
+        "Macro regime Overheat / Moderately Restrictive caps equity allocation at 20%; strict quality discipline required.",
+        "Analyst sentiment mixed (11 Hold, 5 bullish, 5 bearish); no strong consensus support.",
+        "No recent news catalyst (0 items post-cutoff); narrative_price_gap_assessment pending.",
+        "60-day decline (-21.3%) may reflect macro/sector headwinds, but without confirmed fundamentals, recovery thesis is unvalidated.",
+        "Ownership data (13F) unavailable; cannot assess smart-money support or crowding risk."
+      ],
+      "suggested_improvements": [
+        "Populate fundamental_snapshot with PIT-safe TTM earnings and operating margin from most recent 10-Q or 10-K filing.",
+        "Retrieve 13F ownership data to assess institutional support and insider positioning.",
+        "Obtain news/catalyst clarity for the 60-day decline (macro/sector vs. company-specific).",
+        "Monitor macro regime for transition out of Overheat; if regime shifts, re-evaluate equity allocation cap.",
+        "Track analyst sentiment for upgrade/downgrade signals.",
+        "Wire alternative-data adapters (consumer_traffic_adapter for beverage footfall, valuation_context for DCF validation)."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "fundamentals_partial",
+          "severity": "critical",
+          "detail": "fundamental_snapshot.snapshot_quarter is entirely null; no PIT-safe eps_ttm or operating_margin_ttm available for hard-gate verification."
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM (not PIT-safe); current_snapshot_not_PIT_safe=true."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; 0 items remain for narrative assessment."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 ownership data unavailable."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet does not include upstream_agent_outputs in the top-level structure, but they are present in the packet body. The fundamental_snapshot is entirely null, preventing direct verification of hard gates (eps_ttm > 0, operating_margin_ttm > 0). The valuation_snapshot uses TTM ratios (not PIT-safe), which are descriptive but not suitable for hard-gate inputs. The narrative_price_gap_assessment is not_evaluated (pending agent LLM), limiting context on the 60-day selloff origin. These gaps are architectural (v1 generator limitations) rather than data-fetch failures.",
+      "recommended_followups": [
+        "Retrieve most recent 10-Q or 10-K filing to extract PIT-safe TTM earnings and operating margin.",
+        "Re-run quality-long assessment once hard gates can be verified.",
+        "If macro regime shifts out of Overheat, re-evaluate equity allocation cap and valuation caution.",
+        "Monitor analyst sentiment for upgrade/downgrade signals.",
+        "Assess whether 60-day decline is mean-reversion opportunity or signal of structural headwind."
+      ],
+      "candidate_type": "quality_long",
+      "decision": "no_trade",
+      "position_size_pct": 0.0,
+      "reason": "Hard fundamental gate (\u00a73.8) fails: eps_ttm and operating_margin_ttm are null, preventing verification of strict positive requirement. Valuation is fair (PE 16.0, PB 3.17) but macro regime (Overheat, equity cap 20%) mandates strict quality discipline. Analyst sentiment mixed (11 Hold, 5 bullish, 5 bearish). 60-day decline (-21.3%) likely macro/sector-driven, but thesis cannot be validated without PIT-safe earnings/margin confirmation. Risk agent confirms no hard-veto conditions tripped. Decision: no_trade pending fundamental data population.",
+      "risk_notes": [
+        "All five \u00a75.13 hard-veto conditions evaluated; none tripped.",
+        "Upstream sleeve position data not provided; veto (a) assumes 0% current equity.",
+        "Pollution_defense_layer unimplemented; fail-closed semantics preserved per relaxation rule.",
+        "Fundamental_gate_38 fails (separate from hard-veto); this is a quality-gate issue per \u00a73.8, not a hard-veto issue per \u00a75.13."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Proposed quality_long position would not breach \u00a74.7 equity cap (20% per macro_regime). Upstream sleeve position not provided; assumed 0%."
+        },
+        {
+          "name": "position_size_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Condition (b) applies to surge_short only. Candidate_type=quality_long; not applicable."
+        },
+        {
+          "name": "lookahead_data_used_5_13_c",
+          "tripped": false,
+          "note": "envelope.data_after_cutoff_used=false, envelope.lookahead_safe=true. No lookahead violations detected."
+        },
+        {
+          "name": "hindsight_violation_5_13_r1_r7",
+          "tripped": false,
+          "note": "envelope.hindsight_safe=true, envelope.hindsight_violations=[]. No hindsight violations detected."
+        },
+        {
+          "name": "information_integrity_veto_5_13_d",
+          "tripped": false,
+          "note": "Pollution_defense_layer status='unimplemented' (not 'confirmed'). Per \u00a75.13(d) relaxation (2026-05-06), unimplemented status does NOT trip veto."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a73.8 hard fundamental gate evaluation: eps_ttm_or_net_income_ttm_not_positive (FAIL), operating_margin_not_available (FAIL)",
+        "\u00a73.8 gate failure \u2192 recommended_action = no_trade (per quality_long agent output)",
+        "\u00a75.13(a) sleeve_cap_breach: not_tripped (assumed 0% current equity; proposed position within 20% cap)",
+        "\u00a75.13(b) position_size_cap: not_applicable (candidate_type=quality_long)",
+        "\u00a75.13(c) lookahead_data_used: not_tripped (data_after_cutoff_used=false, lookahead_safe=true)",
+        "\u00a75.13(d) information_integrity_veto: not_tripped (pollution_defense_layer unimplemented; relaxation applies)",
+        "\u00a75.13(e) hindsight_violation: not_tripped (hindsight_safe=true, no violations)",
+        "Macro regime constraint: Overheat / Moderately Restrictive (equity_cap=20%, stress_score=2) \u2192 strict quality discipline",
+        "Valuation assessment: fair (PE 16.0, PB 3.17, EV/EBITDA 12.75) \u2014 reasonable but not compelling in restrictive regime",
+        "Network-effect classification: absent (beverage company, no platform dynamics)",
+        "Analyst sentiment: mixed (11 Hold, 5 bullish, 5 bearish) \u2014 no consensus support",
+        "Final decision: no_trade (hard gate failure + data insufficiency + macro caution)"
+      ],
+      "decision_log": [
+        "1. Candidate type identified: quality_long (BF-B, mature consumer-staples / beverage company)",
+        "2. Hard fundamental gate (\u00a73.8) evaluation: eps_ttm=null (FAIL), operating_margin_ttm=null (FAIL) \u2192 gate fails",
+        "3. Per \u00a73.8 rule: when hard gates fail, recommended_action collapses to no_trade / watch / needs_more_evidence",
+        "4. Upstream quality_long agent recommends: no_trade (due to gate failure and data insufficiency)",
+        "5. Valuation assessment: fair (PE 16.0, PB 3.17, EV/EBITDA 12.75) \u2014 reasonable multiples but not compelling",
+        "6. Macro regime: Overheat / Moderately Restrictive (stress_score=2, equity_cap=20%) \u2192 strict quality discipline required",
+        "7. Analyst sentiment: mixed (11 Hold, 5 bullish, 5 bearish) \u2014 no strong consensus support",
+        "8. Price action: 60-day decline -21.3% (likely macro/sector-driven, not company-specific)",
+        "9. Network-effect classification: absent (beverage company, no platform dynamics)",
+        "10. Risk agent veto evaluation: all five \u00a75.13 conditions evaluated; none tripped",
+        "11. Sleeve cap check: assumed 0% current equity; proposed position within 20% cap (no breach)",
+        "12. Lookahead/hindsight check: data_after_cutoff_used=false, lookahead_safe=true, hindsight_safe=true (all clear)",
+        "13. Pollution_defense_layer: unimplemented (per \u00a75.13(d) relaxation, does not trip veto)",
+        "14. Final decision: no_trade (hard gate failure + data insufficiency + macro caution + mixed sentiment)",
+        "15. Position size: 0.0% (no entry; decision is to wait for fundamental data confirmation)"
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-03-03T09:45:00-05:00",
+        "ticker": "BF-B",
+        "side": "none",
+        "size_pct_of_portfolio": 0.0
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md (v0.9.0_pass8_hardrule)",
+        "agent_prompt_version": "2026_05_03_universal_soft_veto",
+        "evidence_packet_hash": "sha256:79723a64ea5887af6a1f376b48b5bd899367a1b0ef41cac5eea7118bd3a4299f"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": null,
+      "thesis_confirmation_allowed": false,
+      "thesis_confirmation_block_reason": "Hard fundamental gate failure (\u00a73.8): eps_ttm and operating_margin_ttm are null, preventing verification of strict positive requirement. Thesis cannot be confirmed without PIT-safe earnings/margin data.",
+      "sentiment_risk_adjustment_note": null,
+      "ownership_risk_adjustment_note": "13F ownership data unavailable (adapter not_available_on_current_plan); smart-money positioning not assessed.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": "Ownership positioning data unavailable; smart-money support not assessed.",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-03-03T09:30:00-05:00",
+      "execution_timestamp": "2025-03-03T09:45:00-05:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:2266896843eed92520642180422dd108c61d9e23a2a6639d285c74f2ab055f3f",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}

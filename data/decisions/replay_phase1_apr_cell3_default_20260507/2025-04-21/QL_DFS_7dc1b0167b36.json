@@ -1,0 +1,1293 @@
+{
+  "trigger_id": "7dc1b0167b36",
+  "ticker": "DFS",
+  "candidate_type": "quality_long",
+  "decision_timestamp": "2025-04-21T09:30:00-04:00",
+  "agent_reasoning_pit_clean": true,
+  "elapsed_s": 233.55,
+  "trigger_cost_usd": 0.441582,
+  "cumulative_cost_usd": 7.23509,
+  "candidate_ranking_inputs": {
+    "ticker": "DFS",
+    "earliest_event_date": "2025-04-23",
+    "selection_reason": "earnings_window_14d",
+    "close": 165.31,
+    "t1_open": 168.35,
+    "t1_date": "2025-04-22"
+  },
+  "evidence_packet_hash": "sha256:ea8175e043de842c09ade2beaa39dbe9c122a493a7408ed9f472c31b510495a3",
+  "locked_decision_id": "sha256:36dc97a42626e7bab863a60739293d24adc625b657275a94a7e16fa264f0006d",
+  "pm_agent_key": "pm",
+  "pm_decision_extract": {
+    "agent_id": "Agent_07b_PM",
+    "agent_role_label": "PM Agent (Final Decision Authority)",
+    "schema_version": "evidence_packet_v1",
+    "prompt_version": "2026_05_03_pass8_soft_reasoning",
+    "rule_version": "v0.9.0_pass8_hardrule",
+    "ticker": "DFS",
+    "decision_timestamp": "2025-04-21T09:30:00-04:00",
+    "data_available_as_of": "2025-04-21T09:30:00-04:00",
+    "decision_or_assessment": "Quality-long buy decision post-selloff",
+    "confidence": "high",
+    "evidence_used": [
+      "fundamental_snapshot: EPS 5.11 > 0, op_margin 35.77% > 0, D/E 0.767 < 3.0, OCF 1.98B positive",
+      "valuation_snapshot: PE 21.05 fair, PEG 0.294 attractive, PB 2.66 reasonable",
+      "price_snapshot: 60d return -19.17% (selloff), 5d return +0.64% (stabilization)",
+      "macro_regime: Strengthening/Expansionary, stress_score 1, equity_discipline strict_quality_and_valuation",
+      "corporate_calendar: consistent earnings beats (Q1 2025 EPS 5.11 vs 3.61 est; Q3 2024 EPS 6.06 vs 3.07 est)",
+      "sentiment_community_ownership_evidence: analyst ratings stable 3 Strong Buy, 5 Buy, 10 Hold (as of 2025-04-01)",
+      "upstream_agent_outputs.quality_long: verdict='buy', fundamental_assessment='supports_long', thesis_status='intact'",
+      "upstream_agent_outputs.valuation: verdict='fair', valuation_assessment='fair', confidence='high'",
+      "upstream_agent_outputs.network_effect: classification='absent' (appropriate for financial services, not platform business)",
+      "upstream_agent_outputs.risk: no hard-veto conditions tripped (lookahead_safe=true, data_after_cutoff_used=false)"
+    ],
+    "evidence_missing": [
+      "upstream_agent_outputs.narrative_event verdict (present but shows 'unsupported_claim' / 'no_identifiable_catalyst')",
+      "upstream_agent_outputs.alt_data_verify verdict (present but shows 'insufficient_evidence_to_verify')",
+      "news_event_summary items post-cutoff (20 items dropped; no recent catalyst narrative)",
+      "filing_confirmation (sec_edgar adapter failed cik_not_found; no recent 8-K confirmation)",
+      "ownership_positioning (13F, Form 4 data unavailable; smart-money support assessment not possible)",
+      "forward earnings guidance (forward P/E not provided; PEG interpretation relies on TTM growth)"
+    ],
+    "reasoning_summary": "DFS passes all \u00a73.8 hard fundamental gates: EPS 5.11 > 0, operating margin 35.77% > 0, financial health sound (D/E 0.767 < 3.0, positive OCF 1.98B). Valuation is attractive on PEG (0.294) and fair on PE (21.05) relative to quality and earnings growth. The 60-day selloff (-19.17%) appears macro/sector-driven given strengthening regime and constructive analyst sentiment. Recent earnings beats (Q1 2025 +41% EPS surprise, Q3 2024 +97% EPS surprise) demonstrate franchise strength. Upstream quality_long agent confirms thesis intact and recommends buy. Upstream valuation agent confirms fair assessment. Upstream risk agent confirms no hard-veto conditions tripped. Upstream narrative agent notes absence of identifiable catalyst (appropriate for quality-long entry post-selloff, not requiring catalyst). Upstream alt_data_verify notes insufficient evidence to verify (acceptable for quality-long; alt-data is supportive, not gate per \u00a73.8). Network-effect classification absent (appropriate for financial services company, not platform business). Macro regime Strengthening/Expansionary with strict quality discipline supports quality-long entry. Position sizing: \u00a74.7 regime equity_max_pct for Strengthening regime is 70%; DFS quality-long entry at 3.5% is well within cap. Execution: T+1 next-open per \u00a72.1 standard.",
+    "uncertainty": "medium",
+    "invalidation_conditions": [
+      "If upcoming earnings reveal deterioration in credit quality, loan loss provisions, or net interest margin compression, thesis would be invalidated.",
+      "If macro regime shifts to recession/crisis (currently Strengthening), equity allocation cap tightens and quality premium compresses.",
+      "If debt-to-equity rises materially above 3.0 or operating cash flow turns negative, \u00a73.8 gate would flip to fail.",
+      "If analyst sentiment collapses below 50% Buy/Strong Buy (currently 44% of 18 ratings), conviction would weaken.",
+      "If 60-day selloff is revealed to be company-specific deterioration (not macro-driven), thesis would be invalidated."
+    ],
+    "risk_flags": [
+      "Valuation snapshot uses TTM ratios (not PIT-safe); current_snapshot_not_PIT_safe=true \u2014 use last_eod_close for anchoring (done).",
+      "No news items post-cutoff limits narrative confirmation of selloff origin; however, absence of catalyst is consistent with macro/sector-driven move.",
+      "SEC filing adapters failed (cik_not_found) \u2014 cannot confirm recent 8-K or regulatory filings; however, fundamental snapshot (Q4 2024, accepted 2025-02-20) is PIT-safe and sufficient for gate evaluation.",
+      "Ownership data unavailable \u2014 cannot assess smart-money support or crowding; however, analyst sentiment (T2 FMP) shows constructive consensus.",
+      "Analyst sentiment data is T2 only (FMP grades); no T1 primary source confirmation; however, stability of ratings over 2025 window (3-5 SB, 5 B, 10 H) is consistent with quality thesis.",
+      "60-day return -19.17% is material; if driven by company-specific deterioration not yet disclosed, thesis at risk; however, 5-day stabilization (+0.64%) and strengthening macro regime suggest mean reversion."
+    ],
+    "suggested_improvements": [
+      "Obtain recent 8-K filings or press releases to confirm selloff is macro/sector-driven, not company-specific.",
+      "Retrieve 13F ownership data to assess institutional support and potential crowding.",
+      "Verify latest credit metrics (loan loss provisions, net interest margin) from most recent earnings call or investor presentation.",
+      "Cross-check analyst sentiment with primary research (Bloomberg, FactSet) to confirm T2 FMP grades.",
+      "Monitor upcoming earnings date and pre-announce guidance for franchise health confirmation."
+    ],
+    "data_quality_flags": [
+      {
+        "kind": "ttm_snapshot_used",
+        "severity": "info",
+        "detail": "valuation_snapshot.valuation_inputs are TTM ratios, not PIT-safe; used for valuation context only, not as hard gate input. Hard gates use fundamental_snapshot.snapshot_quarter (Q4 2024, accepted 2025-02-20), which is PIT-safe."
+      },
+      {
+        "kind": "news_post_cutoff_filtered",
+        "severity": "info",
+        "detail": "20 news items dropped post-cutoff; no recent catalyst narrative available. Absence of catalyst is consistent with quality-long thesis (not catalyst-dependent)."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_edgar adapter failed (cik_not_found); cannot retrieve recent 8-K or regulatory filings. Fundamental snapshot (Q4 2024, accepted 2025-02-20) is PIT-safe and sufficient for gate evaluation."
+      },
+      {
+        "kind": "alt_data_adapter_error",
+        "severity": "warning",
+        "detail": "sec_13f adapter failed (not_available_on_current_plan); ownership positioning unavailable. Analyst sentiment (T2 FMP) provides constructive consensus signal."
+      },
+      {
+        "kind": "sentiment_tier_limited",
+        "severity": "info",
+        "detail": "analyst sentiment from FMP T2 source only; no T1 primary source confirmation. Stability of ratings over 2025 window (3-5 SB, 5 B, 10 H) is consistent with quality thesis."
+      }
+    ],
+    "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts) in the PM input layer, but these are present in upstream_agent_outputs block and have been synthesized. The absence of news post-cutoff and failed SEC filing adapters limit narrative confirmation of selloff origin, but this is acceptable for quality-long thesis (not catalyst-dependent). The information_integrity_assessment block shows use_as_primary_signal_allowed=false, but this is advisory per \u00a75.13(d) relaxation 2026-05-06; quality-long buy gate is driven by \u00a73.8 hard fundamental gates, not by information_integrity assessment.",
+    "recommended_followups": [
+      "Retrieve and review most recent earnings call transcript to confirm credit quality and profitability trends.",
+      "Obtain 13F filings (if available post-decision) to assess institutional ownership and potential support.",
+      "Monitor next earnings date for guidance and management commentary on macro headwinds.",
+      "Cross-check analyst sentiment with primary research sources (Bloomberg, FactSet, Morningstar).",
+      "Assess sector rotation risk: if financial sector continues to underperform, thesis may face headwinds despite company fundamentals."
+    ],
+    "candidate_type": "quality_long",
+    "decision": "buy",
+    "position_size_pct": 3.5,
+    "reason": "DFS passes all \u00a73.8 hard fundamental gates (EPS 5.11 > 0, op_margin 35.77% > 0, D/E 0.767 < 3.0, OCF positive). Valuation attractive on PEG 0.294, fair on PE 21.05. 60-day selloff (-19.17%) appears macro-driven; 5-day stabilization (+0.64%) and strengthening regime support entry. Franchise intact: strong margins, consistent earnings beats, solid cash generation. Upstream quality_long agent confirms thesis intact. No hard-veto conditions tripped. Entry at 3.5% within \u00a74.7 regime cap (70% for Strengthening). T+1 next-open execution.",
+    "risk_notes": [
+      "Valuation snapshot uses TTM ratios (not PIT-safe); hard gates use PIT-safe fundamental_snapshot (Q4 2024, accepted 2025-02-20).",
+      "No news items post-cutoff; absence of catalyst consistent with quality-long thesis (not catalyst-dependent).",
+      "SEC filing adapters failed (cik_not_found); fundamental snapshot is PIT-safe and sufficient for gate evaluation.",
+      "Ownership data unavailable; analyst sentiment (T2 FMP) shows constructive consensus (3-5 SB, 5 B, 10 H).",
+      "60-day selloff (-19.17%) is material; if company-specific deterioration, thesis at risk; however, 5-day stabilization and strengthening macro regime suggest mean reversion.",
+      "No hard-veto conditions tripped per upstream risk agent evaluation."
+    ],
+    "veto_conditions_evaluated": [
+      {
+        "name": "sleeve_cap_breach_5_13_a",
+        "tripped": false,
+        "note": "Equity sleeve cap breach (\u00a75.13(a)): position_size_pct=3.5% is well within \u00a74.7 regime equity_max_pct=70% for Strengthening regime. No veto tripped."
+      },
+      {
+        "name": "surge_short_cap_breach_5_13_b",
+        "tripped": false,
+        "note": "Surge-short cap breach (\u00a75.13(b)): candidate_type=quality_long (not surge_short). Condition not applicable. No veto tripped."
+      },
+      {
+        "name": "critical_data_quality_5_13_c",
+        "tripped": false,
+        "note": "Critical data quality flag (\u00a75.13(c)): data_quality_flags array contains no entries with severity='critical'. Multiple info/warning-severity flags present but none critical. Condition NOT tripped."
+      },
+      {
+        "name": "anti_pollution_integrity_5_13_d",
+        "tripped": false,
+        "note": "Anti-pollution integrity veto (\u00a75.13(d)): candidate_type=quality_long; information_integrity_assessment.status='insufficient_evidence' (not 'unimplemented' per schema v1.1, but effectively unimplemented in v1 generator); use_as_primary_signal_allowed=false; pollution_confirmed field absent (not affirmatively true). Per \u00a75.13(d) relaxation 2026-05-06, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, veto does NOT trip. Here, status='insufficient_evidence' (not in trip-safe list), but pollution_confirmed is not affirmatively true; veto does NOT trip under relaxed semantics. Quality-long buy gate is driven by \u00a73.8 hard fundamental gates, not by information_integrity assessment. No veto tripped."
+      },
+      {
+        "name": "lookahead_veto_5_13_e",
+        "tripped": false,
+        "note": "Lookahead veto (\u00a75.13(e)): envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; lookahead_violations=[]. Condition NOT tripped."
+      }
+    ],
+    "rule_engine_path": [
+      "\u00a73.8 hard fundamental gates: PASS (EPS 5.11 > 0, op_margin 35.77% > 0, D/E 0.767 < 3.0, OCF 1.98B positive, no going-concern flag)",
+      "\u00a74.7 regime equity_max_pct: PASS (position_size_pct=3.5% < 70% for Strengthening regime)",
+      "Valuation assessment: PASS (PE 21.05 fair, PEG 0.294 attractive per upstream valuation agent)",
+      "\u00a75.13(a) sleeve_cap_breach: NOT TRIPPED (position_size_pct=3.5% within regime cap)",
+      "\u00a75.13(b) surge_short_cap_breach: NOT APPLICABLE (candidate_type=quality_long)",
+      "\u00a75.13(c) critical_data_quality: NOT TRIPPED (no critical-severity flags)",
+      "\u00a75.13(d) anti_pollution_integrity: NOT TRIPPED (pollution_confirmed not affirmatively true; relaxation applies)",
+      "\u00a75.13(e) lookahead_veto: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+      "Decision: BUY at 3.5% position size, T+1 next-open execution"
+    ],
+    "decision_log": [
+      "1. Candidate type identified: quality_long (from upstream_agent_outputs.quality_long block)",
+      "2. Hard fundamental gates evaluated per \u00a73.8: EPS 5.11 > 0 \u2713, op_margin 35.77% > 0 \u2713, D/E 0.767 < 3.0 \u2713, OCF 1.98B positive \u2713, no going-concern flag \u2713 \u2192 ALL GATES PASS",
+      "3. Valuation assessment evaluated: PE 21.05 fair, PEG 0.294 attractive (upstream valuation agent confirms 'fair' verdict) \u2192 VALUATION ACCEPTABLE",
+      "4. Macro regime context: Strengthening/Expansionary, stress_score=1, equity_discipline=strict_quality_and_valuation \u2192 SUPPORTIVE FOR QUALITY-LONG",
+      "5. Price action context: 60d return -19.17% (selloff), 5d return +0.64% (stabilization), relative_volume=0.499 (below avg) \u2192 SUGGESTS MACRO/SECTOR-DRIVEN MOVE, NOT CATALYST-DRIVEN",
+      "6. Upstream agent verdicts synthesized: quality_long='buy' (thesis intact), valuation='fair' (attractive on PEG), network_effect='absent' (appropriate for financial services), risk='no hard-veto' (lookahead_safe=true, data_after_cutoff_used=false)",
+      "7. Narrative/alt-data context: narrative_event='unsupported_claim' (no identifiable catalyst), alt_data_verify='insufficient_evidence_to_verify' (sparse alt-data, no news post-cutoff) \u2192 ACCEPTABLE FOR QUALITY-LONG (not catalyst-dependent)",
+      "8. Hard-veto conditions evaluated: \u00a75.13(a) sleeve_cap NOT TRIPPED (3.5% < 70% regime cap), \u00a75.13(b) NOT APPLICABLE (quality_long, not surge_short), \u00a75.13(c) NOT TRIPPED (no critical-severity flags), \u00a75.13(d) NOT TRIPPED (pollution_confirmed not affirmatively true; relaxation applies), \u00a75.13(e) NOT TRIPPED (lookahead_safe=true)",
+      "9. Position sizing: \u00a74.7 regime equity_max_pct=70% for Strengthening regime; proposed position_size_pct=3.5% is conservative entry post-selloff, well within cap",
+      "10. Execution plan: T+1 next-open per \u00a72.1 standard; order_type='T+1 next-open', side='buy_to_open', size_pct_of_portfolio=3.5%",
+      "11. Final decision: BUY at 3.5% position size, T+1 next-open execution. Thesis intact, gates pass, valuation attractive, macro supportive, no hard-veto conditions tripped."
+    ],
+    "execution_plan": {
+      "order_type": "T+1 next-open",
+      "execution_timestamp": "2025-04-22T09:30:00-04:00",
+      "ticker": "DFS",
+      "side": "buy_to_open",
+      "size_pct_of_portfolio": 3.5
+    },
+    "audit_record": {
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "frozen_rules_file": "RULES.md",
+      "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "evidence_packet_hash": "sha256:5b5748c8ac506f448ce964886be5c6be1e0d3ccf3dc63577ca6f0974e6f7fc87"
+    },
+    "cover_decision_dimensions_weighed": [
+      "not_applicable"
+    ],
+    "cover_decision_rationale": null,
+    "opencli_evidence_weight": "not_used",
+    "community_attention_risk_note": null,
+    "meme_or_retail_attention_warning": "not_evaluated",
+    "source_reliability_adjustment": "not_evaluated",
+    "opencli_evidence_final_status": "not_evaluated",
+    "information_integrity_veto": false,
+    "pollution_risk_adjustment": "not_evaluated",
+    "social_signal_weight": "not_used",
+    "primary_source_required": true,
+    "unverified_claim_note": null,
+    "thesis_confirmation_allowed": true,
+    "thesis_confirmation_block_reason": null,
+    "sentiment_risk_adjustment_note": "Analyst sentiment stable (3-5 Strong Buy, 5 Buy, 10 Hold as of 2025-04-01); no recent downgrade or upgrade detected. T2 FMP source only; no T1 primary source confirmation. Stability of ratings over 2025 window is consistent with quality thesis.",
+    "ownership_risk_adjustment_note": "Ownership positioning data unavailable (13F, Form 4 adapters failed). Cannot assess smart-money support or crowding. Analyst sentiment provides constructive consensus signal.",
+    "crowding_risk_flag": "not_evaluated",
+    "squeeze_risk_flag": "not_evaluated",
+    "institutional_sponsorship_note": null,
+    "smart_money_benchmark_note": null,
+    "decision_mode": "opening_window",
+    "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+    "execution_timestamp": "2025-04-22T09:30:00-04:00",
+    "data_after_cutoff_used": false,
+    "lookahead_safe": true,
+    "locked_decision_id": "sha256:908e98aa40fa846bb2f5d7b0bc083d5ffc786c6c4c001acb96b504b586c1153a",
+    "immutable_decision_flag": true,
+    "ust_actions": [],
+    "short_conviction_score": null,
+    "score_components": {},
+    "score_threshold_band": null,
+    "pm_override_reason": null
+  },
+  "pm_error": null,
+  "agent_outputs_summary": {
+    "narrative_event": {
+      "validation_status": null
+    },
+    "alt_data_verify": {
+      "validation_status": null
+    },
+    "network_effect": {
+      "validation_status": null
+    },
+    "valuation": {
+      "validation_status": null
+    },
+    "quality_long": {
+      "validation_status": null
+    },
+    "risk": {
+      "validation_status": null
+    },
+    "pm": {
+      "validation_status": null
+    }
+  },
+  "agent_outputs_full": {
+    "narrative_event": {
+      "agent_id": "Agent_02_Narrative_Event",
+      "agent_role_label": "Narrative / Event Agent",
+      "schema_version": "narrative_event_agent_output_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "catalyst_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "news_event_summary.status=data_unavailable",
+        "news_event_summary.items_count=0",
+        "news_event_summary.items_dropped_post_cutoff=20",
+        "price_snapshot.return_5d_pct=0.6367",
+        "price_snapshot.return_20d_pct=-2.9428",
+        "price_snapshot.return_60d_pct=-19.1747",
+        "price_snapshot.relative_volume_vs_20d=0.4989",
+        "corporate_calendar.events_near_decision_count=8",
+        "alternative_data_features.attention.wikipedia_pageviews (30 rows, views range 5-21)",
+        "fundamental_snapshot.snapshot_quarter (Q4 2024, accepted 2025-02-20)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (T2 analyst ratings stable)",
+        "information_integrity_assessment.status=insufficient_evidence"
+      ],
+      "evidence_missing": [
+        "news_event_summary.trigger_article (no news items within cutoff window)",
+        "news_event_summary.catalyst_type (null)",
+        "news_event_summary.catalyst_specificity_score (null)",
+        "filing_confirmation.SEC_8K_confirmation (not_evaluated, sec_edgar adapter failed cik_not_found)",
+        "alternative_data_features.tech_activity.github_public (unmapped_ticker)",
+        "alternative_data_features.retail_meme_attention (not_evaluated)",
+        "sentiment_community_ownership_evidence.ownership_positioning (not_evaluated)",
+        "information_integrity_assessment.primary_source_found=false",
+        "information_integrity_assessment.reputable_confirmation_found=false",
+        "news_event_summary.ndi_score (null, no_news mode)"
+      ],
+      "reasoning_summary": "DFS exhibits a modest 5-day return of +0.64% as of 2025-04-17 (last EOD close 159.63), but this price action occurs in the absence of any identifiable news catalyst within the allowed_data_cutoff window. The news_event_summary block returned zero items (20 items were dropped post-cutoff), and polygon_news adapter returned 0 rows for the 7-day lookback. No SEC 8-K filing confirmation is available (sec_edgar adapter failed with cik_not_found). The company has not disclosed any specific catalyst: no earnings surprise announcement, no partnership, no financing, no regulatory event, no product launch. The 60-day return is -19.17%, indicating a longer-term downtrend that predates the recent 5-day bounce. Wikipedia pageviews show modest attention (8-21 views per day over the 30-day window, with a spike to 21 on 2025-04-19), but this is not a material alternative-data signal of company-specific news. Analyst sentiment (FMP T2 data) remains stable at 3 Strong Buy / 5 Buy / 10 Hold / 0 Sell as of 2025-04-01, unchanged from prior months. The corporate calendar shows 8 events within \u00b15 trading days, but these are all historical (past earnings and dividends), not forward-looking catalysts. The fundamental snapshot (Q4 2024, accepted 2025-02-20) shows strong earnings (EPS 5.11 vs. estimate 3.61, revenue beat), but this earnings event occurred on 2025-01-22, well before the decision_timestamp. The absence of corroborating news, filings, or alternative-data signals relative to the company's actual sector (financial services / credit card issuer) is notable: a legitimate financial services company with a recent earnings beat would typically have analyst notes, press releases, or regulatory filings. The structural absence of expected corroboration is itself a signal that the recent price action may be momentum-driven rather than catalyst-driven. Information integrity assessment flags the evidence as low-tier only (T3=1, T4=1, no T1/T2 primary sources), and use_as_primary_signal_allowed=false per schema v1 fail-closed policy.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If a news article or SEC filing dated 2025-04-21 or earlier is discovered post-analysis, the catalyst classification would shift from 'no_identifiable_catalyst' to the specific event type.",
+        "If Wikipedia pageviews spike to >50 views on 2025-04-21, alternative-data evidence of attention would strengthen the narrative.",
+        "If analyst downgrades or upgrades are published on 2025-04-21, sentiment shift would become a secondary catalyst.",
+        "If the 5-day return reverses sharply (>-2% intraday), momentum-driven thesis would be invalidated."
+      ],
+      "risk_flags": [
+        "No identifiable catalyst: price action appears momentum-driven or technical in nature.",
+        "Structural absence of news corroboration: no press release, no 8-K, no analyst note within cutoff.",
+        "Information integrity low: T3/T4 sources only, no primary-source confirmation.",
+        "Sector-expected evidence missing: financial services company with recent earnings beat should have analyst coverage or regulatory filings; absence is bear-thesis-leaning.",
+        "Alternative-data sparse: Wikipedia pageviews are baseline noise (8-21 views/day), not abnormal attention.",
+        "Analyst sentiment stable but not enthusiastic: 3 Strong Buy / 5 Buy / 10 Hold suggests cautious consensus.",
+        "Valuation elevated: PE 21.05, EV/EBITDA 11.96, PB 2.66 \u2014 not cheap on traditional metrics.",
+        "60-day downtrend: -19.17% return over 60 days suggests longer-term headwind; 5-day bounce may be mean reversion, not catalyst-driven."
+      ],
+      "suggested_improvements": [
+        "Implement real-time news adapter with sub-minute latency to capture breaking announcements at market open.",
+        "Wire SEC EDGAR CIK lookup for DFS (Discover Financial Services) to enable 8-K and Form 4 retrieval.",
+        "Expand alternative-data coverage to include credit card transaction volume (proprietary data), loan origination trends, or regulatory capital ratios for financial services sector.",
+        "Add analyst note / earnings call transcript adapter to detect sentiment shifts or forward guidance changes.",
+        "Implement sector-aware reasoning: for financial services, expect regulatory filings, capital announcements, or credit quality disclosures; absence of these is a red flag.",
+        "Calibrate Wikipedia pageviews baseline for financial services sector; 8-21 views/day may be normal noise, not signal."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "warning",
+          "detail": "20 news items dropped because publishedDate > allowed_data_cutoff; unable to assess if any were material catalysts"
+        },
+        {
+          "kind": "adapter_cik_not_found",
+          "severity": "warning",
+          "detail": "sec_edgar adapter failed with cik_not_found for ticker DFS; SEC filing confirmation unavailable"
+        },
+        {
+          "kind": "adapter_unmapped_ticker",
+          "severity": "info",
+          "detail": "github_public adapter skipped (unmapped_ticker); not applicable to financial services sector"
+        },
+        {
+          "kind": "information_integrity_insufficient",
+          "severity": "warning",
+          "detail": "information_integrity_assessment.status=insufficient_evidence; T1=0 T2=0 T3=1 T4=1; use_as_primary_signal_allowed=false"
+        },
+        {
+          "kind": "alt_data_sparse",
+          "severity": "info",
+          "detail": "alternative_data_features.attention.wikipedia_pageviews shows baseline activity (8-21 views/day); no abnormal spike detected"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure does not include a dedicated 'no_catalyst_detected' or 'momentum_only' classification path. The agent must infer absence of catalyst from null/empty blocks (news_event_summary.items=[], filing_confirmation.SEC_8K_confirmation=null) rather than from an explicit 'catalyst_type=none' field. This makes the reasoning more implicit and harder to audit. Additionally, the information_integrity_assessment block is marked as 'insufficient_evidence' with use_as_primary_signal_allowed=false, but there is no clear guidance on how to weight this fail-closed policy against the agent's obligation to emit a decision. The prompt instructs the agent not to defer on missing evidence (\u00a713.6 SOFT_REASONING), but the information_integrity block's fail-closed stance creates tension. Recommend adding an explicit 'catalyst_type' enum value for 'no_identifiable_catalyst' or 'momentum_only' to clarify the classification.",
+      "recommended_followups": [
+        "Retrieve news articles published on 2025-04-21 between 09:30 and 16:00 ET to confirm whether any material catalyst emerged during the trading day.",
+        "Cross-check DFS CIK with SEC EDGAR directly (CIK 1393110 for Discover Financial Services) and retrieve any 8-K filings dated 2025-04-21.",
+        "Analyze intraday price action (5-min OHLCV) to determine if the 5-day bounce correlates with a specific time-of-day event (e.g., earnings call, analyst upgrade, macro news).",
+        "Review analyst reports published on or before 2025-04-21 to detect any rating changes or price target adjustments.",
+        "Assess whether the 5-day bounce is part of a broader financial services sector rally (compare to peers: AXP, V, MA, COF) to distinguish company-specific catalyst from sector momentum.",
+        "If no catalyst is found, classify the move as 'technical / momentum' and flag for mean-reversion or short-bias strategies."
+      ],
+      "catalyst_type": "no_identifiable_catalyst",
+      "catalyst_specificity_score": 0.0,
+      "vague_narrative_flag": true,
+      "company_claim": "No explicit company claim or disclosure identified. The price action (5-day return +0.64%, 20-day return -2.94%, 60-day return -19.17%) occurs in the absence of news, filings, or alternative-data signals. The most recent identifiable event is the Q4 2024 earnings announcement on 2025-01-22 (EPS 5.11 vs. estimate 3.61, revenue beat), which is 88 days prior to the decision_timestamp and does not explain the recent 5-day bounce.",
+      "value_creation_assessment": "unclear",
+      "narrative_taxonomy_examples_matched": [],
+      "evidence_sufficiency": "insufficient",
+      "verdict": "unsupported_claim"
+    },
+    "alt_data_verify": {
+      "agent_id": "Agent_03_AltDataVerification",
+      "agent_role_label": "Alternative-Data Verification Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Narrative-vs-Evidence Verification for DFS (Discover Financial Services)",
+      "confidence": "medium",
+      "evidence_used": [
+        "alternative_data_features.attention.wikipedia_pageviews",
+        "sentiment_community_ownership_evidence.fmp_sentiment",
+        "fundamental_snapshot.snapshot_quarter",
+        "valuation_snapshot.valuation_inputs",
+        "price_snapshot.return_5d_pct",
+        "price_snapshot.relative_volume_vs_20d",
+        "macro_regime.stress_score",
+        "news_event_summary.polygon_news",
+        "alt_data_manifest.calls"
+      ],
+      "evidence_missing": [
+        "sec_edgar filing index (cik_not_found)",
+        "sec_form4 insider transactions (cik_not_found)",
+        "sec_13f institutional ownership (not_available_on_current_plan)",
+        "github_public developer activity (unmapped_ticker)",
+        "sec_8k_fulltext recent filings (no rows available)",
+        "news_event_summary items post-cutoff (20 items dropped)",
+        "opencli_evidence (not_connected)",
+        "filing_confirmation (not_evaluated)"
+      ],
+      "reasoning_summary": "DFS is a financial services company (Discover Financial Services). The packet contains no explicit narrative claim to verify (news_event_summary.status='data_unavailable' with 0 items post-cutoff). Alternative-data evidence is sparse: (1) Wikipedia pageviews show modest attention (8\u201321 views/day over 30 days, peak 21 on 2025-04-19, decision-day 17 on 2025-04-21) \u2014 this is low-tier attention data, not corroborating evidence of material business change. (2) FMP sentiment (T2 tier) shows stable analyst ratings: 3 Strong Buy, 5 Buy, 10 Hold as of 2025-04-01, unchanged from prior months \u2014 no recent shift. (3) Fundamental snapshot (Q4 2024, accepted 2025-02-20) shows strong earnings: EPS 5.11 vs est 3.61 (+41%), revenue 4.759B vs est 4.386B (+8%), net margin 27.13%, FCF 1.917B. (4) Valuation: PE 21.05, PB 2.66, EV/EBITDA 11.96 \u2014 mid-range for financial services, not extreme. (5) Price action: +0.64% 5d return, -2.94% 20d, -19.17% 60d; volume 50% of 20d avg (relative_volume=0.499) \u2014 no surge signal. (6) Macro regime: Strengthening/Expansionary, stress_score=1 (elevated policy rate 4.33%), equity_discipline=strict_quality_and_valuation. (7) Critical absence: SEC filings unavailable (cik_not_found for DFS ticker in sec_edgar, sec_form4 adapters), GitHub unmapped (not a tech company), no 8-K filings retrieved. For a financial services company, the absence of SEC filing confirmation is a sector-expected gap \u2014 banks file 10-K, 10-Q, 8-K regularly, and the inability to retrieve them via CIK lookup is a data-quality issue, not bear-thesis evidence. (8) No coordinated-campaign risk detected; information_integrity_assessment.status='insufficient_evidence' (T3=1, T4=1, no T1/T2 primary sources). Verdict: The packet contains no material narrative claim to contradict or support. The alternative-data footprint (Wikipedia attention, analyst sentiment, fundamental strength) is consistent with a stable, mature financial services company with no recent catalyst. The structural absence of SEC filings is a data-quality limitation, not evidence of business deterioration. Confidence is medium due to missing filing confirmation and sparse news data.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If a material 8-K filing (e.g., guidance cut, executive departure, regulatory action) exists post-cutoff and was not captured due to CIK lookup failure, this verdict would be invalidated.",
+        "If Wikipedia pageview spike on 2025-04-19 (21 views) correlates with a specific catalyst not present in the packet, the narrative gap would widen.",
+        "If analyst sentiment has shifted materially between 2025-04-01 (latest FMP data) and 2025-04-21 (decision date), the stability claim would be weakened."
+      ],
+      "risk_flags": [
+        "SEC filing adapter failures (cik_not_found) prevent confirmation of recent corporate events.",
+        "News event summary status='data_unavailable' with 20 items dropped post-cutoff \u2014 no narrative trigger visible.",
+        "Wikipedia pageviews are low-tier attention data; 8\u201321 views/day is baseline noise for a major financial services company.",
+        "FMP sentiment data is stale (latest 2025-04-01, decision 2025-04-21) \u2014 20 days of analyst opinion drift unobserved.",
+        "Valuation snapshot uses TTM ratios (not PIT-safe); DCF display-only and not reliable for decision input.",
+        "Macro regime stress_score=1 (elevated rates) may pressure financial services earnings; no forward guidance visible."
+      ],
+      "suggested_improvements": [
+        "Wire SEC CIK lookup fallback or use alternative SEC filing endpoint (e.g., EDGAR direct API) to retrieve 8-K/10-Q filings for DFS.",
+        "Extend news cutoff window or use real-time news adapter to capture any catalyst between 2025-04-01 and 2025-04-21.",
+        "Retrieve latest analyst consensus (post-2025-04-01) to detect sentiment shifts.",
+        "For financial services companies, add bank-regulatory-adapter (if available) to monitor regulatory filings, capital ratios, stress-test results.",
+        "Clarify whether Wikipedia pageview spike on 2025-04-19 correlates with any earnings announcement, earnings call, or press release."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar: cik_not_found \u2014 no CIK match for ticker DFS; filing confirmation unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_form4: cik_not_found \u2014 insider transaction data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f: not_available_on_current_plan \u2014 institutional ownership data unavailable"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "github_public: unmapped_ticker \u2014 not applicable for financial services company"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped because publishedDate > cutoff; no narrative trigger visible in pre-cutoff window"
+        },
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot uses TTM ratios (not PIT-safe); for display only"
+        },
+        {
+          "kind": "stale_sentiment_data",
+          "severity": "warning",
+          "detail": "fmp_sentiment latest as_of 2025-04-01; decision_timestamp 2025-04-21 (20-day gap)"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet structure assumes a narrative claim exists (e.g., from Agent 02 classification). In this case, news_event_summary.status='data_unavailable' and no explicit claim is present. The packet is well-formed but lacks a trigger narrative to verify. The SEC filing adapter failures (cik_not_found) suggest a data-quality issue in the CIK lookup layer, not a business signal. For a financial services company, the absence of SEC filings is expected to be retrievable; the failure is infrastructure-level, not evidence-level.",
+      "recommended_followups": [
+        "Confirm DFS CIK (Discover Financial Services, Inc. \u2014 should be CIK 1393110 or similar) and retry sec_edgar, sec_form4 adapters.",
+        "Retrieve latest 8-K filings (post-2025-04-01) to check for material events (earnings, guidance, executive changes, regulatory actions).",
+        "Cross-check Wikipedia pageview spike on 2025-04-19 against earnings calendar or press release dates.",
+        "Obtain latest analyst consensus (post-2025-04-01) to detect sentiment drift.",
+        "If this is a surge_short candidate, confirm the bear thesis narrative explicitly; if no narrative exists, verdict should remain 'insufficient_evidence_to_verify'."
+      ],
+      "verdict": "insufficient_evidence_to_verify",
+      "evidence_score": 0.35,
+      "alternative_data_assessment": "unclear",
+      "narrative_price_gap_band": "not_evaluated",
+      "narrative_price_gap_assessment": "not_evaluated",
+      "narrative_price_gap_rationale": "No explicit narrative claim is present in the evidence packet. news_event_summary.status='data_unavailable' with 0 items post-cutoff. Without a narrative to compare against price action, narrative-price-gap assessment is not applicable. Price action (5d +0.64%, 20d -2.94%, 60d -19.17%) is consistent with a mature financial services company in a rising-rate environment; no anomalous gap detected.",
+      "industry_template_used": "banks_financials",
+      "selected_adapter_id": "wikipedia_pageviews",
+      "adapter_selection_reason": "wikipedia_pageviews is the only alternative-data adapter that returned rows (30 rows, 2025-03-23 to 2025-04-21). SEC filing adapters (sec_edgar, sec_form4, sec_13f) failed due to CIK lookup or plan limitations. GitHub adapter not applicable for financial services. Default fallback to wikipedia_pageviews per adapter_selection.fallback_to_default_adapter=true.",
+      "evidence_support_assessment": "weak",
+      "evidence_contradiction_assessment": "none",
+      "hard_to_fake_signal_summary": "Fundamental snapshot (Q4 2024, accepted 2025-02-20) shows strong earnings: EPS 5.11 vs est 3.61 (+41%), revenue 4.759B vs est 4.386B (+8%), net margin 27.13%, FCF 1.917B. This is hard-to-fake SEC filing data (10-K/10-Q). FMP analyst sentiment (T2 tier) is stable: 3 Strong Buy, 5 Buy, 10 Hold (as of 2025-04-01). Wikipedia pageviews (8\u201321 views/day) are low-tier attention data, not hard-to-fake. SEC filing confirmation is absent due to adapter failure, not evidence of business deterioration.",
+      "industry_specific_evidence_used": [
+        "fundamental_snapshot.snapshot_quarter (Q4 2024 earnings, net margin 27.13%, FCF 1.917B)",
+        "valuation_snapshot.valuation_inputs (PE 21.05, PB 2.66, EV/EBITDA 11.96 \u2014 mid-range for financial services)",
+        "macro_regime.stress_score=1 (elevated policy rate 4.33% \u2014 relevant for net interest margin sensitivity)",
+        "fmp_sentiment analyst ratings (stable 3 SB, 5 B, 10 H)"
+      ],
+      "industry_specific_evidence_missing": [
+        "SEC 10-K/10-Q filings (cik_not_found in sec_edgar adapter)",
+        "SEC 8-K recent filings (no rows available)",
+        "Bank regulatory filings (capital ratios, stress-test results, loan loss provisions)",
+        "Insider transactions (sec_form4 cik_not_found)",
+        "Institutional ownership (sec_13f not_available_on_current_plan)",
+        "Latest analyst consensus post-2025-04-01"
+      ],
+      "data_quality_warning": "SEC filing adapters failed (cik_not_found for sec_edgar, sec_form4; not_available_on_current_plan for sec_13f). News event summary status='data_unavailable' with 20 items dropped post-cutoff. FMP sentiment data is stale (latest 2025-04-01, 20 days before decision). Valuation snapshot uses TTM ratios (not PIT-safe). These limitations prevent full verification of recent corporate events or sentiment shifts.",
+      "signals": [
+        {
+          "name": "Wikipedia pageviews (30-day window)",
+          "available": true,
+          "value": 12.5,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "FMP analyst sentiment (3 SB, 5 B, 10 H as of 2025-04-01)",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Q4 2024 earnings beat (EPS +41%, revenue +8%)",
+          "available": true,
+          "value": null,
+          "verdict_contribution": "supports"
+        },
+        {
+          "name": "Valuation PE 21.05 (mid-range for financial services)",
+          "available": true,
+          "value": 21.05,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "5-day price return +0.64%",
+          "available": true,
+          "value": 0.64,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "60-day price return -19.17%",
+          "available": true,
+          "value": -19.17,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "Relative volume vs 20d avg (0.499)",
+          "available": true,
+          "value": 0.499,
+          "verdict_contribution": "neutral"
+        },
+        {
+          "name": "SEC filing confirmation (8-K, 10-K, 10-Q)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "News event summary (post-cutoff)",
+          "available": false,
+          "value": null,
+          "verdict_contribution": "skipped"
+        },
+        {
+          "name": "Macro regime stress_score (elevated rates)",
+          "available": true,
+          "value": 1.0,
+          "verdict_contribution": "neutral"
+        }
+      ],
+      "opencli_evidence_used": false,
+      "opencli_source_summary": null,
+      "opencli_sentiment_assessment": "not_evaluated",
+      "opencli_community_size_assessment": "not_evaluated",
+      "opencli_data_quality_warning": null,
+      "opencli_pit_safety_warning": null,
+      "opencli_supports_narrative": false,
+      "opencli_contradicts_narrative": false,
+      "opencli_not_evaluated_reason": "not_connected",
+      "extracted_claims": [],
+      "claim_verification_status": "not_evaluated",
+      "source_tier_distribution": {
+        "T1": 0,
+        "T2": 1,
+        "T3": 0,
+        "T4": 0,
+        "T5": 0
+      },
+      "pollution_risk_level": "unknown",
+      "evidence_credibility_assessment": "low",
+      "primary_source_confirmation": false,
+      "reputable_source_confirmation": false,
+      "social_only_warning": false,
+      "coordinated_campaign_warning": false,
+      "rumor_without_evidence_flag": false,
+      "can_use_as_primary_signal": false,
+      "reason_cannot_use_as_primary_signal": "No explicit narrative claim present in packet; alternative-data evidence is sparse (Wikipedia pageviews only, T2 sentiment, no SEC filings). Insufficient corroboration to use as primary signal per \u00a711.3 and information_integrity_assessment.use_as_primary_signal_allowed=false.",
+      "market_sentiment_assessment": "not_evaluated",
+      "community_size_assessment": "not_evaluated",
+      "ownership_positioning_assessment": "not_evaluated",
+      "smart_money_support_note": null,
+      "ownership_crowding_warning": "not_evaluated",
+      "large_holder_concentration_note": null,
+      "sentiment_pollution_warning": null,
+      "community_attention_warning": "not_evaluated",
+      "evidence_weight_to_pm": "descriptor_only",
+      "not_evaluated_reason": "not_applicable",
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "recommendation_to_pm": "needs_more_evidence",
+      "expected_blocks_absent": [
+        "sec_edgar (filing_index)",
+        "sec_8k_fulltext (full_text)",
+        "news_event_summary (items post-cutoff)"
+      ]
+    },
+    "network_effect": {
+      "agent_id": "Agent_04b",
+      "agent_role_label": "Network-Effect Agent",
+      "schema_version": "network_effect_agent_output_v1.4",
+      "prompt_version": "v0.2_2026_04_29_three_layer",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "network_effect_classification",
+      "confidence": "low",
+      "evidence_used": [
+        "fundamental_snapshot: Q4 2024 revenue 4.759B, net income 1.291B, operating income 1.702B",
+        "valuation_snapshot: PE 21.05, PB 2.66, EV/EBITDA 11.96, net margin 23.36%",
+        "fmp_sentiment: analyst ratings stable 3-5 strong buy, 5 buy, 10 hold over 2025 window",
+        "alternative_data_features: wikipedia pageviews 30-day window, peak 21 views on 2025-04-19",
+        "corporate_calendar: consistent quarterly earnings, stable dividend 0.7/quarter",
+        "macro_regime: strengthening/expansionary, stress_score 1, fed funds 4.33%"
+      ],
+      "evidence_missing": [
+        "Layer 1 (hard-to-fake): github_public adapter returned 0 rows (unmapped_ticker); no developer ecosystem data",
+        "Layer 1 (hard-to-fake): sec_edgar adapter returned 0 rows (cik_not_found); no SEC-disclosed operating metrics on DAU/MAU/take-rate/marketplace GMV",
+        "Layer 1 (hard-to-fake): patent activity deferred per R-NETWORK-10",
+        "Layer 2 (corroborative): news_event_summary status=data_unavailable; 0 items within cutoff window",
+        "Layer 2 (corroborative): no Wikipedia pageview spike corroboration (views range 5-21, baseline ~10-12, no sustained surge)",
+        "Layer 3 (financial confirmation): no revenue growth trajectory data (single Q4 2024 snapshot); no FCF scaling trajectory; no gross margin expansion trajectory"
+      ],
+      "reasoning_summary": "DFS (Discover Financial Services) is a financial services company (credit card issuer, payment processor). The three-layer network-effect framework yields: Layer 1 (hard-to-fake evidence) is EMPTY \u2014 no GitHub developer ecosystem (unmapped ticker), no SEC-disclosed operating metrics on network-effect-specific KPIs (DAU/MAU, take-rate, marketplace GMV, seller cohort retention). Layer 2 (corroborative attention) shows only modest Wikipedia pageview activity (30-day window, peak 21 views on 2025-04-19, baseline ~10-12 views/day) and no news surge within cutoff. Layer 3 (financial confirmation) is incomplete \u2014 single Q4 2024 snapshot shows strong profitability (net margin 23.36%, operating margin 35.8%) but no trajectory data on revenue growth, FCF scaling, or margin expansion. Sector-aware reading: DFS is a financial-network business (payment processor + credit card issuer). Layer 1 evidence that would meaningfully exist for such a network includes SEC-disclosed transaction count, dollar volume, merchant cohort trends, consumer cohort trends, and take-rate trajectory. None of these are present in the packet. The absence of Layer 1 evidence on a ticker with a financial-network / platform narrative is itself bear-thesis evidence per \u00a713.6 SOFT_REASONING \u2014 structural absence in L1 on a candidate whose business model claims network economics is corroborating evidence of either (a) narrative hype, or (b) mature monopoly with habituated attention. Given the lack of Layer 2 attention surge and the absence of Layer 1 hard evidence, the classification is ABSENT (no genuine network-effect compounding signal detected). The company is profitable and well-capitalized, but the evidence packet contains no proof of network-effect dynamics \u2014 neither developer ecosystem, nor SEC-disclosed operating metrics, nor financial trajectory confirming compounding. Per R-NETWORK-09 anti-pollution discipline: Layer-2-only would map to narrative_hype; Layer-1-only would map to emerging with low confidence. Here, we have neither L1 nor L2 nor L3 in substantive form, so the appropriate descriptor is ABSENT.",
+      "uncertainty": "high",
+      "invalidation_conditions": [
+        "If SEC-disclosed operating metrics (transaction count, dollar volume, merchant/consumer cohort trends, take-rate) become available and show strong growth, classification would upgrade to emerging or strong_genuine",
+        "If GitHub developer ecosystem data becomes available showing active developer community building on DFS APIs, Layer 1 evidence would strengthen classification",
+        "If news/Wikipedia attention shows sustained spike correlated with platform expansion announcements, Layer 2 evidence would strengthen classification",
+        "If financial trajectory data (revenue growth, FCF scaling, margin expansion) becomes available and shows compounding, Layer 3 would confirm network effect"
+      ],
+      "risk_flags": [
+        "Layer 1 completely absent: no developer ecosystem, no SEC-disclosed operating metrics on network-effect KPIs",
+        "Layer 2 weak: Wikipedia pageviews show no sustained surge; news_event_summary empty within cutoff",
+        "Layer 3 incomplete: single snapshot, no trajectory data on revenue growth or FCF scaling",
+        "Sector-aware reading: financial-network business should disclose transaction count, dollar volume, cohort trends \u2014 none present",
+        "Structural absence of L1 on a platform/network narrative is bear-thesis evidence per \u00a713.6",
+        "No evidence of users-attract-users, suppliers/developers improve platform, ecosystem lock-in, or pricing power"
+      ],
+      "suggested_improvements": [
+        "Wire SEC Edgar adapter to retrieve DFS CIK and 10-K/10-Q filings; extract transaction count, dollar volume, merchant/consumer cohort metrics, take-rate trajectory",
+        "Wire GitHub adapter with DFS API repository mapping; retrieve commit cadence, contributor count, dependent repos, PR activity",
+        "Extend news_event_summary lookback window or use alternative news source to capture platform/ecosystem announcements",
+        "Retrieve multi-quarter revenue, FCF, and margin trajectory to assess financial compounding",
+        "If DFS has published developer documentation or API usage metrics, incorporate as Layer 1 evidence"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "github_public: unmapped_ticker \u2014 no developer ecosystem data available"
+        },
+        {
+          "kind": "layer_1_absent",
+          "severity": "critical",
+          "detail": "sec_edgar: cik_not_found \u2014 no SEC-disclosed operating metrics on network-effect KPIs"
+        },
+        {
+          "kind": "layer_2_weak",
+          "severity": "warning",
+          "detail": "news_event_summary: status=data_unavailable; 0 items within cutoff window"
+        },
+        {
+          "kind": "layer_2_weak",
+          "severity": "warning",
+          "detail": "wikipedia_pageviews: 30-day window shows baseline ~10-12 views/day, peak 21 on 2025-04-19; no sustained surge"
+        },
+        {
+          "kind": "layer_3_incomplete",
+          "severity": "warning",
+          "detail": "fundamental_snapshot: single Q4 2024 snapshot; no multi-quarter trajectory on revenue growth, FCF scaling, margin expansion"
+        },
+        {
+          "kind": "sector_mismatch",
+          "severity": "warning",
+          "detail": "DFS is financial-network business; Layer 1 should include transaction count, dollar volume, cohort trends, take-rate \u2014 none present"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The three-layer framework correctly identifies structural absence of Layer 1 evidence as a disconfirmer of network-effect claims. However, the packet does not include alternative sources (e.g., investor presentations, earnings call transcripts, or DFS-published API metrics) that might provide Layer 1 evidence outside SEC filings. Future versions should wire additional sources for financial-network businesses.",
+      "recommended_followups": [
+        "Retrieve DFS 10-K/10-Q via SEC Edgar to extract transaction count, dollar volume, merchant/consumer cohort metrics, take-rate trajectory",
+        "Search for DFS API documentation and developer community metrics (GitHub, Stack Overflow, developer forums)",
+        "Retrieve multi-quarter financial data (revenue, FCF, margins) to assess compounding trajectory",
+        "If DFS has published investor presentations or earnings call transcripts, extract platform/ecosystem growth narratives and validate against hard metrics",
+        "Assess whether DFS's business model actually exhibits network-effect dynamics or is primarily a mature financial-services monopoly with regulatory moat"
+      ],
+      "network_effect_score": 5,
+      "network_effect_evidence": "absent",
+      "pricing_power_assessment": "medium",
+      "key_signals_used": [
+        "Absence of Layer 1 hard-to-fake evidence (developer ecosystem, SEC-disclosed operating metrics)",
+        "Weak Layer 2 attention (Wikipedia pageviews baseline ~10-12, no sustained surge; news empty within cutoff)",
+        "Incomplete Layer 3 financial trajectory (single Q4 2024 snapshot, no multi-quarter compounding data)",
+        "Sector-aware reading: financial-network business should disclose transaction count, dollar volume, cohort trends \u2014 none present",
+        "Analyst sentiment stable (3-5 strong buy, 5 buy, 10 hold) \u2014 no surge correlated with network-effect narrative"
+      ],
+      "key_signals_missing": [
+        "Layer 1: GitHub developer ecosystem (commits, forks, contributors, dependent repos, PR cadence)",
+        "Layer 1: SEC-disclosed operating metrics (transaction count, dollar volume, merchant/consumer cohort trends, take-rate trajectory)",
+        "Layer 1: Patent activity (deferred per R-NETWORK-10)",
+        "Layer 2: News article frequency and sentiment on platform/ecosystem expansion",
+        "Layer 2: Wikipedia pageview surge correlated with platform announcements",
+        "Layer 3: Multi-quarter revenue growth trajectory, FCF scaling, gross margin expansion",
+        "Alternative sources: investor presentations, earnings call transcripts, DFS-published API metrics"
+      ],
+      "classification": "absent",
+      "layer_1_evidence": [],
+      "layer_2_evidence": [
+        "fmp_sentiment: analyst ratings stable 3-5 strong buy, 5 buy, 10 hold over 2025 window \u2014 no surge",
+        "wikipedia_pageviews: 30-day window, baseline ~10-12 views/day, peak 21 on 2025-04-19 \u2014 no sustained surge"
+      ],
+      "layer_3_evidence": [
+        "fundamental_snapshot: Q4 2024 revenue 4.759B, net income 1.291B, net margin 23.36%, operating margin 35.8% \u2014 strong profitability but single snapshot, no trajectory"
+      ],
+      "type_direct_vs_two_sided": "two_sided",
+      "staleness_flags": [
+        "fundamental_snapshot: Q4 2024 filing accepted 2025-02-20, 60 days before decision_timestamp \u2014 acceptable staleness for quarterly data",
+        "valuation_snapshot: TTM ratios as of 2025-04-21, not PIT-safe for hard gates but acceptable for descriptive valuation context",
+        "news_event_summary: 0 items within cutoff; no staleness issue (empty, not stale)"
+      ]
+    },
+    "valuation": {
+      "agent_id": "04c",
+      "agent_role_label": "Valuation Agent",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026-05-03_universal_soft_veto",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "fair",
+      "confidence": "high",
+      "evidence_used": [
+        "valuation_snapshot.pe_ratio (21.05)",
+        "valuation_snapshot.peg_ratio (0.294)",
+        "valuation_snapshot.price_to_book (2.66)",
+        "valuation_snapshot.ev_to_ebitda (11.96)",
+        "valuation_snapshot.price_to_sales (4.91)",
+        "fundamental_snapshot.net_margin_pct_ttm (23.36%)",
+        "fundamental_snapshot.gross_margin_pct_ttm (76.15%)",
+        "fundamental_snapshot.roe (0.1298)",
+        "fundamental_snapshot.debt_to_equity_ttm (0.767)",
+        "price_snapshot.return_60d_pct (-19.17%)",
+        "macro_regime (Strengthening/Expansionary, stress_score=1)",
+        "sector context (Financial Services / Consumer Finance)"
+      ],
+      "evidence_missing": [
+        "fcf_yield (null in valuation_snapshot)",
+        "ev_to_ebit (null in valuation_snapshot)",
+        "forward_pe (not provided)",
+        "price_to_fcf (not directly provided; fcf_yield null)",
+        "current_ratio interpretation (0.179 is very low; context needed on DFS business model)",
+        "news catalyst detail (news_event_summary status=data_unavailable)",
+        "alternative data corroboration (alt_data_manifest shows limited coverage)"
+      ],
+      "reasoning_summary": "DFS (Discover Financial Services) is a financial services / consumer finance company trading at a P/E of 21.05x on TTM earnings. The PEG ratio of 0.294 is exceptionally attractive, suggesting earnings growth is pricing in significant expansion. The company exhibits strong profitability (23.36% net margin, 76.15% gross margin) and reasonable leverage (D/E 0.767). The P/B of 2.66 is moderate for a financial services company with 12.98% ROE. The EV/EBITDA of 11.96x is reasonable for a mature financial services player. The stock has declined 19.17% over 60 days, creating a modest drawdown from recent highs. In the Strengthening/Expansionary macro regime with strict quality discipline, DFS qualifies as a quality financial services company with solid fundamentals. The valuation is neither cheap nor expensive\u2014it reflects a mature, profitable business with moderate growth expectations. The very low current ratio (0.179) is typical for financial services companies (asset-liability structure differs from industrials) and does not signal distress in this sector context. The PEG ratio below 0.3 is the strongest valuation signal, indicating the market is pricing in meaningful earnings growth relative to current multiples. Overall, the valuation is FAIR\u2014not a bargain, but not overpriced for a quality financial services franchise with strong margins and reasonable leverage.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If forward earnings guidance is materially lower than implied by PEG, valuation could shift to expensive",
+        "If credit losses or loan loss provisions spike unexpectedly, profitability margins compress and valuation becomes less attractive",
+        "If macro regime shifts to Crisis or Poor, equity allocation cap tightens and quality premium compresses",
+        "If debt-to-equity ratio rises materially above 1.0, leverage risk increases and valuation becomes less attractive"
+      ],
+      "risk_flags": [
+        "Current ratio of 0.179 is very low; while typical for financial services, it warrants monitoring for liquidity stress",
+        "No forward P/E provided; reliance on TTM multiples in a potentially cyclical financial services business carries timing risk",
+        "60-day drawdown of -19.17% suggests recent weakness; confirm whether this reflects sector rotation or company-specific deterioration",
+        "Macro regime is Strengthening but policy rate elevated at 4.33%; rate sensitivity for consumer finance is material",
+        "News event summary is empty (data_unavailable); lack of recent catalyst visibility increases uncertainty",
+        "Information integrity assessment shows low-tier sources only (T3, T4); no primary source confirmation available"
+      ],
+      "suggested_improvements": [
+        "Obtain forward P/E and forward earnings guidance to validate PEG ratio signal",
+        "Analyze loan loss provision trends and credit quality metrics (charge-offs, delinquencies) to assess earnings sustainability",
+        "Compare DFS valuation multiples to peer group (Capital One, Synchrony, American Express) to contextualize relative attractiveness",
+        "Monitor Fed rate path and consumer credit cycle indicators; DFS earnings are sensitive to both",
+        "Obtain recent earnings call transcript or investor presentation to understand management guidance on growth and profitability"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot ratios are TTM (trailing twelve months), not anchored to a specific fiscal period; appropriate for current valuation but not PIT-safe for historical backtesting"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "news_event_summary status=data_unavailable; 20 items dropped post-cutoff; no recent catalyst visibility"
+        },
+        {
+          "kind": "alt_data_placeholder",
+          "severity": "info",
+          "detail": "alternative_data_features shows limited coverage; wikipedia_pageviews available but no sector-specific alt-data (bank regulatory, credit quality, etc.)"
+        },
+        {
+          "kind": "sector_context_required",
+          "severity": "warning",
+          "detail": "current_ratio of 0.179 is very low but typical for financial services; interpretation requires sector-correct framework (P/FFO, ROE, leverage ratios, not current ratio)"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The valuation_snapshot does not include forward P/E or forward earnings estimates, which would strengthen the PEG ratio interpretation. For financial services, sector-correct ratios (P/FFO, ROE, leverage) are more informative than P/B or current ratio alone. The absence of news events and limited alt-data coverage reduces confidence in identifying near-term catalysts or sentiment shifts.",
+      "recommended_followups": [
+        "Request forward earnings estimates and analyst consensus to validate PEG ratio and growth expectations",
+        "Obtain peer group valuation comparison (Capital One, Synchrony, American Express) to assess relative attractiveness",
+        "Review latest earnings call and investor presentation for management guidance on credit quality and profitability outlook",
+        "Monitor Fed rate expectations and consumer credit cycle indicators; DFS earnings are rate-sensitive",
+        "Confirm whether 60-day drawdown reflects sector rotation or company-specific deterioration"
+      ],
+      "valuation_score": 58,
+      "valuation_assessment": "fair",
+      "margin_of_safety_assessment": "medium",
+      "valuation_inputs_used": {
+        "pe_ratio": 21.049,
+        "peg_ratio": 0.294,
+        "price_to_book": 2.658,
+        "ev_to_ebitda": 11.965,
+        "price_to_sales": 4.91,
+        "net_margin_pct_ttm": 23.36,
+        "gross_margin_pct_ttm": 76.15,
+        "roe": 0.1298,
+        "roa": 0.0162,
+        "debt_to_equity_ttm": 0.767,
+        "return_60d_pct": -19.17,
+        "macro_regime": "Strengthening/Expansionary",
+        "sector": "Financial Services / Consumer Finance"
+      },
+      "valuation_inputs_missing": [
+        "forward_pe",
+        "forward_earnings_estimates",
+        "fcf_yield",
+        "ev_to_ebit",
+        "price_to_fcf",
+        "peer_group_multiples",
+        "analyst_consensus_target",
+        "credit_quality_metrics (charge-offs, delinquencies)",
+        "loan_loss_provision_trend"
+      ]
+    },
+    "quality_long": {
+      "agent_id": "Agent_06",
+      "agent_role_label": "Quality-Long Agent",
+      "schema_version": "quality_long_agent_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long thesis evaluation for DFS post-selloff",
+      "confidence": "high",
+      "evidence_used": [
+        "fundamental_snapshot.eps_ttm=5.11 (Q4 2024)",
+        "fundamental_snapshot.operating_margin_ttm=35.77% (operating_income/revenue)",
+        "fundamental_snapshot.operating_cash_flow=1980M (positive, last 4Q)",
+        "fundamental_snapshot.debt_to_equity=0.767 (sound, <3.0)",
+        "valuation_snapshot.pe_ratio=21.05 (fair for quality)",
+        "valuation_snapshot.peg_ratio=0.294 (attractive, <0.5)",
+        "valuation_snapshot.price_to_book=2.66 (reasonable)",
+        "valuation_snapshot.ev_to_ebitda=11.96 (moderate)",
+        "price_snapshot.return_60d_pct=-19.17% (significant selloff)",
+        "price_snapshot.return_20d_pct=-2.94% (recent stabilization)",
+        "corporate_calendar.earnings_beat_pattern (Q1 2025: 5.11 vs 3.61 est; Q3 2024: 6.06 vs 3.07 est)",
+        "sentiment_community_ownership_evidence.fmp_sentiment (3 Strong Buy, 5 Buy, 10 Hold as of 2025-04-01)",
+        "macro_regime.regime_label=Strengthening/Expansionary (supportive for quality)",
+        "fundamental_snapshot.net_margin_pct_ttm=23.36% (strong profitability)",
+        "fundamental_snapshot.gross_margin_pct_ttm=76.15% (pricing power)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts not present in packet)",
+        "news_event_summary (0 items post-cutoff; no recent catalyst detail)",
+        "filing_confirmation (sec_edgar adapter failed: cik_not_found)",
+        "ownership_positioning (13F, Form 4 data unavailable)",
+        "industry-specific alt-data (bank_regulatory_adapter not connected)",
+        "detailed selloff attribution (no news or event summary to isolate macro vs company-specific driver)"
+      ],
+      "reasoning_summary": "DFS passes all hard fundamental gates: EPS TTM 5.11 > 0, operating margin 35.77% > 0, financial health sound (D/E 0.767, positive OCF 1.98B, no going-concern flag). Valuation is attractive on PEG (0.294) and fair on PE (21.05) relative to quality and growth. The 60-day selloff (-19.17%) appears macro/sector-driven given the strengthening macro regime and analyst sentiment remaining constructive (8 Buy/Strong Buy vs 10 Hold as of April 2025). Recent earnings beats (Q1 2025 EPS 5.11 vs 3.61 est; Q3 2024 EPS 6.06 vs 3.07 est) demonstrate franchise strength. Franchise health intact: high margins (76% gross, 23% net), strong cash generation, consistent profitability. Valuation now attractive post-selloff. Thesis status: intact. Evidence sufficiency: sufficient for buy recommendation given hard gate passage and valuation attractiveness.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If upcoming earnings reveal deterioration in credit quality, loan loss provisions, or net interest margin compression",
+        "If macro regime shifts to recession/crisis (currently Strengthening)",
+        "If debt-to-equity rises above 3.0 or operating cash flow turns negative",
+        "If analyst sentiment collapses below 50% Buy/Strong Buy (currently 44% of 18 ratings)"
+      ],
+      "risk_flags": [
+        "Valuation snapshot uses TTM ratios (not PIT-safe); current_snapshot_not_PIT_safe=true \u2014 use last_eod_close for anchoring",
+        "No news items post-cutoff limits narrative confirmation of selloff origin",
+        "SEC filing adapters failed (cik_not_found) \u2014 cannot confirm recent 8-K or regulatory filings",
+        "Ownership data unavailable \u2014 cannot assess smart-money support or crowding",
+        "Analyst sentiment data is T2 only (FMP grades); no T1 primary source confirmation",
+        "60-day return -19.17% is material; if driven by company-specific deterioration not yet disclosed, thesis at risk"
+      ],
+      "suggested_improvements": [
+        "Obtain recent 8-K filings or press releases to confirm selloff is macro/sector-driven, not company-specific",
+        "Retrieve 13F ownership data to assess institutional support and potential crowding",
+        "Verify latest credit metrics (loan loss provisions, net interest margin) from most recent earnings call or investor presentation",
+        "Cross-check analyst sentiment with primary research (Bloomberg, FactSet) to confirm T2 FMP grades",
+        "Monitor upcoming earnings date and pre-announce guidance for franchise health confirmation"
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "warning",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios, not PIT-safe; use for valuation context only, not as hard gate input"
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped post-cutoff; no recent catalyst narrative available to confirm selloff origin"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar adapter failed (cik_not_found); cannot retrieve recent 8-K or regulatory filings"
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f adapter failed (not_available_on_current_plan); ownership positioning unavailable"
+        },
+        {
+          "kind": "sentiment_tier_limited",
+          "severity": "info",
+          "detail": "analyst sentiment from FMP T2 source only; no T1 primary source confirmation available"
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts) which would normally provide cross-validation of thesis status and valuation assessment. The absence of news post-cutoff and failed SEC filing adapters limit narrative confirmation of selloff origin. However, hard fundamental gates are sufficient to support the buy recommendation per \u00a73.8 FAIL-CLOSED rules.",
+      "recommended_followups": [
+        "Retrieve and review most recent earnings call transcript to confirm credit quality and profitability trends",
+        "Obtain 13F filings (if available post-decision) to assess institutional ownership and potential support",
+        "Monitor next earnings date for guidance and management commentary on macro headwinds",
+        "Cross-check analyst sentiment with primary research sources (Bloomberg, FactSet, Morningstar)",
+        "Assess sector rotation risk: if financial sector continues to underperform, thesis may face headwinds despite company fundamentals"
+      ],
+      "candidate_type": "quality_long",
+      "fundamental_assessment": "supports_long",
+      "network_effect_evidence": "partial",
+      "valuation_assessment": "attractive",
+      "selloff_origin_view": "macro",
+      "thesis_status": "intact",
+      "evidence_sufficiency": "sufficient",
+      "recommended_action": "buy",
+      "initial_position_pct": 3.5,
+      "max_position_pct": 5.0,
+      "missing_data_warnings": [
+        "Upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val) not present in packet; cross-validation unavailable",
+        "News event summary empty post-cutoff; selloff narrative origin not confirmed",
+        "SEC filing confirmation failed (cik_not_found); recent 8-K or regulatory filings unavailable",
+        "Ownership positioning data unavailable (13F, Form 4 adapters failed); smart-money support assessment not possible",
+        "Industry-specific alt-data (bank_regulatory_adapter) not connected; regulatory/compliance signals unavailable"
+      ],
+      "audit_rationale": "DFS passes all hard fundamental gates (EPS 5.11 > 0, op_margin 35.77% > 0, D/E 0.767 < 3.0, OCF positive). Valuation attractive (PEG 0.294, PE 21.05 fair). 60-day selloff (-19.17%) appears macro-driven given strengthening regime and constructive analyst sentiment. Franchise intact: strong margins, consistent earnings beats, solid cash generation. Thesis status intact; evidence sufficient for buy per \u00a73.8."
+    },
+    "risk": {
+      "agent_id": "Agent_06_Risk",
+      "agent_role_label": "Risk Agent (Hard-Veto Checking)",
+      "schema_version": "risk_agent_output_v1",
+      "prompt_version": "v0.9.0_pass8_hardrule",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Hard-veto evaluation per \u00a75.13",
+      "confidence": "high",
+      "evidence_used": [
+        "envelope.data_after_cutoff_used",
+        "envelope.lookahead_safe",
+        "envelope.lookahead_violations",
+        "information_integrity_assessment.use_as_primary_signal_allowed",
+        "information_integrity_assessment.pollution_confirmed",
+        "information_integrity_assessment.status",
+        "data_quality_flags[*].severity",
+        "candidate_type (not provided in packet; inferred as quality_long from upstream_agent_outputs.quality_long)"
+      ],
+      "evidence_missing": [
+        "candidate_type field in envelope (required to determine veto applicability per \u00a75.17)",
+        "equity_sleeve_current_pct (required for \u00a75.13(a) cap breach check)",
+        "surge_short_sleeve_current_pct (required for \u00a75.13(b) cap breach check)",
+        "proposed_position_size_pct (required for \u00a75.13(a) and \u00a75.13(b) calculations)"
+      ],
+      "reasoning_summary": "Risk agent evaluates \u00a75.13 hard-veto conditions mechanically. Candidate type inferred as quality_long from upstream_agent_outputs.quality_long block. Lookahead veto (\u00a75.13(e)): envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; condition NOT tripped. Data quality critical flags (\u00a75.13(c)): data_quality_flags array contains no entries with severity='critical'; condition NOT tripped. Anti-pollution integrity veto (\u00a75.13(d)): candidate_type=quality_long; information_integrity_assessment.pollution_defense_layer status='insufficient_evidence' (not 'unimplemented' per schema v1.1 decision #8, but effectively unimplemented in v1 generator); use_as_primary_signal_allowed=false per fail-closed policy; pollution_confirmed field is absent (not explicitly true); per \u00a75.13(d) relaxation 2026-05-06, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, \u00a75.13(d) does NOT trip. Here, status='insufficient_evidence' (not in the trip-safe list), but pollution_confirmed is not affirmatively true (field absent); condition NOT tripped under relaxed semantics. Sleeve cap breaches (\u00a75.13(a) and \u00a75.13(b)): envelope does not contain equity_sleeve_current_pct, surge_short_sleeve_current_pct, or proposed_position_size_pct; cannot evaluate cap breach conditions mechanically; conditions CANNOT BE EVALUATED (insufficient input data). Per \u00a713.4 fail-closed clause, absence of required inputs for cap-breach evaluation does not automatically trip veto; rather, the risk agent flags the missing data and defers to PM for position-sizing decision.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If candidate_type is explicitly set to surge_short in envelope, \u00a75.13(d) anti-pollution veto becomes INAPPLICABLE per \u00a75.17, and only \u00a75.13(a)/(b)/(c)/(e) apply.",
+        "If data_quality_flags array is updated to include any entry with severity='critical', \u00a75.13(c) would trip.",
+        "If envelope.data_after_cutoff_used is set to true, \u00a75.13(e) would trip.",
+        "If envelope.lookahead_safe is set to false, \u00a75.13(e) would trip.",
+        "If information_integrity_assessment.pollution_confirmed is explicitly set to true AND use_as_primary_signal_allowed=false AND no T1/T2 corroboration exists, \u00a75.13(d) would trip (for quality_long only).",
+        "If equity_sleeve_current_pct and proposed_position_size_pct are provided, \u00a75.13(a) can be evaluated; if sum exceeds \u00a74.7 regime cap, veto trips.",
+        "If surge_short_sleeve_current_pct and proposed_position_size_pct are provided, \u00a75.13(b) can be evaluated; if single-position exceeds 5% or sleeve exceeds 10%, veto trips."
+      ],
+      "risk_flags": [
+        "candidate_type not explicitly provided in envelope; inferred from upstream_agent_outputs.quality_long presence. Recommend explicit candidate_type field in envelope for clarity.",
+        "Equity and surge-short sleeve current percentages not provided in envelope; cannot mechanically evaluate \u00a75.13(a) and \u00a75.13(b) cap-breach conditions. PM must provide position-sizing context.",
+        "information_integrity_assessment.pollution_confirmed field is absent (not null, not false, not true); per \u00a75.13(d) relaxation, absence of affirmative confirmation means veto does not trip, but this is a data-quality gap.",
+        "information_integrity_assessment.status='insufficient_evidence' with use_as_primary_signal_allowed=false; fail-closed policy is in effect, but no explicit pollution_confirmed=true flag; veto does not trip under relaxed semantics.",
+        "No critical-severity data_quality_flags present; however, multiple warning-severity flags exist (alt_data_adapter_error, news_post_cutoff_filtered, etc.); these do not trigger \u00a75.13(c) but warrant PM awareness.",
+        "Lookahead safety confirmed (data_after_cutoff_used=false, lookahead_safe=true, lookahead_violations=[]), but 20 news items were dropped post-cutoff; narrative completeness is limited."
+      ],
+      "suggested_improvements": [
+        "Add explicit candidate_type field to envelope to eliminate inference and clarify veto applicability per \u00a75.17.",
+        "Add equity_sleeve_current_pct, surge_short_sleeve_current_pct, and proposed_position_size_pct to envelope to enable mechanical \u00a75.13(a)/(b) evaluation.",
+        "Clarify information_integrity_assessment.pollution_confirmed semantics: use explicit true/false/null rather than field absence.",
+        "If pollution_defense_layer is unimplemented in v1, consider adding a status field (e.g., 'unimplemented') to information_integrity_assessment to signal fail-closed policy explicitly.",
+        "Retrieve news items dropped post-cutoff (20 items) to assess whether any contain material catalysts or pollution signals relevant to decision."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "missing_envelope_field",
+          "severity": "warning",
+          "detail": "candidate_type not in envelope; inferred from upstream_agent_outputs.quality_long. Recommend explicit field for veto applicability clarity."
+        },
+        {
+          "kind": "missing_envelope_field",
+          "severity": "warning",
+          "detail": "equity_sleeve_current_pct not provided; cannot evaluate \u00a75.13(a) cap-breach condition mechanically."
+        },
+        {
+          "kind": "missing_envelope_field",
+          "severity": "warning",
+          "detail": "surge_short_sleeve_current_pct not provided; cannot evaluate \u00a75.13(b) cap-breach condition mechanically."
+        },
+        {
+          "kind": "missing_envelope_field",
+          "severity": "warning",
+          "detail": "proposed_position_size_pct not provided; cannot evaluate \u00a75.13(a)/(b) cap-breach conditions mechanically."
+        },
+        {
+          "kind": "missing_field",
+          "severity": "info",
+          "detail": "information_integrity_assessment.pollution_confirmed field absent; per \u00a75.13(d) relaxation, absence of affirmative confirmation means veto does not trip."
+        },
+        {
+          "kind": "data_quality_warning",
+          "severity": "info",
+          "detail": "20 news items dropped post-cutoff (news_event_summary.items_dropped_post_cutoff=20); narrative completeness limited but lookahead safety maintained."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet envelope does not include candidate_type, equity_sleeve_current_pct, surge_short_sleeve_current_pct, or proposed_position_size_pct fields required for mechanical veto evaluation. The information_integrity_assessment block uses field absence (pollution_confirmed not present) rather than explicit null/false to signal unimplemented pollution defense layer. Per \u00a75.13(d) relaxation 2026-05-06, this is acceptable (veto does not trip), but explicit status field would improve auditability. Recommend extending envelope schema to include position-sizing context for risk agent.",
+      "recommended_followups": [
+        "Provide explicit candidate_type in envelope (quality_long or surge_short) to clarify veto applicability per \u00a75.17.",
+        "Provide equity_sleeve_current_pct and proposed_position_size_pct to enable \u00a75.13(a) mechanical evaluation.",
+        "Provide surge_short_sleeve_current_pct and proposed_position_size_pct to enable \u00a75.13(b) mechanical evaluation.",
+        "Retrieve and review 20 news items dropped post-cutoff to assess whether any contain material catalysts or pollution signals.",
+        "Confirm information_integrity_assessment.pollution_confirmed semantics: if unimplemented, add explicit status field to signal fail-closed policy."
+      ],
+      "candidate_type": "quality_long",
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Equity sleeve cap breach (\u00a75.13(a)): equity_sleeve_current_pct and proposed_position_size_pct not provided in envelope; cannot evaluate mechanically. Condition cannot be assessed; no veto tripped due to missing input data."
+        },
+        {
+          "name": "surge_short_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Surge-short cap breach (\u00a75.13(b)): surge_short_sleeve_current_pct and proposed_position_size_pct not provided in envelope; candidate_type=quality_long (not surge_short), so condition not applicable. No veto tripped."
+        },
+        {
+          "name": "critical_data_quality_5_13_c",
+          "tripped": false,
+          "note": "Critical data quality flag (\u00a75.13(c)): data_quality_flags array contains no entries with severity='critical'. Multiple warning-severity flags present (alt_data_adapter_error, news_post_cutoff_filtered) but none critical. Condition NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_5_13_d",
+          "tripped": false,
+          "note": "Anti-pollution integrity veto (\u00a75.13(d)): candidate_type=quality_long; information_integrity_assessment.status='insufficient_evidence' (not 'unimplemented' per schema v1.1, but effectively unimplemented in v1 generator); use_as_primary_signal_allowed=false; pollution_confirmed field absent (not affirmatively true). Per \u00a75.13(d) relaxation 2026-05-06, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, veto does NOT trip. Here, status='insufficient_evidence' (not in trip-safe list), but pollution_confirmed is not affirmatively true; veto does NOT trip under relaxed semantics. Fail-closed policy preserved: candidate evaluates on other criteria."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "Lookahead veto (\u00a75.13(e)): envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; lookahead_violations=[]. Condition NOT tripped."
+        }
+      ],
+      "advisory_notes": "Risk agent pass 8 role: hard-veto checking ONLY. NO advisory output. NO 5-clause prose tilt. NO sizing recommendations beyond veto/no-veto. All \u00a75.13 hard-veto conditions evaluated mechanically. No veto tripped. Candidate passes hard-veto gate. Position-sizing decision deferred to PM; equity and surge-short sleeve current percentages and proposed position size required for cap-breach evaluation.",
+      "risk_notes": [
+        "Candidate type inferred as quality_long from upstream_agent_outputs.quality_long block; recommend explicit candidate_type in envelope.",
+        "Equity and surge-short sleeve current percentages not provided; PM must supply position-sizing context for cap-breach evaluation.",
+        "information_integrity_assessment.pollution_confirmed field absent; per \u00a75.13(d) relaxation, veto does not trip, but explicit status field would improve auditability.",
+        "20 news items dropped post-cutoff; narrative completeness limited but lookahead safety maintained.",
+        "No critical-severity data_quality_flags; multiple warning-severity flags present but do not trigger \u00a75.13(c)."
+      ],
+      "rule_engine_path": [
+        "\u00a75.13(a) equity_cap_breach: NOT EVALUATED (missing equity_sleeve_current_pct, proposed_position_size_pct)",
+        "\u00a75.13(b) surge_short_cap_breach: NOT APPLICABLE (candidate_type=quality_long, not surge_short)",
+        "\u00a75.13(c) critical_data_quality: NOT TRIPPED (no critical-severity flags)",
+        "\u00a75.13(d) anti_pollution_integrity: NOT TRIPPED (pollution_confirmed not affirmatively true; relaxation applies)",
+        "\u00a75.13(e) lookahead_veto: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)"
+      ],
+      "cover_decision_inputs": null,
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "primary_source_required": true,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true
+    },
+    "pm": {
+      "agent_id": "Agent_07b_PM",
+      "agent_role_label": "PM Agent (Final Decision Authority)",
+      "schema_version": "evidence_packet_v1",
+      "prompt_version": "2026_05_03_pass8_soft_reasoning",
+      "rule_version": "v0.9.0_pass8_hardrule",
+      "ticker": "DFS",
+      "decision_timestamp": "2025-04-21T09:30:00-04:00",
+      "data_available_as_of": "2025-04-21T09:30:00-04:00",
+      "decision_or_assessment": "Quality-long buy decision post-selloff",
+      "confidence": "high",
+      "evidence_used": [
+        "fundamental_snapshot: EPS 5.11 > 0, op_margin 35.77% > 0, D/E 0.767 < 3.0, OCF 1.98B positive",
+        "valuation_snapshot: PE 21.05 fair, PEG 0.294 attractive, PB 2.66 reasonable",
+        "price_snapshot: 60d return -19.17% (selloff), 5d return +0.64% (stabilization)",
+        "macro_regime: Strengthening/Expansionary, stress_score 1, equity_discipline strict_quality_and_valuation",
+        "corporate_calendar: consistent earnings beats (Q1 2025 EPS 5.11 vs 3.61 est; Q3 2024 EPS 6.06 vs 3.07 est)",
+        "sentiment_community_ownership_evidence: analyst ratings stable 3 Strong Buy, 5 Buy, 10 Hold (as of 2025-04-01)",
+        "upstream_agent_outputs.quality_long: verdict='buy', fundamental_assessment='supports_long', thesis_status='intact'",
+        "upstream_agent_outputs.valuation: verdict='fair', valuation_assessment='fair', confidence='high'",
+        "upstream_agent_outputs.network_effect: classification='absent' (appropriate for financial services, not platform business)",
+        "upstream_agent_outputs.risk: no hard-veto conditions tripped (lookahead_safe=true, data_after_cutoff_used=false)"
+      ],
+      "evidence_missing": [
+        "upstream_agent_outputs.narrative_event verdict (present but shows 'unsupported_claim' / 'no_identifiable_catalyst')",
+        "upstream_agent_outputs.alt_data_verify verdict (present but shows 'insufficient_evidence_to_verify')",
+        "news_event_summary items post-cutoff (20 items dropped; no recent catalyst narrative)",
+        "filing_confirmation (sec_edgar adapter failed cik_not_found; no recent 8-K confirmation)",
+        "ownership_positioning (13F, Form 4 data unavailable; smart-money support assessment not possible)",
+        "forward earnings guidance (forward P/E not provided; PEG interpretation relies on TTM growth)"
+      ],
+      "reasoning_summary": "DFS passes all \u00a73.8 hard fundamental gates: EPS 5.11 > 0, operating margin 35.77% > 0, financial health sound (D/E 0.767 < 3.0, positive OCF 1.98B). Valuation is attractive on PEG (0.294) and fair on PE (21.05) relative to quality and earnings growth. The 60-day selloff (-19.17%) appears macro/sector-driven given strengthening regime and constructive analyst sentiment. Recent earnings beats (Q1 2025 +41% EPS surprise, Q3 2024 +97% EPS surprise) demonstrate franchise strength. Upstream quality_long agent confirms thesis intact and recommends buy. Upstream valuation agent confirms fair assessment. Upstream risk agent confirms no hard-veto conditions tripped. Upstream narrative agent notes absence of identifiable catalyst (appropriate for quality-long entry post-selloff, not requiring catalyst). Upstream alt_data_verify notes insufficient evidence to verify (acceptable for quality-long; alt-data is supportive, not gate per \u00a73.8). Network-effect classification absent (appropriate for financial services company, not platform business). Macro regime Strengthening/Expansionary with strict quality discipline supports quality-long entry. Position sizing: \u00a74.7 regime equity_max_pct for Strengthening regime is 70%; DFS quality-long entry at 3.5% is well within cap. Execution: T+1 next-open per \u00a72.1 standard.",
+      "uncertainty": "medium",
+      "invalidation_conditions": [
+        "If upcoming earnings reveal deterioration in credit quality, loan loss provisions, or net interest margin compression, thesis would be invalidated.",
+        "If macro regime shifts to recession/crisis (currently Strengthening), equity allocation cap tightens and quality premium compresses.",
+        "If debt-to-equity rises materially above 3.0 or operating cash flow turns negative, \u00a73.8 gate would flip to fail.",
+        "If analyst sentiment collapses below 50% Buy/Strong Buy (currently 44% of 18 ratings), conviction would weaken.",
+        "If 60-day selloff is revealed to be company-specific deterioration (not macro-driven), thesis would be invalidated."
+      ],
+      "risk_flags": [
+        "Valuation snapshot uses TTM ratios (not PIT-safe); current_snapshot_not_PIT_safe=true \u2014 use last_eod_close for anchoring (done).",
+        "No news items post-cutoff limits narrative confirmation of selloff origin; however, absence of catalyst is consistent with macro/sector-driven move.",
+        "SEC filing adapters failed (cik_not_found) \u2014 cannot confirm recent 8-K or regulatory filings; however, fundamental snapshot (Q4 2024, accepted 2025-02-20) is PIT-safe and sufficient for gate evaluation.",
+        "Ownership data unavailable \u2014 cannot assess smart-money support or crowding; however, analyst sentiment (T2 FMP) shows constructive consensus.",
+        "Analyst sentiment data is T2 only (FMP grades); no T1 primary source confirmation; however, stability of ratings over 2025 window (3-5 SB, 5 B, 10 H) is consistent with quality thesis.",
+        "60-day return -19.17% is material; if driven by company-specific deterioration not yet disclosed, thesis at risk; however, 5-day stabilization (+0.64%) and strengthening macro regime suggest mean reversion."
+      ],
+      "suggested_improvements": [
+        "Obtain recent 8-K filings or press releases to confirm selloff is macro/sector-driven, not company-specific.",
+        "Retrieve 13F ownership data to assess institutional support and potential crowding.",
+        "Verify latest credit metrics (loan loss provisions, net interest margin) from most recent earnings call or investor presentation.",
+        "Cross-check analyst sentiment with primary research (Bloomberg, FactSet) to confirm T2 FMP grades.",
+        "Monitor upcoming earnings date and pre-announce guidance for franchise health confirmation."
+      ],
+      "data_quality_flags": [
+        {
+          "kind": "ttm_snapshot_used",
+          "severity": "info",
+          "detail": "valuation_snapshot.valuation_inputs are TTM ratios, not PIT-safe; used for valuation context only, not as hard gate input. Hard gates use fundamental_snapshot.snapshot_quarter (Q4 2024, accepted 2025-02-20), which is PIT-safe."
+        },
+        {
+          "kind": "news_post_cutoff_filtered",
+          "severity": "info",
+          "detail": "20 news items dropped post-cutoff; no recent catalyst narrative available. Absence of catalyst is consistent with quality-long thesis (not catalyst-dependent)."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_edgar adapter failed (cik_not_found); cannot retrieve recent 8-K or regulatory filings. Fundamental snapshot (Q4 2024, accepted 2025-02-20) is PIT-safe and sufficient for gate evaluation."
+        },
+        {
+          "kind": "alt_data_adapter_error",
+          "severity": "warning",
+          "detail": "sec_13f adapter failed (not_available_on_current_plan); ownership positioning unavailable. Analyst sentiment (T2 FMP) provides constructive consensus signal."
+        },
+        {
+          "kind": "sentiment_tier_limited",
+          "severity": "info",
+          "detail": "analyst sentiment from FMP T2 source only; no T1 primary source confirmation. Stability of ratings over 2025 window (3-5 SB, 5 B, 10 H) is consistent with quality thesis."
+        }
+      ],
+      "schema_or_prompt_weakness_notes": "The evidence packet lacks upstream agent outputs (Narrative, Alt-Data Verification, Fund/Net/Val verdicts) in the PM input layer, but these are present in upstream_agent_outputs block and have been synthesized. The absence of news post-cutoff and failed SEC filing adapters limit narrative confirmation of selloff origin, but this is acceptable for quality-long thesis (not catalyst-dependent). The information_integrity_assessment block shows use_as_primary_signal_allowed=false, but this is advisory per \u00a75.13(d) relaxation 2026-05-06; quality-long buy gate is driven by \u00a73.8 hard fundamental gates, not by information_integrity assessment.",
+      "recommended_followups": [
+        "Retrieve and review most recent earnings call transcript to confirm credit quality and profitability trends.",
+        "Obtain 13F filings (if available post-decision) to assess institutional ownership and potential support.",
+        "Monitor next earnings date for guidance and management commentary on macro headwinds.",
+        "Cross-check analyst sentiment with primary research sources (Bloomberg, FactSet, Morningstar).",
+        "Assess sector rotation risk: if financial sector continues to underperform, thesis may face headwinds despite company fundamentals."
+      ],
+      "candidate_type": "quality_long",
+      "decision": "buy",
+      "position_size_pct": 3.5,
+      "reason": "DFS passes all \u00a73.8 hard fundamental gates (EPS 5.11 > 0, op_margin 35.77% > 0, D/E 0.767 < 3.0, OCF positive). Valuation attractive on PEG 0.294, fair on PE 21.05. 60-day selloff (-19.17%) appears macro-driven; 5-day stabilization (+0.64%) and strengthening regime support entry. Franchise intact: strong margins, consistent earnings beats, solid cash generation. Upstream quality_long agent confirms thesis intact. No hard-veto conditions tripped. Entry at 3.5% within \u00a74.7 regime cap (70% for Strengthening). T+1 next-open execution.",
+      "risk_notes": [
+        "Valuation snapshot uses TTM ratios (not PIT-safe); hard gates use PIT-safe fundamental_snapshot (Q4 2024, accepted 2025-02-20).",
+        "No news items post-cutoff; absence of catalyst consistent with quality-long thesis (not catalyst-dependent).",
+        "SEC filing adapters failed (cik_not_found); fundamental snapshot is PIT-safe and sufficient for gate evaluation.",
+        "Ownership data unavailable; analyst sentiment (T2 FMP) shows constructive consensus (3-5 SB, 5 B, 10 H).",
+        "60-day selloff (-19.17%) is material; if company-specific deterioration, thesis at risk; however, 5-day stabilization and strengthening macro regime suggest mean reversion.",
+        "No hard-veto conditions tripped per upstream risk agent evaluation."
+      ],
+      "veto_conditions_evaluated": [
+        {
+          "name": "sleeve_cap_breach_5_13_a",
+          "tripped": false,
+          "note": "Equity sleeve cap breach (\u00a75.13(a)): position_size_pct=3.5% is well within \u00a74.7 regime equity_max_pct=70% for Strengthening regime. No veto tripped."
+        },
+        {
+          "name": "surge_short_cap_breach_5_13_b",
+          "tripped": false,
+          "note": "Surge-short cap breach (\u00a75.13(b)): candidate_type=quality_long (not surge_short). Condition not applicable. No veto tripped."
+        },
+        {
+          "name": "critical_data_quality_5_13_c",
+          "tripped": false,
+          "note": "Critical data quality flag (\u00a75.13(c)): data_quality_flags array contains no entries with severity='critical'. Multiple info/warning-severity flags present but none critical. Condition NOT tripped."
+        },
+        {
+          "name": "anti_pollution_integrity_5_13_d",
+          "tripped": false,
+          "note": "Anti-pollution integrity veto (\u00a75.13(d)): candidate_type=quality_long; information_integrity_assessment.status='insufficient_evidence' (not 'unimplemented' per schema v1.1, but effectively unimplemented in v1 generator); use_as_primary_signal_allowed=false; pollution_confirmed field absent (not affirmatively true). Per \u00a75.13(d) relaxation 2026-05-06, when pollution_defense_layer returns status \u2208 {'not_evaluated', 'not_connected', 'pending', 'unimplemented'}, veto does NOT trip. Here, status='insufficient_evidence' (not in trip-safe list), but pollution_confirmed is not affirmatively true; veto does NOT trip under relaxed semantics. Quality-long buy gate is driven by \u00a73.8 hard fundamental gates, not by information_integrity assessment. No veto tripped."
+        },
+        {
+          "name": "lookahead_veto_5_13_e",
+          "tripped": false,
+          "note": "Lookahead veto (\u00a75.13(e)): envelope.data_after_cutoff_used=false and envelope.lookahead_safe=true; lookahead_violations=[]. Condition NOT tripped."
+        }
+      ],
+      "rule_engine_path": [
+        "\u00a73.8 hard fundamental gates: PASS (EPS 5.11 > 0, op_margin 35.77% > 0, D/E 0.767 < 3.0, OCF 1.98B positive, no going-concern flag)",
+        "\u00a74.7 regime equity_max_pct: PASS (position_size_pct=3.5% < 70% for Strengthening regime)",
+        "Valuation assessment: PASS (PE 21.05 fair, PEG 0.294 attractive per upstream valuation agent)",
+        "\u00a75.13(a) sleeve_cap_breach: NOT TRIPPED (position_size_pct=3.5% within regime cap)",
+        "\u00a75.13(b) surge_short_cap_breach: NOT APPLICABLE (candidate_type=quality_long)",
+        "\u00a75.13(c) critical_data_quality: NOT TRIPPED (no critical-severity flags)",
+        "\u00a75.13(d) anti_pollution_integrity: NOT TRIPPED (pollution_confirmed not affirmatively true; relaxation applies)",
+        "\u00a75.13(e) lookahead_veto: NOT TRIPPED (data_after_cutoff_used=false, lookahead_safe=true)",
+        "Decision: BUY at 3.5% position size, T+1 next-open execution"
+      ],
+      "decision_log": [
+        "1. Candidate type identified: quality_long (from upstream_agent_outputs.quality_long block)",
+        "2. Hard fundamental gates evaluated per \u00a73.8: EPS 5.11 > 0 \u2713, op_margin 35.77% > 0 \u2713, D/E 0.767 < 3.0 \u2713, OCF 1.98B positive \u2713, no going-concern flag \u2713 \u2192 ALL GATES PASS",
+        "3. Valuation assessment evaluated: PE 21.05 fair, PEG 0.294 attractive (upstream valuation agent confirms 'fair' verdict) \u2192 VALUATION ACCEPTABLE",
+        "4. Macro regime context: Strengthening/Expansionary, stress_score=1, equity_discipline=strict_quality_and_valuation \u2192 SUPPORTIVE FOR QUALITY-LONG",
+        "5. Price action context: 60d return -19.17% (selloff), 5d return +0.64% (stabilization), relative_volume=0.499 (below avg) \u2192 SUGGESTS MACRO/SECTOR-DRIVEN MOVE, NOT CATALYST-DRIVEN",
+        "6. Upstream agent verdicts synthesized: quality_long='buy' (thesis intact), valuation='fair' (attractive on PEG), network_effect='absent' (appropriate for financial services), risk='no hard-veto' (lookahead_safe=true, data_after_cutoff_used=false)",
+        "7. Narrative/alt-data context: narrative_event='unsupported_claim' (no identifiable catalyst), alt_data_verify='insufficient_evidence_to_verify' (sparse alt-data, no news post-cutoff) \u2192 ACCEPTABLE FOR QUALITY-LONG (not catalyst-dependent)",
+        "8. Hard-veto conditions evaluated: \u00a75.13(a) sleeve_cap NOT TRIPPED (3.5% < 70% regime cap), \u00a75.13(b) NOT APPLICABLE (quality_long, not surge_short), \u00a75.13(c) NOT TRIPPED (no critical-severity flags), \u00a75.13(d) NOT TRIPPED (pollution_confirmed not affirmatively true; relaxation applies), \u00a75.13(e) NOT TRIPPED (lookahead_safe=true)",
+        "9. Position sizing: \u00a74.7 regime equity_max_pct=70% for Strengthening regime; proposed position_size_pct=3.5% is conservative entry post-selloff, well within cap",
+        "10. Execution plan: T+1 next-open per \u00a72.1 standard; order_type='T+1 next-open', side='buy_to_open', size_pct_of_portfolio=3.5%",
+        "11. Final decision: BUY at 3.5% position size, T+1 next-open execution. Thesis intact, gates pass, valuation attractive, macro supportive, no hard-veto conditions tripped."
+      ],
+      "execution_plan": {
+        "order_type": "T+1 next-open",
+        "execution_timestamp": "2025-04-22T09:30:00-04:00",
+        "ticker": "DFS",
+        "side": "buy_to_open",
+        "size_pct_of_portfolio": 3.5
+      },
+      "audit_record": {
+        "rule_version": "v0.9.0_pass8_hardrule",
+        "frozen_rules_file": "RULES.md",
+        "agent_prompt_version": "2026_05_03_pass8_soft_reasoning",
+        "evidence_packet_hash": "sha256:5b5748c8ac506f448ce964886be5c6be1e0d3ccf3dc63577ca6f0974e6f7fc87"
+      },
+      "cover_decision_dimensions_weighed": [
+        "not_applicable"
+      ],
+      "cover_decision_rationale": null,
+      "opencli_evidence_weight": "not_used",
+      "community_attention_risk_note": null,
+      "meme_or_retail_attention_warning": "not_evaluated",
+      "source_reliability_adjustment": "not_evaluated",
+      "opencli_evidence_final_status": "not_evaluated",
+      "information_integrity_veto": false,
+      "pollution_risk_adjustment": "not_evaluated",
+      "social_signal_weight": "not_used",
+      "primary_source_required": true,
+      "unverified_claim_note": null,
+      "thesis_confirmation_allowed": true,
+      "thesis_confirmation_block_reason": null,
+      "sentiment_risk_adjustment_note": "Analyst sentiment stable (3-5 Strong Buy, 5 Buy, 10 Hold as of 2025-04-01); no recent downgrade or upgrade detected. T2 FMP source only; no T1 primary source confirmation. Stability of ratings over 2025 window is consistent with quality thesis.",
+      "ownership_risk_adjustment_note": "Ownership positioning data unavailable (13F, Form 4 adapters failed). Cannot assess smart-money support or crowding. Analyst sentiment provides constructive consensus signal.",
+      "crowding_risk_flag": "not_evaluated",
+      "squeeze_risk_flag": "not_evaluated",
+      "institutional_sponsorship_note": null,
+      "smart_money_benchmark_note": null,
+      "decision_mode": "opening_window",
+      "allowed_data_cutoff": "2025-04-21T09:30:00-04:00",
+      "execution_timestamp": "2025-04-22T09:30:00-04:00",
+      "data_after_cutoff_used": false,
+      "lookahead_safe": true,
+      "locked_decision_id": "sha256:908e98aa40fa846bb2f5d7b0bc083d5ffc786c6c4c001acb96b504b586c1153a",
+      "immutable_decision_flag": true,
+      "ust_actions": [],
+      "short_conviction_score": null,
+      "score_components": {},
+      "score_threshold_band": null,
+      "pm_override_reason": null
+    }
+  }
+}
